@@ -190,4 +190,3 @@ PR 2 is complete only when:
 - a Broker with assigned Clients can read only those Clients.
 - a Broker cannot invoke Client writes or adjacent sensitive reads.
 - existing workspace users retain their previous effective permissions.
-
