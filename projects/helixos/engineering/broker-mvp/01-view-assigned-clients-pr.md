@@ -8,7 +8,7 @@ Broker. At the end of this PR:
 - `clients.view` is displayed as **View All Clients**.
 - `clients.assigned.view` exists and restricts reads to exact person-to-Client
   assignments in the active Carrier.
-- authorized administrators can manage those assignments.
+- authorized administrators can manage those assignments through audited APIs.
 - existing production roles behave exactly as they did before.
 - no built-in production role receives `clients.assigned.view` yet.
 
@@ -23,7 +23,6 @@ rows plus frontend filtering.
 - ALL/ASSIGNED/NONE Client visibility policy
 - filtering for Client directory, detail, hierarchy, metrics, and capabilities
 - assignment list/replace APIs for Platform Admin and Carrier administration
-- Assigned Clients management in the existing People & Access component
 - assigned-only directory/detail presentation
 - explicit denial of Broker-style assigned access to adjacent Client tabs and
   APIs that are outside the basic Client directory/detail contract
@@ -35,7 +34,10 @@ rows plus frontend filtering.
 - Broker role definition or role template
 - generic role creation
 - parent/subtree assignment semantics
-- bulk CSV assignment
+- production Client-assignment operations UI
+- drag/drop or bulk reassignment
+- termination/offboarding handoff workflows
+- capacity, ownership, and pipeline views
 - automatic assignment based on CRM ownership
 - Client Portal assignment changes
 - redesign of every Client-detail tab
@@ -501,29 +503,20 @@ write nothing.
 Add Zod request/response DTOs and complete Swagger decorators. Regenerate
 `src/api/openapi.json`.
 
-## Step 7: Add The Management And Client UX
+## Step 7: Add The Assigned-Only Client UX
 
-### 7.1 People & Access
+### 7.1 Do Not Ship A Tactical Assignment Dialog
 
-In `PermissionsPeoplePanel.tsx`:
+PR 1 intentionally exposes the audited assignment APIs without adding a
+per-person **Assigned Clients** action to People & Access. That interaction does
+not scale to the operational problem: Carrier teams need to see people and
+Client portfolios together, move work between owners, reassign many Clients,
+recover unassigned work, and complete safe employment-termination handoffs.
 
-- add an **Assigned Clients** section/action for the selected person
-- show it only when the current operator is authorized by the backend surface
-- reuse `management-options` Client search results
-- display selected Clients by human-readable legal name
-- require a reason before save
-- submit the complete intended set through PUT
-- invalidate the person, management-options, and assignment queries on success
-- show API errors and conflicts; do not pretend the save succeeded
-- if the person has `clients.view`, explain that stored assignments are
-  currently non-limiting because View All Clients wins
-- if the person has assigned-only visibility, say **Assigned Clients only**
-
-Do not add a `useEffect` to mirror query data into state. Seed dialog state when
-the dialog opens or use a keyed child component.
-
-Add endpoint builders to `src/web/src/platform/api-client.ts` for both access
-scopes.
+The full product interaction belongs in PR 2 as a dedicated **Client
+Assignments** tab under Manage Carrier Account. PR 1 validates list/replace,
+empty assignment, and restoration through the API and deterministic UAT reset
+tooling. Do not add temporary web endpoint builders or dialog state here.
 
 ### 7.2 Client Directory
 
@@ -611,8 +604,6 @@ fixtures for `visibility`; do not add a second unfiltered query.
 - no write controls from assigned read permission alone
 - unassigned detail not-found handling
 - assigned-only detail hides adjacent tabs/actions
-- People & Access loads, edits, saves, and refreshes assignments in both access
-  scopes
 - all-Client users retain existing Client page behavior
 
 ## Step 9: Validation Commands
@@ -645,7 +636,7 @@ assignments are created.
 1. `feat(db): add assigned client access foundation`
 2. `feat(auth): enforce assigned client visibility`
 3. `feat(api): add assigned client management`
-4. `feat(web): manage and present assigned clients`
+4. `feat(web): present assigned-only client access`
 5. `test(auth): cover assigned client isolation`
 6. `docs(api): refresh assigned client contracts` if OpenAPI/docs are not
    naturally included with the prior commits
@@ -661,7 +652,6 @@ Attach or describe:
 - API route classification inventory
 - automated test results
 - manual UAT with two Carriers and at least three Clients
-- screenshot of Assigned Clients management
 - screenshot of assigned-only directory and empty state
 - proof that an unassigned direct URL is denied
 - explicit statement that no built-in role has `clients.assigned.view` yet

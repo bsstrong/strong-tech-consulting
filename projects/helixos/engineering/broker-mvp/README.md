@@ -33,20 +33,23 @@ Carrier.
 
 Follow [01-view-assigned-clients-pr.md](./01-view-assigned-clients-pr.md).
 
-This PR adds the permission catalog entries, assignment storage, assignment
-management, and server-side Client visibility enforcement. It must not create
-or grant the Broker role.
+This PR adds the permission catalog entries, assignment storage, authorized
+assignment APIs, and server-side Client visibility enforcement. It must not
+create or grant the Broker role, and it must not ship a tactical per-person
+assignment dialog that will be replaced by the operational workspace in PR 2.
 
 After PR 1, production behavior for every existing role is unchanged. The new
 `clients.assigned.view` permission is present but has no built-in role grant.
 
-### PR 2: Broker Role MVP
+### PR 2: Broker Role And Client Assignment Operations
 
 Follow [02-broker-role-pr.md](./02-broker-role-pr.md).
 
 This PR adds the Broker role, grants only `clients.assigned.view`, separates
-workspace entry from the legacy CarrierMember permission bridge, and exposes
-Broker through the existing role and team-member workflows.
+workspace entry from the legacy CarrierMember permission bridge, exposes
+Broker through the existing role and team-member workflows, and adds a full
+**Client Assignments** tab to Manage Carrier Account for day-to-day ownership
+and pipeline operations.
 
 PR 2 must be based on the merged PR 1 head. It must not duplicate or bypass PR
 1's visibility policy.
@@ -66,7 +69,7 @@ PR 1 merged and deployed
   ├── assignment table and RLS exist
   ├── assigned-only directory/detail filtering is active
   ├── direct unassigned Client access is denied
-  └── assignment management is usable
+  └── assignment APIs and deterministic validation are proven
           ↓
 PR 2 may make Broker assignable
 ```
@@ -89,9 +92,10 @@ make Broker assignable behind a frontend-only filter.
 - An assigned child whose parent is not assigned appears as a root. Do not send
   an unassigned ancestor shell or name.
 - A Broker with zero assignments sees a safe assigned-specific empty state.
-- The MVP assignment workflow is allowed to be two-step: create/assign Broker,
-  then manage Assigned Clients. Zero assignments is safe. A partially enforced
-  assignment is not.
+- Broker creation and Client ownership management may remain two distinct
+  operations, but Client ownership belongs in a dedicated operational workspace,
+  not a per-person permissions dialog. Zero assignments is safe. A partially
+  enforced assignment is not.
 - Client create, edit, labels, import, payroll, employee, file, note, audit,
   export, and PII access remain controlled by their own permissions. Broker
   receives none of them.
@@ -176,8 +180,7 @@ PR 1 is ready for PR 2 only when all of the following are true:
 - unassigned detail requests return tenant-safe not-found behavior.
 - assigned-only directory counts and hierarchy contain no unassigned data.
 - Client capability lookup checks visibility before returning capabilities.
-- Carrier Admin can manage assignments through the intended People & Access
-  surface.
+- authorized assignment APIs can list and atomically replace exact assignments.
 - existing roles pass all-Client regression tests.
 - no production role receives `clients.assigned.view` yet.
 
@@ -190,3 +193,6 @@ PR 2 is complete only when:
 - a Broker with assigned Clients can read only those Clients.
 - a Broker cannot invoke Client writes or adjacent sensitive reads.
 - existing workspace users retain their previous effective permissions.
+- Manage Carrier Account has a dedicated Client Assignments tab supporting
+  portfolio visibility, single and bulk transfers, drag/drop reassignment,
+  unassigned work, and termination/offboarding handoff.
