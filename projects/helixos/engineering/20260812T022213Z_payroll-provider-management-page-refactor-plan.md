@@ -7,6 +7,7 @@
 - **Intended implementer:** Junior/associate engineer, with the explicit senior checkpoints identified below
 - **Source repository:** `C:\dev\HelixOS`
 - **Planning document:** `C:\dev\strong-tech-consulting\projects\helixos\engineering\20260812T022213Z_payroll-provider-management-page-refactor-plan.md`
+- **Whole-feature local review runbook:** `C:\dev\strong-tech-consulting\projects\helixos\engineering\payroll-provider-management-stacked-pr-local-review.md`
 - **Inspected HelixOS revision:** `525132ecc460f5b5122188fac45ac0ec59d9e946` (`origin/main`, inspected 2026-08-13)
 - **Primary production file:** `C:\dev\HelixOS\src\web\src\features\utilities\payroll-providers\PayrollProviderManagementPage.tsx`
 - **Primary component test:** `C:\dev\HelixOS\src\web\src\features\utilities\payroll-providers\PayrollProviderManagementPage.test.tsx`
@@ -50,6 +51,7 @@ This is an architectural refactor, not a file-count exercise. Moving the existin
 - explicit reconciliation of saved baselines with edits made while save is pending;
 - component-test redistribution and representative new race/seam coverage;
 - exact-head local and hosted timing evidence;
+- a Draft stacked-branch integration tip that passes the complete automated suite and visual UAT before any remaining PR is promoted to Ready;
 - incremental maintainer-documentation updates.
 
 ### Explicit non-goals
@@ -171,6 +173,9 @@ These are implementation requirements, not choices for the implementer:
 11. **Partial save failure remains retryable.** Preserve local drafts, show the existing error category, invalidate only the captured target queries, and allow retry. Do not attempt a client-side rollback across the existing separate PATCH/POST endpoints.
 12. **Current API calls remain sequential.** Save provider metadata first when needed, then save import config when needed, then apply the returned validation/baseline information. Do not introduce concurrency between dependent writes.
 13. **Cross-component mutation locking uses TanStack Query mutation state.** Give save and publish stable mutation keys and let the page derive the New Provider disabled state with `useIsMutating`. Do not synchronize a child pending flag into page state through an effect or callback.
+14. **The remaining pull requests are a true Draft stack.** PR A branches from `main`; PR B branches from PR A; PR C branches from PR B. The PR C branch is the whole-feature integration tip.
+15. **Whole-feature signoff precedes Ready promotion.** Complete automated validation and visual UAT must pass against the exact PR C integration head before any PR in the remaining stack is promoted to Ready. This additional engineering gate does not replace any repository lifecycle gate.
+16. **Stack updates propagate upward without rewriting reviewed history.** A PR A change is merged forward into PR B and then PR C; a PR B change is merged forward into PR C. Any new integration head invalidates the previous whole-feature signoff.
 
 ### Repository-supported assumptions
 
@@ -197,6 +202,7 @@ None. If repository drift contradicts a confirmed decision, stop and request sen
 | No synchronization effects or coordination refs. | Objective and React repository guidance | B3-B5 | Static search plus lifecycle tests. |
 | Narrow test ownership without coverage loss. | Testing standards and behavior inventory | PR A-C | Updated traceability table, zero skips, representative seam tests. |
 | Hosted performance improvement without cost shifting. | PR #1116 evidence and performance objective | A5, C1-C3 | `web-unit-timing` artifact and full-command comparison. |
+| Review the complete visual feature before individual signoff. | Owner direction and confirmed decisions 14-16 | C5 and stacked-PR runbook | Exact integration head/tree, full automated validation, screenshots, and complete UAT. |
 | Maintainer-ready ownership documentation. | Repository documentation requirement | A5, B5, C4 | Reviewed `docs/payroll-provider-management.md`. |
 | Follow current owner-authored delivery lifecycle. | HelixOS `AGENTS.md` | Every PR | PR evidence and exact-head gate records. |
 
@@ -426,20 +432,31 @@ The table below is the required starting inventory. The implementer updates its 
 
 ## 10. Ordered implementation work
 
-All work is sequential. Do not work on PR B until PR A is merged; do not work on PR C until PR B is merged. Each pull request starts from current `origin/main` in a clean dedicated worktree and non-main branch.
+Implementation work is sequential, but merge is deferred until the complete stack has been reviewed as one feature. Use this exact topology:
+
+```text
+origin/main
+└── codex/payroll-provider-refactor-ui          (PR A -> main)
+    └── codex/payroll-provider-refactor-state   (PR B -> PR A branch)
+        └── codex/payroll-provider-refactor-final (PR C -> PR B branch)
+```
+
+Create all three pull requests as Draft. PR A must reach its implementation and senior-checkpoint gate before branching PR B. PR B must reach its implementation and senior-checkpoint gate before branching PR C. Do not merge PR A or PR B merely to begin the next unit. The top PR C branch contains the complete feature and is the required local/visual integration-review build.
+
+If a lower branch changes, merge it forward through every branch above it, revalidate each affected unit, and rerun the whole-feature review on the new PR C head. Do not force-push or rebase reviewed shared branches unless current owner-authored policy explicitly authorizes that strategy.
 
 ### PR A: Extract cohesive presentation boundaries
 
 #### Work item A1: Establish the exact execution baseline
 
 - **Objective:** Record current starting evidence before moving JSX.
-- **Dependencies:** Current `origin/main`; PR #1116 already merged.
+- **Dependencies:** Current `origin/main`; PR #1116 already merged; create `codex/payroll-provider-refactor-ui` in a clean dedicated worktree.
 - **Affected code:** No production change yet; PR description or checked-in maintainer-doc update.
 - **Changes:** Record start time, exact base SHA, source/test line counts, state/ref/effect counts, focused local command result, and the PR #1116 hosted baseline above. Copy the traceability table into the PR description and mark rows touched by PR A.
 - **Preserved invariants:** No test skips, timeout increases, or assertion weakening.
 - **Failure/recovery:** A pre-existing functional failure stops extraction until recorded and triaged. A local timeout alone is not a failure; rerun without the local limit.
 - **Tests:** Existing focused suite before edits.
-- **Acceptance criteria:** Baseline evidence is attached and exact commands are recorded.
+- **Acceptance criteria:** Baseline evidence and exact commands are recorded; Draft PR A targets `main`; its exact base/head are available for the later integration checkpoint.
 
 #### Work item A2: Extract status, toolbar, drawer, and reusable fields
 
@@ -500,14 +517,14 @@ All work is sequential. Do not work on PR B until PR A is merged; do not work on
   4. `test(payroll): cover extracted provider UI seams`
   5. `docs(payroll): map provider management components`
 
-**Senior checkpoint after PR A:** Review component cohesion and prop contracts before beginning state work. Stop if a giant hook/context, broad setter bag, or duplicated validation/payload logic has appeared.
+**Senior checkpoint after PR A:** Review component cohesion and prop contracts before branching PR B from the exact PR A head. Stop if a giant hook/context, broad setter bag, or duplicated validation/payload logic has appeared. PR A remains Draft and unmerged.
 
 ### PR B: Replace hydration choreography with keyed reducer state and target-safe I/O
 
 #### Work item B1: Add the API/query-key boundary
 
 - **Objective:** Centralize existing transport contracts without changing endpoints or payloads.
-- **Dependencies:** PR A merged; exact new base recorded.
+- **Dependencies:** PR A Draft implementation and senior checkpoint complete; create `codex/payroll-provider-refactor-state` from the exact PR A head and target PR B to `codex/payroll-provider-refactor-ui`.
 - **Affected code:** Proposed `payroll-provider-api.ts`, page/editor/preview callers.
 - **Changes:** Add query and mutation key factories plus typed list/detail/metadata/create/update/save-config/validate/publish/preview functions. Replace all literal keys and direct `apiRequestWithoutTenantContext` calls in the feature. Assign the stable create/save/publish keys to their mutations. The page derives its cross-component save/publish lock with `useIsMutating`; do not mirror pending state.
 - **Preserved invariants:** Exact URLs, methods, headers, payloads, response types, and request order.
@@ -593,14 +610,14 @@ All work is sequential. Do not work on PR B until PR A is merged; do not work on
   5. `test(payroll): cover editor state and mutation races`
   6. `docs(payroll): document editor state ownership`
 
-**Mandatory senior checkpoint before PR B feedback request:** Review the complete reducer contract, save reconciliation, mutation inputs, cache targeting, partial-failure behavior, and feature-wide effect/ref inventory. Do not request automated feedback until this checkpoint finds no missing instance of the same state-ownership pattern.
+**Mandatory senior checkpoint before branching PR C:** Review the complete reducer contract, save reconciliation, mutation inputs, cache targeting, partial-failure behavior, and feature-wide effect/ref inventory. Do not branch PR C until this checkpoint finds no missing instance of the same state-ownership pattern. PR B remains Draft and unmerged.
 
 ### PR C: Finalize test placement, performance, and maintainer handoff
 
 #### Work item C1: Complete behavior traceability and right-size tests
 
 - **Objective:** Ensure every behavior has a narrow owner and representative seam without duplicate expensive workflows.
-- **Dependencies:** PR B merged.
+- **Dependencies:** PR B Draft implementation and mandatory senior checkpoint complete; create `codex/payroll-provider-refactor-final` from the exact PR B head and target PR C to `codex/payroll-provider-refactor-state`.
 - **Affected code:** All feature tests; production only for testability defects discovered here.
 - **Changes:** Update every traceability row. Split component test files by owner where collection/setup evidence supports it. Use typed fixture factories and keep list/detail shapes distinct. Remove a broad assertion only after its narrow replacement exists and at least one critical page/network seam remains.
 - **Preserved invariants:** Behavioral coverage, realistic request/response distinctions, zero skips, no loosened assertions.
@@ -635,23 +652,41 @@ All work is sequential. Do not work on PR B until PR A is merged; do not work on
 - **Tests:** Focused suite before/after with the same command and environment, full web suite, and exact-head hosted CI artifact.
 - **Acceptance criteria:** Exact artifact evidence is linked in the PR description.
 
-#### Work item C4: Finish maintainer documentation and UAT
+#### Work item C4: Finish maintainer and local-review documentation
 
 - **Objective:** Make the final architecture safe for future junior maintenance.
 - **Dependencies:** C1-C3 complete and performance evidence available.
 - **Affected code:** `docs/payroll-provider-management.md`.
-- **Changes:** Finalize responsibility map, dependency direction, reducer/state ownership, mutation snapshot rules, query keys, where to add each rule, where each test belongs, and explicit prohibitions on hydration effects/current-selection mutation targets.
+- **Changes:** Finalize responsibility map, dependency direction, reducer/state ownership, mutation snapshot rules, query keys, where to add each rule, where each test belongs, and explicit prohibitions on hydration effects/current-selection mutation targets. Add a maintainer-facing “Review the complete stacked feature locally” section that links to or faithfully incorporates the commands and evidence contract in `payroll-provider-management-stacked-pr-local-review.md`.
 - **Preserved invariants:** Documentation matches the exact implemented head and does not claim unperformed UAT or lifecycle gates.
-- **Failure/recovery:** Any UAT failure reopens the owning work item and its automated regression coverage before final review; do not document the failure as an accepted behavior without owner approval.
-- **Tests:** Execute manual UAT below and attach concise evidence.
+- **Failure/recovery:** If the implemented branch names or local startup commands differ from this plan, update both the checked-in HelixOS documentation and the stack review evidence before whole-feature review; do not leave a knowingly stale runbook.
+- **Tests:** Execute every documented command through the non-destructive smoke-check stage and verify paths, route, persona, and script names.
 - **Acceptance criteria:** A new engineer can identify the owner of presentation, state, transport, validation, parsing, and inference without reading the former monolith.
+
+#### Work item C5: Validate and visually approve the complete Draft stack
+
+- **Objective:** Give developers and product reviewers one exact local build containing PR A, PR B, and PR C before any PR is promoted to Ready.
+- **Dependencies:** C1-C4 complete; PR A, PR B, and PR C are current Drafts with the exact parent-child topology defined above.
+- **Affected code:** No new production code is expected. Review evidence belongs in the top PR description or its designated whole-feature review comment.
+- **Changes:**
+  1. Follow `payroll-provider-management-stacked-pr-local-review.md` from a clean detached worktree at `origin/codex/payroll-provider-refactor-final`.
+  2. Verify PR A is an ancestor of PR B and PR B is an ancestor of PR C.
+  3. Record stack base, all three heads, integration head, and integration tree SHAs.
+  4. Inspect the complete `$StackBaseSha...HEAD` diff and current-main drift.
+  5. Run the full automated validation matrix without a local timeout.
+  6. Start the self-contained local stack and execute every Manual UAT step below.
+  7. Capture the required screenshots/visual evidence and obtain named whole-feature reviewer signoff on the exact integration head.
+- **Preserved invariants:** The integration tip contains the unchanged commits of all lower PRs; aggregate review does not replace narrow PR review or authorize Ready, merge, or release.
+- **Failure/recovery:** Any lower-branch or integration-head change invalidates the checkpoint. Merge the changed lower branch forward through the stack, re-record SHAs, and rerun complete automated validation and UAT. Any UAT failure reopens its owning work item and adds regression coverage before another checkpoint.
+- **Tests:** Full validation matrix, exact-head hosted evidence already required for the top PR, all Manual UAT steps, complete visual review, and ancestry/base-drift checks from the runbook.
+- **Acceptance criteria:** The top Draft contains the complete current stack; all validation and UAT pass; evidence identifies one exact integration head/tree; reviewers explicitly approve the feature as a whole; no remaining PR is Ready yet.
 - **Suggested commits:**
   1. `test(payroll): right-size provider component coverage`
   2. `docs(payroll): finalize provider editor architecture`
 
 ## 11. Validation strategy
 
-Run focused tests after every coherent commit. Before each pull-request feedback request, run the complete applicable matrix without a local timeout.
+Run focused tests after every coherent commit. Before each pull-request feedback request, run the complete applicable matrix without a local timeout. Before any remaining PR is promoted to Ready, rerun the entire matrix from the exact PR C integration tip by following the standalone stacked-PR runbook.
 
 | Layer | Scenario | Command/evidence |
 | --- | --- | --- |
@@ -664,6 +699,7 @@ Run focused tests after every coherent commit. Before each pull-request feedback
 | Web build | TypeScript and Vite integration | `npm run build -w @helixos/web` |
 | Hosted CI | Required exact-head jobs | Current repository-required CI plus `web-unit-timing` artifact |
 | Manual | PlatformAdmin workflow | UAT script below |
+| Whole stack | PR A + PR B + PR C composed feature | `payroll-provider-management-stacked-pr-local-review.md`; exact head/tree, ancestry checks, complete matrix, screenshots, and reviewer signoff |
 
 If `@helixos/shared` changes despite the stated non-goal, stop and obtain scope approval, then also run:
 
@@ -684,7 +720,7 @@ Prerequisites:
 - tiny CSV and XLSX example files containing non-sensitive synthetic data;
 - browser network panel available for request-target verification.
 
-Execute on the final composed branch:
+Execute on the exact `codex/payroll-provider-refactor-final` integration head created from the complete Draft stack. Use `payroll-provider-management-stacked-pr-local-review.md` to create the isolated worktree, start the application, and record evidence.
 
 1. Open Admin Console -> Payroll Provider Management. Confirm approved branding and no prohibited vendor name.
 2. Confirm list loading, detail loading, and a usable detail-error/retry surface.
@@ -749,11 +785,23 @@ Not applicable. No schema, seed, migration, persisted data conversion, or backup
 | Separate provider/config writes partially succeed. | Medium / Medium | Preserve drafts, invalidate captured target, retry; no false client rollback. |
 | Component-test speed worsens after file extraction. | Medium / Medium | Per-PR 55-second ceiling; final 45-second target; hosted artifact comparison and no cost shifting. |
 | Behavior coverage is lost while tests move. | Medium / High | Prewritten traceability matrix; narrow replacement before removal; representative seam retained. |
+| Reviewers approve narrow diffs but miss a composed visual/workflow regression. | Medium / High | True Draft stack, isolated top-branch worktree, complete UAT, screenshots, and exact-head whole-feature signoff before Ready. |
+| Lower-stack changes leave PR C stale. | Medium / High | Ancestry checks, merge-forward propagation, explicit checkpoint invalidation, and full revalidation on the new integration head. |
 | Lifecycle policy becomes stale. | Low / High | Re-read current `AGENTS.md` before every PR; owner-authored policy controls. |
 
 ## 15. Pull-request lifecycle and evidence
 
 At execution time, follow the current HelixOS owner-authored lifecycle policy in `C:\dev\HelixOS\AGENTS.md`. As of the inspected revision, this includes a dedicated branch/worktree, incremental validated commits, Draft pull request, clean exact-head private self-review, Draft feedback/re-review, Ready promotion only after the defined clean-feedback gate, exact-head required CI, prescribed reviewer request, and final Slack trigger. Do not copy Slack credentials or automate lifecycle steps from this document; use the repository-prescribed workflow/skill.
+
+The remaining PRs are developed and reviewed as a Draft stack before bottom-up promotion:
+
+1. Complete PR A as a green Draft and pass its senior checkpoint.
+2. Branch PR B from PR A; complete it as a green Draft and pass its mandatory senior checkpoint.
+3. Branch PR C from PR B; complete it as a green Draft.
+4. Use PR C as the integration tip and pass Work item C5 against its exact head.
+5. Only after whole-feature signoff may the individual PRs proceed bottom-up through their current owner-authored Ready, CI, reviewer, feedback, and merge gates.
+
+The whole-feature checkpoint is an additional engineering gate. It does not authorize promotion, reviewer requests, Slack writes, merge, release, or publication. Each PR must still satisfy the canonical lifecycle on its exact current head. When a lower PR merges or changes, refresh the branches above it with the repository-approved strategy and re-establish every invalidated exact-head gate.
 
 Every PR description must contain:
 
@@ -769,6 +817,17 @@ Every PR description must contain:
 - partial-failure and rollback notes;
 - any intentional size/cohesion exception;
 - confirmation that API, authorization, persistence, branding, and visual behavior remain unchanged.
+
+The top PR description must additionally contain:
+
+- PR A, PR B, and PR C URLs and head SHAs;
+- recorded stack base and integration tree SHA;
+- the full `main...codex/payroll-provider-refactor-final` comparison URL;
+- ancestry-check results;
+- whole-stack automated validation and hosted timing;
+- complete UAT and visual-review evidence;
+- named whole-feature reviewers and their exact-head signoff;
+- explicit invalidation/revalidation history after any lower-stack change.
 
 ## 16. Mandatory self-review checklist
 
@@ -813,7 +872,10 @@ The initiative is complete only when all boxes are true:
 - [ ] No tests are skipped or weakened.
 - [ ] Final hosted feature timing satisfies the stated performance gate without full-suite cost shifting.
 - [ ] Full lint, theme, unit, build, manual UAT, and required exact-head CI evidence is green.
-- [ ] Maintainer documentation describes final ownership and extension rules.
+- [ ] Maintainer documentation describes final ownership, extension rules, and how to review the complete stack locally.
+- [ ] PR A is an ancestor of PR B and PR B is an ancestor of PR C at the recorded whole-feature checkpoint.
+- [ ] The exact PR C integration head/tree passes complete automated validation and visual UAT before any remaining PR is promoted to Ready.
+- [ ] Whole-feature evidence includes all branch SHAs, full comparison, screenshots, named reviewers, and invalidation history.
 - [ ] Architecture self-review reports no actionable state, dependency, test-placement, security, branding, or maintainability finding.
 - [ ] Repository lifecycle policy has been followed through the authorized stopping point; this plan does not authorize merge or release.
 
@@ -823,10 +885,10 @@ Before coding:
 
 1. Read `C:\dev\HelixOS\AGENTS.md` and every mandatory file it lists, especially `instructions/about.md`, `instructions/general/refactoring.md`, `instructions/node/node-app.md`, `instructions/node/node-testing.md`, `instructions/react/noeffect.md`, `instructions/ui/web-theme.md`, and `DESIGN.md`.
 2. Read this plan completely.
-3. Read `docs/payroll-provider-management.md` and the five existing payroll-provider pure modules/tests.
-4. Start from current `origin/main` in a clean dedicated worktree and non-main branch.
-5. Confirm which ordered PR is assigned; implement only that PR.
-6. Record start time, exact base SHA, baseline counts, and focused test timing.
+3. Read `payroll-provider-management-stacked-pr-local-review.md`, `docs/payroll-provider-management.md`, and the five existing payroll-provider pure modules/tests.
+4. Confirm which ordered PR is assigned and use its prescribed branch parent: PR A from `main`, PR B from PR A, or PR C from PR B.
+5. Start in a clean dedicated worktree on the exact prescribed non-main branch; do not merge the lower PR merely to start the next branch.
+6. Record start time, exact base/parent SHA, baseline counts, and focused test timing.
 
 While coding:
 
@@ -836,7 +898,9 @@ While coding:
 - do not introduce effects, selection refs, generic setters, context, or a controller hook;
 - keep list/detail fixtures different;
 - run focused tests after each extraction or reducer slice;
-- update `docs/payroll-provider-management.md` in the same PR as each meaningful architecture change.
+- merge lower-branch corrections forward through every branch above them and treat prior aggregate signoff as stale;
+- update `docs/payroll-provider-management.md` in the same PR as each meaningful architecture change;
+- do not promote any remaining PR to Ready before Work item C5 passes on the exact integration head.
 
 Stop and escalate immediately if:
 
@@ -855,6 +919,7 @@ Final handoff evidence:
 - focused and complete validation output;
 - local and hosted timing evidence;
 - UAT evidence for the assigned phase;
+- for PR C, exact stack base/A/B/C head/tree SHAs, ancestry checks, complete local-review runbook results, screenshots, and named whole-feature reviewer signoff;
 - before/after ownership/state flow;
 - remaining risks or explicitly approved exceptions;
 - confirmation that no unresolved implementation or product decision remains.
