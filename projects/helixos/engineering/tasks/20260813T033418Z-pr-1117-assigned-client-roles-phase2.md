@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress; first UI implementation pushed for owner iteration and remaining assignment UAT
+- Status: in-progress; owner UI walkthrough complete locally with floating navigation selected; remaining mutation UAT and owner iteration pending
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-13T03:34:18Z` (earliest recoverable Phase 2 commit; the earlier conversation start timestamp is unavailable)
 - Task/thread ID: Unavailable from the current Codex context
@@ -10,8 +10,8 @@
 - Starting base SHA: `9faf3933f09ac999b90aa8a2759da87a4dca4b67` (final Phase 1 feature head used by the original stack)
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
 - Current base SHA: `6d9c30a7b7dab3f5c281d518aa61d7cc93a6ad0e`
-- Current local head SHA: `70ea332c073441a9567113bf30955b182c064ec1`
-- Current PR head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4` (local loading fix not yet pushed)
+- Current local head SHA: `d11a3d40ea2f4c487342131d0de17aab6413686a`
+- Current PR head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4` (two local fixes not yet pushed)
 - Issue: https://github.com/helixosio/helixos/issues/1130
 - PR: https://github.com/helixosio/helixos/pull/1117
 
@@ -24,7 +24,7 @@ Exclusions and owner decisions:
 - Generic role creation, publishing, and deactivation remain post-MVP.
 - Evidence artifacts belong under `C:\dev\evidence\helix` and must not be checked into or referenced by repository documentation.
 - PR #1117 must remain Draft. Review automation, monitoring, GitHub reviewer requests, and production-feedback requests are paused under the circuit breaker until the UI and UAT gates are complete and the owner explicitly authorizes review to resume.
-- The owner-provided design was implemented with the selected `dot` status and `flush` sidebar defaults. Review activity remains paused while the owner iterates on the first implementation.
+- The owner-provided design was implemented with the `dot` status treatment. The owner subsequently selected the documented `floating` sidebar and breadcrumb chrome for the next iteration. Review activity remains paused.
 
 ## Lifecycle
 
@@ -40,6 +40,7 @@ Exclusions and owner decisions:
 | First UI implementation pushed | `2026-08-14T07:08:14Z` | Contract support commits `5912ac99e` and `9e6edc281`; UI commit `257073db4`; PR verified Draft with zero review requests |
 | Isolated PR dev stack started | `2026-08-14T13:09:05Z` | Stopped the main-checkout, prior PR-worktree, and stale cross-browser Helix processes; initialized Compose project `helix-pr1117-dev`; all four HTTP smoke checks passed |
 | Carrier workspace loading fixed locally | `2026-08-14T13:20:26Z` | Commit `70ea332c0`; tenant-scoped `/api/me` returned 200 and the open `/capsto` page rendered successfully after reload |
+| Owner UI walkthrough and floating chrome completed locally | `2026-08-14T14:10:30Z` | Commit `d11a3d40e`; real-app walkthrough covered every workspace screen and non-mutating dialog; both discovered data-query failures were fixed |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -67,6 +68,9 @@ Exclusions and owner decisions:
 - The Team Members metric "Assigned Clients" counts Clients assigned to a Team Member whose authoritative primary role is Broker.
 - Replaced the Manage Carrier Account UI with the design's Carrier identity/sidebar/breadcrumb shell, Team Members metrics and table, Unassigned Clients view and role drawer, Team Member Profile/Clients/Permissions tabs, assignment and permission dialogs, and Reporting/Integrations placeholders. Import CSV and Add Team Member continue to use the existing workflows.
 - Kept filtering, sorting, tree-aware pagination, permission selection policy, and reason validation in dependency-light modules with direct tests. Mutation inputs capture the target identifiers and payload snapshots; assignment and permission cache invalidation is tenant/person scoped from those captured inputs.
+- Switched the centralized sidebar decision to `floating`, with the breadcrumb card derived from the same configuration and the alternate flush values retained beside the switch. The status remains `dot`.
+- Fixed PostgreSQL raw-query parameter inference for bigint role-definition IDs in the Client assignment state query and sensitive-access permission query. These failures had caused Broker metrics and Unassigned Clients to return 500 and the Permissions tab to fail after query retries.
+- Coalesced permission groups that share a feature-area label across app sections, eliminating duplicate indistinguishable headers such as two `Payroll Cycle` groups. Kept this deterministic transformation in the existing pure permission model.
 
 ## Validation, review, and CI
 
@@ -81,14 +85,16 @@ Exclusions and owner decisions:
 - Real-app verification with the NorthRiver Admin persona covered the Team Members list, search/filter presentation, detail breadcrumbs and Profile tab, the full Permissions view, Assign Role and Add Team Member dialogs, and Reporting placeholder. The branch UI rendered correctly inside the existing HelixOS desktop window. Assignment-enabled manual paths remain outstanding because the available NorthRiver demo identity lacks the assignment-management capability and the separate branch API process returned an environment-specific 500 against the shared local database.
 - A fresh isolated local environment was created under Compose project `helix-pr1117-dev`: Postgres became healthy, all 192 migrations applied, and the demo seed completed successfully. The canonical Windows launcher started web, Client Portal, Rule Engine, and workflow processes from the PR worktree. Its first API watcher stalled before binding without an error; restarting only that API subtree succeeded. Smoke checks returned HTTP 200 for Helix web, Client Portal, `/api/me` with `keith-demo`, and Rule Engine readiness. Postgres and Rule Engine containers were healthy. Seeded `tenant_plan.created` workflow events attempted delivery before the Rule Engine became ready and were recorded as local startup failures; this does not block Manage Carrier Account UI iteration but remains relevant if plan synchronization is exercised in this session.
 - The first browser smoke exposed a tenant-context failure hidden by the unscoped `/api/me` check: `CarrierPrimaryRoleResolver` relied on emitted constructor metadata, so the Windows `tsx` runtime instantiated it with an undefined `RoleCatalogService` and tenant-scoped `/api/me` returned 500. Added explicit Nest injection plus an application-context regression test in local commit `70ea332c0`. Eight focused role-catalog/DI tests passed, the API TypeScript build passed, tenant-scoped `/api/me` returned 200, and the existing in-app browser tab rendered the Capstone workspace after reload. The local commit remains one commit ahead of the Draft PR branch and has not been pushed.
+- The owner-directed real-app UI pass used the NorthRiver Admin persona and covered Team Members, Unassigned Clients, the Client role drawer, Broker assignment dialog, Team Member Profile/Clients/Permissions tabs, Assign Carrier Role, Add Team Member, Import CSV, Reporting, and Integrations. No browser warnings or errors remained. The Broker metrics reported 0 assigned and 15 unassigned Clients, and the Permissions tab loaded 57 permissions after the query corrections.
+- Focused validation for the UI pass: 20 API tests passed; 11 web tests passed; API TypeScript build, web TypeScript build, focused web lint, theme-literal check, and real API HTTP checks passed. The live Unassigned Clients and Permissions endpoints returned 200 after the fixes.
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. PR #1117 is still Draft with no review requests. The task is not complete.
+The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The explicit-DI and owner UI-walkthrough fixes are committed locally through `d11a3d40ea2f4c487342131d0de17aab6413686a` and have not been pushed. PR #1117 is still Draft with no review requests. The task is not complete.
 
 Remaining sequence:
 
-1. Collect owner feedback on the first rendered UI and apply the agreed visual or interaction refinements.
+1. Collect owner feedback on the floating-nav rendered UI and apply the agreed visual or interaction refinements.
 2. Complete manual UAT for assignment-enabled role combinations, denials, transfer, bulk unassign/restore, conflict reconciliation, history, handoff, and offboarding.
 3. Obtain explicit owner authorization to resume private self-review.
 4. Continue the repository lifecycle only after the applicable exact-head gates pass.
