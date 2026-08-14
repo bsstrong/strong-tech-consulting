@@ -10,7 +10,7 @@
 - Starting base SHA: `8418af4170c3a7600f1b1e9525563a8ab8226a1c`
 - Starting head SHA: `8418af4170c3a7600f1b1e9525563a8ab8226a1c`
 - Final branch: `codex/payroll-provider-refactor-final`
-- Final head SHA: `bf54a8b72a401bb030710899a9182f130bbbb7b4`
+- Final head SHA: `7a99699806a62054b8b71024b737ea09ab6499ee`
 - Issue: N/A
 - PR: N/A; the local branch was not pushed and no Draft pull request was created or changed
 
@@ -50,18 +50,21 @@ Exclusions and owner decisions:
 | Final-review corrections locally validated | 2026-08-14 06:32:29 UTC | All 17 focused feature files / 81 tests passed in 39.27 seconds; web lint passed with zero warnings in 18.01 seconds |
 | Isolated stack and full-feature UAT started | 2026-08-14 06:50 UTC | Dedicated Postgres/Rule Engine/API/web/client-portal/workflow stack on ports 55433/53001/58080/54000/55173/55174; foreign worktrees and their ports were preserved |
 | UAT authoring/lifecycle corrections committed | 2026-08-14 07:39:49 UTC | `f50f62c437f58f088247b2c984e44dc0f296e91d` and `80864c2c5ba83bf769bd9a599565ccb806c3bf04`; branch remains local and unpushed |
+| Maintainer contract update committed | 2026-08-14 07:42:09 UTC | `f1c89a42c1bbc2155b426365dbbf0fffc403349c`; exact code/docs validation head |
+| Final-review handoff committed | 2026-08-14 08:01:20 UTC | `7a99699806a62054b8b71024b737ea09ab6499ee`; terminal HelixOS head |
+| Exact terminal-head matrix completed | 2026-08-14 08:11 UTC | Complete prescribed matrix passed again on `7a9969980`; final tree clean and unpushed |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 1 hour 45 minutes wall clock | 2026-08-14 04:01:42 UTC through 05:47:26 UTC, including the completed-to-resumed interval |
-| Commits | 4 | Implementation, initial handoff, audit regression correction, and final audit handoff |
-| Change size | 25 files; 1,600 insertions; 1,157 deletions | `git diff --shortstat 8418af417..bf54a8b72` |
-| Validation | Focused page/network file 26/26 passed; exact code/test-head web build passed in 62.09 seconds | Local command output from the independent audit correction |
-| Review | 9 architecture/test-placement categories audited; 0 blockers and 2 non-blocking evidence findings resolved | Complete diff, surrounding modules, static searches, focused regressions, and exact-head verification |
-| CI | N/A | Deferred by owner |
-| Benchmarks | N/A | Not in intermediate handoff scope |
+| Total elapsed | 4 hours 10 minutes wall clock | 2026-08-14 04:01:42 UTC through 08:11:42 UTC, including implementation, audit, correction, isolated UAT, documentation, and two complete local matrices |
+| Commits | 10 | Four starting PR C commits plus six final-review production/test/accessibility/documentation commits |
+| Change size | 35 files; 2,130 insertions; 1,213 deletions | `git diff --shortstat 8418af417..7a9969980` |
+| Validation | 18/18 focused files and 85/85 tests; 142/142 full-web files and 1,427/1,427 tests; lint/theme/package/build clean | Exact terminal-head commands below |
+| Review | 5 blockers, 2 non-blockers, and 1 review-correction build defect resolved | Complete diff, surrounding modules, static searches, focused regressions, isolated-stack UAT, and exact-head verification |
+| CI | N/A | Hosted CI/timing unavailable because push/PR operations were not authorized |
+| Benchmarks | Local directional only | Focused 41.445 seconds; full web 191.597 seconds; production build 58.774 seconds on terminal head |
 
 ## Work and decisions
 
@@ -95,24 +98,34 @@ Exclusions and owner decisions:
 - Independent audit focused page/network run: 26 of 26 tests passed in 33.81 seconds Vitest time (36.20 seconds wall time), including both audit regressions.
 - Required post-correction build: `npm run build -w @helixos/web` passed on exact code/test head `c44739289fd4bc052b691fad76a7815a518c106b` in 62.09 seconds wall time; Vite transformed 2,248 modules in 25.96 seconds. Only the existing SignalR annotation and chunk-size warnings remained.
 - Final local head `bf54a8b72a401bb030710899a9182f130bbbb7b4` differs from the validated code/test head only by the audit handoff documentation commit.
-- Full focused tests, full web tests, lint, theme checks, hosted timing, CI, screenshots, and complete visual UAT are intentionally deferred to the owner-authorized exact-head final review cycle.
+- At the prior independent-audit checkpoint, full focused/full-web tests, lint, theme, hosted timing, CI, screenshots, and visual UAT were deferred to this owner-authorized final-review cycle. The local items are now complete; only hosted evidence remains unavailable.
 - Regression-first correction subset: 10 assertions failed across the newly exercised empty/detail, snapshot-readiness, and accessibility boundaries before production correction.
 - Post-correction focused feature run: `npm exec --workspace @helixos/web -- vitest run src/features/utilities/payroll-providers` passed 17 files / 81 tests with zero skips in 37.18 seconds Vitest time and 39.27 seconds measured wall time; no warnings were emitted.
 - Post-correction lint: `npm run lint -w @helixos/web` passed with zero warnings in 18.01 seconds measured wall time.
 - Targeted UAT-correction validation: the client-input/config-format subset passed 3 files / 9 tests in 5.50 seconds Vitest time (7.72 seconds wall); the complete Page integration file passed 29/29 in 38.80 seconds Vitest time (40.81 seconds wall); the keyboard-reorder component test passed 1/1 in 4.43 seconds Vitest time (6.60 seconds wall) without warnings.
 - Local authorization smoke against the isolated API returned 200 for `Bearer keith-demo`, 403 for the carrier-admin persona, and 401 without Authorization.
-- UAT has exercised loading/error/empty/create, CSV/XLSX inference and validation, list/detail hydration, metadata/config save, partial-save retry, pending-save late-edit reconciliation, publish failure/retry and pending locks, provider switching, extractor-only presentation, preview, JSON, client inputs, row rules, confirmations, responsive layout, approved branding, and the corrected keyboard-reorder controls. Exact final-head matrix rerun, handoff finalization, and terminal evidence remain pending.
+- UAT exercised loading/error/empty/create, CSV/XLSX inference and validation, list/detail hydration, metadata/config save, partial-save retry, pending-save late-edit reconciliation, publish failure/retry and pending locks, provider switching, extractor-only presentation, preview, JSON, client inputs, row rules, confirmations, responsive layout, approved branding, and the corrected keyboard-reorder controls. Exact terminal-head matrix, handoff finalization, and terminal evidence are complete.
+- Terminal-head `npm ci`: passed in 162.116 seconds; 1,151 packages added / 1,172 audited; 61 repository-wide advisories (2 low, 33 moderate, 22 high, 4 critical), seven deprecation warnings, and eight pending allow-script entries.
+- Terminal-head `npm run build:packages`: passed all 11 stages in 60.952 seconds.
+- Terminal-head focused feature run: 18/18 files and 85/85 tests passed with zero failures/skips/warnings in 39.34 seconds Vitest time / 41.445 seconds wall.
+- Terminal-head lint and theme: passed in 17.155 seconds and 0.929 seconds; theme checked 17 approved files.
+- Terminal-head full web run: 142/142 files and 1,427/1,427 tests passed with zero failures/skips in 189.57 seconds Vitest time / 191.597 seconds wall. Unrelated existing output counted 46 MSW, 29 React act, 3 AG Grid, 2 MUI out-of-range, and 1 csv-consolidator warning; the feature-only run emitted none.
+- Terminal-head production build: passed TypeScript, the 2,248-module Vite build (24.25 seconds), and embed assertion in 58.774 seconds. Existing SignalR annotation and large-chunk warnings remained; ExcelJS was 939.98 kB and main was 4,923.59 kB.
+- UAT completed with 38 screenshots / 2,572,733 bytes. The synthetic provider completed enabled with exact public key `dbb39cb5-8777-4027-b20e-7283d0f2d29c` and active config `cae6f782-eea1-4ac9-8242-e1c7b577d564`; authorization smoke was 200/403/401 for PlatformAdmin/carrier-admin/no-auth.
 
 ## Outcome, risk, and follow-up
 
-PR C implementation, independent senior audit correction, and handoff documentation are complete locally with a clean working tree. The branch remains unpushed and the entire stack remains Draft/owner-held. The audit found no blocking defect; both bounded non-blocking evidence gaps were corrected and validated.
+PR C implementation, independent senior audit correction, final-review corrections, complete local validation, whole-feature UAT, maintainer documentation, and handoff are complete locally. Exact final head `7a99699806a62054b8b71024b737ea09ab6499ee` / tree `4b6bbaf6ddbadc7172fd67ea7ff87ec00b8517af` is clean, has no upstream, has no remote branch, and remains intentionally unpushed.
 
 Residual risks and follow-up:
 
-- Full automated validation, hosted feature timing, and visual/functional UAT are intentionally absent until final review.
-- `PayrollProviderEditor.tsx` (766 lines), `PayrollProviderColumnSourceFields.tsx` (353 lines), and the Page integration test (1,106 lines) remain size signals. Complete review found cohesive responsibilities and no demonstrated defect that justified a controller hook, broad prop plumbing, or mechanical split; final hosted timing should re-evaluate the test boundary.
+- Hosted CI, `web-unit-timing`, and hosted performance evidence remain unavailable until the owner authorizes push/PR work.
+- `PayrollProviderEditor.tsx` (763 lines), `PayrollProviderColumnSourceFields.tsx` (353 lines), and the Page integration test (1,208 lines) remain size signals. Complete review found cohesive responsibilities, direct seams, no effects/shadow refs, and a 35.06-second page-test runtime; no demonstrated defect justifies a controller hook, broad prop plumbing, or mechanical split.
+- The lockfile install reports 61 repository-wide dependency advisories, including 4 critical; this branch changes no dependency.
+- The in-app browser could not reliably synthesize native HTML5 pointer drag. The unchanged `dataTransfer` drag regression passed, and the new accessible reorder controls passed keyboard and browser UAT.
+- Screenshots, ignored fixtures, and two review-owned Docker volumes remain locally for reproduction; review containers/network were removed and foreign services were untouched.
 - Any PR A or PR B change must be propagated upward and invalidates prior PR C evidence.
-- The owner must audit the Draft stack and explicitly authorize promotion before Ready, final review, Slack, merge, release, or publication steps.
+- Before PR lifecycle work can begin, the owner must accept the local commits and explicitly authorize pushing the stacked branch and creating/updating the Draft PR against exact PR B parent `8418af417`. Then exact remote-head hosted CI/timing and all Draft/final-review gates must be re-established. No Ready, review, Slack, merge, release, or publication step is authorized.
 
 ## Evidence provenance
 
@@ -135,7 +148,11 @@ Residual risks and follow-up:
 - Stack ancestry: PR A `01b519b31a668273dfae0b8317c6b4886e545317` is an ancestor of PR B; PR B is an ancestor of PR C.
 - Starting diff: 25 files, 1,600 insertions, 1,157 deletions.
 - Starting repository state: clean; no upstream configured; no remote branch exists.
-- Final-review validation, findings, corrections, UAT, evidence artifacts, final SHA/tree, and terminal outcome: pending.
+- Final head: `7a99699806a62054b8b71024b737ea09ab6499ee`.
+- Final tree: `4b6bbaf6ddbadc7172fd67ea7ff87ec00b8517af`.
+- Final diff: 35 files, 2,130 insertions, 1,213 deletions; `git diff --check` passed.
+- Final repository state: clean; no upstream configured; no remote branch exists.
+- Current-main drift: three unrelated files since merge base `015345e51ac0bab75b89137cd846e8f0c54da9a8`; zero overlap with the whole-stack change set.
 
 ### Final local review findings
 
@@ -143,7 +160,7 @@ Residual risks and follow-up:
 2. **Blocker â€” async snapshot/readiness binding:** validation completion is guarded only by the submitted config fingerprint, not the provider snapshot, and save/publish success unconditionally reveals provider readiness even when fields were edited after submission. A newer unsaved draft can therefore display validation/readiness evidence from the older submitted snapshot.
 3. **Non-blocker â€” keyboard/accessibility semantics:** the Advanced JSON text area has no accessible name, provider drawer rows are mouse-only, and repeated generic column-delete names do not identify their target. These are local presentation-owner corrections.
 
-Current disposition: the two blockers and bounded accessibility finding are corrected with narrow regressions. Focused validation and lint are clean; local commit, complete exact-final-head matrix, stack UAT, handoff finalization, and terminal task evidence remain pending.
+Current disposition: all initial findings are corrected with narrow regressions, complete exact-head validation, and whole-feature UAT. No actionable finding remains.
 
 Additional full-stack UAT findings and disposition:
 
@@ -152,4 +169,14 @@ Additional full-stack UAT findings and disposition:
 6. **Blocker — new-provider publish/enable lifecycle:** UI publication was gated by provider-enabled readiness even though the API requires publishing before enabling file generation; after publication the same conflation could report a disabled provider Ready. Corrected cohesively in `f50f62c4`; the valid draft can publish while disabled, operational readiness still requires enablement, and the complete create/publish/enable sequence passed UAT.
 7. **Non-blocker — keyboard column reordering:** drag-and-drop was the only reorder mechanism. Corrected in `80864c2c` with labeled boundary-disabled controls, keyboard regression coverage, desktop and 390x844 visual verification, and functional move/restore UAT.
 
-Current code/test head: `80864c2c5ba83bf769bd9a599565ccb806c3bf04`; working tree clean; no upstream configured; no remote branch exists. Complete exact-head automated validation and documentation commits remain pending.
+Current terminal head: `7a99699806a62054b8b71024b737ea09ab6499ee`; exact terminal matrix and final handoff are complete; working tree clean; no upstream configured; no remote branch exists.
+
+### Terminal evidence
+
+- Complete prescribed matrix passed twice after production corrections; the second run was against exact terminal head `7a9969980`.
+- Focused feature: 18 files / 85 tests, zero failures/skips/warnings.
+- Full web: 142 files / 1,427 tests, zero failures/skips.
+- Local stack: migrations, seed, API/web/Rule Engine smoke, authorization smoke, and complete UAT passed.
+- Visual artifacts: 38 screenshots under `C:\dev\HelixOS-payroll-provider-refactor-ui\.uat\screenshots\payroll-provider-final-f1c89a42c`.
+- Handoff: `docs/payroll-provider-management-pr-c-handoff.md` contains exact commands, counts, warnings, findings, UAT disposition, residual risks, and owner action.
+- Hosted CI/timing: unavailable pending explicit authorization to push and create/update the Draft PR.
