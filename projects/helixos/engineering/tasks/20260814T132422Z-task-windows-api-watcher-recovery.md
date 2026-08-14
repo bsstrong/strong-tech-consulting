@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: blocked
+- Status: completed
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-14T13:24:22Z`
 - Task/thread ID: current Codex task; durable ID unavailable
@@ -10,7 +10,7 @@
 - Starting base SHA: `31c57385d9965607e22813b1619b343a37e7c54b`
 - Starting head SHA: `31c57385d9965607e22813b1619b343a37e7c54b`
 - Issue: N/A
-- PR: [helixosio/helixos#1150](https://github.com/helixosio/helixos/pull/1150) (Ready; owner-selected state)
+- PR: [helixosio/helixos#1150](https://github.com/helixosio/helixos/pull/1150) (Merged)
 
 ## Objective and scope
 
@@ -70,12 +70,13 @@ Exclusions and owner decisions:
 | Owner marked PR Ready | `2026-08-14T23:08:19Z` | GitHub timeline records `ready_for_review` by `bsstrong`. This owner-selected state is authoritative and was not reverted. |
 | Exact-head CI completed | `2026-08-14T23:23:50Z` | Windows Watcher CI passed in 2m 42s and HelixOS CI passed in 15m 28s at `fae13ff77d93fabdff69a2733321acf437105897`; cross-browser remained intentionally skipped. |
 | CI timing investigation completed | `2026-08-14T23:35:55Z` | The apparent delay was isolated to a transient Ubuntu mirror slowdown in `web-e2e`: `npx playwright install --with-deps chromium` spent 9m 19s downloading 21.1 MB of font packages at 38.5 kB/s. Same-time peer E2E runs completed that step in 13s. |
+| PR merged | `2026-08-14T23:36:55Z` | Owner `bsstrong` merged exact head `fae13ff77d93fabdff69a2733321acf437105897` as merge commit `4c4b2c3c33d63b0790717f37916157455d59639e`; canonical PR state is `MERGED`. |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 10 hours 11 minutes 33 seconds wall-clock; active-work duration unavailable because the task resumed across completed-state gaps | `2026-08-14T13:24:22Z` through `2026-08-14T23:35:55Z` |
+| Total elapsed | 10 hours 12 minutes 33 seconds wall-clock; active-work duration unavailable because the task resumed across completed-state gaps | `2026-08-14T13:24:22Z` through merge at `2026-08-14T23:36:55Z` |
 | Commits | 7 in-scope commits plus 1 owner-authored base merge | `5e3d83a9 fix(dev): recover stalled Windows API watcher`; `d48487af6 fix(dev): recognize neutral Helix worktrees`; `e687e3523 fix(dev): reject ambiguous watcher paths`; `170988b32 fix(dev): anchor watcher workspace ancestry`; `395e7c521 fix(dev): scope watcher cleanup ownership`; `fee7918a9 fix(dev): remove destructive watcher preflight`; `fae13ff77 fix(dev): honor API host in readiness probe`; `bde29aac9` merge-forward |
 | Change size | 410 insertions, 3 deletions across 6 files | Exact current base-to-head `git diff --shortstat` |
 | Validation | Platform contract check passed; 9 focused watcher tests passed; 97 full script tests passed with 2 expected Unix-only skips; full dependency-package build and final API build passed; controlled occupied-port smoke reported the exact owner PID and left it alive | Exact-base comparison, local command output, and Windows listener/process inspection |
@@ -136,13 +137,13 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-- Outcome: completed in Draft PR #1150.
-- Resumed outcome: the active `C:\dev\HelixOS` workspace is now on `codex/windows-api-watcher-recovery` at exact PR head `5e3d83a952195f2972b27b9914553e7aa93e8c92`, clean and tracking its origin branch. The earlier implementation outcome remains unchanged.
+- Terminal outcome: PR #1150 was merged by `bsstrong` at `2026-08-14T23:36:55Z`. Final PR head `fae13ff77d93fabdff69a2733321acf437105897` became merge commit `4c4b2c3c33d63b0790717f37916157455d59639e` on `main`.
+- Final local state: the active `C:\dev\HelixOS` workspace remains on `codex/windows-api-watcher-recovery` at final PR head `fae13ff77d93fabdff69a2733321acf437105897`, clean and tracking its origin branch.
 - Platform-isolation review outcome: verified. PR #1150 does not modify the intentional macOS/Linux runtime launcher path; no PR correction is required.
-- Private self-review outcome: blocked only on a fresh explicit owner instruction for another exact-head rerun. The round-5 clean result applies to superseded head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`; current head `fae13ff77d93fabdff69a2733321acf437105897` contains the validated round-4 `HOST` correction and has not been reviewed. The owner subsequently marked the PR Ready; that state is authoritative. Exact-head required CI is green, but no GitHub reviewer was requested by this task.
+- Private self-review outcome: the round-5 clean result applied to superseded head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`; final head `fae13ff77d93fabdff69a2733321acf437105897` contained the validated round-4 `HOST` correction but did not receive another private rerun before the owner marked the PR Ready and merged it. The owner-selected state is authoritative. Exact-head required CI was green, and no GitHub reviewer was requested by this task.
 - Residual risk: a watcher whose child application fails while the `tsx` parent remains alive is observationally the same as a silent startup stall and can consume the single retry before failing. The retry is bounded, output remains inherited, and deterministic explicit watcher exits are preserved.
-- Draft CI is intentionally skipped by repository policy. The Windows-hosted regression will run when the owner later authorizes promotion from Draft.
-- Hosted macOS/Linux execution was not run for this Draft PR. The isolation conclusion is based on exact-source comparison: the commands those platforms execute are unchanged, while the one changed runtime entry point is the explicitly Windows-only `dev:windows` command.
+- Exact-head hosted CI passed before merge, including the Windows watcher regression and required HelixOS CI jobs; cross-browser remained intentionally skipped.
+- Hosted macOS/Linux launcher execution was not run. The isolation conclusion is based on exact-source comparison: the commands those platforms execute are unchanged, while the one changed runtime entry point is the explicitly Windows-only `dev:windows` command.
 - Draft PR #1117 remains unchanged remotely with review paused. Its local dependency-injection fix commit `70ea332c073441a9567113bf30955b182c064ec1` remains unpushed.
 
 ## Evidence provenance
@@ -151,5 +152,6 @@ Exclusions and owner decisions:
 - The prior failure observation comes from the immediately preceding PR #1117 local-stack startup in this same Codex task and is also recorded in `projects/helixos/engineering/tasks/20260813T033418Z-pr-1117-assigned-client-roles-phase2.md`.
 - Commit, change-size, and branch evidence came from the dedicated worktree at `C:\dev\HelixOS-worktrees\windows-api-watcher-recovery`.
 - Pull-request state, exact head, review requests, and check conclusions came from canonical GitHub PR #1150 data after creation.
+- Terminal merge evidence came from canonical GitHub PR data after `git fetch origin`: state `MERGED`, merged at `2026-08-14T23:36:55Z` by `bsstrong`, final head `fae13ff77d93fabdff69a2733321acf437105897`, base `889edf5d323f067f657a786df3b02c95d2c2b054`, and merge commit `4c4b2c3c33d63b0790717f37916157455d59639e`, which matched fetched `origin/main` at finalization.
 - The resumed checkout was verified from canonical GitHub PR data, `origin/codex/windows-api-watcher-recovery`, and the active workspace's `git status` and `git rev-parse HEAD` output.
 - The platform-isolation review used the exact merge base and current `origin/main` SHA `31c57385d9965607e22813b1619b343a37e7c54b`, exact PR head `5e3d83a952195f2972b27b9914553e7aa93e8c92`, the complete six-file diff, root/API package-script comparisons, workflow inspection, and focused test output.
