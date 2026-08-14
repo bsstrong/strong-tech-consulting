@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress
+- Status: blocked
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-14T13:24:22Z`
 - Task/thread ID: current Codex task; durable ID unavailable
@@ -64,16 +64,19 @@ Exclusions and owner decisions:
 | Root correction pushed | `2026-08-14T22:52:26Z` | Commit `fee7918a9fffd7f7e9f9ce510c5df4d877500d00` deletes machine-wide process classification and all cleanup of pre-existing processes. The runner now refuses an occupied requested port and may terminate only its own spawned watcher tree. |
 | Root-correction checkpoint | `2026-08-14T22:53:14Z` | Exact head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`; base and merge base `889edf5d323f067f657a786df3b02c95d2c2b054`; PR remains Draft with five expected skipped checks. Full-diff architecture review and validation are complete; another private rerun remains blocked on explicit owner approval. |
 | Owner resumed review after root correction | `2026-08-14T22:54:56Z` | Owner posted `rerun` in the existing parent for exact head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`; bot acknowledged at `2026-08-14T22:54:58Z`. The exact base remains `889edf5d323f067f657a786df3b02c95d2c2b054`; review is pending. |
+| Private self-review round 5 completed | `2026-08-14T22:57:27Z` | 2 minutes 31 seconds; 0 blockers and 0 non-blockers at head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`. This result did not clear the known round-4 `HOST` blocker because that code was unchanged at the reviewed head. |
+| Effective-host correction pushed | `2026-08-14T23:06:07Z` | Commit `fae13ff77d93fabdff69a2733321acf437105897` derives readiness from the API's effective `HOST`, maps wildcard IPv4/IPv6 binds to matching loopback, preserves specific hosts, and URL-brackets IPv6 literals. |
+| Workflow stopped at rerun limit | `2026-08-14T23:06:50Z` | Current head `fae13ff77d93fabdff69a2733321acf437105897` is fully corrected and validated but has not been privately reviewed. The resumed invocation has consumed its rerun allowance; another exact-head rerun requires a fresh explicit owner instruction. Monitoring automation was deleted. |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 9 hours 28 minutes 52 seconds wall-clock; active-work duration unavailable because the task resumed across completed-state gaps | `2026-08-14T13:24:22Z` through `2026-08-14T22:53:14Z` |
-| Commits | 6 in-scope commits plus 1 owner-authored base merge | `5e3d83a9 fix(dev): recover stalled Windows API watcher`; `d48487af6 fix(dev): recognize neutral Helix worktrees`; `e687e3523 fix(dev): reject ambiguous watcher paths`; `170988b32 fix(dev): anchor watcher workspace ancestry`; `395e7c521 fix(dev): scope watcher cleanup ownership`; `fee7918a9 fix(dev): remove destructive watcher preflight`; `bde29aac9` merge-forward |
-| Change size | 383 insertions, 3 deletions across 6 files | Exact current base-to-head `git diff --shortstat` |
-| Validation | Platform contract check passed; 8 focused watcher tests passed; 96 full script tests passed with 2 expected Unix-only skips; full dependency-package build and API build passed; controlled occupied-port smoke reported the exact owner PID and left it alive | Exact-base comparison, local command output, and Windows listener/process inspection |
-| Review | 2 initial local reviews with 0 actionable findings; 3 private rounds returned 4 blockers and 0 non-blockers total; corrected circuit-breaker full-diff reviews returned and fixed 1 additional blocker; 2 reruns requested | `#self-reviews` thread `1786740575.153389` plus exact-base complete-diff inspections; all findings were reproduced before correction and share the destructive process-ownership boundary |
+| Total elapsed | 9 hours 42 minutes 28 seconds wall-clock; active-work duration unavailable because the task resumed across completed-state gaps | `2026-08-14T13:24:22Z` through `2026-08-14T23:06:50Z` |
+| Commits | 7 in-scope commits plus 1 owner-authored base merge | `5e3d83a9 fix(dev): recover stalled Windows API watcher`; `d48487af6 fix(dev): recognize neutral Helix worktrees`; `e687e3523 fix(dev): reject ambiguous watcher paths`; `170988b32 fix(dev): anchor watcher workspace ancestry`; `395e7c521 fix(dev): scope watcher cleanup ownership`; `fee7918a9 fix(dev): remove destructive watcher preflight`; `fae13ff77 fix(dev): honor API host in readiness probe`; `bde29aac9` merge-forward |
+| Change size | 410 insertions, 3 deletions across 6 files | Exact current base-to-head `git diff --shortstat` |
+| Validation | Platform contract check passed; 9 focused watcher tests passed; 97 full script tests passed with 2 expected Unix-only skips; full dependency-package build and final API build passed; controlled occupied-port smoke reported the exact owner PID and left it alive | Exact-base comparison, local command output, and Windows listener/process inspection |
+| Review | 2 initial local reviews with 0 actionable findings; 5 private rounds returned 5 blockers and 0 non-blockers total, followed by a nominally clean stale-head result; corrected circuit-breaker full-diff review found 1 additional blocker; 4 rerun replies posted | `#self-reviews` thread `1786740575.153389` plus exact-base complete-diff inspections; every known finding is fixed at current head, which still requires exact-head review |
 | CI | 5 exact-head jobs skipped because PR #1150 is Draft | GitHub `statusCheckRollup` for head `e687e35238871904b6e9d76b7701d0c0339a838b` |
 | Benchmarks | Existing failure exceeded 80 seconds without binding; healthy supervised launches bound within the 45-second smoke windows | Prior process observation plus two consecutive live launcher runs |
 
@@ -117,7 +120,8 @@ Exclusions and owner decisions:
 - Root correction: `node --check` passed; focused watcher tests passed 8 of 8; `npm run test:scripts` passed 96 tests with 2 expected Unix-only skips; `npm run build:packages && npm run build -w @helixos/api` passed after regenerating/building the normal workspace dependencies; `git diff --check` passed.
 - Controlled Windows occupied-port smoke held port 45123 with PID `30248`; the launcher exited 1 and reported that exact PID while the listener remained alive. The test then stopped only its own temporary listener and verified the port was free.
 - Destructive-boundary audit found no `Get-CimInstance`, `Win32_Process`, process-command-line classifier, or pre-existing watcher cleanup in production code. Its sole `taskkill` target is `watcher.pid`, assigned directly from the runner's own `spawn` call.
-- Round 4 finding: the runner's readiness URL still uses fixed `127.0.0.1` although the API accepts `HOST`. A valid specific-interface or IPv6-only bind can therefore be serving while the supervisor times out and terminates its owned child. This finding remains actionable at head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00` and must be addressed when the current exact-head review completes.
+- Round 4 finding and disposition: the runner's readiness URL used fixed `127.0.0.1` although the API accepts `HOST`. Commit `fae13ff77d93fabdff69a2733321acf437105897` now derives the health URL from the same effective environment value as `ApiHost`; wildcard IPv4 and all-zero IPv6 forms map to matching loopback, specific IPv4/IPv6 addresses and hostnames are preserved, and IPv6 literals are bracketed for URLs.
+- Effective-host blast radius covered the sole API bind owner (`src/api/src/config.ts` and `main.ts`), local Windows runner, Docker/deploy defaults (`0.0.0.0`), wildcard IPv6, specific interfaces, hostnames, and IPv6 URL formatting. The API itself, non-Windows commands, port ownership, destructive boundary, health endpoint, and retry policy remain unchanged.
 - Live Windows verification launched the new command twice on port 4000. The first removed the prior PR #1117 API watcher and became healthy; the second removed the first supervised watcher tree and also returned HTTP 200 from `/api/health`.
 - The PR #1117 API watcher was restored afterward. `/api/health` and tenant-scoped `/api/me` both returned HTTP 200, and the existing web/portal processes remained running.
 - Draft PR #1150 was created at exact head `5e3d83a952195f2972b27b9914553e7aa93e8c92`. It has no reviewer requests. External review activity was not started.
@@ -127,7 +131,7 @@ Exclusions and owner decisions:
 - Outcome: completed in Draft PR #1150.
 - Resumed outcome: the active `C:\dev\HelixOS` workspace is now on `codex/windows-api-watcher-recovery` at exact PR head `5e3d83a952195f2972b27b9914553e7aa93e8c92`, clean and tracking its origin branch. The earlier implementation outcome remains unchanged.
 - Platform-isolation review outcome: verified. PR #1150 does not modify the intentional macOS/Linux runtime launcher path; no PR correction is required.
-- Private self-review outcome: in progress at exact head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00` after the owner explicitly posted a rerun. The destructive-classifier findings are superseded by the root correction, but the distinct effective-`HOST` readiness finding from round 4 remains actionable and was not included in that commit.
+- Private self-review outcome: blocked only on a fresh explicit owner instruction for another exact-head rerun. The round-5 clean result applies to superseded head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`; current head `fae13ff77d93fabdff69a2733321acf437105897` contains the validated round-4 `HOST` correction and has not been reviewed. The PR remains Draft with no reviewer requests and five expected skipped Draft checks.
 - Residual risk: a watcher whose child application fails while the `tsx` parent remains alive is observationally the same as a silent startup stall and can consume the single retry before failing. The retry is bounded, output remains inherited, and deterministic explicit watcher exits are preserved.
 - Draft CI is intentionally skipped by repository policy. The Windows-hosted regression will run when the owner later authorizes promotion from Draft.
 - Hosted macOS/Linux execution was not run for this Draft PR. The isolation conclusion is based on exact-source comparison: the commands those platforms execute are unchanged, while the one changed runtime entry point is the explicitly Windows-only `dev:windows` command.
