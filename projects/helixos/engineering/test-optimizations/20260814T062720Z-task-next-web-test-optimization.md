@@ -11,7 +11,7 @@
 - Starting local head: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f`
 - Starting base: `588b156ddeea6cf5926c266f41fbab72ee3de258` (`origin/main` after fetch)
 - Implementation branch: `codex/optimize-next-web-test-20260814`, created from `origin/main`
-- Pull request: pending
+- Pull request: https://github.com/helixosio/helixos/pull/1148 (`Draft`)
 - Target: `src/web/src/features/client-directory/ClientCreateDialog.test.tsx`
 - Codex task/thread ID: unavailable in the current tool context
 
@@ -30,7 +30,13 @@
 - Target selection: the nominally slower Plan Detail, Client Editor, Payroll Provider Management, Operations Dashboard, and Payroll Batches suites already have completed optimization records. Desktop Workspace overlaps active PR #1112. Admin Console exercises Tenant Administration and the shared API-client surface changed by active PR #1117. `ClientCreateDialog.test.tsx` is the next untreated hotspot; none of the active PRs changes the test, `ClientCreateDialog.tsx`, its client-create model, address field, validation, placement autocomplete, or editor-form layout dependencies. Active PR #1117 changes the shared API client, but not the mocked `/api/payroll-providers` request contract used by this suite.
 - Interaction inventory: the suite contains click-only switches, selects, autocomplete clear, and submit actions; one explicit masking test depends on realistic typing for EIN, phone, city filtering, and postal-code formatting. Setup-only save payload fields are typed character by character but do not assert keyboard or focus sequencing. No scenario asserts implicit hover behavior. Country selection, parent clearing, masking, validation, async payroll-provider loading, parent rerender preservation, address provenance, payload normalization, and save boundaries must remain covered.
 - Matched local baseline under `TZ=UTC` with `npm run test -w @helixos/web -- ClientCreateDialog.test.tsx`: sample 1 wall 27.590s, Vitest total 25.59s, tests/hooks 20.84s; sample 2 wall 30.471s, Vitest total 28.35s, tests/hooks 23.69s. Median wall 29.031s, total 26.970s, and tests/hooks 22.265s. Both samples passed 13/13 with zero failures or skips.
-- Implementation, matched post-change samples, validation, review rounds, CI attempts, and hosted artifacts are pending.
+- Implementation: commit `14e4f2b2469386aafb29556ddd514bee5025195c` centralizes click-oriented user-event setup with implicit hover disabled and changes only setup-only save fields to direct controlled-input changes. Realistic `userEvent.type` coverage remains for EIN, phone, city, and postal-code masking. Production code is unchanged.
+- Matched local post-change samples: wall 20.798s and 21.750s (median 21.274s, -26.7%); Vitest total 19.33s and 19.91s (median 19.620s, -27.2%); tests/hooks 15.10s and 15.41s (median 15.255s, -31.5%). Both samples passed 13/13 with zero failures or skips.
+- Final local validation: focused suite passed 13/13; complete 129-file `@helixos/web` unit suite passed in 207.7s; web lint passed in 19.126s; production build passed in 71.437s; theme check passed in 0.679s; `git diff --check` passed. The complete suite and build emitted only pre-existing MSW/React-test and Rollup/chunk-size warnings.
+- Architecture self-review: no production, state, effect, authorization, tenant, transport, mutation, cache, persistence, or presentation responsibility changed. The rendered React Query/MUI/request seams remain, realistic masking input remains, and no test, assertion, fixture, behavior variant, or timeout was removed or loosened.
+- Draft PR created at 2026-08-14T06:41:26Z from base `588b156ddeea6cf5926c266f41fbab72ee3de258`; implementation/local-validation checkpoint was 13m 13s from 2026-08-14T06:27:20.275Z through 2026-08-14T06:40:32.822Z.
+- Private exact-head self-review requested in `#self-reviews` at 2026-08-14T06:45:30.803Z using parent timestamp `1786689930.802859`. One follow-up heartbeat (`pr-1148-self-review-check`) was scheduled for the required seven-minute initial window.
+- Private review result, Draft production feedback, exact-head CI, hosted artifacts, Ready transition, and final approval are pending.
 
 ## Risk and follow-up
 
