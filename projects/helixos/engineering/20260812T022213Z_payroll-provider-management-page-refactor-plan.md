@@ -51,7 +51,7 @@ This is an architectural refactor, not a file-count exercise. Moving the existin
 - explicit reconciliation of saved baselines with edits made while save is pending;
 - component-test redistribution and representative new race/seam coverage;
 - exact-head local and hosted timing evidence;
-- a Draft stacked-branch integration tip that passes the complete automated suite and visual UAT before any remaining PR is promoted to Ready;
+- a stacked-branch integration tip that is buildable at every intermediate handoff and receives complete automated validation plus visual UAT during the applicable final review cycle;
 - incremental maintainer-documentation updates.
 
 ### Explicit non-goals
@@ -173,9 +173,9 @@ These are implementation requirements, not choices for the implementer:
 11. **Partial save failure remains retryable.** Preserve local drafts, show the existing error category, invalidate only the captured target queries, and allow retry. Do not attempt a client-side rollback across the existing separate PATCH/POST endpoints.
 12. **Current API calls remain sequential.** Save provider metadata first when needed, then save import config when needed, then apply the returned validation/baseline information. Do not introduce concurrency between dependent writes.
 13. **Cross-component mutation locking uses TanStack Query mutation state.** Give save and publish stable mutation keys and let the page derive the New Provider disabled state with `useIsMutating`. Do not synchronize a child pending flag into page state through an effect or callback.
-14. **The remaining pull requests are a true Draft stack.** PR A branches from `main`; PR B branches from PR A; PR C branches from PR B. The PR C branch is the whole-feature integration tip.
-15. **Whole-feature signoff precedes Ready promotion.** Complete automated validation and visual UAT must pass against the exact PR C integration head before any PR in the remaining stack is promoted to Ready. This additional engineering gate does not replace any repository lifecycle gate.
-16. **Stack updates propagate upward without rewriting reviewed history.** A PR A change is merged forward into PR B and then PR C; a PR B change is merged forward into PR C. Any new integration head invalidates the previous whole-feature signoff.
+14. **The remaining pull requests are a true Draft stack held for owner audit.** PR A branches from `main`; PR B branches from PR A; PR C branches from PR B. The PR C branch is the whole-feature integration tip. Every PR remains Draft until the owner audits the work and explicitly authorizes promotion; this hold is not defined by automated review or CI gates.
+15. **Intermediate handoffs are build-only.** Before branching the next PR or handing an updated branch to another agent, run only `npm run build -w @helixos/web`. Do not rerun focused/full tests, lint, theme checks, UAT, or the complete matrix solely for a handoff.
+16. **Stack updates propagate upward without rewriting reviewed history.** A PR A change is merged forward into PR B and then PR C; a PR B change is merged forward into PR C. Run the web build after propagation. Complete validation runs on each PR's exact current head during that PR's final review cycle; PR C's final review also owns whole-feature UAT.
 
 ### Repository-supported assumptions
 
@@ -202,7 +202,7 @@ None. If repository drift contradicts a confirmed decision, stop and request sen
 | No synchronization effects or coordination refs. | Objective and React repository guidance | B3-B5 | Static search plus lifecycle tests. |
 | Narrow test ownership without coverage loss. | Testing standards and behavior inventory | PR A-C | Updated traceability table, zero skips, representative seam tests. |
 | Hosted performance improvement without cost shifting. | PR #1116 evidence and performance objective | A5, C1-C3 | `web-unit-timing` artifact and full-command comparison. |
-| Review the complete visual feature before individual signoff. | Owner direction and confirmed decisions 14-16 | C5 and stacked-PR runbook | Exact integration head/tree, full automated validation, screenshots, and complete UAT. |
+| Review the complete visual feature during final review. | Owner direction and confirmed decisions 14-16 | C5 and stacked-PR runbook | PR C final-review integration head/tree, full automated validation, screenshots, and complete UAT. |
 | Maintainer-ready ownership documentation. | Repository documentation requirement | A5, B5, C4 | Reviewed `docs/payroll-provider-management.md`. |
 | Follow current owner-authored delivery lifecycle. | HelixOS `AGENTS.md` | Every PR | PR evidence and exact-head gate records. |
 
@@ -432,7 +432,7 @@ The table below is the required starting inventory. The implementer updates its 
 
 ## 10. Ordered implementation work
 
-Implementation work is sequential, but merge is deferred until the complete stack has been reviewed as one feature. Use this exact topology:
+Implementation work is sequential. Each intermediate handoff requires only a successful web build. Use this exact topology:
 
 ```text
 origin/main
@@ -441,9 +441,9 @@ origin/main
         └── codex/payroll-provider-refactor-final (PR C -> PR B branch)
 ```
 
-Create all three pull requests as Draft. PR A must reach its implementation and senior-checkpoint gate before branching PR B. PR B must reach its implementation and senior-checkpoint gate before branching PR C. Do not merge PR A or PR B merely to begin the next unit. The top PR C branch contains the complete feature and is the required local/visual integration-review build.
+Create all three pull requests as Draft and keep them Draft until the owner audits the work and explicitly authorizes promotion. PR A must reach its implementation and senior-checkpoint gate before branching PR B. PR B must reach its implementation and senior-checkpoint gate before branching PR C. Do not merge PR A or PR B merely to begin the next unit. The top PR C branch contains the complete feature and is the local/visual integration-review build during PR C's final review cycle.
 
-If a lower branch changes, merge it forward through every branch above it, revalidate each affected unit, and rerun the whole-feature review on the new PR C head. Do not force-push or rebase reviewed shared branches unless current owner-authored policy explicitly authorizes that strategy.
+If a lower branch changes, merge it forward through every branch above it and run the web build on each affected handoff branch. Do not rerun the complete matrix or whole-feature review solely for propagation. If a final-review checkpoint already exists, the changed exact head invalidates that evidence and it must be regenerated during the affected final review cycle. Do not force-push or rebase reviewed shared branches unless current owner-authored policy explicitly authorizes that strategy.
 
 ### PR A: Extract cohesive presentation boundaries
 
@@ -452,11 +452,11 @@ If a lower branch changes, merge it forward through every branch above it, reval
 - **Objective:** Record current starting evidence before moving JSX.
 - **Dependencies:** Current `origin/main`; PR #1116 already merged; create `codex/payroll-provider-refactor-ui` in a clean dedicated worktree.
 - **Affected code:** No production change yet; PR description or checked-in maintainer-doc update.
-- **Changes:** Record start time, exact base SHA, source/test line counts, state/ref/effect counts, focused local command result, and the PR #1116 hosted baseline above. Copy the traceability table into the PR description and mark rows touched by PR A.
+- **Changes:** Record start time, exact base SHA, source/test line counts, state/ref/effect counts, and the PR #1116 hosted baseline above. Copy the traceability table into the PR description and mark rows touched by PR A.
 - **Preserved invariants:** No test skips, timeout increases, or assertion weakening.
-- **Failure/recovery:** A pre-existing functional failure stops extraction until recorded and triaged. A local timeout alone is not a failure; rerun without the local limit.
-- **Tests:** Existing focused suite before edits.
-- **Acceptance criteria:** Baseline evidence and exact commands are recorded; Draft PR A targets `main`; its exact base/head are available for the later integration checkpoint.
+- **Failure/recovery:** A build failure stops extraction until recorded and triaged.
+- **Tests:** Intermediate gate: `npm run build -w @helixos/web`.
+- **Acceptance criteria:** Baseline evidence and the successful web build are recorded; Draft PR A targets `main`; its exact base/head are available for later review.
 
 #### Work item A2: Extract status, toolbar, drawer, and reusable fields
 
@@ -500,16 +500,16 @@ If a lower branch changes, merge it forward through every branch above it, reval
 - **Tests:** Focused dialog and accessibility tests.
 - **Acceptance criteria:** No dialog reads QueryClient or unrelated editor state.
 
-#### Work item A5: Document and validate PR A
+#### Work item A5: Document and hand off PR A
 
 - **Objective:** Leave a documented, behavior-preserving component architecture.
-- **Dependencies:** A1-A4 complete and focused tests green.
+- **Dependencies:** A1-A4 complete and the architecture checkpoint has no actionable finding.
 - **Affected code:** `docs/payroll-provider-management.md` plus extracted code/tests.
-- **Changes:** Add the current component responsibility map and extension guidance. Record exact validation and timing.
+- **Changes:** Add the current component responsibility map and extension guidance. Record the exact handoff build result. Preserve any engineering checks already run as historical evidence without making them a repeatable handoff gate.
 - **Preserved invariants:** Documentation describes only implemented ownership; API, state lifecycle, and product behavior remain unchanged in PR A.
-- **Failure/recovery:** If complete validation exposes a behavior regression, fix or revert the responsible extraction commit before requesting review; do not defer it to PR B.
-- **Tests:** Focused suite, web lint, theme check, full web unit, web build.
-- **Acceptance criteria:** All tests pass; zero skips; component file hosted timing is no worse than 55 seconds; full web-unit timing has no unexplained material regression; no state/effect/ref architecture change is hidden in this PR.
+- **Failure/recovery:** If the web build fails, fix or revert the responsible extraction commit before handoff; do not defer it to PR B.
+- **Tests:** Intermediate gate: `npm run build -w @helixos/web`. The complete matrix and performance evidence are deferred to PR A's final review cycle.
+- **Acceptance criteria:** The web build passes and no state/effect/ref architecture change is hidden in this PR. Full test, lint, theme, timing, and UAT evidence is not required for the intermediate handoff.
 - **Suggested commits:**
   1. `refactor(payroll): extract provider status and selection surfaces`
   2. `refactor(payroll): extract import configuration tabs`
@@ -600,7 +600,7 @@ If a lower branch changes, merge it forward through every branch above it, reval
 - **Changes:** Delete dead setters, hydration fingerprints/keys, automatic selection/validation effects, duplicate derived state, and stale cache-merging paths. Update docs with server state versus draft state, reducer actions, mutation snapshots, and keyed lifecycle.
 - **Preserved invariants:** All behavior rows remain covered; only obsolete coordination code is removed.
 - **Failure/recovery:** If a deleted path still owns observable behavior, restore it only long enough to add the missing narrow test and move that behavior to its target owner; do not retain parallel implementations.
-- **Tests:** Complete validation matrix below.
+- **Tests:** Intermediate gate: `npm run build -w @helixos/web`. The complete matrix is deferred to PR B's final review cycle.
 - **Acceptance criteria:** Zero `useEffect`/`useMountEffect` in the feature; only imperative DOM refs remain; no unused compatibility code.
 - **Suggested commits:**
   1. `refactor(payroll): centralize provider API requests`
@@ -633,7 +633,7 @@ If a lower branch changes, merge it forward through every branch above it, reval
 - **Changes:** Record file/function sizes and dependencies. Treat these as review signals, not automatic failures: Editor around 300-350 lines, individual tab components around 250-300 lines, ordinary pure functions around 50 lines. Document any cohesive exception. Search for `useEffect`, `useMountEffect`, coordination refs, direct API calls outside the API module, literal query keys, and duplicated payload field lists.
 - **Preserved invariants:** Audit-driven corrections do not expand product scope or change API behavior.
 - **Failure/recovery:** If the audit finds a cross-cutting design defect rather than a local correction, stop and obtain senior direction instead of adding another abstraction during final cleanup.
-- **Tests:** Rerun the focused suite after each audit-driven correction and include static-search results in the PR evidence.
+- **Tests:** Run the web build after audit-driven corrections. Use targeted tests only when needed to diagnose a correction; run the complete matrix during PR C's final review cycle.
 - **Acceptance criteria:** No new god hook/service/reducer, generic dumping ground, circular dependency, or duplicated authoritative rule.
 
 #### Work item C3: Measure exact-head performance
@@ -663,10 +663,10 @@ If a lower branch changes, merge it forward through every branch above it, reval
 - **Tests:** Execute every documented command through the non-destructive smoke-check stage and verify paths, route, persona, and script names.
 - **Acceptance criteria:** A new engineer can identify the owner of presentation, state, transport, validation, parsing, and inference without reading the former monolith.
 
-#### Work item C5: Validate and visually approve the complete Draft stack
+#### Work item C5: Validate and visually approve the complete stack during PR C final review
 
-- **Objective:** Give developers and product reviewers one exact local build containing PR A, PR B, and PR C before any PR is promoted to Ready.
-- **Dependencies:** C1-C4 complete; PR A, PR B, and PR C are current Drafts with the exact parent-child topology defined above.
+- **Objective:** Give developers and product reviewers one exact local build containing PR A, PR B, and PR C during PR C's final review cycle.
+- **Dependencies:** C1-C4 complete; the owner has audited the stack and explicitly authorized promotion into the repository's final-review lifecycle; the branches retain the exact parent-child topology defined above.
 - **Affected code:** No new production code is expected. Review evidence belongs in the top PR description or its designated whole-feature review comment.
 - **Changes:**
   1. Follow `payroll-provider-management-stacked-pr-local-review.md` from a clean detached worktree at `origin/codex/payroll-provider-refactor-final`.
@@ -677,20 +677,23 @@ If a lower branch changes, merge it forward through every branch above it, reval
   6. Start the self-contained local stack and execute every Manual UAT step below.
   7. Capture the required screenshots/visual evidence and obtain named whole-feature reviewer signoff on the exact integration head.
 - **Preserved invariants:** The integration tip contains the unchanged commits of all lower PRs; aggregate review does not replace narrow PR review or authorize Ready, merge, or release.
-- **Failure/recovery:** Any lower-branch or integration-head change invalidates the checkpoint. Merge the changed lower branch forward through the stack, re-record SHAs, and rerun complete automated validation and UAT. Any UAT failure reopens its owning work item and adds regression coverage before another checkpoint.
+- **Failure/recovery:** Any lower-branch or integration-head change invalidates an existing final-review checkpoint. Merge the changed lower branch forward through the stack, use the web build as the propagation gate, then re-record SHAs and rerun complete automated validation and UAT during the affected final review cycle. Any UAT failure reopens its owning work item and adds regression coverage before another checkpoint.
 - **Tests:** Full validation matrix, exact-head hosted evidence already required for the top PR, all Manual UAT steps, complete visual review, and ancestry/base-drift checks from the runbook.
-- **Acceptance criteria:** The top Draft contains the complete current stack; all validation and UAT pass; evidence identifies one exact integration head/tree; reviewers explicitly approve the feature as a whole; no remaining PR is Ready yet.
+- **Acceptance criteria:** The top branch contains the complete current stack; all final-review validation and UAT pass; evidence identifies one exact integration head/tree; reviewers explicitly approve the feature as a whole.
 - **Suggested commits:**
   1. `test(payroll): right-size provider component coverage`
   2. `docs(payroll): finalize provider editor architecture`
 
 ## 11. Validation strategy
 
-Run focused tests after every coherent commit. Before each pull-request feedback request, run the complete applicable matrix without a local timeout. Before any remaining PR is promoted to Ready, rerun the entire matrix from the exact PR C integration tip by following the standalone stacked-PR runbook.
+During implementation and stack propagation, the only required automated handoff gate is `npm run build -w @helixos/web`. Do not run focused tests, the full web suite, lint, theme checks, UAT, or the complete matrix solely before or after a handoff. Targeted checks remain available when needed to diagnose implementation issues.
+
+Keep every PR Draft until the owner audits the work and explicitly authorizes promotion. Once a PR enters its final review cycle, run the complete applicable matrix below without a local timeout on that PR's exact current head. During PR C's final review, also run the standalone stacked-PR runbook against the exact integration tip for whole-feature UAT and visual evidence.
 
 | Layer | Scenario | Command/evidence |
 | --- | --- | --- |
-| Shared build prerequisite | Workspace packages available to web tests | `npm run build:packages` |
+| Intermediate handoff | TypeScript and Vite integration for the affected web workspace | `npm run build -w @helixos/web` |
+| Final-review shared prerequisite | Workspace packages available to web tests | `npm run build:packages` |
 | Focused feature | All payroll-provider direct and component tests | `npm exec --workspace @helixos/web -- vitest run src/features/utilities/payroll-providers` |
 | Reducer/model | Pure transitions and race reconciliation | Same focused command; tests must not import render harness |
 | Web lint | Type/style/effect restrictions | `npm run lint -w @helixos/web` |
@@ -699,7 +702,7 @@ Run focused tests after every coherent commit. Before each pull-request feedback
 | Web build | TypeScript and Vite integration | `npm run build -w @helixos/web` |
 | Hosted CI | Required exact-head jobs | Current repository-required CI plus `web-unit-timing` artifact |
 | Manual | PlatformAdmin workflow | UAT script below |
-| Whole stack | PR A + PR B + PR C composed feature | `payroll-provider-management-stacked-pr-local-review.md`; exact head/tree, ancestry checks, complete matrix, screenshots, and reviewer signoff |
+| PR C final-review whole stack | PR A + PR B + PR C composed feature | `payroll-provider-management-stacked-pr-local-review.md`; exact head/tree, ancestry checks, complete matrix, screenshots, and reviewer signoff |
 
 If `@helixos/shared` changes despite the stated non-goal, stop and obtain scope approval, then also run:
 
@@ -785,23 +788,23 @@ Not applicable. No schema, seed, migration, persisted data conversion, or backup
 | Separate provider/config writes partially succeed. | Medium / Medium | Preserve drafts, invalidate captured target, retry; no false client rollback. |
 | Component-test speed worsens after file extraction. | Medium / Medium | Per-PR 55-second ceiling; final 45-second target; hosted artifact comparison and no cost shifting. |
 | Behavior coverage is lost while tests move. | Medium / High | Prewritten traceability matrix; narrow replacement before removal; representative seam retained. |
-| Reviewers approve narrow diffs but miss a composed visual/workflow regression. | Medium / High | True Draft stack, isolated top-branch worktree, complete UAT, screenshots, and exact-head whole-feature signoff before Ready. |
-| Lower-stack changes leave PR C stale. | Medium / High | Ancestry checks, merge-forward propagation, explicit checkpoint invalidation, and full revalidation on the new integration head. |
+| Reviewers approve narrow diffs but miss a composed visual/workflow regression. | Medium / High | Owner-audited Draft stack followed by an isolated top-branch worktree, complete UAT, screenshots, and exact-head whole-feature signoff during PR C final review. |
+| Lower-stack changes leave PR C stale. | Medium / High | Ancestry checks, merge-forward propagation, build-only intermediate gates, and regeneration of any invalidated final-review evidence on the new integration head. |
 | Lifecycle policy becomes stale. | Low / High | Re-read current `AGENTS.md` before every PR; owner-authored policy controls. |
 
 ## 15. Pull-request lifecycle and evidence
 
 At execution time, follow the current HelixOS owner-authored lifecycle policy in `C:\dev\HelixOS\AGENTS.md`. As of the inspected revision, this includes a dedicated branch/worktree, incremental validated commits, Draft pull request, clean exact-head private self-review, Draft feedback/re-review, Ready promotion only after the defined clean-feedback gate, exact-head required CI, prescribed reviewer request, and final Slack trigger. Do not copy Slack credentials or automate lifecycle steps from this document; use the repository-prescribed workflow/skill.
 
-The remaining PRs are developed and reviewed as a Draft stack before bottom-up promotion:
+The remaining PRs are developed as a Draft stack and held for owner audit before bottom-up promotion:
 
-1. Complete PR A as a green Draft and pass its senior checkpoint.
-2. Branch PR B from PR A; complete it as a green Draft and pass its mandatory senior checkpoint.
-3. Branch PR C from PR B; complete it as a green Draft.
-4. Use PR C as the integration tip and pass Work item C5 against its exact head.
-5. Only after whole-feature signoff may the individual PRs proceed bottom-up through their current owner-authored Ready, CI, reviewer, feedback, and merge gates.
+1. Complete PR A as a buildable Draft and pass its senior architecture checkpoint.
+2. Branch PR B from PR A; complete it as a buildable Draft and pass its mandatory senior architecture checkpoint.
+3. Branch PR C from PR B; complete it as a buildable Draft.
+4. Keep all three PRs Draft until the owner audits the work and explicitly authorizes promotion.
+5. After that authorization, process the PRs bottom-up. Run the complete applicable matrix on each exact current head during that PR's final review cycle; run Work item C5 during PR C's final review.
 
-The whole-feature checkpoint is an additional engineering gate. It does not authorize promotion, reviewer requests, Slack writes, merge, release, or publication. Each PR must still satisfy the canonical lifecycle on its exact current head. When a lower PR merges or changes, refresh the branches above it with the repository-approved strategy and re-establish every invalidated exact-head gate.
+The owner-audit hold is the authority for keeping this stack Draft; automated review or CI completion does not end it. The whole-feature checkpoint does not authorize promotion, reviewer requests, Slack writes, merge, release, or publication. Each PR must still satisfy the canonical lifecycle on its exact current head. When a lower PR merges or changes, refresh the branches above it with the repository-approved strategy, run the intermediate web build, and regenerate any invalidated final-review evidence only when the affected PR is in final review.
 
 Every PR description must contain:
 
@@ -810,7 +813,7 @@ Every PR description must contain:
 - changed responsibility map;
 - affected traceability rows and their evidence;
 - state/dependency flow before and after that PR;
-- validation commands and results;
+- intermediate handoff build command and result, followed later by final-review validation commands and results;
 - local timing labeled directional;
 - exact-head hosted timing when performance is claimed;
 - line/state/effect/ref counts where relevant;
@@ -871,10 +874,12 @@ The initiative is complete only when all boxes are true:
 - [ ] Every traceability row has passing narrow and/or representative seam evidence.
 - [ ] No tests are skipped or weakened.
 - [ ] Final hosted feature timing satisfies the stated performance gate without full-suite cost shifting.
-- [ ] Full lint, theme, unit, build, manual UAT, and required exact-head CI evidence is green.
+- [ ] Every intermediate stack handoff has a successful web build.
+- [ ] During each PR's final review cycle, its full applicable lint, theme, unit, build, and required exact-head CI evidence is green.
 - [ ] Maintainer documentation describes final ownership, extension rules, and how to review the complete stack locally.
 - [ ] PR A is an ancestor of PR B and PR B is an ancestor of PR C at the recorded whole-feature checkpoint.
-- [ ] The exact PR C integration head/tree passes complete automated validation and visual UAT before any remaining PR is promoted to Ready.
+- [ ] The owner audits the Draft stack and explicitly authorizes any promotion.
+- [ ] The exact PR C integration head/tree passes complete automated validation and visual UAT during PR C's final review cycle.
 - [ ] Whole-feature evidence includes all branch SHAs, full comparison, screenshots, named reviewers, and invalidation history.
 - [ ] Architecture self-review reports no actionable state, dependency, test-placement, security, branding, or maintainability finding.
 - [ ] Repository lifecycle policy has been followed through the authorized stopping point; this plan does not authorize merge or release.
@@ -888,19 +893,19 @@ Before coding:
 3. Read `payroll-provider-management-stacked-pr-local-review.md`, `docs/payroll-provider-management.md`, and the five existing payroll-provider pure modules/tests.
 4. Confirm which ordered PR is assigned and use its prescribed branch parent: PR A from `main`, PR B from PR A, or PR C from PR B.
 5. Start in a clean dedicated worktree on the exact prescribed non-main branch; do not merge the lower PR merely to start the next branch.
-6. Record start time, exact base/parent SHA, baseline counts, and focused test timing.
+6. Record start time, exact base/parent SHA, baseline counts, and the handoff build command.
 
 While coding:
 
-- make one cohesive change at a time and commit after its validation passes;
+- make one cohesive change at a time and commit it after the affected web workspace builds;
 - preserve unrelated work;
 - use existing pure owners instead of copying rules;
 - do not introduce effects, selection refs, generic setters, context, or a controller hook;
 - keep list/detail fixtures different;
-- run focused tests after each extraction or reducer slice;
-- merge lower-branch corrections forward through every branch above them and treat prior aggregate signoff as stale;
+- use targeted tests only when they help diagnose an implementation issue; defer the complete matrix to final review;
+- merge lower-branch corrections forward through every branch above them, run the web build, and treat prior final-review signoff as stale if one exists;
 - update `docs/payroll-provider-management.md` in the same PR as each meaningful architecture change;
-- do not promote any remaining PR to Ready before Work item C5 passes on the exact integration head.
+- keep every PR Draft until the owner audits the work and explicitly authorizes promotion.
 
 Stop and escalate immediately if:
 
@@ -916,10 +921,9 @@ Final handoff evidence:
 - exact base/head SHAs and elapsed work time;
 - logical commit list;
 - updated traceability rows;
-- focused and complete validation output;
-- local and hosted timing evidence;
-- UAT evidence for the assigned phase;
-- for PR C, exact stack base/A/B/C head/tree SHAs, ancestry checks, complete local-review runbook results, screenshots, and named whole-feature reviewer signoff;
+- successful `npm run build -w @helixos/web` output for the intermediate handoff;
+- final-review validation, timing, and UAT evidence only when the assigned PR is in its final review cycle;
+- for PR C final review, exact stack base/A/B/C head/tree SHAs, ancestry checks, complete local-review runbook results, screenshots, and named whole-feature reviewer signoff;
 - before/after ownership/state flow;
 - remaining risks or explicitly approved exceptions;
 - confirmation that no unresolved implementation or product decision remains.

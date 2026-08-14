@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use this runbook to test and visually review the complete Payroll Provider Management refactor before any pull request in the stack is promoted from Draft. The top branch contains every preceding branch and is the full-feature integration build.
+Use this runbook during PR C's final review cycle to test and visually review the complete Payroll Provider Management refactor. The top branch contains every preceding branch and is the full-feature integration build. This is not an intermediate implementation or stack-handoff procedure.
 
 This runbook supplements the [implementation plan](./20260812T022213Z_payroll-provider-management-page-refactor-plan.md). Current HelixOS `AGENTS.md` and local-development documentation remain authoritative.
 
@@ -19,7 +19,17 @@ main
 
 `codex/payroll-provider-refactor-final` is the integration tip. Do not create a fourth aggregate pull request. Use the integration-tip branch, its exact commit SHA, and a `main...integration-tip` comparison for whole-feature review.
 
-All three pull requests remain Draft until the full-feature automated validation and visual UAT described here pass against the exact integration-tip head.
+All three pull requests remain Draft until the owner audits the work and explicitly authorizes promotion. That owner-audit hold is independent of automated review and CI gates. A successful intermediate build allows work to continue up the stack but does not authorize a Draft/Ready state change.
+
+## Intermediate handoff policy
+
+Before branching the next PR or handing an updated stack branch to another agent, run only the affected workspace build. For this web-only stack:
+
+```powershell
+npm run build -w @helixos/web
+```
+
+Do not run the focused suite, full suite, lint, theme check, complete UAT, or this runbook solely before or after an intermediate handoff or merge-forward propagation. Targeted checks may be used to diagnose an implementation issue. Run the complete applicable validation matrix on each PR's exact current head when that PR enters its final review cycle. Use the remainder of this runbook for the PR C whole-feature final review.
 
 ## Prerequisites
 
@@ -120,7 +130,7 @@ https://github.com/helixosio/helixos/compare/main...codex/payroll-provider-refac
 
 GitHub's normal PR C diff shows only PR C relative to PR B. Use the comparison above or the local `$StackBaseSha...HEAD` diff for the whole initiative.
 
-## 4. Install and run automated validation
+## 4. Run final-review automated validation
 
 Install exactly from the committed lock file:
 
@@ -128,7 +138,7 @@ Install exactly from the committed lock file:
 npm ci
 ```
 
-Run the complete composed validation without a local timeout:
+During PR C's final review cycle, run the complete composed validation without a local timeout:
 
 ```powershell
 npm run build:packages
@@ -222,7 +232,7 @@ Full-feature integration review
 - Residual risks: <none or explicit list>
 ```
 
-Whole-feature local approval does not replace any PR's required exact-head self-review, Draft feedback, CI, reviewer request, or final-review gate.
+Whole-feature local approval does not replace the owner's audit or any PR's required exact-head self-review, Draft feedback, CI, reviewer request, or final-review gate.
 
 ## 8. Refreshing the stack after changes
 
@@ -233,10 +243,10 @@ Conceptually:
 ```text
 update PR A
 -> merge the current PR A branch into PR B
--> validate and push PR B
+-> build and push PR B
 -> merge the current PR B branch into PR C
--> validate and push PR C
--> rerun this full-feature review
+-> build and push PR C
+-> defer complete validation until the affected PR's final review cycle
 ```
 
 The full-feature checkpoint is stale when:
@@ -247,17 +257,17 @@ The full-feature checkpoint is stale when:
 - conflict resolution changes the integration tree;
 - required tests, UAT data, or local runtime configuration change materially.
 
-After invalidation, record a new integration head/tree and rerun automated validation plus the complete UAT. Do not carry visual signoff from an older top head.
+If a final-review checkpoint already exists, record a new integration head/tree and rerun automated validation plus the complete UAT during the affected final review cycle. Before final review begins, a new head requires only the intermediate build gate. Do not carry visual signoff from an older top head.
 
 ## 9. Promotion and merge order
 
-After whole-feature signoff passes, process the stack bottom-up under the current HelixOS lifecycle:
+Keep the entire stack Draft until the owner completes the audit and explicitly authorizes promotion. After that authorization, process the stack bottom-up under the current HelixOS lifecycle:
 
-1. PR A completes its exact-head gates and authorized lifecycle step.
-2. Refresh PR B's base against the resulting current `main`; revalidate its exact head.
-3. PR B completes its exact-head gates and authorized lifecycle step.
-4. Refresh PR C's base against current `main`; revalidate its exact head.
-5. PR C completes its exact-head gates and authorized lifecycle step.
+1. PR A runs its complete applicable validation matrix on the exact head during final review, then completes its remaining authorized lifecycle steps.
+2. Refresh PR B's base against the resulting current `main`; run the intermediate web build while propagating the stack.
+3. PR B runs its complete applicable validation matrix on the exact head during final review, then completes its remaining authorized lifecycle steps.
+4. Refresh PR C's base against current `main`; run the intermediate web build while propagating the stack.
+5. PR C runs its complete applicable validation matrix and this whole-feature UAT runbook on the exact head during final review, then completes its remaining authorized lifecycle steps.
 
 Do not promote any PR to Ready solely because the integration worktree passed. Promotion, reviewer requests, Slack writes, merge, and release remain governed by current owner-authored repository policy.
 
