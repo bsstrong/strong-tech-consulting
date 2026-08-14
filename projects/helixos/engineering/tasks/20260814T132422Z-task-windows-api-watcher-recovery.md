@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: complete
+- Status: in-progress
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-14T13:24:22Z`
 - Task/thread ID: current Codex task; durable ID unavailable
@@ -21,6 +21,7 @@ Exclusions and owner decisions:
 - Preserve Draft PR #1117, its paused review state, and its unpushed local dependency-injection fix unchanged.
 - Keep the currently running PR #1117 development stack available while developing and testing this isolated startup fix where practical.
 - Do not broaden this task into unrelated local-development or application behavior changes.
+- Owner requires explicit verification that PR #1150 does not change intentional macOS or Linux launcher behavior because those development environments are healthy.
 
 ## Lifecycle
 
@@ -34,6 +35,7 @@ Exclusions and owner decisions:
 | Completed | `2026-08-14T13:42:33Z` | 18 minutes 11 seconds total elapsed |
 | Resumed for PR discussion | `2026-08-14T13:56:02Z` | Owner requested switching the active HelixOS workspace to PR #1150's branch; no review or code change requested |
 | Discussion checkout complete | `2026-08-14T13:57:06Z` | Active workspace switched to the exact PR head in 1 minute 4 seconds |
+| Resumed for platform-isolation review | `2026-08-14T13:58:21Z` | Inspect every changed entry point and validate that macOS/Linux behavior remains unchanged |
 
 ## Task statistics
 
@@ -69,6 +71,7 @@ Exclusions and owner decisions:
 
 - Outcome: completed in Draft PR #1150.
 - Resumed outcome: the active `C:\dev\HelixOS` workspace is now on `codex/windows-api-watcher-recovery` at exact PR head `5e3d83a952195f2972b27b9914553e7aa93e8c92`, clean and tracking its origin branch. The earlier implementation outcome remains unchanged.
+- Platform-isolation review outcome: pending.
 - Residual risk: a watcher whose child application fails while the `tsx` parent remains alive is observationally the same as a silent startup stall and can consume the single retry before failing. The retry is bounded, output remains inherited, and deterministic explicit watcher exits are preserved.
 - Draft CI is intentionally skipped by repository policy. The Windows-hosted regression will run when the owner later authorizes promotion from Draft.
 - Draft PR #1117 remains unchanged remotely with review paused. Its local dependency-injection fix commit `70ea332c073441a9567113bf30955b182c064ec1` remains unpushed.
