@@ -10,7 +10,8 @@
 - Starting base SHA: `9faf3933f09ac999b90aa8a2759da87a4dca4b67` (final Phase 1 feature head used by the original stack)
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
 - Current base SHA: `6d9c30a7b7dab3f5c281d518aa61d7cc93a6ad0e`
-- Current head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4`
+- Current local head SHA: `70ea332c073441a9567113bf30955b182c064ec1`
+- Current PR head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4` (local loading fix not yet pushed)
 - Issue: https://github.com/helixosio/helixos/issues/1130
 - PR: https://github.com/helixosio/helixos/pull/1117
 
@@ -38,6 +39,7 @@ Exclusions and owner decisions:
 | UI redesign authorized | `2026-08-14T06:04:06Z` | Owner supplied the implementation brief and prototype source, resolved the open product questions, and authorized replacing the Manage Carrier Account window UI while preserving compatible functional code |
 | First UI implementation pushed | `2026-08-14T07:08:14Z` | Contract support commits `5912ac99e` and `9e6edc281`; UI commit `257073db4`; PR verified Draft with zero review requests |
 | Isolated PR dev stack started | `2026-08-14T13:09:05Z` | Stopped the main-checkout, prior PR-worktree, and stale cross-browser Helix processes; initialized Compose project `helix-pr1117-dev`; all four HTTP smoke checks passed |
+| Carrier workspace loading fixed locally | `2026-08-14T13:20:26Z` | Commit `70ea332c0`; tenant-scoped `/api/me` returned 200 and the open `/capsto` page rendered successfully after reload |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -78,6 +80,7 @@ Exclusions and owner decisions:
 - Current-head UI validation passed: 14 focused tests across 6 files, web lint, theme-literal check, and production build. The complete 135-suite web run had one unrelated, repeatable local-timezone assertion failure in `OperationsEligibilityExceptions.test.tsx` (`toLocaleString()` expected UTC noon while the machine is in America/Denver); the redesigned workspace suites all passed.
 - Real-app verification with the NorthRiver Admin persona covered the Team Members list, search/filter presentation, detail breadcrumbs and Profile tab, the full Permissions view, Assign Role and Add Team Member dialogs, and Reporting placeholder. The branch UI rendered correctly inside the existing HelixOS desktop window. Assignment-enabled manual paths remain outstanding because the available NorthRiver demo identity lacks the assignment-management capability and the separate branch API process returned an environment-specific 500 against the shared local database.
 - A fresh isolated local environment was created under Compose project `helix-pr1117-dev`: Postgres became healthy, all 192 migrations applied, and the demo seed completed successfully. The canonical Windows launcher started web, Client Portal, Rule Engine, and workflow processes from the PR worktree. Its first API watcher stalled before binding without an error; restarting only that API subtree succeeded. Smoke checks returned HTTP 200 for Helix web, Client Portal, `/api/me` with `keith-demo`, and Rule Engine readiness. Postgres and Rule Engine containers were healthy. Seeded `tenant_plan.created` workflow events attempted delivery before the Rule Engine became ready and were recorded as local startup failures; this does not block Manage Carrier Account UI iteration but remains relevant if plan synchronization is exercised in this session.
+- The first browser smoke exposed a tenant-context failure hidden by the unscoped `/api/me` check: `CarrierPrimaryRoleResolver` relied on emitted constructor metadata, so the Windows `tsx` runtime instantiated it with an undefined `RoleCatalogService` and tenant-scoped `/api/me` returned 500. Added explicit Nest injection plus an application-context regression test in local commit `70ea332c0`. Eight focused role-catalog/DI tests passed, the API TypeScript build passed, tenant-scoped `/api/me` returned 200, and the existing in-app browser tab rendered the Capstone workspace after reload. The local commit remains one commit ahead of the Draft PR branch and has not been pushed.
 
 ## Outcome, risk, and follow-up
 
