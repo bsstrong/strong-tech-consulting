@@ -2,15 +2,15 @@
 
 ## Identity
 
-- Status: in-progress
+- Status: complete
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-14T13:24:22Z`
 - Task/thread ID: current Codex task; durable ID unavailable
-- Starting branch: `origin/main` (new dedicated branch pending)
+- Starting branch: `codex/windows-api-watcher-recovery` from `origin/main`
 - Starting base SHA: `31c57385d9965607e22813b1619b343a37e7c54b`
 - Starting head SHA: `31c57385d9965607e22813b1619b343a37e7c54b`
 - Issue: N/A
-- PR: pending
+- PR: [helixosio/helixos#1150](https://github.com/helixosio/helixos/pull/1150) (Draft)
 
 ## Objective and scope
 
@@ -27,40 +27,52 @@ Exclusions and owner decisions:
 | Milestone | Timestamp | Duration or evidence |
 | --- | --- | --- |
 | Task started | `2026-08-14T13:24:22Z` | — |
-| Implementation/handoff | pending | pending |
-| PR created | pending | pending |
-| Review | pending | pending |
-| CI | pending | pending |
-| Completed | pending | pending |
+| Implementation/handoff | `2026-08-14T13:41:43Z` | Commit `5e3d83a952195f2972b27b9914553e7aa93e8c92` pushed on the dedicated branch |
+| PR created | `2026-08-14T13:42:09Z` | 17 minutes 47 seconds from task start; Draft PR #1150 |
+| Review | `2026-08-14T13:41:43Z` | Mandatory local architecture self-review completed with zero actionable findings; external review remains paused |
+| CI | `2026-08-14T13:42:13Z` | Exact-head HelixOS CI and Windows Watcher CI jobs reported `SKIPPED`, as required for Draft pull requests |
+| Completed | `2026-08-14T13:42:33Z` | 18 minutes 11 seconds total elapsed |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | pending | UTC lifecycle timestamps |
-| Commits | pending | Git history on the dedicated branch |
-| Change size | pending | merge-base diff statistics |
-| Validation | pending | command output captured during implementation |
-| Review | pending | local architecture self-review and any authorized Draft review evidence |
-| CI | pending | exact-head GitHub checks after Draft PR creation |
-| Benchmarks | N/A unless diagnosis requires timing comparison | startup-readiness observations |
+| Total elapsed | 18 minutes 11 seconds | `2026-08-14T13:24:22Z` through `2026-08-14T13:42:33Z` |
+| Commits | 1 | `5e3d83a9 fix(dev): recover stalled Windows API watcher` |
+| Change size | 484 insertions, 3 deletions across 6 files | `git show --numstat` and commit summary |
+| Validation | 8 focused watcher tests passed; 96 full script tests passed and 2 Unix-only tests skipped on Windows; API build passed; 4 live HTTP assertions passed across replacement/restoration checks | Local command output and Windows process/HTTP inspection |
+| Review | 1 local architecture self-review, 0 actionable findings | Complete diff and surrounding launcher/test/runbook inspection |
+| CI | 2 exact-head jobs skipped because PR #1150 is Draft | GitHub `statusCheckRollup` for head `5e3d83a952195f2972b27b9914553e7aa93e8c92` |
+| Benchmarks | Existing failure exceeded 80 seconds without binding; healthy supervised launches bound within the 45-second smoke windows | Prior process observation plus two consecutive live launcher runs |
 
 ## Work and decisions
 
 - Prior observed failure evidence: during a clean `npm run dev:windows` launch, the API `cross-env`/`tsx watch` process tree remained alive for more than 80 seconds without listening on port 4000 or logging an error. Web, portal, workflow, and Rule Engine startup continued. Stopping only the API subtree and relaunching the same API workspace command bound port 4000 within seconds.
-- Root cause, implementation boundary, and recovery policy are pending repository inspection and focused reproduction.
+- Repository history showed that the prior July fix addressed restart storms from Node's native watcher by moving to `tsx watch`; it did not supervise initial readiness or clean stale Windows watcher trees.
+- The selected boundary is a Windows-only local API runner. It owns process discovery/cleanup, initial `/api/health` readiness, one bounded restart, signal forwarding, and exact watcher-tree termination. `tsx watch` continues to own normal source-change restarts.
+- The preflight excludes the new launch's own ancestry, targets only recognized Helix API workspace/runner/legacy watcher commands, and refuses to terminate an unrecognized owner of the configured API port.
+- A watcher that exits explicitly is not retried. Only a watcher that remains alive but unready for 30 seconds is stopped and retried once; a second timeout exits clearly.
 
 ## Validation, review, and CI
 
-- Pending.
+- `node --check src/scripts/local-api-windows-runner.mjs` passed.
+- `node --test src/scripts/api-dev-command.test.mjs` passed 8 of 8 tests, including process-root selection, current-launch ancestry exclusion, explicit-exit handling, bounded retry exhaustion, readiness/exit/timeout classification, and the real `tsx watch` burst-coalescing regression.
+- `npm run test:scripts` passed 96 tests; 2 Unix-only `free-port.mjs` tests were skipped on Windows as designed.
+- `npm run build -w @helixos/api` passed.
+- Live Windows verification launched the new command twice on port 4000. The first removed the prior PR #1117 API watcher and became healthy; the second removed the first supervised watcher tree and also returned HTTP 200 from `/api/health`.
+- The PR #1117 API watcher was restored afterward. `/api/health` and tenant-scoped `/api/me` both returned HTTP 200, and the existing web/portal processes remained running.
+- Draft PR #1150 was created at exact head `5e3d83a952195f2972b27b9914553e7aa93e8c92`. It has no reviewer requests. External review activity was not started.
 
 ## Outcome, risk, and follow-up
 
-- Outcome: in progress.
-- Primary risk: a supervisor that masks real compile/startup failures or leaves orphaned Windows processes. The design must distinguish a live-but-unready stall from an explicit child-process failure and must terminate only the exact managed process tree.
-- Follow-up: pending.
+- Outcome: completed in Draft PR #1150.
+- Residual risk: a watcher whose child application fails while the `tsx` parent remains alive is observationally the same as a silent startup stall and can consume the single retry before failing. The retry is bounded, output remains inherited, and deterministic explicit watcher exits are preserved.
+- Draft CI is intentionally skipped by repository policy. The Windows-hosted regression will run when the owner later authorizes promotion from Draft.
+- Draft PR #1117 remains unchanged remotely with review paused. Its local dependency-injection fix commit `70ea332c073441a9567113bf30955b182c064ec1` remains unpushed.
 
 ## Evidence provenance
 
 - Starting Git state was read directly from `origin/main` after `git fetch origin`.
 - The prior failure observation comes from the immediately preceding PR #1117 local-stack startup in this same Codex task and is also recorded in `projects/helixos/engineering/tasks/20260813T033418Z-pr-1117-assigned-client-roles-phase2.md`.
+- Commit, change-size, and branch evidence came from the dedicated worktree at `C:\dev\HelixOS-worktrees\windows-api-watcher-recovery`.
+- Pull-request state, exact head, review requests, and check conclusions came from canonical GitHub PR #1150 data after creation.
