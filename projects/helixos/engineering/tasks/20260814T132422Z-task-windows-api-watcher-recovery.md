@@ -44,6 +44,7 @@ Exclusions and owner decisions:
 | Private self-review round 1 completed | `2026-08-14T20:53:23Z` | 3 minutes 48 seconds; 1 blocker, 0 non-blockers; pending monitor deleted when the owner reported completion |
 | Round 1 remediation pushed | `2026-08-14T21:01:38Z` | Commit `d48487af637ee662dc601bd887167d2650946d15` fixes neutral-worktree ownership and updates focused coverage and documentation |
 | Rerun checkpoint | `2026-08-14T21:03:02Z` | Exact head `d48487af637ee662dc601bd887167d2650946d15`, fetched base and merge base `889edf5d323f067f657a786df3b02c95d2c2b054`; clean worktree and fresh base |
+| Private self-review rerun requested | `2026-08-14T21:04:16Z` | Posted exactly `rerun` in parent thread `1786740575.153389`; Slack acknowledged that re-review resumed for exact head `d48487af637ee662dc601bd887167d2650946d15` against base `889edf5d323f067f657a786df3b02c95d2c2b054` |
 
 ## Task statistics
 
