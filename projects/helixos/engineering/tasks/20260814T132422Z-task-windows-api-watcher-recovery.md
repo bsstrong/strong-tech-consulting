@@ -39,6 +39,8 @@ Exclusions and owner decisions:
 | Resumed for platform-isolation review | `2026-08-14T13:58:21Z` | Inspect every changed entry point and validate that macOS/Linux behavior remains unchanged |
 | Platform-isolation review complete | `2026-08-14T14:01:18Z` | 2 minutes 58 seconds; exact-base diff, launcher contract check, and 8 focused tests found zero actionable issues |
 | Private self-review resumed | `2026-08-14T20:45:28Z` | Exact head `5e3d83a952195f2972b27b9914553e7aa93e8c92`; fetched `origin/main` advanced to `889edf5d323f067f657a786df3b02c95d2c2b054` and requires freshness inspection before Slack write |
+| Branch synchronized with current base | `2026-08-14T20:48:11Z` | Owner-authored merge commit `bde29aac93398907480fe5ad710e0618c0357c67`; no PR/base path overlap and the PR diff remains the same six files |
+| Private self-review requested | `2026-08-14T20:49:35Z` | New `#self-reviews` parent `1786740575.153389` contains only the canonical PR URL; exact head `bde29aac93398907480fe5ad710e0618c0357c67`, base `889edf5d323f067f657a786df3b02c95d2c2b054` |
 
 ## Task statistics
 
@@ -48,7 +50,7 @@ Exclusions and owner decisions:
 | Commits | 1 | `5e3d83a9 fix(dev): recover stalled Windows API watcher` |
 | Change size | 484 insertions, 3 deletions across 6 files | `git show --numstat` and commit summary |
 | Validation | Platform contract check passed; 8 focused watcher tests passed in 6.108 seconds; prior 96 full script tests passed with 2 Unix-only tests skipped on Windows; API build passed; 4 live HTTP assertions passed | Exact-base comparison, local command output, and Windows process/HTTP inspection |
-| Review | 2 local reviews, 0 actionable findings | Complete architecture review plus exact-base macOS/Linux platform-isolation review |
+| Review | 2 local reviews with 0 actionable findings; private round 1 pending | Complete architecture review, exact-base macOS/Linux isolation review, and `#self-reviews` thread `1786740575.153389` |
 | CI | 2 exact-head jobs skipped because PR #1150 is Draft | GitHub `statusCheckRollup` for head `5e3d83a952195f2972b27b9914553e7aa93e8c92` |
 | Benchmarks | Existing failure exceeded 80 seconds without binding; healthy supervised launches bound within the 45-second smoke windows | Prior process observation plus two consecutive live launcher runs |
 
@@ -62,6 +64,7 @@ Exclusions and owner decisions:
 - Platform-isolation review confirmed the root `package.json` is unchanged, the API workspace's Unix `dev` command is byte-for-byte unchanged, and `dev:windows` is the only package script modified. The new runner is reachable from the documented launcher graph only through Windows-labeled commands.
 - The only workflow change adds the new runner to path filters in `windows-watcher-ci.yml`, whose sole job runs on `windows-latest`. The documentation changes are explicitly Windows-scoped.
 - The shared script-test file imports the Windows runner without executing it: direct execution is guarded, and PowerShell/process cleanup occurs only inside invoked Windows-runner functions. Its pure supervision tests remain platform-neutral.
+- Before the private review request, `origin/main` advanced through seven commits without touching any of the PR's six paths. The branch was then merge-forwarded by the owner to current base; the active checkout fast-forwarded to that exact remote head without local changes.
 
 ## Validation, review, and CI
 
