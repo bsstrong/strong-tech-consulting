@@ -47,6 +47,7 @@ Exclusions and owner decisions:
 | Independent audit completed | 2026-08-14 05:47:26 UTC | Zero blockers; two non-blocking evidence findings resolved; branch clean and unpushed |
 | Exact-head final local review resumed | 2026-08-14 05:59:37 UTC | Required instructions and runbook loaded; starting state independently matched the requested branch, head, ancestry, four-commit list, clean tree, and 25-file `+1600/-1157` diff before substantive review |
 | Final local review findings established | 2026-08-14 06:12:26 UTC | Complete diff/surrounding-feature inspection found two concrete acceptance defects and one bounded accessibility gap; regression-first corrections started |
+| Final-review corrections locally validated | 2026-08-14 06:32:29 UTC | All 17 focused feature files / 81 tests passed in 39.27 seconds; web lint passed with zero warnings in 18.01 seconds |
 
 ## Task statistics
 
@@ -74,6 +75,9 @@ Exclusions and owner decisions:
 - Independently re-audited the complete parent-to-head diff and surrounding feature modules without relying on the original handoff conclusions.
 - Added regressions proving that a mismatched provider-save response stops config persistence and that publish-pending mutation state locks provider-changing actions while fields remain editable. No production code changed during the audit.
 - Updated the PR C handoff with the independent audit disposition and evidence; maintainer ownership and contracts were unchanged, so the canonical maintainer guide required no audit correction.
+- Corrected the page/detail boundary so an empty catalog can create its first provider, list and detail failures can be retried, and detail failure retains provider selection and drawer access without mounting summary data as an editor.
+- Made the reducer authoritative for provider/config/sample snapshot validity. Saved validation is retained as a baseline, canonical edits hide stale readiness, saved responses preserve post-submit edits, and async validation applies only when both submitted provider and config fingerprints still match.
+- Added keyboard selection to provider rows plus target-specific enabled/delete semantics, an accessible Advanced JSON editor name, and a named preview table.
 
 ## Validation, review, and CI
 
@@ -86,6 +90,9 @@ Exclusions and owner decisions:
 - Required post-correction build: `npm run build -w @helixos/web` passed on exact code/test head `c44739289fd4bc052b691fad76a7815a518c106b` in 62.09 seconds wall time; Vite transformed 2,248 modules in 25.96 seconds. Only the existing SignalR annotation and chunk-size warnings remained.
 - Final local head `bf54a8b72a401bb030710899a9182f130bbbb7b4` differs from the validated code/test head only by the audit handoff documentation commit.
 - Full focused tests, full web tests, lint, theme checks, hosted timing, CI, screenshots, and complete visual UAT are intentionally deferred to the owner-authorized exact-head final review cycle.
+- Regression-first correction subset: 10 assertions failed across the newly exercised empty/detail, snapshot-readiness, and accessibility boundaries before production correction.
+- Post-correction focused feature run: `npm exec --workspace @helixos/web -- vitest run src/features/utilities/payroll-providers` passed 17 files / 81 tests with zero skips in 37.18 seconds Vitest time and 39.27 seconds measured wall time; no warnings were emitted.
+- Post-correction lint: `npm run lint -w @helixos/web` passed with zero warnings in 18.01 seconds measured wall time.
 
 ## Outcome, risk, and follow-up
 
@@ -127,4 +134,4 @@ Residual risks and follow-up:
 2. **Blocker â€” async snapshot/readiness binding:** validation completion is guarded only by the submitted config fingerprint, not the provider snapshot, and save/publish success unconditionally reveals provider readiness even when fields were edited after submission. A newer unsaved draft can therefore display validation/readiness evidence from the older submitted snapshot.
 3. **Non-blocker â€” keyboard/accessibility semantics:** the Advanced JSON text area has no accessible name, provider drawer rows are mouse-only, and repeated generic column-delete names do not identify their target. These are local presentation-owner corrections.
 
-Planned disposition: add narrow failing regressions, correct each authoritative owner without broad refactoring, run affected validation, then execute the complete final-head matrix and UAT.
+Current disposition: the two blockers and bounded accessibility finding are corrected with narrow regressions. Focused validation and lint are clean; local commit, complete exact-final-head matrix, stack UAT, handoff finalization, and terminal task evidence remain pending.
