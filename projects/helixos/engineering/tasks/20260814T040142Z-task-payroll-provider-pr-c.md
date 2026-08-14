@@ -48,6 +48,8 @@ Exclusions and owner decisions:
 | Exact-head final local review resumed | 2026-08-14 05:59:37 UTC | Required instructions and runbook loaded; starting state independently matched the requested branch, head, ancestry, four-commit list, clean tree, and 25-file `+1600/-1157` diff before substantive review |
 | Final local review findings established | 2026-08-14 06:12:26 UTC | Complete diff/surrounding-feature inspection found two concrete acceptance defects and one bounded accessibility gap; regression-first corrections started |
 | Final-review corrections locally validated | 2026-08-14 06:32:29 UTC | All 17 focused feature files / 81 tests passed in 39.27 seconds; web lint passed with zero warnings in 18.01 seconds |
+| Isolated stack and full-feature UAT started | 2026-08-14 06:50 UTC | Dedicated Postgres/Rule Engine/API/web/client-portal/workflow stack on ports 55433/53001/58080/54000/55173/55174; foreign worktrees and their ports were preserved |
+| UAT authoring/lifecycle corrections committed | 2026-08-14 07:39:49 UTC | `f50f62c437f58f088247b2c984e44dc0f296e91d` and `80864c2c5ba83bf769bd9a599565ccb806c3bf04`; branch remains local and unpushed |
 
 ## Task statistics
 
@@ -78,6 +80,10 @@ Exclusions and owner decisions:
 - Corrected the page/detail boundary so an empty catalog can create its first provider, list and detail failures can be retried, and detail failure retains provider selection and drawer access without mounting summary data as an editor.
 - Made the reducer authoritative for provider/config/sample snapshot validity. Saved validation is retained as a baseline, canonical edits hide stale readiness, saved responses preserve post-submit edits, and async validation applies only when both submitted provider and config fingerprints still match.
 - Added keyboard selection to provider rows plus target-specific enabled/delete semantics, an accessible Advanced JSON editor name, and a named preview table.
+- Corrected select-option editing so the documented one-option-per-line contract is a multiline control, incomplete `Label|value` input survives ordinary controlled typing, and canonical cleanup occurs on blur.
+- Corrected CSV/XLSX format transitions so every rendered default is also present in the editable canonical config; switching to CSV now materializes comma/LF and switching to XLSX clears CSV-only fields.
+- Separated config publication eligibility from provider operational readiness. A disabled new provider can publish the valid draft required by server enablement, while the readiness panel continues to require provider enablement and cannot report a disabled provider Ready.
+- Added labeled Move up/Move down controls to the existing column-list owner so reordering is keyboard-operable without removing drag-and-drop.
 
 ## Validation, review, and CI
 
@@ -93,6 +99,9 @@ Exclusions and owner decisions:
 - Regression-first correction subset: 10 assertions failed across the newly exercised empty/detail, snapshot-readiness, and accessibility boundaries before production correction.
 - Post-correction focused feature run: `npm exec --workspace @helixos/web -- vitest run src/features/utilities/payroll-providers` passed 17 files / 81 tests with zero skips in 37.18 seconds Vitest time and 39.27 seconds measured wall time; no warnings were emitted.
 - Post-correction lint: `npm run lint -w @helixos/web` passed with zero warnings in 18.01 seconds measured wall time.
+- Targeted UAT-correction validation: the client-input/config-format subset passed 3 files / 9 tests in 5.50 seconds Vitest time (7.72 seconds wall); the complete Page integration file passed 29/29 in 38.80 seconds Vitest time (40.81 seconds wall); the keyboard-reorder component test passed 1/1 in 4.43 seconds Vitest time (6.60 seconds wall) without warnings.
+- Local authorization smoke against the isolated API returned 200 for `Bearer keith-demo`, 403 for the carrier-admin persona, and 401 without Authorization.
+- UAT has exercised loading/error/empty/create, CSV/XLSX inference and validation, list/detail hydration, metadata/config save, partial-save retry, pending-save late-edit reconciliation, publish failure/retry and pending locks, provider switching, extractor-only presentation, preview, JSON, client inputs, row rules, confirmations, responsive layout, approved branding, and the corrected keyboard-reorder controls. Exact final-head matrix rerun, handoff finalization, and terminal evidence remain pending.
 
 ## Outcome, risk, and follow-up
 
@@ -135,3 +144,12 @@ Residual risks and follow-up:
 3. **Non-blocker â€” keyboard/accessibility semantics:** the Advanced JSON text area has no accessible name, provider drawer rows are mouse-only, and repeated generic column-delete names do not identify their target. These are local presentation-owner corrections.
 
 Current disposition: the two blockers and bounded accessibility finding are corrected with narrow regressions. Focused validation and lint are clean; local commit, complete exact-final-head matrix, stack UAT, handoff finalization, and terminal task evidence remain pending.
+
+Additional full-stack UAT findings and disposition:
+
+4. **Blocker — select-option authoring contract:** the single-line control could not satisfy its one-option-per-line instruction, and controlled parsing discarded a newly typed `|` delimiter before a value could be entered. Corrected in `f50f62c4` with pure draft/canonical parser tests plus a rendered ordinary-typing regression.
+5. **Blocker — file-format transition contract:** switching XLSX to CSV rendered comma/LF defaults but did not write those required fields into canonical config, so Preview rejected the visually valid editor state. Corrected in `f50f62c4` with direct tab coverage and successful local Preview UAT.
+6. **Blocker — new-provider publish/enable lifecycle:** UI publication was gated by provider-enabled readiness even though the API requires publishing before enabling file generation; after publication the same conflation could report a disabled provider Ready. Corrected cohesively in `f50f62c4`; the valid draft can publish while disabled, operational readiness still requires enablement, and the complete create/publish/enable sequence passed UAT.
+7. **Non-blocker — keyboard column reordering:** drag-and-drop was the only reorder mechanism. Corrected in `80864c2c` with labeled boundary-disabled controls, keyboard regression coverage, desktop and 390x844 visual verification, and functional move/restore UAT.
+
+Current code/test head: `80864c2c5ba83bf769bd9a599565ccb806c3bf04`; working tree clean; no upstream configured; no remote branch exists. Complete exact-head automated validation and documentation commits remain pending.
