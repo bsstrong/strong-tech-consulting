@@ -37,13 +37,14 @@ Exclusions and owner decisions:
 | Current status checkpoint | `2026-08-14T04:36:03Z` | Draft; waiting for UI design comparison and manual UAT |
 | UI redesign authorized | `2026-08-14T06:04:06Z` | Owner supplied the implementation brief and prototype source, resolved the open product questions, and authorized replacing the Manage Carrier Account window UI while preserving compatible functional code |
 | First UI implementation pushed | `2026-08-14T07:08:14Z` | Contract support commits `5912ac99e` and `9e6edc281`; UI commit `257073db4`; PR verified Draft with zero review requests |
+| Isolated PR dev stack started | `2026-08-14T13:09:05Z` | Stopped the main-checkout, prior PR-worktree, and stale cross-browser Helix processes; initialized Compose project `helix-pr1117-dev`; all four HTTP smoke checks passed |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 27h 34m at current checkpoint | Reconstructed from earliest recoverable commit through `2026-08-14T07:08:14Z`; includes pauses and waiting and is not active-work time |
+| Total elapsed | 33h 35m at current checkpoint | Reconstructed from earliest recoverable commit through the dev-stack readiness checkpoint at `2026-08-14T13:09:05Z`; includes pauses and waiting and is not active-work time |
 | Commits | 77 commits visible in PR | GitHub PR state at head `257073db449da476ee10810caf9a5bcb9a350dd4` |
 | Change size | 119 files, +17,213 / -2,445 | GitHub PR aggregate at head `257073db449da476ee10810caf9a5bcb9a350dd4` |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
@@ -76,6 +77,7 @@ Exclusions and owner decisions:
 - Exact-current-head private self-review has deliberately not been rerun after the circuit-breaker commit. Owner approval is required before resuming it.
 - Current-head UI validation passed: 14 focused tests across 6 files, web lint, theme-literal check, and production build. The complete 135-suite web run had one unrelated, repeatable local-timezone assertion failure in `OperationsEligibilityExceptions.test.tsx` (`toLocaleString()` expected UTC noon while the machine is in America/Denver); the redesigned workspace suites all passed.
 - Real-app verification with the NorthRiver Admin persona covered the Team Members list, search/filter presentation, detail breadcrumbs and Profile tab, the full Permissions view, Assign Role and Add Team Member dialogs, and Reporting placeholder. The branch UI rendered correctly inside the existing HelixOS desktop window. Assignment-enabled manual paths remain outstanding because the available NorthRiver demo identity lacks the assignment-management capability and the separate branch API process returned an environment-specific 500 against the shared local database.
+- A fresh isolated local environment was created under Compose project `helix-pr1117-dev`: Postgres became healthy, all 192 migrations applied, and the demo seed completed successfully. The canonical Windows launcher started web, Client Portal, Rule Engine, and workflow processes from the PR worktree. Its first API watcher stalled before binding without an error; restarting only that API subtree succeeded. Smoke checks returned HTTP 200 for Helix web, Client Portal, `/api/me` with `keith-demo`, and Rule Engine readiness. Postgres and Rule Engine containers were healthy. Seeded `tenant_plan.created` workflow events attempted delivery before the Rule Engine became ready and were recorded as local startup failures; this does not block Manage Carrier Account UI iteration but remains relevant if plan synchronization is exercised in this session.
 
 ## Outcome, risk, and follow-up
 
