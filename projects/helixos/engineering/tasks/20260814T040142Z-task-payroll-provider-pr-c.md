@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress (exact-head final local review resumed 2026-08-14 05:59:37 UTC)
+- Status: in-progress (three-PR Draft stack published 2026-08-14 23:48:29 UTC; private self-review pending)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-14 04:01:42 UTC
 - Task/thread ID: Unavailable from the current Codex context
@@ -12,7 +12,9 @@
 - Final branch: `codex/payroll-provider-refactor-final`
 - Final head SHA: `7a99699806a62054b8b71024b737ea09ab6499ee`
 - Issue: N/A
-- PR: N/A; the local branch was not pushed and no Draft pull request was created or changed
+- PR A: https://github.com/helixosio/helixos/pull/1163 (`main` <- `codex/payroll-provider-refactor-ui`)
+- PR B: https://github.com/helixosio/helixos/pull/1164 (`codex/payroll-provider-refactor-ui` <- `codex/payroll-provider-refactor-state`)
+- PR C: https://github.com/helixosio/helixos/pull/1165 (`codex/payroll-provider-refactor-state` <- `codex/payroll-provider-refactor-final`)
 
 ## Objective and scope
 
@@ -20,7 +22,7 @@ Continue the stacked Payroll Provider Management refactor with PR C from exact P
 
 Resumed objective: perform an independent senior audit of the completed local PR C implementation from exact parent `8418af4170c3a7600f1b1e9525563a8ab8226a1c` through expected head `5dd22eee7bda25507fde1e93eb15c78eeff5c7bf`, without relying on the existing handoff conclusions and without beginning the final-review lifecycle.
 
-Current resumed objective: perform the owner-authorized exact-head final local review of the complete stacked feature from parent `8418af4170c3a7600f1b1e9525563a8ab8226a1c` through starting head `bf54a8b72a401bb030710899a9182f130bbbb7b4`; independently review the full diff and surrounding feature, run the complete local validation and UAT matrix, correct concrete defects, and update the final handoff. Hosted CI/timing, pushes, pull-request actions, review requests, Slack writes, Ready transitions, merge, release, and publication remain unauthorized.
+Current resumed objective: publish the three validated local stack branches and create PR A, PR B, and PR C as Draft pull requests with their exact stacked bases so private self-review can begin. The owner authorized these branch pushes and Draft PR creations on 2026-08-14; reviewer requests, Slack writes, Ready transitions, merge, release, and publication remain unauthorized.
 
 Exclusions and owner decisions:
 
@@ -37,7 +39,8 @@ Exclusions and owner decisions:
 | Branch created | 2026-08-14 04:03 UTC | Created `codex/payroll-provider-refactor-final` from exact PR B head; ancestry verified |
 | Implementation committed | 2026-08-14 04:35:32 UTC | `7453889dd49d54be2266305ff3eafd5f1098bcc9` |
 | Handoff documentation committed | 2026-08-14 04:39:45 UTC | `5dd22eee7bda25507fde1e93eb15c78eeff5c7bf` |
-| PR created | N/A | No push or PR operation was authorized for this handoff |
+| Stack branches pushed | 2026-08-14 23:47 UTC | PR A `01b519b31`, PR B `8418af417`, and PR C `7a9969980` published without rebasing, force-pushing, or history rewriting |
+| Draft PR stack created | 2026-08-14 23:48 UTC | PR A #1163 targets `main`; PR B #1164 targets PR A; PR C #1165 targets PR B |
 | Review | 2026-08-14 04:40 UTC | Complete PR C parent-to-head diff and surrounding feature architecture reviewed |
 | CI | N/A | Hosted validation is deferred to final review |
 | Completed | 2026-08-14 04:42 UTC | Required build passed on exact final local head; branch clean |
@@ -63,7 +66,7 @@ Exclusions and owner decisions:
 | Change size | 35 files; 2,130 insertions; 1,213 deletions | `git diff --shortstat 8418af417..7a9969980` |
 | Validation | 18/18 focused files and 85/85 tests; 142/142 full-web files and 1,427/1,427 tests; lint/theme/package/build clean | Exact terminal-head commands below |
 | Review | 5 blockers, 2 non-blockers, and 1 review-correction build defect resolved | Complete diff, surrounding modules, static searches, focused regressions, isolated-stack UAT, and exact-head verification |
-| CI | N/A | Hosted CI/timing unavailable because push/PR operations were not authorized |
+| CI | Draft workflows started and intentionally skipped | PR A run `31851578763`, PR B run `31851588161`, and PR C run `31851601890`; no hosted timing artifact is available in Draft state |
 | Benchmarks | Local directional only | Focused 41.445 seconds; full web 191.597 seconds; production build 58.774 seconds on terminal head |
 
 ## Work and decisions
@@ -115,17 +118,17 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-PR C implementation, independent senior audit correction, final-review corrections, complete local validation, whole-feature UAT, maintainer documentation, and handoff are complete locally. Exact final head `7a99699806a62054b8b71024b737ea09ab6499ee` / tree `4b6bbaf6ddbadc7172fd67ea7ff87ec00b8517af` is clean, has no upstream, has no remote branch, and remains intentionally unpushed.
+PR C implementation, independent senior audit correction, final-review corrections, complete local validation, whole-feature UAT, maintainer documentation, and handoff are complete. Exact final head `7a99699806a62054b8b71024b737ea09ab6499ee` / tree `4b6bbaf6ddbadc7172fd67ea7ff87ec00b8517af` remains clean and now tracks the exact remote branch. All three stack branches are published and all three pull requests are open in Draft state with no reviewers requested.
 
 Residual risks and follow-up:
 
-- Hosted CI, `web-unit-timing`, and hosted performance evidence remain unavailable until the owner authorizes push/PR work.
+- Draft CI jobs intentionally skipped under repository policy, so hosted `web-unit-timing` and performance evidence remain unavailable until the later Ready/exact-head CI gate.
 - `PayrollProviderEditor.tsx` (763 lines), `PayrollProviderColumnSourceFields.tsx` (353 lines), and the Page integration test (1,208 lines) remain size signals. Complete review found cohesive responsibilities, direct seams, no effects/shadow refs, and a 35.06-second page-test runtime; no demonstrated defect justifies a controller hook, broad prop plumbing, or mechanical split.
 - The lockfile install reports 61 repository-wide dependency advisories, including 4 critical; this branch changes no dependency.
 - The in-app browser could not reliably synthesize native HTML5 pointer drag. The unchanged `dataTransfer` drag regression passed, and the new accessible reorder controls passed keyboard and browser UAT.
 - Screenshots, ignored fixtures, and two review-owned Docker volumes remain locally for reproduction; review containers/network were removed and foreign services were untouched.
 - Any PR A or PR B change must be propagated upward and invalidates prior PR C evidence.
-- Before PR lifecycle work can begin, the owner must accept the local commits and explicitly authorize pushing the stacked branch and creating/updating the Draft PR against exact PR B parent `8418af417`. Then exact remote-head hosted CI/timing and all Draft/final-review gates must be re-established. No Ready, review, Slack, merge, release, or publication step is authorized.
+- Next owner-authorized lifecycle work is the private exact-current-head self-review loop for each Draft PR. No production-feedback request, GitHub reviewer request, Slack write, Ready transition, merge, release, or publication step is authorized by the Draft creation request.
 
 ## Evidence provenance
 
@@ -169,7 +172,7 @@ Additional full-stack UAT findings and disposition:
 6. **Blocker — new-provider publish/enable lifecycle:** UI publication was gated by provider-enabled readiness even though the API requires publishing before enabling file generation; after publication the same conflation could report a disabled provider Ready. Corrected cohesively in `f50f62c4`; the valid draft can publish while disabled, operational readiness still requires enablement, and the complete create/publish/enable sequence passed UAT.
 7. **Non-blocker — keyboard column reordering:** drag-and-drop was the only reorder mechanism. Corrected in `80864c2c` with labeled boundary-disabled controls, keyboard regression coverage, desktop and 390x844 visual verification, and functional move/restore UAT.
 
-Current terminal head: `7a99699806a62054b8b71024b737ea09ab6499ee`; exact terminal matrix and final handoff are complete; working tree clean; no upstream configured; no remote branch exists.
+Current terminal head: `7a99699806a62054b8b71024b737ea09ab6499ee`; exact terminal matrix and final handoff are complete; working tree clean; upstream and remote branch resolve to the same exact head.
 
 ### Terminal evidence
 
@@ -179,4 +182,4 @@ Current terminal head: `7a99699806a62054b8b71024b737ea09ab6499ee`; exact termina
 - Local stack: migrations, seed, API/web/Rule Engine smoke, authorization smoke, and complete UAT passed.
 - Visual artifacts: 38 screenshots under `C:\dev\HelixOS-payroll-provider-refactor-ui\.uat\screenshots\payroll-provider-final-f1c89a42c`.
 - Handoff: `docs/payroll-provider-management-pr-c-handoff.md` contains exact commands, counts, warnings, findings, UAT disposition, residual risks, and owner action.
-- Hosted CI/timing: unavailable pending explicit authorization to push and create/update the Draft PR.
+- Hosted CI/timing: Draft workflows started but intentionally skipped; exact-head hosted timing remains unavailable until the later Ready CI gate.
