@@ -59,7 +59,7 @@ Exclusions and owner decisions:
 | Churn circuit breaker reactivated | `2026-08-14T22:13:28Z` | Both findings repeat the destructive process-ownership boundary. The pending monitor was deleted immediately; no further rerun was posted. |
 | Round 3 cohesive remediation pushed | `2026-08-14T22:23:27Z` | Commit `395e7c521fa1044bbc3b78969d2f0fac66d6906d` replaces suffix/machine-wide selection with exact API entrypoint and npm ancestry, requested-port ownership, and current-workspace-only no-listener recovery. |
 | Round 3 circuit-breaker checkpoint | `2026-08-14T22:24:06Z` | Exact head `395e7c521fa1044bbc3b78969d2f0fac66d6906d`, base and merge base `889edf5d323f067f657a786df3b02c95d2c2b054`; complete affected-category audit, relevant full suite, and repeated full-diff architecture review are clean locally. Another rerun requires explicit owner approval. |
-| Owner directed root correction | `2026-08-14T22:27:00Z` | Replace the repeatedly unsafe machine-wide ownership classifier rather than continue patching its cases. Preserve owned-child startup retry; refuse any pre-existing requested-port owner without terminating it. |
+| Owner directed root correction | `2026-08-14T22:42:30Z` | Replace the repeatedly unsafe machine-wide ownership classifier rather than continue patching its cases. Preserve owned-child startup retry; refuse any pre-existing requested-port owner without terminating it. |
 
 ## Task statistics
 
