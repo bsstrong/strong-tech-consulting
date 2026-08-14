@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress; owner UI walkthrough complete locally with floating navigation selected; remaining mutation UAT and owner iteration pending
+- Status: in-progress; compact form-density and workspace-padding iteration complete locally; remaining mutation UAT and owner iteration pending
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-13T03:34:18Z` (earliest recoverable Phase 2 commit; the earlier conversation start timestamp is unavailable)
 - Task/thread ID: Unavailable from the current Codex context
@@ -10,8 +10,8 @@
 - Starting base SHA: `9faf3933f09ac999b90aa8a2759da87a4dca4b67` (final Phase 1 feature head used by the original stack)
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
 - Current base SHA: `6d9c30a7b7dab3f5c281d518aa61d7cc93a6ad0e`
-- Current local head SHA: `d11a3d40ea2f4c487342131d0de17aab6413686a`
-- Current PR head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4` (two local fixes not yet pushed)
+- Current local head SHA: `4b2160381e2393547f20b8ace28120c180918d35`
+- Current PR head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4` (three local fixes not yet pushed)
 - Issue: https://github.com/helixosio/helixos/issues/1130
 - PR: https://github.com/helixosio/helixos/pull/1117
 
@@ -41,13 +41,14 @@ Exclusions and owner decisions:
 | Isolated PR dev stack started | `2026-08-14T13:09:05Z` | Stopped the main-checkout, prior PR-worktree, and stale cross-browser Helix processes; initialized Compose project `helix-pr1117-dev`; all four HTTP smoke checks passed |
 | Carrier workspace loading fixed locally | `2026-08-14T13:20:26Z` | Commit `70ea332c0`; tenant-scoped `/api/me` returned 200 and the open `/capsto` page rendered successfully after reload |
 | Owner UI walkthrough and floating chrome completed locally | `2026-08-14T14:10:30Z` | Commit `d11a3d40e`; real-app walkthrough covered every workspace screen and non-mutating dialog; both discovered data-query failures were fixed |
+| Compact form-density and padding iteration completed locally | `2026-08-14T14:39:00Z` | Commit `4b2160381`; shared compact fields verified at 32px single-line height and workspace content/breadcrumb insets verified at 10px in the real app |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 33h 35m at current checkpoint | Reconstructed from earliest recoverable commit through the dev-stack readiness checkpoint at `2026-08-14T13:09:05Z`; includes pauses and waiting and is not active-work time |
+| Total elapsed | 35h 5m at current checkpoint | Reconstructed from earliest recoverable commit through the compact-density checkpoint at `2026-08-14T14:39:00Z`; includes pauses and waiting and is not active-work time |
 | Commits | 77 commits visible in PR | GitHub PR state at head `257073db449da476ee10810caf9a5bcb9a350dd4` |
 | Change size | 119 files, +17,213 / -2,445 | GitHub PR aggregate at head `257073db449da476ee10810caf9a5bcb9a350dd4` |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
@@ -71,6 +72,7 @@ Exclusions and owner decisions:
 - Switched the centralized sidebar decision to `floating`, with the breadcrumb card derived from the same configuration and the alternate flush values retained beside the switch. The status remains `dot`.
 - Fixed PostgreSQL raw-query parameter inference for bigint role-definition IDs in the Client assignment state query and sensitive-access permission query. These failures had caused Broker metrics and Unassigned Clients to return 500 and the Permissions tab to fail after query retries.
 - Coalesced permission groups that share a feature-area label across app sections, eliminating duplicate indistinguishable headers such as two `Payroll Cycle` groups. Kept this deterministic transformation in the existing pure permission model.
+- Added a shared compact text-field primitive and applied it to the Carrier workspace searches, filters, assignment/permission dialogs, and reused Add Team Member form. Single-line controls use a 32px height; multiline controls use a compact 8px by 10px inset. Reduced the floating breadcrumb right margin and main content padding to a consistent 10px workspace inset.
 
 ## Validation, review, and CI
 
@@ -87,10 +89,11 @@ Exclusions and owner decisions:
 - The first browser smoke exposed a tenant-context failure hidden by the unscoped `/api/me` check: `CarrierPrimaryRoleResolver` relied on emitted constructor metadata, so the Windows `tsx` runtime instantiated it with an undefined `RoleCatalogService` and tenant-scoped `/api/me` returned 500. Added explicit Nest injection plus an application-context regression test in local commit `70ea332c0`. Eight focused role-catalog/DI tests passed, the API TypeScript build passed, tenant-scoped `/api/me` returned 200, and the existing in-app browser tab rendered the Capstone workspace after reload. The local commit remains one commit ahead of the Draft PR branch and has not been pushed.
 - The owner-directed real-app UI pass used the NorthRiver Admin persona and covered Team Members, Unassigned Clients, the Client role drawer, Broker assignment dialog, Team Member Profile/Clients/Permissions tabs, Assign Carrier Role, Add Team Member, Import CSV, Reporting, and Integrations. No browser warnings or errors remained. The Broker metrics reported 0 assigned and 15 unassigned Clients, and the Permissions tab loaded 57 permissions after the query corrections.
 - Focused validation for the UI pass: 20 API tests passed; 11 web tests passed; API TypeScript build, web TypeScript build, focused web lint, theme-literal check, and real API HTTP checks passed. The live Unassigned Clients and Permissions endpoints returned 200 after the fixes.
+- Compact-density validation: 11 focused web tests passed; TypeScript project build, focused ESLint, theme-literal check, and production web build passed. Real-app inspection verified Team Member search/filter controls and Add Team Member fields at 32px, the Assign Carrier Role multiline field at a compact 70px minimum, and 10px main/breadcrumb outer insets. No mutation was submitted during visual verification.
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The explicit-DI and owner UI-walkthrough fixes are committed locally through `d11a3d40ea2f4c487342131d0de17aab6413686a` and have not been pushed. PR #1117 is still Draft with no review requests. The task is not complete.
+The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The explicit-DI, owner UI-walkthrough, and compact-density fixes are committed locally through `4b2160381e2393547f20b8ace28120c180918d35` and have not been pushed. PR #1117 is still Draft with no review requests. The task is not complete.
 
 Remaining sequence:
 
