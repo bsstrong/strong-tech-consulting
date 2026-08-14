@@ -3,19 +3,20 @@
 ## Outcome
 
 - PR: https://github.com/helixosio/helixos/pull/1148
-- State: Ready, approved, exact-head required CI green, open and intentionally unmerged
+- State: Merged after the owner completed the merge; exact-head required CI and approval were green before merge
 - Target: `src/web/src/features/client-directory/ClientCreateDialog.test.tsx`
 - Work started: 2026-08-14T06:27:20.275Z
 - PR created: 2026-08-14T06:41:26Z
-- Completed: 2026-08-14T08:12:30Z (`jfollas` exact-head approval)
-- PR merge time: not applicable; merge was not authorized
-- PR open-to-merge: not applicable; PR open-to-approval was 1h 31m 04s
+- Active workflow completed: 2026-08-14T08:12:30Z (`jfollas` exact-head approval made the PR ready to merge)
+- PR merge time: 2026-08-14T12:59:46Z (owner action after the active workflow completed)
+- Adjusted PR open-to-merge: 1h 31m 04s from PR creation through the ready-to-merge approval gate
 - Recorded implementation/handoff: 13m 13s, through 2026-08-14T06:40:32.822Z
-- Work-start-to-merge: not applicable; work-start-to-approval was 1h 45m 09.725s
+- Adjusted work-start-to-merge: 1h 45m 09.725s from task start through the ready-to-merge approval gate
+- Excluded owner sleep/merge wait: 4h 47m 16s from approval through owner merge; this interval is not counted in duration statistics
 - Baseline run: `31772393863`, attempt 1, `web-unit` job `94680825469`, artifact `9208798305`
 - Base SHA: `588b156ddeea6cf5926c266f41fbab72ee3de258`
 - Head SHA: `14e4f2b2469386aafb29556ddd514bee5025195c`
-- Merge SHA: N/A
+- Merge SHA: `31c57385d9965607e22813b1619b343a37e7c54b`
 - Branch: `codex/optimize-next-web-test-20260814`
 - Change size: 2 files, 44 additions, 13 deletions, 1 implementation commit
 - Implementation commit: `14e4f2b2469386aafb29556ddd514bee5025195c`
@@ -92,11 +93,13 @@ Retained behavior:
 | Exact-head full CI | 07:01:26Z–07:15:58Z / 14m 32s | Required checks passed; expected path-gated cross-browser check skipped |
 | Hosted samples | 07:01:29Z–07:51:14Z | Three exact-head artifacts collected; attempts 2 and 3 reran only web-unit |
 | Final review | Requested 07:57:04Z; approved 08:12:30Z / 15m 26s | `jfollas` approval on exact head; no actionable findings or threads |
+| Owner merge | 2026-08-14T12:59:46Z | Merge commit `31c57385d9965607e22813b1619b343a37e7c54b`; post-approval owner wait excluded from duration statistics |
 
 - Review rounds: 1 private self-review, 1 Draft production review, and 1 final GitHub approval; zero corrective review cycles and zero findings.
 - Final approval review: GitHub review `4935246571`, `APPROVED`, commit `14e4f2b2469386aafb29556ddd514bee5025195c`.
 - No final Slack `Check this one again` message was posted because Draft production feedback completed clean and produced no finding to re-review.
 - Final base/head checkpoint: local, pushed, and PR heads matched; fetched base and merge base remained `588b156ddeea6cf5926c266f41fbab72ee3de258`; no base advance; clean worktree; Ready, mergeable, no actionable threads.
+- Post-merge verification: GitHub reports PR #1148 closed and merged at 2026-08-14T12:59:46Z with merge commit `31c57385d9965607e22813b1619b343a37e7c54b`.
 
 ## Exact-current-head CI
 
