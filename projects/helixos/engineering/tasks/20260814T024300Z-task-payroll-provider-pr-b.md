@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: completed
+- Status: in-progress (resumed for PR C model selection)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-14 02:43:00 UTC
 - Task/thread ID: Unavailable from the current Codex context
@@ -72,6 +72,13 @@ PR B is implementation-complete and buildable at local head `8418af417`. The nex
 A copy-ready PR C prompt was delivered to the owner with the exact branch/head, scope, build-only handoff rule, Draft owner-audit hold, and final-review deferrals.
 
 Residual risk: final full-suite, hosted CI, and UAT evidence do not yet exist by design. PR C and each PR's final review remain future work.
+
+### Resumed follow-up — PR C model selection
+
+- Resumed: 2026-08-14 03:59:52 UTC
+- Objective: Recommend the Codex model and reasoning effort best suited to the PR C implementation and architecture-audit prompt.
+- Evidence source: current official OpenAI latest-model guidance.
+- Status: recommendation in progress.
 
 ## Evidence provenance
 
