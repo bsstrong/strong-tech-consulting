@@ -35,6 +35,7 @@ Exclusions and owner decisions:
 | First private self-review corrections recorded | `2026-08-13T20:09:20Z` | Six first-round findings corrected by head `9ec41b48157293379bc79be202b5b76a4cf11318` |
 | Circuit-breaker correction pushed | `2026-08-13T21:01:05Z` | Commit `59a3fdba59028f404b0028d4618af37d67d21a27`; review reruns stopped |
 | Current status checkpoint | `2026-08-14T04:36:03Z` | Draft; waiting for UI design comparison and manual UAT |
+| UI redesign authorized | `2026-08-14T06:04:06Z` | Owner supplied the implementation brief and prototype source, resolved the open product questions, and authorized replacing the Manage Carrier Account window UI while preserving compatible functional code |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -58,6 +59,8 @@ Exclusions and owner decisions:
 - Kept remote data in TanStack Query and retained immutable panel-wide assignment drafts across paging and filtering.
 - Activated the review circuit breaker after the second private review arrived before UI design completion. Audited the complete affected category and fixed the findings and materially similar defects in one cohesive commit rather than continuing iterative reruns.
 - Kept PR #1117 Draft with no GitHub review requests and no production-feedback request.
+- The owner selected the prototype defaults (`dot` Carrier status and `flush` navigation), required Manrope and the existing HelixOS window chrome, and authorized a full window UI replacement. Existing Import CSV and Add Team Member behavior should be preserved where compatible; Reporting and Integrations ship as placeholders; People & Access supplies the existing permission semantics; PR #1117 APIs remain authoritative for Client assignment operations.
+- The Team Members metric "Assigned Clients" counts Clients assigned to a Team Member whose authoritative primary role is Broker.
 
 ## Validation, review, and CI
 
