@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: complete
+- Status: in-progress
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-14T13:24:22Z`
 - Task/thread ID: current Codex task; durable ID unavailable
@@ -22,6 +22,7 @@ Exclusions and owner decisions:
 - Keep the currently running PR #1117 development stack available while developing and testing this isolated startup fix where practical.
 - Do not broaden this task into unrelated local-development or application behavior changes.
 - Owner requires explicit verification that PR #1150 does not change intentional macOS or Linux launcher behavior because those development environments are healthy.
+- Owner authorized the complete private `#self-reviews` workflow, including actionable fixes, validation, logical commits, pushes, and up to three rerun requests under the workflow safety limits.
 
 ## Lifecycle
 
@@ -37,6 +38,7 @@ Exclusions and owner decisions:
 | Discussion checkout complete | `2026-08-14T13:57:06Z` | Active workspace switched to the exact PR head in 1 minute 4 seconds |
 | Resumed for platform-isolation review | `2026-08-14T13:58:21Z` | Inspect every changed entry point and validate that macOS/Linux behavior remains unchanged |
 | Platform-isolation review complete | `2026-08-14T14:01:18Z` | 2 minutes 58 seconds; exact-base diff, launcher contract check, and 8 focused tests found zero actionable issues |
+| Private self-review resumed | `2026-08-14T20:45:28Z` | Exact head `5e3d83a952195f2972b27b9914553e7aa93e8c92`; fetched `origin/main` advanced to `889edf5d323f067f657a786df3b02c95d2c2b054` and requires freshness inspection before Slack write |
 
 ## Task statistics
 
@@ -78,6 +80,7 @@ Exclusions and owner decisions:
 - Outcome: completed in Draft PR #1150.
 - Resumed outcome: the active `C:\dev\HelixOS` workspace is now on `codex/windows-api-watcher-recovery` at exact PR head `5e3d83a952195f2972b27b9914553e7aa93e8c92`, clean and tracking its origin branch. The earlier implementation outcome remains unchanged.
 - Platform-isolation review outcome: verified. PR #1150 does not modify the intentional macOS/Linux runtime launcher path; no PR correction is required.
+- Private self-review outcome: in progress.
 - Residual risk: a watcher whose child application fails while the `tsx` parent remains alive is observationally the same as a silent startup stall and can consume the single retry before failing. The retry is bounded, output remains inherited, and deterministic explicit watcher exits are preserved.
 - Draft CI is intentionally skipped by repository policy. The Windows-hosted regression will run when the owner later authorizes promotion from Draft.
 - Hosted macOS/Linux execution was not run for this Draft PR. The isolation conclusion is based on exact-source comparison: the commands those platforms execute are unchanged, while the one changed runtime entry point is the explicitly Windows-only `dev:windows` command.
