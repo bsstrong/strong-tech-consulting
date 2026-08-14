@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: blocked
+- Status: in-progress
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-14T13:24:22Z`
 - Task/thread ID: current Codex task; durable ID unavailable
@@ -23,7 +23,7 @@ Exclusions and owner decisions:
 - Do not broaden this task into unrelated local-development or application behavior changes.
 - Owner requires explicit verification that PR #1150 does not change intentional macOS or Linux launcher behavior because those development environments are healthy.
 - Owner authorized the complete private `#self-reviews` workflow, including actionable fixes, validation, logical commits, pushes, and up to three rerun requests under the workflow safety limits.
-- Repeated review rounds found omissions in the same destructive process-identity boundary, activating the churn circuit breaker. The owner directed a root correction; it is implemented and pushed, but another automated rerun still requires explicit owner approval.
+- Repeated review rounds activated the churn circuit breaker. The owner directed and received a root correction, then explicitly resumed review by posting the next private rerun.
 
 ## Lifecycle
 
@@ -59,9 +59,11 @@ Exclusions and owner decisions:
 | Churn circuit breaker reactivated | `2026-08-14T22:13:28Z` | Both findings repeat the destructive process-ownership boundary. The pending monitor was deleted immediately; no further rerun was posted. |
 | Round 3 cohesive remediation pushed | `2026-08-14T22:23:27Z` | Commit `395e7c521fa1044bbc3b78969d2f0fac66d6906d` replaces suffix/machine-wide selection with exact API entrypoint and npm ancestry, requested-port ownership, and current-workspace-only no-listener recovery. |
 | Round 3 circuit-breaker checkpoint | `2026-08-14T22:24:06Z` | Exact head `395e7c521fa1044bbc3b78969d2f0fac66d6906d`, base and merge base `889edf5d323f067f657a786df3b02c95d2c2b054`; complete affected-category audit, relevant full suite, and repeated full-diff architecture review are clean locally. Another rerun requires explicit owner approval. |
+| Private self-review round 4 completed | `2026-08-14T22:29:36Z` | 3 minutes 51 seconds after the owner-posted rerun at `2026-08-14T22:25:43Z`; 1 blocker, 0 non-blockers. The readiness supervisor hard-codes IPv4 loopback instead of honoring the API's effective `HOST`, so a valid non-default bind can be killed as unready. This result was missed while the destructive-classifier root correction was implemented. |
 | Owner directed root correction | `2026-08-14T22:42:30Z` | Replace the repeatedly unsafe machine-wide ownership classifier rather than continue patching its cases. Preserve owned-child startup retry; refuse any pre-existing requested-port owner without terminating it. |
 | Root correction pushed | `2026-08-14T22:52:26Z` | Commit `fee7918a9fffd7f7e9f9ce510c5df4d877500d00` deletes machine-wide process classification and all cleanup of pre-existing processes. The runner now refuses an occupied requested port and may terminate only its own spawned watcher tree. |
 | Root-correction checkpoint | `2026-08-14T22:53:14Z` | Exact head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`; base and merge base `889edf5d323f067f657a786df3b02c95d2c2b054`; PR remains Draft with five expected skipped checks. Full-diff architecture review and validation are complete; another private rerun remains blocked on explicit owner approval. |
+| Owner resumed review after root correction | `2026-08-14T22:54:56Z` | Owner posted `rerun` in the existing parent for exact head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`; bot acknowledged at `2026-08-14T22:54:58Z`. The exact base remains `889edf5d323f067f657a786df3b02c95d2c2b054`; review is pending. |
 
 ## Task statistics
 
@@ -115,6 +117,7 @@ Exclusions and owner decisions:
 - Root correction: `node --check` passed; focused watcher tests passed 8 of 8; `npm run test:scripts` passed 96 tests with 2 expected Unix-only skips; `npm run build:packages && npm run build -w @helixos/api` passed after regenerating/building the normal workspace dependencies; `git diff --check` passed.
 - Controlled Windows occupied-port smoke held port 45123 with PID `30248`; the launcher exited 1 and reported that exact PID while the listener remained alive. The test then stopped only its own temporary listener and verified the port was free.
 - Destructive-boundary audit found no `Get-CimInstance`, `Win32_Process`, process-command-line classifier, or pre-existing watcher cleanup in production code. Its sole `taskkill` target is `watcher.pid`, assigned directly from the runner's own `spawn` call.
+- Round 4 finding: the runner's readiness URL still uses fixed `127.0.0.1` although the API accepts `HOST`. A valid specific-interface or IPv6-only bind can therefore be serving while the supervisor times out and terminates its owned child. This finding remains actionable at head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00` and must be addressed when the current exact-head review completes.
 - Live Windows verification launched the new command twice on port 4000. The first removed the prior PR #1117 API watcher and became healthy; the second removed the first supervised watcher tree and also returned HTTP 200 from `/api/health`.
 - The PR #1117 API watcher was restored afterward. `/api/health` and tenant-scoped `/api/me` both returned HTTP 200, and the existing web/portal processes remained running.
 - Draft PR #1150 was created at exact head `5e3d83a952195f2972b27b9914553e7aa93e8c92`. It has no reviewer requests. External review activity was not started.
@@ -124,7 +127,7 @@ Exclusions and owner decisions:
 - Outcome: completed in Draft PR #1150.
 - Resumed outcome: the active `C:\dev\HelixOS` workspace is now on `codex/windows-api-watcher-recovery` at exact PR head `5e3d83a952195f2972b27b9914553e7aa93e8c92`, clean and tracking its origin branch. The earlier implementation outcome remains unchanged.
 - Platform-isolation review outcome: verified. PR #1150 does not modify the intentional macOS/Linux runtime launcher path; no PR correction is required.
-- Private self-review outcome: blocked by the churn circuit breaker pending explicit owner approval for another rerun. Every returned finding is superseded by the root correction at `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`, which removes the unsafe classifier and all pre-existing-process termination instead of continuing case-by-case fixes.
+- Private self-review outcome: in progress at exact head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00` after the owner explicitly posted a rerun. The destructive-classifier findings are superseded by the root correction, but the distinct effective-`HOST` readiness finding from round 4 remains actionable and was not included in that commit.
 - Residual risk: a watcher whose child application fails while the `tsx` parent remains alive is observationally the same as a silent startup stall and can consume the single retry before failing. The retry is bounded, output remains inherited, and deterministic explicit watcher exits are preserved.
 - Draft CI is intentionally skipped by repository policy. The Windows-hosted regression will run when the owner later authorizes promotion from Draft.
 - Hosted macOS/Linux execution was not run for this Draft PR. The isolation conclusion is based on exact-source comparison: the commands those platforms execute are unchanged, while the one changed runtime entry point is the explicitly Windows-only `dev:windows` command.
