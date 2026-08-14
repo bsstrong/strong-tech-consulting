@@ -42,14 +42,16 @@ Exclusions and owner decisions:
 | Branch synchronized with current base | `2026-08-14T20:48:11Z` | Owner-authored merge commit `bde29aac93398907480fe5ad710e0618c0357c67`; no PR/base path overlap and the PR diff remains the same six files |
 | Private self-review requested | `2026-08-14T20:49:35Z` | New `#self-reviews` parent `1786740575.153389` contains only the canonical PR URL; exact head `bde29aac93398907480fe5ad710e0618c0357c67`, base `889edf5d323f067f657a786df3b02c95d2c2b054` |
 | Private self-review round 1 completed | `2026-08-14T20:53:23Z` | 3 minutes 48 seconds; 1 blocker, 0 non-blockers; pending monitor deleted when the owner reported completion |
+| Round 1 remediation pushed | `2026-08-14T21:01:38Z` | Commit `d48487af637ee662dc601bd887167d2650946d15` fixes neutral-worktree ownership and updates focused coverage and documentation |
+| Rerun checkpoint | `2026-08-14T21:03:02Z` | Exact head `d48487af637ee662dc601bd887167d2650946d15`, fetched base and merge base `889edf5d323f067f657a786df3b02c95d2c2b054`; clean worktree and fresh base |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 36 minutes 57 seconds wall-clock; 22 minutes 13 seconds across three task intervals | `2026-08-14T13:24:22Z` through `2026-08-14T14:01:18Z`, including 14 minutes 44 seconds across two completed-state gaps |
-| Commits | 1 | `5e3d83a9 fix(dev): recover stalled Windows API watcher` |
-| Change size | 484 insertions, 3 deletions across 6 files | `git show --numstat` and commit summary |
+| Commits | 2 in-scope commits plus 1 owner-authored base merge | `5e3d83a9 fix(dev): recover stalled Windows API watcher`; `d48487af6 fix(dev): recognize neutral Helix worktrees`; `bde29aac9` merge-forward |
+| Change size | 552 insertions, 3 deletions across 6 files | Exact current base-to-head `git diff --shortstat` |
 | Validation | Platform contract check passed; 8 focused watcher tests passed in 6.108 seconds; prior 96 full script tests passed with 2 Unix-only tests skipped on Windows; API build passed; 4 live HTTP assertions passed | Exact-base comparison, local command output, and Windows process/HTTP inspection |
 | Review | 2 local reviews with 0 actionable findings; private round 1 returned 1 blocker and 0 non-blockers | `#self-reviews` thread `1786740575.153389`; blocker reproduced by the neutral-worktree regression and corrected locally |
 | CI | 2 exact-head jobs skipped because PR #1150 is Draft | GitHub `statusCheckRollup` for head `5e3d83a952195f2972b27b9914553e7aa93e8c92` |
@@ -68,6 +70,7 @@ Exclusions and owner decisions:
 - Before the private review request, `origin/main` advanced through seven commits without touching any of the PR's six paths. The branch was then merge-forwarded by the owner to current base; the active checkout fast-forwarded to that exact remote head without local changes.
 - Private round 1 found that `isHelixApiWatcher` relied on the worktree path containing `helixos`, so an orphan runner or `tsx` watcher from a neutral-named worktree was not owned by the recovery workflow. The failing regression initially returned only PID `10` instead of `[10, 50, 60]`.
 - The cohesive correction parses the stable resolved runner or `tsx` CLI path, derives its workspace root, and verifies both root `helixos` and API `@helixos/api` package identities. Blast-radius inventory covers workspace npm parents, supervised runners, orphan legacy watchers, unrelated application watchers, and current-launch ancestry; non-Windows launch paths and authorization boundaries are unaffected.
+- Rerun checkpoint disposition: the sole blocker is fixed and documented; no non-blockers or additional inline findings existed. The complete affected-instance inventory is covered by the focused process table, the prior `includes("helixos")` detector was removed, all callers were inspected, and no materially similar path-branding instance remains unreviewed. The pull-request description now records the corrected identity boundary and evidence.
 
 ## Validation, review, and CI
 
