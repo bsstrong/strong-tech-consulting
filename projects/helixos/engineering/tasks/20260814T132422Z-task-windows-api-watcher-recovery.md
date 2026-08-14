@@ -10,7 +10,7 @@
 - Starting base SHA: `31c57385d9965607e22813b1619b343a37e7c54b`
 - Starting head SHA: `31c57385d9965607e22813b1619b343a37e7c54b`
 - Issue: N/A
-- PR: [helixosio/helixos#1150](https://github.com/helixosio/helixos/pull/1150) (Draft)
+- PR: [helixosio/helixos#1150](https://github.com/helixosio/helixos/pull/1150) (Ready; owner-selected state)
 
 ## Objective and scope
 
@@ -67,17 +67,20 @@ Exclusions and owner decisions:
 | Private self-review round 5 completed | `2026-08-14T22:57:27Z` | 2 minutes 31 seconds; 0 blockers and 0 non-blockers at head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`. This result did not clear the known round-4 `HOST` blocker because that code was unchanged at the reviewed head. |
 | Effective-host correction pushed | `2026-08-14T23:06:07Z` | Commit `fae13ff77d93fabdff69a2733321acf437105897` derives readiness from the API's effective `HOST`, maps wildcard IPv4/IPv6 binds to matching loopback, preserves specific hosts, and URL-brackets IPv6 literals. |
 | Workflow stopped at rerun limit | `2026-08-14T23:06:50Z` | Current head `fae13ff77d93fabdff69a2733321acf437105897` is fully corrected and validated but has not been privately reviewed. The resumed invocation has consumed its rerun allowance; another exact-head rerun requires a fresh explicit owner instruction. Monitoring automation was deleted. |
+| Owner marked PR Ready | `2026-08-14T23:08:19Z` | GitHub timeline records `ready_for_review` by `bsstrong`. This owner-selected state is authoritative and was not reverted. |
+| Exact-head CI completed | `2026-08-14T23:23:50Z` | Windows Watcher CI passed in 2m 42s and HelixOS CI passed in 15m 28s at `fae13ff77d93fabdff69a2733321acf437105897`; cross-browser remained intentionally skipped. |
+| CI timing investigation completed | `2026-08-14T23:35:55Z` | The apparent delay was isolated to a transient Ubuntu mirror slowdown in `web-e2e`: `npx playwright install --with-deps chromium` spent 9m 19s downloading 21.1 MB of font packages at 38.5 kB/s. Same-time peer E2E runs completed that step in 13s. |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 9 hours 42 minutes 28 seconds wall-clock; active-work duration unavailable because the task resumed across completed-state gaps | `2026-08-14T13:24:22Z` through `2026-08-14T23:06:50Z` |
+| Total elapsed | 10 hours 11 minutes 33 seconds wall-clock; active-work duration unavailable because the task resumed across completed-state gaps | `2026-08-14T13:24:22Z` through `2026-08-14T23:35:55Z` |
 | Commits | 7 in-scope commits plus 1 owner-authored base merge | `5e3d83a9 fix(dev): recover stalled Windows API watcher`; `d48487af6 fix(dev): recognize neutral Helix worktrees`; `e687e3523 fix(dev): reject ambiguous watcher paths`; `170988b32 fix(dev): anchor watcher workspace ancestry`; `395e7c521 fix(dev): scope watcher cleanup ownership`; `fee7918a9 fix(dev): remove destructive watcher preflight`; `fae13ff77 fix(dev): honor API host in readiness probe`; `bde29aac9` merge-forward |
 | Change size | 410 insertions, 3 deletions across 6 files | Exact current base-to-head `git diff --shortstat` |
 | Validation | Platform contract check passed; 9 focused watcher tests passed; 97 full script tests passed with 2 expected Unix-only skips; full dependency-package build and final API build passed; controlled occupied-port smoke reported the exact owner PID and left it alive | Exact-base comparison, local command output, and Windows listener/process inspection |
 | Review | 2 initial local reviews with 0 actionable findings; 5 private rounds returned 5 blockers and 0 non-blockers total, followed by a nominally clean stale-head result; corrected circuit-breaker full-diff review found 1 additional blocker; 4 rerun replies posted | `#self-reviews` thread `1786740575.153389` plus exact-base complete-diff inspections; every known finding is fixed at current head, which still requires exact-head review |
-| CI | 5 exact-head jobs skipped because PR #1150 is Draft | GitHub `statusCheckRollup` for head `e687e35238871904b6e9d76b7701d0c0339a838b` |
+| CI | Exact-head Windows Watcher CI passed in 2m 42s; HelixOS CI passed in 15m 28s. Jobs: watcher 2m 39s, backend 13m 26s, web unit 13m 16s, web E2E 15m 24s; cross-browser skipped. Queue delay was 2-3s. | GitHub runs `31849275155` and `31849275190`, jobs API, logs, and timing artifacts |
 | Benchmarks | Existing failure exceeded 80 seconds without binding; healthy supervised launches bound within the 45-second smoke windows | Prior process observation plus two consecutive live launcher runs |
 
 ## Work and decisions
@@ -105,6 +108,10 @@ Exclusions and owner decisions:
 - The final boundary is structural: before launch, inspect only the requested port and fail closed if it is occupied; after launch, supervise and, if necessary, terminate only the exact child watcher PID returned by this runner's own `spawn`. Tax Service, other applications, and independent worktrees require no classification because they can never be selected for termination.
 - Final architecture disposition: the runner has one cohesive Windows-only responsibility—availability and initial-readiness supervision for the child it creates. Port inspection is read-only I/O, retry policy is deterministic and directly tested, the only destructive operation targets the owned child, and the macOS/Linux `dev` command remains byte-for-byte unchanged.
 
+- Exact-head CI runtime analysis found no branch-induced slowdown in backend or web-unit work. Across the latest ten successful PR runs, median backend time was 13m 38s and median web-unit time was 13m 16s; this branch ran in 13m 26s and 13m 16s respectively. Both jobs execute broad repository suites unrelated to this six-file Windows launcher change, and the web-unit command saturated the two-core hosted runner at 195% CPU for 9m 43s.
+- The only material outlier was web E2E: 15m 24s versus a 6m 14s median for the latest ten successful runs. Its Playwright suite itself was normal at 4m 44s. The preceding `Install Chromium` step was 9m 19s versus 13s in a simultaneous peer run because Ubuntu's package mirror delivered 21.1 MB of uncached OS font dependencies at 38.5 kB/s. The Playwright browser cache hit; it does not cache apt packages installed by `--with-deps`.
+- Windows Watcher CI was normal: 2m 39s versus a 2m 44s median across the latest ten successes. Dependency installation consumed 1m 56s; the actual watcher regression tests took 3s.
+
 ## Validation, review, and CI
 
 - `node --check src/scripts/local-api-windows-runner.mjs` passed.
@@ -122,6 +129,7 @@ Exclusions and owner decisions:
 - Destructive-boundary audit found no `Get-CimInstance`, `Win32_Process`, process-command-line classifier, or pre-existing watcher cleanup in production code. Its sole `taskkill` target is `watcher.pid`, assigned directly from the runner's own `spawn` call.
 - Round 4 finding and disposition: the runner's readiness URL used fixed `127.0.0.1` although the API accepts `HOST`. Commit `fae13ff77d93fabdff69a2733321acf437105897` now derives the health URL from the same effective environment value as `ApiHost`; wildcard IPv4 and all-zero IPv6 forms map to matching loopback, specific IPv4/IPv6 addresses and hostnames are preserved, and IPv6 literals are bracketed for URLs.
 - Effective-host blast radius covered the sole API bind owner (`src/api/src/config.ts` and `main.ts`), local Windows runner, Docker/deploy defaults (`0.0.0.0`), wildcard IPv6, specific interfaces, hostnames, and IPv6 URL formatting. The API itself, non-Windows commands, port ownership, destructive boundary, health endpoint, and retry policy remain unchanged.
+- Exact-head hosted validation passed after the owner marked the PR Ready: Windows Watcher CI run `31849275155` and HelixOS CI run `31849275190`. The jobs started within 2-3 seconds of creation, so runner queueing was not a contributor.
 - Live Windows verification launched the new command twice on port 4000. The first removed the prior PR #1117 API watcher and became healthy; the second removed the first supervised watcher tree and also returned HTTP 200 from `/api/health`.
 - The PR #1117 API watcher was restored afterward. `/api/health` and tenant-scoped `/api/me` both returned HTTP 200, and the existing web/portal processes remained running.
 - Draft PR #1150 was created at exact head `5e3d83a952195f2972b27b9914553e7aa93e8c92`. It has no reviewer requests. External review activity was not started.
@@ -131,7 +139,7 @@ Exclusions and owner decisions:
 - Outcome: completed in Draft PR #1150.
 - Resumed outcome: the active `C:\dev\HelixOS` workspace is now on `codex/windows-api-watcher-recovery` at exact PR head `5e3d83a952195f2972b27b9914553e7aa93e8c92`, clean and tracking its origin branch. The earlier implementation outcome remains unchanged.
 - Platform-isolation review outcome: verified. PR #1150 does not modify the intentional macOS/Linux runtime launcher path; no PR correction is required.
-- Private self-review outcome: blocked only on a fresh explicit owner instruction for another exact-head rerun. The round-5 clean result applies to superseded head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`; current head `fae13ff77d93fabdff69a2733321acf437105897` contains the validated round-4 `HOST` correction and has not been reviewed. The PR remains Draft with no reviewer requests and five expected skipped Draft checks.
+- Private self-review outcome: blocked only on a fresh explicit owner instruction for another exact-head rerun. The round-5 clean result applies to superseded head `fee7918a9fffd7f7e9f9ce510c5df4d877500d00`; current head `fae13ff77d93fabdff69a2733321acf437105897` contains the validated round-4 `HOST` correction and has not been reviewed. The owner subsequently marked the PR Ready; that state is authoritative. Exact-head required CI is green, but no GitHub reviewer was requested by this task.
 - Residual risk: a watcher whose child application fails while the `tsx` parent remains alive is observationally the same as a silent startup stall and can consume the single retry before failing. The retry is bounded, output remains inherited, and deterministic explicit watcher exits are preserved.
 - Draft CI is intentionally skipped by repository policy. The Windows-hosted regression will run when the owner later authorizes promotion from Draft.
 - Hosted macOS/Linux execution was not run for this Draft PR. The isolation conclusion is based on exact-source comparison: the commands those platforms execute are unchanged, while the one changed runtime entry point is the explicitly Windows-only `dev:windows` command.
