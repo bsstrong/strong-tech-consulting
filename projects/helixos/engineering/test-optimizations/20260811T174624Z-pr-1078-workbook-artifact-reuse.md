@@ -1,7 +1,11 @@
 # HelixOS PR #1078 — Reuse generated workbook artifacts in API tests
 
 - PR: https://github.com/helixosio/helixos/pull/1078
+- PR created: 2026-08-11T13:55:16Z
 - Merged: 2026-08-11T17:46:24Z
+- PR open-to-merge: 3h 51m 08s
+- Recorded implementation/handoff: not recorded in available evidence
+- Work-start-to-merge: not recorded in available evidence
 - Head: `dbe9fe0fc0e77f4da8c5b56c6656b8543f2d6755`
 - Merge: `b5033dfd0077ed8fd12bed698c7fe551eaa3e855`
 - Hosted run: `31501854692`

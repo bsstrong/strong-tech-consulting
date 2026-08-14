@@ -1,7 +1,11 @@
 # HelixOS PR #1140 — Speed up Zorka Studio ruleset web tests
 
 - PR: https://github.com/helixosio/helixos/pull/1140
+- PR created: 2026-08-13T22:17:56Z
 - Merged: 2026-08-13T23:26:37Z
+- PR open-to-merge: 1h 08m 41s
+- Recorded implementation/handoff: not recorded in available evidence
+- Work-start-to-merge: not recorded in available evidence
 - Head: `9518fdd644c5317764747cbcbdffa7cc6a48c9ef`
 - Merge: `e6e6c7d8aec33dfb66deb3201ec0f7d4629106cb`
 - Baseline run: `31747168791`

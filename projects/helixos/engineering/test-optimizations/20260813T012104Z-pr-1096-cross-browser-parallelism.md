@@ -1,7 +1,11 @@
 # HelixOS PR #1096 — Parallelize cross-browser Playwright CI
 
 - PR: https://github.com/helixosio/helixos/pull/1096
+- PR created: 2026-08-12T05:21:47Z
 - Merged: 2026-08-13T01:21:04Z
+- PR open-to-merge: 19h 59m 17s
+- Recorded implementation/handoff: not recorded in available evidence
+- Work-start-to-merge: not recorded in available evidence
 - Head: `5efd63283dc0b2dbfcdbcc5a2a405a3836ec5e5`
 - Merge: `6fc42e2570cc82e30a945157c6d72ad980b53a89`
 - Performance head: `b89f734469d30845be3939fe9d246bd5e7496a6a`

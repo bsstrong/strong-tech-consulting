@@ -1,7 +1,11 @@
 # HelixOS PR #1075 — Run API tests from compiled build output
 
 - PR: https://github.com/helixosio/helixos/pull/1075
+- PR created: 2026-08-11T05:46:32Z
 - Merged: 2026-08-11T13:57:40Z
+- PR open-to-merge: 8h 11m 08s
+- Recorded implementation/handoff: not recorded in available evidence
+- Work-start-to-merge: not recorded in available evidence
 - Head: `1f8f6522a82b7a60c99e60c09e2e67c196ed82b3`
 - Merge: `bf93be465242aa0a94f7265af978ab9076837145`
 - Hosted run: `31493731257` on implementation head `bd33c24a71f785e8e71b8129da43634fb9327833`

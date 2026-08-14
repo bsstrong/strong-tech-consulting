@@ -5,7 +5,11 @@
 - PR: https://github.com/helixosio/helixos/pull/1144
 - State: merged
 - Target: `src/web/src/features/tenant-admin/pages/TenantAdminPage.test.tsx`
+- PR created: 2026-08-14T01:18:07Z
 - Completed: 2026-08-14T02:42:02Z
+- PR open-to-merge: 1h 23m 55s
+- Recorded implementation-to-validated-Draft handoff: 11m 59s
+- Work-start-to-merge: 1h 36m 00s
 - Hosted baseline: run `31754118142`
 - Benchmark head: `14cfc641ea32bfbcd703a5f6b90b5ccab0469e55`
 - Final PR head: `c2f61d86a97c6fa5c30a3900c0be5f849cd2ba1a`

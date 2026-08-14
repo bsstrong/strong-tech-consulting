@@ -1,7 +1,11 @@
 # HelixOS PR #1090 — Speed up Sales Proforma workbook contract tests
 
 - PR: https://github.com/helixosio/helixos/pull/1090
+- PR created: 2026-08-11T23:44:26Z
 - Merged: 2026-08-11T23:59:55Z
+- PR open-to-merge: 15m 29s
+- Recorded implementation/handoff: not recorded in available evidence
+- Work-start-to-merge: not recorded in available evidence
 - Head: `4c487a5a77e5773dff76b0e9d0218d7d992c4c53`
 - Merge: `3e4f02e45b409b2876deb6ff6b64fb768c302f80`
 - Recovered exact-head run: `31547698044`, backend job `93963594632`

@@ -1,7 +1,11 @@
 # HelixOS PR #1116 — Extract payroll provider models to accelerate web tests
 
 - PR: https://github.com/helixosio/helixos/pull/1116
+- PR created: 2026-08-13T04:42:56Z
 - Merged: 2026-08-13T14:04:35Z
+- PR open-to-merge: 9h 21m 39s
+- Recorded implementation/handoff: not recorded in available evidence
+- Work-start-to-merge: not recorded in available evidence
 - Head: `2b50693f8b8938fb4e01c325fb6672c304bb6408`
 - Merge: `22fe3db8e4c6915ab24eebcad579350dc933a063`
 - Hosted run: `31673798073`, attempts 1-3; exact-base run `31671496026`

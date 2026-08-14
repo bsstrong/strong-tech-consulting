@@ -1,7 +1,11 @@
 # HelixOS PR #1131 — Speed up Operations Dashboard web tests
 
 - PR: https://github.com/helixosio/helixos/pull/1131
+- PR created: 2026-08-13T14:31:26Z
 - Merged: 2026-08-13T21:47:01Z
+- PR open-to-merge: 7h 15m 35s
+- Recorded implementation-to-clean-private-review handoff: 43m 03s
+- Work-start-to-merge: 7h 38m 55s
 - Head: `a080664e6dd8536b6a98a6f41ab6a047d51e4113`
 - Merge: `8242afb4d7d1922483e12e2fa97f505e5b36f0e5`
 - Baseline run: `31700323078`
