@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress; waiting for UI design comparison and manual UAT
+- Status: in-progress; first UI implementation pushed for owner iteration and remaining assignment UAT
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-13T03:34:18Z` (earliest recoverable Phase 2 commit; the earlier conversation start timestamp is unavailable)
 - Task/thread ID: Unavailable from the current Codex context
@@ -10,7 +10,7 @@
 - Starting base SHA: `9faf3933f09ac999b90aa8a2759da87a4dca4b67` (final Phase 1 feature head used by the original stack)
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
 - Current base SHA: `6d9c30a7b7dab3f5c281d518aa61d7cc93a6ad0e`
-- Current head SHA: `59a3fdba59028f404b0028d4618af37d67d21a27`
+- Current head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4`
 - Issue: https://github.com/helixosio/helixos/issues/1130
 - PR: https://github.com/helixosio/helixos/pull/1117
 
@@ -23,7 +23,7 @@ Exclusions and owner decisions:
 - Generic role creation, publishing, and deactivation remain post-MVP.
 - Evidence artifacts belong under `C:\dev\evidence\helix` and must not be checked into or referenced by repository documentation.
 - PR #1117 must remain Draft. Review automation, monitoring, GitHub reviewer requests, and production-feedback requests are paused under the circuit breaker until the UI and UAT gates are complete and the owner explicitly authorizes review to resume.
-- The owner-provided design session has not yet been available for visual-fidelity comparison.
+- The owner-provided design was implemented with the selected `dot` status and `flush` sidebar defaults. Review activity remains paused while the owner iterates on the first implementation.
 
 ## Lifecycle
 
@@ -36,15 +36,16 @@ Exclusions and owner decisions:
 | Circuit-breaker correction pushed | `2026-08-13T21:01:05Z` | Commit `59a3fdba59028f404b0028d4618af37d67d21a27`; review reruns stopped |
 | Current status checkpoint | `2026-08-14T04:36:03Z` | Draft; waiting for UI design comparison and manual UAT |
 | UI redesign authorized | `2026-08-14T06:04:06Z` | Owner supplied the implementation brief and prototype source, resolved the open product questions, and authorized replacing the Manage Carrier Account window UI while preserving compatible functional code |
+| First UI implementation pushed | `2026-08-14T07:08:14Z` | Contract support commits `5912ac99e` and `9e6edc281`; UI commit `257073db4`; PR verified Draft with zero review requests |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 25h 2m at current checkpoint | Reconstructed from earliest recoverable commit through `2026-08-14T04:36:03Z`; includes pauses and waiting and is not active-work time |
-| Commits | 74 commits visible in PR | GitHub PR state at current checkpoint; includes merges, documentation, tests, fixes, and the circuit-breaker commit |
-| Change size | 88 files, +13,927 / -1,498 | GitHub PR aggregate at head `59a3fdba59028f404b0028d4618af37d67d21a27` |
+| Total elapsed | 27h 34m at current checkpoint | Reconstructed from earliest recoverable commit through `2026-08-14T07:08:14Z`; includes pauses and waiting and is not active-work time |
+| Commits | 77 commits visible in PR | GitHub PR state at head `257073db449da476ee10810caf9a5bcb9a350dd4` |
+| Change size | 119 files, +17,213 / -2,445 | GitHub PR aggregate at head `257073db449da476ee10810caf9a5bcb9a350dd4` |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
 | Validation | Database 237 passed / 2 intentional skips; API 2,824 passed; web 130 suites passed; 336 OpenAPI paths and 86 controller bodies validated | PR description and local command results recorded during implementation; standalone web rerun passed after a CPU-contended parallel run timed out |
 | Review | Two private rounds; first round returned 6 findings; second round triggered the circuit breaker with 4 reported findings plus materially similar defects found by the boundary audit | PR plan, private-review workflow context, and circuit-breaker commit |
@@ -61,6 +62,8 @@ Exclusions and owner decisions:
 - Kept PR #1117 Draft with no GitHub review requests and no production-feedback request.
 - The owner selected the prototype defaults (`dot` Carrier status and `flush` navigation), required Manrope and the existing HelixOS window chrome, and authorized a full window UI replacement. Existing Import CSV and Add Team Member behavior should be preserved where compatible; Reporting and Integrations ship as placeholders; People & Access supplies the existing permission semantics; PR #1117 APIs remain authoritative for Client assignment operations.
 - The Team Members metric "Assigned Clients" counts Clients assigned to a Team Member whose authoritative primary role is Broker.
+- Replaced the Manage Carrier Account UI with the design's Carrier identity/sidebar/breadcrumb shell, Team Members metrics and table, Unassigned Clients view and role drawer, Team Member Profile/Clients/Permissions tabs, assignment and permission dialogs, and Reporting/Integrations placeholders. Import CSV and Add Team Member continue to use the existing workflows.
+- Kept filtering, sorting, tree-aware pagination, permission selection policy, and reason validation in dependency-light modules with direct tests. Mutation inputs capture the target identifiers and payload snapshots; assignment and permission cache invalidation is tenant/person scoped from those captured inputs.
 
 ## Validation, review, and CI
 
@@ -71,19 +74,21 @@ Exclusions and owner decisions:
 - Carrier role-code and Platform Admin policy verifiers passed.
 - Mandatory complete-diff architecture review covered state ownership, policy ownership, authorization, React effects, immutable mutation inputs, concurrency, query behavior, cache invalidation, test placement, and hotspot risk.
 - Exact-current-head private self-review has deliberately not been rerun after the circuit-breaker commit. Owner approval is required before resuming it.
+- Current-head UI validation passed: 14 focused tests across 6 files, web lint, theme-literal check, and production build. The complete 135-suite web run had one unrelated, repeatable local-timezone assertion failure in `OperationsEligibilityExceptions.test.tsx` (`toLocaleString()` expected UTC noon while the machine is in America/Denver); the redesigned workspace suites all passed.
+- Real-app verification with the NorthRiver Admin persona covered the Team Members list, search/filter presentation, detail breadcrumbs and Profile tab, the full Permissions view, Assign Role and Add Team Member dialogs, and Reporting placeholder. The branch UI rendered correctly inside the existing HelixOS desktop window. Assignment-enabled manual paths remain outstanding because the available NorthRiver demo identity lacks the assignment-management capability and the separate branch API process returned an environment-specific 500 against the shared local database.
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation and circuit-breaker correction are pushed at `59a3fdba59028f404b0028d4618af37d67d21a27`. The task is not complete.
+The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. PR #1117 is still Draft with no review requests. The task is not complete.
 
 Remaining sequence:
 
-1. Compare the rendered workflow with the owner-provided design session and implement required UI-fidelity changes at desktop and narrow widths.
-2. Complete manual UAT for role combinations, denials, transfer, bulk unassign/restore, conflict reconciliation, history, handoff, and offboarding.
+1. Collect owner feedback on the first rendered UI and apply the agreed visual or interaction refinements.
+2. Complete manual UAT for assignment-enabled role combinations, denials, transfer, bulk unassign/restore, conflict reconciliation, history, handoff, and offboarding.
 3. Obtain explicit owner authorization to resume private self-review.
 4. Continue the repository lifecycle only after the applicable exact-head gates pass.
 
-Residual risk is concentrated in unperformed design comparison and manual workflow verification, not in known failing automated validation.
+Residual risk is concentrated in owner UI iteration and assignment-enabled manual workflow verification. The one complete-suite local failure is an unrelated timezone-sensitive assertion rather than a changed-workspace failure.
 
 ## Evidence provenance
 
