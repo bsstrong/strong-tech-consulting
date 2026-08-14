@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: blocked
+- Status: in-progress
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-14T13:24:22Z`
 - Task/thread ID: current Codex task; durable ID unavailable
@@ -52,6 +52,7 @@ Exclusions and owner decisions:
 | Workflow blocked for owner approval | `2026-08-14T21:15:49Z` | Exact head `e687e35238871904b6e9d76b7701d0c0339a838b`, base and merge base `889edf5d323f067f657a786df3b02c95d2c2b054`; clean Draft PR with no reviewer requests; another private rerun requires explicit approval |
 | Circuit-breaker review corrected | `2026-08-14T22:05:22Z` | The owner asked whether the required review had actually been completed. The prior pass had not explicitly repeated the complete-diff architecture review. The completed review found one materially similar process-identity blocker: a standalone lookalike npm workspace command was trusted without a verified watcher descendant. Commit `170988b327be663b4a4778832b8423c3dcddf6a6` fixes and documents the shared boundary. |
 | Circuit-breaker checkpoint complete | `2026-08-14T22:05:46Z` | Exact head `170988b327be663b4a4778832b8423c3dcddf6a6`, base and merge base `889edf5d323f067f657a786df3b02c95d2c2b054`; full-diff architecture review and complete relevant validation are clean; workflow remains blocked only on explicit owner approval for another rerun |
+| Owner approved self-review restart | `2026-08-14T22:07:21Z` | Circuit-breaker approval received; resumed the existing private thread with exact head `170988b327be663b4a4778832b8423c3dcddf6a6`, fetched base and merge base `889edf5d323f067f657a786df3b02c95d2c2b054`, clean worktree, and no base advancement since the merge base |
 
 ## Task statistics
 
