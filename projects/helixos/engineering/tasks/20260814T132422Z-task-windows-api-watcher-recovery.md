@@ -41,6 +41,7 @@ Exclusions and owner decisions:
 | Private self-review resumed | `2026-08-14T20:45:28Z` | Exact head `5e3d83a952195f2972b27b9914553e7aa93e8c92`; fetched `origin/main` advanced to `889edf5d323f067f657a786df3b02c95d2c2b054` and requires freshness inspection before Slack write |
 | Branch synchronized with current base | `2026-08-14T20:48:11Z` | Owner-authored merge commit `bde29aac93398907480fe5ad710e0618c0357c67`; no PR/base path overlap and the PR diff remains the same six files |
 | Private self-review requested | `2026-08-14T20:49:35Z` | New `#self-reviews` parent `1786740575.153389` contains only the canonical PR URL; exact head `bde29aac93398907480fe5ad710e0618c0357c67`, base `889edf5d323f067f657a786df3b02c95d2c2b054` |
+| Private self-review round 1 completed | `2026-08-14T20:53:23Z` | 3 minutes 48 seconds; 1 blocker, 0 non-blockers; pending monitor deleted when the owner reported completion |
 
 ## Task statistics
 
@@ -50,7 +51,7 @@ Exclusions and owner decisions:
 | Commits | 1 | `5e3d83a9 fix(dev): recover stalled Windows API watcher` |
 | Change size | 484 insertions, 3 deletions across 6 files | `git show --numstat` and commit summary |
 | Validation | Platform contract check passed; 8 focused watcher tests passed in 6.108 seconds; prior 96 full script tests passed with 2 Unix-only tests skipped on Windows; API build passed; 4 live HTTP assertions passed | Exact-base comparison, local command output, and Windows process/HTTP inspection |
-| Review | 2 local reviews with 0 actionable findings; private round 1 pending | Complete architecture review, exact-base macOS/Linux isolation review, and `#self-reviews` thread `1786740575.153389` |
+| Review | 2 local reviews with 0 actionable findings; private round 1 returned 1 blocker and 0 non-blockers | `#self-reviews` thread `1786740575.153389`; blocker reproduced by the neutral-worktree regression and corrected locally |
 | CI | 2 exact-head jobs skipped because PR #1150 is Draft | GitHub `statusCheckRollup` for head `5e3d83a952195f2972b27b9914553e7aa93e8c92` |
 | Benchmarks | Existing failure exceeded 80 seconds without binding; healthy supervised launches bound within the 45-second smoke windows | Prior process observation plus two consecutive live launcher runs |
 
@@ -65,6 +66,8 @@ Exclusions and owner decisions:
 - The only workflow change adds the new runner to path filters in `windows-watcher-ci.yml`, whose sole job runs on `windows-latest`. The documentation changes are explicitly Windows-scoped.
 - The shared script-test file imports the Windows runner without executing it: direct execution is guarded, and PowerShell/process cleanup occurs only inside invoked Windows-runner functions. Its pure supervision tests remain platform-neutral.
 - Before the private review request, `origin/main` advanced through seven commits without touching any of the PR's six paths. The branch was then merge-forwarded by the owner to current base; the active checkout fast-forwarded to that exact remote head without local changes.
+- Private round 1 found that `isHelixApiWatcher` relied on the worktree path containing `helixos`, so an orphan runner or `tsx` watcher from a neutral-named worktree was not owned by the recovery workflow. The failing regression initially returned only PID `10` instead of `[10, 50, 60]`.
+- The cohesive correction parses the stable resolved runner or `tsx` CLI path, derives its workspace root, and verifies both root `helixos` and API `@helixos/api` package identities. Blast-radius inventory covers workspace npm parents, supervised runners, orphan legacy watchers, unrelated application watchers, and current-launch ancestry; non-Windows launch paths and authorization boundaries are unaffected.
 
 ## Validation, review, and CI
 
@@ -74,6 +77,7 @@ Exclusions and owner decisions:
 - `npm run build -w @helixos/api` passed.
 - A platform contract comparison against exact base `31c57385d9965607e22813b1619b343a37e7c54b` passed: root launch scripts were unchanged and every API workspace script except `dev:windows` matched the base exactly.
 - Re-running `node --test src/scripts/api-dev-command.test.mjs` passed 8 of 8 tests in 6.108 seconds. `git diff --check origin/main...HEAD` also passed.
+- Round 1 remediation: the neutral-worktree test first failed with the expected missing PIDs, then passed after the correction. `node --check` passed; focused watcher tests passed 8 of 8 in 3.690 seconds; `npm run test:scripts` passed 96 tests with 2 Unix-only skips in 5.220 seconds; working-diff validation passed.
 - Live Windows verification launched the new command twice on port 4000. The first removed the prior PR #1117 API watcher and became healthy; the second removed the first supervised watcher tree and also returned HTTP 200 from `/api/health`.
 - The PR #1117 API watcher was restored afterward. `/api/health` and tenant-scoped `/api/me` both returned HTTP 200, and the existing web/portal processes remained running.
 - Draft PR #1150 was created at exact head `5e3d83a952195f2972b27b9914553e7aa93e8c92`. It has no reviewer requests. External review activity was not started.
