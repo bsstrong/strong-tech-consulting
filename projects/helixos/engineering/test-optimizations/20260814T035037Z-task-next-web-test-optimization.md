@@ -34,6 +34,9 @@
 - Private self-review requested at 2026-08-14T04:09:15Z and completed clean on exact head `12c487584eb4b19f33e5d4abcd748ce03c7c0ea4` at 2026-08-14T04:11:42Z with zero blockers and zero non-blockers.
 - The owner promoted the pull request to Ready; workflow run `31769190823` started on the exact head at 2026-08-14T04:13:21Z. The owner-selected Ready state is authoritative and was not reverted.
 - Public production feedback requested at 2026-08-14T04:14:51Z. Exact-head review completed at 2026-08-14T04:15:31Z with zero findings, no unresolved review threads, and GitHub approval from `walkeryan` recorded at 2026-08-14T04:15:30Z.
-- Exact-head CI is in progress: `web-e2e` passed; `backend-and-infra` and `web-unit` remain in progress; `web-cross-browser` is intentionally skipped for this change.
-- Hosted samples, final `jfollas` review, completion timestamp, and terminal outcome: pending.
+- Exact-head HelixOS CI run `31769190823` passed `backend-and-infra`, `web-unit`, and `web-e2e`; `web-cross-browser` was intentionally skipped by the workflow's path policy. The exact full-workflow head was `12c487584eb4b19f33e5d4abcd748ce03c7c0ea4`.
+- Hosted `web-unit` samples came from run `31769190823`, attempts 1-3. Attempt 1 was the complete workflow; attempts 2 and 3 reran only `web-unit`. Job durations were 13m 38s, 13m 18s, and 12m 31s (median 13m 18s); web commands were 10m 11s, 9m 50s, and 9m 13s (median 9m 50s); Vitest runners were 9m 58s, 9m 38s, and 9m 00s (median 9m 38s).
+- Hosted target totals were 3.859s, 3.745s, and 3.669s (median 3.745s, -85.1% from the 25.1s baseline). Tests/hooks were 1.107s, 1.121s, and 0.994s (median 1.107s, -95.0% from the 22.3s baseline). Every sample passed 10/10 with zero failures or skips. Artifacts: `9207715082`, `9208019880`, and `9208288086`.
+- The pull-request description was updated with the exact-head hosted table and review evidence. Final GitHub review was requested only from `jfollas` at approximately 2026-08-14T05:04Z after re-verifying Ready state, exact head/base, mergeability, green required CI, no review threads, and the retained public approval.
+- Final `jfollas` review, completion timestamp, and terminal outcome: pending.
 - Completion timestamp, final PR identity, duration, and terminal outcome: pending.
