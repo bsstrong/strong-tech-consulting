@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress (resumed for PR C model selection)
+- Status: completed
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-14 02:43:00 UTC
 - Task/thread ID: Unavailable from the current Codex context
@@ -78,7 +78,8 @@ Residual risk: final full-suite, hosted CI, and UAT evidence do not yet exist by
 - Resumed: 2026-08-14 03:59:52 UTC
 - Objective: Recommend the Codex model and reasoning effort best suited to the PR C implementation and architecture-audit prompt.
 - Evidence source: current official OpenAI latest-model guidance.
-- Status: recommendation in progress.
+- Completed: 2026-08-14 04:00:11 UTC (19 seconds elapsed).
+- Decision: use `gpt-5.6-sol` with `xhigh` reasoning for PR C. The task combines complex architectural review, state/race correctness, code changes, and final test-placement judgment, so flagship capability is worth the additional latency. Use `high` only when faster turnaround is preferred; `gpt-5.6-terra` is the cost-conscious fallback rather than the best-quality choice.
 
 ## Evidence provenance
 
