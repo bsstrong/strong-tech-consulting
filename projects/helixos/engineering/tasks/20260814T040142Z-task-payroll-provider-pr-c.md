@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: completed (independent senior audit completed 2026-08-14 05:47:26 UTC)
+- Status: in-progress (exact-head final local review resumed 2026-08-14 05:59:37 UTC)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-14 04:01:42 UTC
 - Task/thread ID: Unavailable from the current Codex context
@@ -19,6 +19,8 @@
 Continue the stacked Payroll Provider Management refactor with PR C from exact PR B head `8418af417`: finalize test placement without coverage loss or duplication, audit the complete feature architecture, make only cohesive PR C corrections, and finalize maintainer documentation for responsibility ownership.
 
 Resumed objective: perform an independent senior audit of the completed local PR C implementation from exact parent `8418af4170c3a7600f1b1e9525563a8ab8226a1c` through expected head `5dd22eee7bda25507fde1e93eb15c78eeff5c7bf`, without relying on the existing handoff conclusions and without beginning the final-review lifecycle.
+
+Current resumed objective: perform the owner-authorized exact-head final local review of the complete stacked feature from parent `8418af4170c3a7600f1b1e9525563a8ab8226a1c` through starting head `bf54a8b72a401bb030710899a9182f130bbbb7b4`; independently review the full diff and surrounding feature, run the complete local validation and UAT matrix, correct concrete defects, and update the final handoff. Hosted CI/timing, pushes, pull-request actions, review requests, Slack writes, Ready transitions, merge, release, and publication remain unauthorized.
 
 Exclusions and owner decisions:
 
@@ -43,6 +45,7 @@ Exclusions and owner decisions:
 | Audit correction committed | 2026-08-14 05:46:07 UTC | `c44739289fd4bc052b691fad76a7815a518c106b`; test-only correction for two bounded evidence gaps |
 | Audit handoff committed | 2026-08-14 05:47:01 UTC | `bf54a8b72a401bb030710899a9182f130bbbb7b4`; independent audit evidence and disposition recorded |
 | Independent audit completed | 2026-08-14 05:47:26 UTC | Zero blockers; two non-blocking evidence findings resolved; branch clean and unpushed |
+| Exact-head final local review resumed | 2026-08-14 05:59:37 UTC | Required instructions and runbook loaded; starting state independently matched the requested branch, head, ancestry, four-commit list, clean tree, and 25-file `+1600/-1157` diff before substantive review |
 
 ## Task statistics
 
@@ -104,3 +107,15 @@ Residual risks and follow-up:
 - `projects/helixos/engineering/20260812T022213Z_payroll-provider-management-page-refactor-plan.md`
 - `projects/helixos/engineering/payroll-provider-management-stacked-pr-local-review.md`
 - Local Git state at task start
+
+## Exact-head final local review checkpoint
+
+- Review worktree: `C:\dev\HelixOS-payroll-provider-refactor-ui`
+- Branch: `codex/payroll-provider-refactor-final`
+- Exact parent: `8418af4170c3a7600f1b1e9525563a8ab8226a1c`
+- Starting head: `bf54a8b72a401bb030710899a9182f130bbbb7b4`
+- Starting tree: `fae4497675981e7ae9079e1e0e327c62605fc612`
+- Stack ancestry: PR A `01b519b31a668273dfae0b8317c6b4886e545317` is an ancestor of PR B; PR B is an ancestor of PR C.
+- Starting diff: 25 files, 1,600 insertions, 1,157 deletions.
+- Starting repository state: clean; no upstream configured; no remote branch exists.
+- Final-review validation, findings, corrections, UAT, evidence artifacts, final SHA/tree, and terminal outcome: pending.
