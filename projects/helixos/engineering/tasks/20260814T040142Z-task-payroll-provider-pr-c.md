@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress (independent senior audit resumed 2026-08-14 05:33:13 UTC)
+- Status: completed (independent senior audit completed 2026-08-14 05:47:26 UTC)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-14 04:01:42 UTC
 - Task/thread ID: Unavailable from the current Codex context
@@ -10,7 +10,7 @@
 - Starting base SHA: `8418af4170c3a7600f1b1e9525563a8ab8226a1c`
 - Starting head SHA: `8418af4170c3a7600f1b1e9525563a8ab8226a1c`
 - Final branch: `codex/payroll-provider-refactor-final`
-- Final head SHA: `5dd22eee7bda25507fde1e93eb15c78eeff5c7bf`
+- Final head SHA: `bf54a8b72a401bb030710899a9182f130bbbb7b4`
 - Issue: N/A
 - PR: N/A; the local branch was not pushed and no Draft pull request was created or changed
 
@@ -40,16 +40,19 @@ Exclusions and owner decisions:
 | CI | N/A | Hosted validation is deferred to final review |
 | Completed | 2026-08-14 04:42 UTC | Required build passed on exact final local head; branch clean |
 | Independent audit resumed | 2026-08-14 05:33:13 UTC | Branch/head/ancestry/clean-state preconditions verified before substantive audit work |
+| Audit correction committed | 2026-08-14 05:46:07 UTC | `c44739289fd4bc052b691fad76a7815a518c106b`; test-only correction for two bounded evidence gaps |
+| Audit handoff committed | 2026-08-14 05:47:01 UTC | `bf54a8b72a401bb030710899a9182f130bbbb7b4`; independent audit evidence and disposition recorded |
+| Independent audit completed | 2026-08-14 05:47:26 UTC | Zero blockers; two non-blocking evidence findings resolved; branch clean and unpushed |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | Approximately 40 minutes | 2026-08-14 04:01:42 UTC through 04:42 UTC |
-| Commits | 2 | One implementation/test commit and one documentation/handoff commit |
-| Change size | 25 files; 1,528 insertions; 1,155 deletions | `git diff --shortstat 8418af417..5dd22eee7` |
-| Validation | Exact-head web build passed in 68.14 seconds; targeted correction runs also passed | Local command output |
-| Review | 9 architecture/test-placement categories audited; all actionable findings corrected | Complete diff, surrounding modules, static searches, and targeted regressions |
+| Total elapsed | 1 hour 45 minutes wall clock | 2026-08-14 04:01:42 UTC through 05:47:26 UTC, including the completed-to-resumed interval |
+| Commits | 4 | Implementation, initial handoff, audit regression correction, and final audit handoff |
+| Change size | 25 files; 1,600 insertions; 1,157 deletions | `git diff --shortstat 8418af417..bf54a8b72` |
+| Validation | Focused page/network file 26/26 passed; exact code/test-head web build passed in 62.09 seconds | Local command output from the independent audit correction |
+| Review | 9 architecture/test-placement categories audited; 0 blockers and 2 non-blocking evidence findings resolved | Complete diff, surrounding modules, static searches, focused regressions, and exact-head verification |
 | CI | N/A | Deferred by owner |
 | Benchmarks | N/A | Not in intermediate handoff scope |
 
@@ -64,6 +67,9 @@ Exclusions and owner decisions:
 - Reused the provider model for normalized draft fingerprints and the reducer for config normalization, JSON refresh, validation reset, and selected-index clamping.
 - Moved deterministic/presentation behavior into direct model, reducer, API, preview, tab, toolbar, drawer, and column-detail tests while retaining representative Page/MSW seams.
 - Finalized `docs/payroll-provider-management.md` and added `docs/payroll-provider-management-pr-c-handoff.md` with ownership, lifecycle, mutation-snapshot, query-key, test-placement, final-review, risks, and deferred-work guidance.
+- Independently re-audited the complete parent-to-head diff and surrounding feature modules without relying on the original handoff conclusions.
+- Added regressions proving that a mismatched provider-save response stops config persistence and that publish-pending mutation state locks provider-changing actions while fields remain editable. No production code changed during the audit.
+- Updated the PR C handoff with the independent audit disposition and evidence; maintainer ownership and contracts were unchanged, so the canonical maintainer guide required no audit correction.
 
 ## Validation, review, and CI
 
@@ -72,18 +78,19 @@ Exclusions and owner decisions:
 - Targeted Page/network evidence: 6 selected tests passed in 13.84 seconds; later detail-load, partial-save, and publish-error selections passed 3 tests in 7.83 seconds. Filters skipped unrelated tests only for these diagnostic runs; no test is marked skipped in source.
 - One intermediate build exposed test-only TypeScript fixture annotations; those annotations were corrected before the successful implementation-head and final-head builds.
 - Static review found zero effects/mount effects, one imperative file-input ref, zero direct production requests outside the API module, zero literal component query/mutation keys, zero prohibited vendor branding in feature production files, and zero skipped/todo feature tests.
+- Independent audit focused page/network run: 26 of 26 tests passed in 33.81 seconds Vitest time (36.20 seconds wall time), including both audit regressions.
+- Required post-correction build: `npm run build -w @helixos/web` passed on exact code/test head `c44739289fd4bc052b691fad76a7815a518c106b` in 62.09 seconds wall time; Vite transformed 2,248 modules in 25.96 seconds. Only the existing SignalR annotation and chunk-size warnings remained.
+- Final local head `bf54a8b72a401bb030710899a9182f130bbbb7b4` differs from the validated code/test head only by the audit handoff documentation commit.
 - Full focused tests, full web tests, lint, theme checks, hosted timing, CI, screenshots, and complete visual UAT are intentionally deferred to the owner-authorized exact-head final review cycle.
 
 ## Outcome, risk, and follow-up
 
-PR C implementation and documentation are complete locally with a clean working tree. The branch remains unpushed and the entire stack remains Draft/owner-audit held.
-
-Independent senior audit is in progress. Prior implementation outcome and evidence remain historical context, not audit conclusions.
+PR C implementation, independent senior audit correction, and handoff documentation are complete locally with a clean working tree. The branch remains unpushed and the entire stack remains Draft/owner-held. The audit found no blocking defect; both bounded non-blocking evidence gaps were corrected and validated.
 
 Residual risks and follow-up:
 
 - Full automated validation, hosted feature timing, and visual/functional UAT are intentionally absent until final review.
-- `PayrollProviderEditor.tsx` (766 lines), `PayrollProviderColumnSourceFields.tsx` (353 lines), and the Page integration test (1,064 lines) remain size signals. Complete review found cohesive responsibilities and no demonstrated defect that justified a controller hook, broad prop plumbing, or mechanical split; final hosted timing should re-evaluate the test boundary.
+- `PayrollProviderEditor.tsx` (766 lines), `PayrollProviderColumnSourceFields.tsx` (353 lines), and the Page integration test (1,106 lines) remain size signals. Complete review found cohesive responsibilities and no demonstrated defect that justified a controller hook, broad prop plumbing, or mechanical split; final hosted timing should re-evaluate the test boundary.
 - Any PR A or PR B change must be propagated upward and invalidates prior PR C evidence.
 - The owner must audit the Draft stack and explicitly authorize promotion before Ready, final review, Slack, merge, release, or publication steps.
 
