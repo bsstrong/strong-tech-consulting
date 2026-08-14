@@ -38,7 +38,10 @@
 - Private exact-head self-review requested in `#self-reviews` at 2026-08-14T06:45:30.803Z using parent timestamp `1786689930.802859`. One follow-up heartbeat (`pr-1148-self-review-check`) was scheduled for the required seven-minute initial window.
 - Private exact-head self-review completed clean at 2026-08-14T06:47:49.189Z on `14e4f2b2469386aafb29556ddd514bee5025195c`: zero blockers, zero non-blockers, and no inline findings. Review turnaround from request was 2m 18s. The one-shot monitoring heartbeat was deleted after confirmation.
 - Draft production feedback was requested in `#pr-reviews` at 2026-08-14T06:56:40.440Z using parent timestamp `1786690600.439839`, after a second literal-URL duplicate search found no existing parent. The request used fetched base and merge base `588b156ddeea6cf5926c266f41fbab72ee3de258`, exact clean head `14e4f2b2469386aafb29556ddd514bee5025195c`, a mergeable Draft PR, no GitHub reviews or threads, and no base advance.
-- Draft production review result, exact-head CI, hosted artifacts, Ready transition, and final approval are pending.
+- Draft production feedback completed clean at 2026-08-14T06:57:07Z on exact head `14e4f2b2469386aafb29556ddd514bee5025195c`: zero actionable findings and no GitHub review threads. GitHub review `4934728980` is anchored to that exact head. Turnaround from request was 26.560 seconds.
+- Immediately before promotion, local and pushed heads matched, the worktree was clean, fetched base and merge base remained `588b156ddeea6cf5926c266f41fbab72ee3de258`, and the base had not advanced. The PR was promoted to Ready at 2026-08-14T07:01:24Z and a canonical re-read confirmed `draft: false`, the unchanged exact head, and mergeability.
+- Exact-head CI run `31778352981`, attempt 1, started at 2026-08-14T07:01:29Z. Jobs: `web-unit` `94698495859`, `backend-and-infra` `94698495895`, `web-e2e` `94698495936`, and expected path-gated `web-cross-browser` skip `94698496310`. The latest 50 completed pull-request CI runs had a maximum start-to-update duration of 14m 58s; the prescribed maximum-plus-two cadence rounds down to a 16-minute one-shot follow-up.
+- Exact-head CI completion, three hosted artifacts, and final approval are pending.
 
 ## Risk and follow-up
 
