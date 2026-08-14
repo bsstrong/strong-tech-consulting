@@ -46,6 +46,7 @@ Exclusions and owner decisions:
 | Audit handoff committed | 2026-08-14 05:47:01 UTC | `bf54a8b72a401bb030710899a9182f130bbbb7b4`; independent audit evidence and disposition recorded |
 | Independent audit completed | 2026-08-14 05:47:26 UTC | Zero blockers; two non-blocking evidence findings resolved; branch clean and unpushed |
 | Exact-head final local review resumed | 2026-08-14 05:59:37 UTC | Required instructions and runbook loaded; starting state independently matched the requested branch, head, ancestry, four-commit list, clean tree, and 25-file `+1600/-1157` diff before substantive review |
+| Final local review findings established | 2026-08-14 06:12:26 UTC | Complete diff/surrounding-feature inspection found two concrete acceptance defects and one bounded accessibility gap; regression-first corrections started |
 
 ## Task statistics
 
@@ -119,3 +120,11 @@ Residual risks and follow-up:
 - Starting diff: 25 files, 1,600 insertions, 1,157 deletions.
 - Starting repository state: clean; no upstream configured; no remote branch exists.
 - Final-review validation, findings, corrections, UAT, evidence artifacts, final SHA/tree, and terminal outcome: pending.
+
+### Final local review findings
+
+1. **Blocker â€” non-success detail boundary:** a successful empty provider list renders an indefinite spinner and offers no way to create the first provider; a selected-detail failure removes the provider selector and offers no retry. This contradicts the required empty-state evidence and the plan requirement that detail failure remain selectable and retryable.
+2. **Blocker â€” async snapshot/readiness binding:** validation completion is guarded only by the submitted config fingerprint, not the provider snapshot, and save/publish success unconditionally reveals provider readiness even when fields were edited after submission. A newer unsaved draft can therefore display validation/readiness evidence from the older submitted snapshot.
+3. **Non-blocker â€” keyboard/accessibility semantics:** the Advanced JSON text area has no accessible name, provider drawer rows are mouse-only, and repeated generic column-delete names do not identify their target. These are local presentation-owner corrections.
+
+Planned disposition: add narrow failing regressions, correct each authoritative owner without broad refactoring, run affected validation, then execute the complete final-head matrix and UAT.
