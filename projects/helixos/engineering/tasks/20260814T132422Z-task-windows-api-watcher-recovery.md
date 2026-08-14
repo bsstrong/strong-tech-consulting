@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress
+- Status: complete
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-14T13:24:22Z`
 - Task/thread ID: current Codex task; durable ID unavailable
@@ -33,12 +33,13 @@ Exclusions and owner decisions:
 | CI | `2026-08-14T13:42:13Z` | Exact-head HelixOS CI and Windows Watcher CI jobs reported `SKIPPED`, as required for Draft pull requests |
 | Completed | `2026-08-14T13:42:33Z` | 18 minutes 11 seconds total elapsed |
 | Resumed for PR discussion | `2026-08-14T13:56:02Z` | Owner requested switching the active HelixOS workspace to PR #1150's branch; no review or code change requested |
+| Discussion checkout complete | `2026-08-14T13:57:06Z` | Active workspace switched to the exact PR head in 1 minute 4 seconds |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 18 minutes 11 seconds | `2026-08-14T13:24:22Z` through `2026-08-14T13:42:33Z` |
+| Total elapsed | 32 minutes 44 seconds wall-clock; 19 minutes 15 seconds across the two task intervals | `2026-08-14T13:24:22Z` through `2026-08-14T13:57:06Z`, including a 13 minute 29 second completed-state gap before the discussion checkout resumed |
 | Commits | 1 | `5e3d83a9 fix(dev): recover stalled Windows API watcher` |
 | Change size | 484 insertions, 3 deletions across 6 files | `git show --numstat` and commit summary |
 | Validation | 8 focused watcher tests passed; 96 full script tests passed and 2 Unix-only tests skipped on Windows; API build passed; 4 live HTTP assertions passed across replacement/restoration checks | Local command output and Windows process/HTTP inspection |
@@ -67,7 +68,7 @@ Exclusions and owner decisions:
 ## Outcome, risk, and follow-up
 
 - Outcome: completed in Draft PR #1150.
-- Resumed outcome: pending branch checkout and discussion handoff; the earlier implementation outcome remains unchanged.
+- Resumed outcome: the active `C:\dev\HelixOS` workspace is now on `codex/windows-api-watcher-recovery` at exact PR head `5e3d83a952195f2972b27b9914553e7aa93e8c92`, clean and tracking its origin branch. The earlier implementation outcome remains unchanged.
 - Residual risk: a watcher whose child application fails while the `tsx` parent remains alive is observationally the same as a silent startup stall and can consume the single retry before failing. The retry is bounded, output remains inherited, and deterministic explicit watcher exits are preserved.
 - Draft CI is intentionally skipped by repository policy. The Windows-hosted regression will run when the owner later authorizes promotion from Draft.
 - Draft PR #1117 remains unchanged remotely with review paused. Its local dependency-injection fix commit `70ea332c073441a9567113bf30955b182c064ec1` remains unpushed.
@@ -78,3 +79,4 @@ Exclusions and owner decisions:
 - The prior failure observation comes from the immediately preceding PR #1117 local-stack startup in this same Codex task and is also recorded in `projects/helixos/engineering/tasks/20260813T033418Z-pr-1117-assigned-client-roles-phase2.md`.
 - Commit, change-size, and branch evidence came from the dedicated worktree at `C:\dev\HelixOS-worktrees\windows-api-watcher-recovery`.
 - Pull-request state, exact head, review requests, and check conclusions came from canonical GitHub PR #1150 data after creation.
+- The resumed checkout was verified from canonical GitHub PR data, `origin/codex/windows-api-watcher-recovery`, and the active workspace's `git status` and `git rev-parse HEAD` output.
