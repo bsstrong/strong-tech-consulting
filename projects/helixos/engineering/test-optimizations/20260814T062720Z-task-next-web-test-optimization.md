@@ -37,7 +37,8 @@
 - Draft PR created at 2026-08-14T06:41:26Z from base `588b156ddeea6cf5926c266f41fbab72ee3de258`; implementation/local-validation checkpoint was 13m 13s from 2026-08-14T06:27:20.275Z through 2026-08-14T06:40:32.822Z.
 - Private exact-head self-review requested in `#self-reviews` at 2026-08-14T06:45:30.803Z using parent timestamp `1786689930.802859`. One follow-up heartbeat (`pr-1148-self-review-check`) was scheduled for the required seven-minute initial window.
 - Private exact-head self-review completed clean at 2026-08-14T06:47:49.189Z on `14e4f2b2469386aafb29556ddd514bee5025195c`: zero blockers, zero non-blockers, and no inline findings. Review turnaround from request was 2m 18s. The one-shot monitoring heartbeat was deleted after confirmation.
-- Draft production feedback, exact-head CI, hosted artifacts, Ready transition, and final approval are pending.
+- Draft production feedback was requested in `#pr-reviews` at 2026-08-14T06:56:40.440Z using parent timestamp `1786690600.439839`, after a second literal-URL duplicate search found no existing parent. The request used fetched base and merge base `588b156ddeea6cf5926c266f41fbab72ee3de258`, exact clean head `14e4f2b2469386aafb29556ddd514bee5025195c`, a mergeable Draft PR, no GitHub reviews or threads, and no base advance.
+- Draft production review result, exact-head CI, hosted artifacts, Ready transition, and final approval are pending.
 
 ## Risk and follow-up
 
