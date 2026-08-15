@@ -24,7 +24,7 @@ Exclusions and owner decisions:
 - Generic role creation, publishing, and deactivation remain post-MVP.
 - Evidence artifacts belong under `C:\dev\evidence\helix` and must not be checked into or referenced by repository documentation.
 - PR #1117 must remain Draft. Review automation, monitoring, GitHub reviewer requests, and production-feedback requests are paused under the circuit breaker until the UI and UAT gates are complete and the owner explicitly authorizes review to resume.
-- The owner-provided design was implemented with the `dot` status treatment. The owner subsequently selected the documented `floating` sidebar and breadcrumb chrome for the next iteration. Review activity remains paused.
+- The owner selected the documented `floating` sidebar and breadcrumb chrome, then changed the Carrier status treatment from `dot` to `pill`. Review activity remains paused.
 
 ## Lifecycle
 
@@ -45,6 +45,7 @@ Exclusions and owner decisions:
 | First complete browser UAT sweep passed | `2026-08-15T07:14:00Z` | Real-user browser sweep covered A-K, including native expiry entry, deterministic conflict reconciliation, assigned-only isolation, and a double-click integrity check at local head `401e1d074` |
 | Assignment reason validation defect corrected | `2026-08-15T07:27:00Z` | Pass 2 exposed assignment dialogs enabling below the API's 10-character minimum; root default corrected in `0ca8f2edd`, with 8 focused tests passing and the 9/10 boundary verified in the real app; clean-pass counter reset |
 | Final-pass target reduced by owner | `2026-08-15` | Owner replaced the three-clean-pass requirement with one final clean pass; A-F9 passed on `0ca8f2edd`, and G-K are waiting for the in-app browser to be manually reopened after it retained an internal connection-error page |
+| UAT feedback iteration completed locally | `2026-08-15T18:03:00Z` | Commit `28b7ca128`; pill status, Broker/Agent terminology, searchable assignment destinations, and Team Member Client-assignment filtering implemented and verified in the real app |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -55,7 +56,7 @@ Exclusions and owner decisions:
 | Commits | 77 commits visible in PR | GitHub PR state at head `257073db449da476ee10810caf9a5bcb9a350dd4` |
 | Change size | 119 files, +17,213 / -2,445 | GitHub PR aggregate at head `257073db449da476ee10810caf9a5bcb9a350dd4` |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
-| Validation | Database 237 passed / 2 intentional skips; assignment/permissions API slice 171 passed; web 142 suites / 1,419 tests passed; web lint, theme check, and production build passed | Exact local head `0ca8f2edd`; the full API suite also ran and exposed an unrelated Windows CRLF-sensitive source-regex assertion in the Client Portal payroll-cycle intake controller test |
+| Validation | Database 237 passed / 2 intentional skips; assignment/permissions API slice 171 passed; web 143 suites / 1,421 tests passed; web lint, theme check, and production build passed | Web evidence is on exact local head `28b7ca128`; database/API evidence is from the preceding functional head. The full API suite also ran and exposed an unrelated Windows CRLF-sensitive source-regex assertion in the Client Portal payroll-cycle intake controller test |
 | Review | Two private rounds; first round returned 6 findings; second round triggered the circuit breaker with 4 reported findings plus materially similar defects found by the boundary audit | PR plan, private-review workflow context, and circuit-breaker commit |
 | CI | Exact-head Draft CI jobs skipped | GitHub Actions run `31743730760`; Draft behavior expected, not a passing final CI gate |
 | Benchmarks | N/A | Performance benchmarking was not the task objective |
@@ -72,7 +73,8 @@ Exclusions and owner decisions:
 - The Team Members metric "Assigned Clients" counts Clients assigned to a Team Member whose authoritative primary role is Broker.
 - Replaced the Manage Carrier Account UI with the design's Carrier identity/sidebar/breadcrumb shell, Team Members metrics and table, Unassigned Clients view and role drawer, Team Member Profile/Clients/Permissions tabs, assignment and permission dialogs, and Reporting/Integrations placeholders. Import CSV and Add Team Member continue to use the existing workflows.
 - Kept filtering, sorting, tree-aware pagination, permission selection policy, and reason validation in dependency-light modules with direct tests. Mutation inputs capture the target identifiers and payload snapshots; assignment and permission cache invalidation is tenant/person scoped from those captured inputs.
-- Switched the centralized sidebar decision to `floating`, with the breadcrumb card derived from the same configuration and the alternate flush values retained beside the switch. The status remains `dot`.
+- Switched the centralized sidebar decision to `floating`, with the breadcrumb card derived from the same configuration and the alternate flush values retained beside the switch. The later owner-directed status decision is `pill`, with the exact dot alternate retained beside the same centralized configuration.
+- Applied the owner's UAT feedback without changing API/domain contracts: carrier-facing Broker labels render as Broker/Agent through one pure presentation helper; assignment destinations are searchable; the Team Member Clients tab labels its assignment column explicitly and filters All/Assigned/Not assigned. Existing Client Assignments views remain the authoritative Client-to-Team-Member access search. Automatic deactivation plus Client reassignment was not invented because current server policy requires an explicit assignment handoff.
 - Fixed PostgreSQL raw-query parameter inference for bigint role-definition IDs in the Client assignment state query and sensitive-access permission query. These failures had caused Broker metrics and Unassigned Clients to return 500 and the Permissions tab to fail after query retries.
 - Coalesced permission groups that share a feature-area label across app sections, eliminating duplicate indistinguishable headers such as two `Payroll Cycle` groups. Kept this deterministic transformation in the existing pure permission model.
 - Added a shared compact text-field primitive and applied it to the Carrier workspace searches, filters, assignment/permission dialogs, and reused Add Team Member form. Single-line controls use a 32px height; multiline controls use a compact 8px by 10px inset. Reduced the floating breadcrumb right margin and main content padding to a consistent 10px workspace inset.
@@ -99,15 +101,17 @@ Exclusions and owner decisions:
 - Pass 2 then found a real UI/server validation mismatch before completion: compact assignment dialogs accepted one-character reasons while the authoritative API requires 10. Commit `0ca8f2edd` centralizes the default at 10, adds matching helper text, and directly tests both assignment and reason-only dialogs. Two focused suites passed (8 tests), targeted ESLint passed, and the real app kept confirmation disabled at 9 characters and enabled it at 10. This code change restarted the final clean pass.
 - On the exact final local head, the complete web suite passed 142/142 files and 1,419/1,419 tests in 172.21 seconds; web lint, theme-literal validation, and the production build passed. The complete database suite passed 237 tests with 2 intentional skips. The complete assignment, permission-override, primary-role, Client-assignment, and tenant-workspace API slice passed 171 tests. The full API suite ran without a local time limit but failed an unrelated Client Portal payroll-cycle intake source-text assertion because its regex assumes LF while the Windows checkout is CRLF; the affected Phase 2 slice remained green.
 - The current manual final pass passed A-F9, including roster search/filter/sort/pagination, add/upsert/cancel, invalid and valid CSV imports, Client drawer selection, the 9/10-character reason boundary, individual assignment, and bulk assignment. The stack later stopped; web and API were recovered, but the in-app browser retained its internal connection-error data page and its navigation policy requires the user to reopen the localhost tab before G-K can continue.
+- UAT-feedback validation on `28b7ca128`: 19 focused tests across 9 suites passed; the complete web suite passed 143/143 files and 1,421/1,421 tests in 197.86 seconds; web lint, theme-literal validation, and the production build passed. Real-app checks verified the status pill, floating chrome, Broker/Agent labels, Team Member assigned-only filter, searchable destination narrowing, and the 9/10-character assignment-reason boundary without submitting another mutation.
+- A reported Platform Admin Client-count concern was traced at the authoritative API boundary. Both Josh and Keith receive `visibility: ALL` in Kingston, whose complete directory has two Clients; Josh receives all 15 NorthRiver Clients, while Keith lacks a NorthRiver workspace grant and is routed to Kingston. No assigned-only Client filter was applied and no code correction was warranted.
 - Architecture self-review of the final UAT fixes found no new state-ownership, effect choreography, stale-selection, cache-targeting, authorization, or test-placement defect. Carrier mutations capture visible slot revisions and immutable targets; deterministic policies remain in pure modules; query state remains owned by TanStack Query. Existing oversized admin-permissions services remain pre-existing hotspots and were not expanded during the final UAT-fix commits.
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The rebase, explicit-DI, UI iteration, concurrency, accessibility, and UAT validation fixes are committed locally through `0ca8f2eddaa8c0b019ea057cf42d1cf575c75112` and have not been pushed. PR #1117 is still Draft with no review requests. The task is not complete.
+The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The rebase, explicit-DI, UI iteration, concurrency, accessibility, UAT validation, and owner-feedback fixes are committed locally through `28b7ca128` and have not been pushed. PR #1117 is still Draft with no review requests. The task is not complete.
 
 Remaining sequence:
 
-1. Reopen the localhost UAT tab and complete G-K of the single owner-required final A-K pass on `0ca8f2edd`.
+1. Restart the single owner-required final A-K pass on exact local head `28b7ca128`; the UI feedback commit invalidated the earlier partial exact-head pass.
 2. Finalize and commit the UAT plan/fixtures and remove temporary UAT scripts/logs.
 3. Obtain explicit owner authorization to push or resume private self-review.
 4. Continue the repository lifecycle only after the applicable exact-head gates pass.
