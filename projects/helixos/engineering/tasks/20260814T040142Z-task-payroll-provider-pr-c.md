@@ -24,6 +24,8 @@ Resumed objective: perform an independent senior audit of the completed local PR
 
 Current resumed objective: publish the three validated local stack branches and create PR A, PR B, and PR C as Draft pull requests with their exact stacked bases so private self-review can begin. The owner authorized these branch pushes and Draft PR creations on 2026-08-14; reviewer requests, Slack writes, Ready transitions, merge, release, and publication remain unauthorized.
 
+Expanded objective (2026-08-15 02:21:18 UTC): after PR A received a clean exact-head private self-review, forward-propagate its reviewed head into PR B and then PR C using non-rewriting merge commits, validate each resulting stacked head, and drive PR B and PR C through the same private self-review workflow until both are clean. Keep all pull requests Draft; do not request GitHub review, post to `#pr-reviews`, mark Ready, merge, release, or publish.
+
 Exclusions and owner decisions:
 
 - Preserve API contracts, persistence, authorization, branding, visual behavior, and product behavior.
