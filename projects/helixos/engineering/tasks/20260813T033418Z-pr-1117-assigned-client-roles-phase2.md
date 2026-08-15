@@ -2,14 +2,14 @@
 
 ## Identity
 
-- Status: in-progress; compact form-density and workspace-padding iteration complete locally; remaining mutation UAT and owner iteration pending
+- Status: in-progress; final one-pass UAT is complete through F9, with G-K waiting for the recovered in-app browser tab
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-13T03:34:18Z` (earliest recoverable Phase 2 commit; the earlier conversation start timestamp is unavailable)
 - Task/thread ID: Unavailable from the current Codex context
 - Starting branch: `codex/assigned-client-roles-phase2`
 - Starting base SHA: `9faf3933f09ac999b90aa8a2759da87a4dca4b67` (final Phase 1 feature head used by the original stack)
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
-- Current base SHA: `6d9c30a7b7dab3f5c281d518aa61d7cc93a6ad0e`
+- Current base SHA: `dc387af96a2e16dd88e1ae32252efffccf1a99b9`
 - Current local head SHA: `0ca8f2eddaa8c0b019ea057cf42d1cf575c75112`
 - Current PR head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4` (later rebase, UI, concurrency, and UAT fixes remain local and unpushed)
 - Issue: https://github.com/helixosio/helixos/issues/1130
@@ -44,6 +44,7 @@ Exclusions and owner decisions:
 | Compact form-density and padding iteration completed locally | `2026-08-14T14:39:00Z` | Commit `4b2160381`; shared compact fields verified at 32px single-line height and workspace content/breadcrumb insets verified at 10px in the real app |
 | First complete browser UAT sweep passed | `2026-08-15T07:14:00Z` | Real-user browser sweep covered A-K, including native expiry entry, deterministic conflict reconciliation, assigned-only isolation, and a double-click integrity check at local head `401e1d074` |
 | Assignment reason validation defect corrected | `2026-08-15T07:27:00Z` | Pass 2 exposed assignment dialogs enabling below the API's 10-character minimum; root default corrected in `0ca8f2edd`, with 8 focused tests passing and the 9/10 boundary verified in the real app; clean-pass counter reset |
+| Final-pass target reduced by owner | `2026-08-15` | Owner replaced the three-clean-pass requirement with one final clean pass; A-F9 passed on `0ca8f2edd`, and G-K are waiting for the in-app browser to be manually reopened after it retained an internal connection-error page |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -54,7 +55,7 @@ Exclusions and owner decisions:
 | Commits | 77 commits visible in PR | GitHub PR state at head `257073db449da476ee10810caf9a5bcb9a350dd4` |
 | Change size | 119 files, +17,213 / -2,445 | GitHub PR aggregate at head `257073db449da476ee10810caf9a5bcb9a350dd4` |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
-| Validation | Database 237 passed / 2 intentional skips; API 2,824 passed; web 130 suites passed; 336 OpenAPI paths and 86 controller bodies validated | PR description and local command results recorded during implementation; standalone web rerun passed after a CPU-contended parallel run timed out |
+| Validation | Database 237 passed / 2 intentional skips; assignment/permissions API slice 171 passed; web 142 suites / 1,419 tests passed; web lint, theme check, and production build passed | Exact local head `0ca8f2edd`; the full API suite also ran and exposed an unrelated Windows CRLF-sensitive source-regex assertion in the Client Portal payroll-cycle intake controller test |
 | Review | Two private rounds; first round returned 6 findings; second round triggered the circuit breaker with 4 reported findings plus materially similar defects found by the boundary audit | PR plan, private-review workflow context, and circuit-breaker commit |
 | CI | Exact-head Draft CI jobs skipped | GitHub Actions run `31743730760`; Draft behavior expected, not a passing final CI gate |
 | Benchmarks | N/A | Performance benchmarking was not the task objective |
@@ -76,6 +77,7 @@ Exclusions and owner decisions:
 - Coalesced permission groups that share a feature-area label across app sections, eliminating duplicate indistinguishable headers such as two `Payroll Cycle` groups. Kept this deterministic transformation in the existing pure permission model.
 - Added a shared compact text-field primitive and applied it to the Carrier workspace searches, filters, assignment/permission dialogs, and reused Add Team Member form. Single-line controls use a 32px height; multiline controls use a compact 8px by 10px inset. Reduced the floating breadcrumb right margin and main content padding to a consistent 10px workspace inset.
 - Hardened compact Carrier assignment mutations discovered during UAT: every assignment command now submits the revision visible when the user opened the action, stale concurrent dialogs fail instead of overwriting a later owner, and all assignment/reason-only dialogs share the server's 10-character reason minimum.
+- The owner reduced the acceptance target from three consecutive clean browser passes to the single current final pass. The reusable UAT plan records this revision without discarding the earlier complete diagnostic sweep.
 
 ## Validation, review, and CI
 
@@ -94,7 +96,10 @@ Exclusions and owner decisions:
 - Focused validation for the UI pass: 20 API tests passed; 11 web tests passed; API TypeScript build, web TypeScript build, focused web lint, theme-literal check, and real API HTTP checks passed. The live Unassigned Clients and Permissions endpoints returned 200 after the fixes.
 - Compact-density validation: 11 focused web tests passed; TypeScript project build, focused ESLint, theme-literal check, and production web build passed. Real-app inspection verified Team Member search/filter controls and Add Team Member fields at 32px, the Assign Carrier Role multiline field at a compact 70px minimum, and 10px main/breadcrumb outer insets. No mutation was submitted during visual verification.
 - Formal manual UAT now has one complete A-K pass on `401e1d074`. It manually covered add/upsert/import, assignment/transfer/unassign/bulk/reassign/conflict/history, role handoff/offboarding, permission grant/deny/revoke and high-risk expiry, assigned-only direct-URL isolation, navigation recovery, accessibility names, and double-click idempotence. A deterministic same-role conflict was injected only as UAT setup and reconciled through the product UI. The high-risk native date-time boundary was exercised in a temporary Chrome tab because the in-app driver's native field typing does not dispatch the browser event.
-- Pass 2 then found a real UI/server validation mismatch before completion: compact assignment dialogs accepted one-character reasons while the authoritative API requires 10. Commit `0ca8f2edd` centralizes the default at 10, adds matching helper text, and directly tests both assignment and reason-only dialogs. Two focused suites passed (8 tests), targeted ESLint passed, and the real app kept confirmation disabled at 9 characters and enabled it at 10. This code change reset the required three-clean-pass sequence.
+- Pass 2 then found a real UI/server validation mismatch before completion: compact assignment dialogs accepted one-character reasons while the authoritative API requires 10. Commit `0ca8f2edd` centralizes the default at 10, adds matching helper text, and directly tests both assignment and reason-only dialogs. Two focused suites passed (8 tests), targeted ESLint passed, and the real app kept confirmation disabled at 9 characters and enabled it at 10. This code change restarted the final clean pass.
+- On the exact final local head, the complete web suite passed 142/142 files and 1,419/1,419 tests in 172.21 seconds; web lint, theme-literal validation, and the production build passed. The complete database suite passed 237 tests with 2 intentional skips. The complete assignment, permission-override, primary-role, Client-assignment, and tenant-workspace API slice passed 171 tests. The full API suite ran without a local time limit but failed an unrelated Client Portal payroll-cycle intake source-text assertion because its regex assumes LF while the Windows checkout is CRLF; the affected Phase 2 slice remained green.
+- The current manual final pass passed A-F9, including roster search/filter/sort/pagination, add/upsert/cancel, invalid and valid CSV imports, Client drawer selection, the 9/10-character reason boundary, individual assignment, and bulk assignment. The stack later stopped; web and API were recovered, but the in-app browser retained its internal connection-error data page and its navigation policy requires the user to reopen the localhost tab before G-K can continue.
+- Architecture self-review of the final UAT fixes found no new state-ownership, effect choreography, stale-selection, cache-targeting, authorization, or test-placement defect. Carrier mutations capture visible slot revisions and immutable targets; deterministic policies remain in pure modules; query state remains owned by TanStack Query. Existing oversized admin-permissions services remain pre-existing hotspots and were not expanded during the final UAT-fix commits.
 
 ## Outcome, risk, and follow-up
 
@@ -102,12 +107,12 @@ The functional Phase 2 implementation, circuit-breaker correction, supporting re
 
 Remaining sequence:
 
-1. Complete three consecutive clean A-K manual UAT passes on the final local head; the prior clean pass predates the reason-validation correction and no longer counts toward the final three.
-2. Complete final automated validation and the mandatory complete-diff architecture review, then update the UAT evidence.
+1. Reopen the localhost UAT tab and complete G-K of the single owner-required final A-K pass on `0ca8f2edd`.
+2. Finalize and commit the UAT plan/fixtures and remove temporary UAT scripts/logs.
 3. Obtain explicit owner authorization to push or resume private self-review.
 4. Continue the repository lifecycle only after the applicable exact-head gates pass.
 
-Residual risk is concentrated in owner UI iteration and assignment-enabled manual workflow verification. The one complete-suite local failure is an unrelated timezone-sensitive assertion rather than a changed-workspace failure.
+Residual risk is limited to completing the remaining browser cases and any owner UI iteration. The full-API local failure is an unrelated Windows line-ending-sensitive source assertion rather than an assignment or permission behavior failure.
 
 ## Evidence provenance
 
