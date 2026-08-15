@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress (PR A exact-head private self-review clean 2026-08-15 01:18:54 UTC; PR B and PR C propagation/review remain pending)
+- Status: in-progress (owner-approved horizontal navigation correction pushed; exact-head CI and public re-approval pending)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-14 04:01:42 UTC
 - Task/thread ID: Unavailable from the current Codex context
@@ -10,7 +10,7 @@
 - Starting base SHA: `8418af4170c3a7600f1b1e9525563a8ab8226a1c`
 - Starting head SHA: `8418af4170c3a7600f1b1e9525563a8ab8226a1c`
 - Final branch: `codex/payroll-provider-refactor-final`
-- Final head SHA: `7a99699806a62054b8b71024b737ea09ab6499ee`
+- Final head SHA: `d6c537c7373910269db44025c439b57510205f6b`
 - Issue: N/A
 - PR A: https://github.com/helixosio/helixos/pull/1163 (`main` <- `codex/payroll-provider-refactor-ui`)
 - PR B: https://github.com/helixosio/helixos/pull/1164 (`codex/payroll-provider-refactor-ui` <- `codex/payroll-provider-refactor-state`)
@@ -492,3 +492,8 @@ Current terminal head: `7a99699806a62054b8b71024b737ea09ab6499ee`; exact termina
 - At `2026-08-15T20:25:00Z`, the owner approved the visual concept that removes the left section rail and folds the same seven section controls into a compact second row of the existing provider toolbar. The change is cosmetic: the provider/action row, section identities, editor lifecycle, API contracts, authorization, mutation behavior, persistence, and content panels must remain unchanged.
 - Starting state is clean and synchronized at Ready PR #1165 head `8e5a785202a720b12e0cc31635e89169edf56601`, fetched `main` base `c3a8d82a395ec7eeae3f872d1d5082335bafe417`, with no base drift. The prior hosted timing follow-up was cancelled because this production change will create a new exact head and invalidate that automation's gating premise.
 - The owner authorized implementation, test updates, local validation, commit, push, and the exact-new-head re-approval workflow. Merge, release, and publication remain unauthorized.
+- Correction `d6c537c7373910269db44025c439b57510205f6b` removes the left section rail, adds the same seven tabs as a compact second toolbar row, keeps a full-width active panel, and preserves the existing active-section owner and all product/API/security behavior. Seven intended source/test/doc files changed (`+216/-176`); no unrelated seed artifact was committed.
+- Exact local validation passed: toolbar/section 2/2 files and 5/5 tests; feature 21/21 files and 99/99 tests in 23.100s; full web 145/145 files and 1,443/1,443 tests in 191.550s; lint 15.852s with zero warnings; theme 0.635s for 17 approved files; production build 58.637s with existing SignalR/chunk warnings only; diff check clean.
+- Isolated UAT used Postgres `55533`, Rule Engine `53101`/`58180`, API `54100`, and web `55273`. It verified the shared two-row toolbar, full-width Overview/Columns panels, mouse tab selection, ArrowRight focus/selection, and 600-pixel horizontal overflow (`692px` scroll width inside `532px`). The live page remains available on Columns at `http://127.0.0.1:55273/admin/console/payroll-provider-management`.
+- The branch push completed without history rewrite; local, remote, and GitHub heads match `d6c537c7373910269db44025c439b57510205f6b`. PR #1165 remains Open, Ready, mergeable, and `REVIEW_REQUIRED`. Its body was replaced through a full Markdown body file and verified at 68 lines / 6,709 characters with the exact head and layout summary intact.
+- Exact-head CI run [31907246638](https://github.com/helixosio/helixos/actions/runs/31907246638) started with `backend-and-infra`, `web-unit`, and `web-e2e` in progress and `web-cross-browser` intentionally skipped. Public Arya/Sansa re-approval in existing parent `1786806827.039619` waits for required exact-head CI; no `jfollas` request or private rerun is required under the owner's prior public-only direction.
