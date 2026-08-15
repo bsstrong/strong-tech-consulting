@@ -51,6 +51,7 @@ Exclusions and owner decisions:
 | Final validation and UAT record committed | `2026-08-15T18:40:00Z` | Test-only TypeScript correction `769fc1be9`; UAT plan and fixtures commit `705cf4271`; branch remains local and PR remains Draft |
 | Local UAT stack restored | `2026-08-15T20:30:00Z` | Web, API, and Client Portal had stopped listening. The canonical Windows stack launcher restored web `5173` and portal `5174`, but the known API watcher stalled through both attempts. After confirming no watcher remained, the API was started directly with demo authentication and the UAT invite sender; web and API health checks returned 200 and existing UAT data was preserved. |
 | Role ordering and adaptive pagination completed locally | `2026-08-15T20:48:13Z` | Commit `ed7b0b98c`; every inventoried client-facing Carrier Role list now sorts by its displayed label, and the Manage Carrier Account lists use their available body height for a bounded responsive page size while preserving tree root groups. |
+| Obsolete assignment workspace removed locally | `2026-08-15T22:22:15Z` | Commit `57b08cc49`; removed the mistakenly retained legacy Client Assignments navigation and panel, restored the design's four-item sidebar, and routed edit/revoke handoff conflicts to the redesigned Team Member Clients tab. |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -58,8 +59,8 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 35h 5m at current checkpoint | Reconstructed from earliest recoverable commit through the compact-density checkpoint at `2026-08-14T14:39:00Z`; includes pauses and waiting and is not active-work time |
-| Commits | 86 local commits; 77 visible in PR | Local branch versus `origin/main`; GitHub PR remains at `257073db449da476ee10810caf9a5bcb9a350dd4` |
-| Change size | 140 files, +18,531 / -2,468 locally | `git diff --shortstat origin/main...HEAD` at `ed7b0b98c`; pushed PR aggregate remains older |
+| Commits | 87 local commits; 77 visible in PR | Local branch versus `origin/main`; GitHub PR remains at `257073db449da476ee10810caf9a5bcb9a350dd4` |
+| Change size | 140 files, +18,520 / -2,461 locally | `git diff --shortstat origin/main...HEAD` at `57b08cc49`; pushed PR aggregate remains older |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
 | Validation | Database 237 passed / 2 intentional skips; assignment/permissions API slice 171 passed; web 145 suites / 1,427 tests passed; web lint, theme check, and production build passed | Complete web suite ran on local head `ed7b0b98c` in 216.91s. Database/API evidence is from the preceding functional head. The full API suite also ran and exposed an unrelated Windows CRLF-sensitive source-regex assertion in the Client Portal payroll-cycle intake controller test |
 | Review | Two private rounds; first round returned 6 findings; second round triggered the circuit breaker with 4 reported findings plus materially similar defects found by the boundary audit | PR plan, private-review workflow context, and circuit-breaker commit |
@@ -87,6 +88,7 @@ Exclusions and owner decisions:
 - The owner reduced the acceptance target from three consecutive clean browser passes to the single current final pass. The reusable UAT plan records this revision without discarding the earlier complete diagnostic sweep.
 - Centralized Carrier Role ordering on the existing client-facing label adapter, so Broker sorts as Broker/Agent and server/query arrays remain immutable. Applied the policy to assignment filters, dialogs, role slots, history, People & Access, the permissions matrix, and the Manage Carrier Account roster.
 - Replaced the fixed six-record Manage Carrier Account page size with a focused ResizeObserver-backed presentation hook. It calculates complete rows from each list body's available height, keeps six as the compact minimum, caps rendering at 50 rows, and continues to paginate Client trees without splitting a root group from its descendants.
+- Corrected an implementation-scope mistake: functional preservation had incorrectly retained the pre-redesign Client Assignments panel as a fifth sidebar screen. The legacy screen and its local focus state are gone; the supported assignment operations remain available through Unassigned Clients and each Team Member's Clients tab. Edit/revoke handoff errors now lead directly to that redesigned Clients tab.
 
 ## Validation, review, and CI
 
@@ -114,10 +116,11 @@ Exclusions and owner decisions:
 - A reported Platform Admin Client-count concern was traced at the authoritative API boundary. Both Josh and Keith receive `visibility: ALL` in Kingston, whose complete directory has two Clients; Josh receives all 15 NorthRiver Clients, while Keith lacks a NorthRiver workspace grant and is routed to Kingston. No assigned-only Client filter was applied and no code correction was warranted.
 - Architecture self-review of the final UAT fixes found no new state-ownership, effect choreography, stale-selection, cache-targeting, authorization, or test-placement defect. Carrier mutations capture visible slot revisions and immutable targets; deterministic policies remain in pure modules; query state remains owned by TanStack Query. Existing oversized admin-permissions services remain pre-existing hotspots and were not expanded during the final UAT-fix commits.
 - Exact-head validation after the role-order and pagination iteration passed 145/145 web suites and 1,427/1,427 tests in 216.91 seconds. A focused 10-suite run passed 23 tests; full web lint, targeted lint, theme-literal validation, production build, and `git diff --check` passed. The complete-diff architecture review confirmed that query state, authorization, and mutation boundaries were unchanged; responsive sizing is isolated presentation state, and both ordering and page-size calculation have dependency-light direct tests.
+- Legacy assignment-surface removal passed the focused Tenant Workspace suite (5/5 tests), targeted ESLint, TypeScript and production build, `git diff --check`, and real-app reload at `/asguata/team-members`. Browser inspection confirmed the sidebar now exactly matches the design: Team Members, Unassigned Clients, Reporting, and Integrations. A new regression proves handoff conflicts open the Team Member Clients tab instead of the removed panel.
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The rebase, explicit-DI, UI iteration, concurrency, accessibility, UAT validation, owner-feedback fixes, final permissions-label correction, UAT record, Carrier Role ordering, and adaptive pagination are committed locally through `ed7b0b98c48ed8197cc66e48ef0947552ecd5a5a` and have not been pushed. PR #1117 is still Draft with no review requests. The owner-required implementation and final browser sweep are complete; lifecycle work remains intentionally paused.
+The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The rebase, explicit-DI, UI iteration, concurrency, accessibility, UAT validation, owner-feedback fixes, final permissions-label correction, UAT record, Carrier Role ordering, adaptive pagination, and legacy assignment-surface removal are committed locally through `57b08cc4953bb53de60fcf137a7fd9dbdc83f4eb` and have not been pushed. PR #1117 is still Draft with no review requests. The owner-required implementation and final browser sweep are complete; lifecycle work remains intentionally paused.
 
 Remaining sequence:
 
