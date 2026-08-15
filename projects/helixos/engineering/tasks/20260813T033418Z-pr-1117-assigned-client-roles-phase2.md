@@ -10,8 +10,8 @@
 - Starting base SHA: `9faf3933f09ac999b90aa8a2759da87a4dca4b67` (final Phase 1 feature head used by the original stack)
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
 - Current base SHA: `6d9c30a7b7dab3f5c281d518aa61d7cc93a6ad0e`
-- Current local head SHA: `4b2160381e2393547f20b8ace28120c180918d35`
-- Current PR head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4` (three local fixes not yet pushed)
+- Current local head SHA: `0ca8f2eddaa8c0b019ea057cf42d1cf575c75112`
+- Current PR head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4` (later rebase, UI, concurrency, and UAT fixes remain local and unpushed)
 - Issue: https://github.com/helixosio/helixos/issues/1130
 - PR: https://github.com/helixosio/helixos/pull/1117
 
@@ -42,6 +42,8 @@ Exclusions and owner decisions:
 | Carrier workspace loading fixed locally | `2026-08-14T13:20:26Z` | Commit `70ea332c0`; tenant-scoped `/api/me` returned 200 and the open `/capsto` page rendered successfully after reload |
 | Owner UI walkthrough and floating chrome completed locally | `2026-08-14T14:10:30Z` | Commit `d11a3d40e`; real-app walkthrough covered every workspace screen and non-mutating dialog; both discovered data-query failures were fixed |
 | Compact form-density and padding iteration completed locally | `2026-08-14T14:39:00Z` | Commit `4b2160381`; shared compact fields verified at 32px single-line height and workspace content/breadcrumb insets verified at 10px in the real app |
+| First complete browser UAT sweep passed | `2026-08-15T07:14:00Z` | Real-user browser sweep covered A-K, including native expiry entry, deterministic conflict reconciliation, assigned-only isolation, and a double-click integrity check at local head `401e1d074` |
+| Assignment reason validation defect corrected | `2026-08-15T07:27:00Z` | Pass 2 exposed assignment dialogs enabling below the API's 10-character minimum; root default corrected in `0ca8f2edd`, with 8 focused tests passing and the 9/10 boundary verified in the real app; clean-pass counter reset |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -73,6 +75,7 @@ Exclusions and owner decisions:
 - Fixed PostgreSQL raw-query parameter inference for bigint role-definition IDs in the Client assignment state query and sensitive-access permission query. These failures had caused Broker metrics and Unassigned Clients to return 500 and the Permissions tab to fail after query retries.
 - Coalesced permission groups that share a feature-area label across app sections, eliminating duplicate indistinguishable headers such as two `Payroll Cycle` groups. Kept this deterministic transformation in the existing pure permission model.
 - Added a shared compact text-field primitive and applied it to the Carrier workspace searches, filters, assignment/permission dialogs, and reused Add Team Member form. Single-line controls use a 32px height; multiline controls use a compact 8px by 10px inset. Reduced the floating breadcrumb right margin and main content padding to a consistent 10px workspace inset.
+- Hardened compact Carrier assignment mutations discovered during UAT: every assignment command now submits the revision visible when the user opened the action, stale concurrent dialogs fail instead of overwriting a later owner, and all assignment/reason-only dialogs share the server's 10-character reason minimum.
 
 ## Validation, review, and CI
 
@@ -90,16 +93,18 @@ Exclusions and owner decisions:
 - The owner-directed real-app UI pass used the NorthRiver Admin persona and covered Team Members, Unassigned Clients, the Client role drawer, Broker assignment dialog, Team Member Profile/Clients/Permissions tabs, Assign Carrier Role, Add Team Member, Import CSV, Reporting, and Integrations. No browser warnings or errors remained. The Broker metrics reported 0 assigned and 15 unassigned Clients, and the Permissions tab loaded 57 permissions after the query corrections.
 - Focused validation for the UI pass: 20 API tests passed; 11 web tests passed; API TypeScript build, web TypeScript build, focused web lint, theme-literal check, and real API HTTP checks passed. The live Unassigned Clients and Permissions endpoints returned 200 after the fixes.
 - Compact-density validation: 11 focused web tests passed; TypeScript project build, focused ESLint, theme-literal check, and production web build passed. Real-app inspection verified Team Member search/filter controls and Add Team Member fields at 32px, the Assign Carrier Role multiline field at a compact 70px minimum, and 10px main/breadcrumb outer insets. No mutation was submitted during visual verification.
+- Formal manual UAT now has one complete A-K pass on `401e1d074`. It manually covered add/upsert/import, assignment/transfer/unassign/bulk/reassign/conflict/history, role handoff/offboarding, permission grant/deny/revoke and high-risk expiry, assigned-only direct-URL isolation, navigation recovery, accessibility names, and double-click idempotence. A deterministic same-role conflict was injected only as UAT setup and reconciled through the product UI. The high-risk native date-time boundary was exercised in a temporary Chrome tab because the in-app driver's native field typing does not dispatch the browser event.
+- Pass 2 then found a real UI/server validation mismatch before completion: compact assignment dialogs accepted one-character reasons while the authoritative API requires 10. Commit `0ca8f2edd` centralizes the default at 10, adds matching helper text, and directly tests both assignment and reason-only dialogs. Two focused suites passed (8 tests), targeted ESLint passed, and the real app kept confirmation disabled at 9 characters and enabled it at 10. This code change reset the required three-clean-pass sequence.
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The explicit-DI, owner UI-walkthrough, and compact-density fixes are committed locally through `4b2160381e2393547f20b8ace28120c180918d35` and have not been pushed. PR #1117 is still Draft with no review requests. The task is not complete.
+The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The rebase, explicit-DI, UI iteration, concurrency, accessibility, and UAT validation fixes are committed locally through `0ca8f2eddaa8c0b019ea057cf42d1cf575c75112` and have not been pushed. PR #1117 is still Draft with no review requests. The task is not complete.
 
 Remaining sequence:
 
-1. Collect owner feedback on the floating-nav rendered UI and apply the agreed visual or interaction refinements.
-2. Complete manual UAT for assignment-enabled role combinations, denials, transfer, bulk unassign/restore, conflict reconciliation, history, handoff, and offboarding.
-3. Obtain explicit owner authorization to resume private self-review.
+1. Complete three consecutive clean A-K manual UAT passes on the final local head; the prior clean pass predates the reason-validation correction and no longer counts toward the final three.
+2. Complete final automated validation and the mandatory complete-diff architecture review, then update the UAT evidence.
+3. Obtain explicit owner authorization to push or resume private self-review.
 4. Continue the repository lifecycle only after the applicable exact-head gates pass.
 
 Residual risk is concentrated in owner UI iteration and assignment-enabled manual workflow verification. The one complete-suite local failure is an unrelated timezone-sensitive assertion rather than a changed-workspace failure.
