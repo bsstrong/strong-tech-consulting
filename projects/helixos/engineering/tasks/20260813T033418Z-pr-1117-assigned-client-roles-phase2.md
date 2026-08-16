@@ -2,16 +2,16 @@
 
 ## Identity
 
-- Status: in-progress; the owner-required final browser UAT sweep is complete, with push and review activity still paused pending owner authorization
+- Status: in-progress; current-main rebase, exact-head validation, push, and live browser smoke are complete; private self-review is authorized and resuming while the PR remains Draft
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-13T03:34:18Z` (earliest recoverable Phase 2 commit; the earlier conversation start timestamp is unavailable)
 - Task/thread ID: Unavailable from the current Codex context
 - Starting branch: `codex/assigned-client-roles-phase2`
 - Starting base SHA: `9faf3933f09ac999b90aa8a2759da87a4dca4b67` (final Phase 1 feature head used by the original stack)
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
-- Current base SHA: `dc387af96a2e16dd88e1ae32252efffccf1a99b9`
-- Current local head SHA: `705cf4271d7f822494fd88d0f4bdb2649c2c5093`
-- Current PR head SHA: `257073db449da476ee10810caf9a5bcb9a350dd4` (later rebase, UI, concurrency, and UAT fixes remain local and unpushed)
+- Current base SHA: `75827ccac1e8f003ddd3518597674e9f56ba836e`
+- Current local head SHA: `9322b74254c001e113322bda5a13928c80fc11b0`
+- Current PR head SHA: `9322b74254c001e113322bda5a13928c80fc11b0`
 - Issue: https://github.com/helixosio/helixos/issues/1130
 - PR: https://github.com/helixosio/helixos/pull/1117
 
@@ -55,6 +55,8 @@ Exclusions and owner decisions:
 | UI iteration validated and synchronized with main | `2026-08-16T00:02:18Z` | Current `origin/main` merged without conflict at `328ad5504`; complete API, web, OpenAPI, and build validation passed. Local head `ceae5e989` includes the selection-scope architecture correction and remains unpushed. |
 | Exact-head private-review checkpoint | `2026-08-16T00:06:56Z` | Draft head `08c42ad8a8a2dadc583e12b8a2b5dabcba230b9c` equals the remote head; fetched base and merge base are both `c34b1b686ed38bff7ef6367e2fd88b4fb1f65d4c`; worktree clean. Authorized rerun is ready. |
 | Third private review completed; circuit breaker reactivated | `2026-08-16T00:18:39Z` | Exact-head review returned 2 Blockers and 2 Non-blockers sharing the Client paging/selection/command-ownership boundary. Further edits and reruns paused for an owner decision on the missing server contracts. |
+| Current-main rebase and exact-head validation complete | `2026-08-16T05:12:00Z` | Rebased onto `75827ccac`, preserved the authoritative feature tree, removed stale duplicate replay artifacts in `9322b7425`, force-with-lease pushed the branch, and verified PR #1117 remains Draft with no reviewer requests. |
+| Post-rebase browser smoke complete | `2026-08-16T05:13:00Z` | Real app loaded Team Members and Clients with live data, stable 44px breadcrumb height, no horizontal viewport overflow, accessible mail/Client actions, bulk selection, and no new console errors after reload. |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -62,10 +64,10 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 35h 5m at current checkpoint | Reconstructed from earliest recoverable commit through the compact-density checkpoint at `2026-08-14T14:39:00Z`; includes pauses and waiting and is not active-work time |
-| Commits | 92 local commits; 77 visible in PR | Local branch versus `origin/main`; GitHub PR remains at `257073db449da476ee10810caf9a5bcb9a350dd4` pending the authorized self-review push |
-| Change size | 147 files, +19,521 / -2,463 locally | `git diff --shortstat origin/main...HEAD` at `ceae5e989`; pushed PR aggregate remains older |
+| Commits | 102 commits | `git rev-list --count origin/main..HEAD` after the current-main rebase |
+| Change size | 181 files, +24,281 / -3,698 | `git diff --shortstat origin/main...HEAD` at `9322b7425` |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
-| Validation | Database 237 passed / 2 intentional skips; assignment/permissions API slice 171 passed; web 145 suites / 1,427 tests passed; web lint, theme check, and production build passed | Complete web suite ran on local head `ed7b0b98c` in 216.91s. Database/API evidence is from the preceding functional head. The full API suite also ran and exposed an unrelated Windows CRLF-sensitive source-regex assertion in the Client Portal payroll-cycle intake controller test |
+| Validation | Exact head: web 179 suites / 1,556 tests; focused API 115 tests; shared 201 tests; focused workspace web 100 tests; all passed | Web lint, theme check, API/shared/web builds, OpenAPI checks, `git diff --check`, and live browser smoke also passed on `9322b7425` |
 | Review | Three private rounds; first returned 6 findings, second returned 4 and triggered the first circuit breaker, and the owner-authorized third returned 2 Blockers plus 2 Non-blockers and reactivated the circuit breaker | Exact-head `#self-reviews` thread and boundary audits |
 | CI | Exact-head Draft CI jobs skipped | GitHub Actions run `31743730760`; Draft behavior expected, not a passing final CI gate |
 | Benchmarks | N/A | Performance benchmarking was not the task objective |
@@ -140,15 +142,15 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The current main-synchronized implementation, UI/UAT iteration, validation, and architecture corrections are committed locally through `ceae5e989289c0db097db5fcb5628708937d2214` and have not yet been pushed. PR #1117 is still Draft with no review requests. The owner explicitly authorized resuming the private self-review loop after validation; production review remains out of scope.
+The functional Phase 2 implementation, circuit-breaker correction, completed UI/UAT iteration, current-main rebase, exact-head validation, and architecture corrections are pushed at `9322b74254c001e113322bda5a13928c80fc11b0`. PR #1117 remains Draft with no review requests. The owner explicitly authorized resuming the private self-review loop after validation; production review remains out of scope.
 
 Remaining sequence:
 
-1. Obtain an owner decision between focused server contract extensions for hierarchy-aware paging and filtered bulk preview/apply, or a bounded existing-contract design that caps select-all at 500 explicit operations and requires narrowing.
-2. After authorization, implement one cohesive paging/selection/command-ownership correction, address off-page review metadata, and run complete affected validation and architecture review.
-3. Obtain fresh owner approval before another private rerun; keep the PR Draft and do not request production review, GitHub reviewers, merge, or release.
+1. Resume the existing private `#self-reviews` thread for exact head `9322b7425` and classify only current-head findings.
+2. Address any actionable findings cohesively, rerun affected validation, and apply the review circuit breaker if the same boundary expands again.
+3. Keep the PR Draft and do not request production review, GitHub reviewers, merge, or release.
 
-Residual risk is limited to the two browser-control limitations documented in the UAT plan, any further owner UI iteration, and the intentionally paused delivery lifecycle. The full-API local failure is an unrelated Windows line-ending-sensitive source assertion rather than an assignment or permission behavior failure.
+Residual risk is limited to the two browser-control limitations documented in the UAT plan, any further owner UI iteration, and later delivery lifecycle gates. The exact post-rebase API evidence is a focused 115-test authorization/assignment/workspace slice plus a successful production build; the complete API suite passed before the rebase, and the rebased feature tree was verified byte-equivalent to that pre-rebase feature tree.
 
 ## Evidence provenance
 
