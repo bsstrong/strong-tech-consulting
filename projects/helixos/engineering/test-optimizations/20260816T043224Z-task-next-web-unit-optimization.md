@@ -54,3 +54,14 @@ The next target is `src/web/src/features/workspace/pages/DesktopWorkspacePage.te
 - Recorded resumed implementation-to-Draft handoff: approximately 18 minutes.
 - Private exact-head self-review: requested at 2026-08-16T05:03:19Z for head `ed434432a97eb7e7800d2de4e8004cf13d1a9d52`; authenticated user `U0B9R7NJTQA` posted the canonical PR URL as the only parent text in verified `#self-reviews` channel `C0BMWSRGYDS`, thread `1786856599.310989`. The review bot acknowledged that GitHub will not be changed and began the inquiry.
 - Hosted samples and exact-head CI: pending.
+
+## Private review round 1
+
+- Completed: 2026-08-16T05:07:27Z on head `ed434432a97eb7e7800d2de4e8004cf13d1a9d52`.
+- Findings: 0 Blockers; 1 Non-blocker. The lightweight Operations resolver double rendered success content without asserting the tenant, capability, and navigation callbacks supplied by `DesktopWorkspacePage`.
+- Disposition: fixed in commit `d7d29a6dc362f03568a71c0d4bb6fc7d90a4caa8`. The test double now captures its resolver props, and the Operations launcher test asserts tenant `nriver`, `operations.view`, the Operations window type, and both navigation callbacks.
+- Blast radius: test-only capture and assertion at the Desktop Workspace-to-Page Resolver seam; no production, runtime, authorization, persistence, or child-page implementation changed. The dedicated Page Resolver suite remains the real dispatch owner, and no materially similar unconditional resolver-success boundary remains in this test double.
+- Validation: Desktop Workspace plus Page Resolver passed 107/107 tests; web lint and `git diff --check` passed.
+- Pull-request description updated with the finding, fix, validation, and exact current head.
+- Rerun requested through authenticated-user Slack Web API at thread reply `1786857086.477179`; this is rerun cycle 1 of at most 3. Exact fetched base and merge base remain `75827ccac1e8f003ddd3518597674e9f56ba836e`.
+- Timer: active heartbeat `pr-1180-self-review-rerun-check` checks the returned exact-head review after seven minutes and will be deleted when review completes.
