@@ -10,7 +10,12 @@
 - Elapsed: 5m 07s
 - Resumed: 2026-08-16T04:42:45Z
 - Resumed objective: implement and validate the selected optimization, then create its Draft pull request.
-- Branch: `main` (read-only analysis)
+- Implementation branch: `codex/optimize-desktop-workspace-tests`
+- Pull request: https://github.com/helixosio/helixos/pull/1180 (Draft)
+- PR created: 2026-08-16T05:00:28Z
+- Base SHA: `75827ccac1e8f003ddd3518597674e9f56ba836e`
+- Head SHA: `ed434432a97eb7e7800d2de4e8004cf13d1a9d52`
+- Implementation commit: `ed434432a97eb7e7800d2de4e8004cf13d1a9d52`
 - Local head at start: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f`
 - Fetched `origin/main` at start: `75827ccac1e8f003ddd3518597674e9f56ba836e`
 - Task/thread ID: unavailable in current execution context
@@ -35,3 +40,17 @@ The next target is `src/web/src/features/workspace/pages/DesktopWorkspacePage.te
 - Preserved behavior-sensitive interactions: real clicks, Escape handling, focus transfer, launcher selection, navigation, persona switching, tenant and permission readiness, workspace hydration/persistence, reset behavior, request scoping, and all 87 current Desktop Workspace assertions. Do not convert keyboard/focus-sensitive flows to direct events.
 - Expected evidence gate: two matched focused baselines and two post-change samples under `TZ=UTC`, unchanged pass/fail/skip counts, one complete web-unit run, lint/build/theme/diff checks, then three hosted samples if implementation proceeds. Retain the change only if the matched median improves meaningfully.
 - Risks or evidence gaps: hosted artifacts do not provide per-test timing, so the relative contribution of child imports versus implicit hover must be established by the matched local samples. No source changes were made during this analysis.
+
+## Implementation and validation
+
+- Implementation: replaced the duplicate child-page import tree in the Desktop Workspace orchestration suite with a focused `PageResolver` test double for the Operations content and Control Panel callback seams; centralized `userEvent.setup({ skipHover: true })` for the suite's non-hover interactions. Production code is unchanged.
+- Local baseline samples: wall 40.281s and 39.595s (median 39.938s); file total 38.35s and 38.13s (median 38.24s); tests/hooks 28.23s and 27.29s (median 27.76s); collection 8.61s and 9.17s (median 8.89s); 87/0/0 in both.
+- Local post-change samples: wall 31.440s and 28.163s (median 29.802s, -25.4%); file total 29.77s and 26.41s (median 28.09s, -26.5%); tests/hooks 23.38s and 19.91s (median 21.645s, -22.0%); collection 4.72s and 4.91s (median 4.815s, -45.8%); 87/0/0 in both.
+- Focused seam validation: Desktop Workspace plus the real Page Resolver suite passed 107/107 tests.
+- Complete web unit suite: 151 files and 1,487 tests passed in 214.064s wall time.
+- Web lint, production build, theme literal check, and `git diff --check` passed. Build emitted only the existing Rollup annotation and chunk-size warnings.
+- Mandatory architecture self-review: no production behavior, state ownership, authorization, transport, persistence, or public contract changed. The test double is scoped to workspace orchestration; the dedicated 20-test Page Resolver suite retains the real child-dispatch integration owner.
+- Change size: 2 files, 96 additions, 19 deletions; documentation and one test harness only.
+- Recorded resumed implementation-to-Draft handoff: approximately 18 minutes.
+- Private exact-head self-review: pending.
+- Hosted samples and exact-head CI: pending.
