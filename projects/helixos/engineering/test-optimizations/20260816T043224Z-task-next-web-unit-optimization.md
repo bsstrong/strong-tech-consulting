@@ -2,29 +2,34 @@
 
 ## Outcome
 
-- Status: in-progress
+- Status: completed
 - Repository: https://github.com/helixosio/helixos
 - Objective: Review at least the latest 20 hosted web-unit timing runs and identify the next untreated, non-overlapping test-runtime optimization target.
 - Started: 2026-08-16T04:32:24Z
-- Analysis handoff: pending
+- Analysis handoff: 2026-08-16T04:37:31Z
+- Elapsed: 5m 07s
 - Branch: `main` (read-only analysis)
 - Local head at start: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f`
 - Fetched `origin/main` at start: `75827ccac1e8f003ddd3518597674e9f56ba836e`
 - Task/thread ID: unavailable in current execution context
 
-The target and supporting hosted evidence are pending analysis.
+The next target is `src/web/src/features/workspace/pages/DesktopWorkspacePage.test.tsx`: keep its workspace behavior coverage intact while removing duplicate child-page import work at the existing `PageResolver` seam and using hover-free user-event setup only for interactions whose contract does not involve hover.
 
 ## Evidence scope
 
-- Hosted runs reviewed: pending
-- Active pull-request overlap inventory: pending
-- Prior optimization records reviewed: pending
-- Candidate timing distribution: pending
+- Hosted runs reviewed: 30 latest successful `HelixOS CI` runs, from run `31894516097` through `31925207424`; every artifact contained the complete `web-unit-files.json` timing report.
+- Desktop Workspace over the latest 20 runs: 40.07s median total (26.13-43.46s), 32.25s median tests/hooks (21.40-35.11s), with 87/87 passing and no failures or skips in every sample.
+- Desktop Workspace over all 30 reviewed runs: 40.66s median total (25.87-43.94s) and 32.87s median tests/hooks (20.26-35.39s). The latest sample was 40.2s total / 32.3s tests-hooks; the latest merged-main sample, run `31919269767`, was 32.24s / 25.73s with the same 87 tests.
+- Current artifact import evidence: `PageResolver.tsx` costs 5.9s accumulated across two test files; `DesktopWorkspacePage.tsx` costs 5.2s in its suite; the Desktop Workspace file spends 6.8s in collection. The dedicated `PageResolver.test.tsx` already owns 20 passing child-page dispatch tests and measured 3.83s total / 1.28s tests-hooks.
+- Suite shape on current `origin/main`: 87 hosted tests; 81 declared `it(...)` sites, 18 full workspace renders, 19 `userEvent.setup()` calls, 22 waits, and extensive direct deterministic workspace/layout policy coverage. The production page is a 2,741-line orchestration hotspot, so the optimization must keep the boundary narrow and avoid a mechanical broad refactor.
+- Active pull-request overlap inventory: #1179, #1178, #1173, #1139, #1117, #1057, and #689. None changes `DesktopWorkspacePage.test.tsx`, `DesktopWorkspacePage.tsx`, or `PageResolver.tsx`. PR #1112, which previously blocked this target, merged at `4c1b17e1dc6f6bac4d3e8b13c060293df05f285c`.
+- Higher nominal targets were excluded: `PlanDetailTab.test.tsx` and `ClientEditorDialog.test.tsx` were already optimized and are currently overlapped by open PRs #1057 and #689; `PayrollProviderManagementPage.test.tsx`, `OperationsDashboard.test.tsx`, and `PayrollBatchesTab.test.tsx` were already optimized, with Operations also overlapped by PR #1173.
+- Prior optimization records reviewed: PRs #1092, #1114, #1116, #1131, #1141, #1144, #1147, and #1148, plus the full specialized-record inventory.
 
 ## Decision and follow-up
 
-- Selected target: pending
-- Optimization seam: pending
-- Preserved behavior-sensitive interactions: pending
-- Risks or evidence gaps: pending
-
+- Selected target: `src/web/src/features/workspace/pages/DesktopWorkspacePage.test.tsx`.
+- Optimization seam: mock the already independently tested `PageResolver` child-content boundary in this workspace-orchestration suite so it no longer imports the application page tree a second time. Centralize `userEvent.setup({ skipHover: true })` for click/keyboard cases only where implicit hover is not asserted. Retain the dedicated `PageResolver.test.tsx` as the representative dispatch integration seam.
+- Preserved behavior-sensitive interactions: real clicks, Escape handling, focus transfer, launcher selection, navigation, persona switching, tenant and permission readiness, workspace hydration/persistence, reset behavior, request scoping, and all 87 current Desktop Workspace assertions. Do not convert keyboard/focus-sensitive flows to direct events.
+- Expected evidence gate: two matched focused baselines and two post-change samples under `TZ=UTC`, unchanged pass/fail/skip counts, one complete web-unit run, lint/build/theme/diff checks, then three hosted samples if implementation proceeds. Retain the change only if the matched median improves meaningfully.
+- Risks or evidence gaps: hosted artifacts do not provide per-test timing, so the relative contribution of child imports versus implicit hover must be established by the matched local samples. No source changes were made during this analysis.
