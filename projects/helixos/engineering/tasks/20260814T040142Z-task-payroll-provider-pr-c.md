@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: completed (exact-head private self-review clean; PR remains Ready and unmerged)
+- Status: completed (approved, exact-head CI green, and merged)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-14 04:01:42 UTC
 - Task/thread ID: Unavailable from the current Codex context
@@ -60,17 +60,19 @@ Exclusions and owner decisions:
 | Exact terminal-head matrix completed | 2026-08-14 08:11 UTC | Complete prescribed matrix passed again on `7a9969980`; final tree clean and unpushed |
 | PR A private self-review clean | 2026-08-15 01:18:54 UTC | Exact head `484fdb845`; one rerun completed with zero blockers, zero non-blockers, and no inline findings |
 | PR C terminal private self-review clean | 2026-08-16 01:06:20 UTC | Exact head `6132d8b15`; cycle 3 returned zero blockers, zero non-blockers, and no inline findings |
+| PR C approved | 2026-08-16 01:18 UTC | GitHub final state reports `APPROVED` on exact head `6132d8b153c92b35ebf7022c15489aed5dce2687` |
+| PR C merged | 2026-08-16 01:18:25 UTC | PR #1165 merged as `75827ccac1e8f003ddd3518597674e9f56ba836e`; source branch deleted from origin |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 45 hours 4 minutes 38 seconds wall clock | 2026-08-14 04:01:42 UTC through terminal private review at 2026-08-16 01:06:20 UTC; includes owner feedback, implementation, validation, review waits, corrections, and UAT |
+| Total elapsed | 45 hours 16 minutes 43 seconds wall clock | 2026-08-14 04:01:42 UTC through merge at 2026-08-16 01:18:25 UTC; includes owner feedback, implementation, validation, review waits, corrections, UAT, approval, and merge |
 | Commits | 38 from current merge-base | `git rev-list --count c34b1b686..6132d8b15` |
 | Change size | 48 files; 4,427 insertions; 2,105 deletions | `git diff --shortstat c34b1b686..6132d8b15` |
 | Validation | 23/23 focused files and 112/112 tests; 147/147 full-web files and 1,456/1,456 tests; lint/theme/build clean | Exact terminal-head commands and warning disposition below |
 | Review | Final invocation: 3 rerun cycles, 3 blockers resolved, terminal exact-head clean result | Complete diff, surrounding modules, circuit-breaker inventories, focused regressions, isolated-stack UAT, and exact-head verification |
-| CI | Draft workflows started and intentionally skipped | PR A run `31851578763`, PR B run `31851588161`, and PR C run `31851601890`; no hosted timing artifact is available in Draft state |
+| CI | Exact-head required CI green before merge | Run `31918627939`: `backend-and-infra`, `web-unit`, and `web-e2e` succeeded; `web-cross-browser` was intentionally skipped by workflow policy |
 | Benchmarks | Local directional only | Focused 41.445 seconds; full web 191.597 seconds; production build 58.774 seconds on terminal head |
 
 ## Work and decisions
@@ -579,3 +581,11 @@ Current terminal head: `7a99699806a62054b8b71024b737ea09ab6499ee`; exact termina
 - Canonical completion state: HelixOS worktree clean; local and remote branch heads match `6132d8b153c92b35ebf7022c15489aed5dce2687`; PR #1165 is Open, Ready, mergeable, and GitHub reports its current base SHA as merge-base `c34b1b686ed38bff7ef6367e2fd88b4fb1f65d4c`. Fetched `main` is `4c1b17e1dc6f6bac4d3e8b13c060293df05f285c`; its base-only client-workspace files have zero Payroll Provider overlap.
 - The PR description was finalized without changing the reviewed branch head and verified at 87 lines / 11,140 characters with the exact clean-review timestamp and zero-finding disposition. The checked-in handoff remains the exact reviewed artifact and is not amended after approval, avoiding creation of an unreviewed documentation head.
 - Outcome: the owner-authorized private self-review objective is complete. Required owner action before later PR lifecycle work is to decide whether to wait for exact-current-head hosted CI and re-enter the repository's final public/GitHub review gates. Merge, release, and publication remain unauthorized.
+
+## Final approval and merge
+
+- Canonical GitHub state was reconciled after the owner reported completion. PR #1165 is `MERGED`, not Draft, with `APPROVED` review decision.
+- The approved and merged PR head is exact SHA `6132d8b153c92b35ebf7022c15489aed5dce2687`; GitHub records base SHA `c34b1b686ed38bff7ef6367e2fd88b4fb1f65d4c` and merge commit `75827ccac1e8f003ddd3518597674e9f56ba836e` at 2026-08-16 01:18:25 UTC.
+- Exact-head CI run `31918627939` completed before merge: `backend-and-infra`, `web-unit`, and `web-e2e` succeeded; `web-cross-browser` was skipped by the workflow. No required check remained pending or failed.
+- The local review worktree remains clean at the merged head. The remote feature branch was deleted after merge, so the local branch now correctly reports its former upstream as gone. Fetched `origin/main` contains merge commit `75827ccac1e8f003ddd3518597674e9f56ba836e`.
+- Final outcome: the Payroll Provider Management stacked feature and its subsequent UI, architecture, state-ownership, cache, ordering, and test-performance corrections are approved and merged. No review monitor, reviewer request, merge, release, or publication action remains for this task.
