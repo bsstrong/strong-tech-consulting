@@ -94,3 +94,10 @@ The next target is `src/web/src/features/workspace/pages/DesktopWorkspacePage.te
 - Hosted aggregate: web-unit job median 806s (778-830s); web command median 609.308s (590.992-629.843s); Vitest runner median 596.401s (577.912-616.404s).
 - Target aggregate: total median 28.178s (26.302-29.323s), 12.6% below the 32.24s merged-main baseline; tests/hooks median 23.521s (21.682-24.421s), 8.6% below the 25.73s baseline. All samples preserved 87/0/0.
 - Pull-request description updated with the three-sample exact-head table, provenance, ranges, medians, baseline deltas, preserved counts, and exact-head CI evidence.
+
+## Final review gate
+
+- Revalidated at 2026-08-16T06:12:47Z: PR is Ready and mergeable on unchanged head `d7d29a6dc362f03568a71c0d4bb6fc7d90a4caa8`; fetched base and merge base remain `75827ccac1e8f003ddd3518597674e9f56ba836e` with no base advance.
+- Required exact-head checks are green: `backend-and-infra`, `web-unit`, and `web-e2e`; the conditional `web-cross-browser` job remains intentionally skipped. No GitHub review threads or actionable findings exist.
+- Requested GitHub review from `jfollas` and verified the request is present. No other developer was requested and no Slack message was posted.
+- Active heartbeat `pr-1180-ci-sample-1-check` now checks final review after three minutes, then every one minute only while genuinely pending.
