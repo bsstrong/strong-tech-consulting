@@ -52,6 +52,7 @@ Exclusions and owner decisions:
 | Local UAT stack restored | `2026-08-15T20:30:00Z` | Web, API, and Client Portal had stopped listening. The canonical Windows stack launcher restored web `5173` and portal `5174`, but the known API watcher stalled through both attempts. After confirming no watcher remained, the API was started directly with demo authentication and the UAT invite sender; web and API health checks returned 200 and existing UAT data was preserved. |
 | Role ordering and adaptive pagination completed locally | `2026-08-15T20:48:13Z` | Commit `ed7b0b98c`; every inventoried client-facing Carrier Role list now sorts by its displayed label, and the Manage Carrier Account lists use their available body height for a bounded responsive page size while preserving tree root groups. |
 | Obsolete assignment workspace removed locally | `2026-08-15T22:22:15Z` | Commit `57b08cc49`; removed the mistakenly retained legacy Client Assignments navigation and panel, restored the design's four-item sidebar, and routed edit/revoke handoff conflicts to the redesigned Team Member Clients tab. |
+| UI iteration validated and synchronized with main | `2026-08-16T00:02:18Z` | Current `origin/main` merged without conflict at `328ad5504`; complete API, web, OpenAPI, and build validation passed. Local head `ceae5e989` includes the selection-scope architecture correction and remains unpushed. |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -59,8 +60,8 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 35h 5m at current checkpoint | Reconstructed from earliest recoverable commit through the compact-density checkpoint at `2026-08-14T14:39:00Z`; includes pauses and waiting and is not active-work time |
-| Commits | 87 local commits; 77 visible in PR | Local branch versus `origin/main`; GitHub PR remains at `257073db449da476ee10810caf9a5bcb9a350dd4` |
-| Change size | 140 files, +18,520 / -2,461 locally | `git diff --shortstat origin/main...HEAD` at `57b08cc49`; pushed PR aggregate remains older |
+| Commits | 92 local commits; 77 visible in PR | Local branch versus `origin/main`; GitHub PR remains at `257073db449da476ee10810caf9a5bcb9a350dd4` pending the authorized self-review push |
+| Change size | 147 files, +19,521 / -2,463 locally | `git diff --shortstat origin/main...HEAD` at `ceae5e989`; pushed PR aggregate remains older |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
 | Validation | Database 237 passed / 2 intentional skips; assignment/permissions API slice 171 passed; web 145 suites / 1,427 tests passed; web lint, theme check, and production build passed | Complete web suite ran on local head `ed7b0b98c` in 216.91s. Database/API evidence is from the preceding functional head. The full API suite also ran and exposed an unrelated Windows CRLF-sensitive source-regex assertion in the Client Portal payroll-cycle intake controller test |
 | Review | Two private rounds; first round returned 6 findings; second round triggered the circuit breaker with 4 reported findings plus materially similar defects found by the boundary audit | PR plan, private-review workflow context, and circuit-breaker commit |
@@ -92,6 +93,7 @@ Exclusions and owner decisions:
 - Replaced the narrow Unassigned Clients surface with a complete Clients workspace. It supports All/Assigned/Unassigned Broker/Agent filtering, persistent multi-row selection, and one compact right-side drawer that can assign every selected Client role in a single reasoned operation. A persistent Clients navigation badge exposes the unassigned Broker/Agent count from every Manage Carrier Account section.
 - Tightened the bulk drawer and made empty role destinations message-only: roles with no eligible Team Members do not render disabled dropdowns, while populated roles remain searchable and alphabetically ordered.
 - Narrowed Client-assignable Carrier Roles through an authoritative server policy: only active template roles that allow `clients.assigned.view` and do not allow `clients.view` can own a Client slot. The current catalog therefore offers Broker/Agent and Client Success Manager; full-visibility roles are absent from discovery and rejected by preview/apply rather than merely hidden in the UI.
+- Scoped bulk Client selections to the active search/filter result set in both the Clients workspace and Team Member Clients tab, preventing a later bulk operation from retaining hidden targets. Team Members whose primary role has all-Client visibility now receive an explicit informational state instead of issuing an invalid role-scoped assignment query.
 
 ## Validation, review, and CI
 
@@ -130,16 +132,17 @@ Exclusions and owner decisions:
 - Confirmed that every populated bulk-assignment destination already uses a type-searchable autocomplete: typing `Ben` narrowed Broker/Agent to Benjamin Burke and Brooke Benson, while `Stella` narrowed Client Success Manager to Stella Shaw. Added regression coverage for typed filtering without changing the compact drawer layout.
 - Added a two-stage paged-grid selection flow. The header checkbox still selects only the visible page, then exposes `Select all N results`; activating it selects every Client matching the current search and assignment filter, including Clients on other pages or hidden under collapsed hierarchy nodes. The live Unassigned filter progressed from 9 visible selections to all 26 results, and unchecking the header cleared the full result selection.
 - Simplified the completed selection state after owner feedback: once every result is selected, the page-level checkbox, `Select all N visible`, and duplicate numeric count are replaced by one check-marked `All N results selected` status plus `Clear selection`. Live verification cleared the state back to the page selector, repeated the two-stage 9-to-26 selection, and confirmed the completed state contains no visible-page selector.
+- Final pre-review validation on the main-synchronized local head passed 2,943/2,943 API tests in 122.46 seconds, 160/160 web test files and 1,473/1,473 web tests in 172.86 seconds, web lint, theme-literal validation, API and web production builds, OpenAPI generation/consistency/body/structural checks, and `git diff --check`. The only initial API failure was a CRLF-sensitive source-regex assertion; test-only commit `e6cc0fe09` made the assertion platform-independent and the complete rerun passed. The post-validation architecture audit found and corrected hidden bulk-selection carryover and invalid full-visibility-role assignment queries; five focused UI tests and the web production build passed after that correction.
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The rebase, explicit-DI, UI iteration, concurrency, accessibility, UAT validation, owner-feedback fixes, final permissions-label correction, UAT record, Carrier Role ordering, adaptive pagination, and legacy assignment-surface removal are committed locally through `57b08cc4953bb53de60fcf137a7fd9dbdc83f4eb` and have not been pushed. PR #1117 is still Draft with no review requests. The owner-required implementation and final browser sweep are complete; lifecycle work remains intentionally paused.
+The functional Phase 2 implementation, circuit-breaker correction, supporting read/bulk contracts, and first UI implementation are pushed at `257073db449da476ee10810caf9a5bcb9a350dd4`. The current main-synchronized implementation, UI/UAT iteration, validation, and architecture corrections are committed locally through `ceae5e989289c0db097db5fcb5628708937d2214` and have not yet been pushed. PR #1117 is still Draft with no review requests. The owner explicitly authorized resuming the private self-review loop after validation; production review remains out of scope.
 
 Remaining sequence:
 
-1. Leave the demonstrated UAT data available until the owner finishes inspecting it, then restore the deterministic seed.
-2. Obtain explicit owner authorization before pushing or resuming private self-review.
-3. Continue the repository lifecycle only after the applicable exact-head gates pass.
+1. Push the validated, main-synchronized branch and update the Draft PR description.
+2. Reuse the existing private `#self-reviews` thread, request an exact-head rerun, and address every actionable finding within the authorized circuit-breaker limits.
+3. Keep the PR Draft and do not request production review, GitHub reviewers, merge, or release.
 
 Residual risk is limited to the two browser-control limitations documented in the UAT plan, any further owner UI iteration, and the intentionally paused delivery lifecycle. The full-API local failure is an unrelated Windows line-ending-sensitive source assertion rather than an assignment or permission behavior failure.
 
