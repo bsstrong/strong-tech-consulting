@@ -112,3 +112,12 @@ The next target is `src/web/src/features/workspace/pages/DesktopWorkspacePage.te
 - Mandatory architecture self-review: `PageResolver` remains the single contract owner; the orchestration test consumes that contract without a parallel handwritten shape; the real 20-test resolver suite remains the dispatch integration owner. No new abstraction, state, I/O, or runtime dependency was introduced.
 - Circuit breaker: two review rounds identified omissions at the same test-double boundary. Automated re-review and monitoring stopped pending explicit owner approval. Heartbeat `pr-1180-ci-sample-1-check` was deleted.
 - The prior approval is dismissed on the new head. Exact-head CI run `31931367099` started at 2026-08-16T06:25:07Z; required checks and a replacement three-sample hosted set are pending. No reviewer was re-requested and no Slack message was posted.
+
+## Current-head review assessment
+
+- A `keithelder` review requested changes on current head `d844499b3af2ed2e1e0769331af7da81aa62d3ff` at 2026-08-16T17:14:31Z. It supplied no inline threads and listed six top-level items.
+- Exporting `PageResolverProps` is a compile-time API expansion but has no runtime export or behavior impact. It is intentional contract ownership requested by the prior review, not a readability or correctness defect.
+- The two claims that the test double lacks Page Resolver edge cases duplicate the same concern and conflict with the suite boundary: the double intentionally owns only the Operations and Control Panel seams exercised by Desktop Workspace, while `PageResolver.test.tsx` owns 20 real dispatch/callback cases.
+- The partial `operationsResolverProps` assertion is deliberate. It verifies the tenant, capability, window type, and two navigation callbacks relevant to that workflow without duplicating the complete resolver prop bag.
+- The `setupUser` item is positive commentary, not a defect. The alleged blocker likewise describes the intended consistent `skipHover` behavior rather than a failure; the suite contains no hover-revealed behavior, and the rationale is now documented at the helper.
+- Disposition: none of the six items identifies a concrete correctness, security, coverage, performance, or maintainability defect. No source change is justified by this review. The PR remains in `CHANGES_REQUESTED` GitHub state solely because the review submitted that state.
