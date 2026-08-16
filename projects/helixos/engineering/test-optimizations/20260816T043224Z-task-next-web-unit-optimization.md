@@ -75,7 +75,7 @@ The next target is `src/web/src/features/workspace/pages/DesktopWorkspacePage.te
 - Pull-request description was repaired to restore Markdown structure and record the clean exact-head rerun.
 - Exact-head full CI run `31928742719` attempt 1 completed successfully at 2026-08-16T05:33:12Z. Required checks passed: `backend-and-infra`, `web-unit`, and `web-e2e`; `web-cross-browser` was intentionally skipped by workflow conditions.
 - Latest-50 completed pull-request CI attempts had a maximum elapsed duration of 895 seconds (`run_started_at` to `updated_at`); adding two minutes and rounding down yields a 16-minute follow-up cadence.
-- Active heartbeat `pr-1180-ci-sample-1-check` is scheduled for that cadence and now tracks hosted sample 2. No final reviewer request will be made until three hosted samples are collected, the description and durable record are updated, and the exact-head final-review gates pass.
+- Active heartbeat `pr-1180-ci-sample-1-check` is scheduled for that cadence and now tracks hosted sample 3. No final reviewer request will be made until three hosted samples are collected, the description and durable record are updated, and the exact-head final-review gates pass.
 
 ## Hosted timing collection
 
@@ -83,4 +83,8 @@ The next target is `src/web/src/features/workspace/pages/DesktopWorkspacePage.te
 - Sample 1 job duration: 778s; web command: 590.992s; Vitest runner: 577.912s.
 - Sample 1 target: 26.302s total, 21.682s tests/hooks, 3.522s collection; 87 passed, 0 failed, 0 skipped.
 - Sample 1 artifact: `C:\dev\HelixOS-desktop-workspace-test-optimization\.artifacts\pr-1180\attempt-1` from artifact `9258790886` (`web-unit-timing`).
-- Sample 2: only the completed web-unit job was rerun. Run `31928742719` attempt 2, job `95121996996`, started at 2026-08-16T05:38:09Z; pending.
+- Sample 2: run `31928742719`, attempt 2, web-unit job `95121996996`, exact head `d7d29a6dc362f03568a71c0d4bb6fc7d90a4caa8`.
+- Sample 2 job duration: 830s; web command: 629.843s; Vitest runner: 616.404s.
+- Sample 2 target: 29.323s total, 24.421s tests/hooks, 3.695s collection; 87 passed, 0 failed, 0 skipped.
+- Sample 2 artifact: `C:\dev\HelixOS-desktop-workspace-test-optimization\.artifacts\pr-1180\attempt-2` from artifact `9258992033` (`web-unit-timing`).
+- Sample 3: only the completed attempt-2 web-unit job was rerun. Run `31928742719` attempt 3, job `95123459152`, started at 2026-08-16T05:54:00Z; pending.
