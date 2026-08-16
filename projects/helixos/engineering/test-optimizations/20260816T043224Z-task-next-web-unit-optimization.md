@@ -15,7 +15,7 @@
 - PR created: 2026-08-16T05:00:28Z
 - Owner marked Ready: 2026-08-16T05:19:39Z; the owner-selected Ready state is authoritative.
 - Base SHA: `75827ccac1e8f003ddd3518597674e9f56ba836e`
-- Head SHA: `d7d29a6dc362f03568a71c0d4bb6fc7d90a4caa8`
+- Head SHA: `d844499b3af2ed2e1e0769331af7da81aa62d3ff`
 - Implementation commit: `ed434432a97eb7e7800d2de4e8004cf13d1a9d52`
 - Local head at start: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f`
 - Fetched `origin/main` at start: `75827ccac1e8f003ddd3518597674e9f56ba836e`
@@ -93,11 +93,22 @@ The next target is `src/web/src/features/workspace/pages/DesktopWorkspacePage.te
 - Sample 3 artifact: `C:\dev\HelixOS-desktop-workspace-test-optimization\.artifacts\pr-1180\attempt-3` from artifact `9259153730` (`web-unit-timing`).
 - Hosted aggregate: web-unit job median 806s (778-830s); web command median 609.308s (590.992-629.843s); Vitest runner median 596.401s (577.912-616.404s).
 - Target aggregate: total median 28.178s (26.302-29.323s), 12.6% below the 32.24s merged-main baseline; tests/hooks median 23.521s (21.682-24.421s), 8.6% below the 25.73s baseline. All samples preserved 87/0/0.
-- Pull-request description updated with the three-sample exact-head table, provenance, ranges, medians, baseline deltas, preserved counts, and exact-head CI evidence.
+- Pull-request description updated with the three-sample predecessor-head table, provenance, ranges, medians, baseline deltas, preserved counts, and predecessor-head CI evidence. The final-review test-source correction invalidated these as the requested current-head sample set.
 
 ## Final review gate
 
 - Revalidated at 2026-08-16T06:12:47Z: PR is Ready and mergeable on unchanged head `d7d29a6dc362f03568a71c0d4bb6fc7d90a4caa8`; fetched base and merge base remain `75827ccac1e8f003ddd3518597674e9f56ba836e` with no base advance.
 - Required exact-head checks are green: `backend-and-infra`, `web-unit`, and `web-e2e`; the conditional `web-cross-browser` job remains intentionally skipped. No GitHub review threads or actionable findings exist.
 - Requested GitHub review from `jfollas` and verified the request is present. No other developer was requested and no Slack message was posted.
-- Active heartbeat `pr-1180-ci-sample-1-check` now checks final review after three minutes, then every one minute only while genuinely pending.
+- Heartbeat `pr-1180-ci-sample-1-check` checked final review after three minutes, then every one minute while it remained pending.
+
+## Final review round 1 and churn circuit breaker
+
+- `jfollas` approved predecessor head `d7d29a6dc362f03568a71c0d4bb6fc7d90a4caa8` at 2026-08-16T06:17:35Z with no blockers, one non-blocking finding, and one smaller note.
+- Finding disposition: commit `d844499b3af2ed2e1e0769331af7da81aa62d3ff` exports the authoritative `PageResolverProps`, binds the resolver test double and prop capture to that contract, and documents why the suite disables implicit hover.
+- Shared root cause and affected-instance inventory: both review rounds found fidelity gaps at the one `PageResolver` test-double boundary in `DesktopWorkspacePage.test.tsx`. Repository-wide inventory found no second `PageResolver` component mock. The focused correction covers the double's prop type, captured prop type, representative Operations assertions, Control Panel callback seam, and hover rationale.
+- Blast radius: TypeScript contract export plus test-only type binding and comment; production runtime behavior, authorization, state ownership, transport, persistence, and rendered behavior are unchanged.
+- Current-head validation: Desktop Workspace plus Page Resolver 107/107 passed in 28.24s; complete web unit suite 151 files and 1,487 tests passed in 182.61s; web lint passed; production build passed with only existing Rollup annotation and chunk-size warnings; `git diff --check` passed.
+- Mandatory architecture self-review: `PageResolver` remains the single contract owner; the orchestration test consumes that contract without a parallel handwritten shape; the real 20-test resolver suite remains the dispatch integration owner. No new abstraction, state, I/O, or runtime dependency was introduced.
+- Circuit breaker: two review rounds identified omissions at the same test-double boundary. Automated re-review and monitoring stopped pending explicit owner approval. Heartbeat `pr-1180-ci-sample-1-check` was deleted.
+- The prior approval is dismissed on the new head. Exact-head CI run `31931367099` started at 2026-08-16T06:25:07Z; required checks and a replacement three-sample hosted set are pending. No reviewer was re-requested and no Slack message was posted.
