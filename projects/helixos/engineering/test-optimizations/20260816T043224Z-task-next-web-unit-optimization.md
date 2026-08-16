@@ -11,10 +11,11 @@
 - Resumed: 2026-08-16T04:42:45Z
 - Resumed objective: implement and validate the selected optimization, then create its Draft pull request.
 - Implementation branch: `codex/optimize-desktop-workspace-tests`
-- Pull request: https://github.com/helixosio/helixos/pull/1180 (Draft)
+- Pull request: https://github.com/helixosio/helixos/pull/1180 (Ready)
 - PR created: 2026-08-16T05:00:28Z
+- Owner marked Ready: 2026-08-16T05:19:39Z; the owner-selected Ready state is authoritative.
 - Base SHA: `75827ccac1e8f003ddd3518597674e9f56ba836e`
-- Head SHA: `ed434432a97eb7e7800d2de4e8004cf13d1a9d52`
+- Head SHA: `d7d29a6dc362f03568a71c0d4bb6fc7d90a4caa8`
 - Implementation commit: `ed434432a97eb7e7800d2de4e8004cf13d1a9d52`
 - Local head at start: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f`
 - Fetched `origin/main` at start: `75827ccac1e8f003ddd3518597674e9f56ba836e`
@@ -64,4 +65,14 @@ The next target is `src/web/src/features/workspace/pages/DesktopWorkspacePage.te
 - Validation: Desktop Workspace plus Page Resolver passed 107/107 tests; web lint and `git diff --check` passed.
 - Pull-request description updated with the finding, fix, validation, and exact current head.
 - Rerun requested through authenticated-user Slack Web API at thread reply `1786857086.477179`; this is rerun cycle 1 of at most 3. Exact fetched base and merge base remain `75827ccac1e8f003ddd3518597674e9f56ba836e`.
-- Timer: active heartbeat `pr-1180-self-review-rerun-check` checks the returned exact-head review after seven minutes and will be deleted when review completes.
+- Timer: heartbeat `pr-1180-self-review-rerun-check` was deleted after the exact-head rerun completed.
+
+## Private review round 2
+
+- Completed: 2026-08-16T05:13:55Z on exact head `d7d29a6dc362f03568a71c0d4bb6fc7d90a4caa8`.
+- Findings: 0 Blockers; 0 Non-blockers; 0 inline findings.
+- Result: clean. The reviewer confirmed the prior resolver-context finding was resolved and reviewed the complete pull-request context at the current head.
+- Pull-request description was repaired to restore Markdown structure and record the clean exact-head rerun.
+- Exact-head full CI run `31928742719` started at 2026-08-16T05:19:39Z with `web-unit`, `backend-and-infra`, and `web-e2e` in progress; hosted sample 1 and required-check evidence are pending.
+- Latest-50 completed pull-request CI attempts had a maximum elapsed duration of 895 seconds (`run_started_at` to `updated_at`); adding two minutes and rounding down yields a 16-minute follow-up cadence.
+- Active heartbeat `pr-1180-ci-sample-1-check` is scheduled for that cadence. No final reviewer request will be made until three hosted samples are collected, the description and durable record are updated, and the exact-head final-review gates pass.
