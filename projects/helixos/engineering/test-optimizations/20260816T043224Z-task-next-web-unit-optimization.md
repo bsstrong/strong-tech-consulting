@@ -73,6 +73,14 @@ The next target is `src/web/src/features/workspace/pages/DesktopWorkspacePage.te
 - Findings: 0 Blockers; 0 Non-blockers; 0 inline findings.
 - Result: clean. The reviewer confirmed the prior resolver-context finding was resolved and reviewed the complete pull-request context at the current head.
 - Pull-request description was repaired to restore Markdown structure and record the clean exact-head rerun.
-- Exact-head full CI run `31928742719` started at 2026-08-16T05:19:39Z with `web-unit`, `backend-and-infra`, and `web-e2e` in progress; hosted sample 1 and required-check evidence are pending.
+- Exact-head full CI run `31928742719` attempt 1 completed successfully at 2026-08-16T05:33:12Z. Required checks passed: `backend-and-infra`, `web-unit`, and `web-e2e`; `web-cross-browser` was intentionally skipped by workflow conditions.
 - Latest-50 completed pull-request CI attempts had a maximum elapsed duration of 895 seconds (`run_started_at` to `updated_at`); adding two minutes and rounding down yields a 16-minute follow-up cadence.
-- Active heartbeat `pr-1180-ci-sample-1-check` is scheduled for that cadence. No final reviewer request will be made until three hosted samples are collected, the description and durable record are updated, and the exact-head final-review gates pass.
+- Active heartbeat `pr-1180-ci-sample-1-check` is scheduled for that cadence and now tracks hosted sample 2. No final reviewer request will be made until three hosted samples are collected, the description and durable record are updated, and the exact-head final-review gates pass.
+
+## Hosted timing collection
+
+- Sample 1: run `31928742719`, attempt 1, web-unit job `95120300795`, exact head `d7d29a6dc362f03568a71c0d4bb6fc7d90a4caa8`.
+- Sample 1 job duration: 778s; web command: 590.992s; Vitest runner: 577.912s.
+- Sample 1 target: 26.302s total, 21.682s tests/hooks, 3.522s collection; 87 passed, 0 failed, 0 skipped.
+- Sample 1 artifact: `C:\dev\HelixOS-desktop-workspace-test-optimization\.artifacts\pr-1180\attempt-1` from artifact `9258790886` (`web-unit-timing`).
+- Sample 2: only the completed web-unit job was rerun. Run `31928742719` attempt 2, job `95121996996`, started at 2026-08-16T05:38:09Z; pending.
