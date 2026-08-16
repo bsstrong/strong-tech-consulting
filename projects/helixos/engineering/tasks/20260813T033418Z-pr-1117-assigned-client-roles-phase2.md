@@ -54,6 +54,7 @@ Exclusions and owner decisions:
 | Obsolete assignment workspace removed locally | `2026-08-15T22:22:15Z` | Commit `57b08cc49`; removed the mistakenly retained legacy Client Assignments navigation and panel, restored the design's four-item sidebar, and routed edit/revoke handoff conflicts to the redesigned Team Member Clients tab. |
 | UI iteration validated and synchronized with main | `2026-08-16T00:02:18Z` | Current `origin/main` merged without conflict at `328ad5504`; complete API, web, OpenAPI, and build validation passed. Local head `ceae5e989` includes the selection-scope architecture correction and remains unpushed. |
 | Exact-head private-review checkpoint | `2026-08-16T00:06:56Z` | Draft head `08c42ad8a8a2dadc583e12b8a2b5dabcba230b9c` equals the remote head; fetched base and merge base are both `c34b1b686ed38bff7ef6367e2fd88b4fb1f65d4c`; worktree clean. Authorized rerun is ready. |
+| Third private review completed; circuit breaker reactivated | `2026-08-16T00:18:39Z` | Exact-head review returned 2 Blockers and 2 Non-blockers sharing the Client paging/selection/command-ownership boundary. Further edits and reruns paused for an owner decision on the missing server contracts. |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -65,7 +66,7 @@ Exclusions and owner decisions:
 | Change size | 147 files, +19,521 / -2,463 locally | `git diff --shortstat origin/main...HEAD` at `ceae5e989`; pushed PR aggregate remains older |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
 | Validation | Database 237 passed / 2 intentional skips; assignment/permissions API slice 171 passed; web 145 suites / 1,427 tests passed; web lint, theme check, and production build passed | Complete web suite ran on local head `ed7b0b98c` in 216.91s. Database/API evidence is from the preceding functional head. The full API suite also ran and exposed an unrelated Windows CRLF-sensitive source-regex assertion in the Client Portal payroll-cycle intake controller test |
-| Review | Two private rounds; first round returned 6 findings; second round triggered the circuit breaker with 4 reported findings plus materially similar defects found by the boundary audit | PR plan, private-review workflow context, and circuit-breaker commit |
+| Review | Three private rounds; first returned 6 findings, second returned 4 and triggered the first circuit breaker, and the owner-authorized third returned 2 Blockers plus 2 Non-blockers and reactivated the circuit breaker | Exact-head `#self-reviews` thread and boundary audits |
 | CI | Exact-head Draft CI jobs skipped | GitHub Actions run `31743730760`; Draft behavior expected, not a passing final CI gate |
 | Benchmarks | N/A | Performance benchmarking was not the task objective |
 
@@ -135,6 +136,7 @@ Exclusions and owner decisions:
 - Simplified the completed selection state after owner feedback: once every result is selected, the page-level checkbox, `Select all N visible`, and duplicate numeric count are replaced by one check-marked `All N results selected` status plus `Clear selection`. Live verification cleared the state back to the page selector, repeated the two-stage 9-to-26 selection, and confirmed the completed state contains no visible-page selector.
 - Final pre-review validation on the main-synchronized local head passed 2,943/2,943 API tests in 122.46 seconds, 160/160 web test files and 1,473/1,473 web tests in 172.86 seconds, web lint, theme-literal validation, API and web production builds, OpenAPI generation/consistency/body/structural checks, and `git diff --check`. The only initial API failure was a CRLF-sensitive source-regex assertion; test-only commit `e6cc0fe09` made the assertion platform-independent and the complete rerun passed. The post-validation architecture audit found and corrected hidden bulk-selection carryover and invalid full-visibility-role assignment queries; five focused UI tests and the web production build passed after that correction.
 - Rerun evidence checkpoint: all six first-round and four second-round private-review findings were previously corrected and validated, including authoritative primary-role submission/resolution, role-slot filtering, catalog query reuse, duplicate-command errors, before/after audit metadata, invite-only member creation, unchanged-role edits, pointer-backed sensitive-access projection, and panel-wide assignment draft ownership. The later UI audit inventoried both bulk Client-selection owners and all role-scoped assignment entry points; `CarrierClientsView` and `CarrierMemberClientsTab` now clear selections when their result set changes, and full-visibility primary roles do not issue assignment queries. The shared causes were inconsistent authoritative-role interpretation and mismatched selection/result ownership; no materially similar instance remains in the changed assignment workspace. Validation and authorization evidence are the complete API/web suites, focused role/assignment/permission tests, OpenAPI/build/lint gates, and formal browser UAT recorded above.
+- The owner-authorized exact-head rerun completed with four new findings: both new bulk callers can exceed the API's 500-operation maximum; `CarrierMemberClientsTab` concentrates query, table, selection, command, and dialog responsibilities; retained off-page drafts can lose review metadata; and both new Carrier Client views serially fetch the complete Client dataset. Read-only contract analysis confirmed the current API has offset/limit/search/state/person/role browsing and explicit preview/apply batches capped at 500, but no hierarchy-aware server-page contract and no filter-based bulk selection/preview/apply contract. Because the implementation brief requires owner confirmation before inventing a missing endpoint or model, the circuit breaker is active and no further rerun is authorized.
 
 ## Outcome, risk, and follow-up
 
@@ -142,9 +144,9 @@ The functional Phase 2 implementation, circuit-breaker correction, supporting re
 
 Remaining sequence:
 
-1. Push the validated, main-synchronized branch and update the Draft PR description.
-2. Reuse the existing private `#self-reviews` thread, request an exact-head rerun, and address every actionable finding within the authorized circuit-breaker limits.
-3. Keep the PR Draft and do not request production review, GitHub reviewers, merge, or release.
+1. Obtain an owner decision between focused server contract extensions for hierarchy-aware paging and filtered bulk preview/apply, or a bounded existing-contract design that caps select-all at 500 explicit operations and requires narrowing.
+2. After authorization, implement one cohesive paging/selection/command-ownership correction, address off-page review metadata, and run complete affected validation and architecture review.
+3. Obtain fresh owner approval before another private rerun; keep the PR Draft and do not request production review, GitHub reviewers, merge, or release.
 
 Residual risk is limited to the two browser-control limitations documented in the UAT plan, any further owner UI iteration, and the intentionally paused delivery lifecycle. The full-API local failure is an unrelated Windows line-ending-sensitive source assertion rather than an assignment or permission behavior failure.
 
