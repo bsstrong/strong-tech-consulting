@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress; current-main rebase, exact-head validation, push, and live browser smoke are complete; private self-review is authorized and resuming while the PR remains Draft
+- Status: in-progress; the fourth private self-review findings are fixed, validated, committed, and pushed; the repeated Client-selection boundary has reactivated the rerun circuit breaker while the PR remains Draft
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-13T03:34:18Z` (earliest recoverable Phase 2 commit; the earlier conversation start timestamp is unavailable)
 - Task/thread ID: Unavailable from the current Codex context
@@ -10,8 +10,8 @@
 - Starting base SHA: `9faf3933f09ac999b90aa8a2759da87a4dca4b67` (final Phase 1 feature head used by the original stack)
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
 - Current base SHA: `75827ccac1e8f003ddd3518597674e9f56ba836e`
-- Current local head SHA: `9322b74254c001e113322bda5a13928c80fc11b0`
-- Current PR head SHA: `9322b74254c001e113322bda5a13928c80fc11b0`
+- Current local head SHA: `71fce9d8ac15ccabecf6b22dde7464709043952e`
+- Current PR head SHA: `71fce9d8ac15ccabecf6b22dde7464709043952e`
 - Issue: https://github.com/helixosio/helixos/issues/1130
 - PR: https://github.com/helixosio/helixos/pull/1117
 
@@ -23,7 +23,7 @@ Exclusions and owner decisions:
 
 - Generic role creation, publishing, and deactivation remain post-MVP.
 - Evidence artifacts belong under `C:\dev\evidence\helix` and must not be checked into or referenced by repository documentation.
-- PR #1117 must remain Draft. Review automation, monitoring, GitHub reviewer requests, and production-feedback requests are paused under the circuit breaker until the UI and UAT gates are complete and the owner explicitly authorizes review to resume.
+- PR #1117 must remain Draft. GitHub reviewer requests and production-feedback requests remain paused. Private self-review resumed after the UI/UAT gate, but a repeated Client-selection boundary has reactivated the rerun circuit breaker.
 - The owner selected the documented `floating` sidebar and breadcrumb chrome, then changed the Carrier status treatment from `dot` to `pill`. Review activity remains paused.
 
 ## Lifecycle
@@ -57,6 +57,8 @@ Exclusions and owner decisions:
 | Third private review completed; circuit breaker reactivated | `2026-08-16T00:18:39Z` | Exact-head review returned 2 Blockers and 2 Non-blockers sharing the Client paging/selection/command-ownership boundary. Further edits and reruns paused for an owner decision on the missing server contracts. |
 | Current-main rebase and exact-head validation complete | `2026-08-16T05:12:00Z` | Rebased onto `75827ccac`, preserved the authoritative feature tree, removed stale duplicate replay artifacts in `9322b7425`, force-with-lease pushed the branch, and verified PR #1117 remains Draft with no reviewer requests. |
 | Post-rebase browser smoke complete | `2026-08-16T05:13:00Z` | Real app loaded Team Members and Clients with live data, stable 44px breadcrumb height, no horizontal viewport overflow, accessible mail/Client actions, bulk selection, and no new console errors after reload. |
+| Fourth private review completed | `2026-08-16T05:20:32Z` | Exact-head review confirmed every prior finding resolved, then returned one Blocker for an obsolete async select-all completion and one Non-blocker for a stale responsive paginator page. |
+| Fourth-review corrections pushed | `2026-08-16T05:31:48Z` | Commit `71fce9d8a` correlates select-all completion with its immutable result scope and renders the server-normalized responsive page; 180 web suites / 1,559 tests, focused Manage Carrier Account tests, lint, theme check, build, and diff checks passed. |
 | Completed | Pending | UI, UAT, explicitly authorized review, and later lifecycle gates remain |
 
 ## Task statistics
@@ -64,11 +66,11 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 35h 5m at current checkpoint | Reconstructed from earliest recoverable commit through the compact-density checkpoint at `2026-08-14T14:39:00Z`; includes pauses and waiting and is not active-work time |
-| Commits | 102 commits | `git rev-list --count origin/main..HEAD` after the current-main rebase |
-| Change size | 181 files, +24,281 / -3,698 | `git diff --shortstat origin/main...HEAD` at `9322b7425` |
+| Commits | 103 commits | `git rev-list --count origin/main..HEAD` after the current-main rebase |
+| Change size | 182 files, +24,435 / -3,698 | `git diff --shortstat origin/main...HEAD` at `71fce9d8a` |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
-| Validation | Exact head: web 179 suites / 1,556 tests; focused API 115 tests; shared 201 tests; focused workspace web 100 tests; all passed | Web lint, theme check, API/shared/web builds, OpenAPI checks, `git diff --check`, and live browser smoke also passed on `9322b7425` |
-| Review | Three private rounds; first returned 6 findings, second returned 4 and triggered the first circuit breaker, and the owner-authorized third returned 2 Blockers plus 2 Non-blockers and reactivated the circuit breaker | Exact-head `#self-reviews` thread and boundary audits |
+| Validation | Current web tree: 180 suites / 1,559 tests and focused Manage Carrier Account 52 tests passed; focused API 115 tests and shared 201 tests remain green on the unchanged server/shared tree | Web lint, theme check, production build, `git diff --check`, and live browser smoke also passed |
+| Review | Four private rounds; findings were 6, 4, 4, then 2. The fourth review confirmed all prior findings resolved and identified the final async-selection and normalized-page defects now fixed in `71fce9d8a`. | Exact-head `#self-reviews` thread and complete boundary audits |
 | CI | Exact-head Draft CI jobs skipped | GitHub Actions run `31743730760`; Draft behavior expected, not a passing final CI gate |
 | Benchmarks | N/A | Performance benchmarking was not the task objective |
 
@@ -97,7 +99,7 @@ Exclusions and owner decisions:
 - Replaced the narrow Unassigned Clients surface with a complete Clients workspace. It supports All/Assigned/Unassigned Broker/Agent filtering, persistent multi-row selection, and one compact right-side drawer that can assign every selected Client role in a single reasoned operation. A persistent Clients navigation badge exposes the unassigned Broker/Agent count from every Manage Carrier Account section.
 - Tightened the bulk drawer and made empty role destinations message-only: roles with no eligible Team Members do not render disabled dropdowns, while populated roles remain searchable and alphabetically ordered.
 - Narrowed Client-assignable Carrier Roles through an authoritative server policy: only active template roles that allow `clients.assigned.view` and do not allow `clients.view` can own a Client slot. The current catalog therefore offers Broker/Agent and Client Success Manager; full-visibility roles are absent from discovery and rejected by preview/apply rather than merely hidden in the UI.
-- Scoped bulk Client selections to the active search/filter result set in both the Clients workspace and Team Member Clients tab, preventing a later bulk operation from retaining hidden targets. Team Members whose primary role has all-Client visibility now receive an explicit informational state instead of issuing an invalid role-scoped assignment query.
+- Scoped bulk Client selections to the active search/filter result set in both the Clients workspace and Team Member Clients tab. Async all-results completion now carries the immutable scope key through the pure reducer, so an obsolete response cannot restore hidden mutation targets after search, filter, or sort changes. Team Members whose primary role has all-Client visibility receive an explicit informational state instead of issuing an invalid role-scoped assignment query.
 
 ## Validation, review, and CI
 
@@ -139,18 +141,19 @@ Exclusions and owner decisions:
 - Final pre-review validation on the main-synchronized local head passed 2,943/2,943 API tests in 122.46 seconds, 160/160 web test files and 1,473/1,473 web tests in 172.86 seconds, web lint, theme-literal validation, API and web production builds, OpenAPI generation/consistency/body/structural checks, and `git diff --check`. The only initial API failure was a CRLF-sensitive source-regex assertion; test-only commit `e6cc0fe09` made the assertion platform-independent and the complete rerun passed. The post-validation architecture audit found and corrected hidden bulk-selection carryover and invalid full-visibility-role assignment queries; five focused UI tests and the web production build passed after that correction.
 - Rerun evidence checkpoint: all six first-round and four second-round private-review findings were previously corrected and validated, including authoritative primary-role submission/resolution, role-slot filtering, catalog query reuse, duplicate-command errors, before/after audit metadata, invite-only member creation, unchanged-role edits, pointer-backed sensitive-access projection, and panel-wide assignment draft ownership. The later UI audit inventoried both bulk Client-selection owners and all role-scoped assignment entry points; `CarrierClientsView` and `CarrierMemberClientsTab` now clear selections when their result set changes, and full-visibility primary roles do not issue assignment queries. The shared causes were inconsistent authoritative-role interpretation and mismatched selection/result ownership; no materially similar instance remains in the changed assignment workspace. Validation and authorization evidence are the complete API/web suites, focused role/assignment/permission tests, OpenAPI/build/lint gates, and formal browser UAT recorded above.
 - The owner-authorized exact-head rerun completed with four new findings: both new bulk callers can exceed the API's 500-operation maximum; `CarrierMemberClientsTab` concentrates query, table, selection, command, and dialog responsibilities; retained off-page drafts can lose review metadata; and both new Carrier Client views serially fetch the complete Client dataset. Read-only contract analysis confirmed the current API has offset/limit/search/state/person/role browsing and explicit preview/apply batches capped at 500, but no hierarchy-aware server-page contract and no filter-based bulk selection/preview/apply contract. Because the implementation brief requires owner confirmation before inventing a missing endpoint or model, the circuit breaker is active and no further rerun is authorized.
+- The fourth private review confirmed all four prior findings resolved. Its remaining Blocker exposed an async result-ownership race: a delayed all-results selection could complete after the user changed scope. The correction stores the active selection scope in the pure reducer and ignores stale success and failure completions; a deferred MSW regression proves the obsolete response cannot restore selection. The remaining paginator finding is corrected by rendering the API's normalized tree page rather than stale local page state, with a direct presentation test for a responsive page-size clamp. The complete affected-instance inventory covered both bounded-selection callers and all three responsive Carrier tables; no materially similar stale completion or normalized-page consumer remains.
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation, circuit-breaker correction, completed UI/UAT iteration, current-main rebase, exact-head validation, and architecture corrections are pushed at `9322b74254c001e113322bda5a13928c80fc11b0`. PR #1117 remains Draft with no review requests. The owner explicitly authorized resuming the private self-review loop after validation; production review remains out of scope.
+The functional Phase 2 implementation, completed UI/UAT iteration, current-main rebase, and all four rounds of review corrections are pushed at `71fce9d8ac15ccabecf6b22dde7464709043952e`. PR #1117 remains Draft with no review requests. Production review remains out of scope. Because consecutive review rounds found omissions in the same Client-selection boundary, another automated rerun requires a fresh owner approval under the circuit breaker.
 
 Remaining sequence:
 
-1. Resume the existing private `#self-reviews` thread for exact head `9322b7425` and classify only current-head findings.
-2. Address any actionable findings cohesively, rerun affected validation, and apply the review circuit breaker if the same boundary expands again.
+1. Obtain owner approval to rerun the existing private `#self-reviews` thread for exact head `71fce9d8a` after the repeated-boundary circuit breaker.
+2. If authorized, request one exact-head rerun and classify only current-head findings.
 3. Keep the PR Draft and do not request production review, GitHub reviewers, merge, or release.
 
-Residual risk is limited to the two browser-control limitations documented in the UAT plan, any further owner UI iteration, and later delivery lifecycle gates. The exact post-rebase API evidence is a focused 115-test authorization/assignment/workspace slice plus a successful production build; the complete API suite passed before the rebase, and the rebased feature tree was verified byte-equivalent to that pre-rebase feature tree.
+Residual risk is limited to the two browser-control limitations documented in the UAT plan, the pending clean exact-head private review, any further owner UI iteration, and later delivery lifecycle gates. The exact post-rebase API evidence is a focused 115-test authorization/assignment/workspace slice plus a successful production build; the complete API suite passed before the rebase, and the rebased feature tree was verified byte-equivalent to that pre-rebase feature tree.
 
 ## Evidence provenance
 
