@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress (owner-approved horizontal navigation correction pushed; exact-head CI and public re-approval pending)
+- Status: completed (exact-head private self-review clean; PR remains Ready and unmerged)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-14 04:01:42 UTC
 - Task/thread ID: Unavailable from the current Codex context
@@ -10,7 +10,7 @@
 - Starting base SHA: `8418af4170c3a7600f1b1e9525563a8ab8226a1c`
 - Starting head SHA: `8418af4170c3a7600f1b1e9525563a8ab8226a1c`
 - Final branch: `codex/payroll-provider-refactor-final`
-- Final head SHA: `d6c537c7373910269db44025c439b57510205f6b`
+- Final head SHA: `6132d8b153c92b35ebf7022c15489aed5dce2687`
 - Issue: N/A
 - PR A: https://github.com/helixosio/helixos/pull/1163 (`main` <- `codex/payroll-provider-refactor-ui`)
 - PR B: https://github.com/helixosio/helixos/pull/1164 (`codex/payroll-provider-refactor-ui` <- `codex/payroll-provider-refactor-state`)
@@ -59,16 +59,17 @@ Exclusions and owner decisions:
 | Final-review handoff committed | 2026-08-14 08:01:20 UTC | `7a99699806a62054b8b71024b737ea09ab6499ee`; terminal HelixOS head |
 | Exact terminal-head matrix completed | 2026-08-14 08:11 UTC | Complete prescribed matrix passed again on `7a9969980`; final tree clean and unpushed |
 | PR A private self-review clean | 2026-08-15 01:18:54 UTC | Exact head `484fdb845`; one rerun completed with zero blockers, zero non-blockers, and no inline findings |
+| PR C terminal private self-review clean | 2026-08-16 01:06:20 UTC | Exact head `6132d8b15`; cycle 3 returned zero blockers, zero non-blockers, and no inline findings |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 4 hours 10 minutes wall clock | 2026-08-14 04:01:42 UTC through 08:11:42 UTC, including implementation, audit, correction, isolated UAT, documentation, and two complete local matrices |
-| Commits | 10 | Four starting PR C commits plus six final-review production/test/accessibility/documentation commits |
-| Change size | 35 files; 2,130 insertions; 1,213 deletions | `git diff --shortstat 8418af417..7a9969980` |
-| Validation | 18/18 focused files and 85/85 tests; 142/142 full-web files and 1,427/1,427 tests; lint/theme/package/build clean | Exact terminal-head commands below |
-| Review | 5 blockers, 2 non-blockers, and 1 review-correction build defect resolved | Complete diff, surrounding modules, static searches, focused regressions, isolated-stack UAT, and exact-head verification |
+| Total elapsed | 45 hours 4 minutes 38 seconds wall clock | 2026-08-14 04:01:42 UTC through terminal private review at 2026-08-16 01:06:20 UTC; includes owner feedback, implementation, validation, review waits, corrections, and UAT |
+| Commits | 38 from current merge-base | `git rev-list --count c34b1b686..6132d8b15` |
+| Change size | 48 files; 4,427 insertions; 2,105 deletions | `git diff --shortstat c34b1b686..6132d8b15` |
+| Validation | 23/23 focused files and 112/112 tests; 147/147 full-web files and 1,456/1,456 tests; lint/theme/build clean | Exact terminal-head commands and warning disposition below |
+| Review | Final invocation: 3 rerun cycles, 3 blockers resolved, terminal exact-head clean result | Complete diff, surrounding modules, circuit-breaker inventories, focused regressions, isolated-stack UAT, and exact-head verification |
 | CI | Draft workflows started and intentionally skipped | PR A run `31851578763`, PR B run `31851588161`, and PR C run `31851601890`; no hosted timing artifact is available in Draft state |
 | Benchmarks | Local directional only | Focused 41.445 seconds; full web 191.597 seconds; production build 58.774 seconds on terminal head |
 
@@ -571,3 +572,10 @@ Current terminal head: `7a99699806a62054b8b71024b737ea09ab6499ee`; exact termina
 - The two commits were pushed normally. Local, remote, and GitHub heads match cleanly at `6132d8b153c92b35ebf7022c15489aed5dce2687`; PR #1165 remains Open and Ready. Fetched `main` advanced to `4c1b17e1dc6f6bac4d3e8b13c060293df05f285c`, while merge-base remains `c34b1b686ed38bff7ef6367e2fd88b4fb1f65d4c`; the base-only client-workspace change has zero Payroll Provider file overlap, so no synchronization is required before rerun.
 - The PR description was updated in memory and re-read from GitHub at 87 lines / 11,119 characters. Exact head, fetched base/merge-base, cycle-2 finding and correction, validation counts, size/ownership conclusions, and pending final rerun are present. One final private rerun (cycle 3 of 3 for this invocation) is required; no public Slack write, GitHub reviewer request, Ready-state change, merge, release, or publication is authorized.
 - Authenticated Slack user `U0B9R7NJTQA` posted exactly `rerun` in private parent `1786774312.528379` at `1786842250.063499`; the runner acknowledged and started at `1786842253.152119`. This is terminal rerun cycle 3 of 3 for this invocation, matched to head `6132d8b153c92b35ebf7022c15489aed5dce2687`, fetched base `4c1b17e1dc6f6bac4d3e8b13c060293df05f285c`, and merge-base `c34b1b686ed38bff7ef6367e2fd88b4fb1f65d4c`.
+
+## Terminal exact-head private approval
+
+- The terminal rerun completed at Slack timestamp `1786842380.950429` against exact head `6132d8b153c92b35ebf7022c15489aed5dce2687` with zero blockers, zero non-blockers, and no inline findings. It explicitly verified copied ordinal sorting, the out-of-order response regression, the prior provider-only PATCH/cache correction, the Editor decomposition, module cohesion, state ownership, mutation targeting, test placement, and performance risk.
+- Canonical completion state: HelixOS worktree clean; local and remote branch heads match `6132d8b153c92b35ebf7022c15489aed5dce2687`; PR #1165 is Open, Ready, mergeable, and GitHub reports its current base SHA as merge-base `c34b1b686ed38bff7ef6367e2fd88b4fb1f65d4c`. Fetched `main` is `4c1b17e1dc6f6bac4d3e8b13c060293df05f285c`; its base-only client-workspace files have zero Payroll Provider overlap.
+- The PR description was finalized without changing the reviewed branch head and verified at 87 lines / 11,140 characters with the exact clean-review timestamp and zero-finding disposition. The checked-in handoff remains the exact reviewed artifact and is not amended after approval, avoiding creation of an unreviewed documentation head.
+- Outcome: the owner-authorized private self-review objective is complete. Required owner action before later PR lifecycle work is to decide whether to wait for exact-current-head hosted CI and re-enter the repository's final public/GitHub review gates. Merge, release, and publication remain unauthorized.
