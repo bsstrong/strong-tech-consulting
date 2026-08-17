@@ -31,6 +31,7 @@ Exclusions and owner decisions:
 | Implementation/handoff | 2026-08-17T04:57:30Z | Commit `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` |
 | PR created | 2026-08-17T05:12:03Z | Draft PR #1189; base `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80` |
 | Review | 2026-08-17T06:09:32Z | Round-2 circuit-breaker checkpoint pushed at `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12`; owner approval required before another rerun |
+| Review resumed | 2026-08-17T22:52:32Z | Owner explicitly reset the private self-review flow to cycle 0 for current head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | Manual UI UAT | 2026-08-17T13:44:52Z | Two clean Helix-browser passes; final implementation/UAT checkpoint `2a60bce0006818e930a9505a94ee559efe67e1cb` after current-main merge; durable UAT record head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
@@ -85,6 +86,7 @@ Exclusions and owner decisions:
 - The post-merge local stack used 196 applied migrations. The package build passed and 11 focused web suites passed all 300 tests.
 - Forty screenshots were captured under `C:\dev\evidence\helix\pr-1189`; the final browser pass reported zero error-level console entries.
 - PR description and checked-in UAT record were updated. PR #1189 remains Draft on head `99b4142865566c0bbfb71ca11cfda0e77d88026d`; no review rerun was requested.
+- The owner explicitly approved continuation after the circuit breaker and reset the invocation rerun counter to zero. The existing `#self-reviews` parent remains authoritative; a fresh exact-head rerun is being requested there rather than creating a duplicate parent.
 
 ### Private rerun checkpoint — 2026-08-17T05:40:41Z
 
@@ -108,9 +110,18 @@ Exclusions and owner decisions:
 - Mandatory architecture review: route/query state remains authoritative while visible; hidden-tab memory is the only local workflow position and does not compete with an active route; server data remains query-owned; no effects, refs, or derived-state synchronization were introduced; deterministic path parsing remains in the shared pure module; integration tests cover both routed and desktop seams.
 - Circuit breaker: active because two review rounds found omissions in the same route-ownership boundary. The prior heartbeat was deleted, no duplicate or further `rerun` was posted, and fresh owner approval is required before resuming automated private review.
 
+### Owner-approved self-review restart checkpoint — 2026-08-17T22:52:32Z
+
+- Exact head: `99b4142865566c0bbfb71ca11cfda0e77d88026d`.
+- Fetched base and merge base: `e8e9a5d8982969bc04d54f8a138c25845958950f`; the branch already contains the current remote base, the base has not advanced beyond the merge base, and no synchronization is required.
+- Prior finding dispositions remain complete: malformed route decoding is defensive; each desktop window owns its persisted route; only the active window publishes to browser history; user tab transitions push; Payroll Cycle reconciliation and stale cleanup replace; visible route query state replays on Back/Forward; and navigation publishes one combined persistence snapshot.
+- Shared root cause and blast radius: the cohesive correction established explicit ownership and history intent across browser location, per-window location, Payroll Cycle query state, Recent metadata, route catch-up, and all `PageResolver`/optional `onNavigate` consumers. The complete affected-instance inventory from the round-2 checkpoint remains unchanged, and the subsequent current-main merge and documentation-only commits introduced no materially similar production instance.
+- Validation: lint, web typecheck, theme check, 12 affected suites / 313 tests, the complete 192-suite / 1,661-test web suite, production web build, post-current-main 11-suite / 300-test focused run, and two complete browser UAT passes are green. Current head differs from the tested implementation checkpoint only by checked-in UAT evidence.
+- Circuit breaker disposition: the owner explicitly authorized continuation and reset this self-review invocation to cycle 0. No review is currently pending in Slack; the existing parent `1786943637.689379` will be reused, and the next successful `rerun` reply will become cycle 1 of the fresh invocation.
+
 ## Outcome, risk, and follow-up
 
-In progress. Draft PR #1189 contains the complete round-2 cohesive remediation plus a clean, repeatable browser UAT record. The final implementation/UI checkpoint is `2a60bce0006818e930a9505a94ee559efe67e1cb`; current head `99b4142865566c0bbfb71ca11cfda0e77d88026d` adds only the final UAT evidence update. No UI defect was found. The remaining risk is another private-review finding in the route-ownership boundary. The circuit breaker remains active and private review cannot resume until the owner explicitly approves another rerun.
+In progress. Draft PR #1189 contains the complete round-2 cohesive remediation plus a clean, repeatable browser UAT record. The final implementation/UI checkpoint is `2a60bce0006818e930a9505a94ee559efe67e1cb`; current head `99b4142865566c0bbfb71ca11cfda0e77d88026d` adds only the final UAT evidence update. No UI defect was found. The owner has cleared the circuit breaker and reset the private self-review flow to cycle 0; a clean exact-current-head result remains the outstanding gate.
 
 ## Evidence provenance
 
