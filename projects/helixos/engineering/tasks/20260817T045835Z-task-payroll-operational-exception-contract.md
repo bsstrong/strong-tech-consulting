@@ -29,7 +29,8 @@ Exclusions and owner decisions:
 | Task started | 2026-08-17T04:58:35Z | — |
 | Shared contract and persistence seam committed | 2026-08-17T05:21:07Z | 22m 32s from task start |
 | API, workflow, and source-matrix implementation committed | 2026-08-17T05:59:29Z | Head `7f075e24b`; 1h 00m 54s from task start |
-| Implementation/handoff | Pending | Final architecture audit and PR lifecycle in progress |
+| Architecture audit and local validation complete | 2026-08-17T06:26:55Z | Head `dc185fbe7`; stale follow-up delivery guards and actor-scope validation corrected within planned files |
+| Implementation/handoff | Pending | Draft PR lifecycle in progress |
 | PR created | N/A | N/A; not yet authorized or required at task start |
 | Review | Pending | Pending |
 | CI | Pending | Pending |
@@ -40,10 +41,10 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | Pending | Direct UTC timestamps |
-| Commits | 5 | `1d49f7b61`, `13d9cfe3e`, `d1d62cb29`, `2252f2aa4`, `7f075e24b` |
-| Change size | 30 files, 3,337 insertions, 89 deletions | `git diff --shortstat origin/main...HEAD` at `7f075e24b` |
-| Validation | Shared 216/216; DB 252 runnable passed with 3 existing skips; API 2,999/2,999; workflow 913/913 | Full package suites, focused seams, builds, and Prisma validation passed |
-| Review | Pending | Mandatory complete-diff architecture self-review |
+| Commits | 7 | `1d49f7b61`, `13d9cfe3e`, `d1d62cb29`, `2252f2aa4`, `7f075e24b`, `09e0b6dd4`, `dc185fbe7` |
+| Change size | 30 files, 3,638 insertions, 121 deletions | `git diff --shortstat origin/main...HEAD` at `dc185fbe7` |
+| Validation | Shared 217/217; DB 255 runnable passed with 3 existing skips; API 2,999/2,999; workflow 915/915 | Full package suites, focused seams, builds, and Prisma validation passed |
+| Review | Local architecture self-review clean | Complete diff and changed-module responsibilities reviewed at `dc185fbe7` |
 | CI | N/A at start | No PR or hosted run in scope yet |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
@@ -55,6 +56,7 @@ Exclusions and owner decisions:
 - Added the closed shared vocabulary, policy table, source-key/scope validation, and pure lifecycle projector in commit `1d49f7b61`.
 - Added the additive Prisma schema/migration and transaction-participating current/event mutation seam in commit `13d9cfe3e`.
 - Added API-owned writers in commit `d1d62cb29`, workflow-owned writers in commit `2252f2aa4`, and the verified source/timestamp matrix in commit `7f075e24b`.
+- Hardened repeated resolution and actor tenant scope in `09e0b6dd4`, then guarded eligibility, census-persistence, and export follow-up writes against stale source state in `dc185fbe7`.
 - Source integrations cover all eight codes and preserve existing source status/audit writes. Ambiguous census/eligibility cycle linkage falls back to Client scope rather than guessing a cycle.
 - The only support file outside the named inventory is `src/packages/db/prisma/seed.ts`, required by the existing every-model reset contract; this is not a material scope expansion.
 - No report model, endpoint, controller, permission, UI, scheduler, generation path, or historical backfill was added.
@@ -62,20 +64,20 @@ Exclusions and owner decisions:
 ## Validation, review, and CI
 
 - Shared focused tests: 11/11 passed.
-- Shared full suite: 216/216 passed; shared build passed.
+- Shared full suite: 217/217 passed; shared build passed.
 - Prisma validate and generate passed.
-- DB focused mutation/schema tests: 10/10 passed.
+- DB focused mutation/schema tests: 13/13 passed.
 - DB seed plus mutation tests: 23/23 passed.
-- DB full suite: 252 passed, 0 failed, 3 existing skipped; DB build passed.
+- DB full suite: 255 passed, 0 failed, 3 existing skipped; DB build passed.
 - The migration applied successfully to the local PostgreSQL instance; both new tables remained empty (`0` current, `0` event rows), confirming no backfill.
 - API focused writer suite: 151/151 passed; API build passed.
-- API full suite: 2,999/2,999 passed in 259.505s.
+- API full suite: 2,999/2,999 passed in 140.960s after the final audit fixes.
 - Workflow focused writer suite: 161/161 passed in 4.807s; workflow build passed.
-- Workflow full suite: 913/913 passed in 30.148s.
+- Workflow full suite: 915/915 passed in 20.980s after the final audit fixes.
 
 ## Outcome, risk, and follow-up
 
-In progress. Primary scope risk is accidental expansion into report schema/API/UI or beyond the plan's file inventory; the owner explicitly requires stopping at that boundary.
+Implementation and local validation are complete. The change remains limited to the prerequisite contract: all changed files are in the plan inventory except the five-line seed reset support required by the new models. No report schema/API/UI or other product scope was introduced. Draft PR review remains pending.
 
 ## Evidence provenance
 
