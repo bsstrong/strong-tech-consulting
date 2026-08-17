@@ -2,14 +2,14 @@
 
 ## Identity
 
-- Status: in-progress; the owner approved continuation after the repeated-boundary circuit breaker, current `main` is merged and validated, and an exact-head fourth-review rerun is ready while the PR remains Draft
+- Status: in-progress; resumed at `2026-08-17T00:03:22Z` to address the exact-head GitHub review findings while PR #1117 remains Draft
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-13T03:34:18Z` (earliest recoverable Phase 2 commit; the earlier conversation start timestamp is unavailable)
 - Task/thread ID: Unavailable from the current Codex context
 - Starting branch: `codex/assigned-client-roles-phase2`
 - Starting base SHA: `9faf3933f09ac999b90aa8a2759da87a4dca4b67` (final Phase 1 feature head used by the original stack)
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
-- Current base SHA: `ddacf715b43a3734c71fc134e9ed8a13f0675e80`
+- Current fetched base SHA: `af8f037185d13f3cd1e48fad0af33ce552629ac4` (merge base remains `ddacf715b43a3734c71fc134e9ed8a13f0675e80`; overlap and synchronization audit pending)
 - Current local head SHA: `cebf36895a8c9894b1c2b14825949ff89c25e8cf`
 - Current PR head SHA: `cebf36895a8c9894b1c2b14825949ff89c25e8cf`
 - Issue: https://github.com/helixosio/helixos/issues/1130
@@ -23,8 +23,8 @@ Exclusions and owner decisions:
 
 - Generic role creation, publishing, and deactivation remain post-MVP.
 - Evidence artifacts belong under `C:\dev\evidence\helix` and must not be checked into or referenced by repository documentation.
-- PR #1117 must remain Draft. GitHub reviewer requests and production-feedback requests remain paused. Private self-review resumed after the UI/UAT gate, but a repeated Client-selection boundary has reactivated the rerun circuit breaker.
-- The owner selected the documented `floating` sidebar and breadcrumb chrome, then changed the Carrier status treatment from `dot` to `pill`. Review activity remains paused.
+- PR #1117 must remain Draft while actionable feedback is being resolved. The owner's `2026-08-17` request authorizes the complete in-scope feedback-resolution workflow, including the prescribed re-review; it does not authorize Ready status, final reviewer requests, merge, or release.
+- The owner selected the documented `floating` sidebar and breadcrumb chrome, then changed the Carrier status treatment from `dot` to `pill`.
 
 ## Lifecycle
 
@@ -62,6 +62,7 @@ Exclusions and owner decisions:
 | Owner-approved circuit-breaker continuation synchronized | `2026-08-16T13:17:12Z` | Merged current base `ddacf715b` at head `cebf36895`; the only prior overlap was disjoint Prisma/OpenAPI Rule Test data. Exact-head web 181/181 suites and 1,560/1,560 tests, all 237 PR-changed API tests, all package builds, API/web builds, lint, theme, OpenAPI, and diff checks passed. |
 | Fifth private review completed cleanly | `2026-08-16T13:22:37Z` | Exact-head review of `cebf36895` returned zero Blockers, zero Non-blockers, and no inline findings; it explicitly confirmed both fourth-round findings resolved and found no additional architecture blockers. |
 | Completed | `2026-08-16T13:22:37Z` | Implementation, UI iteration, formal UAT, validation, circuit-breaker analysis, and the owner-authorized private self-review loop are complete. PR #1117 remains Draft with public review paused. |
+| Resumed for GitHub PR feedback | `2026-08-17T00:03:22Z` | Exact head `cebf36895` received two unresolved actionable threads: primary-role audit events omit the affected person's public identity, and the Client assignment board retains hidden selections across result-filter changes. The repeated selection boundary reactivates circuit-breaker analysis before edits. |
 
 ## Task statistics
 
