@@ -29,6 +29,20 @@
 - Open-PR inventory: #1186, #1185, #1139, #1057, and #689. None changes the selected test, `ClientPortalAccessPanel.tsx`, `AddPortalUserDialog.tsx`, `ManageClientAccessDialog.tsx`, or their direct client-portal-access model boundaries. Prior optimization PR #1180 is merged and is no longer active.
 - Preliminary interaction inventory: 19 tests, 18 `userEvent` setup instances, 53 clicks, 12 typed-input interactions, 16 waits, and no explicit hover or keyboard interaction. Behavior-sensitive seams include client-side filtering, status query parameters, email/identity/client autocomplete input, invitation/link/grant mutations, dialog confirmations, pagination, readiness states, and exact refusal copy.
 
+## Implementation and local validation
+
+- Branch: `codex/optimize-client-portal-access-tests` in dedicated worktree `C:\dev\HelixOS-client-portal-access-test-optimization`, created from base `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`.
+- Implementation commit: `62dde6245bb60ffe213255da42c6bb56dd680b53` (`test(web): speed up client portal access suite`).
+- Change size: 2 files, 81 additions, 29 deletions. Production code is unchanged.
+- Optimization: one documented `userEvent.setup({ skipHover: true })` owner serves all 18 interactive cases because the suite has no hover-revealed contract. Ten payload-only invite and advanced-identity field arrangements now assign terminal controlled values with `fireEvent.change`; the client-side filter and debounced cross-tenant identity autocomplete retain realistic character-by-character typing.
+- Local baseline samples (`TZ=UTC npm run test -w @helixos/web -- ClientPortalAccessPanel.test.tsx`): wall 25.220s and 31.187s (median 28.203s); file total 23.58s and 29.44s (median 26.51s); tests/hooks 19.18s and 24.51s (median 21.845s); 19/0/0 in both.
+- Matched post-change samples: wall 23.784s and 24.135s (median 23.959s, -15.0%); file total 22.15s and 22.39s (median 22.27s, -16.0%); tests/hooks 16.63s and 16.48s (median 16.555s, -24.2%); 19/0/0 in both.
+- Final focused suite: 19/19 passed in 21.181s wall time; Vitest reported 19.21s total and 13.89s tests/hooks.
+- Complete web unit suite: the first run reached 190/191 files and 1,644/1,645 tests before an unrelated Plan Detail case exceeded its explicit local 10-second limit. With local per-test timing disabled for validation only, all 191 files and 1,645 tests passed in 393.727s wall / 391.95s Vitest time. The original timeout files were restored byte-for-byte and are absent from the diff.
+- Web lint passed in 17.001s; theme literal check passed in 1.109s; production web build passed in 81.835s with only the existing Rollup annotation and chunk-size warnings; `git diff --check` passed.
+- Architecture self-review: test-harness cost is owned solely by the target suite; no production state, authorization, tenant isolation, request, mutation, cache, persistence, presentation, or public contract changed. All 19 rendered boundary tests, request bodies, refusal messages, pagination, filtering, dialog, and mutation assertions remain. No test, fixture, assertion, timeout, realistic behavior-sensitive interaction, or representative data was removed.
+- Recorded implementation/local-validation handoff: 2026-08-17T05:09:45Z, 32m 34s after task start.
+
 ## Risk and follow-up
 
 - Initial risk: target selection must account for active PR #1180 and any newer active changes before editing.
