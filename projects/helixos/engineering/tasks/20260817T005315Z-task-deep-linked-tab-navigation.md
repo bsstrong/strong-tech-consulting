@@ -44,7 +44,7 @@ Exclusions and owner decisions:
 | Commits | 5 authored commits plus one current-main merge | Three implementation/remediation commits and two UAT documentation commits |
 | Change size | 28 files; 1,254 additions; 363 deletions | `git diff --shortstat origin/main...HEAD` at `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | Validation | Shared/package builds, web typecheck, lint, theme check, 313 affected tests, complete 1,661-test web suite, production web build, post-merge 300-test focused run, and manual UI UAT green | Local command and Helix-browser evidence |
-| Review | Round 1: three blockers addressed; round 2: one blocker and one non-blocker addressed; circuit breaker active | Slack thread `1786943637.689379`; rerun `1786945282.101189`; result `1786945682.835339` |
+| Review | Round 1: three blockers addressed; round 2: one blocker and one non-blocker addressed; owner reset the flow and fresh-invocation cycle 1 is pending | Slack thread `1786943637.689379`; original rerun `1786945282.101189`; fresh rerun `1787007272.698759` |
 | CI | Pending | Exact-head GitHub Actions evidence |
 | Benchmarks | N/A | No performance claim requested |
 
@@ -117,7 +117,8 @@ Exclusions and owner decisions:
 - Prior finding dispositions remain complete: malformed route decoding is defensive; each desktop window owns its persisted route; only the active window publishes to browser history; user tab transitions push; Payroll Cycle reconciliation and stale cleanup replace; visible route query state replays on Back/Forward; and navigation publishes one combined persistence snapshot.
 - Shared root cause and blast radius: the cohesive correction established explicit ownership and history intent across browser location, per-window location, Payroll Cycle query state, Recent metadata, route catch-up, and all `PageResolver`/optional `onNavigate` consumers. The complete affected-instance inventory from the round-2 checkpoint remains unchanged, and the subsequent current-main merge and documentation-only commits introduced no materially similar production instance.
 - Validation: lint, web typecheck, theme check, 12 affected suites / 313 tests, the complete 192-suite / 1,661-test web suite, production web build, post-current-main 11-suite / 300-test focused run, and two complete browser UAT passes are green. Current head differs from the tested implementation checkpoint only by checked-in UAT evidence.
-- Circuit breaker disposition: the owner explicitly authorized continuation and reset this self-review invocation to cycle 0. No review is currently pending in Slack; the existing parent `1786943637.689379` will be reused, and the next successful `rerun` reply will become cycle 1 of the fresh invocation.
+- Circuit breaker disposition: the owner explicitly authorized continuation and reset this self-review invocation to cycle 0. The existing parent `1786943637.689379` was reused; fresh-invocation cycle 1 was posted exactly as `rerun` at `1787007272.698759` and acknowledged by the review service at `1787007275.328319`.
+- Monitoring: heartbeat `pr-1189-private-self-review-restart` is active on the required seven-minute initial cadence. It will switch to one-minute checks only if the exact-head review remains pending; no duplicate rerun is permitted while pending.
 
 ## Outcome, risk, and follow-up
 
