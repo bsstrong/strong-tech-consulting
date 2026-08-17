@@ -56,7 +56,10 @@
 ## Exact-head CI and hosted timing
 
 - HelixOS CI run `31997351841`, attempt 1, started at 2026-08-17T05:16:57Z for exact head `62dde6245bb60ffe213255da42c6bb56dd680b53`. Jobs `backend-and-infra` (`95291268697`), `web-unit` (`95291268723`), and `web-e2e` (`95291268810`) started; `web-cross-browser` (`95291269084`) was expectedly skipped.
-- The latest 50 completed pull-request CI runs have a maximum start-to-update elapsed duration of 1,057 seconds (run `31979373829`). Applying the repository cadence rule gives one follow-up after 19 whole minutes. Heartbeat `pr-1188-ci-sample-1-check` owns that single follow-up; no polling is active.
+- The latest 50 completed pull-request CI runs have a maximum start-to-update elapsed duration of 1,057 seconds (run `31979373829`). Applying the repository cadence rule gives one follow-up after 19 whole minutes. The `pr-1188-ci-sample-1-check` heartbeat was deleted when the owner supplied an early completion wake; no polling occurred.
+- Exact-head full CI attempt 1 completed successfully at 2026-08-17T05:31:40Z. `backend-and-infra` passed in 862s, `web-unit` job `95291268723` passed in 878s, and `web-e2e` passed in 415s; the non-required `web-cross-browser` job was expectedly skipped. The Ready PR remained mergeable on unchanged head `62dde6245bb60ffe213255da42c6bb56dd680b53`, with no review threads.
+- Hosted sample 1 uses artifact `9277520319` from run `31997351841`, attempt 1. The web command took 673.738s, the Vitest runner took 660s, and the target took 16.396s total / 13.662s tests/hooks with 19 passed, 0 failed, and 0 skipped. Relative to the 24.501s / 21.807s hosted main baseline, this sample is 33.1% faster in target total and 37.4% faster in tests/hooks.
+- Targeted hosted sample 2 started at 2026-08-17T05:34:27Z by rerunning only the completed `web-unit` job. Run `31997351841`, attempt 2, job `95294038082` is on the unchanged exact head; heartbeat `pr-1188-hosted-sample-2-check` schedules one follow-up at the established 19-minute cadence.
 
 ## Risk and follow-up
 
