@@ -39,15 +39,17 @@ Exclusions and owner decisions:
 | CI | Not started | Draft private gate did not clear |
 | Completed | Blocked | Owner decision required to expand the plan inventory or revise the contract |
 | Owner clarified architecture scope; work resumed | 2026-08-17T13:01:24Z | Resume the private self-review loop and correct all three exact-head blockers |
+| Base synchronized | 2026-08-17T13:06:39Z | Merged `origin/main` at `4e776a5d5`; resolved the additive Prisma schema overlap by retaining both independent relations |
+| Private-review corrections validated and pushed | 2026-08-17T13:31:17Z | Head `4b5837363`; all three blockers corrected, focused lifecycle policies extracted from touched architecture hotspots |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 1h 41m 37s to scope stop | 2026-08-17T04:58:35Z through 2026-08-17T06:40:12Z |
-| Commits | 7 | `1d49f7b61`, `13d9cfe3e`, `d1d62cb29`, `2252f2aa4`, `7f075e24b`, `09e0b6dd4`, `dc185fbe7` |
-| Change size | 30 files, 3,638 insertions, 121 deletions | `git diff --shortstat origin/main...HEAD` at `dc185fbe7` |
-| Validation | Shared 217/217; DB 255 runnable passed with 3 existing skips; API 2,999/2,999; workflow 915/915 | Full package suites, focused seams, builds, and Prisma validation passed |
+| Commits | 9 | Seven implementation commits plus base-sync merge `55206b81e` and review-fix commit `4b5837363` |
+| Change size | 42 files, 4,064 insertions, 135 deletions | `git diff --shortstat origin/main...HEAD` at `4b5837363` |
+| Validation | Shared 217/217; DB 257 passed with 3 existing skips; API 3,056/3,056; workflow 941/941 | Full package suites, focused seams, builds, and Prisma validation/generation passed |
 | Review | 1 private round: 3 blockers, 0 non-blockers | Exact-head result in `#self-reviews` parent `1786948233.619459` |
 | CI | Not started | Private Draft gate did not clear |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
@@ -68,6 +70,11 @@ Exclusions and owner decisions:
 - The same review found two additional lifecycle-identity blockers within planned source families: export and operations-file retries use per-attempt keys that cannot resolve an earlier failed occurrence, and eligibility review reassignment from source run A to run B reconciles only run B while run A can remain open.
 - No partial review fixes were made because the authoritative intake correction triggered the owner's explicit scope stop. The private-review heartbeat was disabled and no rerun, public feedback request, Ready transition, reviewer request, or merge action was performed.
 - The owner subsequently clarified that architecture violations in touched code are in scope and must be fixed. The prior stop is retained as lifecycle history; implementation resumed to address all three findings and obtain a clean exact-head private review.
+- Merged the overlapping payroll-router push base change at `4e776a5d5` and retained both independent additive Prisma relations. A later base advance to `e8e9a5d89` changed only CI timing documentation and a web test, with no overlap or review-premise change.
+- Added a focused DB intake transition adapter shared by API and payroll-feed workers. Poller, kickoff, and ingestor source transitions now update linked intake state and normalized operational exceptions in the same tenant transaction.
+- Replaced per-attempt export and Operations file-generation identities with stable logical occurrence keys so successful retries resolve earlier failures.
+- Reconciled both prior and replacement eligibility-review identities. Superseded source aggregates resolve with `SOURCE_REPLACED` when their open count reaches zero.
+- Extracted intake, eligibility-review, and Operations exception lifecycle policies from the touched large service/processor modules, addressing the architecture ownership finding instead of adding more responsibilities to those hotspots.
 
 ## Validation, review, and CI
 
@@ -82,10 +89,15 @@ Exclusions and owner decisions:
 - API full suite: 2,999/2,999 passed in 140.960s after the final audit fixes.
 - Workflow focused writer suite: 161/161 passed in 4.807s; workflow build passed.
 - Workflow full suite: 915/915 passed in 20.980s after the final audit fixes.
+- Review-fix focused suites: 224 assertions passed across DB intake transition, workflow worker/identity/reconciliation, and API intake/export seams; DB mutation tests remained green.
+- Review-fix full DB suite: 257 passed, 0 failed, 3 existing skipped in 13.013s.
+- Review-fix full workflow suite after the architecture extraction: 941/941 passed in 21.559s; workflow build passed.
+- Review-fix full API suite: 3,056/3,056 passed in 137.779s; API build passed.
+- `git diff --check` passed; shared, DB, workflow, and API builds passed.
 
 ## Outcome, risk, and follow-up
 
-Implementation resumed after the owner clarified that architecture corrections in touched code must be completed even when they extend the original inventory. Draft PR #1190 remains Draft at `dc185fbe7` while all three private-review blockers are addressed. `origin/main` advanced to `4e776a5d5` with overlapping Prisma schema, seed, shared-index, and payroll-feed test changes; the branch must be synchronized before fixes are implemented.
+All three first-round private-review blockers are corrected and pushed at exact head `4b58373635903274cf3b9aee6ccade807fdfadbe`. Draft PR #1190 remains Draft. The next lifecycle action is an exact-head private self-review rerun; Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized at this stage.
 
 ## Evidence provenance
 
