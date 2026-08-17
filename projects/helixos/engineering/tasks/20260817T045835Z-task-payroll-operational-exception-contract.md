@@ -28,7 +28,8 @@ Exclusions and owner decisions:
 | --- | --- | --- |
 | Task started | 2026-08-17T04:58:35Z | — |
 | Shared contract and persistence seam committed | 2026-08-17T05:21:07Z | 22m 32s from task start |
-| Implementation/handoff | Pending | Pending |
+| API, workflow, and source-matrix implementation committed | 2026-08-17T05:59:29Z | Head `7f075e24b`; 1h 00m 54s from task start |
+| Implementation/handoff | Pending | Final architecture audit and PR lifecycle in progress |
 | PR created | N/A | N/A; not yet authorized or required at task start |
 | Review | Pending | Pending |
 | CI | Pending | Pending |
@@ -39,9 +40,9 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | Pending | Direct UTC timestamps |
-| Commits | 2 | `1d49f7b61`, `13d9cfe3e` |
-| Change size | 9 files, 1,773 insertions | `git diff --stat origin/main..HEAD` at `13d9cfe3e` |
-| Validation | Shared 216/216; DB 252/252 runnable with 3 existing skips | Focused and full package suites; builds and Prisma validation passed |
+| Commits | 5 | `1d49f7b61`, `13d9cfe3e`, `d1d62cb29`, `2252f2aa4`, `7f075e24b` |
+| Change size | 30 files, 3,337 insertions, 89 deletions | `git diff --shortstat origin/main...HEAD` at `7f075e24b` |
+| Validation | Shared 216/216; DB 252 runnable passed with 3 existing skips; API 2,999/2,999; workflow 913/913 | Full package suites, focused seams, builds, and Prisma validation passed |
 | Review | Pending | Mandatory complete-diff architecture self-review |
 | CI | N/A at start | No PR or hosted run in scope yet |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
@@ -53,7 +54,10 @@ Exclusions and owner decisions:
 - Implementation branch: `codex/payroll-operational-exception-contract`, based on `origin/main` at `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`.
 - Added the closed shared vocabulary, policy table, source-key/scope validation, and pure lifecycle projector in commit `1d49f7b61`.
 - Added the additive Prisma schema/migration and transaction-participating current/event mutation seam in commit `13d9cfe3e`.
-- The only support file outside the named inventory so far is `src/packages/db/prisma/seed.ts`, required by the existing every-model reset contract; this is not a material scope expansion.
+- Added API-owned writers in commit `d1d62cb29`, workflow-owned writers in commit `2252f2aa4`, and the verified source/timestamp matrix in commit `7f075e24b`.
+- Source integrations cover all eight codes and preserve existing source status/audit writes. Ambiguous census/eligibility cycle linkage falls back to Client scope rather than guessing a cycle.
+- The only support file outside the named inventory is `src/packages/db/prisma/seed.ts`, required by the existing every-model reset contract; this is not a material scope expansion.
+- No report model, endpoint, controller, permission, UI, scheduler, generation path, or historical backfill was added.
 
 ## Validation, review, and CI
 
@@ -64,6 +68,10 @@ Exclusions and owner decisions:
 - DB seed plus mutation tests: 23/23 passed.
 - DB full suite: 252 passed, 0 failed, 3 existing skipped; DB build passed.
 - The migration applied successfully to the local PostgreSQL instance; both new tables remained empty (`0` current, `0` event rows), confirming no backfill.
+- API focused writer suite: 151/151 passed; API build passed.
+- API full suite: 2,999/2,999 passed in 259.505s.
+- Workflow focused writer suite: 161/161 passed in 4.807s; workflow build passed.
+- Workflow full suite: 913/913 passed in 30.148s.
 
 ## Outcome, risk, and follow-up
 
