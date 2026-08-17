@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: complete
+- Status: in-progress
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T01:48:29Z
 - Task/thread ID: Unavailable from the current Codex task context
@@ -78,6 +78,13 @@ Exclusions and owner decisions:
 - Product repository state: detached at current `origin/main`; the plan is untracked and uncommitted, with no branch, push, or pull request.
 - Primary risk: implementation must not begin with migrations/API DTOs until cutoff/window, inclusion/aging, funding source, operational exception source, artifact/delivery channel, and audience-permission mapping are approved.
 - Follow-up: record those six answers on issue #842, then execute the plan's five implementation slices through the repository-prescribed Draft/self-review/CI lifecycle.
+
+## Resumed implementation interval
+
+- Resumed: 2026-08-17T02:28:42Z
+- Owner authorization: update the implementation plan with work that can safely proceed before the six product decisions are finalized, then begin that decision-neutral implementation.
+- Initial implementation scope: add a field-to-source/gap matrix and extract the existing deterministic Operations cycle-status projection into a focused directly tested module without changing behavior.
+- Explicitly deferred: report persistence migrations, official funding snapshot contracts, final report DTOs, permissions, cutoff scheduling, aggregation rules, exception aging, Excel delivery, and visible report UI.
 
 ## Evidence provenance
 
