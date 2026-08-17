@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: complete; both GitHub findings are corrected, all threads are resolved, and the clean `0ba3cee9b` review diff is byte-identical at the owner-synchronized Ready head `6d7c6c85e`
+- Status: in progress; exact-head CI exposed a pre-existing Operations E2E assertion defect, and the owner added Manage Carrier Account deep-linking to the remaining UI scope
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-13T03:34:18Z` (earliest recoverable Phase 2 commit; the earlier conversation start timestamp is unavailable)
 - Task/thread ID: Unavailable from the current Codex context
@@ -68,6 +68,7 @@ Exclusions and owner decisions:
 | Completed after GitHub feedback | `2026-08-17T00:32:48Z` | Corrections, validation, push, PR description, thread resolution, exact-head re-review, and task evidence are complete. PR #1117 remains Draft; no final reviewer was requested. |
 | Owner promoted and synchronized PR | `2026-08-17T00:35:11Z` | The owner directly marked the PR Ready and merged current `main`, producing `6d7c6c85e`. The merge adds only three already-merged Desktop Workspace test-infrastructure files; the PR diff before and after synchronization has the identical Git patch hash `7c4493a60549e94129c5c92ee171045b8e5ff0c6`. The owner-selected Ready state was preserved, hosted CI started, and no final reviewer was requested. |
 | Issue progress synchronized | `2026-08-17T00:40:00Z` | Updated issue #1130 in place without adding PR lifecycle state: marked every Phase 2 checklist item complete, replaced superseded all-role-slot and drag/drop language with the selected Client-assignable-role and redesigned-workspace decisions, updated acceptance wording, and recorded current automated and UAT evidence. The issue remains open. |
+| CI failure and deep-linking follow-up started | `2026-08-17T00:48:22Z` | Exact-head run `31982427089` failed only `web-e2e`: all three Chromium attempts exposed the same pre-existing Operations narrow-window test assertion comparing differently aligned inner controls. PR #1117 does not change that Operations test or UI. The owner also required every Manage Carrier Account section and Team Member detail tab to be deep-linkable while preserving the selected-member view across section changes. |
 
 ## Task statistics
 
