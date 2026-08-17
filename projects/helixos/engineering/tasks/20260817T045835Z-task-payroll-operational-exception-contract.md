@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: blocked by fixed-scope stop gate
+- Status: in-progress (resumed for architecture corrections)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -21,6 +21,7 @@ Exclusions and owner decisions:
 - Do not implement report schema, API, or UI work.
 - Stop if implementation materially exceeds the plan's file inventory.
 - Preserve existing workflow behavior.
+- Owner clarification at 2026-08-17T13:01:24Z: architecture-standard violations in code touched by this work must be corrected; the planned inventory is not a reason to leave those violations unresolved.
 
 ## Lifecycle
 
@@ -37,6 +38,7 @@ Exclusions and owner decisions:
 | Scope stop gate applied | 2026-08-17T06:40:12Z | Authoritative intake correction requires payroll-feed worker files and tests outside the plan inventory; no review fixes or rerun requested |
 | CI | Not started | Draft private gate did not clear |
 | Completed | Blocked | Owner decision required to expand the plan inventory or revise the contract |
+| Owner clarified architecture scope; work resumed | 2026-08-17T13:01:24Z | Resume the private self-review loop and correct all three exact-head blockers |
 
 ## Task statistics
 
@@ -65,6 +67,7 @@ Exclusions and owner decisions:
 - The exact-head private review found that intake-source failures are written only from request-time API paths while authoritative asynchronous payroll-feed transitions occur in `feed-pull-poller.ts`, `feed-ingestor.ts`, and `feed-pull-kickoff.ts`. Correcting ownership requires those production files, focused tests, and likely a focused transition adapter, materially exceeding the plan inventory.
 - The same review found two additional lifecycle-identity blockers within planned source families: export and operations-file retries use per-attempt keys that cannot resolve an earlier failed occurrence, and eligibility review reassignment from source run A to run B reconciles only run B while run A can remain open.
 - No partial review fixes were made because the authoritative intake correction triggered the owner's explicit scope stop. The private-review heartbeat was disabled and no rerun, public feedback request, Ready transition, reviewer request, or merge action was performed.
+- The owner subsequently clarified that architecture violations in touched code are in scope and must be fixed. The prior stop is retained as lifecycle history; implementation resumed to address all three findings and obtain a clean exact-head private review.
 
 ## Validation, review, and CI
 
@@ -82,7 +85,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-Implementation and local validation remain captured at exact head `dc185fbe7`, but Draft PR #1190 cannot clear private review within the authorized fixed inventory. The first of three exact-head blockers requires authoritative payroll-feed worker changes and tests outside that inventory. Work stopped without modifying the HelixOS branch after review. Owner direction is required either to expand and amend the plan's file inventory or to revise the operational-exception ownership contract.
+Implementation resumed after the owner clarified that architecture corrections in touched code must be completed even when they extend the original inventory. Draft PR #1190 remains Draft at `dc185fbe7` while all three private-review blockers are addressed. `origin/main` advanced to `4e776a5d5` with overlapping Prisma schema, seed, shared-index, and payroll-feed test changes; the branch must be synchronized before fixes are implemented.
 
 ## Evidence provenance
 
