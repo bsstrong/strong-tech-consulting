@@ -42,14 +42,15 @@ Exclusions and owner decisions:
 | Eastern cutoff confirmed | 2026-08-17T04:17:59Z | Owner confirmed Sandy's comment is controlling: Eastern time, 5:00 PM daily cutoff, and all Carrier Clients; removed this from the open-decision gate in commit `c329b3980453d70c25d91d8d3d16ba2120368380` |
 | Operational exception contract confirmed | 2026-08-17T04:20:40Z | Owner confirmed the report's exception fields are clear; repository review showed heterogeneous persistence rather than a missing business decision, so normalization became Slice 1 engineering work in commit `5e9958aeb6c5fa2672fdc9316bf30aa9ebc3c950` |
 | Exception delivery boundary separated | 2026-08-17T04:24:11Z | Plan now requires operational-exception persistence as an independently deployable prerequisite PR with no report schema/API/UI; commit `a234f5cef563c3b1230024993b15bf355ecf3392` |
+| Standalone exception handoff completed | 2026-08-17T04:39:44Z | Extracted the prerequisite into a detailed associate-engineer plan, removed historical/backfill work because all current data is test data, fixed plan mojibake, and committed as `b73b5fe29be05fed9d17a8328e4c563816a3974f` |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 18 minutes 36 seconds | 2026-08-17T01:48:29Z through 2026-08-17T02:07:05Z |
-| Commits | 5 product commits plus consulting lifecycle commits | Product commits `3f0b965efe49882a0daa5a670480923c0cc79968`, `7bd56fa4773b4e1be2d42f22e1ad446d0172b618`, `c329b3980453d70c25d91d8d3d16ba2120368380`, `5e9958aeb6c5fa2672fdc9316bf30aa9ebc3c950`, `a234f5cef563c3b1230024993b15bf355ecf3392` |
-| Change size | 7 files, 1,532 additions, 113 deletions | `git diff --shortstat f76377cb8..a234f5cef` |
+| Commits | 6 product commits plus consulting lifecycle commits | Product commits `3f0b965efe49882a0daa5a670480923c0cc79968`, `7bd56fa4773b4e1be2d42f22e1ad446d0172b618`, `c329b3980453d70c25d91d8d3d16ba2120368380`, `5e9958aeb6c5fa2672fdc9316bf30aa9ebc3c950`, `a234f5cef563c3b1230024993b15bf355ecf3392`, `b73b5fe29be05fed9d17a8328e4c563816a3974f` |
+| Change size | 8 files, 2,188 additions, 113 deletions | `git diff --shortstat f76377cb8..b73b5fe29` |
 | Validation | Planning evidence plus 211 shared tests, 13 Cycle Monitor service tests, 2 PostgreSQL Cycle Monitor tests, package builds, and API build | All final commands passed; detailed evidence below |
 | Review | 1 complete plan self-review; 6 pre-implementation decisions identified | No implementation or PR review rounds |
 | CI | N/A | Planning-only task |
@@ -78,7 +79,9 @@ Exclusions and owner decisions:
 - Corrected the plan and source matrix so the report projects persisted HelixOS actions and outcomes at their true execution grain. Imported record counts remain processing evidence only; the report will not reparse or recalculate provider data, infer unrecorded confirmation, or misrepresent tenant-level file-generation totals as per-cycle values.
 - Moved the Eastern 5:00 PM cutoff and all-Carrier-Clients population from the decision gate into confirmed requirements. The implementation uses a prior-day 5:00 PM through report-day 5:00 PM closed-open window in `America/New_York`; five pre-implementation decisions remain.
 - Moved the operational-exception contract from the decision gate into confirmed requirements. Current finalization blockers, intake failures, run failures, eligibility reviews, file-generation failures, and generic audit events use different schemas and lifecycle semantics; Slice 1 must write one structured tenant-scoped exception contract at those owning workflow boundaries. Four pre-implementation decisions remain.
-- Split exception normalization into Slice 1A, a separate prerequisite PR. It owns the schema, lifecycle policy, idempotent source mapping, workflow writers, tenant isolation, PII-safe fields, and prospective/backfill rules. Report persistence and projection move to Slice 1B and depend on the merged exception contract.
+- Split exception normalization into Slice 1A, a separate prerequisite PR. It owns the schema, lifecycle policy, idempotent source mapping, workflow writers, tenant isolation, and PII-safe fields. The contract starts prospectively with empty normalized tables; report persistence depends on the merged prerequisite.
+- Replaced embedded Slice 1A with a standalone implementation-ready handoff. The prerequisite is prospective only: its additive tables start empty, no current test records are converted, and no historical/backfill path is implemented. The parent report plan links to the standalone plan and resumes with report Slice 1.
+- Cleaned malformed punctuation sequences from the parent implementation plan and verified all three planning documents are free of the reported mojibake patterns.
 
 ## Validation, review, and CI
 
@@ -106,7 +109,7 @@ Exclusions and owner decisions:
 - Outcome: updated associate-engineer handoff and first decision-neutral implementation slice committed locally.
 - Product repository state: clean branch `codex/842-report-foundation`, one commit ahead of `origin/main`; no push or pull request yet.
 - Primary risk: implementation must not begin with report migrations/API DTOs until inclusion/aging, included HelixOS outcome/actions, artifact/delivery channel, and audience-permission mapping are approved. The exception normalization itself is confirmed engineering scope.
-- Follow-up: Slice 1A exception normalization may proceed independently. Record the four remaining report answers on issue #842 and update the source matrix before beginning Slice 1B report persistence.
+- Follow-up: the standalone payroll operational-exception plan may be handed to another agent immediately and implemented independently. Record the four remaining report answers on issue #842 before beginning report Slice 1 persistence.
 
 ## Resumed implementation interval
 
