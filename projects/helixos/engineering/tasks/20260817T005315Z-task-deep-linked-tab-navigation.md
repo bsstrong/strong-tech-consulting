@@ -22,6 +22,7 @@ Exclusions and owner decisions:
 - Non-navigation transient UI state remains local.
 - The PR inventory, authored identity, affected-page set, and final implementation scope are evidence gaps pending canonical GitHub and repository inspection.
 - Do not merge without separate owner authorization.
+- The public PR description must frame PR #1189 as a deliberately bounded first pass, without comparing the owner's pull requests to other authors. Remaining route conversions will ship in follow-up PRs.
 
 ## Lifecycle
 
@@ -33,6 +34,7 @@ Exclusions and owner decisions:
 | Review | 2026-08-17T06:09:32Z | Round-2 circuit-breaker checkpoint pushed at `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12`; owner approval required before another rerun |
 | Review resumed | 2026-08-17T22:52:32Z | Owner explicitly reset the private self-review flow to cycle 0 for current head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | Private self-review clean | 2026-08-17T22:58:45Z | Fresh-invocation cycle 1 completed with zero blockers, non-blockers, or inline findings on exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
+| PR scope framing and follow-up analysis | 2026-08-17T23:11:10Z | PR description updated to first-pass framing; current production tab and section-navigation inventory completed |
 | Manual UI UAT | 2026-08-17T13:44:52Z | Two clean Helix-browser passes; final implementation/UAT checkpoint `2a60bce0006818e930a9505a94ee559efe67e1cb` after current-main merge; durable UAT record head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
@@ -88,6 +90,20 @@ Exclusions and owner decisions:
 - Forty screenshots were captured under `C:\dev\evidence\helix\pr-1189`; the final browser pass reported zero error-level console entries.
 - PR description and checked-in UAT record were updated. PR #1189 remains Draft on head `99b4142865566c0bbfb71ca11cfda0e77d88026d`; no review rerun was requested.
 - The owner explicitly approved continuation after the circuit breaker and reset the invocation rerun counter to zero. The existing `#self-reviews` parent remains authoritative; a fresh exact-head rerun is being requested there rather than creating a duplicate parent.
+- Updated the PR description to remove author-history comparisons, state that the six converted surfaces are a bounded first pass, promise cohesive follow-up PRs, and record the clean exact-head private review.
+
+### Remaining tab-navigation analysis — 2026-08-17T23:11:10Z
+
+- Inventory method: scanned every production web source use of MUI `Tabs`, semantic `tablist`/`tab` roles, the shared `CompactSectionNavigation`, and controlled `RulesetWorkbench` tab props; traced each candidate to its host route and production consumers.
+- Reachable client-owned navigation remains in four feature boundaries:
+  - Manage Carriers detail sections: `TenantAdminDetailPage` owns Overview, Contact, Notes, People & Access, and Portal Access in `activeSection` local state. Routes, desktop-window tenant-admin path parsing, Recent identity, and both existing and create-mode paths must accept section segments.
+  - Client Portal Access: `ClientPortalAccessPanel` owns Portal users vs Invitations locally and is hosted both under Manage Carriers and the Admin Console. The panel should become controlled; the Carrier host should encode the nested access tab, while the console must also route the selected Carrier so refresh can reconstruct the tab context.
+  - Rule Test Suite: `RuleTestSuitePage` owns Scenarios vs Results in `workbenchTab` local state. The Admin Console route already reserves `batch-trace/:runKey/:testRunKey`, so the two workbench tab segments can be added without colliding with trace drill-ins.
+  - Embedded plan Rule Engine workbench: `PlanRulesetPage` owns the visible workbench tab and schema Design/Import/Preview tab locally. Its standalone Rule Engine counterpart already demonstrates the target contract: main tab in the path and `schemaTab` in the query while preserving version, payload, proposal, and trace state.
+- One additional client-owned MUI tab surface, `ClientAssignmentsPanel`, has no production consumer outside its barrel export and tests. Do not add a public route to unreachable UI; decide whether to mount it in its intended workflow or remove it before routing it.
+- Already route-owned and excluded from follow-up implementation: Client workspace, Employee workspace, Manage Plans, Integrations, Workflow, Payroll Provider Management, Operations, Manage Carrier Account member tabs, and standalone Rule Engine Studio workbench tabs.
+- Not tab navigation: editor/drawer section steppers, filters, card/list presentation toggles, write/preview controls, and previous/next item controls represent transient draft, filter, or presentation state and should remain local.
+- Recommended follow-up order to keep reviews small: (1) Rule Test Suite; (2) Manage Carriers sections; (3) Client Portal Access across both hosts; (4) embedded plan Rule Engine workbench; (5) separately decide the unreachable Client Assignments component.
 
 ### Private rerun checkpoint — 2026-08-17T05:40:41Z
 
