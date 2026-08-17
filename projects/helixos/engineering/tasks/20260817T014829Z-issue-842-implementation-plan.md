@@ -36,15 +36,17 @@ Exclusions and owner decisions:
 | Completed | 2026-08-17T02:07:05Z | 18 minutes 36 seconds elapsed |
 | Resumed for PM decision brief | 2026-08-17T02:18:49Z | Owner requested plain-language decision statements, recommendations, and impacts |
 | PM decision brief completed | 2026-08-17T02:19:19Z | Six copy-ready decision statements with recommended choices and consequences |
+| Decision-neutral implementation authorized | 2026-08-17T02:28:42Z | Owner requested plan update and implementation start while product decisions remain pending |
+| Foundation implementation committed | 2026-08-17T02:49:29Z | Commit `3f0b965efe49882a0daa5a670480923c0cc79968`; 20 minutes 47 seconds from resumed authorization |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 18 minutes 36 seconds | 2026-08-17T01:48:29Z through 2026-08-17T02:07:05Z |
-| Commits | 1 start-record commit plus this completion update | Product repository plan deliberately remains uncommitted in a detached current-main worktree |
-| Change size | 829 added lines / 5,376 words | `docs/plans/2026-08-17-issue-842-daily-payroll-summary-audit-report.md` |
-| Validation | 1 issue body, 5 comments, 2 linked artifacts, 5 workbook sheets, current Operations/API/workflow/schema/permission/test sources | Direct inspection and source-to-plan traceability matrix |
+| Commits | 1 product commit plus consulting lifecycle commits | Product commit `3f0b965efe49882a0daa5a670480923c0cc79968` |
+| Change size | 7 files, 1,475 additions, 113 deletions | `git show --stat --numstat 3f0b965ef` |
+| Validation | Planning evidence plus 211 shared tests, 13 Cycle Monitor service tests, 2 PostgreSQL Cycle Monitor tests, package builds, and API build | All final commands passed; detailed evidence below |
 | Review | 1 complete plan self-review; 6 pre-implementation decisions identified | No implementation or PR review rounds |
 | CI | N/A | Planning-only task |
 | Benchmarks | N/A | Performance scope not yet established |
@@ -63,6 +65,12 @@ Exclusions and owner decisions:
 - Preserved current architecture: existing Files archive remains; Operations stays independently permissioned; PlatformAudit is not reused; the Cycle Monitor hotspot is not grown; deterministic rules stay out of React and expensive E2E tests.
 - Resumed the same issue-planning objective to translate the six technical decision gates into project-manager language without changing their substance.
 - Produced a PM-facing approval brief covering the reporting day, cycle inclusion/aging, official funding values, standard exception tracking, report format/delivery, and audience/action permissions.
+- Updated the implementation plan so Slice 0A can proceed without encoding any unresolved report contract and Slice 0B remains an explicit blocking gate.
+- Created branch/worktree `codex/842-report-foundation` at current `origin/main` `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`.
+- Added a field-to-source/gap, capacity, and reconciliation matrix under `docs/features/`; unavailable funding, exception, delivery, and window fields remain explicit gaps.
+- Extracted Cycle Monitor status, label, message, current-step, and timeline projection into the dependency-light `@helixos/shared` module. The Operations service retains tenant-scoped I/O, SQL paging/filtering, deadline derivation, and response mapping.
+- Preserved the PostgreSQL classifier required for server-side filtering/paging and documented its required parity with the shared projector; existing SQL integration coverage exercises all five outcomes.
+- Deferred the contract-sensitive report schema, API, permissions, scheduling, aggregation, exception aging, artifact, retention, and visible UI work.
 
 ## Validation, review, and CI
 
@@ -70,14 +78,27 @@ Exclusions and owner decisions:
 - Verified every named existing target file in the plan exists at current `origin/main`.
 - Reviewed current Operations routing, window restoration, Reports & Files archive, permissions, tenant authorization model, payroll-cycle/funding/census/eligibility/audit schemas, async worker/sweeper patterns, and Payroll Provider Management test-runtime guidance.
 - Completed a requirement-to-owner-to-proof traceability table and endpoint-to-policy matrix.
-- No product tests or CI were run because this was a planning-only task with no implementation changes.
+- The original planning phase ran no product tests or CI because it contained no implementation changes.
+
+### Foundation implementation validation
+
+- Baseline Cycle Monitor service test: 13/13 passed; 3,459 ms wall time before extraction.
+- Focused shared projector test: 6/6 passed; final Node test duration 511 ms.
+- Full `@helixos/shared` suite: 211/211 passed; 5,246 ms wall time.
+- Cycle Monitor service seam: 13/13 passed; final Node test duration 2,016 ms.
+- Cycle Monitor PostgreSQL coverage: 2/2 passed; 6,341 ms wall time; status precedence, tenant scope, filtering, and paging remained green.
+- `npm run build:packages`: passed in 62,622 ms.
+- `npm run build -w @helixos/api`: passed in 33,398 ms after required workspace packages were built.
+- `git diff --cached --check`: passed before commit.
+- Initial direct API build attempt failed only because fresh-worktree package artifacts had not yet been built; `build:packages` established the documented prerequisite and the subsequent API build passed.
+- `npm ci` reported 61 dependency audit findings from the existing lockfile (2 low, 33 moderate, 22 high, 4 critical); dependency remediation is outside this issue slice.
 
 ## Outcome, risk, and follow-up
 
-- Outcome: detailed associate-engineer handoff created at `C:\dev\HelixOS-issue-842-plan\docs\plans\2026-08-17-issue-842-daily-payroll-summary-audit-report.md`.
-- Product repository state: detached at current `origin/main`; the plan is untracked and uncommitted, with no branch, push, or pull request.
+- Outcome: updated associate-engineer handoff and first decision-neutral implementation slice committed locally.
+- Product repository state: clean branch `codex/842-report-foundation`, one commit ahead of `origin/main`; no push or pull request yet.
 - Primary risk: implementation must not begin with migrations/API DTOs until cutoff/window, inclusion/aging, funding source, operational exception source, artifact/delivery channel, and audience-permission mapping are approved.
-- Follow-up: record those six answers on issue #842, then execute the plan's five implementation slices through the repository-prescribed Draft/self-review/CI lifecycle.
+- Follow-up: record those six answers on issue #842, update the source matrix, then begin Slice 1. The remaining contract-sensitive implementation is blocked on those decisions.
 
 ## Resumed implementation interval
 
