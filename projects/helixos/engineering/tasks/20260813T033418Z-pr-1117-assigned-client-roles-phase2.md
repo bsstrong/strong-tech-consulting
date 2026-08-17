@@ -2,16 +2,16 @@
 
 ## Identity
 
-- Status: complete; both exact-head GitHub findings are corrected, all threads are resolved, and the `0ba3cee9b` Draft re-review returned zero findings
+- Status: complete; both GitHub findings are corrected, all threads are resolved, and the clean `0ba3cee9b` review diff is byte-identical at the owner-synchronized Ready head `6d7c6c85e`
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-13T03:34:18Z` (earliest recoverable Phase 2 commit; the earlier conversation start timestamp is unavailable)
 - Task/thread ID: Unavailable from the current Codex context
 - Starting branch: `codex/assigned-client-roles-phase2`
 - Starting base SHA: `9faf3933f09ac999b90aa8a2759da87a4dca4b67` (final Phase 1 feature head used by the original stack)
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
-- Current fetched base SHA: `3a1474ea3adedeff4d766a0e229524bcbb825819` (merge base `af8f037185d13f3cd1e48fad0af33ce552629ac4`; the later Desktop Workspace test-optimization delta does not overlap this feature)
-- Current local head SHA: `0ba3cee9b08c6972340ca204d6b479934ac4a65c`
-- Current PR head SHA: `0ba3cee9b08c6972340ca204d6b479934ac4a65c`
+- Current fetched base SHA: `3a1474ea3adedeff4d766a0e229524bcbb825819` (also the current merge base)
+- Current local head SHA: `6d7c6c85eede413eebd800e7fea0ad736b3b3843`
+- Current PR head SHA: `6d7c6c85eede413eebd800e7fea0ad736b3b3843`
 - Issue: https://github.com/helixosio/helixos/issues/1130
 - PR: https://github.com/helixosio/helixos/pull/1117
 
@@ -66,13 +66,14 @@ Exclusions and owner decisions:
 | GitHub feedback corrections committed | `2026-08-17T00:27:00Z` | Commit `0ba3cee9b` makes primary-role replacement events discoverable in per-person access history and makes every audited Client-assignment result-scope transition discard hidden draft choices. The branch was first synchronized through `af8f03718`; subsequent base `3a1474ea3` changes only Desktop Workspace test infrastructure and has no overlap. |
 | Exact-head GitHub Draft re-review completed cleanly | `2026-08-17T00:32:48Z` | Sansa reviewed 183/183 changed files at exact head `0ba3cee9b`, returned a COMMENT review with zero findings, and confirmed zero open threads. Approval was withheld only because the owner requires the PR to remain Draft. |
 | Completed after GitHub feedback | `2026-08-17T00:32:48Z` | Corrections, validation, push, PR description, thread resolution, exact-head re-review, and task evidence are complete. PR #1117 remains Draft; no final reviewer was requested. |
+| Owner promoted and synchronized PR | `2026-08-17T00:35:11Z` | The owner directly marked the PR Ready and merged current `main`, producing `6d7c6c85e`. The merge adds only three already-merged Desktop Workspace test-infrastructure files; the PR diff before and after synchronization has the identical Git patch hash `7c4493a60549e94129c5c92ee171045b8e5ff0c6`. The owner-selected Ready state was preserved, hosted CI started, and no final reviewer was requested. |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 92h 58m | From task start `2026-08-13T03:34:18Z` through clean GitHub Draft re-review `2026-08-17T00:32:48Z`; includes pauses and waiting and is not active-work time |
-| Commits | 106 commits | `git rev-list --count origin/main..HEAD` after the feedback correction |
+| Commits | 107 commits | `git rev-list --count origin/main..HEAD` after the owner synchronization merge |
 | Change size | 183 files, +24,773 / -3,698 | `git diff --shortstat origin/main...HEAD` at `0ba3cee9b` |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
 | Validation | Local head `0ba3cee9b`: web 189 suites / 1,639 tests; API 2,999 tests; focused feedback regressions; package, API, and web builds; lint; theme; OpenAPI; diff checks; all passed | The first concurrent OpenAPI consistency invocation raced another OpenAPI reader; generation produced no semantic artifact change and the standalone consistency rerun passed |
@@ -156,7 +157,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation, completed UI/UAT iteration, current-main synchronization, and all GitHub feedback corrections are pushed at `0ba3cee9b08c6972340ca204d6b479934ac4a65c`. The exact-head GitHub Draft re-review inspected all 183 changed files and returned zero findings with zero open threads. PR #1117 remains Draft, as required; Ready transition, CI gating, final reviewer request, merge, and release remain paused and out of scope.
+The functional Phase 2 implementation, completed UI/UAT iteration, current-main synchronization, and all GitHub feedback corrections are present at current head `6d7c6c85eede413eebd800e7fea0ad736b3b3843`. The Draft re-review inspected all 183 changed files at `0ba3cee9b`, returned zero findings, and confirmed zero open threads; the owner then merged current `main`, and the resulting current PR diff is byte-identical to that reviewed diff. The owner's direct Ready transition is authoritative and was not reverted. Hosted CI is running; no final reviewer was requested, and merge and release remain out of scope.
 
 Residual risk is limited to the two browser-control limitations documented in the UAT plan, any future owner-directed UI iteration, and later delivery lifecycle gates. Exact-head correction evidence includes 189 web suites / 1,639 tests, the complete 2,999-test API suite, focused feedback regressions, package/API/web builds, lint, theme, OpenAPI, diff checks, and the clean exact-head Draft re-review.
 
