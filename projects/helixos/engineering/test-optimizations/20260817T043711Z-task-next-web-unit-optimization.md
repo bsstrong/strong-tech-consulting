@@ -10,7 +10,7 @@
 - Initial local branch: `main`
 - Initial local head: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f`
 - Initial worktree state: clean; local `main` was 733 commits behind `origin/main`, so implementation will use a dedicated branch/worktree from the fetched base.
-- Pull request: https://github.com/helixosio/helixos/pull/1188 (Draft)
+- Pull request: https://github.com/helixosio/helixos/pull/1188 (Ready; owner-selected state)
 - Pull request created: 2026-08-17T05:11:11Z
 - Task/thread ID: unavailable in the current execution context
 
@@ -18,7 +18,7 @@
 
 - In scope: one cohesive web-test hotspot, matched local baseline/post-change samples, unchanged behavioral coverage, full required local validation, Draft PR creation, private self-review, repository-prescribed feedback/final review, exact-head CI, and three hosted timing samples.
 - Explicit exclusions: reducing or skipping tests, loosening assertions, increasing timeouts, changing production behavior, overlapping active pull-request work, merging, releasing, or publishing.
-- Selection evidence, active-PR overlap inventory, hosted baseline, responsibility boundary, measurements, validation, review findings, CI attempts, and hosted samples: pending.
+- Selection evidence, active-PR overlap inventory, hosted baseline, responsibility boundary, local measurements, validation, and private self-review are recorded below. Exact-head CI attempt 1 and hosted timing collection are in progress.
 
 ## Target selection
 
@@ -50,9 +50,16 @@
 - The PR description records the hosted and matched local baselines, preserved behavior, complete local validation, responsibility boundary, architecture review, risk, rollback, and work duration.
 - Immediately before the private request, fetched base and merge base remained `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`, with no base advance and a clean worktree.
 - Connected Slack read-only search verified private channel `#self-reviews` as `C0BMWSRGYDS` and found no existing parent for the canonical PR URL. Authenticated user `U0B9R7NJTQA` posted the URL-only parent through Slack Web API at timestamp `1786943657.611809` (2026-08-17T05:14:17Z). The review bot acknowledged at `1786943659.061729` that GitHub will not be changed and began the inquiry.
-- Heartbeat `pr-1188-self-review-check` schedules the first exact-head result check after seven minutes and one-minute checks only while a review is genuinely pending.
+- Private reflection completed at `1786943744.998089` (2026-08-17T05:15:44Z) against the supplied exact head with 0 blockers, 0 non-blockers, no inline findings, and no additional architecture findings. The review explicitly confirmed retained rendered/MSW request-boundary coverage, direct change events only for setup-only fields, realistic typing for filtering and debounced autocomplete, and preservation of click, selection, dialog, confirmation, pagination, mutation, and readiness behavior.
+- The owner then changed PR #1188 directly to Ready. That state is authoritative and was preserved. Canonical GitHub state reports exact head `62dde6245bb60ffe213255da42c6bb56dd680b53`, base and merge base `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`, a clean local worktree, mergeable status, and no GitHub review threads or reviewer requests.
+
+## Exact-head CI and hosted timing
+
+- HelixOS CI run `31997351841`, attempt 1, started at 2026-08-17T05:16:57Z for exact head `62dde6245bb60ffe213255da42c6bb56dd680b53`. Jobs `backend-and-infra` (`95291268697`), `web-unit` (`95291268723`), and `web-e2e` (`95291268810`) started; `web-cross-browser` (`95291269084`) was expectedly skipped.
+- The latest 50 completed pull-request CI runs have a maximum start-to-update elapsed duration of 1,057 seconds (run `31979373829`). Applying the repository cadence rule gives one follow-up after 19 whole minutes. Heartbeat `pr-1188-ci-sample-1-check` owns that single follow-up; no polling is active.
 
 ## Risk and follow-up
 
-- Initial risk: target selection must account for active PR #1180 and any newer active changes before editing.
-- Rollback and next candidate: pending implementation evidence.
+- Residual risk: hosted hardware variance may narrow or reverse the directional local gain; three exact-head hosted samples will decide the final performance claim. Active PR #1189 was inventoried after PR creation and changes unrelated deep-link workspace navigation, with no selected test, component, dialog, model, or dependency overlap.
+- Rollback: revert commit `62dde6245bb60ffe213255da42c6bb56dd680b53`; production behavior is unaffected.
+- Next candidate: re-rank untreated web-unit files from the latest merged-main timing population after PR #1188 reaches a terminal reviewed state, excluding any active overlap at that time.
