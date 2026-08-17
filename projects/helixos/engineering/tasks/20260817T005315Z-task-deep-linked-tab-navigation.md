@@ -35,6 +35,7 @@ Exclusions and owner decisions:
 | Review resumed | 2026-08-17T22:52:32Z | Owner explicitly reset the private self-review flow to cycle 0 for current head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | Private self-review clean | 2026-08-17T22:58:45Z | Fresh-invocation cycle 1 completed with zero blockers, non-blockers, or inline findings on exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | PR scope framing and follow-up analysis | 2026-08-17T23:11:10Z | PR description updated to first-pass framing; current production tab and section-navigation inventory completed |
+| Draft production feedback requested | 2026-08-17T23:17:23Z | Initial `Ready for feedback` parent posted in `#pr-reviews` for exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | Manual UI UAT | 2026-08-17T13:44:52Z | Two clean Helix-browser passes; final implementation/UAT checkpoint `2a60bce0006818e930a9505a94ee559efe67e1cb` after current-main merge; durable UAT record head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
@@ -91,6 +92,7 @@ Exclusions and owner decisions:
 - PR description and checked-in UAT record were updated. PR #1189 remains Draft on head `99b4142865566c0bbfb71ca11cfda0e77d88026d`; no review rerun was requested.
 - The owner explicitly approved continuation after the circuit breaker and reset the invocation rerun counter to zero. The existing `#self-reviews` parent remains authoritative; a fresh exact-head rerun is being requested there rather than creating a duplicate parent.
 - Updated the PR description to remove author-history comparisons, state that the six converted surfaces are a bounded first pass, promise cohesive follow-up PRs, and record the clean exact-head private review.
+- Expanded the PR description with the concrete remaining work: proposed Rule Test Suite routes, Manage Carriers section routes, controlled Client Portal Access routes for both hosts, embedded plan Rule Engine workbench routing, the dormant Client Assignments disposition, and explicit transient-state exclusions.
 
 ### Remaining tab-navigation analysis — 2026-08-17T23:11:10Z
 
@@ -104,6 +106,15 @@ Exclusions and owner decisions:
 - Already route-owned and excluded from follow-up implementation: Client workspace, Employee workspace, Manage Plans, Integrations, Workflow, Payroll Provider Management, Operations, Manage Carrier Account member tabs, and standalone Rule Engine Studio workbench tabs.
 - Not tab navigation: editor/drawer section steppers, filters, card/list presentation toggles, write/preview controls, and previous/next item controls represent transient draft, filter, or presentation state and should remain local.
 - Recommended follow-up order to keep reviews small: (1) Rule Test Suite; (2) Manage Carriers sections; (3) Client Portal Access across both hosts; (4) embedded plan Rule Engine workbench; (5) separately decide the unreachable Client Assignments component.
+
+### Draft production-feedback checkpoint — 2026-08-17T23:17:23Z
+
+- Exact head: `99b4142865566c0bbfb71ca11cfda0e77d88026d`.
+- Fetched base and merge base: `e8e9a5d8982969bc04d54f8a138c25845958950f`; the base has not advanced and no synchronization is required.
+- Readiness: worktree clean, branch synchronized with the pushed head, PR mergeable and still Draft, exact-head private self-review clean, applicable local validation and browser UAT green, and zero GitHub reviews, review requests, conversation comments, or review threads.
+- Duplicate prevention: an immediate literal-URL search in `#pr-reviews` channel `C0BGRRSPV4L` returned no existing parent.
+- Request: posted the canonical `Ready for feedback` parent as authenticated user `U0B9R7NJTQA` at `1787008643.549259`. No `jfollas` request was made during the Draft feedback phase.
+- Monitoring: the first exact-head Slack and GitHub check is scheduled for the required three-minute cadence; pending checks will switch to one-minute cadence without duplicate review triggers.
 
 ### Private rerun checkpoint — 2026-08-17T05:40:41Z
 
