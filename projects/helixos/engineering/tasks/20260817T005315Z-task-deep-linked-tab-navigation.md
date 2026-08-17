@@ -36,6 +36,8 @@ Exclusions and owner decisions:
 | Private self-review clean | 2026-08-17T22:58:45Z | Fresh-invocation cycle 1 completed with zero blockers, non-blockers, or inline findings on exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | PR scope framing and follow-up analysis | 2026-08-17T23:11:10Z | PR description updated to first-pass framing; current production tab and section-navigation inventory completed |
 | Draft production feedback requested | 2026-08-17T23:17:23Z | Initial `Ready for feedback` parent posted in `#pr-reviews` for exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
+| Draft production feedback returned | 2026-08-17T23:19:43Z | Two actionable route-guard findings on exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
+| Production feedback remediated | 2026-08-17T23:40:47Z | Commit `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf` pushed; both GitHub threads answered and resolved |
 | Manual UI UAT | 2026-08-17T13:44:52Z | Two clean Helix-browser passes; final implementation/UAT checkpoint `2a60bce0006818e930a9505a94ee559efe67e1cb` after current-main merge; durable UAT record head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
@@ -45,10 +47,10 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | Pending | Direct timestamps will be recorded |
-| Commits | 5 authored commits plus one current-main merge | Three implementation/remediation commits and two UAT documentation commits |
-| Change size | 28 files; 1,254 additions; 363 deletions | `git diff --shortstat origin/main...HEAD` at `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
-| Validation | Shared/package builds, web typecheck, lint, theme check, 313 affected tests, complete 1,661-test web suite, production web build, post-merge 300-test focused run, and manual UI UAT green | Local command and Helix-browser evidence |
-| Review | Round 1: three blockers addressed; round 2: one blocker and one non-blocker addressed; fresh-invocation cycle 1 clean | Slack thread `1786943637.689379`; fresh rerun `1787007272.698759`; clean result `1787007525.686119` |
+| Commits | 6 authored commits plus one current-main merge | Four implementation/remediation commits and two UAT documentation commits |
+| Change size | 30 files; 1,606 additions; 376 deletions | `git diff --shortstat origin/main...HEAD` at `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf` |
+| Validation | Shared/package builds, web typecheck, lint, theme check, 313 affected tests, complete 1,661-test web suite, production web build, post-merge 300-test focused run, 65 production-remediation tests, and manual UI UAT green | Local command and Helix-browser evidence |
+| Review | Private round 1: three blockers addressed; private round 2: one blocker and one non-blocker addressed; fresh private cycle 1 clean; Draft production round 1: two actionable findings addressed | Slack self-review thread `1786943637.689379`; production thread `1787008643.549259`; GitHub review and resolved threads |
 | CI | Pending | Exact-head GitHub Actions evidence |
 | Benchmarks | N/A | No performance claim requested |
 
@@ -90,9 +92,15 @@ Exclusions and owner decisions:
 - The post-merge local stack used 196 applied migrations. The package build passed and 11 focused web suites passed all 300 tests.
 - Forty screenshots were captured under `C:\dev\evidence\helix\pr-1189`; the final browser pass reported zero error-level console entries.
 - PR description and checked-in UAT record were updated. PR #1189 remains Draft on head `99b4142865566c0bbfb71ca11cfda0e77d88026d`; no review rerun was requested.
+- Production-remediation validation on head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`: web lint passed; web TypeScript project build passed; four focused suites passed all 65 tests; diff check passed.
 - The owner explicitly approved continuation after the circuit breaker and reset the invocation rerun counter to zero. The existing `#self-reviews` parent remains authoritative; a fresh exact-head rerun is being requested there rather than creating a duplicate parent.
 - Updated the PR description to remove author-history comparisons, state that the six converted surfaces are a bounded first pass, promise cohesive follow-up PRs, and record the clean exact-head private review.
 - Expanded the PR description with the concrete remaining work: proposed Rule Test Suite routes, Manage Carriers section routes, controlled Client Portal Access routes for both hosts, embedded plan Rule Engine workbench routing, the dormant Client Assignments disposition, and explicit transient-state exclusions.
+- Draft production review found that browser history bypassed the existing Plan unsaved-draft confirmation and Employee edit-tab locks. Both findings were valid and shared the route-owned selection boundary.
+- Added a keyed `RouteCorrection` lifecycle component so protected pages can reject a history target without mirroring route selection or adding page-level synchronization effects.
+- Plans now keeps the draft's plan surface mounted, reuses the existing Keep editing / Discard changes decision for route-driven navigation, and accepts the requested route only after explicit discard.
+- Employee Details and Payroll editors now retain their edit-locked tab and replace rejected history routes, preserving the active draft.
+- The complete guard blast-radius audit also found and corrected Payroll Provider Management: a route-driven provider change can no longer bypass the existing pending save/publish selection lock. The pending mutation's immutable provider identifier remains authoritative until completion.
 
 ### Remaining tab-navigation analysis — 2026-08-17T23:11:10Z
 
@@ -115,6 +123,17 @@ Exclusions and owner decisions:
 - Duplicate prevention: an immediate literal-URL search in `#pr-reviews` channel `C0BGRRSPV4L` returned no existing parent.
 - Request: posted the canonical `Ready for feedback` parent as authenticated user `U0B9R7NJTQA` at `1787008643.549259`. No `jfollas` request was made during the Draft feedback phase.
 - Monitoring: the first exact-head Slack and GitHub check is scheduled for the required three-minute cadence; pending checks will switch to one-minute cadence without duplicate review triggers.
+
+### Draft production-feedback remediation checkpoint — 2026-08-17T23:42:24Z
+
+- Reviewed head and base: `99b4142865566c0bbfb71ca11cfda0e77d88026d` / `e8e9a5d8982969bc04d54f8a138c25845958950f`; `origin/main` remained unchanged at the merge base.
+- Result: GitHub review `CHANGES_REQUESTED` and Slack production feedback returned two valid actionable findings at 2026-08-17T23:19:43Z: Plan history bypassed unsaved-draft confirmation, and Employee history bypassed edit-disabled tabs.
+- Shared root cause: route selection was authoritative without a page-level acceptance boundary for transitions that existing click handlers intentionally reject or confirm.
+- Complete affected-instance inventory: Client workspace dialogs remain mounted across tab routes; Integrations keeps drafts keyed by scope; Workflow and Operations have no tab-local unsaved editor; Plans requires confirmation; Employee Details/Payroll require edit locks; Payroll Provider Management requires its pending mutation-target lock. The latter materially similar instance was corrected in the same commit.
+- Architecture: deterministic tab parsing remains route-owned; protected draft/mutation state remains locally authoritative only for whether a route transition can be accepted; keyed `RouteCorrection` owns the external route-replacement lifecycle; no route state was copied into local state and no page-level dependency effect or shadow ref was introduced.
+- Validation: `npm run lint -w @helixos/web` passed; `npx tsc -b --pretty false` passed; `RouteCorrection`, Plans, Employee Detail, and Payroll Provider Management suites passed 65/65 tests; `git diff --check` passed.
+- Delivery: commit `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf` pushed at 2026-08-17T23:40:47Z; the PR description was updated; both GitHub threads were answered with exact fix evidence and resolved.
+- Circuit breaker: active again because production review found additional omissions in the same route/history acceptance boundary after two prior private-review rounds on that boundary. Heartbeat `pr-1189-production-review` was deleted and no `Check this one again` rerun was posted. Fresh owner approval is required before resuming automated production review.
 
 ### Private rerun checkpoint — 2026-08-17T05:40:41Z
 
@@ -152,7 +171,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-In progress. Draft PR #1189 contains the complete cohesive remediation, a clean repeatable browser UAT record, and a clean private self-review on exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d`. The final implementation/UI checkpoint is `2a60bce0006818e930a9505a94ee559efe67e1cb`; the current head adds only the final UAT evidence update. No UI defect or remaining private-review finding was identified. The PR remains Draft pending the owner's next lifecycle instruction.
+In progress. Draft PR #1189 contains the route-owned navigation pass, repeatable browser UAT evidence, a clean private self-review on prior head `99b4142865566c0bbfb71ca11cfda0e77d88026d`, and the complete production-feedback remediation on current head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`. Both production findings are addressed and their GitHub threads are resolved. The repeated-boundary churn circuit breaker is active, so the next Draft production re-review requires fresh owner approval. The PR remains Draft and has not been merged.
 
 ## Evidence provenance
 
