@@ -67,6 +67,7 @@ Exclusions and owner decisions:
 | Exact-head GitHub Draft re-review completed cleanly | `2026-08-17T00:32:48Z` | Sansa reviewed 183/183 changed files at exact head `0ba3cee9b`, returned a COMMENT review with zero findings, and confirmed zero open threads. Approval was withheld only because the owner requires the PR to remain Draft. |
 | Completed after GitHub feedback | `2026-08-17T00:32:48Z` | Corrections, validation, push, PR description, thread resolution, exact-head re-review, and task evidence are complete. PR #1117 remains Draft; no final reviewer was requested. |
 | Owner promoted and synchronized PR | `2026-08-17T00:35:11Z` | The owner directly marked the PR Ready and merged current `main`, producing `6d7c6c85e`. The merge adds only three already-merged Desktop Workspace test-infrastructure files; the PR diff before and after synchronization has the identical Git patch hash `7c4493a60549e94129c5c92ee171045b8e5ff0c6`. The owner-selected Ready state was preserved, hosted CI started, and no final reviewer was requested. |
+| Issue progress synchronized | `2026-08-17T00:40:00Z` | Updated issue #1130 in place without adding PR lifecycle state: marked every Phase 2 checklist item complete, replaced superseded all-role-slot and drag/drop language with the selected Client-assignable-role and redesigned-workspace decisions, updated acceptance wording, and recorded current automated and UAT evidence. The issue remains open. |
 
 ## Task statistics
 
