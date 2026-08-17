@@ -43,14 +43,15 @@ Exclusions and owner decisions:
 | Operational exception contract confirmed | 2026-08-17T04:20:40Z | Owner confirmed the report's exception fields are clear; repository review showed heterogeneous persistence rather than a missing business decision, so normalization became Slice 1 engineering work in commit `5e9958aeb6c5fa2672fdc9316bf30aa9ebc3c950` |
 | Exception delivery boundary separated | 2026-08-17T04:24:11Z | Plan now requires operational-exception persistence as an independently deployable prerequisite PR with no report schema/API/UI; commit `a234f5cef563c3b1230024993b15bf355ecf3392` |
 | Standalone exception handoff completed | 2026-08-17T04:39:44Z | Extracted the prerequisite into a detailed associate-engineer plan, removed historical/backfill work because all current data is test data, fixed plan mojibake, and committed as `b73b5fe29be05fed9d17a8328e4c563816a3974f` |
+| Cycle inclusion and aging confirmed | 2026-08-17T04:42:11Z | Owner confirmed the sample report and workbook already establish the recommended population/carry-forward behavior; moved it out of the decision gate and committed as `df8723bdfa5dd92b8b90552114bbbfce3d81c89d` |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 18 minutes 36 seconds | 2026-08-17T01:48:29Z through 2026-08-17T02:07:05Z |
-| Commits | 6 product commits plus consulting lifecycle commits | Product commits `3f0b965efe49882a0daa5a670480923c0cc79968`, `7bd56fa4773b4e1be2d42f22e1ad446d0172b618`, `c329b3980453d70c25d91d8d3d16ba2120368380`, `5e9958aeb6c5fa2672fdc9316bf30aa9ebc3c950`, `a234f5cef563c3b1230024993b15bf355ecf3392`, `b73b5fe29be05fed9d17a8328e4c563816a3974f` |
-| Change size | 8 files, 2,188 additions, 113 deletions | `git diff --shortstat f76377cb8..b73b5fe29` |
+| Commits | 7 product commits plus consulting lifecycle commits | Product commits `3f0b965efe49882a0daa5a670480923c0cc79968`, `7bd56fa4773b4e1be2d42f22e1ad446d0172b618`, `c329b3980453d70c25d91d8d3d16ba2120368380`, `5e9958aeb6c5fa2672fdc9316bf30aa9ebc3c950`, `a234f5cef563c3b1230024993b15bf355ecf3392`, `b73b5fe29be05fed9d17a8328e4c563816a3974f`, `df8723bdfa5dd92b8b90552114bbbfce3d81c89d` |
+| Change size | 8 files, 2,201 additions, 113 deletions | `git diff --shortstat f76377cb8..df8723bdf` |
 | Validation | Planning evidence plus 211 shared tests, 13 Cycle Monitor service tests, 2 PostgreSQL Cycle Monitor tests, package builds, and API build | All final commands passed; detailed evidence below |
 | Review | 1 complete plan self-review; 6 pre-implementation decisions identified | No implementation or PR review rounds |
 | CI | N/A | Planning-only task |
@@ -82,6 +83,7 @@ Exclusions and owner decisions:
 - Split exception normalization into Slice 1A, a separate prerequisite PR. It owns the schema, lifecycle policy, idempotent source mapping, workflow writers, tenant isolation, and PII-safe fields. The contract starts prospectively with empty normalized tables; report persistence depends on the merged prerequisite.
 - Replaced embedded Slice 1A with a standalone implementation-ready handoff. The prerequisite is prospective only: its additive tables start empty, no current test records are converted, and no historical/backfill path is implemented. The parent report plan links to the standalone plan and resumes with report Slice 1.
 - Cleaned malformed punctuation sequences from the parent implementation plan and verified all three planning documents are free of the reported mojibake patterns.
+- Confirmed the workbook's cycle population and follow-up semantics as the implementation contract: de-duplicate cycles with allowlisted HelixOS lifecycle activity in the Eastern window, carry forward cycles linked to unresolved exceptions, and age exceptions from immutable first detection. This reduced the report decision gate from four items to three.
 
 ## Validation, review, and CI
 
@@ -109,7 +111,7 @@ Exclusions and owner decisions:
 - Outcome: updated associate-engineer handoff and first decision-neutral implementation slice committed locally.
 - Product repository state: clean branch `codex/842-report-foundation`, one commit ahead of `origin/main`; no push or pull request yet.
 - Primary risk: implementation must not begin with report migrations/API DTOs until inclusion/aging, included HelixOS outcome/actions, artifact/delivery channel, and audience-permission mapping are approved. The exception normalization itself is confirmed engineering scope.
-- Follow-up: the standalone payroll operational-exception plan may be handed to another agent immediately and implemented independently. Record the four remaining report answers on issue #842 before beginning report Slice 1 persistence.
+- Follow-up: the standalone payroll operational-exception plan may be handed to another agent immediately and implemented independently. Record the three remaining report answers on issue #842 before beginning report Slice 1 persistence.
 
 ## Resumed implementation interval
 
