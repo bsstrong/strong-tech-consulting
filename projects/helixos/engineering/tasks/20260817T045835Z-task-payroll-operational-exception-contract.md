@@ -46,6 +46,7 @@ Exclusions and owner decisions:
 | Second-round corrections pushed | 2026-08-17T13:56:53Z | Head `f809f7da3`; every finding addressed and validated |
 | Churn circuit breaker stop | 2026-08-17T13:56:53Z | Two rounds found omissions in the same lifecycle-identity boundary; monitoring paused and another rerun requires explicit owner approval |
 | Owner approved fresh private loop | 2026-08-17T23:26:48Z | Circuit breaker cleared by explicit owner instruction; fresh invocation rerun count reset to 0 of 3 |
+| Fresh private rerun requested | 2026-08-17T23:28:13Z | Exact `rerun` reply `1787009293.616639` posted by verified user `U0B9R7NJTQA`; bot acknowledgement `1787009297.045949`; fresh cycle 1 of 3 at head `f809f7da3` |
 
 ## Task statistics
 
@@ -55,7 +56,7 @@ Exclusions and owner decisions:
 | Commits | 10 | Seven implementation commits, base-sync merge `55206b81e`, and review-fix commits `4b5837363` and `f809f7da3` |
 | Change size | 42 files, 4,599 insertions, 141 deletions | `git diff --shortstat origin/main...HEAD` at `f809f7da3` |
 | Validation | Shared 217/217; DB 257 passed with 3 existing skips; API 3,057/3,057; workflow 946/946 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
-| Review | 2 private rounds: 5 blockers, 3 non-blockers; all findings fixed | Exact-head results in `#self-reviews` parent `1786948233.619459` |
+| Review | 2 completed private rounds: 5 blockers, 3 non-blockers; all findings fixed; fresh rerun cycle 1 of 3 pending | Exact-head results and rerun `1787009293.616639` in `#self-reviews` parent `1786948233.619459` |
 | CI | Not started | Private Draft gate did not clear |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
@@ -140,7 +141,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-All first- and second-round findings are corrected and pushed at exact head `f809f7da35d81cacfdc7c2c4cac6688a58e797c5`. Draft PR #1190 remains Draft. The owner approved a fresh private self-review invocation at rerun count zero; the next action is one exact-head `rerun` in the existing private thread. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
+All first- and second-round findings are corrected and pushed at exact head `f809f7da35d81cacfdc7c2c4cac6688a58e797c5`. Draft PR #1190 remains Draft. Fresh private rerun cycle 1 of 3 is pending in the existing `#self-reviews` thread. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
 
 ## Evidence provenance
 
