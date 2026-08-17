@@ -73,6 +73,16 @@ Exclusions and owner decisions:
 - Private self-review round 1 was requested for `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` in channel `C0BMWSRGYDS`, thread `1786943637.689379`, and returned three blockers at `1786943921.484199`.
 - Every blocker was verified and addressed on exact head `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`; the PR description records the disposition and validation checkpoint. No rerun had been posted when this record update was committed.
 
+### Private rerun checkpoint — 2026-08-17T05:40:41Z
+
+- Exact head: `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`.
+- Fetched base and merge base: `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`; the base has not advanced and no synchronization is required.
+- Finding dispositions: history replacement fixed with window-scoped push navigation; inactive-window query leakage fixed with per-window locations and active-only publication; malformed percent decoding fixed with defensive fallback.
+- Shared root cause: persisted window location and browser location had not been separated into per-window and focused-window authorities. The correction makes the window location authoritative for every mounted window and the browser location authoritative only for the focused window.
+- Blast radius and affected-instance inventory: Client and Employee setup tabs, Manage Plans, Operations, Manage Carrier Account, Admin Utilities tabbed tools, Utilities, Rule Engine plan windows, window hydration/focus/Recent persistence, tenant path application, Payroll Cycle query state, and every `routeSegmentsFromPath` consumer were inspected. No materially similar `PageResolver` navigation consumer or shared parser call remains unreviewed.
+- Validation: lint and typecheck passed; 11 affected suites / 297 tests passed; complete 192-suite / 1,658-test web run passed; production build and embedded Rule Engine assertion passed.
+- Circuit breaker: not active. This is the first remediation cycle, the patch remains within the existing workspace-routing bounded context, and no unrelated abstraction or cross-context refactor was introduced.
+
 ## Outcome, risk, and follow-up
 
 In progress. Draft PR #1189 contains the complete round-1 remediation and is ready for the allowed private rerun. The remaining risk is an actionable finding on exact head `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`. The PR remains Draft and cannot advance until private review is clean.
