@@ -48,16 +48,17 @@ Exclusions and owner decisions:
 | Owner approved fresh private loop | 2026-08-17T23:26:48Z | Circuit breaker cleared by explicit owner instruction; fresh invocation rerun count reset to 0 of 3 |
 | Fresh private rerun requested | 2026-08-17T23:28:13Z | Exact `rerun` reply `1787009293.616639` posted by verified user `U0B9R7NJTQA`; bot acknowledgement `1787009297.045949`; fresh cycle 1 of 3 at head `f809f7da3` |
 | Fresh cycle-1 review completed | 2026-08-17T23:32:08Z | Exact head `f809f7da3`; 1 blocker, 0 non-blockers; heartbeat paused while the finding is processed |
+| Fresh cycle-1 correction validated and pushed | 2026-08-17T23:42:36Z | Head `e56a6f50d`; resolved-history BBA claims are a locked no-op and no longer roll back the queue claim |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 8h 58m 18s to circuit-breaker stop | 2026-08-17T04:58:35Z through 2026-08-17T13:56:53Z; includes the owner-decision blocked interval |
-| Commits | 10 | Seven implementation commits, base-sync merge `55206b81e`, and review-fix commits `4b5837363` and `f809f7da3` |
-| Change size | 42 files, 4,599 insertions, 141 deletions | `git diff --shortstat origin/main...HEAD` at `f809f7da3` |
-| Validation | Shared 217/217; DB 257 passed with 3 existing skips; API 3,057/3,057; workflow 946/946 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
-| Review | 3 completed private rounds: 6 blockers, 3 non-blockers; latest blocker in progress | Exact-head results in `#self-reviews` parent `1786948233.619459` |
+| Commits | 11 | Seven implementation commits, base-sync merge `55206b81e`, and review-fix commits `4b5837363`, `f809f7da3`, and `e56a6f50d` |
+| Change size | 42 files, 4,686 insertions, 141 deletions | `git diff --shortstat origin/main...HEAD` at `e56a6f50d` |
+| Validation | Shared 217/217; DB 258 passed with 3 existing skips; API 3,057/3,057; workflow 947/947 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
+| Review | 3 completed private rounds: 6 blockers, 3 non-blockers; every finding fixed | Exact-head results in `#self-reviews` parent `1786948233.619459` |
 | CI | Not started | Private Draft gate did not clear |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
@@ -89,6 +90,8 @@ Exclusions and owner decisions:
 - The churn circuit breaker activated because two review rounds found omissions from the same lifecycle-identity boundary and both cycles materially expanded coverage. All findings were fixed before stopping; the private-review heartbeat remains paused and no new rerun was posted.
 - At 2026-08-17T23:26:48Z the owner explicitly authorized restarting the private self-review loop at rerun count zero. The prior circuit-breaker evidence remains historical; the current invocation may post up to three new reruns under the skill safety limit.
 - Fresh cycle 1 found that the BBA claim transition queries matching exception history without excluding `RESOLVED`. The shared lifecycle owner correctly rejects `RESOLVED` to `IN_PROGRESS`, so a later matching generation can roll back its claim and repeatedly block the oldest queued row. The correction boundary is the locked BBA claim transition plus a resolved-history regression; monitoring is paused during implementation and validation.
+- Added `updatePayrollOperationalExceptionIfActive` at the DB mutation boundary. It validates actor and assignee scope, locks the exact tenant/source occurrence, returns a no-op for missing or `RESOLVED` state, and applies the existing lifecycle projector only to active state. The BBA adapter now uses this mutation instead of a pre-lock existence probe.
+- Blast-radius inventory confirmed the new conditional mutation has one caller: the authoritative BBA `QUEUED` to `PROCESSING` claim transaction. Open retries still transition to `IN_PROGRESS`; missing occurrences and resolved history do not update or append events; subsequent failures still reopen through the existing detection mutation. Ready resolution, recovery failure, and expiry behavior remain unchanged.
 
 ## Validation, review, and CI
 
@@ -112,6 +115,10 @@ Exclusions and owner decisions:
 - Second-round focused BBA identity/lifecycle suite: 3/3 passed after adding the interleaved-selection regression.
 - Second-round full workflow suite: 946/946 passed in 21.805s; workflow build passed.
 - Second-round full API suite: 3,057/3,057 passed in 119.960s; API build passed.
+- Fresh cycle-1 focused DB mutation suite: 14/14 passed, including a `FOR UPDATE` assertion for the resolved-history no-op.
+- Fresh cycle-1 focused BBA exception/processor suites: 12/12 passed, including open retry and resolved-history claim paths.
+- Fresh cycle-1 full DB suite: 258 passed, 0 failed, 3 existing skipped; DB build and Prisma generation passed.
+- Fresh cycle-1 full workflow suite: 947/947 passed in 22.531s; workflow build passed.
 - Final `git diff --check` and complete diff architecture review passed. No materially similar status writer, retry identity, replacement aggregate, or worker boundary remains unreviewed in the affected source families.
 
 ### Private rerun evidence checkpoint
@@ -141,9 +148,19 @@ Exclusions and owner decisions:
 - Validation: shared 217/217; DB 257 passed with 3 existing skips; workflow 946/946 in 21.805s; API 3,057/3,057 in 119.960s; focused export 36/36; focused BBA lifecycle 3/3; shared, DB, workflow, and API builds green; `git diff --check` green.
 - The complete-diff architecture audit found no materially similar unreviewed instance. No report schema/API/UI, controller, DTO, OpenAPI contract, permission, scheduler, report generation, or historical reconstruction was introduced.
 
+### Fresh cycle-2 rerun evidence checkpoint
+
+- Exact head: `e56a6f50d257d121381280689f32c9f4a4f3cb34`; local, remote branch, and Draft PR head match, and the HelixOS worktree is clean.
+- Fetched base: `e8e9a5d8982969bc04d54f8a138c25845958950f`; merge base remains `4e776a5d573b6d86b9e98d8dec4f66ab946d8355`. Base-only changes remain the non-overlapping CI timing document and Client Portal access web test, so the review premise is unchanged.
+- Fresh cycle-1 blocker: fixed. The pre-lock BBA existence probe was replaced by an authoritative DB mutation that locks the occurrence and treats missing or `RESOLVED` state as a no-op before projecting an active update.
+- Shared root cause: an adapter-level existence check classified historical state before the lifecycle owner acquired its lock. The correction moves conditional terminal-state classification to the locked mutation boundary without weakening the shared prohibition on `RESOLVED` to `IN_PROGRESS` transitions.
+- Blast radius and complete affected-instance inventory: BBA enqueue (`QUEUED`), claim (`PROCESSING`), open retry (`IN_PROGRESS`), missing exception, resolved historical exception, processor success/failure (`READY`/`FAILED`), recovery failure, later failure reopening, API expiry, and sweeper expiry. The new conditional DB mutation has no other callers; all other source families retain their existing strict update semantics.
+- Validation: focused DB 14/14; focused BBA 12/12; full DB 258 passed with 3 existing skips; full workflow 947/947 in 22.531s; DB and workflow builds green; Prisma generation and `git diff --check` green.
+- Full-diff architecture review confirms lifecycle locking remains DB-owned, BBA identity remains adapter-owned, workflow behavior outside the resolved-history no-op is unchanged, and no materially similar pre-lock terminal-state classifier remains in the affected BBA category. No report schema/API/UI or other excluded surface was introduced.
+
 ## Outcome, risk, and follow-up
 
-All first- and second-round findings remain corrected at exact head `f809f7da35d81cacfdc7c2c4cac6688a58e797c5`. Fresh cycle 1 returned one exact-head BBA lifecycle blocker, which is being processed. Draft PR #1190 remains Draft; Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
+All findings through fresh cycle 1 are corrected, validated, documented on the Draft PR, and pushed at exact head `e56a6f50d257d121381280689f32c9f4a4f3cb34`. The fresh cycle-2 rerun checkpoint is complete. Draft PR #1190 remains Draft; Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
 
 ## Evidence provenance
 
