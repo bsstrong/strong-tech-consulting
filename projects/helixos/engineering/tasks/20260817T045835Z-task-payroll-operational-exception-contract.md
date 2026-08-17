@@ -10,7 +10,7 @@
 - Starting base SHA: `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`
 - Starting head SHA: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f`
 - Issue: #842 (related implementation-plan record; exact implementation linkage pending repository inspection)
-- PR: N/A
+- PR: https://github.com/helixosio/helixos/pull/1190 (Draft)
 
 ## Objective and scope
 
@@ -31,8 +31,9 @@ Exclusions and owner decisions:
 | API, workflow, and source-matrix implementation committed | 2026-08-17T05:59:29Z | Head `7f075e24b`; 1h 00m 54s from task start |
 | Architecture audit and local validation complete | 2026-08-17T06:26:55Z | Head `dc185fbe7`; stale follow-up delivery guards and actor-scope validation corrected within planned files |
 | Implementation/handoff | Pending | Draft PR lifecycle in progress |
-| PR created | N/A | N/A; not yet authorized or required at task start |
-| Review | Pending | Pending |
+| Draft PR created | 2026-08-17T06:28:29Z | PR #1190 at exact head `dc185fbe7`; 1h 29m 54s from task start |
+| Private self-review requested | 2026-08-17T06:30:33Z | `#self-reviews` parent `1786948233.619459`; first follow-up scheduled after seven minutes |
+| Review | Pending | Exact-head private self-review in progress |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
 
@@ -44,7 +45,7 @@ Exclusions and owner decisions:
 | Commits | 7 | `1d49f7b61`, `13d9cfe3e`, `d1d62cb29`, `2252f2aa4`, `7f075e24b`, `09e0b6dd4`, `dc185fbe7` |
 | Change size | 30 files, 3,638 insertions, 121 deletions | `git diff --shortstat origin/main...HEAD` at `dc185fbe7` |
 | Validation | Shared 217/217; DB 255 runnable passed with 3 existing skips; API 2,999/2,999; workflow 915/915 | Full package suites, focused seams, builds, and Prisma validation passed |
-| Review | Local architecture self-review clean | Complete diff and changed-module responsibilities reviewed at `dc185fbe7` |
+| Review | Local architecture self-review clean; private review pending | Complete diff reviewed locally at `dc185fbe7`; private `#self-reviews` gate requested |
 | CI | N/A at start | No PR or hosted run in scope yet |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
@@ -77,7 +78,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-Implementation and local validation are complete. The change remains limited to the prerequisite contract: all changed files are in the plan inventory except the five-line seed reset support required by the new models. No report schema/API/UI or other product scope was introduced. Draft PR review remains pending.
+Implementation and local validation are complete. The change remains limited to the prerequisite contract: all changed files are in the plan inventory except the five-line seed reset support required by the new models. No report schema/API/UI or other product scope was introduced. Draft PR #1190 is open and its exact-head private self-review is pending.
 
 ## Evidence provenance
 
