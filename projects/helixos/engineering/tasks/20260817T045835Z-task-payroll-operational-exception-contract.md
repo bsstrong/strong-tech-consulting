@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress (resumed for architecture corrections)
+- Status: blocked (review-churn circuit breaker; owner approval required before another rerun)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -42,16 +42,19 @@ Exclusions and owner decisions:
 | Base synchronized | 2026-08-17T13:06:39Z | Merged `origin/main` at `4e776a5d5`; resolved the additive Prisma schema overlap by retaining both independent relations |
 | Private-review corrections validated and pushed | 2026-08-17T13:31:17Z | Head `4b5837363`; all three blockers corrected, focused lifecycle policies extracted from touched architecture hotspots |
 | Private self-review rerun requested | 2026-08-17T13:32:40Z | Exact `rerun` reply `1786973560.156779` confirmed in parent `1786948233.619459`; rerun cycle 1 of 3 |
+| Second private review completed | 2026-08-17T13:41:08Z | Exact head `4b5837363`; 2 blockers and 3 non-blockers |
+| Second-round corrections pushed | 2026-08-17T13:56:53Z | Head `f809f7da3`; every finding addressed and validated |
+| Churn circuit breaker stop | 2026-08-17T13:56:53Z | Two rounds found omissions in the same lifecycle-identity boundary; monitoring paused and another rerun requires explicit owner approval |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 1h 41m 37s to scope stop | 2026-08-17T04:58:35Z through 2026-08-17T06:40:12Z |
-| Commits | 9 | Seven implementation commits plus base-sync merge `55206b81e` and review-fix commit `4b5837363` |
-| Change size | 42 files, 4,064 insertions, 135 deletions | `git diff --shortstat origin/main...HEAD` at `4b5837363` |
-| Validation | Shared 217/217; DB 257 passed with 3 existing skips; API 3,056/3,056; workflow 941/941 | Full package suites, focused seams, builds, and Prisma validation/generation passed |
-| Review | 1 private round: 3 blockers, 0 non-blockers | Exact-head result in `#self-reviews` parent `1786948233.619459` |
+| Total elapsed | 8h 58m 18s to circuit-breaker stop | 2026-08-17T04:58:35Z through 2026-08-17T13:56:53Z; includes the owner-decision blocked interval |
+| Commits | 10 | Seven implementation commits, base-sync merge `55206b81e`, and review-fix commits `4b5837363` and `f809f7da3` |
+| Change size | 42 files, 4,599 insertions, 141 deletions | `git diff --shortstat origin/main...HEAD` at `f809f7da3` |
+| Validation | Shared 217/217; DB 257 passed with 3 existing skips; API 3,057/3,057; workflow 946/946 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
+| Review | 2 private rounds: 5 blockers, 3 non-blockers; all findings fixed | Exact-head results in `#self-reviews` parent `1786948233.619459` |
 | CI | Not started | Private Draft gate did not clear |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
@@ -76,6 +79,11 @@ Exclusions and owner decisions:
 - Replaced per-attempt export and Operations file-generation identities with stable logical occurrence keys so successful retries resolve earlier failures.
 - Reconciled both prior and replacement eligibility-review identities. Superseded source aggregates resolve with `SOURCE_REPLACED` when their open count reaches zero.
 - Extracted intake, eligibility-review, and Operations exception lifecycle policies from the touched large service/processor modules, addressing the architecture ownership finding instead of adding more responsibilities to those hotspots.
+- The second private review found that date-wide BBA identity still aliased independent selected-group sets and that a claimed retry did not move the exception to `IN_PROGRESS`. It also requested transaction-level coverage for linked intake workers, eligibility source replacement, and distinct export attempts.
+- Corrected the shared root cause cohesively: BBA source identity now hashes the order-independent selected-company/run snapshot, and the authoritative claim transaction updates only the matching open exception to `IN_PROGRESS`. Interleaved selections remain independent; true retries share identity.
+- Inventoried every Operations generation status writer: API enqueue (`QUEUED`), worker claim (`PROCESSING`), processor completion/failure (`READY`/`FAILED`), recovery failure, API expiry, and sweeper expiry. Expiry is a completed-artifact retention transition and does not mutate failure lifecycle state.
+- Added worker-boundary linked-source coverage for payroll-feed failure, retry, and ingestion; transaction-level prior eligibility aggregate resolution; and failed-export followed by a distinct successful attempt.
+- The churn circuit breaker activated because two review rounds found omissions from the same lifecycle-identity boundary and both cycles materially expanded coverage. All findings were fixed before stopping; the private-review heartbeat remains paused and no new rerun was posted.
 
 ## Validation, review, and CI
 
@@ -95,6 +103,11 @@ Exclusions and owner decisions:
 - Review-fix full workflow suite after the architecture extraction: 941/941 passed in 21.559s; workflow build passed.
 - Review-fix full API suite: 3,056/3,056 passed in 137.779s; API build passed.
 - `git diff --check` passed; shared, DB, workflow, and API builds passed.
+- Second-round focused export suite: 36/36 passed in 2.993s.
+- Second-round focused BBA identity/lifecycle suite: 3/3 passed after adding the interleaved-selection regression.
+- Second-round full workflow suite: 946/946 passed in 21.805s; workflow build passed.
+- Second-round full API suite: 3,057/3,057 passed in 119.960s; API build passed.
+- Final `git diff --check` and complete diff architecture review passed. No materially similar status writer, retry identity, replacement aggregate, or worker boundary remains unreviewed in the affected source families.
 
 ### Private rerun evidence checkpoint
 
@@ -110,7 +123,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-All three first-round private-review blockers are corrected and pushed at exact head `4b58373635903274cf3b9aee6ccade807fdfadbe`. Draft PR #1190 remains Draft. The next lifecycle action is an exact-head private self-review rerun; Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized at this stage.
+All first- and second-round findings are corrected and pushed at exact head `f809f7da35d81cacfdc7c2c4cac6688a58e797c5`. Draft PR #1190 remains Draft. The review-churn circuit breaker is terminal for this invocation: another private rerun requires explicit owner approval. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
 
 ## Evidence provenance
 
