@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: blocked (review-churn circuit breaker; owner approval required before another rerun)
+- Status: in-progress (owner approved a fresh private self-review invocation)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -45,6 +45,7 @@ Exclusions and owner decisions:
 | Second private review completed | 2026-08-17T13:41:08Z | Exact head `4b5837363`; 2 blockers and 3 non-blockers |
 | Second-round corrections pushed | 2026-08-17T13:56:53Z | Head `f809f7da3`; every finding addressed and validated |
 | Churn circuit breaker stop | 2026-08-17T13:56:53Z | Two rounds found omissions in the same lifecycle-identity boundary; monitoring paused and another rerun requires explicit owner approval |
+| Owner approved fresh private loop | 2026-08-17T23:26:48Z | Circuit breaker cleared by explicit owner instruction; fresh invocation rerun count reset to 0 of 3 |
 
 ## Task statistics
 
@@ -84,6 +85,7 @@ Exclusions and owner decisions:
 - Inventoried every Operations generation status writer: API enqueue (`QUEUED`), worker claim (`PROCESSING`), processor completion/failure (`READY`/`FAILED`), recovery failure, API expiry, and sweeper expiry. Expiry is a completed-artifact retention transition and does not mutate failure lifecycle state.
 - Added worker-boundary linked-source coverage for payroll-feed failure, retry, and ingestion; transaction-level prior eligibility aggregate resolution; and failed-export followed by a distinct successful attempt.
 - The churn circuit breaker activated because two review rounds found omissions from the same lifecycle-identity boundary and both cycles materially expanded coverage. All findings were fixed before stopping; the private-review heartbeat remains paused and no new rerun was posted.
+- At 2026-08-17T23:26:48Z the owner explicitly authorized restarting the private self-review loop at rerun count zero. The prior circuit-breaker evidence remains historical; the current invocation may post up to three new reruns under the skill safety limit.
 
 ## Validation, review, and CI
 
@@ -121,9 +123,24 @@ Exclusions and owner decisions:
 - Validation: shared 217/217; DB 257 passed with 3 existing skips; API 3,056/3,056; workflow 941/941; all four builds green; focused review seams green; `git diff --check` green.
 - Full-diff architecture audit found no materially similar unreviewed instance. No report schema, API contract, permission, UI, scheduler, report generation, or historical reconstruction was introduced.
 
+### Fresh-invocation rerun evidence checkpoint
+
+- Owner gate: explicit approval received to clear the churn circuit breaker and restart the private loop at rerun count 0 of 3.
+- Exact head: `f809f7da35d81cacfdc7c2c4cac6688a58e797c5`; local, remote branch, and Draft PR head match, and the HelixOS worktree is clean.
+- Fetched base: `e8e9a5d8982969bc04d54f8a138c25845958950f`; merge base remains `4e776a5d573b6d86b9e98d8dec4f66ab946d8355`. Base-only changes are `docs/operations/ci-timing-instrumentation.md` and `src/web/src/features/client-portal-access/ClientPortalAccessPanel.test.tsx`; neither overlaps the contract implementation or changes the review premise.
+- Second-review blocker 1: fixed. BBA occurrence identity hashes the deterministic, order-independent selected company/run snapshot, keeping independent selections separate while true retries share identity.
+- Second-review blocker 2: fixed. The authoritative BBA `QUEUED` to `PROCESSING` claim transaction moves the matching open exception to `IN_PROGRESS`.
+- Second-review non-blocker 1: fixed. Payroll-feed worker tests now exercise a linked intake source and exception through failure, retry, and ingestion transitions.
+- Second-review non-blocker 2: fixed. Transaction-level eligibility coverage proves run A resolves when the review moves to run B, while B remains `OPEN` with the correct aggregate count.
+- Second-review non-blocker 3: fixed. Export service coverage proves a failed attempt followed by a distinct successful attempt resolves the existing logical-occurrence exception.
+- Shared root cause and blast radius: lifecycle identity and current-state transitions must be owned by the authoritative logical occurrence, not an individual attempt or request path. The audit covered BBA identity and every status writer, linked payroll-feed source/exception transitions, eligibility source replacement, and export attempts.
+- Complete affected-instance inventory: BBA API enqueue (`QUEUED`), worker claim (`PROCESSING`), processor completion/failure (`READY`/`FAILED`), recovery failure, API expiry, and sweeper expiry; independent and true-retry BBA selections; payroll-feed poller failure/retry, kickoff claim/failure, and ingestor success/failure; eligibility prior/replacement source aggregates; export failed attempts and distinct successful retries. Expiry is completed-artifact retention and intentionally does not change failure lifecycle state.
+- Validation: shared 217/217; DB 257 passed with 3 existing skips; workflow 946/946 in 21.805s; API 3,057/3,057 in 119.960s; focused export 36/36; focused BBA lifecycle 3/3; shared, DB, workflow, and API builds green; `git diff --check` green.
+- The complete-diff architecture audit found no materially similar unreviewed instance. No report schema/API/UI, controller, DTO, OpenAPI contract, permission, scheduler, report generation, or historical reconstruction was introduced.
+
 ## Outcome, risk, and follow-up
 
-All first- and second-round findings are corrected and pushed at exact head `f809f7da35d81cacfdc7c2c4cac6688a58e797c5`. Draft PR #1190 remains Draft. The review-churn circuit breaker is terminal for this invocation: another private rerun requires explicit owner approval. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
+All first- and second-round findings are corrected and pushed at exact head `f809f7da35d81cacfdc7c2c4cac6688a58e797c5`. Draft PR #1190 remains Draft. The owner approved a fresh private self-review invocation at rerun count zero; the next action is one exact-head `rerun` in the existing private thread. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
 
 ## Evidence provenance
 
