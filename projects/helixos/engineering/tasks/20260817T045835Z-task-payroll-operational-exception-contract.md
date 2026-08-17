@@ -41,6 +41,7 @@ Exclusions and owner decisions:
 | Owner clarified architecture scope; work resumed | 2026-08-17T13:01:24Z | Resume the private self-review loop and correct all three exact-head blockers |
 | Base synchronized | 2026-08-17T13:06:39Z | Merged `origin/main` at `4e776a5d5`; resolved the additive Prisma schema overlap by retaining both independent relations |
 | Private-review corrections validated and pushed | 2026-08-17T13:31:17Z | Head `4b5837363`; all three blockers corrected, focused lifecycle policies extracted from touched architecture hotspots |
+| Private self-review rerun requested | 2026-08-17T13:32:40Z | Exact `rerun` reply `1786973560.156779` confirmed in parent `1786948233.619459`; rerun cycle 1 of 3 |
 
 ## Task statistics
 
@@ -94,6 +95,18 @@ Exclusions and owner decisions:
 - Review-fix full workflow suite after the architecture extraction: 941/941 passed in 21.559s; workflow build passed.
 - Review-fix full API suite: 3,056/3,056 passed in 137.779s; API build passed.
 - `git diff --check` passed; shared, DB, workflow, and API builds passed.
+
+### Private rerun evidence checkpoint
+
+- Exact head: `4b58373635903274cf3b9aee6ccade807fdfadbe`.
+- Fetched base: `e8e9a5d8982969bc04d54f8a138c25845958950f`. Since the synchronized base `4e776a5d5`, base changed only `docs/operations/ci-timing-instrumentation.md` and `src/web/src/features/client-portal-access/ClientPortalAccessPanel.test.tsx`; neither overlaps the PR or changes its review premise.
+- Finding 1 disposition: fixed by one focused intake transition adapter invoked by manual API writes and every payroll-feed status owner (`feed-pull-poller`, `feed-pull-kickoff`, `feed-ingestor`) inside the authoritative tenant transaction.
+- Finding 2 disposition: fixed by stable logical occurrence identities for every retry-capable affected source: cycle key for payroll-cycle export and file type plus pay date for Operations generation.
+- Finding 3 disposition: fixed by inventorying, deduplicating, and reconciling both prior and replacement eligibility review identities; zero-count prior aggregates resolve as `SOURCE_REPLACED`.
+- Shared root cause: normalized exception lifecycle identity and transition ownership were embedded in request/attempt paths instead of the authoritative source occurrence. Blast radius covered all status mutation sites and all retry/replacement identities for the three reported source families.
+- Complete affected-instance inventory: intake request validation/replacement/retry plus poller queued/retry/failure, kickoff claim/failure, and ingestor guarded failure/success/all-quarantined outcomes; export failure/success; Operations processor/recovery; eligibility review same-run idempotency, newer-run replacement, old/new type identity, zero-count resolution, update, and initial detection.
+- Validation: shared 217/217; DB 257 passed with 3 existing skips; API 3,056/3,056; workflow 941/941; all four builds green; focused review seams green; `git diff --check` green.
+- Full-diff architecture audit found no materially similar unreviewed instance. No report schema, API contract, permission, UI, scheduler, report generation, or historical reconstruction was introduced.
 
 ## Outcome, risk, and follow-up
 
