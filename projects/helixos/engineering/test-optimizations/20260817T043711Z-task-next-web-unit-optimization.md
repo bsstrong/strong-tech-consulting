@@ -18,7 +18,7 @@
 
 - In scope: one cohesive web-test hotspot, matched local baseline/post-change samples, unchanged behavioral coverage, full required local validation, Draft PR creation, private self-review, repository-prescribed feedback/final review, exact-head CI, and three hosted timing samples.
 - Explicit exclusions: reducing or skipping tests, loosening assertions, increasing timeouts, changing production behavior, overlapping active pull-request work, merging, releasing, or publishing.
-- Selection evidence, active-PR overlap inventory, hosted baseline, responsibility boundary, local measurements, validation, and private self-review are recorded below. Exact-current-head full CI and all three replacement hosted samples are complete; final approval re-request is pending the canonical gate refresh.
+- Selection evidence, active-PR overlap inventory, hosted baseline, responsibility boundary, local measurements, validation, and private self-review are recorded below. Exact-current-head full CI and all three replacement hosted samples are complete; final approval has been re-requested and is pending.
 
 ## Target selection
 
@@ -86,6 +86,8 @@
 - Replacement hosted sample 3 completed successfully at 2026-08-17T07:31:18Z and uses artifact `9280080764`. The `web-unit` job took 832s, the web command took 642.965s, the Vitest runner took 629.371s, and the target took 15.870s total / 13.189s tests/hooks with 1.547s collection and 19 passed, 0 failed, and 0 skipped. Relative to the hosted main baseline, this sample is 35.2% faster in target total and 39.5% faster in tests/hooks. The extracted artifact is `C:\Users\bsstr\AppData\Local\Temp\helixos-pr-1188-samples\current-head-attempt-3`.
 - Across the three valid exact-current-head samples, `web-unit` job duration was 865s, 896s, and 832s (median 865s; range 832-896s); web command duration was 668.655s, 696.397s, and 642.965s (median 668.655s; range 642.965-696.397s); Vitest runner duration was 654.181s, 682.471s, and 629.371s (median 654.181s; range 629.371-682.471s). Target total was 16.705s, 17.245s, and 15.870s (median 16.705s; range 15.870-17.245s; 31.8% below the 24.501s hosted baseline), while tests/hooks was 14.010s, 14.477s, and 13.189s (median 14.010s; range 13.189-14.477s; 35.8% below the 21.807s baseline). Every sample preserved 19 passed, 0 failed, and 0 skipped.
 - The PR description now records the three replacement sample identities and aggregate table while retaining the predecessor-head measurements as invalid historical evidence. Updating the description did not change the code head.
+- Final-approval re-request checkpoint: fetched base and merge base remain `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`; local, remote, and PR head all remain `ccb403186e821684e48efaf2c1736383a5dd3343`; the worktree is clean; the PR is owner-selected Ready and mergeable; required checks `backend-and-infra`, `web-unit`, and `web-e2e` are successful; `web-cross-browser` is expectedly skipped; both prior findings are addressed and both GitHub threads remain resolved; and the exact-head private self-review is clean.
+- At 2026-08-17T07:41:08.7636594Z, final approval was re-requested from `jfollas` only through GitHub and the request was verified on the unchanged exact green head. No Slack review message was sent because this is the owner-selected GitHub-only flow. Heartbeat `pr-1188-current-head-final-approval-check` schedules the first result check after three minutes.
 
 ## Risk and follow-up
 
