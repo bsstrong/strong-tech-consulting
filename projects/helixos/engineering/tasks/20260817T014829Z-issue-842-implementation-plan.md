@@ -39,14 +39,15 @@ Exclusions and owner decisions:
 | Decision-neutral implementation authorized | 2026-08-17T02:28:42Z | Owner requested plan update and implementation start while product decisions remain pending |
 | Foundation implementation committed | 2026-08-17T02:49:29Z | Commit `3f0b965efe49882a0daa5a670480923c0cc79968`; 20 minutes 47 seconds from resumed authorization |
 | Application-audit scope clarified | 2026-08-17T04:15:23Z | Owner clarified that the report explains what HelixOS did and must not independently analyze imported-provider data; plan and source matrix corrected in commit `7bd56fa4773b4e1be2d42f22e1ad446d0172b618` |
+| Eastern cutoff confirmed | 2026-08-17T04:17:59Z | Owner confirmed Sandy's comment is controlling: Eastern time, 5:00 PM daily cutoff, and all Carrier Clients; removed this from the open-decision gate in commit `c329b3980453d70c25d91d8d3d16ba2120368380` |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 18 minutes 36 seconds | 2026-08-17T01:48:29Z through 2026-08-17T02:07:05Z |
-| Commits | 2 product commits plus consulting lifecycle commits | Product commits `3f0b965efe49882a0daa5a670480923c0cc79968`, `7bd56fa4773b4e1be2d42f22e1ad446d0172b618` |
-| Change size | 7 files, 1,496 additions, 113 deletions | `git diff --shortstat f76377cb8..7bd56fa47` |
+| Commits | 3 product commits plus consulting lifecycle commits | Product commits `3f0b965efe49882a0daa5a670480923c0cc79968`, `7bd56fa4773b4e1be2d42f22e1ad446d0172b618`, `c329b3980453d70c25d91d8d3d16ba2120368380` |
+| Change size | 7 files, 1,493 additions, 113 deletions | `git diff --shortstat f76377cb8..c329b3980` |
 | Validation | Planning evidence plus 211 shared tests, 13 Cycle Monitor service tests, 2 PostgreSQL Cycle Monitor tests, package builds, and API build | All final commands passed; detailed evidence below |
 | Review | 1 complete plan self-review; 6 pre-implementation decisions identified | No implementation or PR review rounds |
 | CI | N/A | Planning-only task |
@@ -60,7 +61,7 @@ Exclusions and owner decisions:
 - Fetched current `origin/main` and created a detached planning worktree at `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`; the user's stale local `main` was not changed.
 - Reviewed the issue's confirmed decisions: Eastern time, 5:00 PM cutoff, all Carrier Clients, V0 content direction, Operations/Carrier Admin audience, Reports & Files placement, one-year retention, and Carrier Admin rerun access.
 - Reviewed the workbook's five sheets and the V0 date navigation, funding periods/alignment, cycle research, control, exception, file-audit, and empty-state behavior.
-- Current source proves that cycle state, application-produced counts, funding statuses, file-generation totals, and audit pieces exist. Missing items are application outcomes or actions that HelixOS does not yet persist at the report's required grain, plus a complete operational-exception ownership contract. The report must not create an independent financial analysis of imported-provider data. The 5:00 PM comment also conflicts with both artifacts' calendar-day reporting window.
+- Current source proves that cycle state, application-produced counts, funding statuses, file-generation totals, and audit pieces exist. Missing items are application outcomes or actions that HelixOS does not yet persist at the report's required grain, plus a complete operational-exception ownership contract. The report must not create an independent financial analysis of imported-provider data. The owner clarified that Sandy's explicit 5:00 PM Eastern/all-Clients comment controls over the artifacts' calendar-day examples.
 - The final plan therefore marks six product/data/security decisions as an explicit gate and provides recommended answers rather than inventing contracts.
 - Planned a tenant-scoped immutable/versioned snapshot, idempotent Eastern-time scheduler, guarded worker/recovery, reasoned rerun/backfill, delivery record, one-year sweeper, explicit permissions, protected APIs, route-driven Reports & Files subview, narrow tests, UAT, and documentation.
 - Preserved current architecture: existing Files archive remains; Operations stays independently permissioned; PlatformAudit is not reused; the Cycle Monitor hotspot is not grown; deterministic rules stay out of React and expensive E2E tests.
@@ -73,6 +74,7 @@ Exclusions and owner decisions:
 - Preserved the PostgreSQL classifier required for server-side filtering/paging and documented its required parity with the shared projector; existing SQL integration coverage exercises all five outcomes.
 - Deferred the contract-sensitive report schema, API, permissions, scheduling, aggregation, exception aging, artifact, retention, and visible UI work.
 - Corrected the plan and source matrix so the report projects persisted HelixOS actions and outcomes at their true execution grain. Imported record counts remain processing evidence only; the report will not reparse or recalculate provider data, infer unrecorded confirmation, or misrepresent tenant-level file-generation totals as per-cycle values.
+- Moved the Eastern 5:00 PM cutoff and all-Carrier-Clients population from the decision gate into confirmed requirements. The implementation uses a prior-day 5:00 PM through report-day 5:00 PM closed-open window in `America/New_York`; five pre-implementation decisions remain.
 
 ## Validation, review, and CI
 
@@ -99,8 +101,8 @@ Exclusions and owner decisions:
 
 - Outcome: updated associate-engineer handoff and first decision-neutral implementation slice committed locally.
 - Product repository state: clean branch `codex/842-report-foundation`, one commit ahead of `origin/main`; no push or pull request yet.
-- Primary risk: implementation must not begin with migrations/API DTOs until cutoff/window, inclusion/aging, included HelixOS outcome/actions, operational exception source, artifact/delivery channel, and audience-permission mapping are approved.
-- Follow-up: record those six answers on issue #842, update the source matrix, then begin Slice 1. The remaining contract-sensitive implementation is blocked on those decisions.
+- Primary risk: implementation must not begin with migrations/API DTOs until inclusion/aging, included HelixOS outcome/actions, operational exception source, artifact/delivery channel, and audience-permission mapping are approved.
+- Follow-up: record those five answers on issue #842, update the source matrix, then begin Slice 1. The remaining contract-sensitive implementation is blocked on those decisions.
 
 ## Resumed implementation interval
 
