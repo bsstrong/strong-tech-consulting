@@ -30,7 +30,7 @@ Exclusions and owner decisions:
 | Task started | 2026-08-17T00:53:15Z | — |
 | Implementation/handoff | 2026-08-17T04:57:30Z | Commit `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` |
 | PR created | 2026-08-17T05:12:03Z | Draft PR #1189; base `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80` |
-| Review | 2026-08-17T05:13:57Z | Private self-review requested in `#self-reviews`; pending exact-head result |
+| Review | 2026-08-17T05:18:41Z | Private round 1 returned three blockers; all addressed in `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53` |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
 
@@ -39,10 +39,10 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | Pending | Direct timestamps will be recorded |
-| Commits | 1 | `Deep-link tabbed workspace navigation` |
-| Change size | 26 files; 689 additions; 323 deletions | `git show --stat` for `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` |
-| Validation | Shared build, web typecheck, lint, theme check, focused tests, isolated timeout rerun, and production web build green | Local command output |
-| Review | Private self-review pending | Slack thread `1786943637.689379`; follow-up automation `pr-1189-self-review-check` |
+| Commits | 2 | Initial implementation plus private-review remediation |
+| Change size | 26 files; 915 additions; 339 deletions | `git diff --shortstat origin/main...HEAD` at `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53` |
+| Validation | Shared build, web typecheck, lint, theme check, 297 affected tests, complete 1,658-test web suite, and production web build green | Local command output |
+| Review | Round 1: three blockers, all addressed; rerun pending | Slack thread `1786943637.689379`; follow-up automation `pr-1189-self-review-check` |
 | CI | Pending | Exact-head GitHub Actions evidence |
 | Benchmarks | N/A | No performance claim requested |
 
@@ -55,6 +55,11 @@ Exclusions and owner decisions:
 - Added shared tab-route parsing/building helpers, regression coverage, and `docs/deep-linked-tab-navigation.md` with the route map and audit method.
 - Rebased onto advancing `origin/main`; resolved the overlapping desktop-workspace change while preserving current carrier-account routing.
 - Mandatory architecture review found and corrected stale Recent-entry metadata on a tab-only `setupPath` change; added a regression test.
+- Private self-review round 1 identified one shared route-ownership boundary and one parsing edge case: user tab changes replaced history, inactive windows consumed the active browser query, and malformed percent encoding threw during render.
+- Added window-scoped user navigation: every mounted window persists its own location, only the focused window publishes to the browser, user actions push history, and focus synchronization retains replace semantics.
+- Preserved Payroll Cycle query state with the owning setup window and made embedded client pages read their own location rather than ambient browser query state.
+- Made shared route segment decoding defensive, returning the normal route fallback for malformed pasted URLs.
+- Blast-radius inventory covered all `PageResolver` navigation consumers, setup hydration/persistence, browser route replay, Recent entries, tenant path application, and every shared tab-route parser consumer.
 
 ## Validation, review, and CI
 
@@ -62,14 +67,15 @@ Exclusions and owner decisions:
 - `npx tsc -b src/web/tsconfig.json --pretty false`: passed.
 - `npm run lint -w @helixos/web`: passed.
 - `npm run theme:check -w @helixos/web`: passed.
-- Focused suites: 11 suites and 293 tests passed on the synchronized base.
-- Full web suite: 192 suites; 1,650 tests passed. Four `PlanDetailTab` tests reached their existing local timeout during the parallel run; the isolated rerun passed 87/87, so this was treated as local duration rather than a functional failure under repository policy.
+- Focused suites after review remediation: 11 suites and 297 tests passed.
+- Full web suite after review remediation: 192 suites and 1,658 tests passed without functional failures or local timeouts.
 - `npm run build -w @helixos/web`: passed; 2,329 modules built and the postbuild embed assertion passed. Existing chunk-size and SignalR annotation warnings remain.
-- Private self-review was requested once for exact head `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` in channel `C0BMWSRGYDS`, thread `1786943637.689379`. The first result is pending; no rerun has been posted.
+- Private self-review round 1 was requested for `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` in channel `C0BMWSRGYDS`, thread `1786943637.689379`, and returned three blockers at `1786943921.484199`.
+- Every blocker was verified and addressed on exact head `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`; the PR description records the disposition and validation checkpoint. No rerun had been posted when this record update was committed.
 
 ## Outcome, risk, and follow-up
 
-In progress. Draft PR #1189 is implementation-complete and is now in the required private self-review phase. The route inventory is retained in the pull request documentation; the remaining risk is any actionable exact-head self-review finding. The PR must remain Draft until the private review is clean and the owner later advances the lifecycle.
+In progress. Draft PR #1189 contains the complete round-1 remediation and is ready for the allowed private rerun. The remaining risk is an actionable finding on exact head `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`. The PR remains Draft and cannot advance until private review is clean.
 
 ## Evidence provenance
 
