@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress; resumed at `2026-08-17T00:03:22Z` to address the exact-head GitHub review findings while PR #1117 remains Draft
+- Status: complete; both exact-head GitHub findings are corrected, all threads are resolved, and the `0ba3cee9b` Draft re-review returned zero findings
 - Repository: `helixosio/helixos`
 - Task started: `2026-08-13T03:34:18Z` (earliest recoverable Phase 2 commit; the earlier conversation start timestamp is unavailable)
 - Task/thread ID: Unavailable from the current Codex context
@@ -11,7 +11,7 @@
 - Starting head SHA: `ed63c9633da593f31360b31161e7aecb6e4bacae` (earliest recoverable Phase 2 commit)
 - Current fetched base SHA: `3a1474ea3adedeff4d766a0e229524bcbb825819` (merge base `af8f037185d13f3cd1e48fad0af33ce552629ac4`; the later Desktop Workspace test-optimization delta does not overlap this feature)
 - Current local head SHA: `0ba3cee9b08c6972340ca204d6b479934ac4a65c`
-- Current PR head SHA: `cebf36895a8c9894b1c2b14825949ff89c25e8cf`
+- Current PR head SHA: `0ba3cee9b08c6972340ca204d6b479934ac4a65c`
 - Issue: https://github.com/helixosio/helixos/issues/1130
 - PR: https://github.com/helixosio/helixos/pull/1117
 
@@ -64,17 +64,19 @@ Exclusions and owner decisions:
 | Completed | `2026-08-16T13:22:37Z` | Implementation, UI iteration, formal UAT, validation, circuit-breaker analysis, and the owner-authorized private self-review loop are complete. PR #1117 remains Draft with public review paused. |
 | Resumed for GitHub PR feedback | `2026-08-17T00:03:22Z` | Exact head `cebf36895` received two unresolved actionable threads: primary-role audit events omit the affected person's public identity, and the Client assignment board retains hidden selections across result-filter changes. The repeated selection boundary reactivates circuit-breaker analysis before edits. |
 | GitHub feedback corrections committed | `2026-08-17T00:27:00Z` | Commit `0ba3cee9b` makes primary-role replacement events discoverable in per-person access history and makes every audited Client-assignment result-scope transition discard hidden draft choices. The branch was first synchronized through `af8f03718`; subsequent base `3a1474ea3` changes only Desktop Workspace test infrastructure and has no overlap. |
+| Exact-head GitHub Draft re-review completed cleanly | `2026-08-17T00:32:48Z` | Sansa reviewed 183/183 changed files at exact head `0ba3cee9b`, returned a COMMENT review with zero findings, and confirmed zero open threads. Approval was withheld only because the owner requires the PR to remain Draft. |
+| Completed after GitHub feedback | `2026-08-17T00:32:48Z` | Corrections, validation, push, PR description, thread resolution, exact-head re-review, and task evidence are complete. PR #1117 remains Draft; no final reviewer was requested. |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 81h 48m | From task start `2026-08-13T03:34:18Z` through clean private review `2026-08-16T13:22:37Z`; includes pauses and waiting and is not active-work time |
+| Total elapsed | 92h 58m | From task start `2026-08-13T03:34:18Z` through clean GitHub Draft re-review `2026-08-17T00:32:48Z`; includes pauses and waiting and is not active-work time |
 | Commits | 106 commits | `git rev-list --count origin/main..HEAD` after the feedback correction |
 | Change size | 183 files, +24,773 / -3,698 | `git diff --shortstat origin/main...HEAD` at `0ba3cee9b` |
 | Circuit-breaker change size | 19 files, +780 / -256 | Commit `59a3fdba59028f404b0028d4618af37d67d21a27` |
 | Validation | Local head `0ba3cee9b`: web 189 suites / 1,639 tests; API 2,999 tests; focused feedback regressions; package, API, and web builds; lint; theme; OpenAPI; diff checks; all passed | The first concurrent OpenAPI consistency invocation raced another OpenAPI reader; generation produced no semantic artifact change and the standalone consistency rerun passed |
-| Review | Five private rounds; findings were 6, 4, 4, 2, then 0. The fifth exact-head review confirmed every prior finding resolved, reported no inline findings, and found no additional architecture blockers. | Exact-head `#self-reviews` thread and complete boundary audits |
+| Review | Five private rounds had 6, 4, 4, 2, then 0 findings. GitHub production feedback returned 2 findings at `cebf36895`; the exact-head Draft re-review at `0ba3cee9b` returned 0 findings and 0 open threads. | Exact-head `#self-reviews`, GitHub, and `#pr-reviews` evidence plus complete boundary audits |
 | CI | Exact-head Draft CI jobs skipped | GitHub Actions run `31743730760`; Draft behavior expected, not a passing final CI gate |
 | Benchmarks | N/A | Performance benchmarking was not the task objective |
 
@@ -154,9 +156,9 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-The functional Phase 2 implementation, completed UI/UAT iteration, current-main synchronization, and all review corrections are pushed at `cebf36895a8c9894b1c2b14825949ff89c25e8cf`. The fifth exact-head private review is clean with zero actionable findings. PR #1117 remains Draft with no review requests, as required; production feedback, Ready transition, CI gating, final review, merge, and release remain paused and out of scope.
+The functional Phase 2 implementation, completed UI/UAT iteration, current-main synchronization, and all GitHub feedback corrections are pushed at `0ba3cee9b08c6972340ca204d6b479934ac4a65c`. The exact-head GitHub Draft re-review inspected all 183 changed files and returned zero findings with zero open threads. PR #1117 remains Draft, as required; Ready transition, CI gating, final reviewer request, merge, and release remain paused and out of scope.
 
-Residual risk is limited to the two browser-control limitations documented in the UAT plan, any future owner-directed UI iteration, and later delivery lifecycle gates. Exact-head evidence includes 181 web suites / 1,560 tests, all 237 PR-changed API tests after rebuilding current-main workspace packages, package/API/web builds, lint, theme, OpenAPI, and diff checks. The complete API suite also passed before the final current-main merge, and the complete PR-changed API inventory passed afterward.
+Residual risk is limited to the two browser-control limitations documented in the UAT plan, any future owner-directed UI iteration, and later delivery lifecycle gates. Exact-head correction evidence includes 189 web suites / 1,639 tests, the complete 2,999-test API suite, focused feedback regressions, package/API/web builds, lint, theme, OpenAPI, diff checks, and the clean exact-head Draft re-review.
 
 ## Evidence provenance
 
