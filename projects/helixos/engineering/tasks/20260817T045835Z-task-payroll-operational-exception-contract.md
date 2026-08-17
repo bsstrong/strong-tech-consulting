@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress (owner approved a fresh private self-review invocation)
+- Status: blocked (fresh review-churn circuit breaker; owner approval required before another rerun)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -50,6 +50,7 @@ Exclusions and owner decisions:
 | Fresh cycle-1 review completed | 2026-08-17T23:32:08Z | Exact head `f809f7da3`; 1 blocker, 0 non-blockers; heartbeat paused while the finding is processed |
 | Fresh cycle-1 correction validated and pushed | 2026-08-17T23:42:36Z | Head `e56a6f50d`; resolved-history BBA claims are a locked no-op and no longer roll back the queue claim |
 | Fresh cycle-2 rerun requested | 2026-08-17T23:43:50Z | Exact `rerun` reply `1787010230.812489` posted by verified user `U0B9R7NJTQA`; bot acknowledgement `1787010233.421509`; fresh cycle 2 of 3 at head `e56a6f50d` |
+| Fresh cycle-2 review completed | 2026-08-17T23:46:40Z | Exact head `e56a6f50d`; 1 blocker, 0 non-blockers; second fresh round on the conditional lifecycle boundary activated the churn circuit breaker and paused monitoring |
 
 ## Task statistics
 
@@ -59,7 +60,7 @@ Exclusions and owner decisions:
 | Commits | 11 | Seven implementation commits, base-sync merge `55206b81e`, and review-fix commits `4b5837363`, `f809f7da3`, and `e56a6f50d` |
 | Change size | 42 files, 4,686 insertions, 141 deletions | `git diff --shortstat origin/main...HEAD` at `e56a6f50d` |
 | Validation | Shared 217/217; DB 258 passed with 3 existing skips; API 3,057/3,057; workflow 947/947 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
-| Review | 3 completed private rounds: 6 blockers, 3 non-blockers; every finding fixed; fresh cycle 2 of 3 pending | Exact-head results and rerun `1787010230.812489` in `#self-reviews` parent `1786948233.619459` |
+| Review | 4 completed private rounds: 7 blockers, 3 non-blockers; latest blocker in progress under the circuit breaker | Exact-head results in `#self-reviews` parent `1786948233.619459` |
 | CI | Not started | Private Draft gate did not clear |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
@@ -93,6 +94,8 @@ Exclusions and owner decisions:
 - Fresh cycle 1 found that the BBA claim transition queries matching exception history without excluding `RESOLVED`. The shared lifecycle owner correctly rejects `RESOLVED` to `IN_PROGRESS`, so a later matching generation can roll back its claim and repeatedly block the oldest queued row. The correction boundary is the locked BBA claim transition plus a resolved-history regression; monitoring is paused during implementation and validation.
 - Added `updatePayrollOperationalExceptionIfActive` at the DB mutation boundary. It validates actor and assignee scope, locks the exact tenant/source occurrence, returns a no-op for missing or `RESOLVED` state, and applies the existing lifecycle projector only to active state. The BBA adapter now uses this mutation instead of a pre-lock existence probe.
 - Blast-radius inventory confirmed the new conditional mutation has one caller: the authoritative BBA `QUEUED` to `PROCESSING` claim transaction. Open retries still transition to `IN_PROGRESS`; missing occurrences and resolved history do not update or append events; subsequent failures still reopen through the existing detection mutation. Ready resolution, recovery failure, and expiry behavior remain unchanged.
+- Fresh cycle 2 found that `updatePayrollOperationalExceptionIfActive` validates actor and assignee scope before acquiring and classifying the occurrence. An inactive historical actor can therefore roll back a claim even when the locked result is missing or already `RESOLVED` and no exception mutation is required. The cohesive correction boundary is lock/load, terminal no-op classification, then validation only for an active mutation, with inactive-actor coverage.
+- This is the second fresh review round on the same conditional lifecycle root pattern. The churn circuit breaker is active, the heartbeat is paused, and another automated rerun will not be posted without explicit owner approval after correction, complete affected-category inventory, full validation, and full-diff architecture review.
 
 ## Validation, review, and CI
 
@@ -161,7 +164,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-All findings through fresh cycle 1 are corrected, validated, documented on the Draft PR, and pushed at exact head `e56a6f50d257d121381280689f32c9f4a4f3cb34`. Fresh private rerun cycle 2 of 3 is pending. Draft PR #1190 remains Draft; Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
+All findings through fresh cycle 1 remain corrected at exact head `e56a6f50d257d121381280689f32c9f4a4f3cb34`. Fresh cycle 2 returned one exact-head blocker that is being processed under the churn circuit breaker. Draft PR #1190 remains Draft; another private rerun requires explicit owner approval after the corrective checkpoint. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
 
 ## Evidence provenance
 
