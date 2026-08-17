@@ -31,6 +31,7 @@ Exclusions and owner decisions:
 | Implementation/handoff | 2026-08-17T04:57:30Z | Commit `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` |
 | PR created | 2026-08-17T05:12:03Z | Draft PR #1189; base `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80` |
 | Review | 2026-08-17T06:09:32Z | Round-2 circuit-breaker checkpoint pushed at `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12`; owner approval required before another rerun |
+| Manual UI UAT | 2026-08-17T13:44:52Z | Two clean Helix-browser passes; final implementation/UAT checkpoint `2a60bce0006818e930a9505a94ee559efe67e1cb` after current-main merge; durable UAT record head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
 
@@ -39,9 +40,9 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | Pending | Direct timestamps will be recorded |
-| Commits | 3 | Initial implementation plus two private-review remediation commits |
-| Change size | 27 files; 1,101 additions; 363 deletions | `git diff --shortstat origin/main...HEAD` at `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12` |
-| Validation | Shared build, web typecheck, lint, theme check, 313 affected tests, complete 1,661-test web suite, and production web build green | Local command output |
+| Commits | 5 authored commits plus one current-main merge | Three implementation/remediation commits and two UAT documentation commits |
+| Change size | 28 files; 1,254 additions; 363 deletions | `git diff --shortstat origin/main...HEAD` at `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
+| Validation | Shared/package builds, web typecheck, lint, theme check, 313 affected tests, complete 1,661-test web suite, production web build, post-merge 300-test focused run, and manual UI UAT green | Local command and Helix-browser evidence |
 | Review | Round 1: three blockers addressed; round 2: one blocker and one non-blocker addressed; circuit breaker active | Slack thread `1786943637.689379`; rerun `1786945282.101189`; result `1786945682.835339` |
 | CI | Pending | Exact-head GitHub Actions evidence |
 | Benchmarks | N/A | No performance claim requested |
@@ -65,6 +66,8 @@ Exclusions and owner decisions:
 - Made tab changes push history while cycle/step reconciliation and active stale-link cleanup replace the current entry.
 - Combined setup-window and Recent changes into one persisted state publication and suppressed the route catch-up no-op publication.
 - The second repeated boundary finding activated the churn circuit breaker. Automated monitoring was deleted and no additional rerun was posted.
+- Added `docs/uat/2026-08-17-pr-1189-deep-linked-tab-navigation.md` as a user-followable route, history, refresh, query, fallback, and desktop-window isolation plan.
+- Merged current `main` at `e8e9a5d8982969bc04d54f8a138c25845958950f`, rebuilt packages, applied the two new database migrations, restarted the local API/workflow services, and repeated the complete UI route pass before recording the result.
 
 ## Validation, review, and CI
 
@@ -78,6 +81,10 @@ Exclusions and owner decisions:
 - Private self-review round 1 was requested for `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` in channel `C0BMWSRGYDS`, thread `1786943637.689379`, and returned three blockers at `1786943921.484199`.
 - Every blocker was verified and addressed on exact head `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`; the PR description records the disposition and validation checkpoint.
 - Private rerun 1 completed at `1786945682.835339` with one blocker and one non-blocker; both were verified as valid and addressed on exact head `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12`.
+- Final manual UI UAT covered all Client, Employee, Manage Plans, Integrations, Workflow, Payroll Provider Management, and existing Operations deep links; every click, pasted path, Back/Forward, refresh, stale-cycle cleanup, unknown-route fallback, and two-window isolation check passed.
+- The post-merge local stack used 196 applied migrations. The package build passed and 11 focused web suites passed all 300 tests.
+- Forty screenshots were captured under `C:\dev\evidence\helix\pr-1189`; the final browser pass reported zero error-level console entries.
+- PR description and checked-in UAT record were updated. PR #1189 remains Draft on head `99b4142865566c0bbfb71ca11cfda0e77d88026d`; no review rerun was requested.
 
 ### Private rerun checkpoint — 2026-08-17T05:40:41Z
 
@@ -103,7 +110,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-In progress. Draft PR #1189 contains the complete round-2 cohesive remediation and validated circuit-breaker checkpoint on exact head `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12`. The remaining risk is another finding in the route-ownership boundary. The PR remains Draft; private review cannot resume until the owner explicitly approves another rerun after this checkpoint.
+In progress. Draft PR #1189 contains the complete round-2 cohesive remediation plus a clean, repeatable browser UAT record. The final implementation/UI checkpoint is `2a60bce0006818e930a9505a94ee559efe67e1cb`; current head `99b4142865566c0bbfb71ca11cfda0e77d88026d` adds only the final UAT evidence update. No UI defect was found. The remaining risk is another private-review finding in the route-ownership boundary. The circuit breaker remains active and private review cannot resume until the owner explicitly approves another rerun.
 
 ## Evidence provenance
 
