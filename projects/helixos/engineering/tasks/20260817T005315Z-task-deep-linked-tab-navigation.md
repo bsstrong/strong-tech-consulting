@@ -30,7 +30,7 @@ Exclusions and owner decisions:
 | Task started | 2026-08-17T00:53:15Z | — |
 | Implementation/handoff | 2026-08-17T04:57:30Z | Commit `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` |
 | PR created | 2026-08-17T05:12:03Z | Draft PR #1189; base `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80` |
-| Review | 2026-08-17T05:18:41Z | Private round 1 returned three blockers; all addressed in `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53` |
+| Review | 2026-08-17T05:41:22Z | Private rerun 1 requested for `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`; pending |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
 
@@ -42,7 +42,7 @@ Exclusions and owner decisions:
 | Commits | 2 | Initial implementation plus private-review remediation |
 | Change size | 26 files; 915 additions; 339 deletions | `git diff --shortstat origin/main...HEAD` at `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53` |
 | Validation | Shared build, web typecheck, lint, theme check, 297 affected tests, complete 1,658-test web suite, and production web build green | Local command output |
-| Review | Round 1: three blockers, all addressed; rerun pending | Slack thread `1786943637.689379`; follow-up automation `pr-1189-self-review-check` |
+| Review | Round 1: three blockers, all addressed; rerun 1 pending | Slack thread `1786943637.689379`; rerun `1786945282.101189`; follow-up automation `pr-1189-self-review-check` |
 | CI | Pending | Exact-head GitHub Actions evidence |
 | Benchmarks | N/A | No performance claim requested |
 
@@ -71,7 +71,7 @@ Exclusions and owner decisions:
 - Full web suite after review remediation: 192 suites and 1,658 tests passed without functional failures or local timeouts.
 - `npm run build -w @helixos/web`: passed; 2,329 modules built and the postbuild embed assertion passed. Existing chunk-size and SignalR annotation warnings remain.
 - Private self-review round 1 was requested for `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` in channel `C0BMWSRGYDS`, thread `1786943637.689379`, and returned three blockers at `1786943921.484199`.
-- Every blocker was verified and addressed on exact head `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`; the PR description records the disposition and validation checkpoint. No rerun had been posted when this record update was committed.
+- Every blocker was verified and addressed on exact head `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`; the PR description records the disposition and validation checkpoint.
 
 ### Private rerun checkpoint — 2026-08-17T05:40:41Z
 
@@ -82,6 +82,7 @@ Exclusions and owner decisions:
 - Blast radius and affected-instance inventory: Client and Employee setup tabs, Manage Plans, Operations, Manage Carrier Account, Admin Utilities tabbed tools, Utilities, Rule Engine plan windows, window hydration/focus/Recent persistence, tenant path application, Payroll Cycle query state, and every `routeSegmentsFromPath` consumer were inspected. No materially similar `PageResolver` navigation consumer or shared parser call remains unreviewed.
 - Validation: lint and typecheck passed; 11 affected suites / 297 tests passed; complete 192-suite / 1,658-test web run passed; production build and embedded Rule Engine assertion passed.
 - Circuit breaker: not active. This is the first remediation cycle, the patch remains within the existing workspace-routing bounded context, and no unrelated abstraction or cross-context refactor was introduced.
+- Rerun 1 was posted exactly as `rerun` at `1786945282.101189` in the existing private thread and acknowledged by the review service. The seven-minute exact-head follow-up is active; no duplicate rerun is permitted while pending.
 
 ## Outcome, risk, and follow-up
 
