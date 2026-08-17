@@ -47,6 +47,7 @@ Exclusions and owner decisions:
 | Churn circuit breaker stop | 2026-08-17T13:56:53Z | Two rounds found omissions in the same lifecycle-identity boundary; monitoring paused and another rerun requires explicit owner approval |
 | Owner approved fresh private loop | 2026-08-17T23:26:48Z | Circuit breaker cleared by explicit owner instruction; fresh invocation rerun count reset to 0 of 3 |
 | Fresh private rerun requested | 2026-08-17T23:28:13Z | Exact `rerun` reply `1787009293.616639` posted by verified user `U0B9R7NJTQA`; bot acknowledgement `1787009297.045949`; fresh cycle 1 of 3 at head `f809f7da3` |
+| Fresh cycle-1 review completed | 2026-08-17T23:32:08Z | Exact head `f809f7da3`; 1 blocker, 0 non-blockers; heartbeat paused while the finding is processed |
 
 ## Task statistics
 
@@ -56,7 +57,7 @@ Exclusions and owner decisions:
 | Commits | 10 | Seven implementation commits, base-sync merge `55206b81e`, and review-fix commits `4b5837363` and `f809f7da3` |
 | Change size | 42 files, 4,599 insertions, 141 deletions | `git diff --shortstat origin/main...HEAD` at `f809f7da3` |
 | Validation | Shared 217/217; DB 257 passed with 3 existing skips; API 3,057/3,057; workflow 946/946 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
-| Review | 2 completed private rounds: 5 blockers, 3 non-blockers; all findings fixed; fresh rerun cycle 1 of 3 pending | Exact-head results and rerun `1787009293.616639` in `#self-reviews` parent `1786948233.619459` |
+| Review | 3 completed private rounds: 6 blockers, 3 non-blockers; latest blocker in progress | Exact-head results in `#self-reviews` parent `1786948233.619459` |
 | CI | Not started | Private Draft gate did not clear |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
@@ -87,6 +88,7 @@ Exclusions and owner decisions:
 - Added worker-boundary linked-source coverage for payroll-feed failure, retry, and ingestion; transaction-level prior eligibility aggregate resolution; and failed-export followed by a distinct successful attempt.
 - The churn circuit breaker activated because two review rounds found omissions from the same lifecycle-identity boundary and both cycles materially expanded coverage. All findings were fixed before stopping; the private-review heartbeat remains paused and no new rerun was posted.
 - At 2026-08-17T23:26:48Z the owner explicitly authorized restarting the private self-review loop at rerun count zero. The prior circuit-breaker evidence remains historical; the current invocation may post up to three new reruns under the skill safety limit.
+- Fresh cycle 1 found that the BBA claim transition queries matching exception history without excluding `RESOLVED`. The shared lifecycle owner correctly rejects `RESOLVED` to `IN_PROGRESS`, so a later matching generation can roll back its claim and repeatedly block the oldest queued row. The correction boundary is the locked BBA claim transition plus a resolved-history regression; monitoring is paused during implementation and validation.
 
 ## Validation, review, and CI
 
@@ -141,7 +143,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-All first- and second-round findings are corrected and pushed at exact head `f809f7da35d81cacfdc7c2c4cac6688a58e797c5`. Draft PR #1190 remains Draft. Fresh private rerun cycle 1 of 3 is pending in the existing `#self-reviews` thread. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
+All first- and second-round findings remain corrected at exact head `f809f7da35d81cacfdc7c2c4cac6688a58e797c5`. Fresh cycle 1 returned one exact-head BBA lifecycle blocker, which is being processed. Draft PR #1190 remains Draft; Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
 
 ## Evidence provenance
 
