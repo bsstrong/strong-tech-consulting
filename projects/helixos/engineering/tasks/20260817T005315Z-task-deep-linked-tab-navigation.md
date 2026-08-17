@@ -30,7 +30,7 @@ Exclusions and owner decisions:
 | Task started | 2026-08-17T00:53:15Z | — |
 | Implementation/handoff | 2026-08-17T04:57:30Z | Commit `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` |
 | PR created | 2026-08-17T05:12:03Z | Draft PR #1189; base `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80` |
-| Review | 2026-08-17T05:41:22Z | Private rerun 1 requested for `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`; pending |
+| Review | 2026-08-17T06:09:32Z | Round-2 circuit-breaker checkpoint pushed at `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12`; owner approval required before another rerun |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
 
@@ -39,10 +39,10 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | Pending | Direct timestamps will be recorded |
-| Commits | 2 | Initial implementation plus private-review remediation |
-| Change size | 26 files; 915 additions; 339 deletions | `git diff --shortstat origin/main...HEAD` at `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53` |
-| Validation | Shared build, web typecheck, lint, theme check, 297 affected tests, complete 1,658-test web suite, and production web build green | Local command output |
-| Review | Round 1: three blockers, all addressed; rerun 1 pending | Slack thread `1786943637.689379`; rerun `1786945282.101189`; follow-up automation `pr-1189-self-review-check` |
+| Commits | 3 | Initial implementation plus two private-review remediation commits |
+| Change size | 27 files; 1,101 additions; 363 deletions | `git diff --shortstat origin/main...HEAD` at `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12` |
+| Validation | Shared build, web typecheck, lint, theme check, 313 affected tests, complete 1,661-test web suite, and production web build green | Local command output |
+| Review | Round 1: three blockers addressed; round 2: one blocker and one non-blocker addressed; circuit breaker active | Slack thread `1786943637.689379`; rerun `1786945282.101189`; result `1786945682.835339` |
 | CI | Pending | Exact-head GitHub Actions evidence |
 | Benchmarks | N/A | No performance claim requested |
 
@@ -60,6 +60,11 @@ Exclusions and owner decisions:
 - Preserved Payroll Cycle query state with the owning setup window and made embedded client pages read their own location rather than ambient browser query state.
 - Made shared route segment decoding defensive, returning the normal route fallback for malformed pasted URLs.
 - Blast-radius inventory covered all `PageResolver` navigation consumers, setup hydration/persistence, browser route replay, Recent entries, tenant path application, and every shared tab-route parser consumer.
+- Private self-review round 2 found two valid omissions in that same route-ownership boundary: same-tab Payroll Cycle query history could not replay without a remount, and one window navigation emitted multiple persistence snapshots.
+- Made the visible Payroll Cycle route query authoritative while retaining only hidden-tab position memory, and carried explicit push/replace intent through routed and desktop-window navigation.
+- Made tab changes push history while cycle/step reconciliation and active stale-link cleanup replace the current entry.
+- Combined setup-window and Recent changes into one persisted state publication and suppressed the route catch-up no-op publication.
+- The second repeated boundary finding activated the churn circuit breaker. Automated monitoring was deleted and no additional rerun was posted.
 
 ## Validation, review, and CI
 
@@ -67,11 +72,12 @@ Exclusions and owner decisions:
 - `npx tsc -b src/web/tsconfig.json --pretty false`: passed.
 - `npm run lint -w @helixos/web`: passed.
 - `npm run theme:check -w @helixos/web`: passed.
-- Focused suites after review remediation: 11 suites and 297 tests passed.
-- Full web suite after review remediation: 192 suites and 1,658 tests passed without functional failures or local timeouts.
+- Focused suites after round-2 remediation: 12 suites and 313 tests passed.
+- Full web suite after round-2 remediation: 192 suites and 1,661 tests passed without functional failures or local timeouts.
 - `npm run build -w @helixos/web`: passed; 2,329 modules built and the postbuild embed assertion passed. Existing chunk-size and SignalR annotation warnings remain.
 - Private self-review round 1 was requested for `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` in channel `C0BMWSRGYDS`, thread `1786943637.689379`, and returned three blockers at `1786943921.484199`.
 - Every blocker was verified and addressed on exact head `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`; the PR description records the disposition and validation checkpoint.
+- Private rerun 1 completed at `1786945682.835339` with one blocker and one non-blocker; both were verified as valid and addressed on exact head `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12`.
 
 ### Private rerun checkpoint — 2026-08-17T05:40:41Z
 
@@ -84,9 +90,20 @@ Exclusions and owner decisions:
 - Circuit breaker: not active. This is the first remediation cycle, the patch remains within the existing workspace-routing bounded context, and no unrelated abstraction or cross-context refactor was introduced.
 - Rerun 1 was posted exactly as `rerun` at `1786945282.101189` in the existing private thread and acknowledged by the review service. The seven-minute exact-head follow-up is active; no duplicate rerun is permitted while pending.
 
+### Round-2 circuit-breaker checkpoint — 2026-08-17T06:09:32Z
+
+- Exact head: `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12`.
+- Fetched base and merge base: `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`; the base has not advanced and no synchronization is required.
+- Finding dispositions: same-tab Payroll Cycle history now reads cycle/step from the active route on every render; tab changes push; cycle/step changes and stale-link cleanup replace; window navigation publishes one combined persistence snapshot.
+- Shared root cause: tab and subordinate workflow location did not carry explicit history intent through the routed/windowed boundary, and persistence helpers published intermediate states independently. The correction gives the active route authoritative selection and makes one navigation operation publish one final snapshot.
+- Blast radius and affected-instance inventory: routed ClientDetail, embedded setup windows, controlled PayrollCycleTab selection, browser Back/Forward, active stale-link cleanup, inactive-window isolation, `PageResolver`, `DesktopWorkspacePage`, `navigateWindow`, Recent metadata, route catch-up, and every optional `onNavigate` consumer were inspected. No materially similar route-ownership or duplicate-publication instance remains in the changed boundary.
+- Validation: lint and typecheck passed; 12 affected suites / 313 tests passed; complete 192-suite / 1,661-test web run passed; production build transformed 2,329 modules and its embedded Rule Engine assertion passed.
+- Mandatory architecture review: route/query state remains authoritative while visible; hidden-tab memory is the only local workflow position and does not compete with an active route; server data remains query-owned; no effects, refs, or derived-state synchronization were introduced; deterministic path parsing remains in the shared pure module; integration tests cover both routed and desktop seams.
+- Circuit breaker: active because two review rounds found omissions in the same route-ownership boundary. The prior heartbeat was deleted, no duplicate or further `rerun` was posted, and fresh owner approval is required before resuming automated private review.
+
 ## Outcome, risk, and follow-up
 
-In progress. Draft PR #1189 contains the complete round-1 remediation and is ready for the allowed private rerun. The remaining risk is an actionable finding on exact head `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`. The PR remains Draft and cannot advance until private review is clean.
+In progress. Draft PR #1189 contains the complete round-2 cohesive remediation and validated circuit-breaker checkpoint on exact head `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12`. The remaining risk is another finding in the route-ownership boundary. The PR remains Draft; private review cannot resume until the owner explicitly approves another rerun after this checkpoint.
 
 ## Evidence provenance
 
