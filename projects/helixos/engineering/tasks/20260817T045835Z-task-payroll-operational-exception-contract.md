@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress
+- Status: blocked by fixed-scope stop gate
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -30,23 +30,24 @@ Exclusions and owner decisions:
 | Shared contract and persistence seam committed | 2026-08-17T05:21:07Z | 22m 32s from task start |
 | API, workflow, and source-matrix implementation committed | 2026-08-17T05:59:29Z | Head `7f075e24b`; 1h 00m 54s from task start |
 | Architecture audit and local validation complete | 2026-08-17T06:26:55Z | Head `dc185fbe7`; stale follow-up delivery guards and actor-scope validation corrected within planned files |
-| Implementation/handoff | Pending | Draft PR lifecycle in progress |
+| Implementation/handoff | Blocked | Private review requires source-owner corrections outside the authorized file inventory |
 | Draft PR created | 2026-08-17T06:28:29Z | PR #1190 at exact head `dc185fbe7`; 1h 29m 54s from task start |
 | Private self-review requested | 2026-08-17T06:30:33Z | `#self-reviews` parent `1786948233.619459`; first follow-up scheduled after seven minutes |
-| Review | Pending | Exact-head private self-review in progress |
-| CI | Pending | Pending |
-| Completed | Pending | Pending |
+| Private self-review completed | 2026-08-17T06:38:21Z | Exact head `dc185fbe7`; 3 blockers, 0 non-blockers |
+| Scope stop gate applied | 2026-08-17T06:40:12Z | Authoritative intake correction requires payroll-feed worker files and tests outside the plan inventory; no review fixes or rerun requested |
+| CI | Not started | Draft private gate did not clear |
+| Completed | Blocked | Owner decision required to expand the plan inventory or revise the contract |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | Pending | Direct UTC timestamps |
+| Total elapsed | 1h 41m 37s to scope stop | 2026-08-17T04:58:35Z through 2026-08-17T06:40:12Z |
 | Commits | 7 | `1d49f7b61`, `13d9cfe3e`, `d1d62cb29`, `2252f2aa4`, `7f075e24b`, `09e0b6dd4`, `dc185fbe7` |
 | Change size | 30 files, 3,638 insertions, 121 deletions | `git diff --shortstat origin/main...HEAD` at `dc185fbe7` |
 | Validation | Shared 217/217; DB 255 runnable passed with 3 existing skips; API 2,999/2,999; workflow 915/915 | Full package suites, focused seams, builds, and Prisma validation passed |
-| Review | Local architecture self-review clean; private review pending | Complete diff reviewed locally at `dc185fbe7`; private `#self-reviews` gate requested |
-| CI | N/A at start | No PR or hosted run in scope yet |
+| Review | 1 private round: 3 blockers, 0 non-blockers | Exact-head result in `#self-reviews` parent `1786948233.619459` |
+| CI | Not started | Private Draft gate did not clear |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
 ## Work and decisions
@@ -61,6 +62,9 @@ Exclusions and owner decisions:
 - Source integrations cover all eight codes and preserve existing source status/audit writes. Ambiguous census/eligibility cycle linkage falls back to Client scope rather than guessing a cycle.
 - The only support file outside the named inventory is `src/packages/db/prisma/seed.ts`, required by the existing every-model reset contract; this is not a material scope expansion.
 - No report model, endpoint, controller, permission, UI, scheduler, generation path, or historical backfill was added.
+- The exact-head private review found that intake-source failures are written only from request-time API paths while authoritative asynchronous payroll-feed transitions occur in `feed-pull-poller.ts`, `feed-ingestor.ts`, and `feed-pull-kickoff.ts`. Correcting ownership requires those production files, focused tests, and likely a focused transition adapter, materially exceeding the plan inventory.
+- The same review found two additional lifecycle-identity blockers within planned source families: export and operations-file retries use per-attempt keys that cannot resolve an earlier failed occurrence, and eligibility review reassignment from source run A to run B reconciles only run B while run A can remain open.
+- No partial review fixes were made because the authoritative intake correction triggered the owner's explicit scope stop. The private-review heartbeat was disabled and no rerun, public feedback request, Ready transition, reviewer request, or merge action was performed.
 
 ## Validation, review, and CI
 
@@ -78,7 +82,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-Implementation and local validation are complete. The change remains limited to the prerequisite contract: all changed files are in the plan inventory except the five-line seed reset support required by the new models. No report schema/API/UI or other product scope was introduced. Draft PR #1190 is open and its exact-head private self-review is pending.
+Implementation and local validation remain captured at exact head `dc185fbe7`, but Draft PR #1190 cannot clear private review within the authorized fixed inventory. The first of three exact-head blockers requires authoritative payroll-feed worker changes and tests outside that inventory. Work stopped without modifying the HelixOS branch after review. Owner direction is required either to expand and amend the plan's file inventory or to revise the operational-exception ownership contract.
 
 ## Evidence provenance
 
