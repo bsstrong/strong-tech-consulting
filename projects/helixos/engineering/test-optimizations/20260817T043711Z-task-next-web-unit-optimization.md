@@ -10,7 +10,8 @@
 - Initial local branch: `main`
 - Initial local head: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f`
 - Initial worktree state: clean; local `main` was 733 commits behind `origin/main`, so implementation will use a dedicated branch/worktree from the fetched base.
-- Pull request: pending
+- Pull request: https://github.com/helixosio/helixos/pull/1188 (Draft)
+- Pull request created: 2026-08-17T05:11:11Z
 - Task/thread ID: unavailable in the current execution context
 
 ## Scope and evidence
@@ -42,6 +43,14 @@
 - Web lint passed in 17.001s; theme literal check passed in 1.109s; production web build passed in 81.835s with only the existing Rollup annotation and chunk-size warnings; `git diff --check` passed.
 - Architecture self-review: test-harness cost is owned solely by the target suite; no production state, authorization, tenant isolation, request, mutation, cache, persistence, presentation, or public contract changed. All 19 rendered boundary tests, request bodies, refusal messages, pagination, filtering, dialog, and mutation assertions remain. No test, fixture, assertion, timeout, realistic behavior-sensitive interaction, or representative data was removed.
 - Recorded implementation/local-validation handoff: 2026-08-17T05:09:45Z, 32m 34s after task start.
+
+## Draft pull request and private self-review
+
+- Branch `codex/optimize-client-portal-access-tests` was pushed without rewriting history. Draft PR #1188 opened against exact base `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80` on head `62dde6245bb60ffe213255da42c6bb56dd680b53`; GitHub reported it mergeable.
+- The PR description records the hosted and matched local baselines, preserved behavior, complete local validation, responsibility boundary, architecture review, risk, rollback, and work duration.
+- Immediately before the private request, fetched base and merge base remained `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`, with no base advance and a clean worktree.
+- Connected Slack read-only search verified private channel `#self-reviews` as `C0BMWSRGYDS` and found no existing parent for the canonical PR URL. Authenticated user `U0B9R7NJTQA` posted the URL-only parent through Slack Web API at timestamp `1786943657.611809` (2026-08-17T05:14:17Z). The review bot acknowledged at `1786943659.061729` that GitHub will not be changed and began the inquiry.
+- Heartbeat `pr-1188-self-review-check` schedules the first exact-head result check after seven minutes and one-minute checks only while a review is genuinely pending.
 
 ## Risk and follow-up
 
