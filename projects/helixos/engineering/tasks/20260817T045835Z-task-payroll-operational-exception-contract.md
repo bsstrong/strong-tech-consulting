@@ -51,16 +51,18 @@ Exclusions and owner decisions:
 | Fresh cycle-1 correction validated and pushed | 2026-08-17T23:42:36Z | Head `e56a6f50d`; resolved-history BBA claims are a locked no-op and no longer roll back the queue claim |
 | Fresh cycle-2 rerun requested | 2026-08-17T23:43:50Z | Exact `rerun` reply `1787010230.812489` posted by verified user `U0B9R7NJTQA`; bot acknowledgement `1787010233.421509`; fresh cycle 2 of 3 at head `e56a6f50d` |
 | Fresh cycle-2 review completed | 2026-08-17T23:46:40Z | Exact head `e56a6f50d`; 1 blocker, 0 non-blockers; second fresh round on the conditional lifecycle boundary activated the churn circuit breaker and paused monitoring |
+| Fresh cycle-2 correction validated and pushed | 2026-08-17T23:55:45Z | Head `0c3c9c615`; locked no-op classification now precedes authorization while active mutations remain authorized |
+| Fresh circuit-breaker checkpoint complete | 2026-08-17T23:55:45Z | Full affected-category audit and validation complete; another rerun requires explicit owner approval |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 8h 58m 18s to circuit-breaker stop | 2026-08-17T04:58:35Z through 2026-08-17T13:56:53Z; includes the owner-decision blocked interval |
-| Commits | 11 | Seven implementation commits, base-sync merge `55206b81e`, and review-fix commits `4b5837363`, `f809f7da3`, and `e56a6f50d` |
-| Change size | 42 files, 4,686 insertions, 141 deletions | `git diff --shortstat origin/main...HEAD` at `e56a6f50d` |
-| Validation | Shared 217/217; DB 258 passed with 3 existing skips; API 3,057/3,057; workflow 947/947 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
-| Review | 4 completed private rounds: 7 blockers, 3 non-blockers; latest blocker in progress under the circuit breaker | Exact-head results in `#self-reviews` parent `1786948233.619459` |
+| Total elapsed | 18h 57m 10s to fresh circuit-breaker stop | 2026-08-17T04:58:35Z through 2026-08-17T23:55:45Z; includes owner-decision and review waiting intervals |
+| Commits | 12 | Seven implementation commits, base-sync merge `55206b81e`, and review-fix commits `4b5837363`, `f809f7da3`, `e56a6f50d`, and `0c3c9c615` |
+| Change size | 42 files, 4,722 insertions, 141 deletions | `git diff --shortstat origin/main...HEAD` at `0c3c9c615` |
+| Validation | Shared 217/217; DB 260 passed with 3 existing skips; API 3,057/3,057; workflow 947/947 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
+| Review | 4 completed private rounds: 7 blockers, 3 non-blockers; every finding fixed; fresh circuit breaker active | Exact-head results in `#self-reviews` parent `1786948233.619459` |
 | CI | Not started | Private Draft gate did not clear |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
@@ -96,6 +98,8 @@ Exclusions and owner decisions:
 - Blast-radius inventory confirmed the new conditional mutation has one caller: the authoritative BBA `QUEUED` to `PROCESSING` claim transaction. Open retries still transition to `IN_PROGRESS`; missing occurrences and resolved history do not update or append events; subsequent failures still reopen through the existing detection mutation. Ready resolution, recovery failure, and expiry behavior remain unchanged.
 - Fresh cycle 2 found that `updatePayrollOperationalExceptionIfActive` validates actor and assignee scope before acquiring and classifying the occurrence. An inactive historical actor can therefore roll back a claim even when the locked result is missing or already `RESOLVED` and no exception mutation is required. The cohesive correction boundary is lock/load, terminal no-op classification, then validation only for an active mutation, with inactive-actor coverage.
 - This is the second fresh review round on the same conditional lifecycle root pattern. The churn circuit breaker is active, the heartbeat is paused, and another automated rerun will not be posted without explicit owner approval after correction, complete affected-category inventory, full validation, and full-diff architecture review.
+- Corrected the ordering in `0c3c9c615`: the DB owner now locks and classifies missing or `RESOLVED` state before actor/assignee validation, then preserves strict authorization for active mutations. Added exhaustive focused cases for missing plus inactive actor, resolved plus inactive historical actor, and active plus invalid actor.
+- Complete caller inventory remains one BBA claim adapter. Complete state/authorization inventory now covers missing, resolved, active authorized, active unauthorized, active invalid assignee, open retry, repeated in-progress delivery, successful resolution, later failure reopening, and the processor/recovery/expiry writers. No other source family uses the conditional helper.
 
 ## Validation, review, and CI
 
@@ -123,6 +127,9 @@ Exclusions and owner decisions:
 - Fresh cycle-1 focused BBA exception/processor suites: 12/12 passed, including open retry and resolved-history claim paths.
 - Fresh cycle-1 full DB suite: 258 passed, 0 failed, 3 existing skipped; DB build and Prisma generation passed.
 - Fresh cycle-1 full workflow suite: 947/947 passed in 22.531s; workflow build passed.
+- Fresh cycle-2 focused DB mutation suite: 16/16 passed; focused BBA exception/processor suites: 12/12 passed.
+- Fresh cycle-2 full DB suite: 260 passed, 0 failed, 3 existing skipped; DB build and Prisma generation passed.
+- Fresh cycle-2 full workflow suite: 947/947 passed in 21.833s; workflow build passed.
 - Final `git diff --check` and complete diff architecture review passed. No materially similar status writer, retry identity, replacement aggregate, or worker boundary remains unreviewed in the affected source families.
 
 ### Private rerun evidence checkpoint
@@ -162,9 +169,19 @@ Exclusions and owner decisions:
 - Validation: focused DB 14/14; focused BBA 12/12; full DB 258 passed with 3 existing skips; full workflow 947/947 in 22.531s; DB and workflow builds green; Prisma generation and `git diff --check` green.
 - Full-diff architecture review confirms lifecycle locking remains DB-owned, BBA identity remains adapter-owned, workflow behavior outside the resolved-history no-op is unchanged, and no materially similar pre-lock terminal-state classifier remains in the affected BBA category. No report schema/API/UI or other excluded surface was introduced.
 
+### Fresh circuit-breaker evidence checkpoint
+
+- Exact head: `0c3c9c615e895be21630e906827d891d0ed76ab8`; local, remote branch, and Draft PR head match, and the HelixOS worktree is clean.
+- Fetched base: `e8e9a5d8982969bc04d54f8a138c25845958950f`; merge base remains `4e776a5d573b6d86b9e98d8dec4f66ab946d8355`. Base-only changes remain the non-overlapping CI timing document and Client Portal access web test; review premise unchanged.
+- Fresh cycle-2 blocker: fixed. The conditional DB mutation locks and loads first, returns for missing or `RESOLVED`, and validates actor/assignee only before an active mutation.
+- Shared root cause: the new conditional lifecycle operation initially interleaved existence/status classification with mutation authorization. Both decisions now have one ordered owner at the DB boundary: lock, classify no-op, authorize active mutation, project, persist, append event.
+- Blast radius and complete affected-instance inventory: missing/inactive actor, resolved/inactive historical actor, active/invalid actor, active/invalid assignee, active authorized OPEN and IN_PROGRESS, BBA enqueue, claim, success/failure, recovery, later detection reopening, API expiry, and sweeper expiry. The helper has one BBA claim caller; strict mutations for all other source families are unchanged.
+- Validation: focused DB 16/16; focused BBA 12/12; full DB 260 passed with 3 existing skips; full workflow 947/947 in 21.833s; DB and workflow builds green; Prisma generation and `git diff --check` green.
+- Full-diff architecture review confirms DB ownership of locking/classification/authorization, adapter ownership of BBA occurrence mapping, unchanged source workflow behavior, no duplicate conditional policy, and no materially similar unreviewed instance in the affected category. No report schema/API/UI, controller, DTO, OpenAPI contract, permission, scheduler, report generation, or historical reconstruction was introduced.
+
 ## Outcome, risk, and follow-up
 
-All findings through fresh cycle 1 remain corrected at exact head `e56a6f50d257d121381280689f32c9f4a4f3cb34`. Fresh cycle 2 returned one exact-head blocker that is being processed under the churn circuit breaker. Draft PR #1190 remains Draft; another private rerun requires explicit owner approval after the corrective checkpoint. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
+All findings through fresh cycle 2 are corrected, validated, documented on the Draft PR, and pushed at exact head `0c3c9c615e895be21630e906827d891d0ed76ab8`. The churn circuit breaker is terminal for this invocation because two fresh review rounds found the same conditional lifecycle root pattern. Monitoring is disabled; another private rerun requires explicit owner approval. Draft PR #1190 remains Draft. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
 
 ## Evidence provenance
 
