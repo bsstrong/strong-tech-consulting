@@ -18,7 +18,7 @@
 
 - In scope: one cohesive web-test hotspot, matched local baseline/post-change samples, unchanged behavioral coverage, full required local validation, Draft PR creation, private self-review, repository-prescribed feedback/final review, exact-head CI, and three hosted timing samples.
 - Explicit exclusions: reducing or skipping tests, loosening assertions, increasing timeouts, changing production behavior, overlapping active pull-request work, merging, releasing, or publishing.
-- Selection evidence, active-PR overlap inventory, hosted baseline, responsibility boundary, local measurements, validation, and private self-review are recorded below. Exact-current-head full CI and replacement hosted sample 1 are complete; replacement samples 2 and 3 are in progress.
+- Selection evidence, active-PR overlap inventory, hosted baseline, responsibility boundary, local measurements, validation, and private self-review are recorded below. Exact-current-head full CI and replacement hosted samples 1 and 2 are complete; replacement sample 3 is in progress.
 
 ## Target selection
 
@@ -80,7 +80,9 @@
 - At the 2026-08-17T06:46:57Z check, exact-head full CI run `32002245972` remained in progress only for `web-unit` job `95304666846`; `backend-and-infra` and `web-e2e` had passed and `web-cross-browser` was expectedly skipped. Seven minutes remained in the established 19-minute window from the 06:34:58Z run start, so heartbeat `pr-1188-current-head-ci-sample-1-check` owned one follow-up at that interval; no polling occurred.
 - Exact-current-head full CI attempt 1 completed successfully at 2026-08-17T06:49:27Z. `backend-and-infra` passed in 609s, `web-unit` job `95304666846` passed in 865s, and `web-e2e` passed in 350s; `web-cross-browser` was expectedly skipped. The run and artifact both identify head `ccb403186e821684e48efaf2c1736383a5dd3343`.
 - Replacement hosted sample 1 uses artifact `9279095774` from run `32002245972`, attempt 1. The web command took 668.655s, the Vitest runner took 654.181s, and the target took 16.705s total / 14.010s tests/hooks with 1.650s collection and 19 passed, 0 failed, and 0 skipped. Relative to the 24.501s / 21.807s hosted main baseline, this sample is 31.8% faster in target total and 35.8% faster in tests/hooks. The extracted artifact is `C:\Users\bsstr\AppData\Local\Temp\helixos-pr-1188-samples\current-head-attempt-1`.
-- Only the completed attempt-1 `web-unit` job was rerun for replacement sample 2. Run `32002245972`, attempt 2, job `95308825194` started at 2026-08-17T06:56:54Z on the unchanged exact head. Heartbeat `pr-1188-current-head-sample-2-check` owns one follow-up on the established 19-minute cadence; no reviewer was requested and no polling is active.
+- Only the completed attempt-1 `web-unit` job was rerun for replacement sample 2. Run `32002245972`, attempt 2, job `95308825194` started at 2026-08-17T06:56:54Z on the unchanged exact head. Heartbeat `pr-1188-current-head-sample-2-check` owned one follow-up on the established 19-minute cadence; no polling occurred.
+- Replacement hosted sample 2 completed successfully at 2026-08-17T07:11:50Z and uses artifact `9279601557`. The `web-unit` job took 896s, the web command took 696.397s, the Vitest runner took 682.471s, and the target took 17.245s total / 14.477s tests/hooks with 1.685s collection and 19 passed, 0 failed, and 0 skipped. Relative to the hosted main baseline, this sample is 29.6% faster in target total and 33.6% faster in tests/hooks. The extracted artifact is `C:\Users\bsstr\AppData\Local\Temp\helixos-pr-1188-samples\current-head-attempt-2`.
+- Only the completed attempt-2 `web-unit` job was rerun for replacement sample 3. Run `32002245972`, attempt 3, job `95313004777` started at 2026-08-17T07:17:26Z on the unchanged exact head. Heartbeat `pr-1188-current-head-sample-3-check` owns one follow-up on the established 19-minute cadence; `jfollas` has not been re-requested and no polling is active.
 
 ## Risk and follow-up
 
