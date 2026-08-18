@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in progress (production-review findings addressed; exact-head CI pending)
+- Status: in progress (production-review circuit breaker active; corrections delivered; owner approval required to resume review)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -64,17 +64,21 @@ Exclusions and owner decisions:
 | Production-review corrections validated and pushed | 2026-08-18T02:17:04Z | Head `63e95479c`; all six inline threads answered and resolved; PR description updated with dispositions and evidence |
 | Exact-head hosted CI started | 2026-08-18T02:18:00Z | HelixOS CI run `32091258542` on `63e95479c` is in progress; one follow-up scheduled after 62 minutes from the latest-50-run duration evidence |
 | Owner clarified review lifecycle | 2026-08-18T02:20:00Z | Once the PR is in the production cycle, private self-review is not revisited unless explicitly requested; the prior private rerun trigger is ignored and its heartbeat was replaced with the single CI follow-up |
+| Missing-occurrence serialization correction pushed | 2026-08-18T02:33:35Z | Head `a61b523ec`; advisory lock now serializes aggregate reconciliation even before a normalized row exists |
+| Production-review circuit breaker activated | 2026-08-18T02:38:09Z | Repeated feedback reached the owner-requested stop condition; CI follow-up automation was deleted and no further review request is permitted without explicit owner approval |
+| Circuit-breaker correction validated and pushed | 2026-08-18T02:55:14Z | Head `802543f1e`; shared API/workflow aggregate lifecycle classifier plus explicit payroll-feed system-actor naming and coverage |
+| Latest production threads answered and resolved | 2026-08-18T02:55:27Z | Both findings received commit-specific replies; all ten PR review threads are resolved; PR description records the root-cause audit and validation |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 19h 52m 53s | 2026-08-17T04:58:35Z through 2026-08-18T00:51:28Z; includes owner-decision and review waiting intervals |
-| Commits | 14 | Current branch history above `origin/main`, including production-review fix `63e95479c` |
-| Change size | 45 files, 4,998 insertions, 167 deletions | `git diff --shortstat origin/main...HEAD` at `63e95479c` |
+| Commits | 16 | PR metadata at exact head `802543f1e`, including production-review corrections `63e95479c`, `a61b523ec`, and `802543f1e` |
+| Change size | 46 files, 5,131 insertions, 184 deletions | GitHub PR metadata at exact head `802543f1e` |
 | Validation | Shared 217/217; DB 260 passed with 3 existing skips; API 3,057/3,057; workflow 947/947 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
 | Review | 5 completed private rounds: 7 blockers, 3 non-blockers; every finding fixed; final exact-head review clean | Exact-head clean result `1787014071.205399` in `#self-reviews` parent `1786948233.619459` |
-| CI | In progress | HelixOS CI run `32091258542` on exact head `63e95479c`; latest 50 completed PR runs had a 60.48-minute maximum, so the policy follow-up interval is 62 minutes |
+| CI | Prior result invalidated by later commits | Run `32091258542` targeted stale head `63e95479c`; exact-head CI at `802543f1e` was not monitored because the production-review circuit breaker stops before another review request |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
 ## Work and decisions
@@ -121,6 +125,11 @@ Exclusions and owner decisions:
 - Because Keith/Jarvis submitted its findings as a review body rather than replyable inline threads, posted a top-level PR follow-up comment (`5322680703`) that records the one corrected conflict-reload regression and the exact-code verification behind the migration, timestamp, and coverage dispositions.
 - Owner lifecycle clarification supersedes the earlier private-gate habit: after entering production review, do not return to private self-review unless explicitly requested. Final re-review proceeds through exact-head hosted CI and GitHub-only `jfollas` review.
 - A subsequent production review found the remaining zero-row aggregate race: a row lock cannot serialize a normalized occurrence that has not yet been detected. Head `a61b523ec` adds a transaction-scoped advisory lock keyed by tenant, source family, and source key before the row lock and aggregate count. The other new actor-attribution report was verified as a false positive: both cited feed-ingestion branches already resolve the current `PAYROLL_ROUTER` system actor.
+- The next review repeated the payroll-feed actor claim and identified a real resolved-aggregate lifecycle defect. The owner invoked the production-review circuit breaker, so the active CI follow-up automation was deleted and no self-review or final re-review will be requested without explicit owner approval.
+- Corrected the shared lifecycle root at `802543f1e`: one pure state/count classifier now owns eligibility-review aggregate reconciliation for both the API decision path and workflow source-replacement path. Missing or already-resolved zero-count occurrences remain unchanged; active zero-count occurrences resolve; positive counts detect/reopen missing or resolved occurrences and update active occurrences.
+- The source-replacement regression proves a prior `REVIEWS_COMPLETED` occurrence remains historical without a second resolution event, and the API seam proves returned open work produces `REOPENED`. This prevents both the reported rollback and the corresponding API-side resolved-update failure.
+- The payroll-feed actor behavior was already correct. Renamed the misleading local value to `feedIngestionActorResourceId`, kept the existing writer-contract field mapping explicit, audited all seven kickoff/poller/ingestor transition call sites, and asserted the current `PAYROLL_ROUTER` actor on the emitted exception event.
+- The circuit-breaker inventory found exactly two eligibility aggregate writers, both now governed by the shared policy. Current `main` at `e8a43909c` changed only unrelated tenant-workspace/web files after the branch merge base; there is no overlap or premise change.
 
 ## Validation, review, and CI
 
@@ -154,6 +163,8 @@ Exclusions and owner decisions:
 - Final `git diff --check` and complete diff architecture review passed. No materially similar status writer, retry identity, replacement aggregate, or worker boundary remains unreviewed in the affected source families.
 - Production-review focused validation at `63e95479c`: shared, DB, workflow, and API builds passed; DB 21/21, workflow 144/144, and API 25/25 focused tests passed; `git diff --check`, complete affected-instance inventory, and architecture review passed.
 - Current exact-head hosted CI: HelixOS CI run `32091258542` started for `63e95479c`; status was `in_progress` at the initial check. Per owner policy, the single follow-up is scheduled after 62 minutes and no polling is performed.
+- Circuit-breaker validation at `802543f1e`: complete package build and API build passed; 94 focused shared/DB/workflow tests passed; 26/26 API tests passed; `git diff --check` and the mandatory architecture review passed. The first combined test command's API transform error was an invocation configuration issue; rerunning the API suite with its repository tsconfig passed all 26 tests.
+- Exact-head review-thread verification at `802543f1e`: all ten inline threads are resolved. No report schema/API/UI, controller, route, DTO, permission, scheduler, report-generation path, or historical reconstruction was added.
 
 ### Private rerun evidence checkpoint
 
@@ -223,7 +234,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-The Payroll Operational Exception prerequisite contract and all production-review corrections are implemented and locally validated at exact head `63e95479ce871ce8dcbdbef6df53a6e5883eb541`. The PR remains Ready and limited to the prerequisite contract: no report schema, report API, report UI, scheduler, generation path, or historical reconstruction was added. All inline feedback is resolved. Exact-head hosted CI is pending; only after it is green and the head/thread gates still hold will `jfollas` be re-requested through GitHub. No merge, release, or publish action is authorized.
+The Payroll Operational Exception prerequisite contract and all currently reported production-review corrections are implemented and locally validated at exact head `802543f1e8b542db926897279c5763f8a5ef3b1b`. The PR remains Ready and limited to the prerequisite contract: no report schema, report API, report UI, scheduler, generation path, or historical reconstruction was added. All inline feedback is answered and resolved. The production-review circuit breaker is active; no self-review, final re-review, CI monitoring automation, reviewer request, merge, release, or publish action will occur without the owner's explicit instruction to resume.
 
 ## Evidence provenance
 
