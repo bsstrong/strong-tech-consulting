@@ -175,6 +175,7 @@ Exclusions and owner decisions:
 - CI correction validation: reproduced the failing transition against isolated PostgreSQL 16, then verified `PROCESSING` to `FAILED` plus one normalized census exception after the fix; DB build passed; DB full suite passed 262 with 3 existing skips; focused census suite passed 57; `git diff --check` and architecture review passed.
 - Exact-head HelixOS CI run `32095643056` started for `12e5556c1` at 2026-08-18T03:29:10Z. Following owner policy, one follow-up is scheduled after the 32-minute latest-50 completed-run maximum-plus-buffer window; no polling or review workflow was started.
 - Final approval was reported by the owner. Exact-head HelixOS CI run `32095643056` completed successfully at 2026-08-18T03:41:05Z: `backend-and-infra`, `web-unit`, and `web-e2e` passed; scheduled-only `web-cross-browser` was intentionally skipped. The CI watch was stopped and no further review cycle was requested.
+- GitHub reports PR #1190 merged at 2026-08-18T03:42:15Z from exact reviewed/green head `12e5556c1` as merge commit `17b3accf7887aa95d390d5eddb8c007ee12f07f5`. The owner performed the merge; no agent merge, release, or publication action occurred.
 
 ### Private rerun evidence checkpoint
 
@@ -248,7 +249,7 @@ The Payroll Operational Exception prerequisite contract and its reported product
 
 Hosted-CI compatibility is corrected through `12e5556c1`: the PostgreSQL advisory-lock query now returns a Prisma-supported scalar without changing its serialization behavior. The production review circuit breaker remains active; this correction did not request self-review, final re-review, reviewers, merge, release, or publication.
 
-Final approval and exact-current-head required CI are complete for PR #1190. The prerequisite contract is terminally review- and CI-clean; merge, release, and publication remain outside this task.
+PR #1190 is merged from the exact final-approved and CI-green head. The Payroll Operational Exception prerequisite contract is delivered; release and publication remain outside this task.
 
 The next report-contract slice is blocked until the owner records the approved persisted HelixOS funding/outcome source and timestamp, and the permission owner confirms the Data Team and Carrier Admin default grants. Once decided, update the source matrix and begin Slice 1 from the approved contracts.
 
