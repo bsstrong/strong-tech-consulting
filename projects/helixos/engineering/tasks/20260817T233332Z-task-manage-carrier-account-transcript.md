@@ -77,6 +77,7 @@ Exclusions and owner decisions:
 | PR #1195 round 1 correction | 2026-08-18T08:09:20Z | Addressed `jfollas`'s non-blocking read/write delegation-asymmetry finding in commit `1d8ba025d`; resolved thread `PRRT_kwDORjWlGM6aBzeb`, updated the PR description, and started replacement exact-head CI before any rerun request |
 | PR #1202 round 1 clarification | 2026-08-18T09:19:16Z | Addressed `jfollas`'s non-blocking Broker/Agent eligibility ambiguity in commit `8e3bff0dc`; resolved thread `PRRT_kwDORjWlGM6aDMOe`, updated the PR description and feature note, and started replacement exact-head CI before any rerun request |
 | PR #1202 final-review rerun requested | 2026-08-18T09:57:35Z | After a one-time unrelated watcher-flake retry made all exact-head required CI green, re-requested `jfollas` and posted verified authenticated-user reply `Check this one again` at `1787047055.338809` in the existing Slack parent |
+| Production review completed | 2026-08-18T10:00:06Z | PRs #1195, #1197, and #1202 are terminal-clean at their exact current green heads with no actionable threads; no PR was merged |
 
 ## Task statistics
 
@@ -86,8 +87,8 @@ Exclusions and owner decisions:
 | Commits | 6 PR 1 product commits plus combined-preview/UAT commits | PR 1: `734089c84`, `84559ed87`, `cde4f87c9`, `1278deb1e`, `32cc0a40b`, `d621d98b4`; latest Client Access refinement: `199845b7f`; documentation: `06a26de83` |
 | Change size | 15 files, 547 insertions, 95 deletions | `git diff --stat origin/main...HEAD` at final head `d621d98b450ed453ebb4e9ed90729c6bbc4f8524` |
 | Validation | Passed | Final combined validation: 88 web tests across 26 focused suites; 35 tenant-workspace API tests; 59 Client Access/producer-code API tests; 135 permission API tests; API/web TypeScript; web lint/theme/build; API build; OpenAPI checks; in-app browser UAT |
-| Review | Clean through `1278deb1e`; owner-waived rerun for final UI-only deltas | Private exact-head rerun at `1278deb1e` returned zero findings; local architecture review and validation passed for `32cc0a40b` and `d621d98b4` |
-| CI | Not required for private Draft review | Hosted current-head CI remains a later Ready/final-review gate |
+| Review | Three terminal-clean production PRs | #1195 terminal at `1d8ba025d`; #1197 terminal at `71c640c01`; #1202 terminal at `8e3bff0dc`; zero actionable threads remain |
+| CI | All required exact-head checks green | `backend-and-infra`, `web-unit`, and `web-e2e` succeeded for all final heads; `web-cross-browser` was expectedly skipped by its gate |
 | Benchmarks | N/A | No performance work requested |
 
 ## Work and decisions
@@ -198,10 +199,11 @@ Exclusions and owner decisions:
 - PR #1202 replacement CI attempt 1 failed only in the pre-existing Ubuntu integration test `tsx watch coalesces a burst of imported dependency changes`, which observed the same final file contents twice after nondeterministic filesystem-event batching. The producer-code PR has no path or dependency overlap with that watcher test or workflow; the prior exact head passed it, and five focused reruns passed. No source change was made. After web unit and web E2E succeeded and the workflow completed, the failed backend job was retried once at the unchanged exact head and passed.
 - PR #1202 rerun checkpoint: exact Ready and mergeable head `8e3bff0dcc49331e94e2627bed877aa2826c9034`; current base and merge base are both `8ab528112acc53df703573514da6d4ac93977a16`, so there is no base drift or overlapping file set. The sole clarification finding is addressed at the authoritative target-member eligibility check and documented separately from acting-user authorization; the database future-correction columns are explained; focused API 15/15 and database 4/4 tests plus diff and architecture review passed; all required exact-head CI is green after the one-time unrelated flake retry; and the only review thread remains resolved.
 - Re-requested GitHub review from `jfollas` after re-verifying PR #1202's Ready state, exact head, green required CI, mergeability, and resolved-thread state, then posted and verified the exact authenticated-user Slack rerun reply `Check this one again` at `1787047055.338809` in the existing parent. Final-review round 2 monitoring is active.
+- PR #1202 reached terminal clean review at exact green head `8e3bff0dcc49331e94e2627bed877aa2826c9034`: the round 2 reviewer approved all 35 changed files at `2026-08-18T10:00:06Z`, Slack completion `1787047206.892859` reported zero findings and zero open threads, and the addressed clarification thread remained resolved. No additional rerun or merge action was taken.
 
 ## Outcome, risk, and follow-up
 
-Production review remains active independently. PR #1195 is terminal-clean at corrected exact green head `1d8ba025dff55513f614723eb5666eec1c86bf53`, and PR #1197 is terminal-clean at documentation-corrected exact green head `71c640c0116520c6f0325ca6f19e741f0b356437`. Producer-code PR #1202 is in final-review round 2 at corrected exact green head `8e3bff0dcc49331e94e2627bed877aa2826c9034`; its sole round 1 clarification thread is resolved, `jfollas` is re-requested, and the authenticated-user Slack rerun is verified. Each retains its own authenticated-user `#pr-reviews` parent and independent circuit-breaker ledger. No merge, release, or publication beyond the review branches was performed. Producer-code correction/update/delete/reassignment remains intentionally deferred pending business policy.
+Completed successfully. PR #1195 is terminal-clean at corrected exact green head `1d8ba025dff55513f614723eb5666eec1c86bf53`, PR #1197 is terminal-clean at documentation-corrected exact green head `71c640c0116520c6f0325ca6f19e741f0b356437`, and producer-code PR #1202 is terminal-clean at clarification-corrected exact green head `8e3bff0dcc49331e94e2627bed877aa2826c9034`. Every required exact-head CI gate is green, all three final reviews are approved with no actionable findings, and every review thread is resolved. No merge, release, or publication beyond the review branches was performed. Producer-code correction/update/delete/reassignment remains intentionally deferred pending business policy.
 
 ## Evidence provenance
 
