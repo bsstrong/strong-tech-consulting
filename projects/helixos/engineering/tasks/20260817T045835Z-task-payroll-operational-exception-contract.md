@@ -174,6 +174,7 @@ Exclusions and owner decisions:
 - CI correction `12e5556c1` preserves the transaction-scoped advisory lock while projecting its result as `text`, a Prisma-supported scalar. The existing mutation regression now pins that adapter contract.
 - CI correction validation: reproduced the failing transition against isolated PostgreSQL 16, then verified `PROCESSING` to `FAILED` plus one normalized census exception after the fix; DB build passed; DB full suite passed 262 with 3 existing skips; focused census suite passed 57; `git diff --check` and architecture review passed.
 - Exact-head HelixOS CI run `32095643056` started for `12e5556c1` at 2026-08-18T03:29:10Z. Following owner policy, one follow-up is scheduled after the 32-minute latest-50 completed-run maximum-plus-buffer window; no polling or review workflow was started.
+- Final approval was reported by the owner. Exact-head HelixOS CI run `32095643056` completed successfully at 2026-08-18T03:41:05Z: `backend-and-infra`, `web-unit`, and `web-e2e` passed; scheduled-only `web-cross-browser` was intentionally skipped. The CI watch was stopped and no further review cycle was requested.
 
 ### Private rerun evidence checkpoint
 
@@ -246,6 +247,8 @@ Exclusions and owner decisions:
 The Payroll Operational Exception prerequisite contract and its reported production-review corrections are implemented on the prerequisite branch. Decision-neutral Issue #842 evidence is also committed at `a7e977196e0f1abb34e8a6b098d5e51c31e880d5`: the report source matrix explicitly distinguishes mapped state from funding, outcome, and permission gaps; documents safe query-shape constraints; and defines reconciliation/UAT proofs. No report schema, API, UI, scheduler, generation path, permission, or historical reconstruction was added.
 
 Hosted-CI compatibility is corrected through `12e5556c1`: the PostgreSQL advisory-lock query now returns a Prisma-supported scalar without changing its serialization behavior. The production review circuit breaker remains active; this correction did not request self-review, final re-review, reviewers, merge, release, or publication.
+
+Final approval and exact-current-head required CI are complete for PR #1190. The prerequisite contract is terminally review- and CI-clean; merge, release, and publication remain outside this task.
 
 The next report-contract slice is blocked until the owner records the approved persisted HelixOS funding/outcome source and timestamp, and the permission owner confirms the Data Team and Carrier Admin default grants. Once decided, update the source matrix and begin Slice 1 from the approved contracts.
 
