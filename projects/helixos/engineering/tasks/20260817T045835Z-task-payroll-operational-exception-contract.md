@@ -54,6 +54,7 @@ Exclusions and owner decisions:
 | Fresh cycle-2 correction validated and pushed | 2026-08-17T23:55:45Z | Head `0c3c9c615`; locked no-op classification now precedes authorization while active mutations remain authorized |
 | Fresh circuit-breaker checkpoint complete | 2026-08-17T23:55:45Z | Full affected-category audit and validation complete; another rerun requires explicit owner approval |
 | Owner approved second fresh private loop | 2026-08-18T00:42:42Z | Circuit breaker cleared by explicit owner instruction; the invocation-only churn ledger and rerun count reset to 0 of 3 |
+| Second fresh invocation rerun requested | 2026-08-18T00:43:54Z | Exact `rerun` reply `1787013834.177109` posted by verified user `U0B9R7NJTQA`; bot acknowledgement `1787013837.087269`; cycle 1 of 3 at head `0c3c9c615` |
 
 ## Task statistics
 
@@ -63,7 +64,7 @@ Exclusions and owner decisions:
 | Commits | 12 | Seven implementation commits, base-sync merge `55206b81e`, and review-fix commits `4b5837363`, `f809f7da3`, `e56a6f50d`, and `0c3c9c615` |
 | Change size | 42 files, 4,722 insertions, 141 deletions | `git diff --shortstat origin/main...HEAD` at `0c3c9c615` |
 | Validation | Shared 217/217; DB 260 passed with 3 existing skips; API 3,057/3,057; workflow 947/947 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
-| Review | 4 completed private rounds: 7 blockers, 3 non-blockers; every finding fixed; fresh circuit breaker active | Exact-head results in `#self-reviews` parent `1786948233.619459` |
+| Review | 4 completed private rounds: 7 blockers, 3 non-blockers; every finding fixed; second fresh invocation cycle 1 of 3 pending | Exact-head results and rerun `1787013834.177109` in `#self-reviews` parent `1786948233.619459` |
 | CI | Not started | Private Draft gate did not clear |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
@@ -196,7 +197,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-All findings through the prior invocation are corrected, validated, documented on the Draft PR, and pushed at exact head `0c3c9c615e895be21630e906827d891d0ed76ab8`. The owner approved a second fresh invocation with rerun count and invocation-only churn ledger reset to zero; the next action is one exact-head `rerun` in the existing private thread. Draft PR #1190 remains Draft. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
+All findings through the prior invocation are corrected, validated, documented on the Draft PR, and pushed at exact head `0c3c9c615e895be21630e906827d891d0ed76ab8`. Second fresh invocation cycle 1 of 3 is pending in the existing private thread. Draft PR #1190 remains Draft. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
 
 ## Evidence provenance
 
