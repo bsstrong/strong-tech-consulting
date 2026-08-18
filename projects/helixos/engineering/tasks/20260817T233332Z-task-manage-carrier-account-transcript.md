@@ -48,17 +48,19 @@ Exclusions and owner decisions:
 | Self-review finding corrected | 2026-08-18T01:24:27Z | Commit `1278deb1e` pushed with role-neutral permission provenance and regression coverage |
 | Exact-head rerun checkpoint | 2026-08-18T01:25:52Z | Head `1278deb1eb8e486829a242c9cbd6a23ac783a101`; fetched base and merge base `0be661696e6ff3376cb0fb1746a53ae3c89d52a0`; no base drift |
 | Private self-review rerun requested | 2026-08-18T01:27:19Z | Posted exactly `rerun` as authenticated user in the existing thread; request timestamp `1787016439.234509`; seven-minute exact-head monitor active |
-| Completed | 2026-08-18T01:31:19Z | Exact-head private self-review rerun completed clean with zero blockers, non-blockers, or inline findings |
+| Initial exact-head review completed | 2026-08-18T01:31:19Z | Private self-review rerun completed clean for `1278deb1e` with zero blockers, non-blockers, or inline findings |
+| Read-only email presentation follow-up | 2026-08-18T02:04:13Z | Commit `32cc0a40b` replaced the read-only email input with labeled account information; owner declined another private self-review for this minor UI-only follow-up |
+| Completed | 2026-08-18T02:04:13Z | Draft PR updated at exact head `32cc0a40bb71fb31034c6b3b0480ef0216d2c2fa`; obsolete self-review heartbeat deleted |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 26 minutes 25 seconds across six active intervals | Prior evidence-backed intervals totaled 6 minutes 28 seconds; PR 1 implementation interval was 00:45:10Z–01:05:07Z |
-| Commits | 4 product commits plus 1 base merge | `734089c84`, `84559ed87`, `cde4f87c9`, `1278deb1e`; merged current `origin/main` after it advanced |
-| Change size | 15 files, 461 insertions, 86 deletions | `git diff --shortstat origin/main...HEAD` at final head `1278deb1eb8e486829a242c9cbd6a23ac783a101` |
-| Validation | Passed | 23 API service tests; 17 focused web tests; 1,650 full web tests across 191 suites; web lint; theme check; API and web builds |
-| Review | Clean | Local architecture self-review passed; private exact-head rerun at `1278deb1e` returned zero blockers, non-blockers, and inline findings |
+| Commits | 5 product commits plus 1 base merge | `734089c84`, `84559ed87`, `cde4f87c9`, `1278deb1e`, `32cc0a40b`; merged current `origin/main` after it advanced |
+| Change size | 15 files, 488 insertions, 93 deletions | `git diff --stat origin/main...HEAD` at final head `32cc0a40bb71fb31034c6b3b0480ef0216d2c2fa` |
+| Validation | Passed | 23 API service tests; 17 focused web tests; 1,650 full web tests across 191 suites; read-only-email follow-up suite, 10 tests; web lint, typecheck, theme check, API and web builds; in-app browser verification |
+| Review | Clean through `1278deb1e`; owner-waived rerun for final UI-only delta | Private exact-head rerun at `1278deb1e` returned zero findings; local architecture review and validation passed for `32cc0a40b` |
 | CI | Not required for private Draft review | Hosted current-head CI remains a later Ready/final-review gate |
 | Benchmarks | N/A | No performance work requested |
 
@@ -87,6 +89,8 @@ Exclusions and owner decisions:
 - Addressed the private self-review finding by changing Manage Carrier Account permission provenance from primary-role-specific wording to `Via assigned Carrier role` / `Not granted by assigned Carrier role`. The API intentionally continues to aggregate primary and legacy additive Carrier roles, so the UI now describes the authoritative union without implying which role contributed the grant.
 - Blast-radius inventory covered both Carrier permission presentation paths, source filters, the API `ROLE_TEMPLATE` contract, existing additive-role aggregation, and no-role presentation. `PermissionsPeopleAccessView` already used the approved neutral wording; no materially similar primary-role-specific provenance label remains under web or API source.
 - Rerun checkpoint: the sole finding is resolved; shared root cause was presentation copy narrower than the response contract; no endpoint, authorization, cache, persistence, or assignment behavior changed; focused validation passed; full PR diff architecture review found no new mixed ownership, async-target, authorization, state synchronization, test-placement, or performance issue. PR body validation evidence was updated.
+- Replaced the non-editable Team Member email text field in Edit Team Member with a semantic label/value presentation and explicit copy that email cannot be changed there. No API, persistence, authorization, or identity behavior changed.
+- Added focused regression coverage proving the edit dialog exposes the email as information rather than a textbox, updated the PR description and feature documentation, and pushed commit `32cc0a40b`.
 
 ## Validation, review, and CI
 
@@ -102,11 +106,13 @@ Exclusions and owner decisions:
 - Passed local browser UAT at exact head `cde4f87c916e70db79a21465bcba9c8ee3977ad5`: roster invite actions visible for unaccepted members; primary role visible in the breadcrumb; no-op edit save remained on `/nriver/team-members/member/a6000000-0000-4000-8000-000000000006/profile`; Permissions exposed no additive-role control; duplicate `miketest@seasharp.co` returned `A Team Member with this email already has Carrier workspace access` without closing the dialog.
 - Passed at `1278deb1e`: `CarrierMemberPermissionsTab` focused suite, 3 tests; changed-file ESLint, zero warnings; full PR `git diff --check`; role-provenance inventory found no remaining `Via primary Carrier role` or `Not granted by primary role` source copy.
 - Passed: private self-review rerun requested at `1787016439.234509` completed at `1787016679.028009` for exact head `1278deb1eb8e486829a242c9cbd6a23ac783a101` with zero blockers, non-blockers, or inline findings.
+- Passed at `32cc0a40b`: Team Members focused suite, 10 tests; changed-file ESLint; web typecheck; theme-literal check; production build; `git diff --check`; Codex in-app browser verification confirmed zero Email textboxes and visible label, value, and non-editable explanation.
+- Owner decision: do not request another private self-review for the final minor UI-only delta. No Slack rerun was posted, and the obsolete heartbeat automation was deleted.
 - Deferred lifecycle gate: hosted current-head CI is required before final review after the Draft production-feedback phase, not for private self-review.
 
 ## Outcome, risk, and follow-up
 
-Completed. PR 1 is published as Draft PR #1194 at `1278deb1eb8e486829a242c9cbd6a23ac783a101`; the initial private self-review finding was corrected and the exact-head rerun completed clean. The self-review heartbeat is paused. The PR remains Draft for the separate production-feedback and final-review lifecycle; no Ready transition, reviewer request, merge, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside this pull request.
+Completed. PR 1 is published as Draft PR #1194 at `32cc0a40bb71fb31034c6b3b0480ef0216d2c2fa`. The initial private self-review finding was corrected and head `1278deb1e` completed clean; the final delta only clarifies the read-only email presentation, and the owner explicitly declined another private self-review. The self-review heartbeat was deleted. The PR remains Draft for the separate production-feedback and final-review lifecycle; no Ready transition, reviewer request, merge, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside this pull request.
 
 ## Evidence provenance
 
