@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress
+- Status: completed
 - Repository: `helixosio/helixos` (read-only investigation); record stored in `bsstrong/strong-tech-consulting`
 - Task started: 2026-08-18T00:47:46Z
 - Task/thread ID: `01a01255-eb88-7ff1-bf61-c6e84f65dedd`
@@ -32,14 +32,15 @@ Exclusions and owner decisions:
 | Review | N/A | N/A |
 | CI | N/A | N/A |
 | Completed | 2026-08-18T00:54:42Z | 6 minutes 56 seconds from recorded start |
-| Resumed for Pro-plan impact analysis | 2026-08-18T01:02:00Z | Owner asked how raw-token and tracking overhead affected the $200/month Pro account allowance |
+| Resumed for Pro-plan impact analysis | 2026-08-18T00:58:14Z | Owner asked how raw-token and tracking overhead affected the $200/month Pro account allowance |
+| Pro-plan impact analysis completed | 2026-08-18T01:01:29Z | 3 minutes 15 seconds for the resumed analysis; 10 minutes 11 seconds across both active intervals |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 6 minutes 56 seconds | 2026-08-18T00:47:46Z through 2026-08-18T00:54:42Z |
-| Commits | 0 HelixOS commits; 2 consulting tracking commits including finalization | Git history |
+| Commits | 0 HelixOS commits; 4 consulting tracking commits including both start/resume and finalization writes | Git history |
 | Change size | N/A for HelixOS | Read-only investigation |
 | Validation | 27 task records, 260 record-path commits, and local session telemetry inspected | Git history, record search, and local JSONL telemetry |
 | Review | N/A | N/A |
@@ -53,12 +54,18 @@ Exclusions and owner decisions:
 - For that one measured task, PR #1150, the telemetry calculation itself ran from 2026-08-14T23:48:12Z through the snapshot at 23:48:55Z: about 43 seconds and 522,318 raw tokens, of which about 34,126 were uncached input plus output. Including the record update and user response through 23:50:00Z, the phase took about 1 minute 48 seconds and 945,761 raw tokens, of which 46,433 were uncached input plus output.
 - A broader heuristic scan of the three dominant post-policy Codex sessions found 263 direct tracking-related tool turns grouped into 66 activity clusters. The measured first-call-to-last-output spans totalled 59.5 minutes; allowing a conservative 10 seconds of model startup/reasoning per cluster produces about 70.5 minutes. Those turns consumed 32,102,897 raw tokens, including 1,294,321 uncached input plus output.
 - Raw token accounting repeatedly counts cached context. Uncached input plus output is the more meaningful incremental-compute proxy, although it is not identical to billing or cost.
+- Current official Codex pricing converts uncached input, cached input, and output into credits at model-specific rates. For GPT-5.6 Sol, the current rates are 125, 12.5, and 750 credits per million tokens respectively.
+- The three dominant sessions' full activity while the account meter moved from 52% to 67% used 6,204,241 uncached input tokens, 287,375,360 cached input tokens, and 728,551 output tokens: about 4,914 Sol credits. Direct tracking-related turns within the sampled sessions accounted for about 605 Sol credits, or roughly 12.3% of that measured consumption.
+- At the observed meter conversion, the tracking turns plausibly explain about 1.8 percentage points of the 15-point weekly-usage increase. This is an inference because other account activity and dynamic limit behavior are not independently attributable from local telemetry.
+- The one explicit calculate-record-report statistics phase cost about 19.84 Sol credits, too little to move the weekly dashboard by one tenth of one percentage point under the observed conversion.
 
 ## Validation, review, and CI
 
 - Recounted records and tracking-path commits from consulting Git history.
 - Parsed local Codex `token_count` events and timestamped tool calls without modifying session data.
 - Reconstructed the PR #1150 telemetry-only phase directly from timestamped session events and verified arithmetic from cumulative-token deltas.
+- Refreshed the official Codex manual and pricing guidance, verified the Pro 20x five-hour and weekly-limit model, and converted measured token classes using the published GPT-5.6 Sol credit rate card.
+- Re-read current local rate-limit telemetry: 67% used in a 10,080-minute (seven-day) window, resetting at 2026-08-20T03:31:52Z / 2026-08-19T21:31:52-06:00.
 
 ## Outcome, risk, and follow-up
 
@@ -66,6 +73,8 @@ Exclusions and owner decisions:
 - The narrower token-stat calculation was performed for only one prior task. Its measured full calculate-record-report cost was about 1 minute 48 seconds, 946,000 raw tokens, and 46,000 uncached input plus output.
 - If that exact process were repeated for all 27 records, the projection would be about 49 minutes, 25.5 million raw tokens, and 1.25 million uncached input plus output; this is a projection, not actual historical usage.
 - Residual uncertainty: session history does not provide a native cost category for task tracking, so attribution depends on path and command markers and excludes unmarked reasoning surrounding some record edits.
+- Pro-plan impact: the $200 subscription is a fixed included-usage plan, not raw-token billing. The current 67% meter represents the shared weekly allowance; additional dollar charges occur only if the owner separately purchases credits after included limits are reached.
+- Primary cause of the fast increase was the complete long-running Sol workload: 2,181 sampled model/tool turns repeatedly processed a large context, including 287 million cached input tokens. The tracking workflow contributed materially but was not the dominant source; the token-stat calculation itself was negligible.
 
 ## Evidence provenance
 
