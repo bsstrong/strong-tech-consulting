@@ -110,26 +110,28 @@ In `EmployeesTab`, five tenant-scoped queries omit tenant identity from their ke
 
 In `PayrollBatchesTab`, batches, eligibility runs, categorized results, and roster keys omit tenant identity. The recent-run and watched-run queries can run before tenant resolution. The admin timeline is intentionally tenant-free because it uses the separately authorized PlatformAdmin endpoint.
 
+`EligibilityRunsDialog`, shared by both target tabs, repeats the incomplete `payroll-batches` and `eligibility-runs` keys. Its delete mutation also uses the initial `payrollBatchKey` after the in-dialog batch selector can change. The remediation must cover this shared child and every equivalent consumer or invalidator of those key families, not only the two tabs.
+
 Several mutations derive transport or invalidation targets from closed-over selection state. The clearest defect is `deleteEmployeeMutation.onSuccess`, which reads `employeePendingDelete` instead of its mutation variable.
 
 ### Work item 0.1: make tenant identity authoritative in cache keys
 
-- **Affected code:** `EmployeesTab.tsx`, `PayrollBatchesTab.tsx`, `useClientEligibilityRealtime.ts`, their tests, and any shared query-key module introduced by the implementation.
-- **Changes:** inventory every query URL, key, enabled predicate, invalidation, and realtime invalidation; include resolved tenant identity in every tenant-scoped key; require `hasTenantCode` before any tenant-scoped request; canonicalize eligibility run-list/detail key families so kickoff and realtime invalidations wake the same queries.
+- **Affected code:** `EmployeesTab.tsx`, `PayrollBatchesTab.tsx`, shared `EligibilityRunsDialog.tsx`, `useClientEligibilityRealtime.ts`, every other web consumer or invalidator of the `payroll-batches` and `eligibility-runs` key families (currently `EmployeeDetailPage.tsx`, `EmployeeEligibilityTab.tsx`, `EligibilityRunHistoryTab.tsx`, `ClientAuditTab.tsx`, and `CensusBuilderTab.tsx`), their focused tests, and any shared query-key module introduced by the implementation.
+- **Changes:** inventory every query URL, key, enabled predicate, invalidation, and realtime invalidation across the complete affected key families; include resolved tenant identity in every tenant-scoped key; require tenant resolution before every tenant-scoped request; canonicalize payroll-batch and eligibility run-list/detail key families so kickoff, delete, component, and realtime invalidations target the same tenant-complete keys. Explicitly classify independently authorized or non-tenant-scoped cases.
 - **Preserved invariants:** the PlatformAdmin timeline remains tenant-free and separately authorized; no client-side change weakens server enforcement.
-- **Tests:** mount two client windows under one shared `QueryClient` with different tenants; prove batches, employees/roster, eligibility, and feed runs never cross caches; install negative bare-`/api` handlers and prove no request occurs before tenant resolution.
+- **Tests:** mount two client windows under one shared `QueryClient` with different tenants, including the shared dialog and equivalent consumers; prove batches, employees/roster, eligibility, and feed runs never cross caches; install negative bare-`/api` handlers and prove no request occurs before tenant resolution.
 - **Acceptance:** no tenant-scoped URL has a tenant-free key or an enabled path without tenant context.
 
 ### Work item 0.2: capture every mutation target
 
-- **Affected code:** employee update/tag/skip/availability/delete/restore mutations; payroll pull/retry/force-retry/approve/delete mutations; focused tests.
+- **Affected code:** employee update/tag/skip/availability/delete/restore mutations; payroll pull/retry/force-retry/approve/delete mutations; the `EligibilityRunsDialog` delete mutation; focused tests.
 - **Changes:** define immutable mutation variables containing the exact tenant, company, batch/run/employee, and payload snapshot; use variables for request construction, completion handling, and invalidations; remove closed-over current-selection targeting.
-- **Tests:** switch employee, batch, company, and tenant selections while deferred mutations are pending; resolve requests out of order; prove each response updates only its captured target.
+- **Tests:** switch employee, batch, company, and tenant selections while deferred mutations are pending; in `EligibilityRunsDialog`, select another batch before delete and switch again before the deferred DELETE resolves; resolve out of order; prove each request, response, and invalidation uses only its captured tenant/company/batch/run/employee target.
 - **Acceptance:** no mutation request or cache write depends on whichever entity is selected when the request finishes.
 
 ### Security validation
 
-The PR description must include a query-key/URL/enabled/invalidation matrix for both components. It must explicitly identify PII-bearing roster/employee caches and show two-tenant negative-space tests. This remediation is a correctness/security change, not a performance change.
+The PR description must include a query-key/URL/enabled/invalidation matrix for both components, `EligibilityRunsDialog`, realtime invalidations, and every equivalent `payroll-batches`/`eligibility-runs` consumer or invalidator. It must explicitly identify PII-bearing roster/employee caches, classify intentional exclusions, and show two-tenant negative-space plus selector-switch/deferred-delete tests. This remediation is a correctness/security change, not a performance change.
 
 ## Review unit 1: Employees maintenance refactor
 
