@@ -47,6 +47,7 @@ Exclusions and owner decisions:
 | Local UAT stack started | 2026-08-18T01:20:50Z | Fresh PR database migrated and seeded; web and API healthy; exact-head UI walkthrough completed in the signed-in browser |
 | Self-review finding corrected | 2026-08-18T01:24:27Z | Commit `1278deb1e` pushed with role-neutral permission provenance and regression coverage |
 | Exact-head rerun checkpoint | 2026-08-18T01:25:52Z | Head `1278deb1eb8e486829a242c9cbd6a23ac783a101`; fetched base and merge base `0be661696e6ff3376cb0fb1746a53ae3c89d52a0`; no base drift |
+| Private self-review rerun requested | 2026-08-18T01:27:19Z | Posted exactly `rerun` as authenticated user in the existing thread; request timestamp `1787016439.234509`; seven-minute exact-head monitor active |
 | Completed | Pending | Pending |
 
 ## Task statistics
@@ -101,7 +102,7 @@ Exclusions and owner decisions:
 - Passed local browser UAT at exact head `cde4f87c916e70db79a21465bcba9c8ee3977ad5`: roster invite actions visible for unaccepted members; primary role visible in the breadcrumb; no-op edit save remained on `/nriver/team-members/member/a6000000-0000-4000-8000-000000000006/profile`; Permissions exposed no additive-role control; duplicate `miketest@seasharp.co` returned `A Team Member with this email already has Carrier workspace access` without closing the dialog.
 - Passed at `1278deb1e`: `CarrierMemberPermissionsTab` focused suite, 3 tests; changed-file ESLint, zero warnings; full PR `git diff --check`; role-provenance inventory found no remaining `Via primary Carrier role` or `Not granted by primary role` source copy.
 - Pending: hosted current-head CI after Draft PR creation.
-- Pending: exact-head private self-review. Heartbeat `manage-carrier-pr1-self-review` schedules the first check after seven minutes and one-minute pending checks without duplicate requests.
+- Pending: exact-head private self-review rerun for `1278deb1eb8e486829a242c9cbd6a23ac783a101`. Heartbeat `manage-carrier-pr1-self-review` schedules the first check seven minutes after request `1787016439.234509` and one-minute pending checks without duplicate requests.
 
 ## Outcome, risk, and follow-up
 
