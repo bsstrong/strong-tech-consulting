@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: completed
+- Status: in progress
 - Repository: `https://github.com/helixosio/helixos.git`
 - Task started: 2026-08-17T23:33:32Z
 - Task/thread ID: Unavailable from the current Codex runtime
@@ -52,7 +52,8 @@ Exclusions and owner decisions:
 | Read-only email presentation follow-up | 2026-08-18T02:04:13Z | Commit `32cc0a40b` replaced the read-only email input with labeled account information; owner declined another private self-review for this minor UI-only follow-up |
 | Email presentation follow-up completed | 2026-08-18T02:04:13Z | Draft PR updated at exact head `32cc0a40bb71fb31034c6b3b0480ef0216d2c2fa`; obsolete self-review heartbeat deleted |
 | Dropdown keyboard and local form UAT follow-up | 2026-08-18T02:14:01Z | Commit `d621d98b4` added visible menu focus and keyboard-selection coverage; local invitation sender configuration corrected and the previously failing Add Team Member submission returned `201` |
-| Completed | 2026-08-18T02:14:01Z | Draft PR updated at exact head `d621d98b450ed453ebb4e9ed90729c6bbc4f8524` |
+| PR 1 completed | 2026-08-18T02:14:01Z | Draft PR updated at exact head `d621d98b450ed453ebb4e9ed90729c6bbc4f8524` |
+| PR 2 implementation started | 2026-08-18T02:33:08Z | Owner authorized the permission-scope simplification slice and approved parallel work on independent later slices |
 
 ## Task statistics
 
@@ -80,6 +81,7 @@ Exclusions and owner decisions:
 - Inspected current `origin/main` planning conventions, the existing Manage Account/assigned-client plans and UAT, and the primary current web/API hotspots. The work builds on a 977-line Phase 2 plan and crosses UI components, a 348-line assignment service, a 420-line tenant controller, and a 1,223-line permission-override service; a source-grounded plan is warranted before implementation.
 - Recommended a hybrid handoff: create the implementation-ready plan with frontier-capability reasoning, let Terra implement one ordered pull request at a time, and perform frontier review/gating between slices. Do not hand Terra the raw transcript or all four slices as one undifferentiated task.
 - Owner instead selected direct implementation to reduce review cycles. PR 1 is explicitly limited to team-member invitations, deep-linked member navigation, role visibility and post-save continuity, and removal of stacked-role behavior; later permission, Client Access, and producer-code slices remain out of scope.
+- After PR 1, the owner authorized PR 2 implementation and parallel development of independent later slices. PR 2 remains the primary stream; parallel work must use isolated worktrees and avoid overlapping ownership or stacked-branch ambiguity.
 - Implemented authoritative `409 Conflict` rejection for duplicate Team Member email grants while preserving legitimate reuse of an email-backed resource that does not already have Carrier workspace access.
 - Added capability-gated resend-invite recovery for unaccepted invitations and reconciled the exact returned member into the tenant-scoped React Query cache.
 - Added primary-role context to the detail breadcrumb and preserved the selected deep-linked profile after an edit; revocation continues to return to the roster.
@@ -119,7 +121,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-Completed. PR 1 is published as Draft PR #1194 at `d621d98b450ed453ebb4e9ed90729c6bbc4f8524`. The initial private self-review finding was corrected and head `1278deb1e` completed clean; the final UI-only deltas clarify read-only email presentation and make dropdown keyboard focus visible, and the owner explicitly declined another private self-review. The self-review heartbeat was deleted. Local Add Team Member submission is working after restoring the documented invitation sender configuration. The PR remains Draft for the separate production-feedback and final-review lifecycle; no Ready transition, reviewer request, merge, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside this pull request.
+In progress. PR 1 is published as Draft PR #1194 at `d621d98b450ed453ebb4e9ed90729c6bbc4f8524`. The owner has started PR 2 for permission-scope simplification and approved parallel development of independent later slices. PR 1 remains Draft; no Ready transition, reviewer request, merge, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business.
 
 ## Evidence provenance
 
