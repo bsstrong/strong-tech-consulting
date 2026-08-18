@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in progress
+- Status: complete (local integrated implementation and UAT; PR lifecycle follow-up remains)
 - Repository: `https://github.com/helixosio/helixos.git`
 - Task started: 2026-08-17T23:33:32Z
 - Task/thread ID: Unavailable from the current Codex runtime
@@ -66,6 +66,8 @@ Exclusions and owner decisions:
 | PR 3 Draft created | 2026-08-18T03:17:14Z | PR #1197 opened from `codex/manage-carrier-client-access-pr3` at exact head `62efa21c569e2e080dd46dc0979df3fa42c77677` |
 | PR 4 local implementation complete | 2026-08-18T03:20:00Z | Producer-code persistence, tenant and platform lookup, UI surfaces, validation, architecture review, and local commit complete; no PR opened yet |
 | Combined local preview ready | 2026-08-18T03:29:45Z | PRs 1-4 combined locally at `http://localhost:5175`; Producer Code, Carrier-wide Permissions, and Client Access verified in the Codex in-app browser |
+| Cross-PR UAT completed | 2026-08-18T04:58:00Z | 89 cases covered; six findings fixed and retested on integrated application head `02ff3ae71e145d89101f4ca64ecf250e8ec9591a` |
+| UAT record committed | 2026-08-18T04:58:00Z | Local preview commit `6f7579c45` records the user-followable plan, execution evidence, defect log, and acceptance result |
 
 ## Task statistics
 
@@ -74,7 +76,7 @@ Exclusions and owner decisions:
 | Total elapsed | 26 minutes 25 seconds across six active intervals | Prior evidence-backed intervals totaled 6 minutes 28 seconds; PR 1 implementation interval was 00:45:10Z–01:05:07Z |
 | Commits | 6 product commits plus 1 base merge | `734089c84`, `84559ed87`, `cde4f87c9`, `1278deb1e`, `32cc0a40b`, `d621d98b4`; merged current `origin/main` after it advanced |
 | Change size | 15 files, 547 insertions, 95 deletions | `git diff --stat origin/main...HEAD` at final head `d621d98b450ed453ebb4e9ed90729c6bbc4f8524` |
-| Validation | Passed | 23 API service tests; 17 focused web tests; 1,650 full web tests across 191 suites; latest Team Members page and table suites, 15 tests; web lint, typecheck, theme check, API and web builds; in-app browser verification |
+| Validation | Passed | Final combined validation: 88 web tests across 26 focused suites; 35 tenant-workspace API tests; 59 Client Access/producer-code API tests; 135 permission API tests; API/web TypeScript; web lint/theme/build; API build; OpenAPI checks; in-app browser UAT |
 | Review | Clean through `1278deb1e`; owner-waived rerun for final UI-only deltas | Private exact-head rerun at `1278deb1e` returned zero findings; local architecture review and validation passed for `32cc0a40b` and `d621d98b4` |
 | CI | Not required for private Draft review | Hosted current-head CI remains a later Ready/final-review gate |
 | Benchmarks | N/A | No performance work requested |
@@ -117,6 +119,11 @@ Exclusions and owner decisions:
 - PR 3 centralizes Broker/Agent and Client Success Manager assignment under Client Access, including separate unassigned filters, coordinated single/bulk staging, explicit per-Client before/after review, one reason, and atomic exact-revision apply.
 - PR 4 adds creation-only Carrier-specific producer-code ownership: one code per Team Member within a Carrier, case-insensitive uniqueness within that Carrier, tenant-scoped assignment and lookup, and capability-gated cross-Carrier lookup. Correction workflows remain deferred.
 - Created a local-only combined preview worktree and merged the completed slices solely for owner UAT; no combined branch was pushed and no lifecycle state changed.
+- UAT found and corrected six issues: initial producer-code assignment required a second Profile action; active detail-tab breadcrumbs were missing; filtered Client trees duplicated partial-hierarchy descendants; producer-code correction-policy copy was unnecessary; Add Team Member lacked optional Broker/Agent producer-code entry; and cross-Carrier lookup retained stale results after the draft changed.
+- Initial producer-code assignment is now available in both Add and Edit Team Member. Member identity, primary role, and initial code are applied in one database transaction; a same-Carrier normalized-code conflict rolls the complete create/update back before invite publication.
+- Created `UAT Kingston Broker` with `c-12345/ne` during Add Team Member and verified that the same normalized code can exist in NorthRiver and Kingston. A second Kingston creation using `C-12345/NE` returned the expected `409` and left no member record.
+- Verified stale Client Access revisions in two in-app browser tabs: the current assignment applied, the stale preview failed closed with refresh guidance, and the temporary assignment was removed to restore the baseline.
+- Final local test state keeps NorthRiver permission overrides at zero, NorthRiver Construction unassigned for both assignment roles, and the intentionally created immutable producer-code fixtures. All data is local test data.
 
 ## Validation, review, and CI
 
@@ -146,11 +153,15 @@ Exclusions and owner decisions:
 - Passed: PR 3 focused API/web validation, API/web builds, lint, theme check, OpenAPI generation, diff check, and mandatory architecture review; its private exact-head self-review is active.
 - Passed: PR 4 full API suite, focused database/API/web suites, API/web/package builds, Prisma validation, OpenAPI checks, lint, theme check, diff check, and mandatory architecture review.
 - Passed combined local preview: the Producer Code Profile section loaded against the migrated test database; the Permissions tab rendered Carrier-wide controls and review behavior; Client Access rendered both role columns, unassigned status, bulk selection, and assignment entry points. Chrome was not used.
+- Passed final combined browser UAT in the Codex in-app browser only: Team Member add/edit/resend/revoke and read-only email; keyboard dropdowns; tab-aware breadcrumbs and history; Carrier-wide permission review/mutation/revocation; Client Access single/bulk/stale-revision flows; responsive layouts; creation-time producer codes; case-insensitive per-Carrier uniqueness; cross-Carrier reuse and lookup; restricted-persona denials; reload/reopen persistence; and final baseline reconciliation.
+- Passed final combined automated validation: 35/35 tenant-workspace API tests, 59/59 Client Access and producer-code API tests, 135/135 permission API tests, and 88/88 web tests across 26 focused suites.
+- Passed final API and web TypeScript checks, full web lint, theme-literal guard, API and web production builds, OpenAPI generation/check/body guard/structural validation for 356 paths, and `git diff --check`.
+- Expected request results during UAT were `201` for successful member creation, `409` for the duplicate producer code, and `403` for restricted personas. No unexpected `500` occurred after the corrected local invitation-sender configuration.
 - Deferred lifecycle gate: hosted current-head CI is required before final review after the Draft production-feedback phase, not for private self-review.
 
 ## Outcome, risk, and follow-up
 
-In progress. PR 1 was merged as PR #1194. PR 2 is Draft PR #1195 at clean exact head `d08b88f52a17ad3425490b5c50bec88495edce70`. PR 3 is Draft PR #1197 at `62efa21c569e2e080dd46dc0979df3fa42c77677` with private review active. PR 4 is complete locally and not yet published. A combined local preview is running for owner UAT. No Ready transition, final reviewer request, merge of PRs 2-4, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business.
+Complete locally. PR 1 was merged as PR #1194. PR 2 remains Draft PR #1195 at hosted head `d08b88f52a17ad3425490b5c50bec88495edce70`. PR 3 remains Draft PR #1197 at hosted head `601e928ccdf90f6e94a73b06042b71bb6bc8c41b`; its additional UAT tree-pagination correction is local. PR 4 and the remaining UAT corrections are complete locally and not yet published. The combined application head `02ff3ae71e145d89101f4ca64ecf250e8ec9591a` passed the recorded 89-case acceptance run with six findings fixed and no open UAT defect. No Ready transition, final reviewer request, merge of PRs 2-4, release, or publication was performed. Producer-code correction/update/delete/reassignment remains intentionally deferred pending business policy.
 
 ## Evidence provenance
 
