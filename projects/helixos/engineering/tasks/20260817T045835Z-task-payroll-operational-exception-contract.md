@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: blocked (fresh review-churn circuit breaker; owner approval required before another rerun)
+- Status: in-progress (owner approved another fresh private self-review invocation)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -53,6 +53,7 @@ Exclusions and owner decisions:
 | Fresh cycle-2 review completed | 2026-08-17T23:46:40Z | Exact head `e56a6f50d`; 1 blocker, 0 non-blockers; second fresh round on the conditional lifecycle boundary activated the churn circuit breaker and paused monitoring |
 | Fresh cycle-2 correction validated and pushed | 2026-08-17T23:55:45Z | Head `0c3c9c615`; locked no-op classification now precedes authorization while active mutations remain authorized |
 | Fresh circuit-breaker checkpoint complete | 2026-08-17T23:55:45Z | Full affected-category audit and validation complete; another rerun requires explicit owner approval |
+| Owner approved second fresh private loop | 2026-08-18T00:42:42Z | Circuit breaker cleared by explicit owner instruction; the invocation-only churn ledger and rerun count reset to 0 of 3 |
 
 ## Task statistics
 
@@ -100,6 +101,7 @@ Exclusions and owner decisions:
 - This is the second fresh review round on the same conditional lifecycle root pattern. The churn circuit breaker is active, the heartbeat is paused, and another automated rerun will not be posted without explicit owner approval after correction, complete affected-category inventory, full validation, and full-diff architecture review.
 - Corrected the ordering in `0c3c9c615`: the DB owner now locks and classifies missing or `RESOLVED` state before actor/assignee validation, then preserves strict authorization for active mutations. Added exhaustive focused cases for missing plus inactive actor, resolved plus inactive historical actor, and active plus invalid actor.
 - Complete caller inventory remains one BBA claim adapter. Complete state/authorization inventory now covers missing, resolved, active authorized, active unauthorized, active invalid assignee, open retry, repeated in-progress delivery, successful resolution, later failure reopening, and the processor/recovery/expiry writers. No other source family uses the conditional helper.
+- At 2026-08-18T00:42:42Z the owner explicitly authorized another fresh private self-review invocation. Per the current skill contract, churn is counted only within this invocation; prior-invocation review rounds remain historical evidence and the new rerun ledger starts at zero.
 
 ## Validation, review, and CI
 
@@ -179,9 +181,22 @@ Exclusions and owner decisions:
 - Validation: focused DB 16/16; focused BBA 12/12; full DB 260 passed with 3 existing skips; full workflow 947/947 in 21.833s; DB and workflow builds green; Prisma generation and `git diff --check` green.
 - Full-diff architecture review confirms DB ownership of locking/classification/authorization, adapter ownership of BBA occurrence mapping, unchanged source workflow behavior, no duplicate conditional policy, and no materially similar unreviewed instance in the affected category. No report schema/API/UI, controller, DTO, OpenAPI contract, permission, scheduler, report generation, or historical reconstruction was introduced.
 
+### Second fresh-invocation rerun evidence checkpoint
+
+- Owner gate: explicit approval received to clear the circuit breaker and restart both the invocation-only churn ledger and rerun count at 0 of 3.
+- Exact head: `0c3c9c615e895be21630e906827d891d0ed76ab8`; local, remote branch, and Draft PR head match, and the HelixOS worktree is clean.
+- Fetched base: `e8e9a5d8982969bc04d54f8a138c25845958950f`; merge base remains `4e776a5d573b6d86b9e98d8dec4f66ab946d8355`. Base-only changes remain the non-overlapping CI timing document and Client Portal access web test; review premise unchanged.
+- First review findings remain fixed: authoritative payroll-feed intake transitions use the focused transactional adapter; export and BBA retry identities are logical occurrences; eligibility source replacement reconciles prior and replacement aggregates.
+- Second review findings remain fixed: BBA selected-group/run identity isolates independent selections; claim moves active retries to `IN_PROGRESS`; linked payroll-feed, eligibility replacement, and distinct export-attempt lifecycle tests exercise the actual transitions.
+- First prior fresh-review finding remains fixed: resolved historical BBA matches are locked lifecycle no-ops and do not roll back a matching queue claim.
+- Second prior fresh-review finding remains fixed: lock/load and missing/resolved no-op classification precede actor/assignee validation; active mutations remain strictly authorized. Coverage includes missing/inactive actor, resolved/inactive historical actor, and active/invalid actor.
+- Shared root cause and blast radius: logical occurrence identity, authoritative transition ownership, and ordered conditional lifecycle mutation must be owned at stable source and DB boundaries rather than request or attempt paths. Inventory covers all eight source families plus every BBA enqueue, claim, processor, recovery, and expiry writer and all missing/resolved/active authorization states.
+- Validation: shared 217/217; DB 260 passed with 3 existing skips; API 3,057/3,057; workflow 947/947; focused DB 16/16; focused BBA 12/12; all affected builds green; Prisma generation and `git diff --check` green.
+- Complete-diff architecture review found no materially similar unreviewed instance. No report schema/API/UI, controller, DTO, OpenAPI contract, permission, scheduler, report generation, or historical reconstruction was introduced.
+
 ## Outcome, risk, and follow-up
 
-All findings through fresh cycle 2 are corrected, validated, documented on the Draft PR, and pushed at exact head `0c3c9c615e895be21630e906827d891d0ed76ab8`. The churn circuit breaker is terminal for this invocation because two fresh review rounds found the same conditional lifecycle root pattern. Monitoring is disabled; another private rerun requires explicit owner approval. Draft PR #1190 remains Draft. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
+All findings through the prior invocation are corrected, validated, documented on the Draft PR, and pushed at exact head `0c3c9c615e895be21630e906827d891d0ed76ab8`. The owner approved a second fresh invocation with rerun count and invocation-only churn ledger reset to zero; the next action is one exact-head `rerun` in the existing private thread. Draft PR #1190 remains Draft. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain unauthorized.
 
 ## Evidence provenance
 
