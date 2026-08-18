@@ -68,17 +68,18 @@ Exclusions and owner decisions:
 | Production-review circuit breaker activated | 2026-08-18T02:38:09Z | Repeated feedback reached the owner-requested stop condition; CI follow-up automation was deleted and no further review request is permitted without explicit owner approval |
 | Circuit-breaker correction validated and pushed | 2026-08-18T02:55:14Z | Head `802543f1e`; shared API/workflow aggregate lifecycle classifier plus explicit payroll-feed system-actor naming and coverage |
 | Latest production threads answered and resolved | 2026-08-18T02:55:27Z | Both findings received commit-specific replies; all ten PR review threads are resolved; PR description records the root-cause audit and validation |
+| Current main synchronized into PR | 2026-08-18T02:57:00Z | Head `899cf8f16`; concurrent merge commit contains correction `802543f1e` plus only unrelated tenant-workspace/web changes from `e8a43909c` |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 19h 52m 53s | 2026-08-17T04:58:35Z through 2026-08-18T00:51:28Z; includes owner-decision and review waiting intervals |
-| Commits | 16 | PR metadata at exact head `802543f1e`, including production-review corrections `63e95479c`, `a61b523ec`, and `802543f1e` |
+| Commits | 17 | PR metadata at current head `899cf8f16`, including production-review corrections `63e95479c`, `a61b523ec`, and `802543f1e` plus the current-main merge |
 | Change size | 46 files, 5,131 insertions, 184 deletions | GitHub PR metadata at exact head `802543f1e` |
 | Validation | Shared 217/217; DB 260 passed with 3 existing skips; API 3,057/3,057; workflow 947/947 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
 | Review | 5 completed private rounds: 7 blockers, 3 non-blockers; every finding fixed; final exact-head review clean | Exact-head clean result `1787014071.205399` in `#self-reviews` parent `1786948233.619459` |
-| CI | Prior result invalidated by later commits | Run `32091258542` targeted stale head `63e95479c`; exact-head CI at `802543f1e` was not monitored because the production-review circuit breaker stops before another review request |
+| CI | Prior result invalidated by later commits | Run `32091258542` targeted stale head `63e95479c`; current-head CI at `899cf8f16` was not monitored because the production-review circuit breaker stops before another review request |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
 ## Work and decisions
@@ -234,7 +235,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-The Payroll Operational Exception prerequisite contract and all currently reported production-review corrections are implemented and locally validated at exact head `802543f1e8b542db926897279c5763f8a5ef3b1b`. The PR remains Ready and limited to the prerequisite contract: no report schema, report API, report UI, scheduler, generation path, or historical reconstruction was added. All inline feedback is answered and resolved. The production-review circuit breaker is active; no self-review, final re-review, CI monitoring automation, reviewer request, merge, release, or publish action will occur without the owner's explicit instruction to resume.
+The Payroll Operational Exception prerequisite contract and all currently reported production-review corrections are implemented and locally validated in commit `802543f1e8b542db926897279c5763f8a5ef3b1b`. The current PR head is `899cf8f16e3327bb0db8fe0e52eaf3fcaf19544d`, a merge of that correction and current `main`; the merged base changes are limited to unrelated tenant-workspace/web files. The PR remains Ready and limited to the prerequisite contract: no report schema, report API, report UI, scheduler, generation path, or historical reconstruction was added. All inline feedback is answered and resolved. The production-review circuit breaker is active; no self-review, final re-review, CI monitoring automation, reviewer request, merge, release, or publish action will occur without the owner's explicit instruction to resume.
 
 ## Evidence provenance
 
