@@ -173,6 +173,7 @@ Exclusions and owner decisions:
 - Hosted CI run `32094261543` failed at exact head `95218521c` in the `backend-and-infra` integration smoke suite. The census failure transaction reached the new occurrence advisory lock, but Prisma rejected PostgreSQL's `void` result with `P2010`; the rollback left the census run `PROCESSING` until the smoke timeout.
 - CI correction `12e5556c1` preserves the transaction-scoped advisory lock while projecting its result as `text`, a Prisma-supported scalar. The existing mutation regression now pins that adapter contract.
 - CI correction validation: reproduced the failing transition against isolated PostgreSQL 16, then verified `PROCESSING` to `FAILED` plus one normalized census exception after the fix; DB build passed; DB full suite passed 262 with 3 existing skips; focused census suite passed 57; `git diff --check` and architecture review passed.
+- Exact-head HelixOS CI run `32095643056` started for `12e5556c1` at 2026-08-18T03:29:10Z. Following owner policy, one follow-up is scheduled after the 32-minute latest-50 completed-run maximum-plus-buffer window; no polling or review workflow was started.
 
 ### Private rerun evidence checkpoint
 
