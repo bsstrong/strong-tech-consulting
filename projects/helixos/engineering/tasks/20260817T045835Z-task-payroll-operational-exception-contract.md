@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress (resumed to add owner-requested data-model rationale to Draft PR)
+- Status: completed (Draft PR data-model rationale updated; clean reviewed head unchanged)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -58,6 +58,8 @@ Exclusions and owner decisions:
 | Second fresh invocation review completed cleanly | 2026-08-18T00:47:51Z | Exact head `0c3c9c615`; 0 blockers, 0 non-blockers, 0 inline findings; result `1787014071.205399` |
 | Task completed | 2026-08-18T00:51:28Z | Private loop stopped and heartbeat paused; PR #1190 remains Draft with no public/final review actions taken |
 | Task resumed for PR documentation | 2026-08-18T01:10:45Z | Owner requested additional insight in the Draft PR about what the model stores and why |
+| Draft PR model rationale updated | 2026-08-18T01:11:58Z | Added current-state/event-history storage details and design rationale; refreshed clean-review and base-freshness evidence without changing code, head, or Draft state |
+| Resumed documentation interval completed | 2026-08-18T01:12:14Z | 1m 29s from resume; canonical PR verification passed |
 
 ## Task statistics
 
@@ -107,6 +109,7 @@ Exclusions and owner decisions:
 - Complete caller inventory remains one BBA claim adapter. Complete state/authorization inventory now covers missing, resolved, active authorized, active unauthorized, active invalid assignee, open retry, repeated in-progress delivery, successful resolution, later failure reopening, and the processor/recovery/expiry writers. No other source family uses the conditional helper.
 - At 2026-08-18T00:42:42Z the owner explicitly authorized another fresh private self-review invocation. Per the current skill contract, churn is counted only within this invocation; prior-invocation review rounds remain historical evidence and the new rerun ledger starts at zero.
 - At 2026-08-18T01:10:45Z the owner requested a focused PR-description update explaining the current-state and append-only event data model, its stored fields, and its reporting rationale. This is documentation-only and does not alter the clean reviewed head or Draft lifecycle state.
+- Updated Draft PR #1190 with a dedicated `Data model and rationale` section describing the logical-occurrence identity, stored current-state fields, append-only event snapshots, source-of-truth boundary, transactional consistency, data-minimization boundary, and future reporting purpose. Also replaced the stale circuit-breaker wording with the clean exact-head private-review result and refreshed the non-overlapping base evidence.
 
 ## Validation, review, and CI
 
@@ -207,7 +210,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-The Payroll Operational Exception prerequisite contract is implemented, validated, and cleanly approved by private self-review at exact head `0c3c9c615e895be21630e906827d891d0ed76ab8`. All 7 blockers and 3 non-blockers raised across prior rounds were corrected. The task resumed only to improve the Draft PR's data-model rationale; no code or lifecycle transition is planned. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain outside this private gate.
+The Payroll Operational Exception prerequisite contract is implemented, validated, and cleanly approved by private self-review at exact head `0c3c9c615e895be21630e906827d891d0ed76ab8`. All 7 blockers and 3 non-blockers raised across prior rounds were corrected. Draft PR #1190 now explains what each current/event model stores, why the split exists, how source truth and logical identity are preserved, and why later reporting should consume this projection. The PR remains Draft at the unchanged clean head; no reviewer, public-review, CI-final-gate, Ready, merge, release, or publish action was taken.
 
 ## Evidence provenance
 
