@@ -43,6 +43,7 @@ Exclusions and owner decisions:
 | PR 1 local implementation complete | 2026-08-18T01:05:07Z | 19 minutes 57 seconds; implementation, focused validation, full web validation, base synchronization, and architecture self-review complete |
 | Draft PR created | 2026-08-18T01:07:21Z | PR #1194 opened from `codex/manage-carrier-team-member-pr1` at exact head `cde4f87c916e70db79a21465bcba9c8ee3977ad5` |
 | Private self-review requested | 2026-08-18T01:09:02Z | URL-only `#self-reviews` parent `1787015342.293459`; bot acknowledged at `1787015344.393149` |
+| Local UAT stack started | 2026-08-18T01:20:50Z | Fresh PR database migrated and seeded; web and API healthy; exact-head UI walkthrough completed in the signed-in browser |
 | Completed | Pending | Pending |
 
 ## Task statistics
@@ -77,6 +78,8 @@ Exclusions and owner decisions:
 - Removed additive-role assignment from the Team Member Permissions UI while retaining initial primary-role assignment for legacy/no-role members and leaving the underlying endpoint intact for compatibility.
 - Extracted member mutation/cache ownership and invite-recovery presentation into focused modules so the existing page and table hotspots did not absorb transport or feedback concerns.
 - Published branch `codex/manage-carrier-team-member-pr1` and opened Draft PR #1194 with a responsibility map, explicit scope boundary, and complete local validation evidence.
+- Started the full local PR stack against a fresh `helix-manage-carrier-pr1` PostgreSQL project, with the web at `http://localhost:5173`, the API at `http://localhost:4000`, and the existing local Rule Engine at `http://localhost:3001`.
+- Completed signed-in browser UAT on NorthRiver Team Members: verified the capability-gated Actions/resend column, `Mike Eaton · Carrier Admin` detail breadcrumb, unchanged detail URL after saving an edit, absence of additive-role assignment on Permissions, and the inline duplicate-email conflict while the Add Team Member dialog remains open.
 
 ## Validation, review, and CI
 
@@ -89,6 +92,7 @@ Exclusions and owner decisions:
 - Passed: complete web unit suite, 1,650 tests across 191 suites.
 - Passed: web lint, web theme-literal check, web production build, and API production build.
 - Passed after synchronizing `origin/main`: the 17 focused Manage Carrier tests.
+- Passed local browser UAT at exact head `cde4f87c916e70db79a21465bcba9c8ee3977ad5`: roster invite actions visible for unaccepted members; primary role visible in the breadcrumb; no-op edit save remained on `/nriver/team-members/member/a6000000-0000-4000-8000-000000000006/profile`; Permissions exposed no additive-role control; duplicate `miketest@seasharp.co` returned `A Team Member with this email already has Carrier workspace access` without closing the dialog.
 - Pending: hosted current-head CI after Draft PR creation.
 - Pending: exact-head private self-review. Heartbeat `manage-carrier-pr1-self-review` schedules the first check after seven minutes and one-minute pending checks without duplicate requests.
 
