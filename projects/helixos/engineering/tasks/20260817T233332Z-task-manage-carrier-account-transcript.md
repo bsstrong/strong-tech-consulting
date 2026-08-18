@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress
+- Status: completed
 - Repository: `https://github.com/helixosio/helixos.git`
 - Task started: 2026-08-17T23:33:32Z
 - Task/thread ID: Unavailable from the current Codex runtime
@@ -48,7 +48,7 @@ Exclusions and owner decisions:
 | Self-review finding corrected | 2026-08-18T01:24:27Z | Commit `1278deb1e` pushed with role-neutral permission provenance and regression coverage |
 | Exact-head rerun checkpoint | 2026-08-18T01:25:52Z | Head `1278deb1eb8e486829a242c9cbd6a23ac783a101`; fetched base and merge base `0be661696e6ff3376cb0fb1746a53ae3c89d52a0`; no base drift |
 | Private self-review rerun requested | 2026-08-18T01:27:19Z | Posted exactly `rerun` as authenticated user in the existing thread; request timestamp `1787016439.234509`; seven-minute exact-head monitor active |
-| Completed | Pending | Pending |
+| Completed | 2026-08-18T01:31:19Z | Exact-head private self-review rerun completed clean with zero blockers, non-blockers, or inline findings |
 
 ## Task statistics
 
@@ -56,10 +56,10 @@ Exclusions and owner decisions:
 | --- | --- | --- |
 | Total elapsed | 26 minutes 25 seconds across six active intervals | Prior evidence-backed intervals totaled 6 minutes 28 seconds; PR 1 implementation interval was 00:45:10Z–01:05:07Z |
 | Commits | 4 product commits plus 1 base merge | `734089c84`, `84559ed87`, `cde4f87c9`, `1278deb1e`; merged current `origin/main` after it advanced |
-| Change size | 15 files, 447 insertions, 87 deletions | `git diff --shortstat origin/main...HEAD` at `cde4f87c916e70db79a21465bcba9c8ee3977ad5` |
+| Change size | 15 files, 461 insertions, 86 deletions | `git diff --shortstat origin/main...HEAD` at final head `1278deb1eb8e486829a242c9cbd6a23ac783a101` |
 | Validation | Passed | 23 API service tests; 17 focused web tests; 1,650 full web tests across 191 suites; web lint; theme check; API and web builds |
-| Review | Passed locally | Complete diff and surrounding modules reviewed for responsibility, state ownership, authorization, async target capture, test placement, performance, and existing hotspot impact |
-| CI | Pending | Hosted current-head CI starts after Draft PR creation |
+| Review | Clean | Local architecture self-review passed; private exact-head rerun at `1278deb1e` returned zero blockers, non-blockers, and inline findings |
+| CI | Not required for private Draft review | Hosted current-head CI remains a later Ready/final-review gate |
 | Benchmarks | N/A | No performance work requested |
 
 ## Work and decisions
@@ -101,12 +101,12 @@ Exclusions and owner decisions:
 - Passed after synchronizing `origin/main`: the 17 focused Manage Carrier tests.
 - Passed local browser UAT at exact head `cde4f87c916e70db79a21465bcba9c8ee3977ad5`: roster invite actions visible for unaccepted members; primary role visible in the breadcrumb; no-op edit save remained on `/nriver/team-members/member/a6000000-0000-4000-8000-000000000006/profile`; Permissions exposed no additive-role control; duplicate `miketest@seasharp.co` returned `A Team Member with this email already has Carrier workspace access` without closing the dialog.
 - Passed at `1278deb1e`: `CarrierMemberPermissionsTab` focused suite, 3 tests; changed-file ESLint, zero warnings; full PR `git diff --check`; role-provenance inventory found no remaining `Via primary Carrier role` or `Not granted by primary role` source copy.
-- Pending: hosted current-head CI after Draft PR creation.
-- Pending: exact-head private self-review rerun for `1278deb1eb8e486829a242c9cbd6a23ac783a101`. Heartbeat `manage-carrier-pr1-self-review` schedules the first check seven minutes after request `1787016439.234509` and one-minute pending checks without duplicate requests.
+- Passed: private self-review rerun requested at `1787016439.234509` completed at `1787016679.028009` for exact head `1278deb1eb8e486829a242c9cbd6a23ac783a101` with zero blockers, non-blockers, or inline findings.
+- Deferred lifecycle gate: hosted current-head CI is required before final review after the Draft production-feedback phase, not for private self-review.
 
 ## Outcome, risk, and follow-up
 
-In progress. PR 1 is published as Draft PR #1194 at `1278deb1eb8e486829a242c9cbd6a23ac783a101`; the initial private self-review finding is corrected and an exact-head rerun is pending. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside the current pull request.
+Completed. PR 1 is published as Draft PR #1194 at `1278deb1eb8e486829a242c9cbd6a23ac783a101`; the initial private self-review finding was corrected and the exact-head rerun completed clean. The self-review heartbeat is paused. The PR remains Draft for the separate production-feedback and final-review lifecycle; no Ready transition, reviewer request, merge, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside this pull request.
 
 ## Evidence provenance
 
