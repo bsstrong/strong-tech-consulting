@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: completed
+- Status: in-progress
 - Repository: `https://github.com/helixosio/helixos.git`
 - Task started: 2026-08-17T23:33:32Z
 - Task/thread ID: Unavailable from the current Codex runtime
@@ -14,7 +14,7 @@
 
 ## Objective and scope
 
-Determine whether the supplied Fireflies SeaSharp Daily Sync transcript is accessible, summarize the Manage Carrier Account changes, convert them into an actionable implementation inventory, and record the owner's resulting product decisions.
+Determine whether the supplied Fireflies SeaSharp Daily Sync transcript is accessible, summarize the Manage Carrier Account changes, convert them into an actionable implementation inventory, record the owner's product decisions, and determine the safest implementation-versus-Terra handoff strategy.
 
 Exclusions and owner decisions:
 
@@ -37,7 +37,9 @@ Exclusions and owner decisions:
 | Action inventory resumed | 2026-08-18T00:17:48Z | Owner requested actionable items and implementation questions |
 | Action inventory completed | 2026-08-18T00:18:11Z | Action-inventory interval: 23 seconds; combined active intervals: 3 minutes 56 seconds |
 | Owner decisions received | 2026-08-18T00:31:57Z | Product, scope, delivery, and producer-code answers supplied |
-| Completed | 2026-08-18T00:32:33Z | Decision-record interval: 36 seconds; combined active intervals: 4 minutes 32 seconds |
+| Decision record completed | 2026-08-18T00:32:33Z | Decision-record interval: 36 seconds; combined active intervals: 4 minutes 32 seconds |
+| Planning/handoff assessment resumed | 2026-08-18T00:40:27Z | Owner approved the producer-code scope boundary and requested a Terra-versus-direct-implementation recommendation |
+| Completed | Pending | Pending |
 
 ## Task statistics
 
@@ -61,6 +63,7 @@ Exclusions and owner decisions:
 - To fulfill the owner's likely intent, reviewed the complete Manage Carrier Account walkthrough from 53:34 through 01:36:24 and grouped the requested changes by team members, permissions, client access, and producer-number ownership.
 - Converted the transcript findings into four cohesive implementation workstreams and isolated the unresolved decisions around role migration, permission scope, assignment authority, unassigned semantics, producer-number correction, lookup placement, and delivery slicing.
 - Owner decisions: retain one primary role; preserve all underlying client-scoped permission functionality but remove it from the simplified UI and default UI changes Carrier-wide; ignore existing test-only override data; centralize assignment editing under Client Access; use separate `No Broker` and `No Client Success Manager` filters; stage Broker and Client Success Manager changes in one reviewed batch; allow unconstrained Carrier-specific producer-code formats subject to storage safety and uniqueness; defer correction policy to the business; expose producer-code lookup in both tenant-scoped and authorized cross-Carrier surfaces; and deliver four ordered pull requests.
+- Owner approved excluding broker deactivation automation, default-owner selection, commission transfer/calculation, future-policy ownership, Helix 180 history behavior, and broader access-provisioning automation from the four delivery slices.
 
 ## Validation, review, and CI
 
