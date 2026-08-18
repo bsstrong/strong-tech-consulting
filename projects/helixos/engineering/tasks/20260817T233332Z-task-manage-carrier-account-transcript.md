@@ -43,7 +43,10 @@ Exclusions and owner decisions:
 | PR 1 local implementation complete | 2026-08-18T01:05:07Z | 19 minutes 57 seconds; implementation, focused validation, full web validation, base synchronization, and architecture self-review complete |
 | Draft PR created | 2026-08-18T01:07:21Z | PR #1194 opened from `codex/manage-carrier-team-member-pr1` at exact head `cde4f87c916e70db79a21465bcba9c8ee3977ad5` |
 | Private self-review requested | 2026-08-18T01:09:02Z | URL-only `#self-reviews` parent `1787015342.293459`; bot acknowledged at `1787015344.393149` |
+| Private self-review completed with finding | 2026-08-18T01:14:34Z | Exact head `cde4f87c9`; zero blockers and one non-blocking permission-provenance wording finding |
 | Local UAT stack started | 2026-08-18T01:20:50Z | Fresh PR database migrated and seeded; web and API healthy; exact-head UI walkthrough completed in the signed-in browser |
+| Self-review finding corrected | 2026-08-18T01:24:27Z | Commit `1278deb1e` pushed with role-neutral permission provenance and regression coverage |
+| Exact-head rerun checkpoint | 2026-08-18T01:25:52Z | Head `1278deb1eb8e486829a242c9cbd6a23ac783a101`; fetched base and merge base `0be661696e6ff3376cb0fb1746a53ae3c89d52a0`; no base drift |
 | Completed | Pending | Pending |
 
 ## Task statistics
@@ -51,7 +54,7 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 26 minutes 25 seconds across six active intervals | Prior evidence-backed intervals totaled 6 minutes 28 seconds; PR 1 implementation interval was 00:45:10Z–01:05:07Z |
-| Commits | 3 product commits plus 1 base merge | `734089c84`, `84559ed87`, `cde4f87c9`; merged current `origin/main` after it advanced |
+| Commits | 4 product commits plus 1 base merge | `734089c84`, `84559ed87`, `cde4f87c9`, `1278deb1e`; merged current `origin/main` after it advanced |
 | Change size | 15 files, 447 insertions, 87 deletions | `git diff --shortstat origin/main...HEAD` at `cde4f87c916e70db79a21465bcba9c8ee3977ad5` |
 | Validation | Passed | 23 API service tests; 17 focused web tests; 1,650 full web tests across 191 suites; web lint; theme check; API and web builds |
 | Review | Passed locally | Complete diff and surrounding modules reviewed for responsibility, state ownership, authorization, async target capture, test placement, performance, and existing hotspot impact |
@@ -80,6 +83,9 @@ Exclusions and owner decisions:
 - Published branch `codex/manage-carrier-team-member-pr1` and opened Draft PR #1194 with a responsibility map, explicit scope boundary, and complete local validation evidence.
 - Started the full local PR stack against a fresh `helix-manage-carrier-pr1` PostgreSQL project, with the web at `http://localhost:5173`, the API at `http://localhost:4000`, and the existing local Rule Engine at `http://localhost:3001`.
 - Completed signed-in browser UAT on NorthRiver Team Members: verified the capability-gated Actions/resend column, `Mike Eaton · Carrier Admin` detail breadcrumb, unchanged detail URL after saving an edit, absence of additive-role assignment on Permissions, and the inline duplicate-email conflict while the Add Team Member dialog remains open.
+- Addressed the private self-review finding by changing Manage Carrier Account permission provenance from primary-role-specific wording to `Via assigned Carrier role` / `Not granted by assigned Carrier role`. The API intentionally continues to aggregate primary and legacy additive Carrier roles, so the UI now describes the authoritative union without implying which role contributed the grant.
+- Blast-radius inventory covered both Carrier permission presentation paths, source filters, the API `ROLE_TEMPLATE` contract, existing additive-role aggregation, and no-role presentation. `PermissionsPeopleAccessView` already used the approved neutral wording; no materially similar primary-role-specific provenance label remains under web or API source.
+- Rerun checkpoint: the sole finding is resolved; shared root cause was presentation copy narrower than the response contract; no endpoint, authorization, cache, persistence, or assignment behavior changed; focused validation passed; full PR diff architecture review found no new mixed ownership, async-target, authorization, state synchronization, test-placement, or performance issue. PR body validation evidence was updated.
 
 ## Validation, review, and CI
 
@@ -93,12 +99,13 @@ Exclusions and owner decisions:
 - Passed: web lint, web theme-literal check, web production build, and API production build.
 - Passed after synchronizing `origin/main`: the 17 focused Manage Carrier tests.
 - Passed local browser UAT at exact head `cde4f87c916e70db79a21465bcba9c8ee3977ad5`: roster invite actions visible for unaccepted members; primary role visible in the breadcrumb; no-op edit save remained on `/nriver/team-members/member/a6000000-0000-4000-8000-000000000006/profile`; Permissions exposed no additive-role control; duplicate `miketest@seasharp.co` returned `A Team Member with this email already has Carrier workspace access` without closing the dialog.
+- Passed at `1278deb1e`: `CarrierMemberPermissionsTab` focused suite, 3 tests; changed-file ESLint, zero warnings; full PR `git diff --check`; role-provenance inventory found no remaining `Via primary Carrier role` or `Not granted by primary role` source copy.
 - Pending: hosted current-head CI after Draft PR creation.
 - Pending: exact-head private self-review. Heartbeat `manage-carrier-pr1-self-review` schedules the first check after seven minutes and one-minute pending checks without duplicate requests.
 
 ## Outcome, risk, and follow-up
 
-In progress. PR 1 is published as Draft PR #1194 at `cde4f87c916e70db79a21465bcba9c8ee3977ad5`; its exact-head private self-review is pending. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside the current pull request.
+In progress. PR 1 is published as Draft PR #1194 at `1278deb1eb8e486829a242c9cbd6a23ac783a101`; the initial private self-review finding is corrected and an exact-head rerun is pending. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside the current pull request.
 
 ## Evidence provenance
 
