@@ -118,6 +118,7 @@ Exclusions and owner decisions:
 - Corrected those boundaries at their authoritative owners. One shared eligibility open-status definition now feeds persistence, workflow aggregation, and API filtering; aggregate reconciliation row-locks the occurrence before counting; worker mutations require current dedicated system actors; and PostgreSQL/Prisma enums own affected-count units and resolution codes.
 - Added the valid Keith/Jarvis regression for an insert conflict with no winning row. The remaining Keith/Jarvis migration and timestamp claims were checked against the exact diff and required no change because the constraints already existed and timestamp variables were already reused consistently.
 - Every production-review inline thread was answered and resolved. The PR description records the findings, blast radius, affected-instance inventory, validation, and the intentional no-change disposition for `jfollas`'s unique-index observation.
+- Because Keith/Jarvis submitted its findings as a review body rather than replyable inline threads, posted a top-level PR follow-up comment (`5322680703`) that records the one corrected conflict-reload regression and the exact-code verification behind the migration, timestamp, and coverage dispositions.
 - Owner lifecycle clarification supersedes the earlier private-gate habit: after entering production review, do not return to private self-review unless explicitly requested. Final re-review proceeds through exact-head hosted CI and GitHub-only `jfollas` review.
 
 ## Validation, review, and CI
