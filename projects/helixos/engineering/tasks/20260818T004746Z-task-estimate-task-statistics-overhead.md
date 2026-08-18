@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress
+- Status: completed
 - Repository: `helixosio/helixos` (read-only investigation); record stored in `bsstrong/strong-tech-consulting`
 - Task started: 2026-08-18T00:47:46Z
 - Task/thread ID: `01a01255-eb88-7ff1-bf61-c6e84f65dedd`
@@ -36,13 +36,14 @@ Exclusions and owner decisions:
 | Resumed for Pro-plan impact analysis | 2026-08-18T00:58:14Z | Owner asked how raw-token and tracking overhead affected the $200/month Pro account allowance |
 | Pro-plan impact analysis completed | 2026-08-18T01:01:29Z | 3 minutes 15 seconds for the resumed analysis; 10 minutes 11 seconds across both active intervals |
 | Resumed to implement usage reductions | 2026-08-18T01:14:57Z | Owner authorized the immediately actionable configuration and tracking-policy reductions |
+| Usage reductions completed | 2026-08-18T01:20:04Z | Future defaults and terminal-only tracking policy validated |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 6 minutes 56 seconds | 2026-08-18T00:47:46Z through 2026-08-18T00:54:42Z |
-| Commits | 0 HelixOS commits; 4 consulting tracking commits including both start/resume and finalization writes | Git history |
+| Commits | 0 HelixOS commits; 6 consulting tracking commits across the legacy start/resume/finalization workflow | Git history |
 | Change size | N/A for HelixOS | Read-only investigation |
 | Validation | 27 task records, 260 record-path commits, and local session telemetry inspected | Git history, record search, and local JSONL telemetry |
 | Review | N/A | N/A |
@@ -60,6 +61,9 @@ Exclusions and owner decisions:
 - The three dominant sessions' full activity while the account meter moved from 52% to 67% used 6,204,241 uncached input tokens, 287,375,360 cached input tokens, and 728,551 output tokens: about 4,914 Sol credits. Direct tracking-related turns within the sampled sessions accounted for about 605 Sol credits, or roughly 12.3% of that measured consumption.
 - At the observed meter conversion, the tracking turns plausibly explain about 1.8 percentage points of the 15-point weekly-usage increase. This is an inference because other account activity and dynamic limit behavior are not independently attributable from local telemetry.
 - The one explicit calculate-record-report statistics phase cost about 19.84 Sol credits, too little to move the weekly dashboard by one tenth of one percentage point under the observed conversion.
+- Updated the personal Codex defaults from GPT-5.6 Sol/high/medium verbosity to GPT-5.6 Terra/medium/low verbosity. The default service tier remains non-fast.
+- Replaced the every-task lifecycle tracking policy with one terminal-only record for material delivered work. Read-only questions, explanations, status checks, non-delivery planning, routine monitoring, and tracking maintenance are excluded. Start, resume, milestone, heartbeat, token-telemetry, and optional-statistics queries are prohibited.
+- Rewrote the tracking skill and template to match the terminal-only policy, updated its UI metadata, and aligned the test-optimization workflow so it creates one completed optimization note only after hosted evidence is available.
 
 ## Validation, review, and CI
 
@@ -68,6 +72,9 @@ Exclusions and owner decisions:
 - Reconstructed the PR #1150 telemetry-only phase directly from timestamped session events and verified arithmetic from cumulative-token deltas.
 - Refreshed the official Codex manual and pricing guidance, verified the Pro 20x five-hour and weekly-limit model, and converted measured token classes using the published GPT-5.6 Sol credit rate card.
 - Re-read current local rate-limit telemetry: 67% used in a 10,080-minute (seven-day) window, resetting at 2026-08-20T03:31:52Z / 2026-08-19T21:31:52-06:00.
+- Codex accepted the updated configuration through `codex features list`.
+- Both modified skills passed the official `quick_validate.py` validator, and both `agents/openai.yaml` files parsed successfully.
+- Verified the canonical global instructions and Codex/Claude entrypoints remain hard links with identical content.
 
 ## Outcome, risk, and follow-up
 
@@ -77,6 +84,8 @@ Exclusions and owner decisions:
 - Residual uncertainty: session history does not provide a native cost category for task tracking, so attribution depends on path and command markers and excludes unmarked reasoning surrounding some record edits.
 - Pro-plan impact: the $200 subscription is a fixed included-usage plan, not raw-token billing. The current 67% meter represents the shared weekly allowance; additional dollar charges occur only if the owner separately purchases credits after included limits are reached.
 - Primary cause of the fast increase was the complete long-running Sol workload: 2,181 sampled model/tool turns repeatedly processed a large context, including 287 million cached input tokens. The tracking workflow contributed materially but was not the dominant source; the token-stat calculation itself was negligible.
+- Delivered reduction: new local tasks default to Terra, medium reasoning, and low verbosity. Existing active tasks retain their selected model until restarted or changed in the model picker.
+- Delivered reduction: future qualifying HelixOS/Zorka work generates at most one terminal consulting-repository commit; routine and read-only tasks generate none.
 
 ## Evidence provenance
 
