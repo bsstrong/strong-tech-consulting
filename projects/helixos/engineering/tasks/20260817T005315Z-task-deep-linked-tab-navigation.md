@@ -39,6 +39,7 @@ Exclusions and owner decisions:
 | Draft production feedback returned | 2026-08-17T23:19:43Z | Two actionable route-guard findings on exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | Production feedback remediated | 2026-08-17T23:40:47Z | Commit `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf` pushed; both GitHub threads answered and resolved |
 | Review-cycle accounting corrected | 2026-08-18T00:21:13Z | Owner clarified this was production-feedback round 1; private-review rounds do not count toward the production churn ledger |
+| Draft production re-review requested | 2026-08-18T00:22:37Z | Posted exactly `Check this one again` at `1787012557.665119` for exact head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`; Draft corrective cycle 1 |
 | Manual UI UAT | 2026-08-17T13:44:52Z | Two clean Helix-browser passes; final implementation/UAT checkpoint `2a60bce0006818e930a9505a94ee559efe67e1cb` after current-main merge; durable UAT record head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
@@ -136,6 +137,8 @@ Exclusions and owner decisions:
 - Delivery: commit `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf` pushed at 2026-08-17T23:40:47Z; the PR description was updated; both GitHub threads were answered with exact fix evidence and resolved.
 - Circuit breaker correction: this is Draft production-feedback round 1, so the two-round/two-cycle conditions are not active. Private self-review rounds belong to a separate ledger and cannot be carried into production feedback. The owner directed the workflow to resume.
 - Re-review gate: exact head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`, fetched base and merge base `e8e9a5d8982969bc04d54f8a138c25845958950f`, clean worktree, Draft and mergeable PR, two findings addressed, all GitHub threads resolved, complete affected-instance inventory recorded, and lint/typecheck/65 focused tests green. No materially similar guarded route remains unreviewed in the changed boundary.
+- Durable policy correction: updated canonical global instructions plus `run-pr-review-loop` and `run-self-review-loop` so private self-review, Draft production feedback, and Ready final approval always use independent churn ledgers. The skill validator could not import its undeclared PyYAML dependency; frontmatter was unchanged and both edited instruction bodies were manually verified.
+- Re-review request: authenticated Slack user `U0B9R7NJTQA` posted exactly `Check this one again` in existing parent `1787008643.549259` at `1787012557.665119`; Arya acknowledged the exact request. Heartbeat `pr-1189-production-review` was recreated on the required three-minute initial cadence.
 
 ### Private rerun checkpoint — 2026-08-17T05:40:41Z
 
@@ -173,7 +176,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-In progress. Draft PR #1189 contains the route-owned navigation pass, repeatable browser UAT evidence, a clean private self-review on prior head `99b4142865566c0bbfb71ca11cfda0e77d88026d`, and the complete production-feedback remediation on current head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`. Both production findings are addressed and their GitHub threads are resolved. This is Draft production-feedback round 1, its churn ledger is separate from private self-review, and the exact-head re-review gate is satisfied. The PR remains Draft and has not been merged.
+In progress. Draft PR #1189 contains the route-owned navigation pass, repeatable browser UAT evidence, a clean private self-review on prior head `99b4142865566c0bbfb71ca11cfda0e77d88026d`, and the complete production-feedback remediation on current head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`. Both production findings are addressed and their GitHub threads are resolved. Draft corrective re-review cycle 1 is pending on the exact current head. The PR remains Draft and has not been merged.
 
 ## Evidence provenance
 
