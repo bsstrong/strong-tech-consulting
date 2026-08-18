@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: completed (Draft PR data-model rationale updated; clean reviewed head unchanged)
+- Status: in progress (production-review findings addressed; exact-head CI pending)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -10,7 +10,7 @@
 - Starting base SHA: `f76377cb8fa7c26ca2803799ec2f96fcf9ea0c80`
 - Starting head SHA: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f`
 - Issue: #842 (related implementation-plan record; exact implementation linkage pending repository inspection)
-- PR: https://github.com/helixosio/helixos/pull/1190 (Draft)
+- PR: https://github.com/helixosio/helixos/pull/1190 (Ready)
 
 ## Objective and scope
 
@@ -60,17 +60,21 @@ Exclusions and owner decisions:
 | Task resumed for PR documentation | 2026-08-18T01:10:45Z | Owner requested additional insight in the Draft PR about what the model stores and why |
 | Draft PR model rationale updated | 2026-08-18T01:11:58Z | Added current-state/event-history storage details and design rationale; refreshed clean-review and base-freshness evidence without changing code, head, or Draft state |
 | Resumed documentation interval completed | 2026-08-18T01:12:14Z | 1m 29s from resume; canonical PR verification passed |
+| Production review feedback received | 2026-08-18T01:46:36Z | Four actionable lifecycle findings from walkeryan, one valid regression gap from Keith/Jarvis, and one non-blocking enum-design finding from `jfollas`; other Keith/Jarvis claims were verified as already satisfied or unsupported by the cited code |
+| Production-review corrections validated and pushed | 2026-08-18T02:17:04Z | Head `63e95479c`; all six inline threads answered and resolved; PR description updated with dispositions and evidence |
+| Exact-head hosted CI started | 2026-08-18T02:18:00Z | HelixOS CI run `32091258542` on `63e95479c` is in progress; one follow-up scheduled after 62 minutes from the latest-50-run duration evidence |
+| Owner clarified review lifecycle | 2026-08-18T02:20:00Z | Once the PR is in the production cycle, private self-review is not revisited unless explicitly requested; the prior private rerun trigger is ignored and its heartbeat was replaced with the single CI follow-up |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 19h 52m 53s | 2026-08-17T04:58:35Z through 2026-08-18T00:51:28Z; includes owner-decision and review waiting intervals |
-| Commits | 12 | Seven implementation commits, base-sync merge `55206b81e`, and review-fix commits `4b5837363`, `f809f7da3`, `e56a6f50d`, and `0c3c9c615` |
-| Change size | 42 files, 4,722 insertions, 141 deletions | `git diff --shortstat origin/main...HEAD` at `0c3c9c615` |
+| Commits | 14 | Current branch history above `origin/main`, including production-review fix `63e95479c` |
+| Change size | 45 files, 4,998 insertions, 167 deletions | `git diff --shortstat origin/main...HEAD` at `63e95479c` |
 | Validation | Shared 217/217; DB 260 passed with 3 existing skips; API 3,057/3,057; workflow 947/947 | Full package suites, focused lifecycle seams, builds, and Prisma validation/generation passed |
 | Review | 5 completed private rounds: 7 blockers, 3 non-blockers; every finding fixed; final exact-head review clean | Exact-head clean result `1787014071.205399` in `#self-reviews` parent `1786948233.619459` |
-| CI | Not started | Private Draft gate did not clear |
+| CI | In progress | HelixOS CI run `32091258542` on exact head `63e95479c`; latest 50 completed PR runs had a 60.48-minute maximum, so the policy follow-up interval is 62 minutes |
 | Benchmarks | N/A | Performance benchmarking is not in the requested contract scope |
 
 ## Work and decisions
@@ -110,6 +114,11 @@ Exclusions and owner decisions:
 - At 2026-08-18T00:42:42Z the owner explicitly authorized another fresh private self-review invocation. Per the current skill contract, churn is counted only within this invocation; prior-invocation review rounds remain historical evidence and the new rerun ledger starts at zero.
 - At 2026-08-18T01:10:45Z the owner requested a focused PR-description update explaining the current-state and append-only event data model, its stored fields, and its reporting rationale. This is documentation-only and does not alter the clean reviewed head or Draft lifecycle state.
 - Updated Draft PR #1190 with a dedicated `Data model and rationale` section describing the logical-occurrence identity, stored current-state fields, append-only event snapshots, source-of-truth boundary, transactional consistency, data-minimization boundary, and future reporting purpose. Also replaced the stale circuit-breaker wording with the clean exact-head private-review result and refreshed the non-overlapping base evidence.
+- Production feedback identified three concrete root boundaries: eligibility aggregates omitted two actionable states and counted before locking; asynchronous payroll-feed and BBA workers reused historical requesters who could later be inactive; and two remaining closed database vocabularies were represented as strings with duplicated allowlists.
+- Corrected those boundaries at their authoritative owners. One shared eligibility open-status definition now feeds persistence, workflow aggregation, and API filtering; aggregate reconciliation row-locks the occurrence before counting; worker mutations require current dedicated system actors; and PostgreSQL/Prisma enums own affected-count units and resolution codes.
+- Added the valid Keith/Jarvis regression for an insert conflict with no winning row. The remaining Keith/Jarvis migration and timestamp claims were checked against the exact diff and required no change because the constraints already existed and timestamp variables were already reused consistently.
+- Every production-review inline thread was answered and resolved. The PR description records the findings, blast radius, affected-instance inventory, validation, and the intentional no-change disposition for `jfollas`'s unique-index observation.
+- Owner lifecycle clarification supersedes the earlier private-gate habit: after entering production review, do not return to private self-review unless explicitly requested. Final re-review proceeds through exact-head hosted CI and GitHub-only `jfollas` review.
 
 ## Validation, review, and CI
 
@@ -141,6 +150,8 @@ Exclusions and owner decisions:
 - Fresh cycle-2 full DB suite: 260 passed, 0 failed, 3 existing skipped; DB build and Prisma generation passed.
 - Fresh cycle-2 full workflow suite: 947/947 passed in 21.833s; workflow build passed.
 - Final `git diff --check` and complete diff architecture review passed. No materially similar status writer, retry identity, replacement aggregate, or worker boundary remains unreviewed in the affected source families.
+- Production-review focused validation at `63e95479c`: shared, DB, workflow, and API builds passed; DB 21/21, workflow 144/144, and API 25/25 focused tests passed; `git diff --check`, complete affected-instance inventory, and architecture review passed.
+- Current exact-head hosted CI: HelixOS CI run `32091258542` started for `63e95479c`; status was `in_progress` at the initial check. Per owner policy, the single follow-up is scheduled after 62 minutes and no polling is performed.
 
 ### Private rerun evidence checkpoint
 
@@ -210,7 +221,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-The Payroll Operational Exception prerequisite contract is implemented, validated, and cleanly approved by private self-review at exact head `0c3c9c615e895be21630e906827d891d0ed76ab8`. All 7 blockers and 3 non-blockers raised across prior rounds were corrected. Draft PR #1190 now explains what each current/event model stores, why the split exists, how source truth and logical identity are preserved, and why later reporting should consume this projection. The PR remains Draft at the unchanged clean head; no reviewer, public-review, CI-final-gate, Ready, merge, release, or publish action was taken.
+The Payroll Operational Exception prerequisite contract and all production-review corrections are implemented and locally validated at exact head `63e95479ce871ce8dcbdbef6df53a6e5883eb541`. The PR remains Ready and limited to the prerequisite contract: no report schema, report API, report UI, scheduler, generation path, or historical reconstruction was added. All inline feedback is resolved. Exact-head hosted CI is pending; only after it is green and the head/thread gates still hold will `jfollas` be re-requested through GitHub. No merge, release, or publish action is authorized.
 
 ## Evidence provenance
 
