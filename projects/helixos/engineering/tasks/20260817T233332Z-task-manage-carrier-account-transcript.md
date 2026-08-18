@@ -74,7 +74,7 @@ Exclusions and owner decisions:
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 26 minutes 25 seconds across six active intervals | Prior evidence-backed intervals totaled 6 minutes 28 seconds; PR 1 implementation interval was 00:45:10Z–01:05:07Z |
-| Commits | 6 product commits plus 1 base merge | `734089c84`, `84559ed87`, `cde4f87c9`, `1278deb1e`, `32cc0a40b`, `d621d98b4`; merged current `origin/main` after it advanced |
+| Commits | 6 PR 1 product commits plus combined-preview/UAT commits | PR 1: `734089c84`, `84559ed87`, `cde4f87c9`, `1278deb1e`, `32cc0a40b`, `d621d98b4`; final designer breadcrumb correction: `4906566ae`, documentation: `528a5ca3c` |
 | Change size | 15 files, 547 insertions, 95 deletions | `git diff --stat origin/main...HEAD` at final head `d621d98b450ed453ebb4e9ed90729c6bbc4f8524` |
 | Validation | Passed | Final combined validation: 88 web tests across 26 focused suites; 35 tenant-workspace API tests; 59 Client Access/producer-code API tests; 135 permission API tests; API/web TypeScript; web lint/theme/build; API build; OpenAPI checks; in-app browser UAT |
 | Review | Clean through `1278deb1e`; owner-waived rerun for final UI-only deltas | Private exact-head rerun at `1278deb1e` returned zero findings; local architecture review and validation passed for `32cc0a40b` and `d621d98b4` |
@@ -124,6 +124,7 @@ Exclusions and owner decisions:
 - Created `UAT Kingston Broker` with `c-12345/ne` during Add Team Member and verified that the same normalized code can exist in NorthRiver and Kingston. A second Kingston creation using `C-12345/NE` returned the expected `409` and left no member record.
 - Verified stale Client Access revisions in two in-app browser tabs: the current assignment applied, the stale preview failed closed with refresh guidance, and the temporary assignment was removed to restore the baseline.
 - Final local test state keeps NorthRiver permission overrides at zero, NorthRiver Construction unassigned for both assignment roles, and the intentionally created immutable producer-code fixtures. All data is local test data.
+- Designer feedback superseded UAT-002: the Profile/Permissions toggle is the sole current-subtab indicator, so Team Member breadcrumbs now end at the member identity and role. The route, selected tab, refresh, and Back/Forward behavior remain unchanged.
 
 ## Validation, review, and CI
 
@@ -157,11 +158,12 @@ Exclusions and owner decisions:
 - Passed final combined automated validation: 35/35 tenant-workspace API tests, 59/59 Client Access and producer-code API tests, 135/135 permission API tests, and 88/88 web tests across 26 focused suites.
 - Passed final API and web TypeScript checks, full web lint, theme-literal guard, API and web production builds, OpenAPI generation/check/body guard/structural validation for 356 paths, and `git diff --check`.
 - Expected request results during UAT were `201` for successful member creation, `409` for the duplicate producer code, and `403` for restricted personas. No unexpected `500` occurred after the corrected local invitation-sender configuration.
+- Passed final designer breadcrumb correction at `4906566ae`: focused Team Members page suite 12/12, full web lint, theme-literal check, production web build, and `git diff --check`. Codex in-app-browser verification confirmed `NorthRiver Admin · Carrier Admin` is the final breadcrumb segment on both Profile and Permissions while selected-tab state and Back/Forward history remain synchronized. Chrome was not used.
 - Deferred lifecycle gate: hosted current-head CI is required before final review after the Draft production-feedback phase, not for private self-review.
 
 ## Outcome, risk, and follow-up
 
-Complete locally. PR 1 was merged as PR #1194. PR 2 remains Draft PR #1195 at hosted head `d08b88f52a17ad3425490b5c50bec88495edce70`. PR 3 remains Draft PR #1197 at hosted head `601e928ccdf90f6e94a73b06042b71bb6bc8c41b`; its additional UAT tree-pagination correction is local. PR 4 and the remaining UAT corrections are complete locally and not yet published. The combined application head `02ff3ae71e145d89101f4ca64ecf250e8ec9591a` passed the recorded 89-case acceptance run with six findings fixed and no open UAT defect. No Ready transition, final reviewer request, merge of PRs 2-4, release, or publication was performed. Producer-code correction/update/delete/reassignment remains intentionally deferred pending business policy.
+Complete locally. PR 1 was merged as PR #1194. PR 2 remains Draft PR #1195 at hosted head `d08b88f52a17ad3425490b5c50bec88495edce70`. PR 3 remains Draft PR #1197 at hosted head `601e928ccdf90f6e94a73b06042b71bb6bc8c41b`; its additional UAT tree-pagination correction is local. PR 4 and the remaining UAT corrections are complete locally and not yet published. The combined application head `02ff3ae71e145d89101f4ca64ecf250e8ec9591a` passed the recorded 89-case acceptance run with six findings fixed and no open UAT defect; local head `528a5ca3c` additionally contains the designer-approved identity-only breadcrumb correction and its updated UAT record. No Ready transition, final reviewer request, merge of PRs 2-4, release, or publication was performed. Producer-code correction/update/delete/reassignment remains intentionally deferred pending business policy.
 
 ## Evidence provenance
 
