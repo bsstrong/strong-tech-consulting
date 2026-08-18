@@ -61,6 +61,7 @@ Exclusions and owner decisions:
 | PR 2 private self-review completed with finding | 2026-08-18T03:01:24Z | Exact head `f5d7495de`; zero blockers and one non-blocking narrow-dialog review-table clipping finding |
 | PR 2 self-review finding corrected | 2026-08-18T03:06:00Z | Commit `d08b88f52` made the before/after table a keyboard-focusable horizontal scroll region and added regression coverage |
 | PR 2 rerun checkpoint | 2026-08-18T03:07:00Z | Head `d08b88f52a17ad3425490b5c50bec88495edce70`; fetched base `e8a43909cba35656d727abb419af9b138deab194`; merge base `d621d98b4`; no overlapping base drift |
+| PR 2 private self-review rerun requested | 2026-08-18T03:09:33Z | Posted exactly `rerun` as authenticated user in the existing thread; request timestamp `1787022573.018569`; seven-minute exact-head monitor active |
 
 ## Task statistics
 
@@ -133,6 +134,7 @@ Exclusions and owner decisions:
 - PR 2 private self-review returned one actionable non-blocker: the fixed-minimum-column before/after table could clip required review information on narrow dialogs because its parent used hidden overflow.
 - Corrected the shared root cause at the single table owner by replacing clipped overflow with a keyboard-focusable horizontal scroll region. Blast-radius review covered the dialog's table header and permission rows, keyboard access, dialog sizing, review semantics, and the sole before/after table instance; no authorization, mutation, persisted state, cache, or permission-scope behavior changed, and no materially similar instance remains in Manage Carrier Account or the shared permissions UI.
 - Exact-head rerun checkpoint: finding disposition is addressed in `d08b88f52`; current base introduces only the already-reviewed PR #1194 merge commit and does not overlap the PR 2 delta; focused regression, lint, theme, production build, complete diff check, and architecture review passed.
+- PR 2 private self-review rerun cycle 1 is pending for exact head `d08b88f52a17ad3425490b5c50bec88495edce70`; bot acknowledgment `1787022574.979179` confirmed the rerun was admitted.
 - Deferred lifecycle gate: hosted current-head CI is required before final review after the Draft production-feedback phase, not for private self-review.
 
 ## Outcome, risk, and follow-up
