@@ -18,9 +18,8 @@ Deliver the transcript-derived Manage Carrier Account changes through four order
 
 Exclusions and owner decisions:
 
-- This initial task is limited to transcript-access verification and, if accessible, review context needed for the upcoming changes.
-- No HelixOS code changes are authorized by this access-check request.
-- The exact Fireflies authentication and sharing state is unknown until the link is opened.
+- PR 1 excludes permission-scope simplification, Client Access reassignment, and producer-code work reserved for later ordered pull requests.
+- The approved producer-code boundary continues to exclude broker deactivation automation, default-owner selection, commission transfer/calculation, future-policy ownership, Helix 180 history, and broader access provisioning.
 
 ## Lifecycle
 
@@ -41,18 +40,20 @@ Exclusions and owner decisions:
 | Planning/handoff assessment resumed | 2026-08-18T00:40:27Z | Owner approved the producer-code scope boundary and requested a Terra-versus-direct-implementation recommendation |
 | Planning/handoff assessment completed | 2026-08-18T00:42:23Z | Planning-assessment interval: 1 minute 56 seconds; combined active intervals: 6 minutes 28 seconds |
 | PR 1 implementation started | 2026-08-18T00:45:10Z | Owner selected direct implementation to reduce review cycles |
+| PR 1 local implementation complete | 2026-08-18T01:05:07Z | 19 minutes 57 seconds; implementation, focused validation, full web validation, base synchronization, and architecture self-review complete |
+| PR created | Pending | Draft creation follows branch push |
 | Completed | Pending | Pending |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 6 minutes 28 seconds across five active intervals | Direct UTC timestamps: 23:33:32Z–23:34:44Z, 23:35:57Z–23:38:18Z, 00:17:48Z–00:18:11Z, 00:31:57Z–00:32:33Z, and 00:40:27Z–00:42:23Z |
-| Commits | N/A | No HelixOS code change requested |
-| Change size | N/A | No HelixOS code change requested |
-| Validation | Passed | Meeting title, notes, speakers, timestamps, and the full 01:36:38 transcript were visible |
-| Review | N/A | No code review in scope |
-| CI | N/A | No code change requested |
+| Total elapsed | 26 minutes 25 seconds across six active intervals | Prior evidence-backed intervals totaled 6 minutes 28 seconds; PR 1 implementation interval was 00:45:10Z–01:05:07Z |
+| Commits | 3 product commits plus 1 base merge | `734089c84`, `84559ed87`, `cde4f87c9`; merged current `origin/main` after it advanced |
+| Change size | 15 files, 447 insertions, 87 deletions | `git diff --shortstat origin/main...HEAD` at `cde4f87c916e70db79a21465bcba9c8ee3977ad5` |
+| Validation | Passed | 23 API service tests; 17 focused web tests; 1,650 full web tests across 191 suites; web lint; theme check; API and web builds |
+| Review | Passed locally | Complete diff and surrounding modules reviewed for responsibility, state ownership, authorization, async target capture, test placement, performance, and existing hotspot impact |
+| CI | Pending | Hosted current-head CI starts after Draft PR creation |
 | Benchmarks | N/A | No performance work requested |
 
 ## Work and decisions
@@ -69,6 +70,11 @@ Exclusions and owner decisions:
 - Inspected current `origin/main` planning conventions, the existing Manage Account/assigned-client plans and UAT, and the primary current web/API hotspots. The work builds on a 977-line Phase 2 plan and crosses UI components, a 348-line assignment service, a 420-line tenant controller, and a 1,223-line permission-override service; a source-grounded plan is warranted before implementation.
 - Recommended a hybrid handoff: create the implementation-ready plan with frontier-capability reasoning, let Terra implement one ordered pull request at a time, and perform frontier review/gating between slices. Do not hand Terra the raw transcript or all four slices as one undifferentiated task.
 - Owner instead selected direct implementation to reduce review cycles. PR 1 is explicitly limited to team-member invitations, deep-linked member navigation, role visibility and post-save continuity, and removal of stacked-role behavior; later permission, Client Access, and producer-code slices remain out of scope.
+- Implemented authoritative `409 Conflict` rejection for duplicate Team Member email grants while preserving legitimate reuse of an email-backed resource that does not already have Carrier workspace access.
+- Added capability-gated resend-invite recovery for unaccepted invitations and reconciled the exact returned member into the tenant-scoped React Query cache.
+- Added primary-role context to the detail breadcrumb and preserved the selected deep-linked profile after an edit; revocation continues to return to the roster.
+- Removed additive-role assignment from the Team Member Permissions UI while retaining initial primary-role assignment for legacy/no-role members and leaving the underlying endpoint intact for compatibility.
+- Extracted member mutation/cache ownership and invite-recovery presentation into focused modules so the existing page and table hotspots did not absorb transport or feedback concerns.
 
 ## Validation, review, and CI
 
@@ -76,10 +82,16 @@ Exclusions and owner decisions:
 - Passed: meeting notes and the timestamped transcript were readable.
 - Passed: reviewed every timestamped entry in the 53:34–01:36:24 Manage Carrier Account walkthrough and verified Jason's final transcript entry at 01:36:22.
 - N/A: no HelixOS code validation or CI was needed for this read-only access check.
+- Passed: `TenantWorkspaceService` focused suite, 23 tests.
+- Passed: Manage Carrier Account page, permissions, and table focused suites, 17 tests.
+- Passed: complete web unit suite, 1,650 tests across 191 suites.
+- Passed: web lint, web theme-literal check, web production build, and API production build.
+- Passed after synchronizing `origin/main`: the 17 focused Manage Carrier tests.
+- Pending: hosted current-head CI after Draft PR creation.
 
 ## Outcome, risk, and follow-up
 
-In progress. PR 1 implementation has started. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside the current pull request.
+In progress. PR 1 implementation and local self-review are complete at `cde4f87c916e70db79a21465bcba9c8ee3977ad5`; branch publication, Draft PR creation, and the repository-prescribed review lifecycle remain. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside the current pull request.
 
 ## Evidence provenance
 
