@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: completed
+- Status: in-progress
 - Repository: `https://github.com/helixosio/helixos.git`
 - Task started: 2026-08-17T23:33:32Z
 - Task/thread ID: Unavailable from the current Codex runtime
@@ -14,7 +14,7 @@
 
 ## Objective and scope
 
-Determine whether the supplied Fireflies SeaSharp Daily Sync transcript is accessible, summarize the Manage Carrier Account changes, convert them into an actionable implementation inventory, record the owner's product decisions, and determine the safest implementation-versus-Terra handoff strategy.
+Deliver the transcript-derived Manage Carrier Account changes through four ordered pull requests, beginning with PR 1 for team-member invitation recovery, member navigation, role visibility, and single-role enforcement.
 
 Exclusions and owner decisions:
 
@@ -39,7 +39,9 @@ Exclusions and owner decisions:
 | Owner decisions received | 2026-08-18T00:31:57Z | Product, scope, delivery, and producer-code answers supplied |
 | Decision record completed | 2026-08-18T00:32:33Z | Decision-record interval: 36 seconds; combined active intervals: 4 minutes 32 seconds |
 | Planning/handoff assessment resumed | 2026-08-18T00:40:27Z | Owner approved the producer-code scope boundary and requested a Terra-versus-direct-implementation recommendation |
-| Completed | 2026-08-18T00:42:23Z | Planning-assessment interval: 1 minute 56 seconds; combined active intervals: 6 minutes 28 seconds |
+| Planning/handoff assessment completed | 2026-08-18T00:42:23Z | Planning-assessment interval: 1 minute 56 seconds; combined active intervals: 6 minutes 28 seconds |
+| PR 1 implementation started | 2026-08-18T00:45:10Z | Owner selected direct implementation to reduce review cycles |
+| Completed | Pending | Pending |
 
 ## Task statistics
 
@@ -66,6 +68,7 @@ Exclusions and owner decisions:
 - Owner approved excluding broker deactivation automation, default-owner selection, commission transfer/calculation, future-policy ownership, Helix 180 history behavior, and broader access-provisioning automation from the four delivery slices.
 - Inspected current `origin/main` planning conventions, the existing Manage Account/assigned-client plans and UAT, and the primary current web/API hotspots. The work builds on a 977-line Phase 2 plan and crosses UI components, a 348-line assignment service, a 420-line tenant controller, and a 1,223-line permission-override service; a source-grounded plan is warranted before implementation.
 - Recommended a hybrid handoff: create the implementation-ready plan with frontier-capability reasoning, let Terra implement one ordered pull request at a time, and perform frontier review/gating between slices. Do not hand Terra the raw transcript or all four slices as one undifferentiated task.
+- Owner instead selected direct implementation to reduce review cycles. PR 1 is explicitly limited to team-member invitations, deep-linked member navigation, role visibility and post-save continuity, and removal of stacked-role behavior; later permission, Client Access, and producer-code slices remain out of scope.
 
 ## Validation, review, and CI
 
@@ -76,7 +79,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-Completed. The transcript summary, action inventory, owner decisions, approved scope boundary, and implementation-versus-handoff recommendation are recorded. Producer-code correction policy remains intentionally deferred to the business. A separate implementation-plan artifact should be created next if the owner selects the recommended hybrid execution strategy.
+In progress. PR 1 implementation has started. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside the current pull request.
 
 ## Evidence provenance
 
