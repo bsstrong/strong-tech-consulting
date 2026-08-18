@@ -120,6 +120,7 @@ Exclusions and owner decisions:
 - Every production-review inline thread was answered and resolved. The PR description records the findings, blast radius, affected-instance inventory, validation, and the intentional no-change disposition for `jfollas`'s unique-index observation.
 - Because Keith/Jarvis submitted its findings as a review body rather than replyable inline threads, posted a top-level PR follow-up comment (`5322680703`) that records the one corrected conflict-reload regression and the exact-code verification behind the migration, timestamp, and coverage dispositions.
 - Owner lifecycle clarification supersedes the earlier private-gate habit: after entering production review, do not return to private self-review unless explicitly requested. Final re-review proceeds through exact-head hosted CI and GitHub-only `jfollas` review.
+- A subsequent production review found the remaining zero-row aggregate race: a row lock cannot serialize a normalized occurrence that has not yet been detected. Head `a61b523ec` adds a transaction-scoped advisory lock keyed by tenant, source family, and source key before the row lock and aggregate count. The other new actor-attribution report was verified as a false positive: both cited feed-ingestion branches already resolve the current `PAYROLL_ROUTER` system actor.
 
 ## Validation, review, and CI
 
