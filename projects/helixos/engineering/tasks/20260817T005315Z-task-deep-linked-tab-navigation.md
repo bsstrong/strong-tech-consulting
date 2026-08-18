@@ -139,6 +139,9 @@ Exclusions and owner decisions:
 - Re-review gate: exact head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`, fetched base and merge base `e8e9a5d8982969bc04d54f8a138c25845958950f`, clean worktree, Draft and mergeable PR, two findings addressed, all GitHub threads resolved, complete affected-instance inventory recorded, and lint/typecheck/65 focused tests green. No materially similar guarded route remains unreviewed in the changed boundary.
 - Durable policy correction: updated canonical global instructions plus `run-pr-review-loop` and `run-self-review-loop` so private self-review, Draft production feedback, and Ready final approval always use independent churn ledgers. The skill validator could not import its undeclared PyYAML dependency; frontmatter was unchanged and both edited instruction bodies were manually verified.
 - Re-review request: authenticated Slack user `U0B9R7NJTQA` posted exactly `Check this one again` in existing parent `1787008643.549259` at `1787012557.665119`; Arya acknowledged the exact request. Heartbeat `pr-1189-production-review` was recreated on the required three-minute initial cadence.
+- Draft corrective re-review cycle 1 completed at 2026-08-18T00:23:59Z on exact head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`: all 30 supplied files were reviewed, no actionable findings were returned, and zero GitHub review threads remain open.
+- The PR was promoted to Ready at 2026-08-18T00:27:04Z and canonical GitHub state confirmed `draft: false` on the unchanged exact head and base `e8e9a5d8982969bc04d54f8a138c25845958950f`.
+- Exact-head HelixOS CI run `32084564268` started at 2026-08-18T00:27:11Z. The latest 50 completed pull-request runs had a maximum elapsed duration of 1,057 seconds (run `31979373829`), producing the required 19-minute follow-up cadence after adding two minutes and rounding down.
 
 ### Private rerun checkpoint — 2026-08-17T05:40:41Z
 
@@ -176,7 +179,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-In progress. Draft PR #1189 contains the route-owned navigation pass, repeatable browser UAT evidence, a clean private self-review on prior head `99b4142865566c0bbfb71ca11cfda0e77d88026d`, and the complete production-feedback remediation on current head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`. Both production findings are addressed and their GitHub threads are resolved. Draft corrective re-review cycle 1 is pending on the exact current head. The PR remains Draft and has not been merged.
+In progress. Ready PR #1189 contains the route-owned navigation pass, repeatable browser UAT evidence, a clean private self-review on prior head `99b4142865566c0bbfb71ca11cfda0e77d88026d`, and complete production-feedback remediation on current head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`. Draft corrective re-review cycle 1 is clean and all GitHub threads are resolved. Exact-head required CI is running; final review has not yet been requested and the PR has not been merged.
 
 ## Evidence provenance
 
