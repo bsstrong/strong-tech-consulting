@@ -58,6 +58,9 @@ Exclusions and owner decisions:
 | PR 2 local implementation complete | 2026-08-18T02:54:00Z | Carrier-wide-only UI, explicit before/after review, focused validation, production build, architecture review, and in-app browser UAT complete |
 | PR 2 Draft created | 2026-08-18T02:56:00Z | PR #1195 opened from `codex/manage-carrier-permissions-pr2` at exact head `f5d7495de5f080d8ccac4ccc3e5967c7dc6ab769` against `main` |
 | PR 2 private self-review requested | 2026-08-18T02:56:39Z | URL-only `#self-reviews` parent `1787021799.000429`; bot acknowledged at `1787021800.773759`; seven-minute exact-head monitor active |
+| PR 2 private self-review completed with finding | 2026-08-18T03:01:24Z | Exact head `f5d7495de`; zero blockers and one non-blocking narrow-dialog review-table clipping finding |
+| PR 2 self-review finding corrected | 2026-08-18T03:06:00Z | Commit `d08b88f52` made the before/after table a keyboard-focusable horizontal scroll region and added regression coverage |
+| PR 2 rerun checkpoint | 2026-08-18T03:07:00Z | Head `d08b88f52a17ad3425490b5c50bec88495edce70`; fetched base `e8a43909cba35656d727abb419af9b138deab194`; merge base `d621d98b4`; no overlapping base drift |
 
 ## Task statistics
 
@@ -127,7 +130,9 @@ Exclusions and owner decisions:
 - Passed local form recovery: API log identified missing `TENANT_INVITE_EMAIL_FROM`; restarted demo API with the `.env.example` sender; retried the same Add Team Member values; API returned `201` and the UI displayed `Test Broker added`.
 - Passed at PR 2 head `f5d7495de`: focused permission model and member permissions suites, 11 tests; broader Manage Carrier Account coverage, 71 tests across 21 suites; changed-file and full web lint; theme-literal check; production web build; `git diff --check`.
 - Passed PR 2 in-app browser UAT with `nriver-admin-demo`: the Team Member Permissions tab displayed 33 Carrier-wide permissions, no Client selector, and a review dialog with `Entire Carrier`, `Before change`, and `After change` values. No mutation was submitted during UAT.
-- PR 2 private self-review is pending for exact head `f5d7495de5f080d8ccac4ccc3e5967c7dc6ab769`; request parent `1787021799.000429` was posted as the authenticated Slack user after verifying current base `e8a43909cba35656d727abb419af9b138deab194` and a clean worktree.
+- PR 2 private self-review returned one actionable non-blocker: the fixed-minimum-column before/after table could clip required review information on narrow dialogs because its parent used hidden overflow.
+- Corrected the shared root cause at the single table owner by replacing clipped overflow with a keyboard-focusable horizontal scroll region. Blast-radius review covered the dialog's table header and permission rows, keyboard access, dialog sizing, review semantics, and the sole before/after table instance; no authorization, mutation, persisted state, cache, or permission-scope behavior changed, and no materially similar instance remains in Manage Carrier Account or the shared permissions UI.
+- Exact-head rerun checkpoint: finding disposition is addressed in `d08b88f52`; current base introduces only the already-reviewed PR #1194 merge commit and does not overlap the PR 2 delta; focused regression, lint, theme, production build, complete diff check, and architecture review passed.
 - Deferred lifecycle gate: hosted current-head CI is required before final review after the Draft production-feedback phase, not for private self-review.
 
 ## Outcome, risk, and follow-up
