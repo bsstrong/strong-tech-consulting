@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress
+- Status: completed
 - Repository: `https://github.com/helixosio/helixos`
 - Task started: 2026-08-17T00:53:15Z
 - Task/thread ID: Unavailable from the current Codex runtime
@@ -10,7 +10,10 @@
 - Starting base SHA: `3a1474ea3adedeff4d766a0e229524bcbb825819` (`origin/main`)
 - Starting head SHA: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f` (local checkout)
 - Issue: N/A
-- PR: `https://github.com/helixosio/helixos/pull/1189` (Draft)
+- PR: `https://github.com/helixosio/helixos/pull/1189` (merged)
+- Final PR base SHA: `e8e9a5d8982969bc04d54f8a138c25845958950f`
+- Final PR head SHA: `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`
+- Merge commit SHA: `0be661696e6ff3376cb0fb1746a53ae3c89d52a0`
 
 ## Objective and scope
 
@@ -40,20 +43,23 @@ Exclusions and owner decisions:
 | Production feedback remediated | 2026-08-17T23:40:47Z | Commit `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf` pushed; both GitHub threads answered and resolved |
 | Review-cycle accounting corrected | 2026-08-18T00:21:13Z | Owner clarified this was production-feedback round 1; private-review rounds do not count toward the production churn ledger |
 | Draft production re-review requested | 2026-08-18T00:22:37Z | Posted exactly `Check this one again` at `1787012557.665119` for exact head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`; Draft corrective cycle 1 |
+| Draft production re-review clean | 2026-08-18T00:23:59Z | All 30 supplied files reviewed on the exact head; zero actionable findings and zero open GitHub threads |
+| Ready | 2026-08-18T00:27:04Z | Canonical GitHub state confirmed Ready on the unchanged exact head |
 | Manual UI UAT | 2026-08-17T13:44:52Z | Two clean Helix-browser passes; final implementation/UAT checkpoint `2a60bce0006818e930a9505a94ee559efe67e1cb` after current-main merge; durable UAT record head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
-| CI | Pending | Pending |
-| Completed | Pending | Pending |
+| CI | 2026-08-18T00:27:09Z–00:41:02Z | Exact-head HelixOS CI run `32084564268` succeeded in 13m 53s |
+| Final approval | 2026-08-18T00:44:52Z | Exact-head GitHub approval; all 30 supplied files reviewed with no findings or unresolved threads |
+| Completed | 2026-08-18T00:45:48Z | PR #1189 merged as `0be661696e6ff3376cb0fb1746a53ae3c89d52a0` |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | Pending | Direct timestamps will be recorded |
+| Total elapsed | 23h 52m 33s | Task start through canonical GitHub merge timestamp |
 | Commits | 6 authored commits plus one current-main merge | Four implementation/remediation commits and two UAT documentation commits |
 | Change size | 30 files; 1,606 additions; 376 deletions | `git diff --shortstat origin/main...HEAD` at `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf` |
 | Validation | Shared/package builds, web typecheck, lint, theme check, 313 affected tests, complete 1,661-test web suite, production web build, post-merge 300-test focused run, 65 production-remediation tests, and manual UI UAT green | Local command and Helix-browser evidence |
-| Review | Private round 1: three blockers addressed; private round 2: one blocker and one non-blocker addressed; fresh private cycle 1 clean; Draft production round 1: two actionable findings addressed | Slack self-review thread `1786943637.689379`; production thread `1787008643.549259`; GitHub review and resolved threads |
-| CI | Pending | Exact-head GitHub Actions evidence |
+| Review | Private round 1: three blockers addressed; private round 2: one blocker and one non-blocker addressed; fresh private cycle 1 clean; Draft production round 1: two actionable findings addressed; Draft corrective re-review clean; final exact-head review approved | Slack self-review thread `1786943637.689379`; production thread `1787008643.549259`; GitHub reviews and two resolved threads |
+| CI | Run `32084564268` succeeded in 13m 53s; backend-and-infra 13m 48s, web-unit 9m 31s, web-e2e 7m 49s; web-cross-browser intentionally skipped | Exact-head GitHub Actions evidence |
 | Benchmarks | N/A | No performance claim requested |
 
 ## Work and decisions
@@ -87,6 +93,7 @@ Exclusions and owner decisions:
 - Focused suites after round-2 remediation: 12 suites and 313 tests passed.
 - Full web suite after round-2 remediation: 192 suites and 1,661 tests passed without functional failures or local timeouts.
 - `npm run build -w @helixos/web`: passed; 2,329 modules built and the postbuild embed assertion passed. Existing chunk-size and SignalR annotation warnings remain.
+- Exact-head HelixOS CI run `32084564268` passed: backend-and-infra, web-unit, and web-e2e succeeded; the conditional web-cross-browser job was skipped.
 - Private self-review round 1 was requested for `1671c586b9fbaaeca051691a8b0e59dae2c9d45a` in channel `C0BMWSRGYDS`, thread `1786943637.689379`, and returned three blockers at `1786943921.484199`.
 - Every blocker was verified and addressed on exact head `9fe64db03e9f3e7d58f0bbb6af784fb0ca826a53`; the PR description records the disposition and validation checkpoint.
 - Private rerun 1 completed at `1786945682.835339` with one blocker and one non-blocker; both were verified as valid and addressed on exact head `93cab5a2b5f6d77f27b4b57d360e1ddb34454b12`.
@@ -176,10 +183,13 @@ Exclusions and owner decisions:
 - Monitoring: heartbeat `pr-1189-private-self-review-restart` ran on the required seven-minute initial cadence and was deleted after the clean exact-head result.
 - Result: the review service completed fresh-invocation cycle 1 at `1787007525.686119` with no blockers, no non-blockers, no inline findings, and no additional architecture blockers. The result explicitly matched the supplied current head and base/merge-base context.
 - Terminal private-review state: exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d` is clean; PR #1189 remains Draft and no GitHub reviewer, `#pr-reviews` post, Ready transition, or merge was requested.
+- Draft corrective re-review completed clean on final head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`; both prior GitHub threads remained resolved and no new actionable thread appeared.
+- Final GitHub review approved the exact green head at 2026-08-18T00:44:52Z with no findings or unresolved threads.
+- Canonical GitHub state reports PR #1189 merged at 2026-08-18T00:45:48Z as merge commit `0be661696e6ff3376cb0fb1746a53ae3c89d52a0`.
 
 ## Outcome, risk, and follow-up
 
-In progress. Ready PR #1189 contains the route-owned navigation pass, repeatable browser UAT evidence, a clean private self-review on prior head `99b4142865566c0bbfb71ca11cfda0e77d88026d`, and complete production-feedback remediation on current head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`. Draft corrective re-review cycle 1 is clean and all GitHub threads are resolved. Exact-head required CI is running; final review has not yet been requested and the PR has not been merged.
+Completed. PR #1189 delivered the bounded first pass of route-owned tab navigation, passed local validation and repeatable browser UAT, received clean private and production re-reviews, passed exact-head hosted CI, received exact-head GitHub approval with no unresolved threads, and merged as `0be661696e6ff3376cb0fb1746a53ae3c89d52a0`. The remaining reachable client-owned tab surfaces are documented for follow-up PRs: Rule Test Suite, Manage Carriers detail, Client Portal Access across both hosts, and the embedded plan Rule Engine workbench; the unreachable Client Assignments component still requires a product disposition. No further action is required for PR #1189.
 
 ## Evidence provenance
 
