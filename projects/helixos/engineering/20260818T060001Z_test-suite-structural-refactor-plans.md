@@ -125,9 +125,9 @@ Several mutations derive transport or invalidation targets from closed-over sele
 ### Work item 0.2: capture every mutation target
 
 - **Affected code:** employee update/tag/skip/availability/delete/restore mutations; payroll pull/retry/force-retry/approve/delete mutations; the `EligibilityRunsDialog` delete mutation; focused tests.
-- **Changes:** define immutable mutation variables containing the exact tenant, company, batch/run/employee, and payload snapshot; use variables for request construction, completion handling, and invalidations; remove closed-over current-selection targeting.
+- **Changes:** define immutable mutation variables containing the exact tenant, company, batch/run/employee, and payload snapshot; use variables for request construction, completion handling, and invalidations; remove closed-over current-selection targeting. In `EligibilityRunsDialog`, the delete action must capture `selectedBatchKey` when deletion is requested and use that captured batch for both the DELETE route and invalidation. The initial `payrollBatchKey` prop initializes the selector only and is never an operation target after the selector changes.
 - **Tests:** switch employee, batch, company, and tenant selections while deferred mutations are pending; in `EligibilityRunsDialog`, select another batch before delete and switch again before the deferred DELETE resolves; resolve out of order; prove each request, response, and invalidation uses only its captured tenant/company/batch/run/employee target.
-- **Acceptance:** no mutation request or cache write depends on whichever entity is selected when the request finishes.
+- **Acceptance:** no mutation request or cache write depends on whichever entity is selected when the request finishes. A run selected under batch B is deleted and invalidated under batch B even when the dialog opened on batch A and the selector changes again while the request is pending.
 
 ### Security validation
 
@@ -283,9 +283,10 @@ Identify the roughly 170 KB critical-path straggler and benchmark it independent
 1. Define an affected-set manifest containing the original test and every new or relocated test file.
 2. Measure the affected set serially for attribution and the regular-topology `web-unit` command wall time for user impact. Full job duration is a control because install/build/shared-UI phases are unrelated.
 3. Collect at least five hosted baseline and candidate samples with unchanged runner topology, sequencer, lockfile, and test manifest.
-4. Report median, range, and a confidence interval for the paired difference; the interval must exclude zero.
-5. Require at least 15% affected-set reduction and at least 5% regular-topology command-wall improvement, with no coverage loss, retries, memory spike, or cost shifted to other files/phases.
-6. Treat unstable or inconclusive evidence as no performance claim. A maintainability PR may still stand on its own stated acceptance criteria.
+4. Report median, range, and separate confidence intervals for the paired affected-set and regular-topology command-wall differences, expressed as candidate minus baseline.
+5. Use the affected set as the attribution gate: its confidence interval must be entirely below zero, with no coverage loss, retries, memory spike, or cost shifted to other files or phases. A credible path to at least 15% affected-set reduction is the funding expectation before opening an experiment, not a second post hoc acceptance threshold.
+6. Use command wall as the impact classification. A confidence interval entirely below zero supports a user-visible speed claim; an interval spanning zero must be reported as no measurable command-wall change; an interval entirely above zero is a regression and closes the experiment. Do not require an arbitrary 5% wall-time improvement when the affected set is too small to produce one.
+7. Treat unstable or inconclusive affected-set evidence as no performance claim. A statistically attributable affected-set improvement with no measurable command-wall change is a legitimate result, but it must not be described as faster developer feedback. A maintenance PR may still stand on its own stated acceptance criteria.
 
 ## Validation strategy
 
