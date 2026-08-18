@@ -62,6 +62,10 @@ Exclusions and owner decisions:
 | PR 2 self-review finding corrected | 2026-08-18T03:06:00Z | Commit `d08b88f52` made the before/after table a keyboard-focusable horizontal scroll region and added regression coverage |
 | PR 2 rerun checkpoint | 2026-08-18T03:07:00Z | Head `d08b88f52a17ad3425490b5c50bec88495edce70`; fetched base `e8a43909cba35656d727abb419af9b138deab194`; merge base `d621d98b4`; no overlapping base drift |
 | PR 2 private self-review rerun requested | 2026-08-18T03:09:33Z | Posted exactly `rerun` as authenticated user in the existing thread; request timestamp `1787022573.018569`; seven-minute exact-head monitor active |
+| PR 2 private self-review completed clean | 2026-08-18T03:17:54Z | Exact head `d08b88f52a17ad3425490b5c50bec88495edce70`; zero blockers, non-blockers, or inline findings |
+| PR 3 Draft created | 2026-08-18T03:17:14Z | PR #1197 opened from `codex/manage-carrier-client-access-pr3` at exact head `62efa21c569e2e080dd46dc0979df3fa42c77677` |
+| PR 4 local implementation complete | 2026-08-18T03:20:00Z | Producer-code persistence, tenant and platform lookup, UI surfaces, validation, architecture review, and local commit complete; no PR opened yet |
+| Combined local preview ready | 2026-08-18T03:29:45Z | PRs 1-4 combined locally at `http://localhost:5175`; Producer Code, Carrier-wide Permissions, and Client Access verified in the Codex in-app browser |
 
 ## Task statistics
 
@@ -110,6 +114,9 @@ Exclusions and owner decisions:
 - Implemented the PR 2 UI boundary without removing underlying Client-scoped permission functionality: Manage Carrier Account now filters to `TENANT` permissions and overrides, performs no Client management-options query, omits `clientKey` from its atomic mutation, and keeps the existing API as the authoritative authorization and persistence owner.
 - Added an explicit permission-by-permission before/after review and requires an existing explicit grant or denial to be revoked before the opposite exception can be created, keeping the review truthful and avoiding contradictory active exceptions.
 - Parallel producer-code scope was clarified to exactly one producer code per Team Member within its Carrier and one owner per normalized code within that Carrier; the same normalized code may exist in another Carrier. Correction, reassignment, and deletion remain deferred.
+- PR 3 centralizes Broker/Agent and Client Success Manager assignment under Client Access, including separate unassigned filters, coordinated single/bulk staging, explicit per-Client before/after review, one reason, and atomic exact-revision apply.
+- PR 4 adds creation-only Carrier-specific producer-code ownership: one code per Team Member within a Carrier, case-insensitive uniqueness within that Carrier, tenant-scoped assignment and lookup, and capability-gated cross-Carrier lookup. Correction workflows remain deferred.
+- Created a local-only combined preview worktree and merged the completed slices solely for owner UAT; no combined branch was pushed and no lifecycle state changed.
 
 ## Validation, review, and CI
 
@@ -135,11 +142,15 @@ Exclusions and owner decisions:
 - Corrected the shared root cause at the single table owner by replacing clipped overflow with a keyboard-focusable horizontal scroll region. Blast-radius review covered the dialog's table header and permission rows, keyboard access, dialog sizing, review semantics, and the sole before/after table instance; no authorization, mutation, persisted state, cache, or permission-scope behavior changed, and no materially similar instance remains in Manage Carrier Account or the shared permissions UI.
 - Exact-head rerun checkpoint: finding disposition is addressed in `d08b88f52`; current base introduces only the already-reviewed PR #1194 merge commit and does not overlap the PR 2 delta; focused regression, lint, theme, production build, complete diff check, and architecture review passed.
 - PR 2 private self-review rerun cycle 1 is pending for exact head `d08b88f52a17ad3425490b5c50bec88495edce70`; bot acknowledgment `1787022574.979179` confirmed the rerun was admitted.
+- Passed: PR 2 exact-head rerun completed clean with zero actionable findings.
+- Passed: PR 3 focused API/web validation, API/web builds, lint, theme check, OpenAPI generation, diff check, and mandatory architecture review; its private exact-head self-review is active.
+- Passed: PR 4 full API suite, focused database/API/web suites, API/web/package builds, Prisma validation, OpenAPI checks, lint, theme check, diff check, and mandatory architecture review.
+- Passed combined local preview: the Producer Code Profile section loaded against the migrated test database; the Permissions tab rendered Carrier-wide controls and review behavior; Client Access rendered both role columns, unassigned status, bulk selection, and assignment entry points. Chrome was not used.
 - Deferred lifecycle gate: hosted current-head CI is required before final review after the Draft production-feedback phase, not for private self-review.
 
 ## Outcome, risk, and follow-up
 
-In progress. PR 1 was merged as PR #1194. PR 2 is published as Draft PR #1195 at `f5d7495de5f080d8ccac4ccc3e5967c7dc6ab769`; private self-review remains pending. Client Access and producer-code slices continue in isolated worktrees. No Ready transition, final reviewer request, merge of PR 2, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business.
+In progress. PR 1 was merged as PR #1194. PR 2 is Draft PR #1195 at clean exact head `d08b88f52a17ad3425490b5c50bec88495edce70`. PR 3 is Draft PR #1197 at `62efa21c569e2e080dd46dc0979df3fa42c77677` with private review active. PR 4 is complete locally and not yet published. A combined local preview is running for owner UAT. No Ready transition, final reviewer request, merge of PRs 2-4, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business.
 
 ## Evidence provenance
 
