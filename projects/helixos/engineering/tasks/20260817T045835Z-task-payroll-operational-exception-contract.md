@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in progress (production-review circuit breaker active; corrections delivered; owner approval required to resume review)
+- Status: blocked (report-contract decisions required before the next Issue #842 slice)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -69,6 +69,7 @@ Exclusions and owner decisions:
 | Circuit-breaker correction validated and pushed | 2026-08-18T02:55:14Z | Head `802543f1e`; shared API/workflow aggregate lifecycle classifier plus explicit payroll-feed system-actor naming and coverage |
 | Latest production threads answered and resolved | 2026-08-18T02:55:27Z | Both findings received commit-specific replies; all ten PR review threads are resolved; PR description records the root-cause audit and validation |
 | Current main synchronized into PR | 2026-08-18T02:57:00Z | Head `899cf8f16`; concurrent merge commit contains correction `802543f1e` plus only unrelated tenant-workspace/web changes from `e8a43909c` |
+| Decision-neutral report evidence completed | 2026-08-18T03:13:26Z | Commit `a7e977196`; source/gap, capacity, and reconciliation matrix added without report behavior |
 
 ## Task statistics
 
@@ -238,7 +239,9 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-The Payroll Operational Exception prerequisite contract and all currently reported production-review corrections are implemented and locally validated through commit `95218521c3c6ed08cbce08599729e3d085da9788`. The latest correction prevents a lost payroll-feed failure CAS from overwriting the linked intake source and normalized exception after ingestion or recovery has already won. The PR remains Ready and limited to the prerequisite contract: no report schema, report API, report UI, scheduler, generation path, or historical reconstruction was added. All inline feedback is answered and resolved. The production-review circuit breaker is active; no self-review, final re-review, CI monitoring automation, reviewer request, merge, release, or publish action will occur without the owner's explicit instruction to resume.
+The Payroll Operational Exception prerequisite contract and its reported production-review corrections are implemented on the prerequisite branch. Decision-neutral Issue #842 evidence is also committed at `a7e977196e0f1abb34e8a6b098d5e51c31e880d5`: the report source matrix explicitly distinguishes mapped state from funding, outcome, and permission gaps; documents safe query-shape constraints; and defines reconciliation/UAT proofs. No report schema, API, UI, scheduler, generation path, permission, or historical reconstruction was added.
+
+The next report-contract slice is blocked until the owner records the approved persisted HelixOS funding/outcome source and timestamp, and the permission owner confirms the Data Team and Carrier Admin default grants. Once decided, update the source matrix and begin Slice 1 from the approved contracts.
 
 ## Evidence provenance
 
