@@ -1,215 +1,342 @@
-# HelixOS test-suite structural refactor plans
+# Web test-boundary maintenance refactor plan
 
-- Status: Draft for implementation planning
-- Type: Refactor and test-performance remediation
-- Intended implementer: Associate engineer with senior review
-- Planning timestamp: 2026-08-18T06:00:01Z
-- Inspected HelixOS revision: `843e80d1cad4b001de2cad4d8a387a54566f2480`
+## Plan metadata
 
-## Objective
+- **Status:** Draft for renewed architecture and test-boundary review
+- **Plan type:** Refactor and security remediation; performance investigation is a separate track
+- **Repository:** `helixosio/helixos`
+- **Inspected revision:** PR #1201 head `f1fdcda2d2e778cc0efc418fa820eccfc702f02b`; target files were confirmed unchanged on `origin/main` at `0a0001fe0`
+- **Intended implementer:** Associate engineer working under the repository's current pull-request policy
+- **Primary evidence:** PR #1200 hosted timing; GitHub Actions run `32100564304`; `docs/operations/ci-timing-instrumentation.md`; PR #1201 private and production reviews; current source and tests
 
-Replace test-only interaction micro-optimizations with bounded structural refactors that give deterministic rules, async workflow state, and test fixtures a clear owner. Preserve all user-visible behavior, tenant boundaries, API contracts, and representative UI seams. Do not start an optimization PR until the revised hosted-baseline gate is satisfied.
+## Objective and outcome
 
-## Evidence and selection
+Treat three verified responsibility and test-placement hotspots as maintainability work, not as test-speed optimizations:
 
-The only current hosted observation is `web-unit-timing` from Actions run `32100564304`, downloaded at `C:\Users\bsstr\AppData\Local\Temp\helixos-pr-1200-32100564304\attempt-1`. It is useful for ranking but **not** a valid optimization baseline: the new workflow requires three successful unchanged-tree samples with each target-total and tests/hooks range within 10% of its median.
+1. correct tenant/cache and asynchronous-mutation targeting defects before moving code;
+2. decompose `EmployeesTab` along existing roster, grid, and eligibility-lifecycle boundaries;
+3. consolidate Payroll Batches feed-session ownership around the existing lifecycle model;
+4. redistribute Payroll Provider Management coverage only after missing focused test owners exist.
 
-| Priority | Target | Hosted total / tests-hooks | Structural evidence | Current disposition |
+Completion means each responsibility has one authoritative owner, tenant and mutation targets are immutable and tested, deterministic behavior is tested without importing the page component, and representative rendered/MSW seams remain. No runtime improvement is promised by these maintenance refactors.
+
+## Why the performance framing was removed
+
+PR #1200 improved matched local Admin Console samples but regressed in three hosted samples: target-total median was 30.8 seconds versus a 24.3-second stored baseline (+26.7%), while all 19 cases still passed. It was closed.
+
+The first production review of this plan then demonstrated that its replacement gate was also unsound:
+
+- the gate measured only the original test file even though the proposed work moves cases into new files;
+- every isolated jsdom/fork test file carries roughly 0.5-1.2 seconds of hosted fixed cost in the inspected samples, so target-file improvement can hide a suite regression;
+- CI uses two workers on a two-vCPU runner, and Vitest 3.2.4 cold-cache ordering is size-dependent, so shrinking a file changes its contention neighbor;
+- the three targets represented about 1% of accumulated file time and 2% of command wall time in the matching hosted samples, below a defensible suite-level optimization claim;
+- a 5% full-job guard allowed roughly 46 seconds of regression against candidate effects measured in only a few seconds.
+
+Accordingly, the former 15% target-file gate, duplicate target-total/tests-hooks legs, 10% range rule, and 5% full-job guard do not apply to the maintenance work below. Timing remains a diagnostic and a no-obvious-regression check. Any performance claim must use the separate measurement track at the end of this plan.
+
+Several earlier recorded web-test optimizations were retained on local evidence with hosted confirmation still outstanding. PR #1200 was the first in this cadence to receive the prescribed hosted check, and it failed. Those entries are not evidence that test redistribution improves hosted runtime.
+
+## Current evidence baseline
+
+Counts below were measured from the inspected revision; remeasure immediately before implementation.
+
+| Priority | Production target | Test target | Verified current evidence | Disposition |
 | --- | --- | --- | --- | --- |
-| 1 | `src/web/src/features/client-detail/tabs/EmployeesTab.tsx` | 15.99s / 14.33s | 1,884 lines, 24 local-state declarations, 15 query/mutation calls; 479-line component test with 21 cases | Plan first; recheck adjacent Client Detail work before starting. |
-| 2 | `src/web/src/features/client-detail/tabs/PayrollBatchesTab.tsx` | 21.69s / 19.91s | 825 lines, 10 local-state declarations, 13 query/mutation calls; 1,098-line component test with 50 cases | Plan second; high workflow and tenant-scope risk. |
-| 3 | `src/web/src/features/utilities/payroll-providers/PayrollProviderManagementPage.test.tsx` | 24.95s / 22.86s | 178-line page already delegates to focused modules, but its 905-line test runs 23 full-page/MSW scenarios | Refactor the test boundary only after proving duplicated coverage. |
+| 1 | `EmployeesTab.tsx` | `EmployeesTab.test.tsx` | 1,965 / 561 lines; 21 cases; component owns 20 state values, 6 queries, and 7 mutations | Maintenance refactor after security prerequisite |
+| 2 | `PayrollBatchesTab.tsx` | `PayrollBatchesTab.test.tsx` | 875 / 1,274 lines; 50 cases; 9 pure lifecycle cases live in the component suite | Maintenance refactor after security prerequisite |
+| 3 | `PayrollProviderManagementPage.tsx` | `PayrollProviderManagementPage.test.tsx` | 187 / 1,014 lines; 23 cases; page is already thin, but three critical production owners lack direct tests | Test-boundary maintenance only |
 
-Excluded for now: `PlanDetailTab` overlaps PR #1057; `ClientEditorDialog` overlaps PR #1185 and PR #689; `OperationsDashboard` overlaps PR #1199; and `ZorkaStudioRulesetPage` overlaps PR #1193. Recheck open PRs and imported production seams immediately before any implementation.
+The hosted target totals from run `32100564304` remain useful for ranking, not acceptance: Employees 15.99 seconds, Payroll Batches 21.69 seconds, and Provider Management 24.95 seconds.
 
-## Shared rules and acceptance bar
+## Shared constraints
 
-1. Do not treat file size alone as a defect. Each extraction must have one cohesive owner and a public, directly testable contract.
-2. Do not introduce `useEffect`, a catch-all `utils` module, a god hook, or a reducer that merely relocates all existing component responsibilities.
-3. Keep remote data in React Query. Mutation variables must capture the exact company, tenant, employee/batch/run target, and payload snapshot; cache invalidation must use those captured values.
-4. Preserve backend authorization and tenant scoping. UI affordances remain non-authoritative.
-5. Before a performance PR, collect three successful hosted samples from a byte-identical target test, principal production seam, test infrastructure, and lockfile. Require target-total and tests/hooks ranges within 10% of their medians.
-6. Retain a performance PR only if three exact-head hosted samples preserve behavior and improve both medians by at least 15%, remain within the 10% range limit, and do not materially regress the `web-unit` job. Local timing is diagnostic only.
+- Never call `useEffect` directly. Use React Query lifecycle, event/mutation callbacks, render-derived values, keyed remounting, or `useMountEffect` only for one-time external setup/cleanup.
+- Keep React Query as the owner of remote state. Do not mirror query data into local state.
+- Every tenant-scoped query key must include the same tenant identity used by its request URL, and must remain disabled until tenant context is available.
+- Every mutation must receive an immutable input containing tenant, company, batch/run/employee target, and payload snapshot as applicable. Transport, completion handling, and invalidation must use those variables.
+- Preserve server authorization, PlatformAdmin-only diagnostics, tenant-scoped routes, PII allowlists, accessibility, and representative UI seams.
+- Use local camelCase filenames. Do not add generic test kits, `utils` modules, broad controller hooks, or one-file-per-function ceremony.
+- A direct policy test must import no page/component module. Moving cases within the original component test does not create a lower-cost or clearer test boundary.
+- Preserve behavior coverage, not test-file counts. Retain at least one integration assertion for every important UI/request/cache seam.
 
 ## Requirements traceability
 
 | Requirement | Source | Planned work | Validation |
 | --- | --- | --- | --- |
-| Replace god-component responsibilities with cohesive owners | `C:\dev\HelixOS\AGENTS.md`; `instructions/general/solid-principles.md` | Employees and Payroll Batches plans | Responsibility map, direct module tests, review checklist |
-| Do not synchronize derived state through effects | `C:\dev\HelixOS\instructions\react\noeffect.md` | All three plans | Lint plus source review; derived values remain render-time selectors |
-| Test deterministic behavior at its owner while keeping integration seams | `C:\dev\HelixOS\instructions\node\node-testing.md` | All three plans | Direct tests plus retained MSW/component boundary cases |
-| Make performance claims only from stable hosted evidence | `C:\Users\bsstr\.codex\skills\run-helixos-test-optimization\SKILL.md` | Shared measurement phase | Three baseline and three exact-head artifacts, median/range table |
+| Reclassify the three candidates as maintenance work | PR #1201 final review and hosted arithmetic | All three maintenance review units; separate performance track | PR descriptions make no target-file speed claim |
+| Fix tenant-incomplete cache keys before extraction | PR #1201 security review and current query inventory | Review unit 0.1 | Two-tenant shared-cache and negative unscoped-request tests |
+| Remove current-selection mutation targeting | PR #1201 security/architecture review | Review unit 0.2 | Deferred/out-of-order mutation tests using captured variables |
+| Reuse existing grid and feed-state owners | PR #1201 architecture review | Employees and Payroll Batches target maps | Direct owner tests and complete-diff architecture review |
+| Give Provider Detail Loader, persistence, and editor behavior direct owners | PR #1201 test-strategy review | Provider review unit | Checked 23-case traceability matrix and focused tests |
+| Make any future performance evidence include relocated work | PR #1201 measurement review | Separate CI performance investigation | Affected-set manifest, command wall time, five hosted pairs, confidence interval |
 
----
+## Decisions and assumptions
 
-## Priority 1 — Employees Tab decomposition
+### Confirmed decisions
 
-### Current-state findings
+- The three structural candidates are maintenance/testability refactors, not CI optimizations.
+- Tenant/cache and mutation-target defects are a prerequisite security/correctness review unit.
+- Provider test redistribution cannot begin by deleting page coverage; missing direct owners are created first.
+- Performance experiments use separate scope, acceptance criteria, and review evidence.
 
-`EmployeesTab` currently owns unrelated concerns: roster loading; batch selection; eligibility-result loading; tag and availability mutations; delete/restore actions; downloads; import dialog state; grid filtering and grid-column construction; realtime invalidation; and display formatting. It exports several deterministic functions in the same file, including `isSkipPayCycleTag`, `employeeHasSkipPayCycle`, `eligibilityFilterBucket`, `employeeFilterFlags`, `buildEmployeeGridColumnDefs`, `buildEmployeeUpdateInput`, and `nextAvailabilityElection`.
+### Implementation assumptions to revalidate
 
-The component starts at `EmployeesTab` line 887. Its query/mutation graph begins at line 941 and includes payroll batches, files, employees, latest run status/detail, employee tags, update, tag, skip-pay-cycle, bulk availability, delete, and restore operations. The existing `EmployeesTab.test.tsx` exercises export, grid actions, and filters through MSW and the rendered grid, but no focused test file currently owns the deterministic helper contracts.
+- The named target files remain unchanged when each review unit starts.
+- The PlatformAdmin timeline endpoint remains intentionally tenant-free and independently authorized.
+- Existing API request/response contracts and server authorization remain unchanged.
+- Active overlapping pull requests do not modify the same production seams.
 
-| Symptom | Root cause | Ownership failure | Planned correction |
+If any assumption is false, stop before extraction, update the responsibility/behavior inventory, and obtain senior review of the revised boundary. No unresolved product, schema, or authorization-policy decision is delegated to the implementer.
+
+## Delivery sequence
+
+These are separate review units. Land the security/correctness prerequisite first. Each later unit starts from the integrated result and must recheck overlapping active pull requests.
+
+1. Tenant/cache and mutation-target remediation.
+2. Employees maintenance refactor.
+3. Payroll Batches feed-session maintenance refactor.
+4. Payroll Provider Management test-boundary maintenance refactor.
+5. Optional CI measurement experiments, separately justified and reviewed.
+
+Do not combine the three maintenance refactors into one implementation PR.
+
+## Review unit 0: tenant/cache and mutation-target remediation
+
+### Root cause
+
+The original plan described tenant isolation and immutable mutation targeting as preserved invariants, but the current source violates them. Moving the current query/mutation definitions into new hooks would launder those defects into new owners and make a "behavior-preserving" claim false.
+
+In `EmployeesTab`, five tenant-scoped queries omit tenant identity from their keys. `employee-tags` includes tenant but can run before tenant resolution. `eligibility-run-detail` can also run without `hasTenantCode`. The manual eligibility poller currently masks a mismatch between the latest-status key and realtime invalidations.
+
+In `PayrollBatchesTab`, batches, eligibility runs, categorized results, and roster keys omit tenant identity. The recent-run and watched-run queries can run before tenant resolution. The admin timeline is intentionally tenant-free because it uses the separately authorized PlatformAdmin endpoint.
+
+Several mutations derive transport or invalidation targets from closed-over selection state. The clearest defect is `deleteEmployeeMutation.onSuccess`, which reads `employeePendingDelete` instead of its mutation variable.
+
+### Work item 0.1: make tenant identity authoritative in cache keys
+
+- **Affected code:** `EmployeesTab.tsx`, `PayrollBatchesTab.tsx`, `useClientEligibilityRealtime.ts`, their tests, and any shared query-key module introduced by the implementation.
+- **Changes:** inventory every query URL, key, enabled predicate, invalidation, and realtime invalidation; include resolved tenant identity in every tenant-scoped key; require `hasTenantCode` before any tenant-scoped request; canonicalize eligibility run-list/detail key families so kickoff and realtime invalidations wake the same queries.
+- **Preserved invariants:** the PlatformAdmin timeline remains tenant-free and separately authorized; no client-side change weakens server enforcement.
+- **Tests:** mount two client windows under one shared `QueryClient` with different tenants; prove batches, employees/roster, eligibility, and feed runs never cross caches; install negative bare-`/api` handlers and prove no request occurs before tenant resolution.
+- **Acceptance:** no tenant-scoped URL has a tenant-free key or an enabled path without tenant context.
+
+### Work item 0.2: capture every mutation target
+
+- **Affected code:** employee update/tag/skip/availability/delete/restore mutations; payroll pull/retry/force-retry/approve/delete mutations; focused tests.
+- **Changes:** define immutable mutation variables containing the exact tenant, company, batch/run/employee, and payload snapshot; use variables for request construction, completion handling, and invalidations; remove closed-over current-selection targeting.
+- **Tests:** switch employee, batch, company, and tenant selections while deferred mutations are pending; resolve requests out of order; prove each response updates only its captured target.
+- **Acceptance:** no mutation request or cache write depends on whichever entity is selected when the request finishes.
+
+### Security validation
+
+The PR description must include a query-key/URL/enabled/invalidation matrix for both components. It must explicitly identify PII-bearing roster/employee caches and show two-tenant negative-space tests. This remediation is a correctness/security change, not a performance change.
+
+## Review unit 1: Employees maintenance refactor
+
+### Current responsibility map
+
+`EmployeesTab` composes payroll batches, files, employees, eligibility status/detail, and tags; seven mutation workflows; filters/search/grid selection; import/export; dialogs/snackbars; realtime eligibility; deterministic projection/update rules; and a hand-written eligibility poller.
+
+`runEligibilityForEmployee` is a 59-line POST-plus-poll workflow with up to twenty two-second waits, result projection, UI messages, and invalidation. No current `EmployeesTab` test executes that loop, so extracting it improves ownership and direct testability but does not explain the measured 14.3-second component-test time.
+
+The current PUT test forces a 409 and does not inspect the update body. `buildEmployeeUpdateInput` therefore needs characterization before it moves.
+
+### Target responsibility map
+
+| Owner | Cohesive responsibility | Must not own | Direct evidence |
 | --- | --- | --- | --- |
-| 1,884-line UI module with 24 local state declarations | Grid policy, employee payload construction, filters, and orchestration accumulated in the tab | Presentation owns deterministic policy and too many independent workflows | Extract policy modules first; then group server orchestration by roster workflow without moving presentation policy into a generic hook |
-| Component tests arrange MSW/React/grid state to prove simple rule outcomes | Pure helpers are private to the UI module | Tests sit above the narrowest owner | Give each extracted policy module direct tests; retain only representative UI and request seams |
-| Tenant-scoped requests and cache invalidation are interleaved with event handlers | The tab is both data boundary and UI coordinator | Mutation target/cached-resource ownership is difficult to audit | Require immutable mutation inputs and query-key inventory before moving any mutation |
+| Proposed `employeeRosterProjection.ts` | Eligibility bucket, active roster flags, tag/label projection, and `employeeMatchesRosterFilters` | React, grid, requests, cache, availability transitions | `employeeRosterProjection.test.ts` importing no component |
+| Proposed `employeeRosterUpdate.ts` | Availability/review transitions and canonical employee update input | React, requests, cache | `employeeRosterUpdate.test.ts` importing no component |
+| Existing `employeeGridCells.tsx` | Roster identity/eligibility/enrollment/flags/action cells and, only if cohesive, `buildEmployeeRosterColumnDefs` | Queries, mutations, dialog ownership | Expanded `employeeGridCells.test.tsx` |
+| Proposed `executeEmployeeEligibilityRun.ts` | Abortable POST plus exact-run terminal polling with injected request/delay/clock | React state, snackbars, cache | Deterministic executor tests with no real waits |
+| Proposed `useEmployeeEligibilityRun.ts` | One mutation lifecycle that captures exact variables, exposes pending/error/result, invalidates canonical keys, and aborts on unmount | Other roster mutations, filters, grid/dialog state | Focused hook tests |
+| Existing `EmployeesTab.tsx` | Server-state composition, transient filters/search/selection/dialogs, import/export, and focused child contracts | Reimplementation of the owners above | Reduced representative component/MSW seams |
 
-### Target responsibilities and dependencies
+Do not create `employeeGridColumns.tsx`. The builder references local row-action cells and would drag roughly 250 lines of context/action plumbing. Keep eligibility builders in `employeeEligibilityGrid.ts`; move cohesive roster presentation into the existing `employeeGridCells.tsx`, or leave the builder in the tab if the move would make that owner incoherent.
 
-Proposed names are intentionally scoped; create only modules whose extraction is supported by the initial characterization work.
-
-| Proposed owner | Responsibility | May depend on | Must not own |
-| --- | --- | --- | --- |
-| `employee-roster-policy.ts` | Skip-pay-cycle classification, eligibility/filter buckets, flag derivation, and availability-election transitions | `@helixos/shared` types/constants | React, React Query, API calls, grid widgets |
-| `employee-update-payload.ts` | The canonical `EmployeeSummary` plus patch to update-request mapping | Shared employee types | Fetching, cache writes, UI state |
-| `employee-grid-columns.tsx` | Grid column definitions and narrowly scoped cell-renderer composition | Grid types, existing cell components, policy outputs | Queries, mutations, page selection state |
-| `useEmployeeRosterMutations.ts` (only if characterization proves cohesive) | Employee/tag/availability/delete/restore mutation construction and captured-target invalidations | Request function, query client, explicit tenant/company context | Grid rendering, filters, dialogs, download UI |
-| `EmployeesTab.tsx` | Compose queries, local transient UI state, child controls, and the focused mutation/query contracts | The above modules and existing child components | Reimplementing policy or payload construction |
-
-Keep query ownership in the tab unless a cohesive query group can be named without combining unrelated network concerns. Do not create a single `useEmployeesTab` hook.
+Do not split tag identity into another file unless it proves independently useful. Avoid 4-6 one-function policy files whose isolated jsdom/fork tests add fixed suite cost.
 
 ### Behavior-preservation inventory
 
-| Invariant | Current evidence | Target evidence |
+| Behavior | Current proof | Target proof |
 | --- | --- | --- |
-| Active/terminated filtering, eligibility/enrollment/flag/label filtering, and quick search select the same roster | `EmployeesTab.test.tsx` filter-bar cases | Direct policy-table tests plus one rendered filter-bar case |
-| Update payload retains required batch context and only changes requested fields | Rendered mutation tests; `buildEmployeeUpdateInput` in the tab | Direct payload cases for patch combinations plus one MSW PUT assertion |
-| Tag, skip-pay-cycle, availability, delete, and restore actions use the selected employee and invalidate the right scope | Existing grid/action tests | Captured-input mutation tests and representative rendered action cases |
-| Tenant-specific requests never fall back to an unscoped route | Existing MSW tenant paths | Query-key/request inventory plus negative MSW handlers that fail on unscoped routes |
-| Export/import and eligibility dialogs remain accessible and permission-gated | Existing menu/grid tests and parent props | Retained component UAT seam tests |
+| Status, eligibility, enrollment, flags, labels, and quick search | Rendered filter cases | Projection truth tables plus one rendered filter seam |
+| Update mapping and patch precedence | Missing/indirect; 409 PUT does not inspect body | Direct update cases plus one successful MSW PUT body assertion |
+| Availability/review transitions | Broad component interaction | Direct transition table plus one bulk-action seam |
+| Tag, skip-pay-cycle, delete, and restore target the exact employee | Rendered action cases, with known closure defect | Captured-variable tests plus representative row actions |
+| Eligibility kickoff/poll/result/timeout/cancel | Not directly covered | Executor and hook tests plus one click-to-result component seam |
+| Tenant isolation and no unscoped fallback | Incomplete today | Prerequisite two-tenant and negative bare-`/api` tests |
+| Import/export and eligibility permissions/accessibility | Rendered menu/grid cases | Retained component seams and manual UAT |
 
-### Ordered implementation work
+### Ordered work
 
-1. **Characterize contracts and establish a baseline.** Recheck active PR overlap, fetch current main, inventory every query key, request URL, mutation payload, invalidation key, and permission prop. Add direct characterization tests around the existing helpers before moving them. Collect the required hosted baseline; stop if it is unstable.
-2. **Extract deterministic employee policy.** Move classification, filter, election, and payload logic into the two focused modules above. Export only public feature contracts. Move exhaustive truth-table cases from component tests into module tests; keep a rendered filter and PUT seam case for each category.
-3. **Separate grid composition.** Move column definitions and cell composition to `employee-grid-columns.tsx` only if it can remain free of network state. Pass a narrow, typed grid context. Preserve selection, keyboard access, action labels, and disabled/pending state behavior.
-4. **Audit mutations rather than mechanically extracting them.** For each mutation, ensure the variable contains its employee and tenant/company scope; make success invalidation derive from variables. Extract only the mutually cohesive roster mutations if that leaves the tab smaller and clearer. Otherwise retain them in the tab with the new payload owner.
-5. **Redistribute tests and measure.** Run direct policy/payload tests, retained component tests, the complete web suite, lint, theme check, build, and hosted post-change samples. Reject the performance claim if the shared optimization bar is not met.
+1. Land review unit 0 and rebaseline current counts against the exact implementation head.
+2. Add missing characterization for update mapping and eligibility lifecycle.
+3. Extract `employeeRosterProjection.ts` and `employeeRosterUpdate.ts`; move exhaustive deterministic cases to direct tests.
+4. Consolidate cohesive roster cells into `employeeGridCells.tsx`; rename `EmployeeUpdateCell` to `EmployeeRowActionsCell`; keep dialog/mutation implementations outside grid presentation.
+5. Extract the abortable eligibility executor and its single-concern hook. On kickoff, invalidate/refetch the canonical run-list key so declarative status polling and realtime invalidation remain aligned. Stop on completed, failed, timeout, cancellation, or request error; never project another employee's result.
+6. Consider a roster-mutation hook only if one cohesive lifecycle remains. Reject it if it requires many UI setters or combines unrelated tag/delete/availability workflows.
+7. Reduce component cases only after every moved assertion has a direct owner; run manual UAT in two tenant workspaces.
 
-### Risks, recovery, and UAT
+### Manual UAT
 
-The highest risk is a tenant/query-key or stale-mutation regression hidden by a structural move. Treat a discovered missing tenant key as a separate security defect, not an incidental refactor change; stop and obtain the required endpoint-to-policy inventory before changing it. Roll back by reverting the independently reviewable extraction commit; no persistence or API migration is planned.
+As a Carrier writer: switch filters; update an employee; add/remove a tag; toggle skip-pay-cycle; bulk-update availability; delete/restore; run eligibility through success and failure; use import/export. Switch to a second Carrier workspace while requests are pending and confirm no stale rows, action targets, cache data, or tenant paths cross windows.
 
-Manual UAT: as a writer in two carrier workspaces, open Employees; switch status and filters; update a cell; add/remove a tag; toggle skip-pay-cycle; bulk-update availability; delete then restore an employee; run eligibility; exercise each export/import affordance; then switch workspace and confirm no stale roster or action targets appear.
+## Review unit 2: Payroll Batches feed-session maintenance refactor
 
----
+### Current responsibility map
 
-## Priority 2 — Payroll Batches feed-workflow decomposition
+`PayrollBatchesTab` combines batch/employee/eligibility queries, feed-run selection and polling, post-pull watch state, pull/retry/force-retry actions, timeline expansion, dialogs, roster formatting, and results composition.
 
-### Current-state findings
+`payrollFeedRunState.ts` already owns retryability, automatic retry, batch-refresh policy, polling interval, and watch-window constants. Nine pure lifecycle cases currently live inside `PayrollBatchesTab.test.tsx`.
 
-`PayrollBatchesTab` owns batch/employee/eligibility data loading, feed-run selection and polling, post-pull watch-window state, pull/retry/force-retry/approve mutations, delete-dialog and eligibility-dialog state, timeline expansion, roster display formatting, and rendering of the feed status, trace, and categorized results surfaces. The component begins at line 120. Its server-state graph starts at line 178; mutations begin at line 324. Its test has 50 cases, global MSW handlers, and a mix of full-component workflow tests plus direct tests for `feedRunNeedsBatchRefresh` and retryability.
+### Target responsibility map
 
-| Symptom | Root cause | Ownership failure | Planned correction |
+| Owner | Cohesive responsibility | Must not own | Direct evidence |
 | --- | --- | --- | --- |
-| Feed lifecycle, polling eligibility, and UI dialog state coexist in one tab | No named feed-session boundary between server state and presentation | Lifecycle policy is hard to test without the full component | Introduce a pure feed-session policy module and narrowly scoped query/action adapters |
-| Many rendered tests exist solely to establish feed status or request construction | Derived watch/poll decisions are embedded beside rendering | Deterministic workflow policy is not directly owned | Move state-selection and refresh decisions into direct tests; retain MSW cases for actual routes/mutations |
-| Tenant path, active run, and post-pull refresh are coordinated across queries/mutations | Cached context and mutation targets are distributed | A refactor could accidentally use current UI selection after an async completion | Capture company, tenant, pay date, and run key in immutable mutation inputs and derive invalidation from them |
+| Existing `payrollFeedRunState.ts` | Lifecycle vocabulary plus the missing watched-run selector | React, requests, cache, UI feedback | New `payrollFeedRunState.test.ts` |
+| Proposed `useFeedPullSession.ts` | Active run key, watch deadline, recent/detail queries, pull/retry/force-retry mutations, and session feedback as one lifecycle | Batch delete/approve, eligibility, roster rendering, admin trace | `useFeedPullSession.test.tsx` |
+| Existing `PayrollBatchesTab.tsx` | Batch/eligibility/roster composition, transient batch dialogs, PlatformAdmin trace, and results presentation | Duplicated feed-session state/policy | Reduced representative component/MSW seams |
 
-### Target responsibilities and dependencies
-
-| Proposed owner | Responsibility | May depend on | Must not own |
-| --- | --- | --- | --- |
-| `payroll-feed-session-policy.ts` | Choose watched run, decide polling/refresh eligibility, derive pull/retry availability and user-facing phase inputs | Feed-run types and existing `payrollFeedRunState` constants | React, timers, requests, cache writes |
-| `payroll-pull-request.ts` | Validate/normalize the pay-date input and build immutable pull/retry command inputs | Shared types and date helpers | UI dialogs, fetching |
-| `usePayrollFeedRunQueries.ts` (proposed only after inventory) | Feed-run list/detail query definitions with tenant-complete keys and documented polling | Request function and feed-session policy | Batch deletion, eligibility UI, timeline rendering |
-| `usePayrollFeedPullActions.ts` (proposed only after inventory) | Pull/retry/force-retry mutations and captured-target invalidation | Request function, query client, immutable command inputs | Dialog state and rendering |
-| `PayrollBatchesTab.tsx` | Batch-level composition and transient dialogs; passes focused data/actions to existing `PayrollPullStatusCard`, `PayrollRunTracePanel`, and results panels | Existing visual components plus the above boundaries | Reimplementing lifecycle policy |
-
-Do not merge the watch-window clock with server-state ownership. The policy module may calculate from an explicit `now` value; the React boundary owns obtaining `Date.now()` and supplying it. Do not add an effect to synchronize it.
+Do not create `payrollFeedSessionPolicy.ts`; it would duplicate the existing state module. Do not split queries from pull actions: each action activates the exact run, opens the watch deadline, and owns feedback, so the cohesive boundary is the feed-pull session. Never call `useEffect` directly; use query polling and event-driven state.
 
 ### Behavior-preservation inventory
 
-| Invariant | Current evidence | Target evidence |
+| Behavior | Current proof | Target proof |
 | --- | --- | --- |
-| Pull chooses the intended pay date, sends the tenant-scoped route, and disables/re-enables controls correctly | Existing pull and tenant-scope MSW tests | Direct command/policy tests plus one rendered pull request assertion |
-| Reloaded failed/in-flight runs regain retry/progress visibility | Existing feed-run list/state cases | Direct watched-run selector matrix plus retained reload integration case |
-| Polling continues only for queued/processing and documented settling states | Existing `feedRunNeedsBatchRefresh` tests | Expanded policy truth table with explicit `now`; one query adapter test |
-| Retry/force retry/approve/delete mutate the exact batch or run and refresh the correct cache entries | Existing MSW mutation tests | Captured-variable tests plus representative component cases |
-| Trace is PlatformAdmin-only and lazy; batch/roster PII rendering remains allowlisted | Existing component behavior and inline source safeguards | Permission/lazy-query tests and source-review checklist |
+| Active session run wins; reload restores latest non-ingested run | Component suite | Direct selector matrix plus reload seam |
+| Queued/processing/ingested/failed refresh and retry rules | Nine pure cases inside component test | `payrollFeedRunState.test.ts` with explicit clock |
+| Pull/retry/force-retry target exact tenant/company/pay-date/run | MSW cases | Captured-variable hook tests plus representative rendered requests |
+| Batch/roster refresh survives ingestion settling | Component/query behavior | Hook/state tests plus one integration seam |
+| Admin trace remains PlatformAdmin-only, tenant-free, lazy, and live | Rendered behavior/source guard | Retained permission/lazy-query component tests |
+| Roster PII remains allowlisted | Inline security safeguard and rendering | Source-review checklist plus retained roster seam |
 
-### Ordered implementation work
+### Ordered work
 
-1. **Map workflow states before moving code.** Produce a table for `QUEUED`, `PROCESSING`, `FAILED`, `INGESTED`, absent run, and stale/settling states. For each, record visible controls, polling behavior, cache refreshes, and tenant route. Add missing direct characterization tests first.
-2. **Extract pure session and command policy.** Move watched-run selection, refresh predicates, and pay-date command construction to focused modules. Use explicit `now` arguments for time-dependent decisions. Keep the existing `payrollFeedRunState.ts` as the authoritative lower-level lifecycle vocabulary; do not duplicate it.
-3. **Create narrow React Query adapters only where cohesive.** Move feed-run queries and feed actions separately, with query keys that exactly match tenant-scoped request context. Each mutation must carry immutable target data; completion invalidations must read variables, not current selected state.
-4. **Reduce component tests by layer, not by deleting coverage.** Move state matrices and command validation to direct tests. Retain component/MSW tests for pull, retry, reload restoration, force retry authorization, trace lazy loading, delete/approve, and categorized-results wiring.
-5. **Validate lifecycle and measure.** Run focused tests, complete web tests, lint, theme check, build, and manual UAT. Use the hosted baseline/post-change gates; close rather than promote if the performance bar fails.
+1. Land review unit 0 and create a state table for absent, queued, processing, failed, ingested, and settling runs.
+2. Add `payrollFeedRunState.test.ts`; move the nine pure cases and add watched-run selector cases.
+3. Extract `useFeedPullSession.ts` with immutable inputs and tenant-complete query keys. Keep session notice/error state inside this lifecycle; expose a narrow result/actions contract.
+4. Leave trace, batch deletion/approval, eligibility, and roster presentation in the tab.
+5. Reduce the component suite only after direct owners exist; retain pull, reload restoration, retry, force-retry permission, tenant routing, progress/failure, approval/deletion, roster, and categorized-result seams.
+6. Run two-workspace/persona UAT and record any timing only as diagnostic evidence.
 
-### Risks, recovery, and UAT
+### Manual UAT
 
-This is the highest-risk item because it combines payroll workflow progress, cross-tenant routing, polling, and privileged diagnostics. No schema or endpoint change is planned. If an extracted policy changes a state outcome, revert the affected vertical slice and retain the characterization test as a regression guard.
+As a Carrier writer: pull a pay period; observe queued, processing, completed, and failed states; refresh mid-run; retry; confirm post-ingestion batch/roster refresh; approve/delete where permitted. As PlatformAdmin, open trace and force retry; as non-admin, confirm those controls and requests do not exist. Repeat in a second Carrier workspace.
 
-Manual UAT: as a Carrier writer, pull a valid pay period, observe queued/processing/terminal transitions, refresh the page mid-run, retry a failure, confirm batch/roster refresh after ingestion, and delete/approve where allowed. As PlatformAdmin, expand the trace and force retry; as a non-admin, verify those controls and requests do not appear. Repeat in a second carrier workspace to verify tenant isolation.
+## Review unit 3: Payroll Provider Management test-boundary maintenance refactor
 
----
+### Corrected premise
 
-## Priority 3 — Payroll Provider Management test-boundary refactor
+The 187-line production page is already thin. The 1,014-line page test owns critical behavior because `PayrollProviderDetailLoader.tsx`, `usePayrollProviderPersistence.ts`, and `PayrollProviderEditor.tsx` have no direct tests. Existing dialog/advanced-JSON tests are too thin to receive that coverage.
 
-### Current-state findings
+Do not create `payrollProviderManagementPage.testKit.tsx`. `usePayrollProviderHandlers()` already serves 11 cases; the remaining cases intentionally need counters, deferred gates, mutable server records, or failure toggles. Existing factories already return fresh nested objects and distinguish list summaries from detail records. A parameterized kit would become an over-configurable fixture owner.
 
-The production page is already appropriately thin: `PayrollProviderManagementPage.tsx` is 178 lines and delegates provider API/query keys, routing, detail loading, toolbar, new-provider dialog, and validation to focused modules. Recent history includes `refactor(payroll): finalize provider management` and merge commit `75827ccac` for PR #1165. A new page/component decomposition is therefore not justified.
+### Add missing focused owners first
 
-The opportunity is the page test boundary. `PayrollProviderManagementPage.test.tsx` is 905 lines and runs 23 full-page/MSW scenarios. It repeatedly installs list/detail/path/validation/import handlers to reach behavior that may already be owned by `NewPayrollProviderDialog`, `PayrollProviderDetailLoader`, `PayrollProviderAdvancedJsonTab`, persistence/state modules, and API tests. The plan must first prove which assertions are duplicated; it must not delete a scenario merely because a child component has its own test.
+| Proposed test owner | Required direct coverage |
+| --- | --- |
+| `PayrollProviderDetailLoader.test.tsx` | Detail-vs-summary identity, delayed hydration, mismatched detail rejection, retry, preserved selection |
+| `usePayrollProviderPersistence.test.tsx` | Captured targets, provider/config save order, response identity rejection, partial-save recovery, cache merge/invalidation, exact-snapshot validation, publish success/failure, late edits |
+| `PayrollProviderEditor.test.tsx` | Save/publish wiring, validation display, authoritative-conflict reload, selection locking, representative child composition |
+| Optional `usePayrollProviderExampleFile.test.tsx` | Confirmation/apply lifecycle only if parser and dialog tests do not already own it |
 
-| Symptom | Root cause | Ownership failure | Planned correction |
-| --- | --- | --- |
-| Slow 23-case full-page test suite despite a thin page | Page-level tests cover both orchestration and child-editor behavior | Test boundary is broader than the page responsibility | Keep page tests to route, selection lock/correction, list/error states, and create handoff; move only proven child behavior to existing child/module owners |
-| Repeated large MSW handler arrangements | No single test-only owner supplies fresh, shape-realistic page fixtures | Setup is duplicated and can hide list/detail distinctions | Add a narrow test kit that creates fresh list summaries, detail records, and endpoint handlers without sharing mutable state |
-| Earlier production refactor already moved rules into modules | Repeating the split would create churn | The proposed change would lack a structural cause | Stop after characterization if page coverage is not duplicated; do not force a refactor |
+### Preliminary 23-case traceability
 
-### Target responsibilities and dependencies
+| Disposition | Current cases |
+| --- | --- |
+| Keep as reduced page seams (9) | route/section navigation; route correction during mutation; empty-state create entry; stale-snapshot reload; dirty-state preservation across list/detail refresh failure; one combined-save seam; one publish/selection-lock seam; create handoff/navigation; list-load retry |
+| Relocate after focused owner exists (3) | provider search to `PayrollProviderToolbar.test.tsx`; delayed detail hydration and detail-load retry to `PayrollProviderDetailLoader.test.tsx` |
+| Remove or reduce only after direct ownership exists (11) | extractor-only policy; exact-snapshot validation deduplication; mismatched save response; partial-save recovery; invalid-config preflight; cancelled column creation; detailed validation feedback; CSV replacement; JSON schema upgrade; disabled-provider publish policy; publish-error detail |
 
-| Proposed owner | Responsibility | May depend on | Must not own |
-| --- | --- | --- |
-| `payroll-provider-management-page.test-kit.tsx` (test-only proposal) | Produce fresh list/detail fixtures and compose page-level MSW handlers for route/selection/create scenarios | Existing API contracts, MSW, test render helper | Business validation, production API behavior, a mutable shared fixture singleton |
-| `PayrollProviderManagementPage.test.tsx` | Verify page composition: list load/error, selected-provider route, selection lock/route correction, empty state, and create handoff | Page test kit and real page public interface | Detailed editor JSON, persistence, import parsing, or publish policy |
-| Existing child/module tests | Own editor, parser, validation, persistence, and API-specific behavior | Their current public contracts | Page route orchestration |
+The retained save/publish page cases prove only cross-component wiring. Payload order, cache reconciliation, late edits, and failures belong to persistence/state tests. The retained create case proves navigation and list/detail handoff; normalization remains in `payroll-provider-model.test.ts`.
 
-### Behavior-preservation inventory
+### Ordered work
 
-| Invariant | Current evidence | Target evidence |
-| --- | --- | --- |
-| Provider route selects the requested provider and section | Page test route cases | Retained page route/selection tests |
-| Pending save/publish locks selection and corrects the route | Page mutation-state cases | Retained page test with real mutation keys |
-| Empty, initial load, and stale refresh error states render accessibly | Page error/empty cases | Retained page tests |
-| New-provider draft normalization/validation and create request are correct | Page and `NewPayrollProviderDialog` coverage | Dialog/model direct tests plus one page create-handoff test |
-| JSON/import/publish/persistence details remain covered | Page scenarios and focused child/module tests | Traceability matrix proving one authoritative child/module test per behavior |
+1. Expand the table above into a checked 23-row traceability artifact before changing tests.
+2. Add the Detail Loader, persistence hook, and editor test files. Add only the smallest production seam needed for direct testing; do not expose private state or mock internal collaborators indiscriminately.
+3. Add the optional example-file hook test only if confirmation/apply behavior remains otherwise unowned.
+4. Move the three identified cases, then remove/reduce the eleven cases one at a time only after the target test proves the same public behavior.
+5. Keep dynamic handlers local to the test that needs them; extract a small factory only after repeated use exists across focused suites.
+6. Run all payroll-provider tests and the complete web suite. Record runtime as a diagnostic, with no optimization claim.
 
-### Ordered implementation work
+### Manual UAT
 
-1. **Build a page-to-owner traceability matrix.** List every one of the 23 page scenarios, its asserted behavior, current child/module owner, and whether it is a unique page seam. Do not move or remove coverage until each behavior has a target owner and one retained integration seam where needed.
-2. **Introduce fresh test fixtures only if repetition is proven.** Add a narrowly typed test kit that distinguishes summaries from detail records and returns fresh objects/handlers per case. Do not create a generic testing utility or reuse mutable provider records across tests.
-3. **Narrow the page suite.** Retain unique page orchestration cases. Move duplicated validation, parser, persistence, and import behavior to their existing focused test files only when the traceability matrix identifies missing direct assertions. Keep request-boundary tests at the API/persistence layer.
-4. **Measure and decide.** Run the page suite, all payroll-provider focused tests, complete web tests, lint, theme check, build, then hosted samples. If the hosted criteria are not met, retain the clearer test boundary if it is behaviorally valuable but describe it as maintainability work, not a performance optimization.
+Open the route with no providers, a selected provider, and an invalid section. Create a provider; edit/save/publish; force list and detail refresh failures while dirty data exists; confirm selection remains locked during save/publish and that partial failure never discards later edits.
 
-### Risks, recovery, and UAT
+## Separate CI performance investigation
 
-The primary risk is a fixture abstraction that makes list and detail responses unrealistically identical or masks persistence sequencing. Require fresh fixtures and separate response shapes. No production behavior, schema, or API change is planned. Roll back by reverting the test-kit/page-suite change independently.
+If reducing `web-unit` feedback time remains an objective, open independent measurement/experiment PRs rather than attaching a speed claim to the maintenance work.
 
-Manual UAT: open the provider-management route with no providers, a selected provider, and an invalid route section; create a provider; edit and save/publish a provider; trigger a load refresh failure while detail data is present; verify selection remains locked while save/publish is pending.
+### Experiment A: deterministic scheduling
 
-## Delivery sequence and validation
+Benchmark a custom Vitest sequencer that orders by stable module ID under CI. This removes size-change ordering bias but does not eliminate all two-worker contention because added files still change pairing. Adopt it only if repeated hosted evidence shows stable diagnostics without worsening command wall time.
 
-Treat each priority item as its own branch and review unit. Do not run them concurrently with overlapping Client Detail or payroll-provider PRs. For every unit: read current repository instructions and active PR files; collect the stable hosted baseline; make a small vertical extraction; run direct tests and retained component tests; run `npm run test -w @helixos/web -- <target>`, `npm run test -w @helixos/web`, `npm run lint -w @helixos/web`, `npm run theme:check -w @helixos/web`, `npm run build -w @helixos/web`, and `git diff --check`; then collect exact-head hosted samples.
+### Experiment B: critical-path and topology
 
-No migration, deployment, feature flag, or external configuration change is planned for any item. Follow the repository's current PR lifecycle at implementation time; this note does not authorize a Ready transition, reviewer request, merge, or release.
+Identify the roughly 170 KB critical-path straggler and benchmark it independently. Separately compare the current two-vCPU/two-worker topology with bounded alternatives; do not add workers to a CPU-saturated run without evidence.
 
-## Reviewer checklist
+### Measurement contract for future performance claims
 
-- Each extracted module has one owner and no new generic helper/god hook.
-- Query keys, request URLs, mutation variables, and cache invalidations preserve tenant and exact-target scope.
-- No effect-driven prop/query-to-state synchronization, shadow refs, or stale-selection mutations appear.
-- Direct tests own deterministic logic; component tests retain user-visible, permission, and request seams.
-- Fixtures preserve list/detail shape and mutable-instance distinctions.
-- Hosted evidence satisfies the optimization bar; otherwise the change is described only as a maintainability refactor or closed.
+1. Define an affected-set manifest containing the original test and every new or relocated test file.
+2. Measure the affected set serially for attribution and the regular-topology `web-unit` command wall time for user impact. Full job duration is a control because install/build/shared-UI phases are unrelated.
+3. Collect at least five hosted baseline and candidate samples with unchanged runner topology, sequencer, lockfile, and test manifest.
+4. Report median, range, and a confidence interval for the paired difference; the interval must exclude zero.
+5. Require at least 15% affected-set reduction and at least 5% regular-topology command-wall improvement, with no coverage loss, retries, memory spike, or cost shifted to other files/phases.
+6. Treat unstable or inconclusive evidence as no performance claim. A maintainability PR may still stand on its own stated acceptance criteria.
+
+## Validation strategy
+
+For each review unit, verify the exact commands against current package scripts, then run the focused direct tests, retained component tests, complete `@helixos/web` tests, web lint, theme check, production build, and `git diff --check`. Hosted CI is required by the repository lifecycle. Record command timing only as diagnostic evidence; an observed regression must be investigated for accidental repeated work or cost shifting, but the maintenance review unit has no speedup threshold.
+
+| Layer | Required evidence |
+| --- | --- |
+| Dependency-light policy | Direct tests import no component and cover full decision tables |
+| Hook/lifecycle | Captured variables, out-of-order completion, cancellation/timeout, exact invalidations |
+| Component/MSW | Representative rendering, permission, request, cache, and accessibility seams |
+| Tenant/security | Two simultaneously mounted tenants; negative unscoped handlers; PII cache separation |
+| Full web | Tests, lint, theme check, build, and exact-head required CI |
+| Manual UAT | Two workspaces/personas and pending-request target switches where applicable |
+
+## Risks and recovery
+
+- **Tenant defects hidden by extraction - high/high:** land review unit 0 first and require the complete query/mutation matrix.
+- **Mechanical file proliferation - medium/high:** prefer existing owners, camelCase names, and a direct usefulness test before creating a module.
+- **Provider coverage loss - medium/high:** add missing focused owners before removing any page assertion; use the 23-row matrix as the gate.
+- **God hook replacement - medium/high:** reject hooks that need many unrelated setters or own workflows outside their lifecycle.
+- **False performance claim - high/medium:** keep maintenance and performance review units separate and measure all relocated work.
+
+Each review unit is independently revertible. No schema, endpoint, deployment, feature flag, or external configuration change is planned by this document.
+
+## Data, rollout, compatibility, and recovery
+
+No persistence migration, API contract change, deployment ordering, feature flag, or backward-compatibility bridge is planned. Each review unit must leave the application behaviorally complete and can be reverted independently. If review unit 0 reveals a server-side tenant or authorization defect, stop this plan and create a separately scoped cross-cutting remediation with the required endpoint-to-policy matrix.
 
 ## Definition of done
 
-- The selected responsibility boundary is demonstrably smaller and cohesive.
-- Every preserved behavior in the relevant inventory has direct or seam coverage.
-- No production API, authorization, tenant, or PII safeguard regresses.
-- Local and hosted evidence is recorded separately; performance claims meet the current skill gate.
-- The worktree is clean, applicable documentation is updated, and the repository lifecycle policy has been followed.
+- The security prerequisite is integrated before either Client Detail refactor.
+- Every query and mutation has one tenant/target ownership contract and direct negative-space evidence.
+- Every extracted rule/lifecycle has one authoritative owner and direct tests at the narrowest layer.
+- Representative UI, request, permission, PII, and cache seams remain covered.
+- No direct `useEffect`, god hook, dumping-ground helper, generic fixture kit, or mechanical file split is introduced.
+- The Provider 23-case traceability matrix has no behavior with a missing target owner.
+- Timing is described honestly as diagnostic unless the separate performance contract is satisfied.
+- Documentation, validation, review evidence, and the repository lifecycle gates are complete; merge remains an owner decision.
+
+## Reviewer checklist
+
+- Challenge every proposed owner for cohesion and dependency direction.
+- Verify all tenant-scoped keys, enabled predicates, realtime invalidations, and mutation targets.
+- Confirm direct tests import no page component and component tests retain critical seams.
+- Reject any test deletion without a named target owner and equivalent public-behavior evidence.
+- Reject a new grid module, duplicate feed-session policy, generic provider test kit, or broad page-controller hook.
+- Require exact-ref evidence and all relocated files in any future performance measurement.
+
+## Associate-engineer handoff checklist
+
+1. Read repository instructions, this plan, the current target modules/tests, `instructions/react/noeffect.md`, and `docs/operations/ci-timing-instrumentation.md`.
+2. Start only the next ordered review unit and confirm its dependency gate is integrated.
+3. Recount source/tests and refresh the responsibility and behavior inventories against the exact starting head.
+4. Stop and escalate if the work needs a new API, authorization rule, schema, cross-context abstraction, or more than the named responsibility boundary.
+5. Attach the exact head/base, query/mutation or case-traceability inventory, validation commands/results, UAT evidence, residual risks, and any diagnostic timing to the PR description.
+6. Follow the live owner-authored PR lifecycle; engineering completion alone does not authorize merge.
