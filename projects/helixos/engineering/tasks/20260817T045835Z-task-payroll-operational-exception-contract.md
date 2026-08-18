@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: completed (clean exact-head private self-review; Draft PR retained)
+- Status: in-progress (resumed to add owner-requested data-model rationale to Draft PR)
 - Repository: `helixosio/helixos`
 - Task started: 2026-08-17T04:58:35Z
 - Task/thread ID: Unavailable (Codex task ID is not exposed in the current tool context)
@@ -57,6 +57,7 @@ Exclusions and owner decisions:
 | Second fresh invocation rerun requested | 2026-08-18T00:43:54Z | Exact `rerun` reply `1787013834.177109` posted by verified user `U0B9R7NJTQA`; bot acknowledgement `1787013837.087269`; cycle 1 of 3 at head `0c3c9c615` |
 | Second fresh invocation review completed cleanly | 2026-08-18T00:47:51Z | Exact head `0c3c9c615`; 0 blockers, 0 non-blockers, 0 inline findings; result `1787014071.205399` |
 | Task completed | 2026-08-18T00:51:28Z | Private loop stopped and heartbeat paused; PR #1190 remains Draft with no public/final review actions taken |
+| Task resumed for PR documentation | 2026-08-18T01:10:45Z | Owner requested additional insight in the Draft PR about what the model stores and why |
 
 ## Task statistics
 
@@ -105,6 +106,7 @@ Exclusions and owner decisions:
 - Corrected the ordering in `0c3c9c615`: the DB owner now locks and classifies missing or `RESOLVED` state before actor/assignee validation, then preserves strict authorization for active mutations. Added exhaustive focused cases for missing plus inactive actor, resolved plus inactive historical actor, and active plus invalid actor.
 - Complete caller inventory remains one BBA claim adapter. Complete state/authorization inventory now covers missing, resolved, active authorized, active unauthorized, active invalid assignee, open retry, repeated in-progress delivery, successful resolution, later failure reopening, and the processor/recovery/expiry writers. No other source family uses the conditional helper.
 - At 2026-08-18T00:42:42Z the owner explicitly authorized another fresh private self-review invocation. Per the current skill contract, churn is counted only within this invocation; prior-invocation review rounds remain historical evidence and the new rerun ledger starts at zero.
+- At 2026-08-18T01:10:45Z the owner requested a focused PR-description update explaining the current-state and append-only event data model, its stored fields, and its reporting rationale. This is documentation-only and does not alter the clean reviewed head or Draft lifecycle state.
 
 ## Validation, review, and CI
 
@@ -205,7 +207,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-The Payroll Operational Exception prerequisite contract is implemented, validated, and cleanly approved by private self-review at exact head `0c3c9c615e895be21630e906827d891d0ed76ab8`. All 7 blockers and 3 non-blockers raised across prior rounds were corrected. Draft PR #1190 remains Draft. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain outside this completed private gate.
+The Payroll Operational Exception prerequisite contract is implemented, validated, and cleanly approved by private self-review at exact head `0c3c9c615e895be21630e906827d891d0ed76ab8`. All 7 blockers and 3 non-blockers raised across prior rounds were corrected. The task resumed only to improve the Draft PR's data-model rationale; no code or lifecycle transition is planned. Ready status, GitHub reviewers, public `#pr-reviews`, CI final gate, and merge remain outside this private gate.
 
 ## Evidence provenance
 
