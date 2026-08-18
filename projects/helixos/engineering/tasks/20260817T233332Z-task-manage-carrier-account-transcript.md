@@ -50,17 +50,19 @@ Exclusions and owner decisions:
 | Private self-review rerun requested | 2026-08-18T01:27:19Z | Posted exactly `rerun` as authenticated user in the existing thread; request timestamp `1787016439.234509`; seven-minute exact-head monitor active |
 | Initial exact-head review completed | 2026-08-18T01:31:19Z | Private self-review rerun completed clean for `1278deb1e` with zero blockers, non-blockers, or inline findings |
 | Read-only email presentation follow-up | 2026-08-18T02:04:13Z | Commit `32cc0a40b` replaced the read-only email input with labeled account information; owner declined another private self-review for this minor UI-only follow-up |
-| Completed | 2026-08-18T02:04:13Z | Draft PR updated at exact head `32cc0a40bb71fb31034c6b3b0480ef0216d2c2fa`; obsolete self-review heartbeat deleted |
+| Email presentation follow-up completed | 2026-08-18T02:04:13Z | Draft PR updated at exact head `32cc0a40bb71fb31034c6b3b0480ef0216d2c2fa`; obsolete self-review heartbeat deleted |
+| Dropdown keyboard and local form UAT follow-up | 2026-08-18T02:14:01Z | Commit `d621d98b4` added visible menu focus and keyboard-selection coverage; local invitation sender configuration corrected and the previously failing Add Team Member submission returned `201` |
+| Completed | 2026-08-18T02:14:01Z | Draft PR updated at exact head `d621d98b450ed453ebb4e9ed90729c6bbc4f8524` |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
 | Total elapsed | 26 minutes 25 seconds across six active intervals | Prior evidence-backed intervals totaled 6 minutes 28 seconds; PR 1 implementation interval was 00:45:10Z–01:05:07Z |
-| Commits | 5 product commits plus 1 base merge | `734089c84`, `84559ed87`, `cde4f87c9`, `1278deb1e`, `32cc0a40b`; merged current `origin/main` after it advanced |
-| Change size | 15 files, 488 insertions, 93 deletions | `git diff --stat origin/main...HEAD` at final head `32cc0a40bb71fb31034c6b3b0480ef0216d2c2fa` |
-| Validation | Passed | 23 API service tests; 17 focused web tests; 1,650 full web tests across 191 suites; read-only-email follow-up suite, 10 tests; web lint, typecheck, theme check, API and web builds; in-app browser verification |
-| Review | Clean through `1278deb1e`; owner-waived rerun for final UI-only delta | Private exact-head rerun at `1278deb1e` returned zero findings; local architecture review and validation passed for `32cc0a40b` |
+| Commits | 6 product commits plus 1 base merge | `734089c84`, `84559ed87`, `cde4f87c9`, `1278deb1e`, `32cc0a40b`, `d621d98b4`; merged current `origin/main` after it advanced |
+| Change size | 15 files, 547 insertions, 95 deletions | `git diff --stat origin/main...HEAD` at final head `d621d98b450ed453ebb4e9ed90729c6bbc4f8524` |
+| Validation | Passed | 23 API service tests; 17 focused web tests; 1,650 full web tests across 191 suites; latest Team Members page and table suites, 15 tests; web lint, typecheck, theme check, API and web builds; in-app browser verification |
+| Review | Clean through `1278deb1e`; owner-waived rerun for final UI-only deltas | Private exact-head rerun at `1278deb1e` returned zero findings; local architecture review and validation passed for `32cc0a40b` and `d621d98b4` |
 | CI | Not required for private Draft review | Hosted current-head CI remains a later Ready/final-review gate |
 | Benchmarks | N/A | No performance work requested |
 
@@ -91,6 +93,9 @@ Exclusions and owner decisions:
 - Rerun checkpoint: the sole finding is resolved; shared root cause was presentation copy narrower than the response contract; no endpoint, authorization, cache, persistence, or assignment behavior changed; focused validation passed; full PR diff architecture review found no new mixed ownership, async-target, authorization, state synchronization, test-placement, or performance issue. PR body validation evidence was updated.
 - Replaced the non-editable Team Member email text field in Edit Team Member with a semantic label/value presentation and explicit copy that email cannot be changed there. No API, persistence, authorization, or identity behavior changed.
 - Added focused regression coverage proving the edit dialog exposes the email as information rather than a textbox, updated the PR description and feature documentation, and pushed commit `32cc0a40b`.
+- Verified that MUI dropdowns already changed selection with Arrow Down and Enter, then identified the actual usability defect: the focused option had a transparent background and no visible focus indicator. Added a theme-owned primary-soft focus surface with an inset primary marker for all dropdown menu items.
+- Added keyboard-selection coverage for Add Team Member role selection and both Team Members roster filters, updated documentation and the Draft PR description, and pushed commit `d621d98b4`.
+- Diagnosed the owner's local Add Team Member `500` as missing `TENANT_INVITE_EMAIL_FROM`, restarted the local demo API with the documented sender setting, reconstructed the still-open test form after the web reload, and verified a `201 Created` response for `Test Broker`.
 
 ## Validation, review, and CI
 
@@ -108,11 +113,13 @@ Exclusions and owner decisions:
 - Passed: private self-review rerun requested at `1787016439.234509` completed at `1787016679.028009` for exact head `1278deb1eb8e486829a242c9cbd6a23ac783a101` with zero blockers, non-blockers, or inline findings.
 - Passed at `32cc0a40b`: Team Members focused suite, 10 tests; changed-file ESLint; web typecheck; theme-literal check; production build; `git diff --check`; Codex in-app browser verification confirmed zero Email textboxes and visible label, value, and non-editable explanation.
 - Owner decision: do not request another private self-review for the final minor UI-only delta. No Slack rerun was posted, and the obsolete heartbeat automation was deleted.
+- Passed at `d621d98b4`: Team Members page suite, 10 tests; Team Members table suite, 5 tests; changed-file ESLint; theme-literal check; web production build; `git diff --check`; Codex in-app browser verified Arrow Down/Enter selection and computed primary-soft focus highlighting.
+- Passed local form recovery: API log identified missing `TENANT_INVITE_EMAIL_FROM`; restarted demo API with the `.env.example` sender; retried the same Add Team Member values; API returned `201` and the UI displayed `Test Broker added`.
 - Deferred lifecycle gate: hosted current-head CI is required before final review after the Draft production-feedback phase, not for private self-review.
 
 ## Outcome, risk, and follow-up
 
-Completed. PR 1 is published as Draft PR #1194 at `32cc0a40bb71fb31034c6b3b0480ef0216d2c2fa`. The initial private self-review finding was corrected and head `1278deb1e` completed clean; the final delta only clarifies the read-only email presentation, and the owner explicitly declined another private self-review. The self-review heartbeat was deleted. The PR remains Draft for the separate production-feedback and final-review lifecycle; no Ready transition, reviewer request, merge, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside this pull request.
+Completed. PR 1 is published as Draft PR #1194 at `d621d98b450ed453ebb4e9ed90729c6bbc4f8524`. The initial private self-review finding was corrected and head `1278deb1e` completed clean; the final UI-only deltas clarify read-only email presentation and make dropdown keyboard focus visible, and the owner explicitly declined another private self-review. The self-review heartbeat was deleted. Local Add Team Member submission is working after restoring the documented invitation sender configuration. The PR remains Draft for the separate production-feedback and final-review lifecycle; no Ready transition, reviewer request, merge, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside this pull request.
 
 ## Evidence provenance
 
