@@ -10,7 +10,7 @@
 - Starting base SHA: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f` (merge base with `origin/main`)
 - Starting head SHA: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f` (local checkout; remote `origin/main` is ahead)
 - Issue: N/A
-- PR: N/A
+- PR: `https://github.com/helixosio/helixos/pull/1194` (Draft)
 
 ## Objective and scope
 
@@ -41,7 +41,8 @@ Exclusions and owner decisions:
 | Planning/handoff assessment completed | 2026-08-18T00:42:23Z | Planning-assessment interval: 1 minute 56 seconds; combined active intervals: 6 minutes 28 seconds |
 | PR 1 implementation started | 2026-08-18T00:45:10Z | Owner selected direct implementation to reduce review cycles |
 | PR 1 local implementation complete | 2026-08-18T01:05:07Z | 19 minutes 57 seconds; implementation, focused validation, full web validation, base synchronization, and architecture self-review complete |
-| PR created | Pending | Draft creation follows branch push |
+| Draft PR created | 2026-08-18T01:07:21Z | PR #1194 opened from `codex/manage-carrier-team-member-pr1` at exact head `cde4f87c916e70db79a21465bcba9c8ee3977ad5` |
+| Private self-review requested | 2026-08-18T01:09:02Z | URL-only `#self-reviews` parent `1787015342.293459`; bot acknowledged at `1787015344.393149` |
 | Completed | Pending | Pending |
 
 ## Task statistics
@@ -75,6 +76,7 @@ Exclusions and owner decisions:
 - Added primary-role context to the detail breadcrumb and preserved the selected deep-linked profile after an edit; revocation continues to return to the roster.
 - Removed additive-role assignment from the Team Member Permissions UI while retaining initial primary-role assignment for legacy/no-role members and leaving the underlying endpoint intact for compatibility.
 - Extracted member mutation/cache ownership and invite-recovery presentation into focused modules so the existing page and table hotspots did not absorb transport or feedback concerns.
+- Published branch `codex/manage-carrier-team-member-pr1` and opened Draft PR #1194 with a responsibility map, explicit scope boundary, and complete local validation evidence.
 
 ## Validation, review, and CI
 
@@ -88,10 +90,11 @@ Exclusions and owner decisions:
 - Passed: web lint, web theme-literal check, web production build, and API production build.
 - Passed after synchronizing `origin/main`: the 17 focused Manage Carrier tests.
 - Pending: hosted current-head CI after Draft PR creation.
+- Pending: exact-head private self-review. Heartbeat `manage-carrier-pr1-self-review` schedules the first check after seven minutes and one-minute pending checks without duplicate requests.
 
 ## Outcome, risk, and follow-up
 
-In progress. PR 1 implementation and local self-review are complete at `cde4f87c916e70db79a21465bcba9c8ee3977ad5`; branch publication, Draft PR creation, and the repository-prescribed review lifecycle remain. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside the current pull request.
+In progress. PR 1 is published as Draft PR #1194 at `cde4f87c916e70db79a21465bcba9c8ee3977ad5`; its exact-head private self-review is pending. Producer-code correction policy remains intentionally deferred to the business, and later delivery slices remain outside the current pull request.
 
 ## Evidence provenance
 
