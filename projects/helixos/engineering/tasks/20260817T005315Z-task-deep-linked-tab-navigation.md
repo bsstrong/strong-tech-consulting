@@ -38,6 +38,7 @@ Exclusions and owner decisions:
 | Draft production feedback requested | 2026-08-17T23:17:23Z | Initial `Ready for feedback` parent posted in `#pr-reviews` for exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | Draft production feedback returned | 2026-08-17T23:19:43Z | Two actionable route-guard findings on exact head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | Production feedback remediated | 2026-08-17T23:40:47Z | Commit `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf` pushed; both GitHub threads answered and resolved |
+| Review-cycle accounting corrected | 2026-08-18T00:21:13Z | Owner clarified this was production-feedback round 1; private-review rounds do not count toward the production churn ledger |
 | Manual UI UAT | 2026-08-17T13:44:52Z | Two clean Helix-browser passes; final implementation/UAT checkpoint `2a60bce0006818e930a9505a94ee559efe67e1cb` after current-main merge; durable UAT record head `99b4142865566c0bbfb71ca11cfda0e77d88026d` |
 | CI | Pending | Pending |
 | Completed | Pending | Pending |
@@ -133,7 +134,8 @@ Exclusions and owner decisions:
 - Architecture: deterministic tab parsing remains route-owned; protected draft/mutation state remains locally authoritative only for whether a route transition can be accepted; keyed `RouteCorrection` owns the external route-replacement lifecycle; no route state was copied into local state and no page-level dependency effect or shadow ref was introduced.
 - Validation: `npm run lint -w @helixos/web` passed; `npx tsc -b --pretty false` passed; `RouteCorrection`, Plans, Employee Detail, and Payroll Provider Management suites passed 65/65 tests; `git diff --check` passed.
 - Delivery: commit `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf` pushed at 2026-08-17T23:40:47Z; the PR description was updated; both GitHub threads were answered with exact fix evidence and resolved.
-- Circuit breaker: active again because production review found additional omissions in the same route/history acceptance boundary after two prior private-review rounds on that boundary. Heartbeat `pr-1189-production-review` was deleted and no `Check this one again` rerun was posted. Fresh owner approval is required before resuming automated production review.
+- Circuit breaker correction: this is Draft production-feedback round 1, so the two-round/two-cycle conditions are not active. Private self-review rounds belong to a separate ledger and cannot be carried into production feedback. The owner directed the workflow to resume.
+- Re-review gate: exact head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`, fetched base and merge base `e8e9a5d8982969bc04d54f8a138c25845958950f`, clean worktree, Draft and mergeable PR, two findings addressed, all GitHub threads resolved, complete affected-instance inventory recorded, and lint/typecheck/65 focused tests green. No materially similar guarded route remains unreviewed in the changed boundary.
 
 ### Private rerun checkpoint — 2026-08-17T05:40:41Z
 
@@ -171,7 +173,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-In progress. Draft PR #1189 contains the route-owned navigation pass, repeatable browser UAT evidence, a clean private self-review on prior head `99b4142865566c0bbfb71ca11cfda0e77d88026d`, and the complete production-feedback remediation on current head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`. Both production findings are addressed and their GitHub threads are resolved. The repeated-boundary churn circuit breaker is active, so the next Draft production re-review requires fresh owner approval. The PR remains Draft and has not been merged.
+In progress. Draft PR #1189 contains the route-owned navigation pass, repeatable browser UAT evidence, a clean private self-review on prior head `99b4142865566c0bbfb71ca11cfda0e77d88026d`, and the complete production-feedback remediation on current head `002fe16ce1e6484417b3a746a1fbf1afcb6d2dcf`. Both production findings are addressed and their GitHub threads are resolved. This is Draft production-feedback round 1, its churn ledger is separate from private self-review, and the exact-head re-review gate is satisfied. The PR remains Draft and has not been merged.
 
 ## Evidence provenance
 
