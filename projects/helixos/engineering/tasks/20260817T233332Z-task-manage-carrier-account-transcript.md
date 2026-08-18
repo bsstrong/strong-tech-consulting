@@ -10,7 +10,7 @@
 - Starting base SHA: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f` (merge base with `origin/main`)
 - Starting head SHA: `e81c2706ca31c91c1e19a3adbede9d08c8d56e9f` (local checkout; remote `origin/main` is ahead)
 - Issue: N/A
-- PR: `https://github.com/helixosio/helixos/pull/1194` (Draft)
+- PRs: `https://github.com/helixosio/helixos/pull/1194` (merged); `https://github.com/helixosio/helixos/pull/1195` (Draft)
 
 ## Objective and scope
 
@@ -54,6 +54,9 @@ Exclusions and owner decisions:
 | Dropdown keyboard and local form UAT follow-up | 2026-08-18T02:14:01Z | Commit `d621d98b4` added visible menu focus and keyboard-selection coverage; local invitation sender configuration corrected and the previously failing Add Team Member submission returned `201` |
 | PR 1 completed | 2026-08-18T02:14:01Z | Draft PR updated at exact head `d621d98b450ed453ebb4e9ed90729c6bbc4f8524` |
 | PR 2 implementation started | 2026-08-18T02:33:08Z | Owner authorized the permission-scope simplification slice and approved parallel work on independent later slices |
+| PR 1 merged | 2026-08-18T02:42:04Z | PR #1194 merged to `main`; its remote topic branch was removed |
+| PR 2 local implementation complete | 2026-08-18T02:54:00Z | Carrier-wide-only UI, explicit before/after review, focused validation, production build, architecture review, and in-app browser UAT complete |
+| PR 2 Draft created | 2026-08-18T02:56:00Z | PR #1195 opened from `codex/manage-carrier-permissions-pr2` at exact head `f5d7495de5f080d8ccac4ccc3e5967c7dc6ab769` against `main` |
 
 ## Task statistics
 
@@ -98,6 +101,10 @@ Exclusions and owner decisions:
 - Verified that MUI dropdowns already changed selection with Arrow Down and Enter, then identified the actual usability defect: the focused option had a transparent background and no visible focus indicator. Added a theme-owned primary-soft focus surface with an inset primary marker for all dropdown menu items.
 - Added keyboard-selection coverage for Add Team Member role selection and both Team Members roster filters, updated documentation and the Draft PR description, and pushed commit `d621d98b4`.
 - Diagnosed the owner's local Add Team Member `500` as missing `TENANT_INVITE_EMAIL_FROM`, restarted the local demo API with the documented sender setting, reconstructed the still-open test form after the web reload, and verified a `201 Created` response for `Test Broker`.
+- PR 1 was merged by the owner while the parallel slices were in progress. PR 2 therefore targets `main`; its merge-base is the final PR 1 head, so the Draft diff contains only the permission simplification.
+- Implemented the PR 2 UI boundary without removing underlying Client-scoped permission functionality: Manage Carrier Account now filters to `TENANT` permissions and overrides, performs no Client management-options query, omits `clientKey` from its atomic mutation, and keeps the existing API as the authoritative authorization and persistence owner.
+- Added an explicit permission-by-permission before/after review and requires an existing explicit grant or denial to be revoked before the opposite exception can be created, keeping the review truthful and avoiding contradictory active exceptions.
+- Parallel producer-code scope was clarified to exactly one producer code per Team Member within its Carrier and one owner per normalized code within that Carrier; the same normalized code may exist in another Carrier. Correction, reassignment, and deletion remain deferred.
 
 ## Validation, review, and CI
 
@@ -117,11 +124,13 @@ Exclusions and owner decisions:
 - Owner decision: do not request another private self-review for the final minor UI-only delta. No Slack rerun was posted, and the obsolete heartbeat automation was deleted.
 - Passed at `d621d98b4`: Team Members page suite, 10 tests; Team Members table suite, 5 tests; changed-file ESLint; theme-literal check; web production build; `git diff --check`; Codex in-app browser verified Arrow Down/Enter selection and computed primary-soft focus highlighting.
 - Passed local form recovery: API log identified missing `TENANT_INVITE_EMAIL_FROM`; restarted demo API with the `.env.example` sender; retried the same Add Team Member values; API returned `201` and the UI displayed `Test Broker added`.
+- Passed at PR 2 head `f5d7495de`: focused permission model and member permissions suites, 11 tests; broader Manage Carrier Account coverage, 71 tests across 21 suites; changed-file and full web lint; theme-literal check; production web build; `git diff --check`.
+- Passed PR 2 in-app browser UAT with `nriver-admin-demo`: the Team Member Permissions tab displayed 33 Carrier-wide permissions, no Client selector, and a review dialog with `Entire Carrier`, `Before change`, and `After change` values. No mutation was submitted during UAT.
 - Deferred lifecycle gate: hosted current-head CI is required before final review after the Draft production-feedback phase, not for private self-review.
 
 ## Outcome, risk, and follow-up
 
-In progress. PR 1 is published as Draft PR #1194 at `d621d98b450ed453ebb4e9ed90729c6bbc4f8524`. The owner has started PR 2 for permission-scope simplification and approved parallel development of independent later slices. PR 1 remains Draft; no Ready transition, reviewer request, merge, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business.
+In progress. PR 1 was merged as PR #1194. PR 2 is published as Draft PR #1195 at `f5d7495de5f080d8ccac4ccc3e5967c7dc6ab769`; private self-review remains pending. Client Access and producer-code slices continue in isolated worktrees. No Ready transition, final reviewer request, merge of PR 2, release, or publication was performed. Producer-code correction policy remains intentionally deferred to the business.
 
 ## Evidence provenance
 
