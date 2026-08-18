@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: in-progress
+- Status: completed
 - Repository: `https://github.com/helixosio/helixos.git`
 - Task started: 2026-08-17T23:33:32Z
 - Task/thread ID: Unavailable from the current Codex runtime
@@ -37,13 +37,13 @@ Exclusions and owner decisions:
 | Action inventory resumed | 2026-08-18T00:17:48Z | Owner requested actionable items and implementation questions |
 | Action inventory completed | 2026-08-18T00:18:11Z | Action-inventory interval: 23 seconds; combined active intervals: 3 minutes 56 seconds |
 | Owner decisions received | 2026-08-18T00:31:57Z | Product, scope, delivery, and producer-code answers supplied |
-| Completed | Pending | Pending |
+| Completed | 2026-08-18T00:32:33Z | Decision-record interval: 36 seconds; combined active intervals: 4 minutes 32 seconds |
 
 ## Task statistics
 
 | Statistic | Value | Evidence |
 | --- | --- | --- |
-| Total elapsed | 3 minutes 56 seconds across three active intervals | Direct UTC timestamps: 23:33:32Z–23:34:44Z, 23:35:57Z–23:38:18Z, and 00:17:48Z–00:18:11Z |
+| Total elapsed | 4 minutes 32 seconds across four active intervals | Direct UTC timestamps: 23:33:32Z–23:34:44Z, 23:35:57Z–23:38:18Z, 00:17:48Z–00:18:11Z, and 00:31:57Z–00:32:33Z |
 | Commits | N/A | No HelixOS code change requested |
 | Change size | N/A | No HelixOS code change requested |
 | Validation | Passed | Meeting title, notes, speakers, timestamps, and the full 01:36:38 transcript were visible |
@@ -71,7 +71,7 @@ Exclusions and owner decisions:
 
 ## Outcome, risk, and follow-up
 
-Completed. The evidence-backed transcript summary and actionable implementation inventory are complete. The owner can now answer the bounded product and migration questions before implementation begins.
+Completed. The evidence-backed transcript summary, implementation inventory, and supplied owner decisions are recorded. Producer-code correction policy is explicitly deferred for a business answer. The owner still needs to confirm whether broker deactivation, automatic reassignment, and commission-history behavior remain outside these four delivery slices; the recommended boundary is to exclude them.
 
 ## Evidence provenance
 
