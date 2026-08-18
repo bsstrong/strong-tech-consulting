@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Status: completed
+- Status: in-progress
 - Repository: `helixosio/helixos` (read-only investigation); record stored in `bsstrong/strong-tech-consulting`
 - Task started: 2026-08-18T00:47:46Z
 - Task/thread ID: `01a01255-eb88-7ff1-bf61-c6e84f65dedd`
@@ -20,6 +20,7 @@ Exclusions and owner decisions:
 
 - Read-only investigation of HelixOS and local Codex evidence; no HelixOS code changes.
 - Distinguish measured evidence from estimates and avoid inventing historical precision.
+- For the resumed analysis, distinguish local raw-token telemetry from the product's actual plan allowance and usage-meter behavior using current official OpenAI documentation.
 
 ## Lifecycle
 
@@ -31,6 +32,7 @@ Exclusions and owner decisions:
 | Review | N/A | N/A |
 | CI | N/A | N/A |
 | Completed | 2026-08-18T00:54:42Z | 6 minutes 56 seconds from recorded start |
+| Resumed for Pro-plan impact analysis | 2026-08-18T01:02:00Z | Owner asked how raw-token and tracking overhead affected the $200/month Pro account allowance |
 
 ## Task statistics
 
