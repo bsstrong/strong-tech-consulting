@@ -170,6 +170,9 @@ Exclusions and owner decisions:
 - Circuit-breaker follow-up at `95218521c`: the shared payroll-feed `failRun` transition now uses the snapshot status as an expected-state CAS and reconciles the linked intake source, operational exception, and trace only when exactly one authoritative run row changes. Poller and kickoff callers classify a lost failure CAS as deferred/`cas-lost`, and winning claims synchronize the in-memory run status to `PROCESSING` before any later trigger-failure transition.
 - The complete payroll-router intake-transition inventory covered all seven kickoff, poller, and ingestor sites. Every source reconciliation is now behind a winning authoritative transition or the ingestor's transaction-local claim boundary; no materially similar unguarded writer remains.
 - Circuit-breaker follow-up validation: workflow build passed; 108 focused DB/workflow tests passed across intake projection, kickoff, polling, and ingestion; `git diff --check` and the mandatory architecture review passed. The exact-head finding received a commit-specific reply and all eleven inline review threads are resolved.
+- Hosted CI run `32094261543` failed at exact head `95218521c` in the `backend-and-infra` integration smoke suite. The census failure transaction reached the new occurrence advisory lock, but Prisma rejected PostgreSQL's `void` result with `P2010`; the rollback left the census run `PROCESSING` until the smoke timeout.
+- CI correction `12e5556c1` preserves the transaction-scoped advisory lock while projecting its result as `text`, a Prisma-supported scalar. The existing mutation regression now pins that adapter contract.
+- CI correction validation: reproduced the failing transition against isolated PostgreSQL 16, then verified `PROCESSING` to `FAILED` plus one normalized census exception after the fix; DB build passed; DB full suite passed 262 with 3 existing skips; focused census suite passed 57; `git diff --check` and architecture review passed.
 
 ### Private rerun evidence checkpoint
 
@@ -240,6 +243,8 @@ Exclusions and owner decisions:
 ## Outcome, risk, and follow-up
 
 The Payroll Operational Exception prerequisite contract and its reported production-review corrections are implemented on the prerequisite branch. Decision-neutral Issue #842 evidence is also committed at `a7e977196e0f1abb34e8a6b098d5e51c31e880d5`: the report source matrix explicitly distinguishes mapped state from funding, outcome, and permission gaps; documents safe query-shape constraints; and defines reconciliation/UAT proofs. No report schema, API, UI, scheduler, generation path, permission, or historical reconstruction was added.
+
+Hosted-CI compatibility is corrected through `12e5556c1`: the PostgreSQL advisory-lock query now returns a Prisma-supported scalar without changing its serialization behavior. The production review circuit breaker remains active; this correction did not request self-review, final re-review, reviewers, merge, release, or publication.
 
 The next report-contract slice is blocked until the owner records the approved persisted HelixOS funding/outcome source and timestamp, and the permission owner confirms the Data Team and Carrier Admin default grants. Once decided, update the source matrix and begin Slice 1 from the approved contracts.
 
