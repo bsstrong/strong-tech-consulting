@@ -1,0 +1,25 @@
+{
+  "retrieved_utc": "2026-08-26",
+  "current_code_edition": 2025,
+  "queries": [
+    "local income tax",
+    "municipal income tax",
+    "city income tax",
+    "authorize a tax on income",
+    "municipality wage tax",
+    "municipality earnings tax",
+    "municipality compensation tax",
+    "municipality payroll tax"
+  ],
+  "decisive_sections": ["7-1-112", "7-6-4401", "7-6-4421"],
+  "specific_municipal_employee_income_or_wage_tax_delegations_found": 0,
+  "current_adopters_reported_by_montana_dor": 0,
+  "post_2023_check": "The complete July 2025 enacted-tax-legislation summary contains no local or municipal income-tax delegation; the post-session 2025 MCA retains the restriction and property-only general municipal grants.",
+  "rejected_false_positive_classes": [
+    "generic references to local income tax returns in entity recordkeeping statutes",
+    "multistate tax compact references",
+    "state income-tax withholding",
+    "unemployment and workers compensation taxes or premiums",
+    "property, resort, accommodations, sales, vehicle, and special-assessment taxes"
+  ]
+}

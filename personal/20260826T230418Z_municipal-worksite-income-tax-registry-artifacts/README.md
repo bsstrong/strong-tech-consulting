@@ -2,7 +2,7 @@
 
 This directory is the active replacement snapshot for the August 26, 2026 nine-state closure run. It began from the fully validated post-West Virginia snapshot in `../20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/` and is updated, validated, committed, and pushed after each state iteration.
 
-The registry remains **2,815 municipality rows across nine states**. Idaho and Mississippi add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`. Nationwide coverage is now 16 `COMPLETE`, 18 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 7 `UNDETERMINED`.
+The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, and Montana add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`. Nationwide coverage is now 16 `COMPLETE`, 19 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 6 `UNDETERMINED`.
 
 ## Contents
 
@@ -45,3 +45,10 @@ Idaho is `NO_AUTHORITY_CONFIRMED`: specific legislative authorization is require
 - [Source, administrative, and 30-session audit manifest](../20260826T230418Z_mississippi-municipal-wage-tax-closure-artifacts/README.md)
 
 Mississippi is `NO_AUTHORITY_CONFIRMED`: specific state-law authorization is required; the current municipal tax framework, State Auditor/DOR systems, and the official 1997-2026 regular-session audit disclose no enacted municipal employee wage-tax grant. Five exact authorization bills died in committee, and the project-specific Job Development Assessment Fee is nonmunicipal.
+
+## Montana evidence
+
+- [Closure report](../20260826T230418Z_montana-municipal-wage-tax-closure.md)
+- [Current-law and post-2025-session audit manifest](../20260826T230418Z_montana-municipal-wage-tax-closure-artifacts/README.md)
+
+Montana is `NO_AUTHORITY_CONFIRMED`: specific delegation is required; the general municipal grants are property-only; DOR reports no city local-income-tax adopter; and the current 2025 code plus complete enacted-tax summary reveal no qualifying municipal employee wage-tax delegation.

@@ -217,18 +217,24 @@ The closure audit retrieved all 74 current Idaho Code title indexes and all 1,47
 
 The closure audit also retrieved the official “All Measures” report for every regular session from 1997 through 2026. Five bills proposed the exact missing authority—1997 HB 68, 1998 HB 299, 1999 HB 950, 2001 HB 900, and 2003 HB 1467—and every one died in House committee. The proposed measures would have taxed income from employment or business carried on in eligible cities, allocated nonresident work, and used state tax administration; none became law. The wage-deducted Mississippi Business Finance Corporation Job Development Assessment Fee is excluded because it services project bonds and is not imposed by a municipality, even when reported in the W-2 local box. No Mississippi row is added. The [full Mississippi report](../20260826T230418Z_mississippi-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_mississippi-municipal-wage-tax-closure-artifacts/README.md) preserve the 30-session audit, candidate histories, current administrative sources, and refresh triggers.
 
+### Montana — zero current rows; no qualifying authority
+
+Current [MCA section 7-1-112](https://mca.legmt.gov/bills/mca/title_0070/chapter_0010/part_0010/section_0120/0070-0010-0010-0120.html) requires specific legislative delegation before a self-government local government may authorize an income tax. Current [sections 7-6-4401](https://mca.legmt.gov/bills/mca/title_0070/chapter_0060/part_0440/section_0010/0070-0060-0440-0010.html) and [7-6-4421](https://mca.legmt.gov/bills/mca/title_0070/chapter_0060/part_0440/section_0210/0070-0060-0440-0210.html) provide only property-based general municipal taxing power.
+
+Montana DOR's tax-year 2023 Form 2 instructions state that no city in Montana imposes a local income tax, consistent with its 2019-2022 instructions. The Legislature's complete July 2025 [enacted-tax summary](https://archive.legmt.gov/content/Committees/Interim/2025-2026/RIC/Meetings/July_11_2025/3.3.tax-legislation-2025.pdf) contains no local income-tax delegation, and the post-session 2025 MCA still contains the restriction and property-only general grants. Current-code searches found no alternate municipal employee wage, earnings, compensation, or payroll tax delegation. No Montana row is added. The [full Montana report](../20260826T230418Z_montana-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_montana-municipal-wage-tax-closure-artifacts/README.md) preserve the sources, search scope, and refresh triggers.
+
 ## Nationwide coverage
 
 All 50 states and the District of Columbia now have an explicit coverage classification:
 
 - `COMPLETE` — **16**: Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, Vermont, West Virginia, Wisconsin.
-- `NO_AUTHORITY_CONFIRMED` — **18**: Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through FY2027, Louisiana, Minnesota, Mississippi, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under this worksite definition, Virginia, Washington.
+- `NO_AUTHORITY_CONFIRMED` — **19**: Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through FY2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under this worksite definition, Virginia, Washington.
 - `PARTIAL` — **10**: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, Tennessee.
-- `UNDETERMINED` — **7**: California, Colorado, Montana, South Dakota, Texas, Utah, Wyoming.
+- `UNDETERMINED` — **6**: California, Colorado, South Dakota, Texas, Utah, Wyoming.
 
 `COMPLETE` means a current authoritative source or legal topology closes the municipal universe for this narrow question. `NO_AUTHORITY_CONFIRMED` is a closed zero under the definition. `PARTIAL` means current evidence supports the positive or zero findings shown but leaves an adopter, special-act, charter, legacy, or update gap. `UNDETERMINED` means the legal source set could not safely establish either an adopter or a categorical zero.
 
-The structured [coverage matrix](coverage-matrix.jsonl) contains all 51 state/DC records and source URLs. Detailed audit evidence is preserved for the [South](agent-extracts/phase2-south-audit.md), [Northeast/Midwest](agent-extracts/phase2-northeast-midwest-audit.md), [West](agent-extracts/phase2-west-audit.md), the [Idaho closure](agent-extracts/phase3-idaho-closure.md), and the [Mississippi closure](agent-extracts/phase3-mississippi-closure.md).
+The structured [coverage matrix](coverage-matrix.jsonl) contains all 51 state/DC records and source URLs. Detailed audit evidence is preserved for the [South](agent-extracts/phase2-south-audit.md), [Northeast/Midwest](agent-extracts/phase2-northeast-midwest-audit.md), [West](agent-extracts/phase2-west-audit.md), the [Idaho closure](agent-extracts/phase3-idaho-closure.md), the [Mississippi closure](agent-extracts/phase3-mississippi-closure.md), and the [Montana closure](agent-extracts/phase3-montana-closure.md).
 
 ## Remaining review and scheduled refreshes
 
