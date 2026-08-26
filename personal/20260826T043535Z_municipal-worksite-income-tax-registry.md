@@ -53,9 +53,9 @@ The 11 directly supported Kentucky jurisdictions are Bowling Green, Covington, H
 
 ## State coverage status
 
-### Complete (15)
+### Complete (16)
 
-Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, Vermont, and Wisconsin.
+Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, Vermont, West Virginia, and Wisconsin.
 
 ### No qualifying authority confirmed (16)
 
@@ -65,9 +65,9 @@ Arizona, Arkansas, Florida, Georgia, Hawaii, Illinois, Indiana through fiscal ye
 
 Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
 
-### Undetermined (10)
+### Undetermined (9)
 
-California, Colorado, Idaho, Mississippi, Montana, South Dakota, Texas, Utah, West Virginia, and Wyoming.
+California, Colorado, Idaho, Mississippi, Montana, South Dakota, Texas, Utah, and Wyoming.
 
 ## Important exclusions and boundary decisions
 
@@ -81,12 +81,24 @@ California, Colorado, Idaho, Mississippi, Montana, South Dakota, Texas, Utah, We
 - **Pennsylvania school EIT/PIT and Local Services Tax:** excluded; only the municipal earned-income-tax component is included.
 - County, transit, regional, business-profit, net-profit, and self-employment taxes are excluded throughout.
 
+## West Virginia closure — August 25, 2026
+
+West Virginia is now a **current closed zero** under the agreed worksite-wage-tax definition, so the state moved from `UNDETERMINED` to `COMPLETE` and no municipality row was added.
+
+Article 13C does contain dormant conditional authority for an employer-withheld percentage tax on employee wages. It applies only when a municipality's weighted police/fire pension funded percentage is 3% or less, the municipality presents a remediation plan to the Legislature's Joint Committee, and any necessary enabling law is enacted. The 2026 WVSCPA guide says no municipality imposed the tax as of January 1, 2026. The Municipal Pensions Oversight Board's complete 53-plan GASB 2025 set measures every plan through June 30, 2025 and shows every one above the 3% qualification ceiling; the lowest fiduciary-net-position percentage is 12.40%. Current Article 13C history and the January 1, 2026 Home Rule inventory reveal no later adopter or alternate employee wage-tax route.
+
+Flat weekly user/service fees in several West Virginia cities remain excluded because they are not percentage taxes calculated from wages. The statute is still a refresh trigger, so `COMPLETE` means the current adopter universe is closed—not that future adoption is impossible.
+
+- [Full West Virginia closure report](./20260826T044944Z_west-virginia-municipal-wage-tax-closure.md)
+- [West Virginia evidence manifest](./20260826T044944Z_west-virginia-municipal-wage-tax-closure-artifacts/README.md)
+- [Complete 53-plan funded-ratio extract](./20260826T044944Z_west-virginia-municipal-wage-tax-closure-artifacts/MPOB-2024-individual-plan-funded-ratios.csv)
+- [Latest 53-plan GASB 2025 funded-ratio extract](./20260826T044944Z_west-virginia-municipal-wage-tax-closure-artifacts/MPOB-2025-individual-plan-funded-ratios.csv)
+
 ## Open and future candidates
 
 - **Hurstbourne Acres, Kentucky:** secondary payroll sources report a 1% tax effective July 1, 2024, but no current municipal ordinance or form was located. Keep unresolved.
 - **Falmouth, Kentucky:** an official page announces a 2026 occupational/payroll ordinance, but the accessible material does not yet prove the complete worksite wage-tax test. Keep unresolved.
 - **Salem, Kentucky:** Ordinance 2026-05 appears to qualify but is effective October 1, 2026, so it was future-dated as of the report date.
-- **West Virginia:** state law appears to provide conditional authority, but no active adopter has been confirmed.
 - **Indiana:** local income-tax authority changes beginning in fiscal year 2028; refresh the registry before that date.
 
 ## How to close the undetermined states
@@ -95,7 +107,6 @@ Ordinary web searching has reached diminishing returns. The remaining work shoul
 
 | Priority | States | Closure work |
 | --- | --- | --- |
-| Highest | West Virginia | Inspect Joint Committee records, approval records, pension-plan materials, adopter lists, and termination records to determine whether any conditional municipal wage tax is active. |
 | High | Idaho, Mississippi, Montana, South Dakota, Utah, Wyoming | Exhaust current statutes, session laws, special/local acts, and delegations. Seek written confirmation from the legislative research office or responsible tax agency when no complete official list exists. |
 | Medium | Colorado | Obtain the official home-rule municipality universe and search every charter and code for percentage-based wage, earnings, payroll, and occupational taxes; distinguish them from flat occupational privilege taxes. |
 | Hardest | California, Texas | Review the complete charter/home-rule universe, attorney-general opinions, cases, special laws, and municipal codes. A written state-level confirmation would materially strengthen closure because broad home-rule authority makes keyword-only statutory review insufficient. |
@@ -113,15 +124,18 @@ Online statute, charter, ordinance, case, and agency-record research can continu
 
 ## Research artifacts
 
-- [Snapshot manifest](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/README.md)
-- [Full research report](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/U.S.%20Municipalities%20With%20a%20Worksite-Based%20Local%20Income%20Tax.md)
-- [Municipality registry CSV](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.csv)
-- [Municipality registry JSONL](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.jsonl)
-- [Registry validation output](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry-validation.json)
-- [State coverage matrix](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/coverage-matrix.jsonl)
-- [Manual review queue](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-review-queue.md)
-- [Normalized screening inventory](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/normalized-municipal-tax-inventory.jsonl)
-- [Excluded and review-only inventory](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/review-only-and-nonmunicipal-inventory.jsonl)
-- [Detailed state research notes](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/issue-1280-national-municipal-wage-tax-research.md)
+The post-audit replacement snapshot below contains every previously preserved registry artifact plus the updated West Virginia disposition. The original pre-audit snapshot remains intact for provenance.
+
+- [Current snapshot manifest](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/README.md)
+- [Full research report](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/U.S.%20Municipalities%20With%20a%20Worksite-Based%20Local%20Income%20Tax.md)
+- [Municipality registry CSV](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.csv)
+- [Municipality registry JSONL](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.jsonl)
+- [Registry validation output](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry-validation.json)
+- [State coverage matrix](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/coverage-matrix.jsonl)
+- [Manual review queue](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-review-queue.md)
+- [Normalized screening inventory](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/normalized-municipal-tax-inventory.jsonl)
+- [Excluded and review-only inventory](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/review-only-and-nonmunicipal-inventory.jsonl)
+- [Detailed state research notes](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/issue-1280-national-municipal-wage-tax-research.md)
+- [Archived pre-audit snapshot](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/README.md)
 
 These files now live in the personal-notes repository and preserve the detailed municipality rows, evidence URLs, state-by-state reasoning, and validation results behind this summary.

@@ -1,0 +1,4256 @@
+{
+  "metadata": {
+    "retrieved_at": "2026-08-26T00:02:05+00:00",
+    "source_sha256": "0ced83f225f950d20dd6c818ee75a86abea7f986139c99eb2de665d8792fba11",
+    "source_url": "https://thefinder.tax.ohio.gov/api/file-downloads?type=municipality"
+  },
+  "payload": {
+    "downloadBaseUrl": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads",
+    "downloadUrls": {
+      "countyFips": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/OHCountyFIPSCodes.txt",
+      "countyRateReportCsv": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/CountySalesTaxRateReport.csv",
+      "countyRateReportPdf": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/CountySalesTaxRateReport.pdf",
+      "countyRateReportPlus4Csv": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/CountySalesTaxRateReportPlus4.csv",
+      "countyRateReportPlus4Pdf": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/CountySalesTaxRateReportPlus4.pdf",
+      "jeddTaxRates": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/JEDTaxRates.csv",
+      "muniFips": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/OHMuniFIPSCodes.txt",
+      "muniRateTable": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/Muni/OHMuniRateTable.csv",
+      "salesTaxMap": "https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/tax_analysis/tax_data_series/sales_and_use/Salestaxmap.pdf",
+      "schoolDistrictRateTable": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/SD/OHSDRateTable.csv",
+      "schoolDistrictTaxList": "https://dam.assets.ohio.gov/image/upload/tax.ohio.gov/tax_analysis/tax_data_series/school_district_data/sdit_list.pdf",
+      "sstpRateDataZip": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/OHB2026Q1NOV28.zip",
+      "sstpRateDatabase": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/OHR2026Q1NOV28.csv",
+      "transitFips": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/OHTransitFIPSCodes.txt"
+    },
+    "entities": [
+      {
+        "code": "00142",
+        "name": "ABERDEEN"
+      },
+      {
+        "code": "00198",
+        "name": "ADA"
+      },
+      {
+        "code": "00380",
+        "name": "ADAMSVILLE"
+      },
+      {
+        "code": "00436",
+        "name": "ADDYSTON"
+      },
+      {
+        "code": "00450",
+        "name": "ADELPHI"
+      },
+      {
+        "code": "00464",
+        "name": "ADENA"
+      },
+      {
+        "code": "01000",
+        "name": "AKRON"
+      },
+      {
+        "code": "01042",
+        "name": "ALBANY"
+      },
+      {
+        "code": "01154",
+        "name": "ALEXANDRIA"
+      },
+      {
+        "code": "01210",
+        "name": "ALGER"
+      },
+      {
+        "code": "01420",
+        "name": "ALLIANCE"
+      },
+      {
+        "code": "01588",
+        "name": "ALVORDTON"
+      },
+      {
+        "code": "01630",
+        "name": "AMANDA"
+      },
+      {
+        "code": "01672",
+        "name": "AMBERLEY"
+      },
+      {
+        "code": "01742",
+        "name": "AMELIA"
+      },
+      {
+        "code": "01784",
+        "name": "AMESVILLE"
+      },
+      {
+        "code": "01798",
+        "name": "AMHERST"
+      },
+      {
+        "code": "01938",
+        "name": "AMSTERDAM"
+      },
+      {
+        "code": "02050",
+        "name": "ANDOVER"
+      },
+      {
+        "code": "02092",
+        "name": "ANNA"
+      },
+      {
+        "code": "02120",
+        "name": "ANSONIA"
+      },
+      {
+        "code": "02148",
+        "name": "ANTIOCH"
+      },
+      {
+        "code": "02204",
+        "name": "ANTWERP"
+      },
+      {
+        "code": "02232",
+        "name": "APPLE CREEK"
+      },
+      {
+        "code": "02274",
+        "name": "AQUILLA"
+      },
+      {
+        "code": "02316",
+        "name": "ARCADIA"
+      },
+      {
+        "code": "02330",
+        "name": "ARCANUM"
+      },
+      {
+        "code": "02344",
+        "name": "ARCHBOLD"
+      },
+      {
+        "code": "02400",
+        "name": "ARLINGTON"
+      },
+      {
+        "code": "02428",
+        "name": "ARLINGTON HEIGHTS"
+      },
+      {
+        "code": "02568",
+        "name": "ASHLAND"
+      },
+      {
+        "code": "02582",
+        "name": "ASHLEY"
+      },
+      {
+        "code": "02638",
+        "name": "ASHTABULA"
+      },
+      {
+        "code": "02680",
+        "name": "ASHVILLE"
+      },
+      {
+        "code": "02722",
+        "name": "ATHALIA"
+      },
+      {
+        "code": "02736",
+        "name": "ATHENS"
+      },
+      {
+        "code": "02820",
+        "name": "ATTICA"
+      },
+      {
+        "code": "03086",
+        "name": "AURORA"
+      },
+      {
+        "code": "03184",
+        "name": "AUSTINTOWN"
+      },
+      {
+        "code": "03352",
+        "name": "AVON"
+      },
+      {
+        "code": "03464",
+        "name": "AVON LAKE"
+      },
+      {
+        "code": "03562",
+        "name": "BAILEY LAKES"
+      },
+      {
+        "code": "03585",
+        "name": "BAINBRIDGE"
+      },
+      {
+        "code": "03604",
+        "name": "BAINBRIDGE"
+      },
+      {
+        "code": "03646",
+        "name": "BAIRDSTOWN"
+      },
+      {
+        "code": "03716",
+        "name": "BALLVILLE"
+      },
+      {
+        "code": "03744",
+        "name": "BALTIC"
+      },
+      {
+        "code": "03758",
+        "name": "BALTIMORE"
+      },
+      {
+        "code": "03828",
+        "name": "BARBERTON"
+      },
+      {
+        "code": "03926",
+        "name": "BARNESVILLE"
+      },
+      {
+        "code": "03940",
+        "name": "BARNHILL"
+      },
+      {
+        "code": "04150",
+        "name": "BATAVIA"
+      },
+      {
+        "code": "04192",
+        "name": "BATESVILLE"
+      },
+      {
+        "code": "04402",
+        "name": "BAY VIEW"
+      },
+      {
+        "code": "04416",
+        "name": "BAY VILLAGE"
+      },
+      {
+        "code": "04458",
+        "name": "BEACH CITY"
+      },
+      {
+        "code": "04500",
+        "name": "BEACHWOOD"
+      },
+      {
+        "code": "04542",
+        "name": "BEALLSVILLE"
+      },
+      {
+        "code": "04696",
+        "name": "BEAVER"
+      },
+      {
+        "code": "04720",
+        "name": "BEAVERCREEK"
+      },
+      {
+        "code": "04752",
+        "name": "BEAVERDAM"
+      },
+      {
+        "code": "04840",
+        "name": "BECKETT RIDGE"
+      },
+      {
+        "code": "04878",
+        "name": "BEDFORD"
+      },
+      {
+        "code": "04920",
+        "name": "BEDFORD HEIGHTS"
+      },
+      {
+        "code": "05013",
+        "name": "BEECHWOOD TRAILS"
+      },
+      {
+        "code": "05074",
+        "name": "BELLAIRE"
+      },
+      {
+        "code": "05102",
+        "name": "BELLBROOK"
+      },
+      {
+        "code": "05116",
+        "name": "BELLE CENTER"
+      },
+      {
+        "code": "05158",
+        "name": "BELLE VALLEY"
+      },
+      {
+        "code": "05130",
+        "name": "BELLEFONTAINE"
+      },
+      {
+        "code": "05228",
+        "name": "BELLEVUE"
+      },
+      {
+        "code": "05284",
+        "name": "BELLVILLE"
+      },
+      {
+        "code": "05312",
+        "name": "BELMONT"
+      },
+      {
+        "code": "05396",
+        "name": "BELMORE"
+      },
+      {
+        "code": "05410",
+        "name": "BELOIT"
+      },
+      {
+        "code": "05424",
+        "name": "BELPRE"
+      },
+      {
+        "code": "05550",
+        "name": "BENTLEYVILLE"
+      },
+      {
+        "code": "05662",
+        "name": "BENTON RIDGE"
+      },
+      {
+        "code": "05690",
+        "name": "BEREA"
+      },
+      {
+        "code": "05718",
+        "name": "BERGHOLZ"
+      },
+      {
+        "code": "05732",
+        "name": "BERKEY"
+      },
+      {
+        "code": "05900",
+        "name": "BERLIN HEIGHTS"
+      },
+      {
+        "code": "06068",
+        "name": "BETHEL"
+      },
+      {
+        "code": "06138",
+        "name": "BETHESDA"
+      },
+      {
+        "code": "06194",
+        "name": "BETTSVILLE"
+      },
+      {
+        "code": "06222",
+        "name": "BEVERLY"
+      },
+      {
+        "code": "06278",
+        "name": "BEXLEY"
+      },
+      {
+        "code": "06670",
+        "name": "BLACKLICK ESTATES"
+      },
+      {
+        "code": "06810",
+        "name": "BLAKESLEE"
+      },
+      {
+        "code": "06908",
+        "name": "BLANCHESTER"
+      },
+      {
+        "code": "07062",
+        "name": "BLOOMDALE"
+      },
+      {
+        "code": "07188",
+        "name": "BLOOMINGBURG"
+      },
+      {
+        "code": "07202",
+        "name": "BLOOMINGDALE"
+      },
+      {
+        "code": "07286",
+        "name": "BLOOMVILLE"
+      },
+      {
+        "code": "07300",
+        "name": "BLUE ASH"
+      },
+      {
+        "code": "07426",
+        "name": "BLUFFTON"
+      },
+      {
+        "code": "07454",
+        "name": "BOARDMAN"
+      },
+      {
+        "code": "07583",
+        "name": "BOLINDALE"
+      },
+      {
+        "code": "07594",
+        "name": "BOLIVAR"
+      },
+      {
+        "code": "07790",
+        "name": "BOSTON HEIGHTS"
+      },
+      {
+        "code": "07832",
+        "name": "BOTKINS"
+      },
+      {
+        "code": "07916",
+        "name": "BOWERSTON"
+      },
+      {
+        "code": "07930",
+        "name": "BOWERSVILLE"
+      },
+      {
+        "code": "07972",
+        "name": "BOWLING GREEN"
+      },
+      {
+        "code": "08084",
+        "name": "BRADFORD"
+      },
+      {
+        "code": "08112",
+        "name": "BRADNER"
+      },
+      {
+        "code": "08168",
+        "name": "BRADY LAKE"
+      },
+      {
+        "code": "08336",
+        "name": "BRATENAHL"
+      },
+      {
+        "code": "08364",
+        "name": "BRECKSVILLE"
+      },
+      {
+        "code": "08392",
+        "name": "BREMEN"
+      },
+      {
+        "code": "08406",
+        "name": "BRENTWOOD"
+      },
+      {
+        "code": "08504",
+        "name": "BREWSTER"
+      },
+      {
+        "code": "08532",
+        "name": "BRICE"
+      },
+      {
+        "code": "08560",
+        "name": "BRIDGEPORT"
+      },
+      {
+        "code": "08605",
+        "name": "BRIDGETOWN NORTH"
+      },
+      {
+        "code": "08826",
+        "name": "BRIMFIELD"
+      },
+      {
+        "code": "09064",
+        "name": "BROADVIEW HEIGHTS"
+      },
+      {
+        "code": "09288",
+        "name": "BROOK PARK"
+      },
+      {
+        "code": "09200",
+        "name": "BROOKFIELD CENTER"
+      },
+      {
+        "code": "09246",
+        "name": "BROOKLYN"
+      },
+      {
+        "code": "09274",
+        "name": "BROOKLYN HEIGHTS"
+      },
+      {
+        "code": "09316",
+        "name": "BROOKSIDE"
+      },
+      {
+        "code": "09358",
+        "name": "BROOKVILLE"
+      },
+      {
+        "code": "09386",
+        "name": "BROUGHTON"
+      },
+      {
+        "code": "09680",
+        "name": "BRUNSWICK"
+      },
+      {
+        "code": "09792",
+        "name": "BRYAN"
+      },
+      {
+        "code": "09834",
+        "name": "BUCHTEL"
+      },
+      {
+        "code": "09890",
+        "name": "BUCKEYE LAKE"
+      },
+      {
+        "code": "09974",
+        "name": "BUCKLAND"
+      },
+      {
+        "code": "10030",
+        "name": "BUCYRUS"
+      },
+      {
+        "code": "10254",
+        "name": "BURBANK"
+      },
+      {
+        "code": "10282",
+        "name": "BURGOON"
+      },
+      {
+        "code": "10296",
+        "name": "BURKETTSVILLE"
+      },
+      {
+        "code": "10352",
+        "name": "BURLINGTON"
+      },
+      {
+        "code": "10436",
+        "name": "BURTON"
+      },
+      {
+        "code": "10632",
+        "name": "BUTLER"
+      },
+      {
+        "code": "10674",
+        "name": "BUTLERVILLE"
+      },
+      {
+        "code": "10716",
+        "name": "BYESVILLE"
+      },
+      {
+        "code": "10800",
+        "name": "CADIZ"
+      },
+      {
+        "code": "10884",
+        "name": "CAIRO"
+      },
+      {
+        "code": "10926",
+        "name": "CALCUTTA"
+      },
+      {
+        "code": "10940",
+        "name": "CALDWELL"
+      },
+      {
+        "code": "10954",
+        "name": "CALEDONIA"
+      },
+      {
+        "code": "10996",
+        "name": "CAMBRIDGE"
+      },
+      {
+        "code": "11024",
+        "name": "CAMDEN"
+      },
+      {
+        "code": "11066",
+        "name": "CAMPBELL"
+      },
+      {
+        "code": "11304",
+        "name": "CANAL FULTON"
+      },
+      {
+        "code": "11332",
+        "name": "CANAL WINCHESTER"
+      },
+      {
+        "code": "11360",
+        "name": "CANFIELD"
+      },
+      {
+        "code": "12000",
+        "name": "CANTON"
+      },
+      {
+        "code": "12084",
+        "name": "CARDINGTON"
+      },
+      {
+        "code": "12112",
+        "name": "CAREY"
+      },
+      {
+        "code": "12168",
+        "name": "CARLISLE"
+      },
+      {
+        "code": "12252",
+        "name": "CARROLL"
+      },
+      {
+        "code": "12280",
+        "name": "CARROLLTON"
+      },
+      {
+        "code": "12462",
+        "name": "CASSTOWN"
+      },
+      {
+        "code": "12476",
+        "name": "CASTALIA"
+      },
+      {
+        "code": "12504",
+        "name": "CASTINE"
+      },
+      {
+        "code": "12560",
+        "name": "CATAWBA"
+      },
+      {
+        "code": "12700",
+        "name": "CECIL"
+      },
+      {
+        "code": "12784",
+        "name": "CEDARVILLE"
+      },
+      {
+        "code": "12868",
+        "name": "CELINA"
+      },
+      {
+        "code": "13036",
+        "name": "CENTERBURG"
+      },
+      {
+        "code": "13169",
+        "name": "CENTERVILLE"
+      },
+      {
+        "code": "13190",
+        "name": "CENTERVILLE"
+      },
+      {
+        "code": "13358",
+        "name": "CHAGRIN FALLS"
+      },
+      {
+        "code": "13484",
+        "name": "CHAMPION HEIGHTS"
+      },
+      {
+        "code": "13554",
+        "name": "CHARDON"
+      },
+      {
+        "code": "13694",
+        "name": "CHATFIELD"
+      },
+      {
+        "code": "13778",
+        "name": "CHAUNCEY"
+      },
+      {
+        "code": "13834",
+        "name": "CHERRY FORK"
+      },
+      {
+        "code": "13848",
+        "name": "CHERRY GROVE"
+      },
+      {
+        "code": "13904",
+        "name": "CHESAPEAKE"
+      },
+      {
+        "code": "13932",
+        "name": "CHESHIRE"
+      },
+      {
+        "code": "14086",
+        "name": "CHESTERHILL"
+      },
+      {
+        "code": "14100",
+        "name": "CHESTERLAND"
+      },
+      {
+        "code": "14114",
+        "name": "CHESTERVILLE"
+      },
+      {
+        "code": "14128",
+        "name": "CHEVIOT"
+      },
+      {
+        "code": "14156",
+        "name": "CHICKASAW"
+      },
+      {
+        "code": "14184",
+        "name": "CHILLICOTHE"
+      },
+      {
+        "code": "14226",
+        "name": "CHILO"
+      },
+      {
+        "code": "14282",
+        "name": "CHIPPEWA LAKE"
+      },
+      {
+        "code": "14288",
+        "name": "CHOCTAW LAKE"
+      },
+      {
+        "code": "14296",
+        "name": "CHRISTIANSBURG"
+      },
+      {
+        "code": "14324",
+        "name": "CHURCHILL"
+      },
+      {
+        "code": "15000",
+        "name": "CINCINNATI"
+      },
+      {
+        "code": "15070",
+        "name": "CIRCLEVILLE"
+      },
+      {
+        "code": "15210",
+        "name": "CLARINGTON"
+      },
+      {
+        "code": "15336",
+        "name": "CLARKSBURG"
+      },
+      {
+        "code": "15406",
+        "name": "CLARKSVILLE"
+      },
+      {
+        "code": "15588",
+        "name": "CLAY CENTER"
+      },
+      {
+        "code": "15644",
+        "name": "CLAYTON"
+      },
+      {
+        "code": "16000",
+        "name": "CLEVELAND"
+      },
+      {
+        "code": "16014",
+        "name": "CLEVELAND HEIGHTS"
+      },
+      {
+        "code": "16028",
+        "name": "CLEVES"
+      },
+      {
+        "code": "16056",
+        "name": "CLIFTON"
+      },
+      {
+        "code": "16182",
+        "name": "CLINTON"
+      },
+      {
+        "code": "16266",
+        "name": "CLOVERDALE"
+      },
+      {
+        "code": "16308",
+        "name": "CLYDE"
+      },
+      {
+        "code": "16378",
+        "name": "COAL GROVE"
+      },
+      {
+        "code": "16434",
+        "name": "COALTON"
+      },
+      {
+        "code": "16532",
+        "name": "COLDWATER"
+      },
+      {
+        "code": "16700",
+        "name": "COLLEGE CORNER"
+      },
+      {
+        "code": "17036",
+        "name": "COLUMBIANA"
+      },
+      {
+        "code": "18000",
+        "name": "COLUMBUS"
+      },
+      {
+        "code": "18014",
+        "name": "COLUMBUS GROVE"
+      },
+      {
+        "code": "18070",
+        "name": "COMMERCIAL POINT"
+      },
+      {
+        "code": "18266",
+        "name": "CONESVILLE"
+      },
+      {
+        "code": "18308",
+        "name": "CONGRESS"
+      },
+      {
+        "code": "18350",
+        "name": "CONNEAUT"
+      },
+      {
+        "code": "18504",
+        "name": "CONTINENTAL"
+      },
+      {
+        "code": "18546",
+        "name": "CONVOY"
+      },
+      {
+        "code": "18588",
+        "name": "COOLVILLE"
+      },
+      {
+        "code": "18770",
+        "name": "CORNING"
+      },
+      {
+        "code": "18812",
+        "name": "CORTLAND"
+      },
+      {
+        "code": "18840",
+        "name": "CORWIN"
+      },
+      {
+        "code": "18868",
+        "name": "COSHOCTON"
+      },
+      {
+        "code": "19008",
+        "name": "COVEDALE"
+      },
+      {
+        "code": "19050",
+        "name": "COVINGTON"
+      },
+      {
+        "code": "19106",
+        "name": "CRAIG BEACH"
+      },
+      {
+        "code": "19330",
+        "name": "CRESTLINE"
+      },
+      {
+        "code": "19344",
+        "name": "CRESTON"
+      },
+      {
+        "code": "19400",
+        "name": "CRIDERSVILLE"
+      },
+      {
+        "code": "19456",
+        "name": "CROOKSVILLE"
+      },
+      {
+        "code": "19554",
+        "name": "CROWN CITY"
+      },
+      {
+        "code": "19596",
+        "name": "CRYSTAL LAKES"
+      },
+      {
+        "code": "19694",
+        "name": "CUMBERLAND"
+      },
+      {
+        "code": "19750",
+        "name": "CUSTAR"
+      },
+      {
+        "code": "19778",
+        "name": "CUYAHOGA FALLS"
+      },
+      {
+        "code": "19806",
+        "name": "CUYAHOGA HEIGHTS"
+      },
+      {
+        "code": "19820",
+        "name": "CYGNET"
+      },
+      {
+        "code": "19974",
+        "name": "DALTON"
+      },
+      {
+        "code": "20114",
+        "name": "DANVILLE"
+      },
+      {
+        "code": "20212",
+        "name": "DARBYVILLE"
+      },
+      {
+        "code": "20366",
+        "name": "DAY HEIGHTS"
+      },
+      {
+        "code": "21000",
+        "name": "DAYTON"
+      },
+      {
+        "code": "21378",
+        "name": "DE GRAFF"
+      },
+      {
+        "code": "21266",
+        "name": "DEER PARK"
+      },
+      {
+        "code": "21294",
+        "name": "DEERSVILLE"
+      },
+      {
+        "code": "21308",
+        "name": "DEFIANCE"
+      },
+      {
+        "code": "21434",
+        "name": "DELAWARE"
+      },
+      {
+        "code": "21560",
+        "name": "DELLROY"
+      },
+      {
+        "code": "21602",
+        "name": "DELPHOS"
+      },
+      {
+        "code": "21616",
+        "name": "DELTA"
+      },
+      {
+        "code": "21714",
+        "name": "DENNISON"
+      },
+      {
+        "code": "21742",
+        "name": "DENT"
+      },
+      {
+        "code": "21812",
+        "name": "DESHLER"
+      },
+      {
+        "code": "21868",
+        "name": "DEVOLA"
+      },
+      {
+        "code": "21910",
+        "name": "DEXTER CITY"
+      },
+      {
+        "code": "22008",
+        "name": "DILLONVALE"
+      },
+      {
+        "code": "22022",
+        "name": "DILLONVALE"
+      },
+      {
+        "code": "22288",
+        "name": "DONNELSVILLE"
+      },
+      {
+        "code": "22456",
+        "name": "DOVER"
+      },
+      {
+        "code": "22568",
+        "name": "DOYLESTOWN"
+      },
+      {
+        "code": "22610",
+        "name": "DRESDEN"
+      },
+      {
+        "code": "22624",
+        "name": "DREXEL"
+      },
+      {
+        "code": "22674",
+        "name": "DRY RUN"
+      },
+      {
+        "code": "22694",
+        "name": "DUBLIN"
+      },
+      {
+        "code": "22946",
+        "name": "DUNKIRK"
+      },
+      {
+        "code": "22974",
+        "name": "DUPONT"
+      },
+      {
+        "code": "23324",
+        "name": "EAST CANTON"
+      },
+      {
+        "code": "23380",
+        "name": "EAST CLEVELAND"
+      },
+      {
+        "code": "23730",
+        "name": "EAST LIVERPOOL"
+      },
+      {
+        "code": "23940",
+        "name": "EAST PALESTINE"
+      },
+      {
+        "code": "24052",
+        "name": "EAST SPARTA"
+      },
+      {
+        "code": "23618",
+        "name": "EASTLAKE"
+      },
+      {
+        "code": "24234",
+        "name": "EATON"
+      },
+      {
+        "code": "24262",
+        "name": "EATON ESTATES"
+      },
+      {
+        "code": "24486",
+        "name": "EDGERTON"
+      },
+      {
+        "code": "24542",
+        "name": "EDGEWOOD"
+      },
+      {
+        "code": "24598",
+        "name": "EDISON"
+      },
+      {
+        "code": "24640",
+        "name": "EDON"
+      },
+      {
+        "code": "24766",
+        "name": "ELDORADO"
+      },
+      {
+        "code": "24794",
+        "name": "ELGIN"
+      },
+      {
+        "code": "24808",
+        "name": "ELIDA"
+      },
+      {
+        "code": "25144",
+        "name": "ELMORE"
+      },
+      {
+        "code": "25186",
+        "name": "ELMWOOD PLACE"
+      },
+      {
+        "code": "25256",
+        "name": "ELYRIA"
+      },
+      {
+        "code": "25368",
+        "name": "EMPIRE"
+      },
+      {
+        "code": "25396",
+        "name": "ENGLEWOOD"
+      },
+      {
+        "code": "25452",
+        "name": "ENON"
+      },
+      {
+        "code": "25704",
+        "name": "EUCLID"
+      },
+      {
+        "code": "25802",
+        "name": "EVENDALE"
+      },
+      {
+        "code": "25914",
+        "name": "FAIRBORN"
+      },
+      {
+        "code": "25942",
+        "name": "FAIRFAX"
+      },
+      {
+        "code": "25970",
+        "name": "FAIRFIELD"
+      },
+      {
+        "code": "26110",
+        "name": "FAIRFIELD BEACH"
+      },
+      {
+        "code": "26166",
+        "name": "FAIRLAWN"
+      },
+      {
+        "code": "26306",
+        "name": "FAIRPORT HARBOR"
+      },
+      {
+        "code": "26348",
+        "name": "FAIRVIEW"
+      },
+      {
+        "code": "26432",
+        "name": "FAIRVIEW LANES"
+      },
+      {
+        "code": "26446",
+        "name": "FAIRVIEW PARK"
+      },
+      {
+        "code": "26656",
+        "name": "FARMERSVILLE"
+      },
+      {
+        "code": "26768",
+        "name": "FAYETTE"
+      },
+      {
+        "code": "26796",
+        "name": "FAYETTEVILLE"
+      },
+      {
+        "code": "26880",
+        "name": "FELICITY"
+      },
+      {
+        "code": "27048",
+        "name": "FINDLAY"
+      },
+      {
+        "code": "27104",
+        "name": "FINNEYTOWN"
+      },
+      {
+        "code": "27303",
+        "name": "FIVE POINTS"
+      },
+      {
+        "code": "27412",
+        "name": "FLETCHER"
+      },
+      {
+        "code": "27538",
+        "name": "FLORIDA"
+      },
+      {
+        "code": "27552",
+        "name": "FLUSHING"
+      },
+      {
+        "code": "27636",
+        "name": "FOREST"
+      },
+      {
+        "code": "27706",
+        "name": "FOREST PARK"
+      },
+      {
+        "code": "27776",
+        "name": "FORESTVILLE"
+      },
+      {
+        "code": "27818",
+        "name": "FORT JENNINGS"
+      },
+      {
+        "code": "27832",
+        "name": "FORT LORAMIE"
+      },
+      {
+        "code": "27846",
+        "name": "FORT MCKINLEY"
+      },
+      {
+        "code": "27902",
+        "name": "FORT RECOVERY"
+      },
+      {
+        "code": "27944",
+        "name": "FORT SHAWNEE"
+      },
+      {
+        "code": "28014",
+        "name": "FOSTORIA"
+      },
+      {
+        "code": "28182",
+        "name": "FRANKFORT"
+      },
+      {
+        "code": "28476",
+        "name": "FRANKLIN"
+      },
+      {
+        "code": "28532",
+        "name": "FRANKLIN FURNACE"
+      },
+      {
+        "code": "28574",
+        "name": "FRAZEYSBURG"
+      },
+      {
+        "code": "28616",
+        "name": "FREDERICKSBURG"
+      },
+      {
+        "code": "28658",
+        "name": "FREDERICKTOWN"
+      },
+      {
+        "code": "28798",
+        "name": "FREEPORT"
+      },
+      {
+        "code": "28826",
+        "name": "FREMONT"
+      },
+      {
+        "code": "28966",
+        "name": "FRUIT HILL"
+      },
+      {
+        "code": "29050",
+        "name": "FULTON"
+      },
+      {
+        "code": "29064",
+        "name": "FULTONHAM"
+      },
+      {
+        "code": "29106",
+        "name": "GAHANNA"
+      },
+      {
+        "code": "29148",
+        "name": "GALENA"
+      },
+      {
+        "code": "29162",
+        "name": "GALION"
+      },
+      {
+        "code": "29204",
+        "name": "GALLIPOLIS"
+      },
+      {
+        "code": "29246",
+        "name": "GAMBIER"
+      },
+      {
+        "code": "29288",
+        "name": "GANN"
+      },
+      {
+        "code": "29428",
+        "name": "GARFIELD HEIGHTS"
+      },
+      {
+        "code": "29442",
+        "name": "GARRETTSVILLE"
+      },
+      {
+        "code": "29498",
+        "name": "GATES MILLS"
+      },
+      {
+        "code": "29610",
+        "name": "GENEVA"
+      },
+      {
+        "code": "29652",
+        "name": "GENEVA-ON-THE-LAKE"
+      },
+      {
+        "code": "29722",
+        "name": "GENOA"
+      },
+      {
+        "code": "29778",
+        "name": "GEORGETOWN"
+      },
+      {
+        "code": "29932",
+        "name": "GERMANTOWN"
+      },
+      {
+        "code": "29974",
+        "name": "GETTYSBURG"
+      },
+      {
+        "code": "30072",
+        "name": "GIBSONBURG"
+      },
+      {
+        "code": "30114",
+        "name": "GILBOA"
+      },
+      {
+        "code": "30198",
+        "name": "GIRARD"
+      },
+      {
+        "code": "30282",
+        "name": "GLANDORF"
+      },
+      {
+        "code": "30380",
+        "name": "GLENDALE"
+      },
+      {
+        "code": "30436",
+        "name": "GLENFORD"
+      },
+      {
+        "code": "30506",
+        "name": "GLENMONT"
+      },
+      {
+        "code": "30520",
+        "name": "GLENMOOR"
+      },
+      {
+        "code": "30632",
+        "name": "GLENWILLOW"
+      },
+      {
+        "code": "30660",
+        "name": "GLORIA GLENS PARK"
+      },
+      {
+        "code": "30674",
+        "name": "GLOUSTER"
+      },
+      {
+        "code": "30702",
+        "name": "GNADENHUTTEN"
+      },
+      {
+        "code": "30786",
+        "name": "GOLF MANOR"
+      },
+      {
+        "code": "30912",
+        "name": "GORDON"
+      },
+      {
+        "code": "31150",
+        "name": "GRAFTON"
+      },
+      {
+        "code": "31206",
+        "name": "GRAND RAPIDS"
+      },
+      {
+        "code": "31234",
+        "name": "GRAND RIVER"
+      },
+      {
+        "code": "31262",
+        "name": "GRANDVIEW"
+      },
+      {
+        "code": "31304",
+        "name": "GRANDVIEW HEIGHTS"
+      },
+      {
+        "code": "31402",
+        "name": "GRANVILLE"
+      },
+      {
+        "code": "31434",
+        "name": "GRANVILLE SOUTH"
+      },
+      {
+        "code": "31458",
+        "name": "GRATIOT"
+      },
+      {
+        "code": "31472",
+        "name": "GRATIS"
+      },
+      {
+        "code": "31542",
+        "name": "GRAYSVILLE"
+      },
+      {
+        "code": "31860",
+        "name": "GREEN"
+      },
+      {
+        "code": "31948",
+        "name": "GREEN CAMP"
+      },
+      {
+        "code": "32207",
+        "name": "GREEN MEADOWS"
+      },
+      {
+        "code": "32256",
+        "name": "GREEN SPRINGS"
+      },
+      {
+        "code": "32088",
+        "name": "GREENFIELD"
+      },
+      {
+        "code": "32158",
+        "name": "GREENHILLS"
+      },
+      {
+        "code": "32298",
+        "name": "GREENTOWN"
+      },
+      {
+        "code": "32340",
+        "name": "GREENVILLE"
+      },
+      {
+        "code": "32368",
+        "name": "GREENWICH"
+      },
+      {
+        "code": "32536",
+        "name": "GROESBECK"
+      },
+      {
+        "code": "32592",
+        "name": "GROVE CITY"
+      },
+      {
+        "code": "32606",
+        "name": "GROVEPORT"
+      },
+      {
+        "code": "32620",
+        "name": "GROVER HILL"
+      },
+      {
+        "code": "32956",
+        "name": "HAMDEN"
+      },
+      {
+        "code": "32984",
+        "name": "HAMERSVILLE"
+      },
+      {
+        "code": "33012",
+        "name": "HAMILTON"
+      },
+      {
+        "code": "33096",
+        "name": "HAMLER"
+      },
+      {
+        "code": "33194",
+        "name": "HANGING ROCK"
+      },
+      {
+        "code": "33292",
+        "name": "HANOVER"
+      },
+      {
+        "code": "33306",
+        "name": "HANOVERTON"
+      },
+      {
+        "code": "33362",
+        "name": "HARBOR HILLS"
+      },
+      {
+        "code": "33376",
+        "name": "HARBOR VIEW"
+      },
+      {
+        "code": "33656",
+        "name": "HARPSTER"
+      },
+      {
+        "code": "33740",
+        "name": "HARRISBURG"
+      },
+      {
+        "code": "33838",
+        "name": "HARRISON"
+      },
+      {
+        "code": "34090",
+        "name": "HARRISVILLE"
+      },
+      {
+        "code": "34118",
+        "name": "HARROD"
+      },
+      {
+        "code": "34202",
+        "name": "HARTFORD"
+      },
+      {
+        "code": "34328",
+        "name": "HARTVILLE"
+      },
+      {
+        "code": "34384",
+        "name": "HARVEYSBURG"
+      },
+      {
+        "code": "34412",
+        "name": "HASKINS"
+      },
+      {
+        "code": "34552",
+        "name": "HAVILAND"
+      },
+      {
+        "code": "34636",
+        "name": "HAYESVILLE"
+      },
+      {
+        "code": "34748",
+        "name": "HEATH"
+      },
+      {
+        "code": "34790",
+        "name": "HEBRON"
+      },
+      {
+        "code": "34860",
+        "name": "HELENA"
+      },
+      {
+        "code": "34888",
+        "name": "HEMLOCK"
+      },
+      {
+        "code": "35098",
+        "name": "HICKSVILLE"
+      },
+      {
+        "code": "35168",
+        "name": "HIGGINSPORT"
+      },
+      {
+        "code": "35210",
+        "name": "HIGHLAND"
+      },
+      {
+        "code": "35252",
+        "name": "HIGHLAND HEIGHTS"
+      },
+      {
+        "code": "35255",
+        "name": "HIGHLAND HILLS"
+      },
+      {
+        "code": "35476",
+        "name": "HILLIARD"
+      },
+      {
+        "code": "35532",
+        "name": "HILLS AND DALES"
+      },
+      {
+        "code": "35560",
+        "name": "HILLSBORO"
+      },
+      {
+        "code": "35613",
+        "name": "HILLTOP"
+      },
+      {
+        "code": "35658",
+        "name": "HIRAM"
+      },
+      {
+        "code": "35854",
+        "name": "HOLGATE"
+      },
+      {
+        "code": "35864",
+        "name": "HOLIDAY CITY"
+      },
+      {
+        "code": "35868",
+        "name": "HOLIDAY VALLEY"
+      },
+      {
+        "code": "35882",
+        "name": "HOLLAND"
+      },
+      {
+        "code": "35896",
+        "name": "HOLLANSBURG"
+      },
+      {
+        "code": "35924",
+        "name": "HOLLOWAY"
+      },
+      {
+        "code": "35994",
+        "name": "HOLMESVILLE"
+      },
+      {
+        "code": "36260",
+        "name": "HOPEDALE"
+      },
+      {
+        "code": "36557",
+        "name": "HOWLAND CENTER"
+      },
+      {
+        "code": "36568",
+        "name": "HOYTVILLE"
+      },
+      {
+        "code": "36582",
+        "name": "HUBBARD"
+      },
+      {
+        "code": "36610",
+        "name": "HUBER HEIGHTS"
+      },
+      {
+        "code": "36624",
+        "name": "HUBER RIDGE"
+      },
+      {
+        "code": "36651",
+        "name": "HUDSON"
+      },
+      {
+        "code": "36806",
+        "name": "HUNTER"
+      },
+      {
+        "code": "36918",
+        "name": "HUNTING VALLEY"
+      },
+      {
+        "code": "36988",
+        "name": "HUNTSVILLE"
+      },
+      {
+        "code": "37016",
+        "name": "HURON"
+      },
+      {
+        "code": "37240",
+        "name": "INDEPENDENCE"
+      },
+      {
+        "code": "76582",
+        "name": "INDIAN HILL"
+      },
+      {
+        "code": "37422",
+        "name": "IRONDALE"
+      },
+      {
+        "code": "37464",
+        "name": "IRONTON"
+      },
+      {
+        "code": "37604",
+        "name": "ITHACA"
+      },
+      {
+        "code": "37842",
+        "name": "JACKSON"
+      },
+      {
+        "code": "38220",
+        "name": "JACKSON CENTER"
+      },
+      {
+        "code": "38192",
+        "name": "JACKSONBURG"
+      },
+      {
+        "code": "38304",
+        "name": "JACKSONVILLE"
+      },
+      {
+        "code": "38374",
+        "name": "JAMESTOWN"
+      },
+      {
+        "code": "38500",
+        "name": "JEFFERSON"
+      },
+      {
+        "code": "38920",
+        "name": "JEFFERSONVILLE"
+      },
+      {
+        "code": "38948",
+        "name": "JENERA"
+      },
+      {
+        "code": "39060",
+        "name": "JEROMESVILLE"
+      },
+      {
+        "code": "39074",
+        "name": "JERRY CITY"
+      },
+      {
+        "code": "39130",
+        "name": "JERUSALEM"
+      },
+      {
+        "code": "39172",
+        "name": "JEWETT"
+      },
+      {
+        "code": "39340",
+        "name": "JOHNSTOWN"
+      },
+      {
+        "code": "39508",
+        "name": "JUNCTION CITY"
+      },
+      {
+        "code": "39536",
+        "name": "KALIDA"
+      },
+      {
+        "code": "39662",
+        "name": "KELLEYS ISLAND"
+      },
+      {
+        "code": "39872",
+        "name": "KENT"
+      },
+      {
+        "code": "39886",
+        "name": "KENTON"
+      },
+      {
+        "code": "39914",
+        "name": "KENWOOD"
+      },
+      {
+        "code": "40040",
+        "name": "KETTERING"
+      },
+      {
+        "code": "40054",
+        "name": "KETTLERSVILLE"
+      },
+      {
+        "code": "40180",
+        "name": "KILLBUCK"
+      },
+      {
+        "code": "40264",
+        "name": "KIMBOLTON"
+      },
+      {
+        "code": "40376",
+        "name": "KINGSTON"
+      },
+      {
+        "code": "40544",
+        "name": "KIPTON"
+      },
+      {
+        "code": "40558",
+        "name": "KIRBY"
+      },
+      {
+        "code": "40572",
+        "name": "KIRKERSVILLE"
+      },
+      {
+        "code": "40642",
+        "name": "KIRTLAND"
+      },
+      {
+        "code": "40670",
+        "name": "KIRTLAND HILLS"
+      },
+      {
+        "code": "41090",
+        "name": "LA CROFT"
+      },
+      {
+        "code": "41902",
+        "name": "LA RUE"
+      },
+      {
+        "code": "41118",
+        "name": "LAFAYETTE"
+      },
+      {
+        "code": "41230",
+        "name": "LAGRANGE"
+      },
+      {
+        "code": "41363",
+        "name": "LAKE DARBY"
+      },
+      {
+        "code": "41398",
+        "name": "LAKELINE"
+      },
+      {
+        "code": "41454",
+        "name": "LAKEMORE"
+      },
+      {
+        "code": "41608",
+        "name": "LAKEVIEW"
+      },
+      {
+        "code": "41664",
+        "name": "LAKEWOOD"
+      },
+      {
+        "code": "41720",
+        "name": "LANCASTER"
+      },
+      {
+        "code": "41755",
+        "name": "LANDEN"
+      },
+      {
+        "code": "41986",
+        "name": "LATTY"
+      },
+      {
+        "code": "42028",
+        "name": "LAURA"
+      },
+      {
+        "code": "42084",
+        "name": "LAURELVILLE"
+      },
+      {
+        "code": "42210",
+        "name": "LAWRENCEVILLE"
+      },
+      {
+        "code": "42308",
+        "name": "LEAVITTSBURG"
+      },
+      {
+        "code": "42364",
+        "name": "LEBANON"
+      },
+      {
+        "code": "42476",
+        "name": "LEESBURG"
+      },
+      {
+        "code": "42518",
+        "name": "LEESVILLE"
+      },
+      {
+        "code": "42560",
+        "name": "LEETONIA"
+      },
+      {
+        "code": "42602",
+        "name": "LEIPSIC"
+      },
+      {
+        "code": "42938",
+        "name": "LEWISBURG"
+      },
+      {
+        "code": "42980",
+        "name": "LEWISVILLE"
+      },
+      {
+        "code": "42994",
+        "name": "LEXINGTON"
+      },
+      {
+        "code": "43414",
+        "name": "LIBERTY CENTER"
+      },
+      {
+        "code": "43554",
+        "name": "LIMA"
+      },
+      {
+        "code": "43596",
+        "name": "LIMAVILLE"
+      },
+      {
+        "code": "43722",
+        "name": "LINCOLN HEIGHTS"
+      },
+      {
+        "code": "43792",
+        "name": "LINCOLN VILLAGE"
+      },
+      {
+        "code": "43904",
+        "name": "LINDSEY"
+      },
+      {
+        "code": "43918",
+        "name": "LINNDALE"
+      },
+      {
+        "code": "44030",
+        "name": "LISBON"
+      },
+      {
+        "code": "44086",
+        "name": "LITHOPOLIS"
+      },
+      {
+        "code": "44310",
+        "name": "LOCKBOURNE"
+      },
+      {
+        "code": "44352",
+        "name": "LOCKINGTON"
+      },
+      {
+        "code": "44366",
+        "name": "LOCKLAND"
+      },
+      {
+        "code": "44604",
+        "name": "LODI"
+      },
+      {
+        "code": "44632",
+        "name": "LOGAN"
+      },
+      {
+        "code": "44636",
+        "name": "LOGAN ELM VILLAGE"
+      },
+      {
+        "code": "44674",
+        "name": "LONDON"
+      },
+      {
+        "code": "44856",
+        "name": "LORAIN"
+      },
+      {
+        "code": "44912",
+        "name": "LORDSTOWN"
+      },
+      {
+        "code": "44954",
+        "name": "LORE CITY"
+      },
+      {
+        "code": "45066",
+        "name": "LOUDONVILLE"
+      },
+      {
+        "code": "45094",
+        "name": "LOUISVILLE"
+      },
+      {
+        "code": "45108",
+        "name": "LOVELAND"
+      },
+      {
+        "code": "45122",
+        "name": "LOVELAND PARK"
+      },
+      {
+        "code": "45164",
+        "name": "LOWELL"
+      },
+      {
+        "code": "45178",
+        "name": "LOWELLVILLE"
+      },
+      {
+        "code": "45220",
+        "name": "LOWER SALEM"
+      },
+      {
+        "code": "45276",
+        "name": "LUCAS"
+      },
+      {
+        "code": "45304",
+        "name": "LUCASVILLE"
+      },
+      {
+        "code": "45332",
+        "name": "LUCKEY"
+      },
+      {
+        "code": "45374",
+        "name": "LUDLOW FALLS"
+      },
+      {
+        "code": "45542",
+        "name": "LYNCHBURG"
+      },
+      {
+        "code": "45556",
+        "name": "LYNDHURST"
+      },
+      {
+        "code": "45626",
+        "name": "LYONS"
+      },
+      {
+        "code": "45976",
+        "name": "MACEDONIA"
+      },
+      {
+        "code": "46151",
+        "name": "MACK NORTH"
+      },
+      {
+        "code": "46162",
+        "name": "MACK SOUTH"
+      },
+      {
+        "code": "46158",
+        "name": "MACKSBURG"
+      },
+      {
+        "code": "46312",
+        "name": "MADEIRA"
+      },
+      {
+        "code": "46480",
+        "name": "MADISON"
+      },
+      {
+        "code": "46830",
+        "name": "MAGNETIC SPRINGS"
+      },
+      {
+        "code": "46844",
+        "name": "MAGNOLIA"
+      },
+      {
+        "code": "46872",
+        "name": "MAINEVILLE"
+      },
+      {
+        "code": "46942",
+        "name": "MALINTA"
+      },
+      {
+        "code": "46970",
+        "name": "MALTA"
+      },
+      {
+        "code": "46998",
+        "name": "MALVERN"
+      },
+      {
+        "code": "47012",
+        "name": "MANCHESTER"
+      },
+      {
+        "code": "47138",
+        "name": "MANSFIELD"
+      },
+      {
+        "code": "47180",
+        "name": "MANTUA"
+      },
+      {
+        "code": "47306",
+        "name": "MAPLE HEIGHTS"
+      },
+      {
+        "code": "47362",
+        "name": "MAPLE RIDGE"
+      },
+      {
+        "code": "47445",
+        "name": "MAPLEWOOD PARK"
+      },
+      {
+        "code": "47474",
+        "name": "MARBLE CLIFF"
+      },
+      {
+        "code": "47502",
+        "name": "MARBLEHEAD"
+      },
+      {
+        "code": "47558",
+        "name": "MARENGO"
+      },
+      {
+        "code": "47600",
+        "name": "MARIEMONT"
+      },
+      {
+        "code": "47628",
+        "name": "MARIETTA"
+      },
+      {
+        "code": "47754",
+        "name": "MARION"
+      },
+      {
+        "code": "47992",
+        "name": "MARSEILLES"
+      },
+      {
+        "code": "48048",
+        "name": "MARSHALLVILLE"
+      },
+      {
+        "code": "48104",
+        "name": "MARTINS FERRY"
+      },
+      {
+        "code": "48090",
+        "name": "MARTINSBURG"
+      },
+      {
+        "code": "48118",
+        "name": "MARTINSVILLE"
+      },
+      {
+        "code": "48160",
+        "name": "MARYSVILLE"
+      },
+      {
+        "code": "48188",
+        "name": "MASON"
+      },
+      {
+        "code": "48244",
+        "name": "MASSILLON"
+      },
+      {
+        "code": "48272",
+        "name": "MASURY"
+      },
+      {
+        "code": "48286",
+        "name": "MATAMORAS"
+      },
+      {
+        "code": "48342",
+        "name": "MAUMEE"
+      },
+      {
+        "code": "48468",
+        "name": "MAYFIELD"
+      },
+      {
+        "code": "48482",
+        "name": "MAYFIELD HEIGHTS"
+      },
+      {
+        "code": "45696",
+        "name": "MCARTHUR"
+      },
+      {
+        "code": "45794",
+        "name": "MCCLURE"
+      },
+      {
+        "code": "45808",
+        "name": "MCCOMB"
+      },
+      {
+        "code": "45822",
+        "name": "MCCONNELSVILLE"
+      },
+      {
+        "code": "45934",
+        "name": "MCDONALD"
+      },
+      {
+        "code": "46046",
+        "name": "MCGUFFEY"
+      },
+      {
+        "code": "48706",
+        "name": "MECHANICSBURG"
+      },
+      {
+        "code": "48790",
+        "name": "MEDINA"
+      },
+      {
+        "code": "49000",
+        "name": "MELROSE"
+      },
+      {
+        "code": "49042",
+        "name": "MENDON"
+      },
+      {
+        "code": "49056",
+        "name": "MENTOR"
+      },
+      {
+        "code": "49098",
+        "name": "MENTOR-ON-THE-LAKE"
+      },
+      {
+        "code": "49238",
+        "name": "METAMORA"
+      },
+      {
+        "code": "49294",
+        "name": "MEYERS LAKE"
+      },
+      {
+        "code": "49434",
+        "name": "MIAMISBURG"
+      },
+      {
+        "code": "49728",
+        "name": "MIDDLE POINT"
+      },
+      {
+        "code": "49644",
+        "name": "MIDDLEBURG HEIGHTS"
+      },
+      {
+        "code": "49700",
+        "name": "MIDDLEFIELD"
+      },
+      {
+        "code": "49756",
+        "name": "MIDDLEPORT"
+      },
+      {
+        "code": "49840",
+        "name": "MIDDLETOWN"
+      },
+      {
+        "code": "49896",
+        "name": "MIDLAND"
+      },
+      {
+        "code": "49966",
+        "name": "MIDVALE"
+      },
+      {
+        "code": "50008",
+        "name": "MIDWAY"
+      },
+      {
+        "code": "50036",
+        "name": "MIFFLIN"
+      },
+      {
+        "code": "50134",
+        "name": "MILAN"
+      },
+      {
+        "code": "50176",
+        "name": "MILFORD"
+      },
+      {
+        "code": "50218",
+        "name": "MILFORD CENTER"
+      },
+      {
+        "code": "50260",
+        "name": "MILLBURY"
+      },
+      {
+        "code": "50316",
+        "name": "MILLEDGEVILLE"
+      },
+      {
+        "code": "50358",
+        "name": "MILLER CITY"
+      },
+      {
+        "code": "50372",
+        "name": "MILLERSBURG"
+      },
+      {
+        "code": "50400",
+        "name": "MILLERSPORT"
+      },
+      {
+        "code": "50540",
+        "name": "MILLVILLE"
+      },
+      {
+        "code": "50708",
+        "name": "MILTON CENTER"
+      },
+      {
+        "code": "50722",
+        "name": "MILTONSBURG"
+      },
+      {
+        "code": "50764",
+        "name": "MINERAL CITY"
+      },
+      {
+        "code": "50778",
+        "name": "MINERAL RIDGE"
+      },
+      {
+        "code": "50834",
+        "name": "MINERVA"
+      },
+      {
+        "code": "50862",
+        "name": "MINERVA PARK"
+      },
+      {
+        "code": "50904",
+        "name": "MINGO JUNCTION"
+      },
+      {
+        "code": "50918",
+        "name": "MINSTER"
+      },
+      {
+        "code": "51058",
+        "name": "MOGADORE"
+      },
+      {
+        "code": "51215",
+        "name": "MONFORT HEIGHTS EAST"
+      },
+      {
+        "code": "51217",
+        "name": "MONFORT HEIGHTS SOUT"
+      },
+      {
+        "code": "51310",
+        "name": "MONROE"
+      },
+      {
+        "code": "51618",
+        "name": "MONROEVILLE"
+      },
+      {
+        "code": "51674",
+        "name": "MONTEZUMA"
+      },
+      {
+        "code": "51716",
+        "name": "MONTGOMERY"
+      },
+      {
+        "code": "51772",
+        "name": "MONTPELIER"
+      },
+      {
+        "code": "51816",
+        "name": "MONTROSE-GHENT"
+      },
+      {
+        "code": "52010",
+        "name": "MORAINE"
+      },
+      {
+        "code": "52052",
+        "name": "MORELAND HILLS"
+      },
+      {
+        "code": "52276",
+        "name": "MORRAL"
+      },
+      {
+        "code": "52346",
+        "name": "MORRISTOWN"
+      },
+      {
+        "code": "52374",
+        "name": "MORROW"
+      },
+      {
+        "code": "52416",
+        "name": "MOSCOW"
+      },
+      {
+        "code": "52598",
+        "name": "MOUNT BLANCHARD"
+      },
+      {
+        "code": "52612",
+        "name": "MOUNT CARMEL"
+      },
+      {
+        "code": "52668",
+        "name": "MOUNT CORY"
+      },
+      {
+        "code": "52682",
+        "name": "MOUNT EATON"
+      },
+      {
+        "code": "52738",
+        "name": "MOUNT GILEAD"
+      },
+      {
+        "code": "52752",
+        "name": "MOUNT HEALTHY"
+      },
+      {
+        "code": "52780",
+        "name": "MOUNT HEALTHY HEIGHT"
+      },
+      {
+        "code": "52906",
+        "name": "MOUNT ORAB"
+      },
+      {
+        "code": "52976",
+        "name": "MOUNT PLEASANT"
+      },
+      {
+        "code": "53032",
+        "name": "MOUNT REPOSE"
+      },
+      {
+        "code": "53046",
+        "name": "MOUNT STERLING"
+      },
+      {
+        "code": "53102",
+        "name": "MOUNT VERNON"
+      },
+      {
+        "code": "53144",
+        "name": "MOUNT VICTORY"
+      },
+      {
+        "code": "53186",
+        "name": "MOWRYSTOWN"
+      },
+      {
+        "code": "53270",
+        "name": "MULBERRY"
+      },
+      {
+        "code": "53312",
+        "name": "MUNROE FALLS"
+      },
+      {
+        "code": "53410",
+        "name": "MURRAY CITY"
+      },
+      {
+        "code": "53480",
+        "name": "MUTUAL"
+      },
+      {
+        "code": "53550",
+        "name": "NAPOLEON"
+      },
+      {
+        "code": "53634",
+        "name": "NASHVILLE"
+      },
+      {
+        "code": "53690",
+        "name": "NAVARRE"
+      },
+      {
+        "code": "53788",
+        "name": "NEFFS"
+      },
+      {
+        "code": "53816",
+        "name": "NELLIE"
+      },
+      {
+        "code": "53886",
+        "name": "NELSONVILLE"
+      },
+      {
+        "code": "53942",
+        "name": "NEVADA"
+      },
+      {
+        "code": "53956",
+        "name": "NEVILLE"
+      },
+      {
+        "code": "53970",
+        "name": "NEW ALBANY"
+      },
+      {
+        "code": "54012",
+        "name": "NEW ALEXANDRIA"
+      },
+      {
+        "code": "54068",
+        "name": "NEW ATHENS"
+      },
+      {
+        "code": "54110",
+        "name": "NEW BAVARIA"
+      },
+      {
+        "code": "54152",
+        "name": "NEW BLOOMINGTON"
+      },
+      {
+        "code": "54166",
+        "name": "NEW BOSTON"
+      },
+      {
+        "code": "54194",
+        "name": "NEW BREMEN"
+      },
+      {
+        "code": "54334",
+        "name": "NEW CARLISLE"
+      },
+      {
+        "code": "54446",
+        "name": "NEW CONCORD"
+      },
+      {
+        "code": "54562",
+        "name": "NEW FRANKLIN"
+      },
+      {
+        "code": "54726",
+        "name": "NEW HOLLAND"
+      },
+      {
+        "code": "54838",
+        "name": "NEW KNOXVILLE"
+      },
+      {
+        "code": "54852",
+        "name": "NEW LEBANON"
+      },
+      {
+        "code": "54866",
+        "name": "NEW LEXINGTON"
+      },
+      {
+        "code": "54908",
+        "name": "NEW LONDON"
+      },
+      {
+        "code": "54978",
+        "name": "NEW MADISON"
+      },
+      {
+        "code": "55104",
+        "name": "NEW MIAMI"
+      },
+      {
+        "code": "55118",
+        "name": "NEW MIDDLETOWN"
+      },
+      {
+        "code": "55188",
+        "name": "NEW PARIS"
+      },
+      {
+        "code": "55216",
+        "name": "NEW PHILADELPHIA"
+      },
+      {
+        "code": "55384",
+        "name": "NEW RICHMOND"
+      },
+      {
+        "code": "55398",
+        "name": "NEW RIEGEL"
+      },
+      {
+        "code": "55426",
+        "name": "NEW ROME"
+      },
+      {
+        "code": "55552",
+        "name": "NEW STRAITSVILLE"
+      },
+      {
+        "code": "55748",
+        "name": "NEW VIENNA"
+      },
+      {
+        "code": "55776",
+        "name": "NEW WASHINGTON"
+      },
+      {
+        "code": "55790",
+        "name": "NEW WATERFORD"
+      },
+      {
+        "code": "55818",
+        "name": "NEW WESTON"
+      },
+      {
+        "code": "54040",
+        "name": "NEWARK"
+      },
+      {
+        "code": "54250",
+        "name": "NEWBURGH HEIGHTS"
+      },
+      {
+        "code": "54432",
+        "name": "NEWCOMERSTOWN"
+      },
+      {
+        "code": "55650",
+        "name": "NEWTON FALLS"
+      },
+      {
+        "code": "55664",
+        "name": "NEWTONSVILLE"
+      },
+      {
+        "code": "55678",
+        "name": "NEWTOWN"
+      },
+      {
+        "code": "55874",
+        "name": "NEY"
+      },
+      {
+        "code": "55916",
+        "name": "NILES"
+      },
+      {
+        "code": "56154",
+        "name": "NORTH BALTIMORE"
+      },
+      {
+        "code": "56182",
+        "name": "NORTH BEND"
+      },
+      {
+        "code": "56294",
+        "name": "NORTH CANTON"
+      },
+      {
+        "code": "56322",
+        "name": "NORTH COLLEGE HILL"
+      },
+      {
+        "code": "56420",
+        "name": "NORTH FAIRFIELD"
+      },
+      {
+        "code": "56546",
+        "name": "NORTH FORK VILLAGE"
+      },
+      {
+        "code": "56588",
+        "name": "NORTH HAMPTON"
+      },
+      {
+        "code": "56700",
+        "name": "NORTH KINGSVILLE"
+      },
+      {
+        "code": "56770",
+        "name": "NORTH LEWISBURG"
+      },
+      {
+        "code": "56812",
+        "name": "NORTH MADISON"
+      },
+      {
+        "code": "56882",
+        "name": "NORTH OLMSTED"
+      },
+      {
+        "code": "56910",
+        "name": "NORTH PERRY"
+      },
+      {
+        "code": "56924",
+        "name": "NORTH RANDALL"
+      },
+      {
+        "code": "56966",
+        "name": "NORTH RIDGEVILLE"
+      },
+      {
+        "code": "56994",
+        "name": "NORTH ROBINSON"
+      },
+      {
+        "code": "57008",
+        "name": "NORTH ROYALTON"
+      },
+      {
+        "code": "57064",
+        "name": "NORTH STAR"
+      },
+      {
+        "code": "57218",
+        "name": "NORTH ZANESVILLE"
+      },
+      {
+        "code": "56280",
+        "name": "NORTHBROOK"
+      },
+      {
+        "code": "56448",
+        "name": "NORTHFIELD"
+      },
+      {
+        "code": "56553",
+        "name": "NORTHGATE"
+      },
+      {
+        "code": "56938",
+        "name": "NORTHRIDGE"
+      },
+      {
+        "code": "56952",
+        "name": "NORTHRIDGE"
+      },
+      {
+        "code": "57190",
+        "name": "NORTHWOOD"
+      },
+      {
+        "code": "57260",
+        "name": "NORTON"
+      },
+      {
+        "code": "57302",
+        "name": "NORWALK"
+      },
+      {
+        "code": "57372",
+        "name": "NORWICH"
+      },
+      {
+        "code": "57386",
+        "name": "NORWOOD"
+      },
+      {
+        "code": "57582",
+        "name": "OAK HARBOR"
+      },
+      {
+        "code": "57596",
+        "name": "OAK HILL"
+      },
+      {
+        "code": "57750",
+        "name": "OAKWOOD (CUYAHOGA)"
+      },
+      {
+        "code": "57764",
+        "name": "OAKWOOD (MONTGOMERY)"
+      },
+      {
+        "code": "57792",
+        "name": "OAKWOOD (PAULDING)"
+      },
+      {
+        "code": "57834",
+        "name": "OBERLIN"
+      },
+      {
+        "code": "57862",
+        "name": "OBETZ"
+      },
+      {
+        "code": "57918",
+        "name": "OCTA"
+      },
+      {
+        "code": "58002",
+        "name": "OHIO CITY"
+      },
+      {
+        "code": "58226",
+        "name": "OLD WASHINGTON"
+      },
+      {
+        "code": "58149",
+        "name": "OLDE WEST CHESTER"
+      },
+      {
+        "code": "58422",
+        "name": "OLMSTED FALLS"
+      },
+      {
+        "code": "58520",
+        "name": "ONTARIO"
+      },
+      {
+        "code": "58604",
+        "name": "ORANGE"
+      },
+      {
+        "code": "58674",
+        "name": "ORANGEVILLE"
+      },
+      {
+        "code": "58730",
+        "name": "OREGON"
+      },
+      {
+        "code": "58800",
+        "name": "ORIENT"
+      },
+      {
+        "code": "58828",
+        "name": "ORRVILLE"
+      },
+      {
+        "code": "58856",
+        "name": "ORWELL"
+      },
+      {
+        "code": "58912",
+        "name": "OSGOOD"
+      },
+      {
+        "code": "58940",
+        "name": "OSTRANDER"
+      },
+      {
+        "code": "58982",
+        "name": "OTTAWA"
+      },
+      {
+        "code": "59010",
+        "name": "OTTAWA HILLS"
+      },
+      {
+        "code": "59052",
+        "name": "OTTOVILLE"
+      },
+      {
+        "code": "59066",
+        "name": "OTWAY"
+      },
+      {
+        "code": "59220",
+        "name": "OWENSVILLE"
+      },
+      {
+        "code": "59234",
+        "name": "OXFORD"
+      },
+      {
+        "code": "59416",
+        "name": "PAINESVILLE"
+      },
+      {
+        "code": "59598",
+        "name": "PALESTINE"
+      },
+      {
+        "code": "59738",
+        "name": "PANDORA"
+      },
+      {
+        "code": "59920",
+        "name": "PARK LAYNE"
+      },
+      {
+        "code": "61000",
+        "name": "PARMA"
+      },
+      {
+        "code": "61028",
+        "name": "PARMA HEIGHTS"
+      },
+      {
+        "code": "61056",
+        "name": "PARRAL"
+      },
+      {
+        "code": "61112",
+        "name": "PATASKALA"
+      },
+      {
+        "code": "61182",
+        "name": "PATTERSON"
+      },
+      {
+        "code": "61252",
+        "name": "PAULDING"
+      },
+      {
+        "code": "61322",
+        "name": "PAYNE"
+      },
+      {
+        "code": "61420",
+        "name": "PEEBLES"
+      },
+      {
+        "code": "61504",
+        "name": "PEMBERVILLE"
+      },
+      {
+        "code": "61574",
+        "name": "PENINSULA"
+      },
+      {
+        "code": "61686",
+        "name": "PEPPER PIKE"
+      },
+      {
+        "code": "61882",
+        "name": "PERRY"
+      },
+      {
+        "code": "62134",
+        "name": "PERRY HEIGHTS"
+      },
+      {
+        "code": "62148",
+        "name": "PERRYSBURG"
+      },
+      {
+        "code": "62190",
+        "name": "PERRYSVILLE"
+      },
+      {
+        "code": "62414",
+        "name": "PHILLIPSBURG"
+      },
+      {
+        "code": "62442",
+        "name": "PHILO"
+      },
+      {
+        "code": "62498",
+        "name": "PICKERINGTON"
+      },
+      {
+        "code": "62578",
+        "name": "PIGEON CREEK"
+      },
+      {
+        "code": "62708",
+        "name": "PIKETON"
+      },
+      {
+        "code": "62834",
+        "name": "PIONEER"
+      },
+      {
+        "code": "62848",
+        "name": "PIQUA"
+      },
+      {
+        "code": "62890",
+        "name": "PITSBURG"
+      },
+      {
+        "code": "63030",
+        "name": "PLAIN CITY"
+      },
+      {
+        "code": "63044",
+        "name": "PLAINFIELD"
+      },
+      {
+        "code": "63436",
+        "name": "PLEASANT CITY"
+      },
+      {
+        "code": "63478",
+        "name": "PLEASANT GROVE"
+      },
+      {
+        "code": "63534",
+        "name": "PLEASANT HILL"
+      },
+      {
+        "code": "63576",
+        "name": "PLEASANT PLAIN"
+      },
+      {
+        "code": "63604",
+        "name": "PLEASANT RUN"
+      },
+      {
+        "code": "63618",
+        "name": "PLEASANT RUN FARM"
+      },
+      {
+        "code": "63716",
+        "name": "PLEASANTVILLE"
+      },
+      {
+        "code": "63800",
+        "name": "PLYMOUTH"
+      },
+      {
+        "code": "63954",
+        "name": "POLAND"
+      },
+      {
+        "code": "63996",
+        "name": "POLK"
+      },
+      {
+        "code": "64024",
+        "name": "POMEROY"
+      },
+      {
+        "code": "64150",
+        "name": "PORT CLINTON"
+      },
+      {
+        "code": "64262",
+        "name": "PORT JEFFERSON"
+      },
+      {
+        "code": "64346",
+        "name": "PORT WASHINGTON"
+      },
+      {
+        "code": "64360",
+        "name": "PORT WILLIAM"
+      },
+      {
+        "code": "64108",
+        "name": "PORTAGE"
+      },
+      {
+        "code": "64136",
+        "name": "PORTAGE LAKES"
+      },
+      {
+        "code": "64304",
+        "name": "PORTSMOUTH"
+      },
+      {
+        "code": "64430",
+        "name": "POTSDAM"
+      },
+      {
+        "code": "64486",
+        "name": "POWELL"
+      },
+      {
+        "code": "64542",
+        "name": "POWHATAN POINT"
+      },
+      {
+        "code": "64766",
+        "name": "PROCTORVILLE"
+      },
+      {
+        "code": "64780",
+        "name": "PROSPECT"
+      },
+      {
+        "code": "65032",
+        "name": "PUT-IN-BAY"
+      },
+      {
+        "code": "65116",
+        "name": "QUAKER CITY"
+      },
+      {
+        "code": "65200",
+        "name": "QUINCY"
+      },
+      {
+        "code": "65256",
+        "name": "RACINE"
+      },
+      {
+        "code": "65508",
+        "name": "RARDEN"
+      },
+      {
+        "code": "65592",
+        "name": "RAVENNA"
+      },
+      {
+        "code": "65634",
+        "name": "RAWSON"
+      },
+      {
+        "code": "65662",
+        "name": "RAYLAND"
+      },
+      {
+        "code": "65732",
+        "name": "READING"
+      },
+      {
+        "code": "66152",
+        "name": "REMINDERVILLE"
+      },
+      {
+        "code": "66222",
+        "name": "RENDVILLE"
+      },
+      {
+        "code": "66320",
+        "name": "REPUBLIC"
+      },
+      {
+        "code": "66390",
+        "name": "REYNOLDSBURG"
+      },
+      {
+        "code": "66530",
+        "name": "RICHFIELD"
+      },
+      {
+        "code": "66824",
+        "name": "RICHMOND"
+      },
+      {
+        "code": "66894",
+        "name": "RICHMOND HEIGHTS"
+      },
+      {
+        "code": "66936",
+        "name": "RICHWOOD"
+      },
+      {
+        "code": "67118",
+        "name": "RIDGEWAY"
+      },
+      {
+        "code": "67258",
+        "name": "RIO GRANDE"
+      },
+      {
+        "code": "67272",
+        "name": "RIPLEY"
+      },
+      {
+        "code": "67314",
+        "name": "RISINGSUN"
+      },
+      {
+        "code": "67356",
+        "name": "RITTMAN"
+      },
+      {
+        "code": "67440",
+        "name": "RIVERLEA"
+      },
+      {
+        "code": "67468",
+        "name": "RIVERSIDE"
+      },
+      {
+        "code": "67600",
+        "name": "ROAMING SHORES"
+      },
+      {
+        "code": "67762",
+        "name": "ROCHESTER"
+      },
+      {
+        "code": "67846",
+        "name": "ROCK CREEK"
+      },
+      {
+        "code": "67874",
+        "name": "ROCKFORD"
+      },
+      {
+        "code": "68042",
+        "name": "ROCKY RIDGE"
+      },
+      {
+        "code": "68056",
+        "name": "ROCKY RIVER"
+      },
+      {
+        "code": "68084",
+        "name": "ROGERS"
+      },
+      {
+        "code": "68196",
+        "name": "ROME"
+      },
+      {
+        "code": "68546",
+        "name": "ROSEMOUNT"
+      },
+      {
+        "code": "68560",
+        "name": "ROSEVILLE"
+      },
+      {
+        "code": "68602",
+        "name": "ROSS"
+      },
+      {
+        "code": "68672",
+        "name": "ROSSBURG"
+      },
+      {
+        "code": "68686",
+        "name": "ROSSFORD"
+      },
+      {
+        "code": "68742",
+        "name": "ROSWELL"
+      },
+      {
+        "code": "69176",
+        "name": "RUSHSYLVANIA"
+      },
+      {
+        "code": "69204",
+        "name": "RUSHVILLE"
+      },
+      {
+        "code": "69302",
+        "name": "RUSSELLS POINT"
+      },
+      {
+        "code": "69316",
+        "name": "RUSSELLVILLE"
+      },
+      {
+        "code": "69344",
+        "name": "RUSSIA"
+      },
+      {
+        "code": "69358",
+        "name": "RUTLAND"
+      },
+      {
+        "code": "69400",
+        "name": "SABINA"
+      },
+      {
+        "code": "69834",
+        "name": "SALEM"
+      },
+      {
+        "code": "70072",
+        "name": "SALESVILLE"
+      },
+      {
+        "code": "70100",
+        "name": "SALINEVILLE"
+      },
+      {
+        "code": "70380",
+        "name": "SANDUSKY"
+      },
+      {
+        "code": "70422",
+        "name": "SANDUSKY SOUTH"
+      },
+      {
+        "code": "70520",
+        "name": "SARAHSVILLE"
+      },
+      {
+        "code": "70534",
+        "name": "SARDINIA"
+      },
+      {
+        "code": "70576",
+        "name": "SAVANNAH"
+      },
+      {
+        "code": "70814",
+        "name": "SCIO"
+      },
+      {
+        "code": "70912",
+        "name": "SCIOTODALE"
+      },
+      {
+        "code": "71080",
+        "name": "SCOTT"
+      },
+      {
+        "code": "71206",
+        "name": "SEAMAN"
+      },
+      {
+        "code": "71220",
+        "name": "SEBRING"
+      },
+      {
+        "code": "71360",
+        "name": "SENECAVILLE"
+      },
+      {
+        "code": "71416",
+        "name": "SEVEN HILLS"
+      },
+      {
+        "code": "71444",
+        "name": "SEVEN MILE"
+      },
+      {
+        "code": "71486",
+        "name": "SEVILLE"
+      },
+      {
+        "code": "71640",
+        "name": "SHADYSIDE"
+      },
+      {
+        "code": "71682",
+        "name": "SHAKER HEIGHTS"
+      },
+      {
+        "code": "71892",
+        "name": "SHARONVILLE"
+      },
+      {
+        "code": "71962",
+        "name": "SHAWNEE"
+      },
+      {
+        "code": "71976",
+        "name": "SHAWNEE HILLS"
+      },
+      {
+        "code": "71983",
+        "name": "SHAWNEE HILLS"
+      },
+      {
+        "code": "72060",
+        "name": "SHEFFIELD"
+      },
+      {
+        "code": "72088",
+        "name": "SHEFFIELD LAKE"
+      },
+      {
+        "code": "72102",
+        "name": "SHELBY"
+      },
+      {
+        "code": "72242",
+        "name": "SHERRODSVILLE"
+      },
+      {
+        "code": "72252",
+        "name": "SHERWOOD"
+      },
+      {
+        "code": "72256",
+        "name": "SHERWOOD"
+      },
+      {
+        "code": "72284",
+        "name": "SHILOH"
+      },
+      {
+        "code": "72298",
+        "name": "SHILOH"
+      },
+      {
+        "code": "72396",
+        "name": "SHREVE"
+      },
+      {
+        "code": "72424",
+        "name": "SIDNEY"
+      },
+      {
+        "code": "72494",
+        "name": "SILVER LAKE"
+      },
+      {
+        "code": "72522",
+        "name": "SILVERTON"
+      },
+      {
+        "code": "72578",
+        "name": "SINKING SPRING"
+      },
+      {
+        "code": "72760",
+        "name": "SMITHFIELD"
+      },
+      {
+        "code": "72788",
+        "name": "SMITHVILLE"
+      },
+      {
+        "code": "72928",
+        "name": "SOLON"
+      },
+      {
+        "code": "72977",
+        "name": "SOMERSET"
+      },
+      {
+        "code": "72998",
+        "name": "SOMERVILLE"
+      },
+      {
+        "code": "73040",
+        "name": "SOUTH AMHERST"
+      },
+      {
+        "code": "73068",
+        "name": "SOUTH BLOOMFIELD"
+      },
+      {
+        "code": "73118",
+        "name": "SOUTH CANAL"
+      },
+      {
+        "code": "73124",
+        "name": "SOUTH CHARLESTON"
+      },
+      {
+        "code": "73264",
+        "name": "SOUTH EUCLID"
+      },
+      {
+        "code": "73446",
+        "name": "SOUTH LEBANON"
+      },
+      {
+        "code": "73510",
+        "name": "SOUTH MIDDLETOWN"
+      },
+      {
+        "code": "73670",
+        "name": "SOUTH POINT"
+      },
+      {
+        "code": "73684",
+        "name": "SOUTH RUSSELL"
+      },
+      {
+        "code": "73698",
+        "name": "SOUTH SALEM"
+      },
+      {
+        "code": "73768",
+        "name": "SOUTH SOLON"
+      },
+      {
+        "code": "73796",
+        "name": "SOUTH VIENNA"
+      },
+      {
+        "code": "73824",
+        "name": "SOUTH WEBSTER"
+      },
+      {
+        "code": "73894",
+        "name": "SOUTH ZANESVILLE"
+      },
+      {
+        "code": "73950",
+        "name": "SPARTA"
+      },
+      {
+        "code": "73992",
+        "name": "SPENCER"
+      },
+      {
+        "code": "74034",
+        "name": "SPENCERVILLE"
+      },
+      {
+        "code": "74216",
+        "name": "SPRING VALLEY"
+      },
+      {
+        "code": "74076",
+        "name": "SPRINGBORO"
+      },
+      {
+        "code": "74104",
+        "name": "SPRINGDALE"
+      },
+      {
+        "code": "74118",
+        "name": "SPRINGFIELD"
+      },
+      {
+        "code": "69470",
+        "name": "ST. BERNARD"
+      },
+      {
+        "code": "69526",
+        "name": "ST. CLAIRSVILLE"
+      },
+      {
+        "code": "69540",
+        "name": "ST. HENRY"
+      },
+      {
+        "code": "69652",
+        "name": "ST. LOUISVILLE"
+      },
+      {
+        "code": "69666",
+        "name": "ST. MARTIN"
+      },
+      {
+        "code": "69680",
+        "name": "ST. MARYS"
+      },
+      {
+        "code": "69708",
+        "name": "ST. PARIS"
+      },
+      {
+        "code": "74300",
+        "name": "STAFFORD"
+      },
+      {
+        "code": "74608",
+        "name": "STEUBENVILLE"
+      },
+      {
+        "code": "74748",
+        "name": "STOCKPORT"
+      },
+      {
+        "code": "74804",
+        "name": "STONE CREEK"
+      },
+      {
+        "code": "74832",
+        "name": "STONY PRAIRIE"
+      },
+      {
+        "code": "74916",
+        "name": "STOUTSVILLE"
+      },
+      {
+        "code": "74944",
+        "name": "STOW"
+      },
+      {
+        "code": "74958",
+        "name": "STRASBURG"
+      },
+      {
+        "code": "75000",
+        "name": "STRATTON"
+      },
+      {
+        "code": "75014",
+        "name": "STREETSBORO"
+      },
+      {
+        "code": "75098",
+        "name": "STRONGSVILLE"
+      },
+      {
+        "code": "75126",
+        "name": "STRUTHERS"
+      },
+      {
+        "code": "75140",
+        "name": "STRYKER"
+      },
+      {
+        "code": "75196",
+        "name": "SUGAR BUSH KNOLLS"
+      },
+      {
+        "code": "75252",
+        "name": "SUGAR GROVE"
+      },
+      {
+        "code": "75210",
+        "name": "SUGARCREEK"
+      },
+      {
+        "code": "75406",
+        "name": "SUMMERFIELD"
+      },
+      {
+        "code": "75434",
+        "name": "SUMMERSIDE"
+      },
+      {
+        "code": "75560",
+        "name": "SUMMIT STATION"
+      },
+      {
+        "code": "75574",
+        "name": "SUMMITVILLE"
+      },
+      {
+        "code": "75602",
+        "name": "SUNBURY"
+      },
+      {
+        "code": "75896",
+        "name": "SWANTON"
+      },
+      {
+        "code": "75980",
+        "name": "SYCAMORE"
+      },
+      {
+        "code": "76022",
+        "name": "SYLVANIA"
+      },
+      {
+        "code": "76050",
+        "name": "SYRACUSE"
+      },
+      {
+        "code": "76106",
+        "name": "TALLMADGE"
+      },
+      {
+        "code": "76148",
+        "name": "TARLTON"
+      },
+      {
+        "code": "76428",
+        "name": "TERRACE PARK"
+      },
+      {
+        "code": "76568",
+        "name": "THE PLAINS"
+      },
+      {
+        "code": "76680",
+        "name": "THORNVILLE"
+      },
+      {
+        "code": "76764",
+        "name": "THURSTON"
+      },
+      {
+        "code": "76778",
+        "name": "TIFFIN"
+      },
+      {
+        "code": "76806",
+        "name": "TILTONSVILLE"
+      },
+      {
+        "code": "76834",
+        "name": "TIMBERLAKE"
+      },
+      {
+        "code": "76876",
+        "name": "TIPP CITY"
+      },
+      {
+        "code": "76932",
+        "name": "TIRO"
+      },
+      {
+        "code": "77000",
+        "name": "TOLEDO"
+      },
+      {
+        "code": "77070",
+        "name": "TONTOGANY"
+      },
+      {
+        "code": "77112",
+        "name": "TORONTO"
+      },
+      {
+        "code": "77308",
+        "name": "TREMONT CITY"
+      },
+      {
+        "code": "77322",
+        "name": "TRENTON"
+      },
+      {
+        "code": "77406",
+        "name": "TRIMBLE"
+      },
+      {
+        "code": "77504",
+        "name": "TROTWOOD"
+      },
+      {
+        "code": "77588",
+        "name": "TROY"
+      },
+      {
+        "code": "77825",
+        "name": "TURNPIKE INTERCHANGE"
+      },
+      {
+        "code": "77840",
+        "name": "TURPIN HILLS"
+      },
+      {
+        "code": "77924",
+        "name": "TUSCARAWAS"
+      },
+      {
+        "code": "78050",
+        "name": "TWINSBURG"
+      },
+      {
+        "code": "78176",
+        "name": "UHRICHSVILLE"
+      },
+      {
+        "code": "78470",
+        "name": "UNION"
+      },
+      {
+        "code": "78624",
+        "name": "UNION CITY"
+      },
+      {
+        "code": "78736",
+        "name": "UNIONTOWN"
+      },
+      {
+        "code": "78834",
+        "name": "UNIONVILLE CENTER"
+      },
+      {
+        "code": "78848",
+        "name": "UNIOPOLIS"
+      },
+      {
+        "code": "78932",
+        "name": "UNIVERSITY HEIGHTS"
+      },
+      {
+        "code": "79002",
+        "name": "UPPER ARLINGTON"
+      },
+      {
+        "code": "79044",
+        "name": "UPPER SANDUSKY"
+      },
+      {
+        "code": "79072",
+        "name": "URBANA"
+      },
+      {
+        "code": "79100",
+        "name": "URBANCREST"
+      },
+      {
+        "code": "79114",
+        "name": "UTICA"
+      },
+      {
+        "code": "79226",
+        "name": "VALLEY HI"
+      },
+      {
+        "code": "79268",
+        "name": "VALLEY VIEW"
+      },
+      {
+        "code": "79282",
+        "name": "VALLEYVIEW"
+      },
+      {
+        "code": "79394",
+        "name": "VAN BUREN"
+      },
+      {
+        "code": "79562",
+        "name": "VAN WERT"
+      },
+      {
+        "code": "79492",
+        "name": "VANDALIA"
+      },
+      {
+        "code": "79534",
+        "name": "VANLUE"
+      },
+      {
+        "code": "79632",
+        "name": "VENEDOCIA"
+      },
+      {
+        "code": "79716",
+        "name": "VERMILION"
+      },
+      {
+        "code": "79898",
+        "name": "VERONA"
+      },
+      {
+        "code": "79912",
+        "name": "VERSAILLES"
+      },
+      {
+        "code": "80066",
+        "name": "VIENNA CENTER"
+      },
+      {
+        "code": "80178",
+        "name": "VINTON"
+      },
+      {
+        "code": "80304",
+        "name": "WADSWORTH"
+      },
+      {
+        "code": "80402",
+        "name": "WAITE HILL"
+      },
+      {
+        "code": "80458",
+        "name": "WAKEMAN"
+      },
+      {
+        "code": "80486",
+        "name": "WALBRIDGE"
+      },
+      {
+        "code": "80500",
+        "name": "WALDO"
+      },
+      {
+        "code": "80738",
+        "name": "WALTON HILLS"
+      },
+      {
+        "code": "80766",
+        "name": "WAPAKONETA"
+      },
+      {
+        "code": "80892",
+        "name": "WARREN"
+      },
+      {
+        "code": "80990",
+        "name": "WARRENSVILLE HEIGHTS"
+      },
+      {
+        "code": "81032",
+        "name": "WARSAW"
+      },
+      {
+        "code": "81718",
+        "name": "WASHINGTON C.H."
+      },
+      {
+        "code": "81732",
+        "name": "WASHINGTONVILLE"
+      },
+      {
+        "code": "81858",
+        "name": "WATERVILLE"
+      },
+      {
+        "code": "81928",
+        "name": "WAUSEON"
+      },
+      {
+        "code": "81942",
+        "name": "WAVERLY CITY"
+      },
+      {
+        "code": "82334",
+        "name": "WAYNE"
+      },
+      {
+        "code": "82348",
+        "name": "WAYNE LAKES"
+      },
+      {
+        "code": "82376",
+        "name": "WAYNESBURG"
+      },
+      {
+        "code": "82390",
+        "name": "WAYNESFIELD"
+      },
+      {
+        "code": "82418",
+        "name": "WAYNESVILLE"
+      },
+      {
+        "code": "82642",
+        "name": "WELLINGTON"
+      },
+      {
+        "code": "82712",
+        "name": "WELLSTON"
+      },
+      {
+        "code": "82740",
+        "name": "WELLSVILLE"
+      },
+      {
+        "code": "82880",
+        "name": "WEST ALEXANDRIA"
+      },
+      {
+        "code": "83111",
+        "name": "WEST CARROLLTON CITY"
+      },
+      {
+        "code": "83216",
+        "name": "WEST ELKTON"
+      },
+      {
+        "code": "83384",
+        "name": "WEST FARMINGTON"
+      },
+      {
+        "code": "83541",
+        "name": "WEST HILL"
+      },
+      {
+        "code": "83580",
+        "name": "WEST JEFFERSON"
+      },
+      {
+        "code": "83608",
+        "name": "WEST LAFAYETTE"
+      },
+      {
+        "code": "83706",
+        "name": "WEST LEIPSIC"
+      },
+      {
+        "code": "83734",
+        "name": "WEST LIBERTY"
+      },
+      {
+        "code": "83804",
+        "name": "WEST MANCHESTER"
+      },
+      {
+        "code": "83818",
+        "name": "WEST MANSFIELD"
+      },
+      {
+        "code": "83888",
+        "name": "WEST MILLGROVE"
+      },
+      {
+        "code": "83902",
+        "name": "WEST MILTON"
+      },
+      {
+        "code": "84140",
+        "name": "WEST PORTSMOUTH"
+      },
+      {
+        "code": "84182",
+        "name": "WEST RUSHVILLE"
+      },
+      {
+        "code": "84196",
+        "name": "WEST SALEM"
+      },
+      {
+        "code": "84294",
+        "name": "WEST UNION"
+      },
+      {
+        "code": "84308",
+        "name": "WEST UNITY"
+      },
+      {
+        "code": "83342",
+        "name": "WESTERVILLE"
+      },
+      {
+        "code": "83468",
+        "name": "WESTFIELD CENTER"
+      },
+      {
+        "code": "83622",
+        "name": "WESTLAKE"
+      },
+      {
+        "code": "83972",
+        "name": "WESTON"
+      },
+      {
+        "code": "84528",
+        "name": "WETHERINGTON"
+      },
+      {
+        "code": "84574",
+        "name": "WHARTON"
+      },
+      {
+        "code": "84588",
+        "name": "WHEELERSBURG"
+      },
+      {
+        "code": "84812",
+        "name": "WHITE OAK"
+      },
+      {
+        "code": "84831",
+        "name": "WHITE OAK EAST"
+      },
+      {
+        "code": "84864",
+        "name": "WHITE OAK WEST"
+      },
+      {
+        "code": "84742",
+        "name": "WHITEHALL"
+      },
+      {
+        "code": "84770",
+        "name": "WHITEHOUSE"
+      },
+      {
+        "code": "85036",
+        "name": "WICKLIFFE"
+      },
+      {
+        "code": "85092",
+        "name": "WILBERFORCE"
+      },
+      {
+        "code": "85190",
+        "name": "WILKESVILLE"
+      },
+      {
+        "code": "85232",
+        "name": "WILLARD"
+      },
+      {
+        "code": "85288",
+        "name": "WILLIAMSBURG"
+      },
+      {
+        "code": "85414",
+        "name": "WILLIAMSPORT"
+      },
+      {
+        "code": "85484",
+        "name": "WILLOUGHBY"
+      },
+      {
+        "code": "85512",
+        "name": "WILLOUGHBY HILLS"
+      },
+      {
+        "code": "85638",
+        "name": "WILLOWICK"
+      },
+      {
+        "code": "85736",
+        "name": "WILLSHIRE"
+      },
+      {
+        "code": "85792",
+        "name": "WILMINGTON"
+      },
+      {
+        "code": "85806",
+        "name": "WILMOT"
+      },
+      {
+        "code": "85834",
+        "name": "WILSON"
+      },
+      {
+        "code": "85876",
+        "name": "WINCHESTER"
+      },
+      {
+        "code": "85946",
+        "name": "WINDHAM"
+      },
+      {
+        "code": "86184",
+        "name": "WINTERSVILLE"
+      },
+      {
+        "code": "86254",
+        "name": "WITHAMSVILLE"
+      },
+      {
+        "code": "86331",
+        "name": "WOODBOURNE-HYDE PARK"
+      },
+      {
+        "code": "86366",
+        "name": "WOODLAWN"
+      },
+      {
+        "code": "86394",
+        "name": "WOODMERE"
+      },
+      {
+        "code": "86436",
+        "name": "WOODSFIELD"
+      },
+      {
+        "code": "86478",
+        "name": "WOODSTOCK"
+      },
+      {
+        "code": "86492",
+        "name": "WOODVILLE"
+      },
+      {
+        "code": "86548",
+        "name": "WOOSTER"
+      },
+      {
+        "code": "86604",
+        "name": "WORTHINGTON"
+      },
+      {
+        "code": "86632",
+        "name": "WREN"
+      },
+      {
+        "code": "86660",
+        "name": "WRIGHT-PATTERSON AFB"
+      },
+      {
+        "code": "86730",
+        "name": "WYOMING"
+      },
+      {
+        "code": "86772",
+        "name": "XENIA"
+      },
+      {
+        "code": "86856",
+        "name": "YANKEE LAKE"
+      },
+      {
+        "code": "86940",
+        "name": "YELLOW SPRINGS"
+      },
+      {
+        "code": "87164",
+        "name": "YORKSHIRE"
+      },
+      {
+        "code": "87178",
+        "name": "YORKVILLE"
+      },
+      {
+        "code": "88000",
+        "name": "YOUNGSTOWN"
+      },
+      {
+        "code": "88028",
+        "name": "ZALESKI"
+      },
+      {
+        "code": "88070",
+        "name": "ZANESFIELD"
+      },
+      {
+        "code": "88084",
+        "name": "ZANESVILLE"
+      },
+      {
+        "code": "88168",
+        "name": "ZOAR"
+      }
+    ]
+  }
+}

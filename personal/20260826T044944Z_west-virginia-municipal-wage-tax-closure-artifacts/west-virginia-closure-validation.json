@@ -1,0 +1,56 @@
+{
+  "research_date": "2026-08-25",
+  "state_code": "WV",
+  "coverage_before": "UNDETERMINED",
+  "coverage_after": "COMPLETE",
+  "current_qualifying_registry_rows": 0,
+  "statutory_qualification_ceiling_percent": 3.0,
+  "gasb_2025": {
+    "measurement_period_end": "June 30, 2025",
+    "plan_rows": 53,
+    "unique_plan_rows": 53,
+    "police_plans": 31,
+    "fire_plans": 22,
+    "plans_at_or_below_ceiling": 0,
+    "minimum_fiduciary_net_position_percent": 12.4,
+    "minimum_plan": "St. Albans Fire",
+    "preserved_source_pdfs": 53,
+    "source_pdf_bytes": 30225101,
+    "extract_sha256": "49B096F9F392E3346F1D3B4BE35E659D8A2C260F8E4359B932E3797A11EEC274",
+    "extractor_sha256": "01B1389DCFDC2CD52CC36AD3870C4A302BF928C8257FD7E03F336C58AE8FAD61"
+  },
+  "consolidated_2024_cross_check": {
+    "valuation_date": "July 1, 2024",
+    "plan_rows": 53,
+    "minimum_mva_percent": 12,
+    "minimum_ava_percent": 12,
+    "extract_sha256": "353F95206F1228C6D972F8E83C61951D98E7E4B8336EDB1A881D0510F33012DC",
+    "source_pdf_sha256": "5419210C33F39C6C6507134051E52DF92A8DA76A258D2F22C61B6295387BBEE8"
+  },
+  "national_registry_after": {
+    "municipality_rows": 2815,
+    "states_with_rows": 9,
+    "west_virginia_rows": 0,
+    "coverage_counts": {
+      "COMPLETE": 16,
+      "NO_AUTHORITY_CONFIRMED": 16,
+      "PARTIAL": 10,
+      "UNDETERMINED": 9
+    }
+  },
+  "closure_evidence": {
+    "wvsCPA_zero_adopters_as_of": "January 1, 2026",
+    "article_13c_activation_gate_confirmed": true,
+    "article_13c_termination_gate_confirmed": true,
+    "current_home_rule_alternate_wage_tax_found": false,
+    "current_or_historical_active_adopter_found": false,
+    "flat_user_fees_excluded": true
+  },
+  "refresh_required_on": [
+    "Article 13C or Home Rule taxation-law change",
+    "Article 13C pension plan or enabling act",
+    "MPOB funded percentage approaching or reaching 3 percent",
+    "Municipal ordinance, withholding form, budget line, or employer notice invoking section 8-13C-3",
+    "Later statewide tax guide no longer reporting zero adopters"
+  ]
+}

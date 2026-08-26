@@ -1,0 +1,54 @@
+﻿municipality,plan_type,funded_ratio_mva_percent,funded_ratio_ava_percent,report_page,pdf_page
+Beckley,Fire,61,57,13,18
+Beckley,Police,78,74,13,18
+Belle,Police,126,125,13,18
+Bluefield,Fire,29,29,13,18
+Bluefield,Police,66,64,13,18
+Charles Town,Police,53,54,13,18
+Charleston,Fire,37,36,14,19
+Charleston,Police,40,39,14,19
+Chester,Police,94,94,14,19
+Clarksburg,Fire,50,51,14,19
+Clarksburg,Police,61,62,14,19
+Dunbar,Fire,23,24,14,19
+Dunbar,Police,90,94,15,20
+Elkins,Fire,137,133,15,20
+Elkins,Police,103,99,15,20
+Fairmont,Fire,24,24,15,20
+Fairmont,Police,48,47,15,20
+Grafton,Fire,93,94,15,20
+Grafton,Police,120,121,16,21
+Huntington,Fire,46,44,16,21
+Huntington,Police,52,50,16,21
+Logan,Fire,81,82,16,21
+Logan,Police,70,73,16,21
+Martinsburg,Fire,16,16,16,21
+Martinsburg,Police,30,30,17,22
+Morgantown,Fire,33,33,17,22
+Morgantown,Police,30,30,17,22
+Moundsville,Fire,61,61,17,22
+Moundsville,Police,71,72,17,22
+Nitro,Fire,25,25,17,22
+Nitro,Police,40,39,18,23
+Oak Hill,Police,105,108,18,23
+Parkersburg,Fire,53,52,18,23
+Parkersburg,Police,53,52,18,23
+Point Pleasant,Police,75,76,18,23
+Princeton,Fire,23,23,18,23
+Princeton,Police,43,42,19,24
+South Charleston,Fire,12,12,19,24
+South Charleston,Police,14,14,19,24
+St. Albans,Fire,12,12,19,24
+St. Albans,Police,51,52,19,24
+Star City,Police,111,113,19,24
+Vienna,Police,81,81,20,25
+Weirton,Fire,89,89,20,25
+Weirton,Police,40,40,20,25
+Welch,Police,200,199,20,25
+Weston,Fire,79,80,20,25
+Weston,Police,135,136,20,25
+Westover,Police,103,105,21,26
+Wheeling,Fire,99,98,21,26
+Wheeling,Police,99,97,21,26
+Williamson,Fire,74,73,21,26
+Williamson,Police,77,76,21,26
