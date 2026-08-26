@@ -2,7 +2,7 @@
 
 This directory is the active replacement snapshot for the August 26, 2026 nine-state closure run. It began from the fully validated post-West Virginia snapshot in `../20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/` and is updated, validated, committed, and pushed after each state iteration.
 
-The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, and Montana add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero. Nationwide coverage is now 17 `COMPLETE`, 19 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 5 `UNDETERMINED`.
+The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, Montana, and Utah add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero. Nationwide coverage is now 17 `COMPLETE`, 20 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 4 `UNDETERMINED`.
 
 ## Contents
 
@@ -59,3 +59,10 @@ Montana is `NO_AUTHORITY_CONFIRMED`: specific delegation is required; the genera
 - [DOR and complete-current-code audit manifest](../20260826T230418Z_south-dakota-municipal-wage-tax-closure-artifacts/README.md)
 
 South Dakota is a `COMPLETE` current zero: chapter 10-52 provides central advance notice and administration, the July 2026 DOR guide identifies no employee wage-tax category or adopter, and all 63 official consolidated title files contain no qualifying authorization or adopter. Broad non-ad-valorem and home-rule language remains, so the classification is intentionally not `NO_AUTHORITY_CONFIRMED`.
+
+## Utah evidence
+
+- [Closure report](../20260826T230418Z_utah-municipal-wage-tax-closure.md)
+- [Constitutional, case-law, withholding, and complete-code audit manifest](../20260826T230418Z_utah-municipal-wage-tax-closure-artifacts/README.md)
+
+Utah is `NO_AUTHORITY_CONFIRMED`: municipal tax power requires a legislative grant; section 10-1-203 excludes employees from its municipal business-tax definition; and the complete 96-title current-code audit found no qualifying employee wage-tax delegation or adopter.

@@ -57,17 +57,17 @@ The 11 directly supported Kentucky jurisdictions are Bowling Green, Covington, H
 
 Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, South Dakota, Vermont, West Virginia, and Wisconsin.
 
-### No qualifying authority confirmed (19)
+### No qualifying authority confirmed (20)
 
-Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Virginia, and Washington.
+Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Utah, Virginia, and Washington.
 
 ### Partial (10)
 
 Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
 
-### Undetermined (5)
+### Undetermined (4)
 
-California, Colorado, Texas, Utah, and Wyoming.
+California, Colorado, Texas, and Wyoming.
 
 ## Important exclusions and boundary decisions
 
@@ -128,8 +128,15 @@ South Dakota is now a **current closed zero**, moving from `UNDETERMINED` to `CO
 
 Chapter 10-52 requires advance notice to the Secretary of Revenue for every new or amended municipal non-ad-valorem tax ordinance. The July 2026 DOR municipal-tax guide identifies no employee income, wage, earnings, compensation, or payroll category or adopter. The audit also retrieved all 63 official consolidated title documents—Constitution title `0N` and codified-law titles 1 through 62—and found no qualifying authorization or adopter in the 176,375,083-byte corpus. Broad home-rule and non-ad-valorem language remains, so this is a current-adoption closure rather than a categorical no-authority conclusion.
 
-- [Full South Dakota closure report](./20260826T230418Z_south-dakota-municipal-wage-tax-closure.md)
-- [South Dakota DOR and complete-code audit manifest](./20260826T230418Z_south-dakota-municipal-wage-tax-closure-artifacts/README.md)
+Evidence: [closure report](./20260826T230418Z_south-dakota-municipal-wage-tax-closure.md) and [source manifest](./20260826T230418Z_south-dakota-municipal-wage-tax-closure-artifacts/README.md).
+
+## Utah closure — August 26, 2026
+
+Utah is now a **closed zero**, moving from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; no municipality row was added.
+
+Utah Constitution article XI, section 5 limits charter-city tax authority to general-law bounds. *Moss v. Board of Commissioners of Salt Lake City* holds that a municipality has only tax power expressly conferred or necessarily implied by legislative enactment. Current section 10-1-203 excludes employees from its municipal business-tax definition and enumerates other revenue subjects, not employee wages. The complete audit of all 96 current Utah Code title PDFs—19,339 pages and 56,391,062 extracted characters—found no qualifying municipal employee wage-tax delegation or adopter. Section 59-10-402 and the April 2026 withholding guide describe only Utah state income-tax withholding.
+
+Evidence: [closure report](./20260826T230418Z_utah-municipal-wage-tax-closure.md) and [source manifest](./20260826T230418Z_utah-municipal-wage-tax-closure-artifacts/README.md).
 
 ## Open and future candidates
 
@@ -144,7 +151,7 @@ Ordinary web searching has reached diminishing returns. The remaining work shoul
 
 | Priority | States | Closure work |
 | --- | --- | --- |
-| High | Utah, Wyoming | Exhaust current statutes, session laws, special/local acts, and delegations. Seek written confirmation from the legislative research office or responsible tax agency when no complete official list exists. |
+| High | Wyoming | Exhaust current statutes, session laws, special/local acts, and delegations. Seek written confirmation from the legislative research office or responsible tax agency when no complete official list exists. |
 | Medium | Colorado | Obtain the official home-rule municipality universe and search every charter and code for percentage-based wage, earnings, payroll, and occupational taxes; distinguish them from flat occupational privilege taxes. |
 | Hardest | California, Texas | Review the complete charter/home-rule universe, attorney-general opinions, cases, special laws, and municipal codes. A written state-level confirmation would materially strengthen closure because broad home-rule authority makes keyword-only statutory review insufficient. |
 

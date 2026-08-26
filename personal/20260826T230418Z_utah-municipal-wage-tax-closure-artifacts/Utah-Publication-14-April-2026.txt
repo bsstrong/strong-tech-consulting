@@ -1,0 +1,1275 @@
+If you need an accommodation under the Americans with Disabilities Act, email taxada@utah.gov, 
+or call
+ 801-297-3811 or TDD 801-297-2020. Please allow three working days for a response.
+Utah State Tax Commission
+210 North 1950 West
+Salt Lake City, Utah 84134
+801-297-2200
+1-800-662-4335
+tax.utah.gov
+Contents
+Electronic Filing Requirements ........................................................ 2
+General Information ......................................................................... 2
+Employment Tax Workshops...................................................... 2
+Who Must Withhold Taxes .......................................................... 2
+Employer Withholding Exemption ......................................... 2
+Employee Withholding Exclusions............................................. 2
+Nonresident Employees Working Temporarily in Utah .......... 2
+Interstate Transportation Wages........................................... 2
+Active Duty Service Member’s Nonresident 
+Spouse Wages.................................................................. 3
+Definitions .................................................................................. 3
+Wages................................................................................... 3
+Utah Taxable Wages ............................................................. 3
+Household Employees .......................................................... 3
+How to Get a Withholding Account ............................................ 3
+Federal Employer Identification Number............................... 3
+Bond Requirements for Utah ................................................ 3
+How Much to Withhold ............................................................... 3
+How to File Returns ................................................................... 3
+Filing with No Tax Liability (Zero Returns) ............................ 3
+Amended Returns ................................................................. 3
+How to Make Payments............................................................. 3
+Payroll Service Providers ...................................................... 4
+Liability .................................................................................. 4
+Annual Reconciliation ................................................................ 4
+Amended Reconciliations ..................................................... 4
+Late and/or Incorrect Filings ................................................. 4
+Balancing the Reconciliation ................................................. 4
+Withholding Filing Record .......................................................... 4
+Due Dates .................................................................................. 4
+Annual Returns with Annual Payments ................................. 5
+Quarterly Returns with Quarterly Payments ......................... 5
+Quarterly Returns with Monthly Payments ........................... 5
+Annual Reconciliations, W-2s and 1099s .............................. 5
+Filing Status Changes ................................................................ 5
+W-2 and 1099 Requirements ..................................................... 5
+Amending W-2s ......................................................................... 5
+Penalties and Interest ................................................................ 5
+Late Filing and Late Payments ............................................. 5
+Annual Reconciliation ........................................................... 5
+Interest .................................................................................. 6
+Changing or Closing an Account ............................................... 6
+Agencies .......................................................................................... 6
+Internal Revenue Service .......................................................... 6
+Utah State Tax Commission....................................................... 6
+Social Security Administration ................................................... 6
+Utah Dept. of Workforce Services .............................................. 6
+Labor Commission of Utah ........................................................ 6
+Utah Withholding Taxes Calendar.................................................... 7
+Utah Withholding Schedules............................................................ 8
+Instructions ................................................................................ 8
+Utah Schedules 1-4 – Weekly, Biweekly, 
+Semimonthly, Monthly ............................................................. 9
+Utah Schedules 5-8 – Quarterly, Semiannual, 
+Annual, Daily......................................................................... 10
+Examples of Utah Withholding Calculations ............................ 11
+Utah Withholding Tables ................................................................ 12
+Weekly and Biweekly Payroll Periods ...................................... 12
+Semimonthly and Monthly Payroll Periods............................... 13
+Quarterly and Semiannual Payroll Periods .............................. 14
+Annual and Daily/Miscellaneous Payroll Periods ..................... 15
+E-Verify for Employers
+Employers can help prevent identity theft by verifying the 
+social security numbers of job applicants. E-Verify is a free 
+service of the U.S. Department of Homeland Security that 
+verifies employment eligibility through the Internet. Employ-
+ers can use E-Verify at dhs.gov/E-Verify.
+When the tax rate changes, mention to Kalli that the schedules, tables and examples need to be revised. 
+Since these items do not redline, SEND KALLI THE EXCEL FILE FROM JACOBA so Kalli can extract the numbers.
+The income tax withholding tables in 
+this revision are effective for pay periods 
+beginning on or after June 1, 2026
+Withholding Tax Guide
+Utah Withholding Information 
+and Ta
+x Tables
+PUBLICATION 14
+Rev. 4/26
+Is this information helpful?
+Click here.
+Effective June 1, 2026
+
+page 2
+14
+Electronic Filing Requirements
+• You must file Utah withholding tax returns, W-2s and 1099s 
+(with Utah tax withheld) electronically.
+• Your annual reconciliation is combined with your fourth 
+quarter return (quarterly filers) or your annual return (annual 
+filers).
+• File and amend returns electronically on our secure web-
+site at tap.utah.gov. We will reject any withholding forms 
+received on paper.
+• You may pay withholding tax online or by check. If pay-
+ing by check, print a payment coupon (TC-941PC) from 
+tax.utah.gov/forms .
+Important Reminders
+• It is a class B misdemeanor to have Utah employees with-
+out a withholding license. See How to Get a Withholding 
+Account, below. 
+• If you file federal form 944, Employer’s Annual Federal 
+Tax Return, you may file and pay your Utah withholding 
+tax annually.
+• If you do not meet the criteria in Utah Code §§59-10-402, 
+404 and 405, you are not required to have a Utah with -
+holding account or to withhold Utah tax. Also, if you are 
+not required to withhold Utah tax on a form 1099, you 
+are not required to submit the 1099 form or to report 
+the wages or compensation on your Utah withholding or 
+reconciliation forms.
+• If you withheld tax from a nonresident professional 
+athlete, you must complete the Worksheet for Nonresi-
+dent Professional Athletes when you electronically file 
+your annual reconciliation. Download the worksheet at 
+tax.utah.gov/forms .
+General Information
+This publication includes:
+• requirements for filing and paying Utah withholding tax,
+• requirements for filing the Utah annual reconciliation,
+• requirements for electronic filing,
+• withholding tax schedules for calcula ting Utah withholding 
+tax from employees’ wages, and
+• Utah withholding tax tables for quick lookup.
+For questions about Utah withholding tax, see tax.utah.gov , or 
+call us at 801-297-2200 (1-800-662-4335 outside the Salt Lake 
+area).
+This publication does not cover Utah withholding re-
+quirements for mineral production or pass-through 
+entities. See tax.utah.gov/withholding and 
+tax.utah.gov/utah-taxes/mineral-production.
+This publication does not cover federal withholding 
+requirements. Contact the Internal Revenue Service (IRS) (see 
+Agencies, below).
+Employment Tax Workshops
+The Tax Commission (together with the IRS, Workforce Services, 
+and the Labor Commission) holds Employment Tax Workshops 
+sponsored by the Utah Small Business Development Centers 
+(SBDC). These workshops teach employers how to withhold 
+federal and state income taxes and explain federal and state 
+filing and paying requirements. See Agencies, below, for more 
+information.
+Who Must Withhold Taxes
+You must withhold Utah income tax (unless the employee has filed 
+a withholding exemption certificate) if you:
+• pay wages to any employee for work done in Utah;
+• pay wages to Utah resident employees for work done outside 
+Utah (you may reduce the Utah tax by any tax withheld by the 
+other state); or 
+• make paymen ts reported on forms 1099 (or as required 
+under Utah Code §59-10-405).
+Employer Withholding Exemption
+You may be exempt from Utah withholding requirements if you 
+do business in Utah for 60 days or less in a calendar year and 
+have Tax Commission approval. If you do business for more than 
+60 days, you must withhold taxes for the entire period unless 
+you can show good cause. In that case, the Tax Commission may 
+extend the exemption for 30 days. See Utah Code §59-10-402(2). 
+Submit exemption requests to:
+Waivers 
+Utah State Tax Commission 
+210 N 1950 W 
+Salt Lake City, UT 84134-2000
+Note:  This exemption is for the employer, not the employee. 
+The employee must still file and pay Utah tax on all Utah wages. 
+Report Utah wages on form W-2, box 16.
+Employee Withholding Exclusions
+Nonresident Employees Working 
+Temporarily in Utah
+The wages of certain nonresidents working temporarily in Utah 
+are exempt from Utah withholding requirements. See Utah Code 
+§§59-10-402 and 59-10-117.5.
+Do not withhold Utah taxes for or report wages as Utah wages of 
+a nonresident employee who: 
+1. has no other sourc es of Utah income,
+2. works in Utah for 20 days or less, and
+3. is a resident of a state that either:
+a) does not hav e an income tax, or 
+b) exempts the wages of nonresidents from taxation with 
+an exclusion similar to this one.
+This exclusion does not apply to:
+1. professional athletes;
+2. professional entertainers; 
+3. prominent persons who perform services on a per-event 
+basis; 
+4. real property laborers; or
+5. any employee who, during the year prior to the current tax 
+year, was either a key employee or, in the case of a non-corpo-
+rate employer, an employee/officer who is one of the 50 highest-
+paid employees (see definitions in IRC §416(i))
+Interstate Transportation Wages
+Wages of interstate transportation employees are taxable only in 
+the state of their residency (see Public Law 101-322). 
+
+page 3
+14
+To qualify, the employee must:
+1. work for an interstate railroad, interstate motor carrier or 
+interstate private carrier;
+2. be a nonresiden t of Utah;
+3. have regularly assigned duties in more than one state;
+4. be subject t o the jurisdiction of the U.S. Secretary of Trans-
+portation; and
+5. be an opera tor, mechanic or someone directly responsible 
+for the safety of a motor vehicle.
+“On-call” or “as-needed” duties are not considered “regularly as-
+signed duties. ”
+A qualified employee must give the employer federal form W-4, 
+Employee’s Withholding Certificate and write “Utah Only - Ex -
+empt, Interstate Transportation” under box 4c.
+The employee must notify the employer immediately if they no 
+longer qualify for the exclusion.
+Do not report the employee’s wages as Utah wages in box 16 of 
+form W-2 and do not withhold any Utah tax on the wages.
+See General Instructions on federal form W-4.
+Active Duty Service Member’s Nonresident 
+Spouse Wages
+If a nonresident active duty military service member and a non-
+military spouse have the same domicile and the service member 
+moves to Utah under military orders, the spouse’s domicile does 
+not change when moving to live with the service member. All of the 
+spouse’s income is exempt from Utah income tax.
+A qualified spouse receiving employee wages should give his 
+or her employer a federal form W-4, Employee’s Withholding 
+Certificate, with the following change:
+• Write “Utah Only - Exempt, Military Spouse” under box 4c.
+Do not withhold any Utah tax on wages paid to a qualified 
+spouse. Even though the Utah wages are tax-exempt, report 
+them on form W-2, box 16.
+A qualified spouse must notify their employer immediately if 
+they no longer qualify for the exclusion.
+Definitions
+Wages
+Wages are payments or compensation for services performed by 
+an employee for an employer. This includes payments in a form 
+other than cash. Utah defines wages by the Internal Revenue 
+Code, Section 3401(a).
+Utah Taxable Wages
+Utah calculates withholding tax based on wages subject to 
+federal withholding tax (as defined by the IRS). No subtrac -
+tion is made for personal or other withholding allowances 
+claimed on federal form W-4.
+Household Employees
+Household employees provide domestic services in private 
+homes, college clubs, fraternities, and sororities. Utah income tax 
+may be withheld from household employees’ wages if both the 
+employer and the employee agree. 
+How to Get a Withholding Account
+If you must withhold Utah taxes, you can get a withholding tax 
+account online at Taxpayer Access Point, tap.utah.gov . Choose 
+“Apply for a tax account(s) – TC-69” or go directly to the TAP 
+Business Registration page: 
+Federal Employer Identification Number
+Employers must get a federal employer identification number 
+(EIN) from the IRS before registering in Utah. 
+You can request an EIN through the IRS’s Online EIN Application 
+at www.irs.gov. Contact the IRS at 1-800-829-4933 for more 
+information.
+If you change your EIN with the IRS, you must also change your 
+Utah withholding account number (see tap.utah.gov).
+If you changed the EIN and Utah withholding account numbers 
+during the year, you may need to file form TC-941D, Discrepancy 
+Report . See Balancing the Reconciliation below.
+Bond Requirements for Utah
+You may have to post a bond of $25,000 to $500,000 if you have 
+a history of filing or paying late. See Utah Code §59-10-405.5(6).
+How Much to Withhold
+Withhold amounts based on your employee’s federal W-4 form 
+and the Utah withholding schedules or tables in this publication. 
+See Utah Rules R865-9I-14 and 15.
+How to File Returns
+You must file returns electronically and pay all amounts withheld 
+to the Tax Commission by the due dates. 
+You must file a return for each filing period, even if you don’t 
+withhold taxes during a period. We may assess a non-filing pen-
+alty if you make a payment without filing a return.
+See detailed filing instructions and file returns online at 
+tap.utah.gov . Also see tax.utah.gov/withhold/ti-02.pdf.
+Filing with No Tax Liability (Zero Returns)
+If there is no withholding for the period, you must file a return 
+showing zeros. Failing to do so will result in an estimated tax 
+assessment.
+If you have no withholding for the entire year, you must still file 
+an annual reconciliation (as part of the fourth quarter return) by 
+January 31 of the following year. Failure to do so may result in 
+penalties.
+Amended Returns
+An amended return replaces a previously filed return. Enter the 
+total corrected amounts, not the amount of the adjustment. 
+File amended returns online at tap.utah.gov . Reopen the return 
+in your online account, click the amended box, make any correc-
+tions, and resubmit the return.
+Pay any additional taxes you owe (see How to Make Payments, 
+below). Include interest calculated from the original due date to 
+your payment date. Find interest rates in Pub 58, Utah Interest 
+and Penalties, at tax.utah.gov/forms .
+
+page 4
+14
+How to Make Payments
+NOTE: Payments do not count as returns.
+Pay online at tap.utah.gov , or mail your payment with 
+payment coupon TC-941PC. Print payment coupons at 
+tax.utah.gov/forms .
+Pay online using:
+• Electronic Funds Transfer (EFT) ACH Credit — You 
+initiate this payment through your financial institution (they 
+may charge a transaction fee). See Electronic Funds Transfer 
+- EFT, at tax.utah.gov/billing.
+• ACH Debit Requests — You authorize the Tax Commission 
+to initiate this payment (there is no transaction fee). Go to 
+tap.utah.gov  for more information.
+• Credit Card — Pay electronically with a credit card at 
+tap.utah.gov . You will be charged a convenience fee for this 
+service.
+Payroll Service Providers
+Payroll service providers may handle all withholding record 
+keeping, payments and reconciliations for an employer. How -
+ever, the employer is responsible if returns and payments 
+are not submitted on time.
+Liability
+Employers are liable for the tax required to be withheld — not 
+their employees. If you fail to pay any of the withheld taxes, we 
+may put a lien on your business assets and personal property.
+Annual Reconciliation
+You must file an annual reconciliation for each year (or partial 
+year) you have a withholding tax account, even if you have no 
+employees or withholding to report for the year. Both quarterly 
+and annual filers must file annual reconciliations.
+Y our reconciliation is combined with your fourth quarter with-
+holding tax return (quarterly filers) or your annual withholding 
+tax return (annual filers).
+See Online Filing and Paying of Withholding and Mineral Pro -
+duction Taxes at tax.utah.gov/developers/withholding for 
+step-by-step annual reconciliation instructions.
+Amended Reconciliations
+An amended reconciliation replaces a previously filed reconcili-
+ation. Amend online at tap.utah.gov . Reopen the reconciliation 
+in your online account, click the amended box, make any cor-
+rections, and resubmit the reconciliation. Submit only new or 
+corrected W-2s and 1099s.
+Late and/or Incorrect Filings
+We will assess a penalty if you: 
+1. fail to file a complete and accurate reconciliation by January 
+31 (see Due Dates), 
+2. do not cor rectly prepare your W-2s or 1099s (see W-2 and 
+1099 Requirements), or
+3. are an employer and do not file electronically.
+See Penalties and Interest, below.
+Also see Online Filing and Paying of Withholding Tax, at 
+tax.utah.gov/developers/withholding.
+Balancing the Reconciliation
+If the total Utah taxes withheld as reported on forms W-2 and 1099 
+does not match the total Utah taxes reported on your quarterly or an-
+nual withholding return(s), your reconciliation is unbalanced and must 
+be fixed.
+Single Account Number
+If you file Utah withholding under a single account number, bal-
+ance your reconciliation following these steps:
+1. Review your records and find the error.
+2. File an amended withholding tax return(s) to correct the 
+error. 
+3. File your reconciliation showing the corrected amounts and 
+ensure that everything balances. Withholding reported for all 
+periods must equal the Utah withholding shown on all W-2 
+and 1099 forms. 
+4. If you underpaid one or more periods, pay the additional tax 
+due with the amended return, plus interest from the original 
+due date for the period. See Pub 58, Utah Interest and 
+Penalties. Pay online at tap.utah.gov , or if you are mailing a 
+check, include the TC-941PC payment coupon.
+5. If you overpaid one or more periods, send a letter to the Tax 
+Commission with your account number, name, contact infor-
+mation, an explanation of the error, and if you would like the 
+overpayment refunded or applied to another tax period.
+Multiple Account Numbers
+If you reported and paid Utah withholding tax under multiple 
+account numbers, balance your reconciliation following these 
+steps:
+1. On forms W-2 and 1099, use the Utah account number 
+directly associated with the EIN also used on the withholding 
+documents.
+2. File a reconciliation for each account, reporting what was 
+filed and paid in the quarters for the account.
+3. On the reconciliation for each account, report and electroni-
+cally file the state copy of the W-2s and 1099s issued for the 
+account.
+4. Complete and submit a paper form TC-941D, Discrepancy 
+Report , to show that the total amounts of Utah tax withheld 
+on all your account balances with the W-2s and 1099s issued.
+ Fax the completed TC-941D to 801-297-6357, or mail to:
+ Utah State Tax Commission
+ Taxpayer Resources
+ 210 N 1950 W
+ Salt Lake City, UT 84134-7000
+Withholding Filing Record
+Keep a record of taxes withheld and paid to the Tax Commission 
+for at least four years from the due date of the income tax return 
+reporting wages. 
+Due Dates
+Anything with a due date that falls on a Saturday, Sunday 
+or legal holiday is due the next business day.
+Utah does not follow the federal withholding payment periods. 
+Utah only requires that payments be made monthly, quarterly 
+or annually. The IRS semiweekly deposit and $100,000 next day 
+deposit rules do not apply to Utah withholding taxes.
+
+page 5
+14
+Annual Returns with Annual Payments
+If you report federal household employment taxes for household 
+employees on federal form 1040, Schedule H, or file federal form 
+944, you can pay Utah withholding taxes for these same employ-
+ees annually. The Utah return and payment are due January 31 
+after the year wages were paid.
+Quarterly Returns with Quarterly Payments
+If you withhold less than $1,000 each month, file and pay your 
+Utah withholding taxes quarterly. Quarterly returns and pay-
+ments are due by the last day of the month after the quarter 
+ends, as follows:
+Quarterly Filing Period
+ Due Date
+January - March Apr il 30
+April - June July 31
+July - September Oc tober 31
+October - December January 31
+Quarterly filers may voluntarily change to quarterly returns with 
+monthly payments. See Filing Status Changes in this publication.
+Quarterly Returns with Monthly Payments
+If you withhold $1,000 or more each month, you must file quar-
+terly, but pay your Utah withholding taxes monthly. Payments 
+are due the last day of the following month:
+Monthly Pmt. Period
+ Due Date
+January Februar y 28 (or 29)
+February Mar ch 31
+March Apr il 30
+April Ma y 31
+May June 30
+June July 31
+July August 31
+August Sept ember 30
+September Oc tober 31
+October Nov ember 30
+November Dec ember 31
+December January 31
+Annual Reconciliations, W-2s and 1099s
+Y ou must file electronically by January 31.
+File copies of all forms W-2 and 1099 issued to employees and 
+payees with your reconciliation.
+Note: We will not issue income tax refunds to your employees 
+before March 1 unless you electronically file your complete 
+reconciliation by January 31 (see Utah Code §59-10-529.1). You 
+must file an annual reconciliation if your account is open for any 
+part of the year.
+Filing Status Changes
+The Tax Commission reviews each withholding account annually 
+to determine if the reporting and payment periods should change 
+(based on the previous year’s filings). Quarterly payers may voluntarily 
+change to paying monthly by submitting a written request by fax to 
+801-297-7579 or by mail to:
+Exceptions Processing 
+Utah State Tax Commission 
+210 N 1950 W 
+Salt Lake City, UT 84134-3310
+W-2 and 1099 Requirements
+By January 31 you must give all employees a legible W-2 or 1099 
+form showing taxes withheld during the previous year. 
+In addition to federal requirements, wage and earning docu-
+ments reporting Utah income or withholding must include the 
+following information:
+• Your federal Employer Identification Number (EIN).
+• The recipient’s federal Employer Identification Number (EIN 
+or SSN).
+• Your Utah withholding account number — the 14-digit num -
+ber ending in WTH. (If this number won’t fit in the space on 
+your W-2 form, you may leave out the dashes in the account 
+number.)
+• The amount of income from Utah sources.
+• The amount of Utah taxes withheld, if any.
+Failure to provide all required information on W-2s and 1099s 
+may result in penalties.
+For other Utah withholding requirements information, call 801-
+297-3811 or TDD 801-297-2020.
+Amending W-2s
+Y ou must file electronically.
+If you reported incorrect information on an employee’s W-2, you 
+must file a corrected W-2. File the correction as a W-2c. Only file W-
+2cs for the W-2s you are correcting. When entering the data on the 
+W-2c, only enter information in the fields you are changing.
+Penalties and Interest
+Late Filing and Late Payments
+We may assess late filing and late payment penalties on non- 
+and late-filed returns and payments made after the due date. 
+See Pub 58, Utah Interest and Penalties. 
+The withholding penalty structure is:
+Days Late
+ Penalty Amount - Greater of
+1-5 $20 or 2% of the outstanding tax
+6-15 $20 or 5% of the outstanding tax
+16 or more $20 or 10% of the outstanding tax
+Penalties are assessed for failing to file a tax due return and fail-
+ing to pay tax due. A second penalty will be applied if the tax is 
+still unpaid 90 days after the due date.
+Submitting incorrect forms or forms with missing information 
+may also result in penalties. See Pub 58, Utah Interest and 
+Penalties.
+Annual Reconciliation
+We may assess penalties if you fail to file an annual reconciliation 
+electronically, accurately and completely by January 31 (see Utah 
+Code §§59-1-401(8) and 59-1-401(13)).
+The penalties are:
+• $50 for an annual reconciliation filed more than 14 days late; 
+or
+• $30 for each W-2 and 1099 between 15 and 30 days late (up 
+to $75,000);
+• $60 for each W-2 and 1099 filed between 31 days late and 
+June 1 (up to $200,000); and
+• $100 for each W-2 and 1099 filed after June 1 (up to 
+$500,000).
+
+page 6
+14
+Interest
+The interest rate for all taxes and fees is two percentage points 
+above the federal short-term rate for the prior fourth calendar 
+quarter. See Pub 58, Utah Interest and Penalties.
+Changing or Closing an Account
+Use TC-69C, Notice of Change for a Tax Account, to: 
+• Report changes to your business or mailing address
+• Change your business name
+• Notify the T ax Commission you have changed your business 
+ownership status
+• Close your account
+Get forms online at tax.utah.gov/forms .
+You must close your Utah withholding account and open a new 
+account if your EIN changes with the IRS (for example, you change 
+from a sole proprietor to partnership). Login to tap.utah.gov to 
+open an account with your new EIN.
+You must close your account if you sell your business or stop 
+doing business in Utah. If you do not close your account, we will 
+assess an estimated tax, including late penalties and interest. 
+Withholding licenses are not transferable. 
+Agencies
+Contact the following agencies for more information about state 
+and federal withholding requirements.
+Internal Revenue Service
+Federal Income Tax Withholding and  
+Self-Employment Tax
+801-799-6963 
+1-800-829-1040 (for individuals) 
+1-800-829-4933 (for businesses) 
+www.irs.gov
+Forms and Publications
+1-800-829-3676 
+www.irs.gov/Forms-&-Pubs
+Utah State Tax Commission
+Utah Income Tax Withholding
+801-297-2200 
+1-800-662-4335 
+tax.utah.gov
+Employment Tax Workshops
+Small Business Development Center
+clients.utahsbdc.org/events.aspx 
+801-957-5441
+Social Security Administration
+866-851-5275 
+1-800-772-1213 
+socialsecurity.gov/employer
+Utah Dept. of Workforce Services
+Unemployment Compensation
+801-526-9235 
+1-800-222-2857 
+jobs.utah.gov/ui/jobseeker/contactus.html
+Labor Commission of Utah
+Worker’s Compensation
+801-530-6800 
+1-800-530-5090 
+laborcommission.utah.gov
+
+page 7
+14
+Utah Withholding Taxes Calendar
+The following is a list of important Utah withholding tax dates. 
+(See federal dates in IRS Publication 15.)
+NOTE: Returns and full payment must be submitted by the 
+due date (or next business day if the due date falls on Saturday, 
+Sunday or a legal holiday).
+Is this calendar helpful?
+Click here.
+Electronically file and pay an-
+nual withholding tax online 
+at tap.utah.gov , or pay by 
+check with TC-941PC
+Electronically file and 
+pay fourth quarter with-
+holding tax online at 
+tap.utah.gov, or pay by 
+check with TC-941PC
+Electronically file fourth 
+quarter return and pay 
+December withholding tax 
+online at tap.utah.gov , or 
+pay by check with TC-941PC
+Give forms W-2 and 1099 to 
+employees and payees.
+Electronically file annual rec-
+onciliation (including W-2s 
+and 1099s).
+January 31
+Pay February withholding tax 
+online at tap.utah.gov , or by 
+check with TC-941PC
+March 31
+end of first quarter
+Pay April withholding tax 
+online at tap.utah.gov , or by 
+check with TC-941PC
+ May 31
+Electronically file and pay 
+second quarter withhold-
+ing tax online at tap.utah.
+gov , or pay by check with 
+TC-941PC
+Electronically file second 
+quarter return and pay June 
+withholding tax online at 
+tap.utah.gov , or pay by 
+check with TC-941PC
+July 31
+Pay August withholding tax 
+online at tap.utah.gov , or by 
+check with TC-941PC
+September 30
+end of third quarter
+Pay October withholding tax 
+online at tap.utah.gov , or by 
+check with TC-941PC
+November 30
+Electronically file and pay 
+first quarter withholding tax 
+online at tap.utah.gov , or 
+pay by check with TC-941PC
+Electronically file first  
+quarter return and pay  
+March withholding tax  
+online at tap.utah.gov ,  
+or pay by check with 
+TC-941PC
+April 30
+Pay May withholding tax 
+online at tap.utah.gov , or by 
+check with TC-941PC
+June 30
+end of second quarter
+Pay July withholding tax 
+online at tap.utah.gov , or by 
+check with TC-941PC
+August 31
+Electronically file and pay 
+third quarter withholding tax 
+online at tap.utah.gov , or 
+pay by check with TC-941PC
+Electronically file third quar-
+ter return and pay  
+September withholding tax  
+online at tap.utah.gov , or  
+pay by check with TC-941PC
+October 31
+Annual PayersQuarterly PayersMonthly PayersAll EmployersDue Date
+Pay November withholding 
+tax online at tap.utah.gov , 
+or by check with TC-941PC
+December 31
+end of fourth quarter
+Pay January withholding  
+tax online at tap.utah.gov ,  
+or by check with TC-941PC
+February 28
+
+page 8
+14
+Utah Withholding Schedules
+Instructions
+Follow the instructions below to compute the employee’s Utah 
+income tax withholding.
+1.  Find the appropriate Utah Schedule based on the payroll 
+period (see following chart) and the employee’s filing status 
+shown on federal W-4 form.
+a) Enter on line 1 the Utah taxable wages.
+b) Follow the instructions for each line to complete the 
+withholding tax calculation.
+2.  Line 7 of the calculation is the Utah withholding tax for the 
+pay period.
+See examples, below.
+  Numb er of pay  
+ If pay period is  pe riods annually  Us e schedule
+ Weekly 52 Schedule 1
+ Biweekly 26 Schedule 2
+ Semimonthly 24 Schedule 3
+ Monthly 12 Schedule 4
+ Quarterly 4 Schedule 5
+ Semiannual 2 Schedule 6
+ Annual 1 Schedule 7
+ Daily Daily Schedule 8
+If you have questions about the withholding schedules, contact:
+Utah State Tax Commission 
+210 North 1950 West 
+Salt Lake City, UT  84134 
+801-297-7705 
+1-800-662-4335 ext. 7705
+
+page 9
+14
+Utah Schedule 1 WEEKLY Payroll Period (52 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 9 3. Base allowance 19
+ 4. Line 1 minus $180 (not less than 0)  4. Line 1 minus $360 (not less than 0)
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 2 BIWEEKLY Payroll Period (26 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 19 3. Base allowance  37
+ 4. Line 1 minus $360 (not less than 0)  4. Line 1 minus $719 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 3 SEMIMONTHLY Payroll Period (24 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 20 3. Base allowance 40
+ 4. Line 1 minus $390 (not less than 0)  4. Line 1 minus $779 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 4 MONTHLY Payroll Period (12 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 40 3. Base allowance 81
+ 4. Line 1 minus $779 (not less than 0)  4. Line 1 minus $1,558 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 5 QUARTERLY Payroll Period (4 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 121 3. Base allowance 243
+ 4. Line 1 minus $2,337 (not less than 0)  4. Line 1 minus $4,674 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 6 SEMIANNUAL Payroll Period (2 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 243 3. Base allowance 485
+ 4. Line 1 minus $4,674 (not less than 0)  4. Line 1 minus $9,348 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 7 ANNUAL Payroll Period (1 pay period per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 485 3. Base allowance 970
+ 4. Line 1 minus $9,348 (not less than 0)  4. Line 1 minus $18,696 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 8 DAILY or MISCELLANEOUS Payroll Period 
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 2 3. Base allowance 4
+ 4. Line 1 minus $36 (not less than 0)  4. Line 1 minus $72 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Are these schedules helpful?
+Click here.
+
+page 10
+14
+Utah Schedule 1 WEEKLY Payroll Period (52 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 9 3. Base allowance 19
+ 4. Line 1 minus $180 (not less than 0)  4. Line 1 minus $360 (not less than 0)
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 2 BIWEEKLY Payroll Period (26 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 19 3. Base allowance  37
+ 4. Line 1 minus $360 (not less than 0)  4. Line 1 minus $719 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 3 SEMIMONTHLY Payroll Period (24 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 20 3. Base allowance 40
+ 4. Line 1 minus $390 (not less than 0)  4. Line 1 minus $779 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 4 MONTHLY Payroll Period (12 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 40 3. Base allowance 81
+ 4. Line 1 minus $779 (not less than 0)  4. Line 1 minus $1,558 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 5 QUARTERLY Payroll Period (4 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 121 3. Base allowance 243
+ 4. Line 1 minus $2,337 (not less than 0)  4. Line 1 minus $4,674 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 6 SEMIANNUAL Payroll Period (2 pay periods per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 243 3. Base allowance 485
+ 4. Line 1 minus $4,674 (not less than 0)  4. Line 1 minus $9,348 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 7 ANNUAL Payroll Period (1 pay period per year)
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 485 3. Base allowance 970
+ 4. Line 1 minus $9,348 (not less than 0)  4. Line 1 minus $18,696 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+Utah Schedule 8 DAILY or MISCELLANEOUS Payroll Period 
+Single Married
+ 1. Utah taxable wages  1. Utah taxable wages
+ 2. Multiply line 1 by .0445 (4.45%)  2. Multiply line 1 by .0445 (4.45%)
+ 3. Base allowance 2 3. Base allowance 4
+ 4. Line 1 minus $36 (not less than 0)  4. Line 1 minus $72 (not less than 0) 
+ 5. Multiply line 4 by .013 (1.3%)  5. Multiply line 4 by .013 (1.3%)
+ 6. Line 3 minus line 5 (not less than 0)  6. Line 3 minus line 5 (not less than 0)
+ 7. Withholding tax  7. Withholding tax
+  line 2 minus line 6 (not less than 0)   line 2 minus line 6 (not less than 0) 
+
+page 11
+14
+Example 1 - Use Schedule 1, Weekly/Single  
+Payroll Period Weekly  
+Filing Status Single  
+Utah Taxable Wages $400   
+1.  Utah taxable wages   400
+2.  Multiply line 1 by .0445 (4.45%)   18
+3.  Base allowance  9 
+4.  Line 1 minus $180 (not less than 0) 220 
+5.  Multiply line 4 by .013 (1.3%)  3 
+6.  Line 3 minus line 5 (not less than 0) 6 
+7.  Withholding tax - line 2 minus line 6  12
+Example 2 - Use Schedule 2, Biweekly/Single
+Payroll Period Biweekly  
+Filing Status Single  
+Utah Taxable Wages $2,600  
+1.  Utah taxable wages   2,600
+2.  Multiply line 1 by .0445 (4.45%)   116
+3.  Base allowance  19 
+4.  Line 1 minus $360 (not less than 0) 2,240 
+5.  Multiply line 4 by .013 (1.3%)  29 
+6.  Line 3 minus line 5 (not less than 0) 0 
+7.  Withholding tax - line 2 minus line 6  116
+Example 3 - Use Schedule 3, Semimonthly/Married
+Payroll Period Semimonthly   
+Filing Status Married   
+Utah Taxable Wages $1,200    
+1.  Utah taxable wages   1,200
+2.  Multiply line 1 by .0445 (4.45%)   53
+3.  Base allowance  40 
+4.  Line 1 minus $779 (not less than 0) 421 
+5.  Multiply line 4 by .013 (1.3%)  5 
+6.  Line 3 minus line 5 (not less than 0) 35 
+7.  Withholding tax - line 2 minus line 6  18
+Example 4 - Use Schedule 4, Monthly/Married 
+Payroll Period Monthly 
+Filing Status Married 
+Utah Taxable Wages $7,800  
+1.  Utah taxable wages   7,800
+2.  Multiply line 1 by .0445 (4.45%)   347
+3.  Base allowance  81 
+4.  Line 1 minus $1,558 (not less than 0) 6,242 
+5.  Multiply line 4 by .013 (1.3%)  81 
+6.  Line 3 minus line 5 (not less than 0) 0 
+7.  Withholding tax - line 2 minus line 6  347
+Example 5 - Use Schedule 5, Quarterly/Single
+Payroll Period Quarterly 
+Filing Status Single 
+Utah Taxable Wages $9,000 
+1.  Utah taxable wages   9,000
+2.  Multiply line 1 by .0445 (4.45%)   401
+3.  Base allowance  121 
+4.  Line 1 minus $2,337 (not less than 0) 6,663 
+5.  Multiply line 4 by .013 (1.3%)  87 
+6.  Line 3 minus line 5 (not less than 0) 34 
+7.  Withholding tax - line 2 minus line 6  367
+Example 6 - Use Schedule 8, Daily/Married
+Payroll Period Daily 
+Filing Status Married 
+Utah Taxable Wages $175  
+1.  Utah taxable wages   175
+2.  Multiply line 1 by .0445 (4.45%)   8
+3.  Base allowance  4 
+4.  Line 1 minus $72 (not less than 0)  103 
+5.  Multiply line 4 by .013 (1.3%)  1 
+6.  Line 3 minus line 5 (not less than 0) 3
+7.  Withholding tax - line 2 minus line 6  5
+Examples of Utah Withholding Calculations
+The following examples show different combinations of pay period, taxable wages and filing status. Are these examples helpful?
+Click here.
+
+page 12
+14
+WEEKLY Payroll Period (52 pay periods per year) BIWEEKLY Payroll Period (26 pay periods per year)
+Find wages in "If UT taxable wages are" columns. Find wages in "If UT taxable wages are" columns. 
+ This is amount to withhold.  This is amount to withhold.
+at but at but
+least less than Single Married least less than Single Married
+$0 $194 $0 $0 $0 $388 $0 $0 
+194 227 0 0 388 454 1 0 
+227 260 2 0 454 519 5 0 
+260 292 4 0 519 585 8 0 
+292 325 6 0 585 650 12 0 
+325 358 8 0 650 715 16 0 
+358 390 10 0 715 781 20 0 
+390 423 12 0 781 846 23 0 
+423 456 14 2 846 912 27 4 
+456 488 15 4 912 977 31 8 
+488 521 17 6 977 1,042 35 11 
+521 554 19 8 1,042 1,108 38 15 
+554 587 21 9 1,108 1,173 42 19 
+587 619 23 11 1,173 1,238 46 23 
+619 652 25 13 1,238 1,304 50 26 
+652 685 27 15 1,304 1,369 54 30 
+685 717 29 17 1,369 1,435 57 34 
+717 750 31 19 1,435 1,500 61 38 
+750 783 32 21 1,500 1,565 65 41 
+783 815 34 23 1,565 1,631 69 45 
+815 848 36 24 1,631 1,696 72 49 
+848 881 38 26 1,696 1,762 76 53 
+881 913 40 28 1,762 1,827 80 57 
+913 946 41 30 1,827 1,892 83 60 
+946 979 43 32 1,892 1,958 86 64 
+979 1,012 44 34 1,958 2,023 89 68 
+1,012 1,044 46 36 2,023 2,088 91 72 
+1,044 1,077 47 38 2,088 2,154 94 75 
+1,077 1,110 49 40 2,154 2,219 97 79 
+1,110 1,142 50 41 2,219 2,285 100 83 
+1,142 1,175 52 43 2,285 2,350 103 87 
+1,175 1,208 53 45 2,350 2,415 106 90 
+1,208 1,240 54 47 2,415 2,481 109 94 
+1,240 1,273 56 49 2,481 2,546 112 98 
+1,273 1,306 57 51 2,546 2,612 115 102 
+1,306 1,338 59 53 2,612 2,677 118 105 
+1,338 1,371 60 55 2,677 2,742 121 109 
+1,371 1,404 62 56 2,742 2,808 123 113 
+1,404 1,437 63 58 2,808 2,873 126 117 
+1,437 1,469 65 60 2,873 2,938 129 120 
+1,469 1,502 66 62 2,938 3,004 132 124 
+1,502 1,535 68 64 3,004 3,069 135 128 
+1,535 1,567 69 66 3,069 3,135 138 132 
+1,567 1,600 70 68 3,135 3,200 141 135 
+1,600 1,633 72 70 3,200 3,265 144 139 
+1,633 1,665 73 71 3,265 3,331 147 143 
+1,665 1,698 75 73 3,331 3,396 150 147 
+1,698 1,731 76 75 3,396 3,462 153 151 
+1,731 1,763 78 77 3,462 3,527 155 154 
+1,763 1,796 79 79 3,527 3,592 158 158 
+1,796 1,829 81 81 3,592 3,658 161 161 
+1,829 1,862 82 82 3,658 3,723 164 164 
+1,862 1,894 84 84 3,723 3,788 167 167 
+1,894 1,927 85 85 3,788 3,854 170 170 
+1,927 1,960 86 86 3,854 3,919 173 173 
+1,960 1,992 88 88 3,919 3,985 176 176 
+1,992 2,025 89 89 3,985 4,050 179 179 
+2,025 2,058 91 91 4,050 4,115 182 182 
+2,058 2,090 92 92 4,115 4,181 185 185 
+2,090 2,123 94 94 4,181 4,246 187 187 
+2,123 2,156 95 95 4,246 4,312 190 190 
+2,156 2,188 97 97 4,312 4,377 193 193 
+2,188 2,221 98 98 4,377 4,442 196 196 
+2,221 2,254 100 100 4,442 4,508 199 199 
+2,254 and over 4,508 and overRefer to Utah Withholding Schedules Refer to Utah Withholding Schedules
+UTAH TABLE  1 UTAH TABLE  2
+Weekly Biweekly
+If UT taxable wages  are - If UT taxable wages  are -
+Utah Withholding Tables
+Note: Use the Single column for taxpayers who file as head-of-household on their federal return. 
+Weekly and Biweekly Payroll Periods
+Are these tables helpful?
+Click here.
+
+page 13
+14
+SEMIMONTHLY Payroll Period (24 pay periods per year) MONTHLY Payroll Period (12 pay periods per year)
+Find wages in "If UT taxable wages are" columns. Find wages in "If UT taxable wages are" columns. 
+ This is amount to withhold.  This is amount to withhold.
+at but at but
+least less than Single Married least less than Single Married
+$0 $421 $0 $0 $0 $842 $0 $0 
+421 492 1 0 842 983 2 0 
+492 563 5 0 983 1,125 10 0 
+563 633 9 0 1,125 1,267 18 0 
+633 704 13 0 1,267 1,408 26 0 
+704 775 17 0 1,408 1,550 35 0 
+775 846 21 0 1,550 1,692 43 0 
+846 917 25 0 1,692 1,833 51 0 
+917 988 29 4 1,833 1,975 59 8 
+988 1,058 34 8 1,975 2,117 67 17 
+1,058 1,129 38 12 2,117 2,258 75 25 
+1,129 1,200 42 16 2,258 2,400 83 33 
+1,200 1,271 46 20 2,400 2,542 92 41 
+1,271 1,342 50 25 2,542 2,683 100 49 
+1,342 1,413 54 29 2,683 2,825 108 57 
+1,413 1,483 58 33 2,825 2,967 116 65 
+1,483 1,554 62 37 2,967 3,108 124 74 
+1,554 1,625 66 41 3,108 3,250 132 82 
+1,625 1,696 70 45 3,250 3,392 140 90 
+1,696 1,767 74 49 3,392 3,533 149 98 
+1,767 1,838 78 53 3,533 3,675 157 106 
+1,838 1,908 82 57 3,675 3,817 165 114 
+1,908 1,979 86 61 3,817 3,958 173 122 
+1,979 2,050 90 65 3,958 4,100 179 131 
+2,050 2,121 93 69 4,100 4,242 186 139 
+2,121 2,192 96 73 4,242 4,383 192 147 
+2,192 2,263 99 78 4,383 4,525 198 155 
+2,263 2,333 102 82 4,525 4,667 205 163 
+2,333 2,404 105 86 4,667 4,808 211 171 
+2,404 2,475 109 90 4,808 4,950 217 179 
+2,475 2,546 112 94 4,950 5,092 223 188 
+2,546 2,617 115 98 5,092 5,233 230 196 
+2,617 2,688 118 102 5,233 5,375 236 204 
+2,688 2,758 121 106 5,375 5,517 242 212 
+2,758 2,829 124 110 5,517 5,658 249 220 
+2,829 2,900 127 114 5,658 5,800 255 228 
+2,900 2,971 131 118 5,800 5,942 261 236 
+2,971 3,042 134 122 5,942 6,083 268 245 
+3,042 3,113 137 126 6,083 6,225 274 253 
+3,113 3,183 140 130 6,225 6,367 280 261 
+3,183 3,254 143 135 6,367 6,508 286 269 
+3,254 3,325 146 139 6,508 6,650 293 277 
+3,325 3,396 150 143 6,650 6,792 299 285 
+3,396 3,467 153 147 6,792 6,933 305 294 
+3,467 3,538 156 151 6,933 7,075 312 302 
+3,538 3,608 159 155 7,075 7,217 318 310 
+3,608 3,679 162 159 7,217 7,358 324 318 
+3,679 3,750 165 163 7,358 7,500 331 326 
+3,750 3,821 168 167 7,500 7,642 337 334 
+3,821 3,892 172 171 7,642 7,783 343 342 
+3,892 3,963 175 175 7,783 7,925 350 350 
+3,963 4,033 178 178 7,925 8,067 356 356 
+4,033 4,104 181 181 8,067 8,208 362 362 
+4,104 4,175 184 184 8,208 8,350 368 368 
+4,175 4,246 187 187 8,350 8,492 375 375 
+4,246 4,317 191 191 8,492 8,633 381 381 
+4,317 4,388 194 194 8,633 8,775 387 387 
+4,388 4,458 197 197 8,775 8,917 394 394 
+4,458 4,529 200 200 8,917 9,058 400 400 
+4,529 4,600 203 203 9,058 9,200 406 406 
+4,600 4,671 206 206 9,200 9,342 413 413 
+4,671 4,742 209 209 9,342 9,483 419 419 
+4,742 4,813 213 213 9,483 9,625 425 425 
+4,813 4,883 216 216 9,625 9,767 431 431 
+4,883 and over 9,767 and overRefer to Utah Withholding Schedules Refer to Utah Withholding Schedules
+UTAH TABLE  3 UTAH TABLE  4
+Semimonthly Monthly 
+If UT taxable wages  are -If UT taxable wages  are -
+Semimonthly and Monthly Payroll Periods
+
+page 14
+14
+QUARTERLY Payroll Period (4 pay periods per year) SEMIANNUAL Payroll Period (2 pay periods per year)
+Find wages in "If UT taxable wages are" columns. Find wages in "If UT taxable wages are" columns. 
+ This is amount to withhold.  This is amount to withhold.
+at but at but
+least less than Single Married least less than Single Married
+$0 $2,525 $0 $0 $0 $5,050 $0 $0 
+2,525 2,950 6 0 5,050 5,900 12 0 
+2,950 3,375 30 0 5,900 6,750 60 0 
+3,375 3,800 55 0 6,750 7,600 109 0 
+3,800 4,225 79 0 7,600 8,450 158 0 
+4,225 4,650 104 0 8,450 9,300 207 0 
+4,650 5,075 128 0 9,300 10,150 256 0 
+5,075 5,500 152 1 10,150 11,000 305 2 
+5,500 5,925 177 25 11,000 11,850 354 50 
+5,925 6,350 201 50 11,850 12,700 403 99 
+6,350 6,775 226 74 12,700 13,550 451 148 
+6,775 7,200 250 99 13,550 14,400 500 197 
+7,200 7,625 275 123 14,400 15,250 549 246 
+7,625 8,050 299 147 15,250 16,100 598 295 
+8,050 8,475 323 172 16,100 16,950 647 344 
+8,475 8,900 348 196 16,950 17,800 696 393 
+8,900 9,325 372 221 17,800 18,650 745 441 
+9,325 9,750 397 245 18,650 19,500 794 490 
+9,750 10,175 421 270 19,500 20,350 842 539 
+10,175 10,600 446 294 20,350 21,200 891 588 
+10,600 11,025 470 318 21,200 22,050 940 637 
+11,025 11,450 495 343 22,050 22,900 989 686 
+11,450 11,875 519 367 22,900 23,750 1,038 735 
+11,875 12,300 538 392 23,750 24,600 1,076 784 
+12,300 12,725 557 416 24,600 25,450 1,114 832 
+12,725 13,150 576 441 25,450 26,300 1,151 881 
+13,150 13,575 595 465 26,300 27,150 1,189 930 
+13,575 14,000 614 490 27,150 28,000 1,227 979 
+14,000 14,425 632 514 28,000 28,850 1,265 1,028 
+14,425 14,850 651 538 28,850 29,700 1,303 1,077 
+14,850 15,275 670 563 29,700 30,550 1,341 1,126 
+15,275 15,700 689 587 30,550 31,400 1,378 1,175 
+15,700 16,125 708 612 31,400 32,250 1,416 1,223 
+16,125 16,550 727 636 32,250 33,100 1,454 1,272 
+16,550 16,975 746 661 33,100 33,950 1,492 1,321 
+16,975 17,400 765 685 33,950 34,800 1,530 1,370 
+17,400 17,825 784 709 34,800 35,650 1,568 1,419 
+17,825 18,250 803 734 35,650 36,500 1,605 1,468 
+18,250 18,675 822 758 36,500 37,350 1,643 1,517 
+18,675 19,100 840 783 37,350 38,200 1,681 1,566 
+19,100 19,525 859 807 38,200 39,050 1,719 1,614 
+19,525 19,950 878 832 39,050 39,900 1,757 1,663 
+19,950 20,375 897 856 39,900 40,750 1,794 1,712 
+20,375 20,800 916 881 40,750 41,600 1,832 1,761 
+20,800 21,225 935 905 41,600 42,450 1,870 1,810 
+21,225 21,650 954 929 42,450 43,300 1,908 1,859 
+21,650 22,075 973 954 43,300 44,150 1,946 1,908 
+22,075 22,500 992 978 44,150 45,000 1,984 1,957 
+22,500 22,925 1,011 1,003 45,000 45,850 2,021 2,005 
+22,925 23,350 1,030 1,027 45,850 46,700 2,059 2,054 
+23,350 23,775 1,049 1,049 46,700 47,550 2,097 2,097 
+23,775 24,200 1,067 1,067 47,550 48,400 2,135 2,135 
+24,200 24,625 1,086 1,086 48,400 49,250 2,173 2,173 
+24,625 25,050 1,105 1,105 49,250 50,100 2,211 2,211 
+25,050 25,475 1,124 1,124 50,100 50,950 2,248 2,248 
+25,475 25,900 1,143 1,143 50,950 51,800 2,286 2,286 
+25,900 26,325 1,162 1,162 51,800 52,650 2,324 2,324 
+26,325 26,750 1,181 1,181 52,650 53,500 2,362 2,362 
+26,750 27,175 1,200 1,200 53,500 54,350 2,400 2,400 
+27,175 27,600 1,219 1,219 54,350 55,200 2,437 2,437 
+27,600 28,025 1,238 1,238 55,200 56,050 2,475 2,475 
+28,025 28,450 1,257 1,257 56,050 56,900 2,513 2,513 
+28,450 28,875 1,275 1,275 56,900 57,750 2,551 2,551 
+28,875 29,300 1,294 1,294 57,750 58,600 2,589 2,589 
+29,300 and over 58,600 and over Refer to Utah Withholding SchedulesRefer to Utah Withholding Schedules
+UTAH TABLE  5 UTAH TABLE  6
+Quarterly
+If UT taxable wages  are -
+Semiannual
+If UT taxable wages  are -
+Quarterly and Semiannual Payroll Periods
+
+page 15
+14
+ANNUAL Payroll Period (1 pay period per year) DAILY or MISCELLANEOUS Payroll Period
+ (260 pay periods per year)
+Find wages in "If UT taxable wages are" columns. Find wages in "If UT taxable wages are" columns. 
+ This is amount to withhold.  This is amount to withhold.
+at but at but
+least less than Single Married least less than Single Married
+$0 $10,100 $0 $0 $0 $39 $0 $0 
+10,100 11,800 23 0 39 45 0 0 
+11,800 13,500 121 0 45 52 0 0 
+13,500 15,200 219 0 52 58 1 0 
+15,200 16,900 316 0 58 65 1 0 
+16,900 18,600 414 0 65 72 2 0 
+18,600 20,300 512 0 72 78 2 0 
+20,300 22,000 610 3 78 85 2 0 
+22,000 23,700 707 101 85 91 3 0 
+23,700 25,400 805 199 91 98 3 1 
+25,400 27,100 903 296 98 104 3 1 
+27,100 28,800 1,001 394 104 111 4 2 
+28,800 30,500 1,098 492 111 117 4 2 
+30,500 32,200 1,196 590 117 124 5 2 
+32,200 33,900 1,294 687 124 130 5 3 
+33,900 35,600 1,392 785 130 137 5 3 
+35,600 37,300 1,489 883 137 143 6 3 
+37,300 39,000 1,587 981 143 150 6 4 
+39,000 40,700 1,685 1,078 150 157 6 4 
+40,700 42,400 1,783 1,176 157 163 7 5 
+42,400 44,100 1,880 1,274 163 170 7 5 
+44,100 45,800 1,978 1,372 170 176 8 5 
+45,800 47,500 2,076 1,469 176 183 8 6 
+47,500 49,200 2,152 1,567 183 189 8 6 
+49,200 50,900 2,227 1,665 189 196 9 6 
+50,900 52,600 2,303 1,763 196 202 9 7 
+52,600 54,300 2,379 1,860 202 209 9 7 
+54,300 56,000 2,454 1,958 209 215 9 8 
+56,000 57,700 2,530 2,056 215 222 10 8 
+57,700 59,400 2,605 2,154 222 228 10 8 
+59,400 61,100 2,681 2,251 228 235 10 9 
+61,100 62,800 2,757 2,349 235 242 11 9 
+62,800 64,500 2,832 2,447 242 248 11 9 
+64,500 66,200 2,908 2,545 248 255 11 10 
+66,200 67,900 2,984 2,642 255 261 11 10 
+67,900 69,600 3,059 2,740 261 268 12 11 
+69,600 71,300 3,135 2,838 268 274 12 11 
+71,300 73,000 3,211 2,936 274 281 12 11 
+73,000 74,700 3,286 3,033 281 287 13 12 
+74,700 76,400 3,362 3,131 287 294 13 12 
+76,400 78,100 3,438 3,229 294 300 13 12 
+78,100 79,800 3,513 3,327 300 307 14 13 
+79,800 81,500 3,589 3,424 307 313 14 13 
+81,500 83,200 3,665 3,522 313 320 14 14 
+83,200 84,900 3,740 3,620 320 327 14 14 
+84,900 86,600 3,816 3,718 327 333 15 14 
+86,600 88,300 3,892 3,815 333 340 15 15 
+88,300 90,000 3,967 3,913 340 346 15 15 
+90,000 91,700 4,043 4,011 346 353 16 15 
+91,700 93,400 4,118 4,109 353 359 16 16 
+93,400 95,100 4,194 4,194 359 366 16 16 
+95,100 96,800 4,270 4,270 366 372 16 16 
+96,800 98,500 4,345 4,345 372 379 17 17 
+98,500 100,200 4,421 4,421 379 385 17 17 
+100,200 101,900 4,497 4,497 385 392 17 17 
+101,900 103,600 4,572 4,572 392 398 18 18 
+103,600 105,300 4,648 4,648 398 405 18 18 
+105,300 107,000 4,724 4,724 405 412 18 18 
+107,000 108,700 4,799 4,799 412 418 18 18 
+108,700 110,400 4,875 4,875 418 425 19 19 
+110,400 112,100 4,951 4,951 425 431 19 19 
+112,100 113,800 5,026 5,026 431 438 19 19 
+113,800 115,500 5,102 5,102 438 444 20 20 
+115,500 117,200 5,178 5,178 444 451 20 20 
+117,200 and over 451 and overRefer to Utah Withholding Schedules Refer to Utah Withholding Schedules
+UTAH TABLE  7 UTAH TABLE  8
+Daily or MiscellaneousAnnual
+If UT taxable wages  are -If UT taxable wages  are -
+Annual and Daily/Miscellaneous Payroll Periods
