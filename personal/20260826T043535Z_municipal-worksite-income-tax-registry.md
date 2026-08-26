@@ -113,11 +113,15 @@ Online statute, charter, ordinance, case, and agency-record research can continu
 
 ## Research artifacts
 
-- [Full research report](C:/Users/bsstr/.codex/visualizations/2026/08/25/01a03b43-8288-7012-b881-a39ce7f381d5/U.S.%20Municipalities%20With%20a%20Worksite-Based%20Local%20Income%20Tax.md)
-- [Municipality registry CSV](C:/Users/bsstr/.codex/visualizations/2026/08/25/01a03b43-8288-7012-b881-a39ce7f381d5/worksite-municipal-income-tax-registry.csv)
-- [Municipality registry JSONL](C:/Users/bsstr/.codex/visualizations/2026/08/25/01a03b43-8288-7012-b881-a39ce7f381d5/worksite-municipal-income-tax-registry.jsonl)
-- [Registry validation output](C:/Users/bsstr/.codex/visualizations/2026/08/25/01a03b43-8288-7012-b881-a39ce7f381d5/worksite-municipal-income-tax-registry-validation.json)
-- [State coverage matrix](C:/Users/bsstr/.codex/visualizations/2026/08/25/01a03b43-8288-7012-b881-a39ce7f381d5/coverage-matrix.jsonl)
-- [Manual review queue](C:/Users/bsstr/.codex/visualizations/2026/08/25/01a03b43-8288-7012-b881-a39ce7f381d5/worksite-municipal-income-tax-review-queue.md)
+- [Snapshot manifest](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/README.md)
+- [Full research report](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/U.S.%20Municipalities%20With%20a%20Worksite-Based%20Local%20Income%20Tax.md)
+- [Municipality registry CSV](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.csv)
+- [Municipality registry JSONL](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.jsonl)
+- [Registry validation output](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry-validation.json)
+- [State coverage matrix](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/coverage-matrix.jsonl)
+- [Manual review queue](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-review-queue.md)
+- [Normalized screening inventory](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/normalized-municipal-tax-inventory.jsonl)
+- [Excluded and review-only inventory](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/review-only-and-nonmunicipal-inventory.jsonl)
+- [Detailed state research notes](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/issue-1280-national-municipal-wage-tax-research.md)
 
-These files preserve the detailed municipality rows, evidence URLs, state-by-state reasoning, and validation results behind this summary.
+These files now live in the personal-notes repository and preserve the detailed municipality rows, evidence URLs, state-by-state reasoning, and validation results behind this summary.

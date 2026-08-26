@@ -1,0 +1,227 @@
+# U.S. Municipalities With a Worksite-Based Local Income Tax
+
+**Current as of August 25, 2026.**
+
+**Status:** Best-available nationwide research registry. It distinguishes directly confirmed current rows from municipalities found only in authoritative municipal-association surveys. It is not compliance approval and must not be treated as an unqualified “all other cities are clear” list.
+
+For this report, a local or municipal income tax is a tax that a city or similar local government charges on wages earned by people working there, including commuters who live elsewhere. It must be based on employee pay and may require the employer to withhold it. The name does not control: income, earnings, wage, payroll, and occupational taxes can all qualify when they operate this way.
+
+This report does not include taxes based only on where an employee lives, taxes paid only by employers, flat per-worker fees, or taxes imposed by counties, school districts, transit authorities, or other regional bodies. It also excludes taxes on business profits or self-employment and unrelated taxes such as sales, property, and general business-license taxes. Consolidated city governments and other municipal equivalents are included; ordinary county taxes are not.
+
+A municipality is not assumed to be tax-free because it is missing. An unmatched location in a `PARTIAL` or `UNDETERMINED` state remains unresolved.
+
+## Evidence tiers
+
+- `CONFIRMED_PRIMARY` means current municipal or state primary material establishes a qualifying employee-wage tax, a nonresident/worksite rule, and employer-withholding relevance. These are confirmed-positive screening rows, subject to authoritative boundary resolution.
+- `SUPPORTED_AUTHORITATIVE_ASSOCIATION` means a statewide municipal association identifies the municipality and a percentage occupational/payroll rate, but the current local ordinance and rate have not been directly verified. These rows make the discovery list more complete, but their product disposition is `UNDETERMINED` until local verification.
+
+## Result
+
+The best-available registry contains **2,815 municipality rows in nine states**. Of those:
+
+- **2,636** are directly confirmed from current primary sources.
+- **179** are association-supported discovery rows: 20 in Alabama and 159 in Kentucky.
+- **2,619** directly confirmed rows come from states with a closed statewide source or statutory universe.
+- **17** directly confirmed rows are in partial-coverage states: Alabama 5, Kentucky 11, and Oregon 1.
+
+The 2,815 number is therefore a best-available screening inventory, not a claim that all 2,815 have individually verified current ordinances and rates.
+
+| State | Best-available rows | Direct primary | Association-supported | Statewide coverage |
+|---|---:|---:|---:|---|
+| Alabama | 25 | 5 | 20 | `PARTIAL` |
+| Delaware | 1 | 1 | 0 | `COMPLETE` |
+| Kentucky | 170 | 11 | 159 | `PARTIAL` |
+| Michigan | 24 | 24 | 0 | `COMPLETE` |
+| Missouri | 2 | 2 | 0 | `COMPLETE` |
+| New York | 1 | 1 | 0 | `COMPLETE` |
+| Ohio | 666 | 666 | 0 | `COMPLETE` |
+| Oregon | 1 | 1 | 0 | `PARTIAL` |
+| Pennsylvania | 1,925 | 1,925 | 0 | `COMPLETE` |
+| **Total** | **2,815** | **2,636** | **179** |  |
+
+The complete row-level list is provided as [CSV](worksite-municipal-income-tax-registry.csv) and [JSONL](worksite-municipal-income-tax-registry.jsonl). Each row carries its evidence status, rate, scope, withholding field, source URLs, source date, limitation, and product disposition. [Validation results](worksite-municipal-income-tax-registry-validation.json) contain the reconciliation, uniqueness checks, evidence-tier counts, and hashes.
+
+## Included jurisdictions by state
+
+### Alabama — 25 best-available rows; coverage partial
+
+Direct current primary confirmation exists for:
+
+- Auburn
+- Birmingham
+- Gadsden
+- Glencoe
+- Opelika
+
+The [Alabama League of Municipalities occupational-tax survey](https://almonline.org/VirtualPageTemplate.aspx?PageID=3f384f8c-dd06-4beb-8cd2-1353aaad9414) supplies 20 additional percentage-tax candidates:
+
+- Attalla
+- Bear Creek
+- Bessemer
+- Brilliant
+- Fairfield
+- Goodwater
+- Guin
+- Hackleburg
+- Haleyville
+- Hamilton
+- Leeds
+- Lynn
+- Midfield
+- Mosses
+- Rainbow City
+- Red Bay
+- Shorter
+- Southside
+- Sulligent
+- Tuskegee
+
+The League states that the rates were supplied by survey, disclaims their accuracy, and requires verification with the locality. The 20 rows are therefore marked `SUPPORTED_AUTHORITATIVE_ASSOCIATION`; employer withholding is left unconfirmed. Opelika is kept at its directly confirmed current **1%** rate rather than the League page's stale 1.5% value.
+
+### Delaware — 1; coverage complete
+
+- Wilmington
+
+[Delaware law](https://delcode.delaware.gov/title22/c009/index.html) limits municipal earned-income-tax authority to municipalities above the statutory population threshold. Wilmington is the only current municipality in that universe and reaches compensation for services performed in the city by nonresidents as well as residents.
+
+### Kentucky — 170 best-available rows; coverage partial
+
+Direct current primary confirmation exists for:
+
+- Bowling Green
+- Covington
+- Henderson
+- Lebanon
+- Lexington-Fayette Urban County Government
+- Louisville/Jefferson County Metro Government
+- Lyndon
+- Nicholasville
+- Paducah
+- Walton
+- West Buechel
+
+The [Kentucky League of Cities](https://www.klc.org/News/12942/the-occupational-business-license-fee) stated on July 11, 2025 that 170 Kentucky cities levy a tax on gross earnings and linked its statewide city-rate survey. The linked FY2023 table contains **169 percentage payroll rows** and one flat Caneyville charge. Caneyville is excluded because a flat weekly fee does not meet this report's definition.
+
+The registry retains the 169 percentage rows, superseding ten with direct municipal evidence, and adds Walton from current 2024/2025 city law. That produces 170 best-available Kentucky rows: 11 direct-primary and 159 association-supported. The numeric match to KLC's “170 cities” statement is not proof that the FY2023 composition is unchanged. KLC warns that rates may change and that some entries use the most readily available value.
+
+Kentucky's statewide legal framework supports the functional classification: [KRS 67.780](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=23793) requires employers to withhold a compensation tax imposed by a tax district, and [KRS 67.788](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=23796) provides refunds for compensation attributable to work outside the district. Those statutes do not prove that every surveyed municipality currently imposes the reported rate.
+
+The complete 170-name Kentucky list is in the registry. The extracted association table is available as [CSV](agent-extracts/kentucky-klc-fy2023-city-rates.csv), and the source survey is preserved as [PDF](agent-extracts/sources/kentucky-city-occupational-license-rates-fy2023.pdf).
+
+### Michigan — 24; coverage complete
+
+The [Michigan Department of Treasury](https://www.michigan.gov/taxes/citytax/what-cities-impose-an-income-tax) identifies exactly 24 current city income-tax jurisdictions:
+
+- Albion
+- Battle Creek
+- Benton Harbor
+- Big Rapids
+- Detroit
+- East Lansing
+- Flint
+- Grand Rapids
+- Grayling
+- Hamtramck
+- Highland Park
+- Hudson
+- Ionia
+- Jackson
+- Lansing
+- Lapeer
+- Muskegon
+- Muskegon Heights
+- Pontiac
+- Port Huron
+- Portland
+- Saginaw
+- Springfield
+- Walker
+
+Michigan city income taxes reach compensation earned by nonresidents working in the city and require employer withholding, subject to state allocation rules.
+
+### Missouri — 2; coverage complete
+
+- Kansas City
+- St. Louis
+
+[Missouri law](https://revisor.mo.gov/main/OneSection.aspx?section=92.111) limits municipal earnings taxes to legacy constitutional-charter cities that already imposed the tax and maintain voter approval. [Kansas City](https://www.kcmo.gov/city-hall/departments/finance/earnings-tax) and [St. Louis](https://www.stlouis-mo.gov/government/departments/collector/earnings-tax/payroll-tax-info.cfm) each impose a 1% earnings tax on residents and nonresidents earning compensation for work in the city. St. Louis's separate employer payroll-expense tax is excluded.
+
+### New York — 1; coverage complete
+
+- Yonkers
+
+[New York withholding guidance](https://www.tax.ny.gov/bus/wt/whtax_require.htm) requires Yonkers nonresident earnings-tax withholding for services performed in Yonkers. New York City's personal income tax applies to residents, not to commuters merely because they work in NYC, so NYC is outside this worksite-and-commuter definition.
+
+### Ohio — 666; coverage complete
+
+The [Ohio Department of Taxation Finder](https://thefinder.tax.ohio.gov/) yielded 667 current municipalities with a positive municipal income-tax rate. Indian Hill is excluded because its current ordinance taxes resident individuals rather than nonresident wages earned by working there, leaving **666 qualifying municipalities**. [Ohio Revised Code §718.03](https://codes.ohio.gov/ohio-revised-code/section-718.03) supplies the employer-withholding rule.
+
+The full Ohio list is in the registry. It excludes 153 JEDD/JEDZ records and all school-district income taxes because those are not municipalities.
+
+### Oregon — 1; coverage partial
+
+- Eugene
+
+Eugene's [Community Safety Payroll Tax](https://www.eugene-or.gov/4281/Community-Safety-Payroll-Tax) includes an employee wage-tax component withheld by employers. Current city instructions and the nonresident chart tie the tax to the employer's Eugene physical business/reporting location. Eugene's employer payroll-tax and self-employment components are separate and excluded.
+
+Portland's Arts Tax is excluded because it is a flat resident tax. Portland-administered Metro and Multnomah County income taxes are regional/county taxes, not City of Portland taxes. No exhaustive Oregon city-adopter register was found, so statewide coverage remains `PARTIAL`.
+
+### Pennsylvania — 1,925; coverage complete
+
+The [Pennsylvania DCED Real-Time Register](https://apps.dced.pa.gov/munstats-public/ReportInformation2.aspx?report=EitWithCollector_Dyn_Excel&type=R) yielded 1,978 positive work-location PSD rows. Those rows reconcile to **1,925 unique legal municipalities** after municipality-ID deduplication across school-district and county splits:
+
+| Municipality type | Included |
+|---|---:|
+| Township | 1,160 |
+| Borough | 713 |
+| City | 51 |
+| Town | 1 |
+| **Total** | **1,925** |
+
+The full Pennsylvania list is in the registry. It excludes 558 resident-only PSD rows, school-district EIT/PIT components, flat Local Services Taxes, and duplicate source rows for a legal municipality. The [municipality-to-PSD reconciliation](agent-extracts/pennsylvania_worksite_legal_municipality_psd_mapping.csv) preserves the official municipality IDs and PSD codes.
+
+## Important exclusions
+
+| Jurisdiction or category | Why it is excluded |
+|---|---|
+| New York City | City personal-income-tax liability is residence-based; merely working in NYC does not impose it on a nonresident. |
+| Baltimore City | Maryland local income tax is residence-based. Baltimore's independent-city status does not change the incidence. |
+| Portland Arts Tax | Flat resident tax, not a percentage tax on wages earned by working in Portland. |
+| Colorado occupational privilege taxes | Current examples are flat monthly employee charges rather than wage percentages. |
+| Newark and Jersey City payroll taxes | Employer-incidence taxes. Jersey City expressly prohibits withholding the tax from employees. |
+| St. Louis payroll-expense tax | Employer-only; the separate employee earnings tax remains included. |
+| Ohio JEDD/JEDZ and school income taxes | Special-district or school taxes, not municipal taxes. |
+| Pennsylvania school EIT/PIT and Local Services Tax | School components are nonmunicipal; LST is flat. |
+| County, transit, and regional income taxes | Outside the municipal scope even when employers withhold them. |
+| Business net-profit, gross-receipts, and self-employment taxes | The requested incidence is employee wages. |
+
+## Nationwide coverage
+
+All 50 states and the District of Columbia now have an explicit coverage classification:
+
+- `COMPLETE` — **15**: Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, Vermont, Wisconsin.
+- `NO_AUTHORITY_CONFIRMED` — **16**: Arizona, Arkansas, Florida, Georgia, Hawaii, Illinois, Indiana through FY2027, Louisiana, Minnesota, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under this worksite definition, Virginia, Washington.
+- `PARTIAL` — **10**: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, Tennessee.
+- `UNDETERMINED` — **10**: California, Colorado, Idaho, Mississippi, Montana, South Dakota, Texas, Utah, West Virginia, Wyoming.
+
+`COMPLETE` means a current authoritative source or legal topology closes the municipal universe for this narrow question. `NO_AUTHORITY_CONFIRMED` is a closed zero under the definition. `PARTIAL` means current evidence supports the positive or zero findings shown but leaves an adopter, special-act, charter, legacy, or update gap. `UNDETERMINED` means the legal source set could not safely establish either an adopter or a categorical zero.
+
+The structured [coverage matrix](coverage-matrix.jsonl) contains all 51 state/DC records and source URLs. Detailed new audit evidence is preserved for the [South](agent-extracts/phase2-south-audit.md), [Northeast/Midwest](agent-extracts/phase2-northeast-midwest-audit.md), and [West](agent-extracts/phase2-west-audit.md).
+
+## Remaining review and scheduled refreshes
+
+The [review queue](worksite-municipal-income-tax-review-queue.md) records the unresolved candidates and future changes. The most important are:
+
+- Hurstbourne Acres, Kentucky: current secondary payroll sources report a 1% tax effective July 1, 2024, but no current municipal ordinance/form was located that proves the complete inclusion test.
+- Falmouth, Kentucky: the official city page announces a 2026 occupational ordinance but does not expose enough wage-tax detail to confirm a current row.
+- Salem, Kentucky: official Ordinance 2026-05 meets the functional test but is effective **October 1, 2026**, so it is future-dated on this report.
+- West Virginia: facial statutory authority exists, but it is conditional and no active percentage-tax adopter was confirmed.
+- Indiana: the present no-authority conclusion is time-limited; municipal LIT authority begins in FY2028 and requires a pre-2028 refresh.
+
+## Product-use boundary
+
+This registry supports screening, not a tax-liability calculation. A confirmed company-location match means review may be required; it does not prove a particular employee owes tax.
+
+`BUFFER_REVIEW_REQUIRED` is appropriate only for a `CONFIRMED_PRIMARY` positive after the full address is mapped to the authoritative municipal boundary. Association-supported rows remain `UNDETERMINED` until the current local ordinance and rate are verified. Postal city text alone is not enough in systems such as Ohio, Pennsylvania, or Eugene.
+
+`CLEAR` is appropriate only when the state source is `COMPLETE` or `NO_AUTHORITY_CONFIRMED`, the address maps unambiguously to the authoritative universe, and no relevant positive exists. An unmatched city in a `PARTIAL` or `UNDETERMINED` state is not `CLEAR`.
