@@ -57,17 +57,17 @@ The 11 directly supported Kentucky jurisdictions are Bowling Green, Covington, H
 
 Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, Vermont, West Virginia, and Wisconsin.
 
-### No qualifying authority confirmed (16)
+### No qualifying authority confirmed (17)
 
-Arizona, Arkansas, Florida, Georgia, Hawaii, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Virginia, and Washington.
+Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Virginia, and Washington.
 
 ### Partial (10)
 
 Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
 
-### Undetermined (9)
+### Undetermined (8)
 
-California, Colorado, Idaho, Mississippi, Montana, South Dakota, Texas, Utah, and Wyoming.
+California, Colorado, Mississippi, Montana, South Dakota, Texas, Utah, and Wyoming.
 
 ## Important exclusions and boundary decisions
 
@@ -94,6 +94,16 @@ Flat weekly user/service fees in several West Virginia cities remain excluded be
 - [Complete 53-plan funded-ratio extract](./20260826T044944Z_west-virginia-municipal-wage-tax-closure-artifacts/MPOB-2024-individual-plan-funded-ratios.csv)
 - [Latest 53-plan GASB 2025 funded-ratio extract](./20260826T044944Z_west-virginia-municipal-wage-tax-closure-artifacts/MPOB-2025-individual-plan-funded-ratios.csv)
 
+## Idaho closure — August 26, 2026
+
+Idaho is now a **closed zero**, moving from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; no municipality row was added.
+
+Idaho Constitution article VII, section 6 and controlling Idaho case law require specific legislative authorization for a municipal tax. Article III, section 19 prohibits local or special laws for tax assessment and collection. The audit retrieved all 74 title indexes and 1,471 linked chapter PDFs from the current Idaho Code, searched 1,470 valid PDFs plus the complete live recovery for the one dead PDF link, and found no municipal percentage tax measured by employee wages, earnings, compensation, or payroll. The actual resort-city grant enumerates only lodging occupancy, drink, and sales taxes.
+
+- [Full Idaho closure report](./20260826T230418Z_idaho-municipal-wage-tax-closure.md)
+- [Idaho source and complete-code audit manifest](./20260826T230418Z_idaho-municipal-wage-tax-closure-artifacts/README.md)
+- [Active nine-state-run national snapshot](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/README.md)
+
 ## Open and future candidates
 
 - **Hurstbourne Acres, Kentucky:** secondary payroll sources report a 1% tax effective July 1, 2024, but no current municipal ordinance or form was located. Keep unresolved.
@@ -107,7 +117,7 @@ Ordinary web searching has reached diminishing returns. The remaining work shoul
 
 | Priority | States | Closure work |
 | --- | --- | --- |
-| High | Idaho, Mississippi, Montana, South Dakota, Utah, Wyoming | Exhaust current statutes, session laws, special/local acts, and delegations. Seek written confirmation from the legislative research office or responsible tax agency when no complete official list exists. |
+| High | Mississippi, Montana, South Dakota, Utah, Wyoming | Exhaust current statutes, session laws, special/local acts, and delegations. Seek written confirmation from the legislative research office or responsible tax agency when no complete official list exists. |
 | Medium | Colorado | Obtain the official home-rule municipality universe and search every charter and code for percentage-based wage, earnings, payroll, and occupational taxes; distinguish them from flat occupational privilege taxes. |
 | Hardest | California, Texas | Review the complete charter/home-rule universe, attorney-general opinions, cases, special laws, and municipal codes. A written state-level confirmation would materially strengthen closure because broad home-rule authority makes keyword-only statutory review insufficient. |
 

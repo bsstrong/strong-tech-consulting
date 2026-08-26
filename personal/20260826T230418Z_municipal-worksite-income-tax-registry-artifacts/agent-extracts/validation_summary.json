@@ -1,0 +1,133 @@
+{
+  "ohio": {
+    "current_positive_jedd_jedz_duplicate_ids": 0,
+    "current_positive_jedd_jedz_rows": 153,
+    "current_positive_municipal_duplicate_fips": 0,
+    "current_positive_municipal_rows": 667,
+    "current_positive_rates_missing_official_fips": 0,
+    "official_fips_without_current_positive_rate": 390,
+    "source_fips_rows": 1057,
+    "source_jedd_jedz_rows": 176,
+    "source_rate_rows": 1083
+  },
+  "output_files": {
+    "ohio_current_jedd_jedz_rates.csv": {
+      "bytes": 32760,
+      "sha256": "e378318e5de859b404e76a40bca5cbad08313458a9578633aa1ef04d7c153679"
+    },
+    "ohio_current_positive_municipal_rates.csv": {
+      "bytes": 238212,
+      "sha256": "59512f1bfb48b8950c8ba251c9698ece57fb18c77f2139426e349aa7d92c2e49"
+    },
+    "ohio_finder_manifest_snapshot.json": {
+      "bytes": 81044,
+      "sha256": "9f5da3f2c6e1b73a3e8215cddd46a2720e932da09e98cb1c4dd8580237ccd049"
+    },
+    "pennsylvania_current_in_scope_positive_municipal_eit.csv": {
+      "bytes": 1210911,
+      "sha256": "4e2d3cf6ec1a74d9a5f78627b6dfea22b2925392c0c96ca52a1e8df2da1d931c"
+    },
+    "pennsylvania_official_register_normalized.jsonl": {
+      "bytes": 5089471,
+      "sha256": "b6112e73e6507c655f2bab8de38284b7015aaa957f7f6afb2b563e481a193d83"
+    },
+    "pennsylvania_official_to_realtime_changes.csv": {
+      "bytes": 1718,
+      "sha256": "862384ca4c949a4f1ee3ab22b33c3545ef72919a09000bc1167b9b34327e1645"
+    },
+    "pennsylvania_philadelphia_overlay.json": {
+      "bytes": 738,
+      "sha256": "5bd1bfb41dd367310349a42e8fb1c87d2f4e3865c2342eeafe1e03eb92e30812"
+    },
+    "pennsylvania_realtime_register_normalized.jsonl": {
+      "bytes": 5117887,
+      "sha256": "f99fee055355bd5e0cbbf984eb9ded7b655956f5a8c5b84d4e82f15294e2a979"
+    }
+  },
+  "pennsylvania": {
+    "current_in_scope_duplicate_psd_keys": 0,
+    "current_in_scope_positive_municipal_eit_rows": 2536,
+    "official": {
+      "municipal_lst_positive_psd_rows": 1665,
+      "normalized_duplicate_psd_keys": 0,
+      "normalized_psd_rows": 2619,
+      "resident_total_component_mismatches": 0,
+      "school_district_lst_positive_psd_rows": 1248,
+      "scope_category_counts": {
+        "MUNICIPAL_EIT_RESIDENT_ONLY": 558,
+        "MUNICIPAL_EIT_WORK_LOCATION": 1978,
+        "NO_EIT_POSITIVE": 75,
+        "SCHOOL_DISTRICT_EIT_ONLY": 8
+      },
+      "source_duplicate_psd_keys": 8,
+      "source_duplicate_psd_rows": 16,
+      "source_rows": 2627
+    },
+    "official_to_realtime_changed_fields": 5,
+    "official_to_realtime_changed_psd_keys": 2,
+    "philadelphia_overlay_reconciliation": "MATCH",
+    "real_time": {
+      "municipal_lst_positive_psd_rows": 1665,
+      "normalized_duplicate_psd_keys": 0,
+      "normalized_psd_rows": 2619,
+      "resident_total_component_mismatches": 0,
+      "school_district_lst_positive_psd_rows": 1248,
+      "scope_category_counts": {
+        "MUNICIPAL_EIT_RESIDENT_ONLY": 558,
+        "MUNICIPAL_EIT_WORK_LOCATION": 1978,
+        "NO_EIT_POSITIVE": 75,
+        "SCHOOL_DISTRICT_EIT_ONLY": 8
+      },
+      "source_duplicate_psd_keys": 8,
+      "source_duplicate_psd_rows": 16,
+      "source_rows": 2627
+    }
+  },
+  "retrieved_at": "2026-08-26T00:02:05+00:00",
+  "snapshot_date": "2026-08-25",
+  "source_files": {
+    "ohio_finder_manifest.json": {
+      "bytes": 40442,
+      "sha256": "0ced83f225f950d20dd6c818ee75a86abea7f986139c99eb2de665d8792fba11"
+    },
+    "ohio_jedd_jedz_rates.csv": {
+      "bytes": 9690,
+      "sha256": "c8bb486ace2e7f0c16804d31f4ad40ed28bd7c104948507816928a4f02f89184"
+    },
+    "ohio_municipal_fips.csv": {
+      "bytes": 18612,
+      "sha256": "e7c6f83d7eaff12a6ec238565d303984b8fb3a6cfe083dcfaf8896e73af83d94"
+    },
+    "ohio_municipal_rate_table.csv": {
+      "bytes": 45898,
+      "sha256": "7d88442ea6c503ccd45a375fa17fc902d0181d510df3ed2b501dc8bf26f4b17d"
+    },
+    "pennsylvania_official_register_2026.xls": {
+      "bytes": 2662336,
+      "sha256": "797f1298522a95da0591fdc308e193f426bb965670cd843f192904892788fa75"
+    },
+    "pennsylvania_official_register_2026_utf8.csv": {
+      "bytes": 1152829,
+      "sha256": "106ecb9afd2f95f449444c0a3a439bd7534f1016a82bc533bfdfe15ee0402724"
+    },
+    "pennsylvania_realtime_register_2026.xls": {
+      "bytes": 2695104,
+      "sha256": "adb95d68cc3e783ca82f0109c92f46e377d01b2f36aba1feacca11d422bc227e"
+    },
+    "pennsylvania_realtime_register_2026_utf8.csv": {
+      "bytes": 1178185,
+      "sha256": "699d2163e12ad5fd80a041167d46709f73c092a0395b3cd0176a47d7df3038c4"
+    }
+  },
+  "source_urls": {
+    "oh_fips": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/OHMuniFIPSCodes.txt",
+    "oh_jedd": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/JEDTaxRates.csv",
+    "oh_manifest": "https://thefinder.tax.ohio.gov/api/file-downloads?type=municipality",
+    "oh_rates": "https://api.thefinder.tax.ohio.gov/finder/api/v1/tax-rates/downloads/Muni/OHMuniRateTable.csv",
+    "pa_official_download": "https://apps.dced.pa.gov/munstats-public/ReportToPdf.aspx?report=EitWithCollector_Dyn_Excel&paramList=O;2026",
+    "pa_official_page": "https://apps.dced.pa.gov/munstats-public/ReportInformation2.aspx?report=EitWithCollector_Dyn_Excel&type=O",
+    "pa_philadelphia": "https://www.phila.gov/services/business-self-employment/business-taxes/wage-tax-employers/",
+    "pa_realtime_download": "https://apps.dced.pa.gov/munstats-public/ReportToPdf.aspx?report=EitWithCollector_Dyn_Excel&paramList=R;2026",
+    "pa_realtime_page": "https://apps.dced.pa.gov/munstats-public/ReportInformation2.aspx?report=EitWithCollector_Dyn_Excel&type=R"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-08-26T00:10:19.2335628Z",
+  "primary": {
+    "row_count": 3248,
+    "unique_record_ids": 3248,
+    "by_state": {
+      "AL": 6,
+      "DE": 1,
+      "KY": 7,
+      "MD": 1,
+      "MI": 24,
+      "MO": 2,
+      "NY": 2,
+      "OH": 667,
+      "OR": 2,
+      "PA": 2536
+    },
+    "by_category": {
+      "MUNICIPAL_EARNED_INCOME_WORKSITE": 2687,
+      "MUNICIPAL_RESIDENT_ONLY_INCOME": 561
+    },
+    "sha256": "b92ddb83166216615f95785d732b2d4a4e54a1f3d8a446a48e76de82f979d05e"
+  },
+  "review": {
+    "row_count": 1831,
+    "unique_record_ids": 1831,
+    "by_state": {
+      "CA": 1,
+      "CO": 4,
+      "DC": 1,
+      "DE": 1,
+      "MO": 1,
+      "MS": 1,
+      "NJ": 2,
+      "OH": 153,
+      "OR": 1,
+      "PA": 1665,
+      "WA": 1
+    },
+    "by_category": {
+      "AMBIGUOUS_COMPENSATION_TAX": 1,
+      "DISTRICT_EQUIVALENT_RESIDENT_INCOME": 1,
+      "MUNICIPAL_EMPLOYER_PAYROLL": 7,
+      "MUNICIPAL_FLAT_OCCUPATIONAL": 1669,
+      "NON_MUNICIPAL_LOCAL_INCOME": 153
+    },
+    "sha256": "6d282a31a6dcd4d0692d2e4695e37e25dd8e85b3cf208a93dc4ecd456aa049c6"
+  }
+}

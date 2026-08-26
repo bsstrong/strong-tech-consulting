@@ -1,0 +1,74 @@
+{
+  "state": "Idaho",
+  "research_completed_utc": "2026-08-26T23:10:00Z",
+  "source_index": "https://legislature.idaho.gov/statutesrules/idstat/",
+  "title_index_pages_retrieved": 74,
+  "chapter_pdf_links_discovered": 1471,
+  "valid_chapter_pdfs_retrieved": 1470,
+  "normalized_text_files_searched": 1470,
+  "normalized_text_bytes": 37192145,
+  "broken_pdf_links": [
+    {
+      "file": "Title44-T44CH28.pdf",
+      "result": "The Legislature's linked PDF returned a 404 HTML page.",
+      "recovery": "The chapter HTML and all four current section pages, sections 44-2801 through 44-2804, were retrieved and searched separately.",
+      "qualifying_match": false
+    }
+  ],
+  "searches": [
+    {
+      "pattern": "municipal income tax",
+      "matching_files": 0
+    },
+    {
+      "pattern": "city income tax",
+      "matching_files": 0
+    },
+    {
+      "pattern": "local income tax",
+      "matching_files": 2,
+      "disposition": "Both were unrelated references to federal, state, and local income-tax returns or pre-tax earnings."
+    },
+    {
+      "pattern": "wage tax",
+      "matching_files": 0
+    },
+    {
+      "pattern": "earnings tax",
+      "matching_files": 0
+    },
+    {
+      "pattern": "payroll tax",
+      "matching_files": 2,
+      "disposition": "One insurance exemption and one combined-employer withholding provision; neither grants municipal taxing authority."
+    },
+    {
+      "pattern": "tax upon wages",
+      "matching_files": 0
+    },
+    {
+      "pattern": "tax measured by wages, earnings, compensation, or payroll",
+      "matching_files": 1,
+      "disposition": "State unemployment-insurance financing, not a municipal employee tax."
+    },
+    {
+      "pattern": "income tax within 500 characters of city or municipal terms, both directions",
+      "matching_files": 13,
+      "disposition": "All contexts were reviewed. They concern federal bond-interest exemptions, state income-tax programs, definitions, or other nonmunicipal subjects; none grants or describes a municipal income tax."
+    },
+    {
+      "pattern": "municipal/city, tax/levy/impose/assess, and wages/earnings/compensation/payroll proximity permutations",
+      "matching_files": 54,
+      "disposition": "The candidate contexts were reviewed, with all Title 50 municipal-corporation hits examined directly. They concern property assessments, utility fees, eminent-domain compensation, prevailing wages, state taxes, or other unrelated subjects."
+    }
+  ],
+  "controlling_findings": [
+    "Idaho Constitution article VII, section 6 requires legislative investment of municipal taxing power.",
+    "The Idaho Supreme Court holds that the general local-self-government grant in Idaho Code section 50-301 is not a general taxing grant and that municipal taxes on the public require specific legislative authorization.",
+    "Idaho Constitution article III, section 19 prohibits local or special laws for the assessment and collection of taxes, closing the uncodified municipality-specific special-law path.",
+    "The only current general-law city local-option nonproperty tax grant found, Idaho Code sections 50-1044 through 50-1049, enumerates short-term lodging occupancy, liquor/wine/beer by the drink, and sales taxes; it does not include wages or compensation.",
+    "The complete current code corpus contains no specific grant for a municipal percentage tax on employee wages, earnings, compensation, or payroll."
+  ],
+  "final_disposition": "NO_AUTHORITY_CONFIRMED",
+  "registry_rows_added": 0
+}

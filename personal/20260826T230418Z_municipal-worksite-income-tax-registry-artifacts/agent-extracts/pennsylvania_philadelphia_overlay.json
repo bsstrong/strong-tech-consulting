@@ -1,0 +1,14 @@
+{
+  "city_nonresident_wage_tax_percent": "3.425",
+  "city_resident_wage_tax_percent": "3.735",
+  "city_source_url": "https://www.phila.gov/services/business-self-employment/business-taxes/wage-tax-employers/",
+  "effective_date": "2026-07-01",
+  "municipality_name_official": "PHILADELPHIA CITY",
+  "overlay_behavior": "Source corroboration only; do not add a second tax row.",
+  "psd_code": "510101",
+  "realtime_register_nonresident_percent": "3.425",
+  "realtime_register_resident_percent": "3.735",
+  "reconciliation_status": "MATCH",
+  "register_source_url": "https://apps.dced.pa.gov/munstats-public/ReportToPdf.aspx?report=EitWithCollector_Dyn_Excel&paramList=R;2026",
+  "retrieved_at": "2026-08-26T00:02:05+00:00"
+}
