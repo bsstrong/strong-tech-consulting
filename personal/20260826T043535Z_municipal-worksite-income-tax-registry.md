@@ -53,9 +53,9 @@ The 11 directly supported Kentucky jurisdictions are Bowling Green, Covington, H
 
 ## State coverage status
 
-### Complete (16)
+### Complete (17)
 
-Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, Vermont, West Virginia, and Wisconsin.
+Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, South Dakota, Vermont, West Virginia, and Wisconsin.
 
 ### No qualifying authority confirmed (19)
 
@@ -65,9 +65,9 @@ Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fi
 
 Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
 
-### Undetermined (6)
+### Undetermined (5)
 
-California, Colorado, South Dakota, Texas, Utah, and Wyoming.
+California, Colorado, Texas, Utah, and Wyoming.
 
 ## Important exclusions and boundary decisions
 
@@ -122,6 +122,15 @@ Current MCA section 7-1-112 requires specific legislative delegation before a se
 - [Full Montana closure report](./20260826T230418Z_montana-municipal-wage-tax-closure.md)
 - [Montana current-law and post-session audit manifest](./20260826T230418Z_montana-municipal-wage-tax-closure-artifacts/README.md)
 
+## South Dakota closure — August 26, 2026
+
+South Dakota is now a **current closed zero**, moving from `UNDETERMINED` to `COMPLETE`; no municipality row was added.
+
+Chapter 10-52 requires advance notice to the Secretary of Revenue for every new or amended municipal non-ad-valorem tax ordinance. The July 2026 DOR municipal-tax guide identifies no employee income, wage, earnings, compensation, or payroll category or adopter. The audit also retrieved all 63 official consolidated title documents—Constitution title `0N` and codified-law titles 1 through 62—and found no qualifying authorization or adopter in the 176,375,083-byte corpus. Broad home-rule and non-ad-valorem language remains, so this is a current-adoption closure rather than a categorical no-authority conclusion.
+
+- [Full South Dakota closure report](./20260826T230418Z_south-dakota-municipal-wage-tax-closure.md)
+- [South Dakota DOR and complete-code audit manifest](./20260826T230418Z_south-dakota-municipal-wage-tax-closure-artifacts/README.md)
+
 ## Open and future candidates
 
 - **Hurstbourne Acres, Kentucky:** secondary payroll sources report a 1% tax effective July 1, 2024, but no current municipal ordinance or form was located. Keep unresolved.
@@ -135,7 +144,7 @@ Ordinary web searching has reached diminishing returns. The remaining work shoul
 
 | Priority | States | Closure work |
 | --- | --- | --- |
-| High | South Dakota, Utah, Wyoming | Exhaust current statutes, session laws, special/local acts, and delegations. Seek written confirmation from the legislative research office or responsible tax agency when no complete official list exists. |
+| High | Utah, Wyoming | Exhaust current statutes, session laws, special/local acts, and delegations. Seek written confirmation from the legislative research office or responsible tax agency when no complete official list exists. |
 | Medium | Colorado | Obtain the official home-rule municipality universe and search every charter and code for percentage-based wage, earnings, payroll, and occupational taxes; distinguish them from flat occupational privilege taxes. |
 | Hardest | California, Texas | Review the complete charter/home-rule universe, attorney-general opinions, cases, special laws, and municipal codes. A written state-level confirmation would materially strengthen closure because broad home-rule authority makes keyword-only statutory review insufficient. |
 

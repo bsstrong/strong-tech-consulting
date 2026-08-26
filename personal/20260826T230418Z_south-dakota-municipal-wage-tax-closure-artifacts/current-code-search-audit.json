@@ -1,0 +1,26 @@
+{
+  "research_date": "2026-08-26",
+  "source_pattern": "https://sdlegislature.gov/api/Statutes/{title}.html?all=true",
+  "titles_requested": ["0N", "1-62"],
+  "official_title_files_retrieved": 63,
+  "raw_bytes_scanned": 176375083,
+  "searches": {
+    "wage tax": {"count": 0, "disposition": "no occurrence"},
+    "earnings tax": {"count": 0, "disposition": "no occurrence"},
+    "payroll tax": {"count": 1, "disposition": "SDCL 10-45-96; PEO sales-tax deduction for payroll-tax disbursements, not municipal taxing authority"},
+    "compensation tax": {"count": 0, "disposition": "no occurrence"},
+    "municipal income tax": {"count": 0, "disposition": "no occurrence"},
+    "city income tax": {"count": 0, "disposition": "no occurrence"},
+    "local income tax": {"count": 2, "disposition": "SDCL 48-7-105 and 48-7-305; generic partnership recordkeeping references, not South Dakota local-tax authorization"}
+  },
+  "relevant_framework": [
+    "South Dakota Constitution article IX section 2 grants broad home-rule power.",
+    "SDCL 10-52-1 and 10-52-2 use broad municipal non-ad-valorem language.",
+    "SDCL 10-52-9 requires advance notice to the Secretary of Revenue for every new or amended chapter 10-52 municipal tax ordinance.",
+    "SDCL 6-12-14 restricts new local taxes similar to taxes producing state revenue unless statute specifically provides otherwise.",
+    "SDCL 10-64-1 states that South Dakota has no income tax.",
+    "The July 2026 DOR municipal-tax guide recognizes sales/use and gross-receipts taxes and identifies no employee wage-tax category or adopter."
+  ],
+  "result": "COMPLETE current zero",
+  "registry_rows_added": 0
+}

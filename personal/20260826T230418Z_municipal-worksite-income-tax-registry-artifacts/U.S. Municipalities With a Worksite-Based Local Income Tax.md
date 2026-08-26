@@ -223,18 +223,24 @@ Current [MCA section 7-1-112](https://mca.legmt.gov/bills/mca/title_0070/chapter
 
 Montana DOR's tax-year 2023 Form 2 instructions state that no city in Montana imposes a local income tax, consistent with its 2019-2022 instructions. The Legislature's complete July 2025 [enacted-tax summary](https://archive.legmt.gov/content/Committees/Interim/2025-2026/RIC/Meetings/July_11_2025/3.3.tax-legislation-2025.pdf) contains no local income-tax delegation, and the post-session 2025 MCA still contains the restriction and property-only general grants. Current-code searches found no alternate municipal employee wage, earnings, compensation, or payroll tax delegation. No Montana row is added. The [full Montana report](../20260826T230418Z_montana-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_montana-municipal-wage-tax-closure-artifacts/README.md) preserve the sources, search scope, and refresh triggers.
 
+### South Dakota — zero current rows; coverage complete
+
+South Dakota retains broad home-rule and municipal non-ad-valorem language, so it is not a categorical no-authority state. The current adopter universe is nevertheless closed at zero. [SDCL 10-52-9](https://sdlegislature.gov/api/Statutes/10-52.html?all=true) requires advance notice to the Secretary of Revenue for every new or amended chapter 10-52 municipal tax ordinance. The Department's [July 2026 Municipal Tax Guide](https://dor.sd.gov/media/54mb5a2w/2026-07_municipal-tax-guide.pdf) identifies the current municipal tax system and municipality-by-municipality codes as sales/use and gross-receipts taxes; it contains no employee income, wage, earnings, compensation, or payroll category or adopter.
+
+The closure audit downloaded all 63 official consolidated title files—Constitution title `0N` and codified-law titles 1 through 62—and searched the complete 176,375,083-byte corpus. No qualifying authorization or adopter was found. The sole `payroll tax` occurrence concerns a PEO sales-tax deduction, and the two `local income tax` occurrences are generic partnership recordkeeping provisions. No South Dakota row is added. The [full South Dakota report](../20260826T230418Z_south-dakota-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_south-dakota-municipal-wage-tax-closure-artifacts/README.md) preserve the DOR sources, complete-code archive, phrase dispositions, hashes, and refresh triggers.
+
 ## Nationwide coverage
 
 All 50 states and the District of Columbia now have an explicit coverage classification:
 
-- `COMPLETE` — **16**: Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, Vermont, West Virginia, Wisconsin.
+- `COMPLETE` — **17**: Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, South Dakota, Vermont, West Virginia, Wisconsin.
 - `NO_AUTHORITY_CONFIRMED` — **19**: Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through FY2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under this worksite definition, Virginia, Washington.
 - `PARTIAL` — **10**: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, Tennessee.
-- `UNDETERMINED` — **6**: California, Colorado, South Dakota, Texas, Utah, Wyoming.
+- `UNDETERMINED` — **5**: California, Colorado, Texas, Utah, Wyoming.
 
 `COMPLETE` means a current authoritative source or legal topology closes the municipal universe for this narrow question. `NO_AUTHORITY_CONFIRMED` is a closed zero under the definition. `PARTIAL` means current evidence supports the positive or zero findings shown but leaves an adopter, special-act, charter, legacy, or update gap. `UNDETERMINED` means the legal source set could not safely establish either an adopter or a categorical zero.
 
-The structured [coverage matrix](coverage-matrix.jsonl) contains all 51 state/DC records and source URLs. Detailed audit evidence is preserved for the [South](agent-extracts/phase2-south-audit.md), [Northeast/Midwest](agent-extracts/phase2-northeast-midwest-audit.md), [West](agent-extracts/phase2-west-audit.md), the [Idaho closure](agent-extracts/phase3-idaho-closure.md), the [Mississippi closure](agent-extracts/phase3-mississippi-closure.md), and the [Montana closure](agent-extracts/phase3-montana-closure.md).
+The structured [coverage matrix](coverage-matrix.jsonl) contains all 51 state/DC records and source URLs. Detailed audit evidence is preserved for the [South](agent-extracts/phase2-south-audit.md), [Northeast/Midwest](agent-extracts/phase2-northeast-midwest-audit.md), [West](agent-extracts/phase2-west-audit.md), the [Idaho closure](agent-extracts/phase3-idaho-closure.md), the [Mississippi closure](agent-extracts/phase3-mississippi-closure.md), the [Montana closure](agent-extracts/phase3-montana-closure.md), and the [South Dakota closure](agent-extracts/phase3-south-dakota-closure.md).
 
 ## Remaining review and scheduled refreshes
 

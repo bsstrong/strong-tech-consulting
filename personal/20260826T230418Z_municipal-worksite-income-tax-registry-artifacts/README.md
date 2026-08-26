@@ -2,7 +2,7 @@
 
 This directory is the active replacement snapshot for the August 26, 2026 nine-state closure run. It began from the fully validated post-West Virginia snapshot in `../20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/` and is updated, validated, committed, and pushed after each state iteration.
 
-The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, and Montana add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`. Nationwide coverage is now 16 `COMPLETE`, 19 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 6 `UNDETERMINED`.
+The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, and Montana add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero. Nationwide coverage is now 17 `COMPLETE`, 19 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 5 `UNDETERMINED`.
 
 ## Contents
 
@@ -52,3 +52,10 @@ Mississippi is `NO_AUTHORITY_CONFIRMED`: specific state-law authorization is req
 - [Current-law and post-2025-session audit manifest](../20260826T230418Z_montana-municipal-wage-tax-closure-artifacts/README.md)
 
 Montana is `NO_AUTHORITY_CONFIRMED`: specific delegation is required; the general municipal grants are property-only; DOR reports no city local-income-tax adopter; and the current 2025 code plus complete enacted-tax summary reveal no qualifying municipal employee wage-tax delegation.
+
+## South Dakota evidence
+
+- [Closure report](../20260826T230418Z_south-dakota-municipal-wage-tax-closure.md)
+- [DOR and complete-current-code audit manifest](../20260826T230418Z_south-dakota-municipal-wage-tax-closure-artifacts/README.md)
+
+South Dakota is a `COMPLETE` current zero: chapter 10-52 provides central advance notice and administration, the July 2026 DOR guide identifies no employee wage-tax category or adopter, and all 63 official consolidated title files contain no qualifying authorization or adopter. Broad non-ad-valorem and home-rule language remains, so the classification is intentionally not `NO_AUTHORITY_CONFIRMED`.

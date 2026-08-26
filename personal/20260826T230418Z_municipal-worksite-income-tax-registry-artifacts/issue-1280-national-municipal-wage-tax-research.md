@@ -2,7 +2,13 @@
 
 Research retrieval date: 2026-08-25
 
-Status: Historical research notebook plus August 25 West Virginia and August 26 Idaho, Mississippi, and Montana closure addenda; not compliance-approved and not Rule Engine data.
+Status: Historical research notebook plus August 25 West Virginia and August 26 Idaho, Mississippi, Montana, and South Dakota closure addenda; not compliance-approved and not Rule Engine data.
+
+## August 26, 2026 South Dakota closure addendum
+
+South Dakota moved from `UNDETERMINED` to `COMPLETE` with zero registry rows. SDCL 10-52-9 requires advance notice to the Secretary of Revenue for every new or amended chapter 10-52 municipal tax ordinance. The July 2026 DOR municipal-tax guide identifies the current municipal system and municipality codes as sales/use and gross-receipts taxes, with no employee income, wage, earnings, compensation, or payroll category or adopter.
+
+The complete-code audit retrieved all 63 official consolidated title documents—Constitution title `0N` and codified-law titles 1 through 62—and scanned 176,375,083 bytes. It found no qualifying authorization or adopter. The only `payroll tax` hit is an unrelated PEO sales-tax deduction, and the two `local income tax` hits are generic partnership recordkeeping provisions. Broad home-rule and non-ad-valorem language remains, so the state is a current `COMPLETE` zero rather than `NO_AUTHORITY_CONFIRMED`. The registry remains 2,815 municipalities across nine states. Coverage is now 17 `COMPLETE`, 19 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 5 `UNDETERMINED`. See the [South Dakota closure report](../20260826T230418Z_south-dakota-municipal-wage-tax-closure.md), [evidence directory](../20260826T230418Z_south-dakota-municipal-wage-tax-closure-artifacts/README.md), and updated [coverage matrix](coverage-matrix.jsonl).
 
 ## August 26, 2026 Montana closure addendum
 
@@ -86,7 +92,7 @@ Every positive record requires a direct authoritative citation. Administrator me
 
 ## Nationwide coverage matrix
 
-Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the Montana closure, the matrix has 51 unique rows: 16 `COMPLETE`, 19 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 6 `UNDETERMINED`.
+Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the South Dakota closure, the matrix has 51 unique rows: 17 `COMPLETE`, 19 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 5 `UNDETERMINED`.
 
 | State | Coverage | Phase 1 finding |
 |---|---|---|
@@ -130,7 +136,7 @@ Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After
 | [Pennsylvania](https://dced.pa.gov/local-government/local-income-tax-information/psd-codes-and-eit-rates/) | `COMPLETE` | DCED's official and nightly Real-Time Registers close every municipality/PSD; Philadelphia is a direct overlay outside Act 32. |
 | [Rhode Island](https://tax.ri.gov/tax-sections/personal-income-tax) | `UNDETERMINED` | No explicit municipal preemption or complete local inventory was established. |
 | [South Carolina](https://dor.sc.gov/withholding) | `UNDETERMINED` | No explicit municipal preemption or complete local inventory was established. |
-| [South Dakota](https://dor.sd.gov/businesses/taxes/municipal-tax/) | `UNDETERMINED` | The official page covers selected local tax types but does not establish an exhaustive all-tax universe. |
+| [South Dakota](https://dor.sd.gov/media/54mb5a2w/2026-07_municipal-tax-guide.pdf) | `COMPLETE` | Current closed zero: chapter 10-52's notice/administration topology, DOR's July 2026 municipal-tax inventory, and the complete 63-title code audit disclose no employee wage-tax category, adopter, or qualifying authorization. |
 | [Tennessee](https://www.tn.gov/revenue/taxes/local-taxes.html) | `UNDETERMINED` | No explicit municipal compensation-tax preemption or complete current inventory was established. |
 | [Texas](https://comptroller.texas.gov/transparency/local/cities.php) | `UNDETERMINED` | Official city-tax material is not an exhaustive all-tax registry and does not explicitly close compensation-tax authority. |
 | [Utah](https://tax.utah.gov/forms/pubs/pub-14.pdf) | `UNDETERMINED` | No explicit municipal preemption or complete current inventory was established. |
@@ -193,12 +199,12 @@ The approximately 700 estimate is not supportable as a national count. Ohio alon
 This is an exhaustive nationwide source-topology and gap assessment, but not an individually ordinance-verified national adopter list. Seventeen jurisdictions cannot support a nationwide `CLEAR` decision from current evidence:
 
 - `PARTIAL`: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
-- `UNDETERMINED`: California, Colorado, South Dakota, Texas, Utah, and Wyoming.
+- `UNDETERMINED`: California, Colorado, Texas, Utah, and Wyoming.
 
 The remaining material gaps are:
 
 1. **Adopter closure:** Alabama and Kentucky have directly confirmed positives but no complete official current municipal adopter/rate registry. Oregon has confirmed Eugene and Portland taxes but no closed statewide registry. New Jersey's directly confirmed Newark/Jersey City taxes are employer-only; the employee-incidence universe is open.
-2. **Legal exception closure:** the 6 `UNDETERMINED` states require a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
+2. **Legal exception closure:** the 5 `UNDETERMINED` states require a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
 3. **Boundary resolution:** a postal or mailing city is not a legal municipal boundary. Ohio Finder explicitly resolves addresses; Pennsylvania uses PSD codes; Eugene warns that a Eugene mailing address may be outside city limits. City/state alone cannot safely map these records.
 4. **Residence-only taxes:** Baltimore City, New York City, Portland, 558 Pennsylvania PSDs, and DC depend on individual residence. Company situs cannot establish applicability, so the current Issue #1280 input contract must return `UNDETERMINED` for these classes.
 5. **Rate currency:** Michigan's official registry closes the current 24-city adopter set, but the latest located statewide rate table is tax year 2025 for 23 cities; Detroit has a direct 2026 withholding guide. Several partial-state municipal sources likewise confirm current existence without a fully current rate/exemption codification.
