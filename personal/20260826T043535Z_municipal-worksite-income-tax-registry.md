@@ -57,17 +57,17 @@ The 11 directly supported Kentucky jurisdictions are Bowling Green, Covington, H
 
 Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, Vermont, West Virginia, and Wisconsin.
 
-### No qualifying authority confirmed (17)
+### No qualifying authority confirmed (18)
 
-Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Virginia, and Washington.
+Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Mississippi, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Virginia, and Washington.
 
 ### Partial (10)
 
 Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
 
-### Undetermined (8)
+### Undetermined (7)
 
-California, Colorado, Mississippi, Montana, South Dakota, Texas, Utah, and Wyoming.
+California, Colorado, Montana, South Dakota, Texas, Utah, and Wyoming.
 
 ## Important exclusions and boundary decisions
 
@@ -104,6 +104,15 @@ Idaho Constitution article VII, section 6 and controlling Idaho case law require
 - [Idaho source and complete-code audit manifest](./20260826T230418Z_idaho-municipal-wage-tax-closure-artifacts/README.md)
 - [Active nine-state-run national snapshot](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/README.md)
 
+## Mississippi closure — August 26, 2026
+
+Mississippi is now a **closed zero**, moving from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; no municipality row was added.
+
+Mississippi Code section 21-17-5(2) requires specific state-law authority before a municipality may levy a tax. The current municipal-tax framework, the State Auditor's mandatory municipal accounting/compliance guide, current Department of Revenue withholding and special-levy systems, and an official audit of every 1997-2026 regular session disclose no enacted municipal percentage tax on employee wages, earnings, compensation, or payroll. The Legislature proposed the exact authority five times from 1997 through 2003; every bill died in House committee. The Job Development Assessment Fee is excluded as a Mississippi Business Finance Corporation project-bond assessment rather than a municipal levy.
+
+- [Full Mississippi closure report](./20260826T230418Z_mississippi-municipal-wage-tax-closure.md)
+- [Mississippi source and 30-session audit manifest](./20260826T230418Z_mississippi-municipal-wage-tax-closure-artifacts/README.md)
+
 ## Open and future candidates
 
 - **Hurstbourne Acres, Kentucky:** secondary payroll sources report a 1% tax effective July 1, 2024, but no current municipal ordinance or form was located. Keep unresolved.
@@ -117,7 +126,7 @@ Ordinary web searching has reached diminishing returns. The remaining work shoul
 
 | Priority | States | Closure work |
 | --- | --- | --- |
-| High | Mississippi, Montana, South Dakota, Utah, Wyoming | Exhaust current statutes, session laws, special/local acts, and delegations. Seek written confirmation from the legislative research office or responsible tax agency when no complete official list exists. |
+| High | Montana, South Dakota, Utah, Wyoming | Exhaust current statutes, session laws, special/local acts, and delegations. Seek written confirmation from the legislative research office or responsible tax agency when no complete official list exists. |
 | Medium | Colorado | Obtain the official home-rule municipality universe and search every charter and code for percentage-based wage, earnings, payroll, and occupational taxes; distinguish them from flat occupational privilege taxes. |
 | Hardest | California, Texas | Review the complete charter/home-rule universe, attorney-general opinions, cases, special laws, and municipal codes. A written state-level confirmation would materially strengthen closure because broad home-rule authority makes keyword-only statutory review insufficient. |
 

@@ -211,18 +211,24 @@ Idaho requires specific legislative authorization for a municipal tax. [Idaho Co
 
 The closure audit retrieved all 74 current Idaho Code title indexes and all 1,471 linked chapter PDFs. It searched 1,470 valid chapter PDFs plus the live chapter and four sections behind the one broken PDF link. No current statute authorizes a municipal percentage tax measured by employee wages, earnings, compensation, or payroll. The actual resort-city local-option grant in [sections 50-1044](https://legislature.idaho.gov/statutesrules/idstat/Title50/T50CH10/SECT50-1044/) and [50-1046](https://legislature.idaho.gov/statutesrules/idstat/Title50/T50CH10/SECT50-1046/) enumerates only short-term lodging occupancy, drink, and sales taxes. The [State Tax Commission](https://tax.idaho.gov/taxes/sales-use/sales-tax/local-sales-tax/city-sales-tax/) corroborates that local-option sales-tax topology. No Idaho row is added. The [full Idaho report](../20260826T230418Z_idaho-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_idaho-municipal-wage-tax-closure-artifacts/README.md) preserve the method, source hashes, and refresh triggers.
 
+### Mississippi — zero current rows; no qualifying authority
+
+[Mississippi Code section 21-17-5(2)](https://law.justia.com/codes/mississippi/title-21/chapter-17/section-21-17-5/) requires specific statutory or other state-law authority before a municipality may levy any tax. The current municipal-tax framework, the State Auditor's mandatory [Municipal Audit and Accounting Guide](https://www.osa.ms.gov/sites/default/files/Resources/Local%20Governments/maag22.pdf), and the Department of Revenue's current withholding and special-local-levy systems contain no municipal percentage tax on employee wages, earnings, compensation, or payroll.
+
+The closure audit also retrieved the official “All Measures” report for every regular session from 1997 through 2026. Five bills proposed the exact missing authority—1997 HB 68, 1998 HB 299, 1999 HB 950, 2001 HB 900, and 2003 HB 1467—and every one died in House committee. The proposed measures would have taxed income from employment or business carried on in eligible cities, allocated nonresident work, and used state tax administration; none became law. The wage-deducted Mississippi Business Finance Corporation Job Development Assessment Fee is excluded because it services project bonds and is not imposed by a municipality, even when reported in the W-2 local box. No Mississippi row is added. The [full Mississippi report](../20260826T230418Z_mississippi-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_mississippi-municipal-wage-tax-closure-artifacts/README.md) preserve the 30-session audit, candidate histories, current administrative sources, and refresh triggers.
+
 ## Nationwide coverage
 
 All 50 states and the District of Columbia now have an explicit coverage classification:
 
 - `COMPLETE` — **16**: Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, Vermont, West Virginia, Wisconsin.
-- `NO_AUTHORITY_CONFIRMED` — **17**: Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through FY2027, Louisiana, Minnesota, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under this worksite definition, Virginia, Washington.
+- `NO_AUTHORITY_CONFIRMED` — **18**: Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through FY2027, Louisiana, Minnesota, Mississippi, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under this worksite definition, Virginia, Washington.
 - `PARTIAL` — **10**: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, Tennessee.
-- `UNDETERMINED` — **8**: California, Colorado, Mississippi, Montana, South Dakota, Texas, Utah, Wyoming.
+- `UNDETERMINED` — **7**: California, Colorado, Montana, South Dakota, Texas, Utah, Wyoming.
 
 `COMPLETE` means a current authoritative source or legal topology closes the municipal universe for this narrow question. `NO_AUTHORITY_CONFIRMED` is a closed zero under the definition. `PARTIAL` means current evidence supports the positive or zero findings shown but leaves an adopter, special-act, charter, legacy, or update gap. `UNDETERMINED` means the legal source set could not safely establish either an adopter or a categorical zero.
 
-The structured [coverage matrix](coverage-matrix.jsonl) contains all 51 state/DC records and source URLs. Detailed audit evidence is preserved for the [South](agent-extracts/phase2-south-audit.md), [Northeast/Midwest](agent-extracts/phase2-northeast-midwest-audit.md), [West](agent-extracts/phase2-west-audit.md), and the [Idaho closure](agent-extracts/phase3-idaho-closure.md).
+The structured [coverage matrix](coverage-matrix.jsonl) contains all 51 state/DC records and source URLs. Detailed audit evidence is preserved for the [South](agent-extracts/phase2-south-audit.md), [Northeast/Midwest](agent-extracts/phase2-northeast-midwest-audit.md), [West](agent-extracts/phase2-west-audit.md), the [Idaho closure](agent-extracts/phase3-idaho-closure.md), and the [Mississippi closure](agent-extracts/phase3-mississippi-closure.md).
 
 ## Remaining review and scheduled refreshes
 

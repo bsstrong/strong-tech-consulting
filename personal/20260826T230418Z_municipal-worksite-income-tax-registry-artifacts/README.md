@@ -2,7 +2,7 @@
 
 This directory is the active replacement snapshot for the August 26, 2026 nine-state closure run. It began from the fully validated post-West Virginia snapshot in `../20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/` and is updated, validated, committed, and pushed after each state iteration.
 
-The registry remains **2,815 municipality rows across nine states**. Idaho adds no row and moves from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`. Nationwide coverage is now 16 `COMPLETE`, 17 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 8 `UNDETERMINED`.
+The registry remains **2,815 municipality rows across nine states**. Idaho and Mississippi add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`. Nationwide coverage is now 16 `COMPLETE`, 18 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 7 `UNDETERMINED`.
 
 ## Contents
 
@@ -38,3 +38,10 @@ The current-zero conclusion is intentionally represented as `COMPLETE`, not `NO_
 - [Source and complete-code audit manifest](../20260826T230418Z_idaho-municipal-wage-tax-closure-artifacts/README.md)
 
 Idaho is `NO_AUTHORITY_CONFIRMED`: specific legislative authorization is required, the local/special tax-law path is constitutionally closed, and the complete current-code audit found no qualifying municipal employee wage-tax grant.
+
+## Mississippi evidence
+
+- [Closure report](../20260826T230418Z_mississippi-municipal-wage-tax-closure.md)
+- [Source, administrative, and 30-session audit manifest](../20260826T230418Z_mississippi-municipal-wage-tax-closure-artifacts/README.md)
+
+Mississippi is `NO_AUTHORITY_CONFIRMED`: specific state-law authorization is required; the current municipal tax framework, State Auditor/DOR systems, and the official 1997-2026 regular-session audit disclose no enacted municipal employee wage-tax grant. Five exact authorization bills died in committee, and the project-specific Job Development Assessment Fee is nonmunicipal.

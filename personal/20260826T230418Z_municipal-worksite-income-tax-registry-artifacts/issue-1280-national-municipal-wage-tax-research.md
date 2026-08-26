@@ -2,7 +2,13 @@
 
 Research retrieval date: 2026-08-25
 
-Status: Historical research notebook plus August 25 West Virginia and August 26 Idaho closure addenda; not compliance-approved and not Rule Engine data.
+Status: Historical research notebook plus August 25 West Virginia and August 26 Idaho and Mississippi closure addenda; not compliance-approved and not Rule Engine data.
+
+## August 26, 2026 Mississippi closure addendum
+
+Mississippi moved from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED` with zero registry rows. Section 21-17-5(2) requires specific state-law authorization for any municipal tax. The current municipal taxation code, the State Auditor's mandatory municipal accounting/compliance framework, current Department of Revenue withholding and special-levy systems, and a 30-regular-session legislative audit disclose no enacted municipal employee wage-tax grant.
+
+Five bills proposed the exact authority—1997 HB 68, 1998 HB 299, 1999 HB 950, 2001 HB 900, and 2003 HB 1467—and all died in House committee. The project-specific Job Development Assessment Fee remains excluded as a Mississippi Business Finance Corporation bond assessment, not a municipal levy. The registry remains 2,815 municipalities across nine states. Coverage is now 16 `COMPLETE`, 18 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 7 `UNDETERMINED`. See the [Mississippi closure report](../20260826T230418Z_mississippi-municipal-wage-tax-closure.md), [evidence directory](../20260826T230418Z_mississippi-municipal-wage-tax-closure-artifacts/README.md), and updated [coverage matrix](coverage-matrix.jsonl).
 
 ## August 26, 2026 Idaho closure addendum
 
@@ -74,7 +80,7 @@ Every positive record requires a direct authoritative citation. Administrator me
 
 ## Nationwide coverage matrix
 
-Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the Idaho closure, the matrix has 51 unique rows: 16 `COMPLETE`, 17 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 8 `UNDETERMINED`.
+Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the Mississippi closure, the matrix has 51 unique rows: 16 `COMPLETE`, 18 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 7 `UNDETERMINED`.
 
 | State | Coverage | Phase 1 finding |
 |---|---|---|
@@ -101,7 +107,7 @@ Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After
 | [Massachusetts](https://malegislature.gov/Laws/Constitution) | `UNDETERMINED` | Constitutional limits were found, but statutory/special-act authority was not fully closed. |
 | [Michigan](https://www.michigan.gov/taxes/citytax/what-cities-impose-an-income-tax) | `COMPLETE` | Treasury publishes the current closed list of 24 city income-tax adopters. |
 | [Minnesota](https://www.revisor.mn.gov/statutes/cite/477A.016) | `NO_AUTHORITY_CONFIRMED` | Current statute prevents the in-scope municipal tax. |
-| [Mississippi](https://www.dor.ms.gov/sites/default/files/Forms/indiv_80100138.pdf) | `UNDETERMINED` | A wage-deducted project assessment is nonmunicipal; active legacy-project status remains unresolved. |
+| [Mississippi](https://law.justia.com/codes/mississippi/title-21/chapter-17/section-21-17-5/) | `NO_AUTHORITY_CONFIRMED` | Specific authorization is required; current code, municipal audit/DOR systems, and the 1997-2026 legislative audit disclose no enacted municipal employee wage-tax grant. |
 | [Missouri](https://revisor.mo.gov/main/OneSection.aspx?section=92.111) | `COMPLETE` | The closed statutory class and current city sources identify Kansas City and St. Louis. |
 | [Montana](https://mca.legmt.gov/bills/mca/title_0070/chapter_0010/part_0010/section_0120/0070-0010-0010-0120.html) | `UNDETERMINED` | Self-government cannot create an income tax without delegation; special delegations were not exhaustively closed. |
 | [Nebraska](https://nebraskalegislature.gov/laws/statutes.php?statute=14-109) | `UNDETERMINED` | Broad occupation/license power exists; current municipal ordinances were not exhaustively closed. |
@@ -178,15 +184,15 @@ The approximately 700 estimate is not supportable as a national count. Ohio alon
 
 ## Gap report
 
-This is an exhaustive nationwide source-topology and gap assessment, but not an individually ordinance-verified national adopter list. Nineteen jurisdictions cannot support a nationwide `CLEAR` decision from current evidence:
+This is an exhaustive nationwide source-topology and gap assessment, but not an individually ordinance-verified national adopter list. Eighteen jurisdictions cannot support a nationwide `CLEAR` decision from current evidence:
 
 - `PARTIAL`: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
-- `UNDETERMINED`: California, Colorado, Mississippi, Montana, South Dakota, Texas, Utah, and Wyoming.
+- `UNDETERMINED`: California, Colorado, Montana, South Dakota, Texas, Utah, and Wyoming.
 
 The remaining material gaps are:
 
 1. **Adopter closure:** Alabama and Kentucky have directly confirmed positives but no complete official current municipal adopter/rate registry. Oregon has confirmed Eugene and Portland taxes but no closed statewide registry. New Jersey's directly confirmed Newark/Jersey City taxes are employer-only; the employee-incidence universe is open.
-2. **Legal exception closure:** the 8 `UNDETERMINED` states require a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
+2. **Legal exception closure:** the 7 `UNDETERMINED` states require a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
 3. **Boundary resolution:** a postal or mailing city is not a legal municipal boundary. Ohio Finder explicitly resolves addresses; Pennsylvania uses PSD codes; Eugene warns that a Eugene mailing address may be outside city limits. City/state alone cannot safely map these records.
 4. **Residence-only taxes:** Baltimore City, New York City, Portland, 558 Pennsylvania PSDs, and DC depend on individual residence. Company situs cannot establish applicability, so the current Issue #1280 input contract must return `UNDETERMINED` for these classes.
 5. **Rate currency:** Michigan's official registry closes the current 24-city adopter set, but the latest located statewide rate table is tax year 2025 for 23 cities; Detroit has a direct 2026 withholding guide. Several partial-state municipal sources likewise confirm current existence without a fully current rate/exemption codification.

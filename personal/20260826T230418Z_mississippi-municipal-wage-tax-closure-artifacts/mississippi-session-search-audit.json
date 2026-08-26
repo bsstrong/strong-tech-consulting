@@ -1,0 +1,33 @@
+{
+  "retrieved_utc": "2026-08-26",
+  "sessions": {
+    "first": 1997,
+    "last": 2026,
+    "regular_session_count": 30,
+    "source": "Mississippi Legislature Bill Status System official All Measures reports"
+  },
+  "searches": [
+    "local income tax",
+    "municipal income tax",
+    "tax on wages",
+    "earnings tax",
+    "payroll tax",
+    "income tax ... municipality",
+    "municipality ... income tax"
+  ],
+  "exact_local_income_tax_candidates": [
+    {"session": 1997, "measure": "HB 68", "disposition": "Died in House committee 1997-02-26"},
+    {"session": 1998, "measure": "HB 299", "disposition": "Died in House committee 1998-02-25"},
+    {"session": 1999, "measure": "HB 950", "disposition": "Died in House committee 1999-02-24"},
+    {"session": 2001, "measure": "HB 900", "disposition": "Died in House committee 2001-02-21"},
+    {"session": 2003, "measure": "HB 1467", "disposition": "Died in House committee 2003-02-26"}
+  ],
+  "enacted_qualifying_candidates": 0,
+  "rejected_false_positive_classes": [
+    "state income-tax refund setoff for municipal debts",
+    "generic federal/state/local tax references",
+    "state income-tax credits involving municipal property taxes",
+    "state-administered economic-development withholding rebates",
+    "business, sales, tourism, hotel, restaurant, utility, privilege, and ad valorem taxes"
+  ]
+}
