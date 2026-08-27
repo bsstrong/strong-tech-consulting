@@ -23,14 +23,15 @@ An exact-merge BETA preview then completed successfully with:
 - `Deploy`: 123 existing resources ARM will reconcile.
 - `Ignore`: 17 existing resources omitted from change application by What-If.
 
-Recovery is still in progress while this report is first written. The BETA infrastructure apply must succeed from the exact merged revision, only the BETA PostgreSQL server must then be restarted if required, active `track_commit_timestamp=on` must be verified, and the application must be deployed and validated from that same revision. Production remains out of scope.
+The exact-merge BETA infrastructure apply succeeded. Azure recorded the expected infrastructure revision, only the HelixOS BETA PostgreSQL server was restarted, and `track_commit_timestamp=on` is active with no pending restart. The exact-SHA BETA application deployment then passed build, migration validation, integration smoke, Bicep validation, runtime deployment, and cleanup. The incident closed at **07:58 UTC**, approximately **7 hours 28 minutes** after the scheduled rollout began. Production remained out of scope and was not accessed.
 
 ## Incident summary
 
 | Field | Value |
 | --- | --- |
 | Incident start | 2026-08-27 00:31 UTC |
-| Incident end | In progress at initial report creation |
+| Incident end | 2026-08-27 07:58 UTC |
+| Elapsed time | Approximately 7 hours 28 minutes |
 | Environment affected | BETA rollout path |
 | BETA runtime availability | Existing runtime remained unchanged; no outage caused by failed previews |
 | TEST impact | Separate pre-existing revision-contract defect surfaced during recovery and continued blocking automatic TEST deploys until PR #1377 |
@@ -41,8 +42,8 @@ Recovery is still in progress while this report is first written. The BETA infra
 | Recovery PRs | [#1375](https://github.com/helixosio/helixos/pull/1375), [#1377](https://github.com/helixosio/helixos/pull/1377) |
 | Exact recovery merge | `f79cc608eba5d3a087139606905f57cbd817559d` |
 | Exact-merge preview | [Run 33048868414](https://github.com/helixosio/helixos/actions/runs/33048868414) |
-| BETA database restart | Not yet performed at initial report creation |
-| BETA application deployment | Not yet performed at initial report creation |
+| BETA database restart | Completed; only `psql-helixos-beta-shared-eus2` restarted |
+| BETA application deployment | [Run 33049834525](https://github.com/helixosio/helixos/actions/runs/33049834525), succeeded at exact recovery merge |
 
 ## Background
 
@@ -258,9 +259,25 @@ The sanitized artifact confirmed:
 | Deploy | 123 | Existing BETA resources ARM will reconcile |
 | Ignore | 17 | Existing resources omitted from application by What-If |
 
-### 07:17 — Exact-merge BETA infrastructure apply started
+### 07:17–07:21 — Exact-merge BETA infrastructure apply succeeded
 
-[Run 33049084422](https://github.com/helixosio/helixos/actions/runs/33049084422) started from the same exact merge commit. Its terminal result will be added to this report.
+[Run 33049084422](https://github.com/helixosio/helixos/actions/runs/33049084422) used the same exact merge commit and completed successfully at 07:21:48. Azure recorded named deployment `helixos-beta` as `Succeeded` and stored infrastructure revision `ba6cd26344dfb06a796e975368102b270e81a6afb42565fca8754e948c6b89b9`.
+
+### After 07:21 — BETA-only PostgreSQL restart completed
+
+Azure reported `track_commit_timestamp=on` with a pending restart. Only `psql-helixos-beta-shared-eus2` in `rg-helixos-beta-eus2` was restarted. The server returned to `Ready`; the parameter remained `on`, `isConfigPendingRestart=false`, `isDynamicConfig=false`, and source `user-override`.
+
+### 07:28 — Exact-merge BETA application deployment started
+
+[Run 33049834525](https://github.com/helixosio/helixos/actions/runs/33049834525) started from exact merge `f79cc608eba5d3a087139606905f57cbd817559d`. Build, local migration validation, and local database seeding passed before the terminal deployment gate.
+
+### 07:40 — Automatic TEST application deployment succeeded
+
+[Run 33048776091](https://github.com/helixosio/helixos/actions/runs/33048776091) completed successfully from exact merge `f79cc608eba5d3a087139606905f57cbd817559d`. The corrected infrastructure-revision contract passed both proof gates and the TEST runtime deployment completed.
+
+### 07:58 — Exact-merge BETA application deployment succeeded
+
+[Run 33049834525](https://github.com/helixosio/helixos/actions/runs/33049834525) completed successfully from exact merge `f79cc608eba5d3a087139606905f57cbd817559d`. Its build, local migration application, seed, integration smoke suite, Bicep validation, Azure login, BETA runtime deployment, and cleanup steps all passed. The hosted integration log explicitly reported `Smoke test passed.`
 
 ## Root-cause analysis
 
@@ -360,16 +377,15 @@ This was a revision and execution-path difference, not proof that BETA behaves d
 | Complete exact-head PR #1377 CI | Completed |
 | Merge PR #1377 | Completed |
 | Run exact-merge BETA preview | Completed; clean |
+| Apply exact-merge BETA infrastructure | Completed; succeeded |
+| Restart only BETA PostgreSQL | Completed |
+| Verify active `track_commit_timestamp=on` | Completed; no restart pending |
+| Deploy and validate exact-merge BETA application | Completed; succeeded |
+| Complete automatic exact-merge TEST deployment | Completed; succeeded |
 
-## Remaining recovery actions
+## Recovery outcome
 
-1. Complete [BETA infrastructure apply 33049084422](https://github.com/helixosio/helixos/actions/runs/33049084422) from exact merge `f79cc608eba5d3a087139606905f57cbd817559d`.
-2. Verify the named BETA ARM deployment succeeded and recorded the exact infrastructure revision.
-3. Inspect the BETA PostgreSQL `track_commit_timestamp` configuration and restart **only** BETA PostgreSQL if Azure reports a pending restart or the active value is not yet `on`.
-4. Verify active `track_commit_timestamp=on` after restart.
-5. Deploy the BETA application from the same exact revision.
-6. Verify migrations, image activation, Function registration, gateway smoke tests, and Daily Payroll behavior.
-7. Update this incident report with the terminal time, final run links, and any additional findings.
+The recovery is terminally successful. Exact-merge TEST and BETA application deployments passed, the BETA database configuration is active, and the protected workflow completed its runtime validation. Remaining work is preventive follow-up, not incident recovery.
 
 ## Prevention and follow-up recommendations
 
@@ -393,17 +409,19 @@ This was a revision and execution-path difference, not proof that BETA behaves d
 
 10. **Record exact elapsed time and runner usage after terminal recovery.** The final report should include the completed end time and available GitHub Actions duration evidence without estimating dollar cost.
 
-## Current status at initial report creation
+## Current status
 
 - PR #1375: merged.
 - PR #1377: merged at exact SHA `f79cc608eba5d3a087139606905f57cbd817559d`.
 - PR #1377 exact-head CI: passed after one targeted rerun of an unrelated flaky job.
 - TEST corrected infrastructure proof: applied.
-- Automatic TEST deployment from the PR #1377 merge: running.
+- Automatic TEST deployment from the PR #1377 merge: succeeded in [run 33048776091](https://github.com/helixosio/helixos/actions/runs/33048776091) at the exact merge commit.
 - Exact-merge BETA preview: passed with two expected creates and no deletes or modifications.
-- Exact-merge BETA infrastructure apply: running.
-- BETA PostgreSQL restart: pending only if required.
-- Active BETA `track_commit_timestamp=on` verification: pending.
-- BETA application deployment: pending.
+- Exact-merge BETA infrastructure apply: succeeded.
+- BETA PostgreSQL restart: completed for only `psql-helixos-beta-shared-eus2`.
+- Active BETA `track_commit_timestamp=on` verification: passed; no restart pending.
+- BETA application deployment: succeeded in [run 33049834525](https://github.com/helixosio/helixos/actions/runs/33049834525) at the exact merge commit.
+- Incident recovery: complete at 07:58 UTC.
+- Closed PR #1369 diagnostic branch/worktree: deleted.
 - BETA data mutation from failed previews: none.
 - Production access or mutation: none.
