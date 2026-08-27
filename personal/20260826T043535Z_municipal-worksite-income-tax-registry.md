@@ -196,8 +196,9 @@ Online statute, charter, ordinance, case, and agency-record research can continu
 
 ## Research artifacts
 
-The active nine-state replacement snapshot below contains every previously preserved registry artifact plus the completed state iterations through California. Earlier snapshots remain intact for provenance.
+The active nine-state replacement snapshot below contains every previously preserved registry artifact plus all completed state iterations through Texas. Earlier snapshots remain intact for provenance.
 
+- [Nine-state completion audit](./20260827T140517Z_nine-state-municipal-wage-tax-completion-audit.md)
 - [Current snapshot manifest](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/README.md)
 - [Full research report](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/U.S.%20Municipalities%20With%20a%20Worksite-Based%20Local%20Income%20Tax.md)
 - [Municipality registry CSV](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.csv)

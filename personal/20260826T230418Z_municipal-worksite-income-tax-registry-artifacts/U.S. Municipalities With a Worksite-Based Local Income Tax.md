@@ -229,6 +229,18 @@ South Dakota retains broad home-rule and municipal non-ad-valorem language, so i
 
 The closure audit downloaded all 63 official consolidated title files—Constitution title `0N` and codified-law titles 1 through 62—and searched the complete 176,375,083-byte corpus. No qualifying authorization or adopter was found. The sole `payroll tax` occurrence concerns a PEO sales-tax deduction, and the two `local income tax` occurrences are generic partnership recordkeeping provisions. No South Dakota row is added. The [full South Dakota report](../20260826T230418Z_south-dakota-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_south-dakota-municipal-wage-tax-closure-artifacts/README.md) preserve the DOR sources, complete-code archive, phrase dispositions, hashes, and refresh triggers.
 
+### Utah — zero current rows; no qualifying authority
+
+[Utah Constitution article XI, section 5](https://le.utah.gov/xcode/ArticleXI/UC_AXI_1800010118000101.pdf) limits charter-city taxing power to the bounds prescribed by general law. *[Moss v. Board of Commissioners of Salt Lake City](https://law.justia.com/cases/utah/supreme-court/1953/8092-0.html)* holds that a municipality has only tax power expressly conferred or necessarily implied by legislative enactment. Current [section 10-1-203](https://le.utah.gov/xcode/Title10/Chapter1/10-1-S203.html) excludes employees rendering services to employers from its municipal business-tax definition and enumerates other revenue subjects, not employee wages.
+
+The closure audit downloaded and searched all 96 current Utah Code title PDFs—19,339 pages and 56,391,062 extracted characters. It found no qualifying municipal income, wage, earnings, compensation, payroll, or withholding delegation or adopter. State withholding provisions and the April 2026 Tax Commission guide concern Utah state income tax only. No Utah row is added. The [full Utah report](../20260826T230418Z_utah-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_utah-municipal-wage-tax-closure-artifacts/README.md) preserve the complete-code audit, sources, hashes, and refresh triggers.
+
+### Wyoming — zero current rows; no qualifying authority
+
+Current [Wyoming Statutes section 39-12-101](https://wyoleg.gov/statutes/compress/title39.pdf) expressly denies every county, city, town, and other political subdivision authority to impose, levy, or collect an income tax, earnings tax, or any other tax based on wages or other income. That provision directly covers every tax within the registry definition.
+
+The closure audit cross-checked statutory Titles 1 through 42 and Constitution Title 97—43 official files and 12,429 pages—and found no qualifying exception, delegation, or adopter. All phrase and proximity hits were unrelated partnership, FICA, deferred-compensation, economic-development, or pension provisions. No Wyoming row is added. The [full Wyoming report](../20260826T230418Z_wyoming-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_wyoming-municipal-wage-tax-closure-artifacts/README.md) preserve the complete-code audit, dispositions, hashes, and refresh triggers.
+
 ### Colorado — zero current rows; no qualifying authority
 
 Current [Colorado Constitution article X](https://olls.info/crs/crs2026-title-00.pdf), section 20(8)(a), expressly prohibits local district income taxes, and section 20(2)(b) defines district to include local government. The Office of Legislative Legal Services' current [drafting manual](https://content.leg.colorado.gov/sites/default/files/colorado-legislative-drafting-manual-accessible.pdf) confirms that the prohibition covers any local-government income tax.

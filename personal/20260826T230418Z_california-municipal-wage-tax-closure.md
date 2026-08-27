@@ -6,6 +6,8 @@ Disposition: `PARTIAL`
 
 Registry rows added: 0
 
+Active research time: approximately 44 minutes, within the one-hour state cap.
+
 ## Scope
 
 This iteration applied the national registry's narrow definition: a city or city-equivalent percentage tax calculated from an employee's wages, earnings, compensation, or payroll because the employee works there, including nonresident commuters, with employer-withholding relevance.
