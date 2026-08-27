@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-27T16:17:05Z",
+  "governance_status": "RESEARCH_COMPLETE_AWAITING_PRODUCT_DATA_APPROVAL",
+  "definition": "Current municipality-imposed tax calculated from employee wages for work performed in the jurisdiction, including nonresident work, where employer withholding may be required.",
+  "prohibited_uses": [
+    "Do not calculate tax or withholding from this dataset.",
+    "Do not treat a mailing or postal city as an authoritative municipal-boundary match.",
+    "Do not treat evidence-queue rows as confirmed positives or negatives.",
+    "Do not return CLEAR for a PARTIAL state merely because no row matched."
+  ],
+  "decision_contract": {
+    "confirmed_primary_match": "BUFFER_REVIEW_REQUIRED only after authoritative, unique worksite-jurisdiction resolution and effective-date validation",
+    "evidence_queue_match": "UNDETERMINED",
+    "unmatched_complete_or_no_authority_state": "CLEAR only after authoritative, unique worksite-jurisdiction resolution and current release validation",
+    "unmatched_partial_state": "UNDETERMINED",
+    "incomplete_or_failed_evaluation": "UNDETERMINED"
+  },
+  "source_registry": {
+    "path": "worksite-municipal-income-tax-registry.jsonl",
+    "rows": 2817,
+    "sha256": "2032f93b2b763f5f38b68e2817d68aa71baf25ed559f8cdf65e2bc48fa9b873e"
+  },
+  "direct_primary_candidates": {
+    "rows": 2750,
+    "jsonl_path": "direct-primary-screening-candidates.jsonl",
+    "jsonl_sha256": "e0af0b5e4b3fe98b78a12a2da4c168779a28dc31b7ad9f5487d613bb685db5e7",
+    "csv_path": "direct-primary-screening-candidates.csv",
+    "csv_sha256": "1a813b5d6325554e579916013b02ea4c0e8196b26d39a2d4e30f43c0d04eecf3"
+  },
+  "evidence_queue": {
+    "rows": 67,
+    "counts_by_evidence_status": {
+      "SUPPORTED_AUTHORITATIVE_ASSOCIATION": 66,
+      "SUPPORTED_CURRENT_SECONDARY": 1
+    },
+    "jsonl_path": "worksite-tax-evidence-queue.jsonl",
+    "jsonl_sha256": "7dfb9f0b39b1c76d5d6ff519714d93e91c7dd27bbe9400e81757776e70c27d5d",
+    "csv_path": "worksite-tax-evidence-queue.csv",
+    "csv_sha256": "a6f74e897424d73895abea483b895e2f8ac0c1514e68ecb47dfa52cfcff44472"
+  },
+  "coverage_policy": {
+    "rows": 51,
+    "jsonl_path": "worksite-tax-coverage-policy.jsonl",
+    "jsonl_sha256": "f34403a555831c4f9965056db456d916c14952592e29940da82e8a2f4e15216b",
+    "csv_path": "worksite-tax-coverage-policy.csv",
+    "csv_sha256": "3f4c79d051c0f271b1016dd7a663b306b24cfd5fc2881e413f9c694440bf14fa"
+  }
+}

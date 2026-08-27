@@ -177,8 +177,8 @@ if (-not (Test-Path -LiteralPath $kentuckyPrimaryVerificationPath)) {
     throw "Kentucky primary-verification extract not found: $kentuckyPrimaryVerificationPath"
 }
 $kentuckyPrimaryRows = @(Import-Csv -LiteralPath $kentuckyPrimaryVerificationPath)
-if ($kentuckyPrimaryRows.Count -ne 83) {
-    throw "Expected 83 directly verified Kentucky rows; found $($kentuckyPrimaryRows.Count)."
+if ($kentuckyPrimaryRows.Count -ne 90) {
+    throw "Expected 90 directly verified Kentucky rows; found $($kentuckyPrimaryRows.Count)."
 }
 $kentuckyPrimaryAdditions = @(
     foreach ($row in $kentuckyPrimaryRows) {
@@ -296,32 +296,6 @@ $kentuckySupportedCurrentAdditions = @(
         source_date = 'Current city page and dated reporting retrieved 2026-08-27'
         limitations = @('The current city page proves a new occupational ordinance but describes its business-license schedule, not the reported 1.5% employee payroll tax. The enacted payroll ordinance or official withholding form is still required.')
         related_components = [ordered]@{ source_tier = 'current local existence plus secondary payroll terms' }
-    },
-    [pscustomobject]@{
-        record_id = 'ky-supported-current-hurstbourne-acres'
-        state_code = 'KY'
-        jurisdiction_name = 'Hurstbourne Acres'
-        jurisdiction_type = 'incorporated city'
-        official_jurisdiction_id = $null
-        category = 'MUNICIPAL_EARNED_INCOME_WORKSITE'
-        tax_name = 'Occupational License Tax / Payroll Tax'
-        legal_incidence = 'reported employee compensation tax; enacted municipal payroll ordinance has not been retained'
-        geographic_scope = 'reported work or services within Hurstbourne Acres; exact enacted local text remains required'
-        employer_withholding = $true
-        rate = '1% reported'
-        effective_at = 'Reported effective 2024-07-01'
-        administrator = 'City of Hurstbourne Acres'
-        evidence_status = 'SUPPORTED_CURRENT_SECONDARY'
-        coverage_status = 'PARTIAL'
-        product_disposition = 'UNDETERMINED until the enacted payroll ordinance or official employer-withholding form is retained'
-        primary_source_urls = @(
-            'https://www.hurstbourneacresky.gov/treasurer',
-            'https://www.wlky.com/article/business-licensing-occupational-tax-hurstbourne-acres-louisville/61457372',
-            'https://help.insperity.com/hcm/wp-content/uploads/sites/2/2024/09/Vertex-August-2024.pdf'
-        )
-        source_date = 'Current city site and dated reporting retrieved 2026-08-27'
-        limitations = @('The current city document widget does not expose the enacted payroll ordinance. The ordinance or official employer-withholding form is required before direct-primary promotion.')
-        related_components = [ordered]@{ source_tier = 'current local site plus secondary payroll terms' }
     }
 )
 $sourceRecords += $kentuckySupportedCurrentAdditions

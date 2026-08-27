@@ -20,11 +20,11 @@ A municipality is not assumed to be tax-free because it is missing. An unmatched
 
 The best-available registry contains **2,817 municipality rows in nine states**. Of those:
 
-- **2,743** are directly confirmed from current primary sources.
-- **72** are association-supported discovery rows: 11 in Alabama and 61 in Kentucky.
-- **2** are current secondary-supported Kentucky additions pending enacted local payroll instruments.
+- **2,750** are directly confirmed from current primary sources.
+- **66** are association-supported discovery rows: 11 in Alabama and 55 in Kentucky.
+- **1** is a current secondary-supported Kentucky addition pending an enacted local payroll instrument.
 - **2,619** directly confirmed rows come from states with a closed statewide source or statutory universe.
-- **124** directly confirmed rows are in partial-coverage states: Alabama 14, Kentucky 109, and Oregon 1.
+- **131** directly confirmed rows are in partial-coverage states: Alabama 14, Kentucky 116, and Oregon 1.
 
 The 2,817 number is therefore a best-available screening inventory, not a claim that all 2,817 have individually verified current ordinances and rates.
 
@@ -32,18 +32,18 @@ The 2,817 number is therefore a best-available screening inventory, not a claim 
 |---|---:|---:|---:|---|
 | Alabama | 25 | 14 | 11 | `PARTIAL` |
 | Delaware | 1 | 1 | 0 | `COMPLETE` |
-| Kentucky | 172 | 109 | 61 association + 2 secondary | `PARTIAL` |
+| Kentucky | 172 | 116 | 55 association + 1 secondary | `PARTIAL` |
 | Michigan | 24 | 24 | 0 | `COMPLETE` |
 | Missouri | 2 | 2 | 0 | `COMPLETE` |
 | New York | 1 | 1 | 0 | `COMPLETE` |
 | Ohio | 666 | 666 | 0 | `COMPLETE` |
 | Oregon | 1 | 1 | 0 | `PARTIAL` |
 | Pennsylvania | 1,925 | 1,925 | 0 | `COMPLETE` |
-| **Total** | **2,817** | **2,743** | **72 association + 2 secondary** |  |
+| **Total** | **2,817** | **2,750** | **66 association + 1 secondary** |  |
 
 The complete row-level list is provided as [CSV](worksite-municipal-income-tax-registry.csv) and [JSONL](worksite-municipal-income-tax-registry.jsonl). Each row carries its evidence status, rate, scope, withholding field, source URLs, source date, limitation, and product disposition. [Validation results](worksite-municipal-income-tax-registry-validation.json) contain the reconciliation, uniqueness checks, evidence-tier counts, and hashes.
 
-The [product-readiness audit](product-readiness-audit-2026-08-27.md) concludes that this package can support a governed three-result screening workflow, but is not an autonomous approved-city list or payroll-calculation table. Authoritative worksite-boundary resolution, an approved direct-primary data view, and release/approval metadata remain prerequisites.
+The [product-readiness audit](product-readiness-audit-2026-08-27.md) concludes that this package can support a governed three-result screening workflow, but is not an autonomous approved-city list or payroll-calculation table. Authoritative worksite-boundary resolution, product/compliance approval of the generated direct-primary view, and release/approval metadata remain prerequisites.
 
 ## Included jurisdictions by state
 
@@ -100,9 +100,9 @@ The previously confirmed 11 are Bowling Green, Covington, Henderson, Lebanon, Le
 
 The [Kentucky League of Cities](https://www.klc.org/News/12942/the-occupational-business-license-fee) stated on July 11, 2025 that 170 Kentucky cities levy a tax on gross earnings and linked its statewide city-rate survey. The linked FY2023 table contains **169 percentage payroll rows** and one flat Caneyville charge. Caneyville is excluded because a flat weekly fee does not meet this report's definition.
 
-The registry retains the 169 percentage rows, now superseding 108 with direct primary evidence, and adds Walton from current 2024/2025 city law. It also adds two current candidates missing from the FY2023 table: Falmouth at a reported 1.5% effective July 1, 2026, and Hurstbourne Acres at a reported 1% effective July 1, 2024. Both are `SUPPORTED_CURRENT_SECONDARY`, not direct primary, until their enacted payroll ordinances or official withholding forms are retained. That produces 172 best-available current Kentucky rows: 109 direct-primary, 61 association-supported, and 2 current-secondary-supported.
+The registry retains the 169 percentage rows, now superseding 114 with direct primary evidence, and adds Walton from current 2024/2025 city law. It also adds two current candidates missing from the FY2023 table: Falmouth at a reported 1.5% effective July 1, 2026, and Hurstbourne Acres at 1%. Hurstbourne Acres is now direct-primary based on its 2024 ordinance and current 2026 municipal withholding forms; Falmouth remains `SUPPORTED_CURRENT_SECONDARY`. That produces 172 best-available current Kentucky rows: 116 direct-primary, 55 association-supported, and 1 current-secondary-supported.
 
-The 61 remaining KLC rows have not been removed. Some have current official existence evidence but unresolved payroll-rate fields; others have conflicts between the FY2023 survey and current official displays. Bardwell, Paintsville, Perryville, Raceland, Shively, Springfield, and Winchester have specific possible rate changes that require a controlling local instrument before correction. Absence from the Secretary of State repository is not repeal evidence because demonstrably active municipalities are omitted and the repository itself warns of omissions or inaccuracies.
+The 55 remaining KLC rows have not been removed. Some have current official existence evidence but unresolved payroll-rate fields. Six prior rate conflicts were closed from current municipal sources: Paintsville 1.25%, Perryville 1.5%, Raceland 1.5%, Shively 2%, Springfield 1.5%, and Winchester 2.15%. Bardwell remains unresolved because the available municipal publication does not establish a clean controlling amendment/effective-date chain. Absence from the Secretary of State repository is not repeal evidence because demonstrably active municipalities are omitted and the repository itself warns of omissions or inaccuracies.
 
 Current rate corrections made in this pass include Ashland 2.375%, Augusta 1.3%, Campbellsville 1.5%, Covington 2.45%, Dayton 2%, Elsmere 1.75% effective July 1, 2026, Hodgenville 1%, and Jeffersonville 2%.
 
@@ -280,8 +280,8 @@ The structured [coverage matrix](coverage-matrix.jsonl) contains all 51 state/DC
 
 The [review queue](worksite-municipal-income-tax-review-queue.md) records the unresolved candidates and future changes. The most important are:
 
-- Hurstbourne Acres, Kentucky: current secondary payroll sources report a 1% tax effective July 1, 2024, but no current municipal ordinance/form was located that proves the complete inclusion test.
 - Falmouth, Kentucky: the official city page announces a 2026 occupational ordinance but does not expose enough wage-tax detail to confirm a current row.
+- Bardwell, Kentucky: a 2025 municipal publication supports a 1% worksite wage tax, but the signed controlling amendment/current employer form and exact effective-date chain remain unresolved.
 - Salem, Kentucky: official Ordinance 2026-05 meets the functional test but is effective **October 1, 2026**, so it is future-dated on this report.
 - Indiana: the present no-authority conclusion is time-limited; municipal LIT authority begins in FY2028 and requires a pre-2028 refresh.
 

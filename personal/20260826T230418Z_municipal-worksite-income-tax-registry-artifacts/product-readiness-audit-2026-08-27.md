@@ -22,9 +22,9 @@ The current Issue #1280 company city/state input is a screening proxy, not an au
 | Current registry rows | 2,817 |
 | Unique record IDs | 2,817 |
 | States with positive/current candidate rows | 9 |
-| `CONFIRMED_PRIMARY` | 2,743 |
-| `SUPPORTED_AUTHORITATIVE_ASSOCIATION` | 72 |
-| `SUPPORTED_CURRENT_SECONDARY` | 2 |
+| `CONFIRMED_PRIMARY` | 2,750 |
+| `SUPPORTED_AUTHORITATIVE_ASSOCIATION` | 66 |
+| `SUPPORTED_CURRENT_SECONDARY` | 1 |
 | Rows without a source URL | 0 |
 | Duplicate record IDs | 0 |
 | Coverage-matrix rows / unique state-or-DC codes | 51 / 51 |
@@ -35,8 +35,8 @@ The current Issue #1280 company city/state input is a screening proxy, not an au
 
 Validation hashes at the audited checkpoint:
 
-- CSV: `ed497cd4b6265e2f2275e42a3fabc0187cd07ad16bd605b25ed5bc5dcea48efe`
-- JSONL: `10a992e63e076e9d498e0c7ac25f7fc6f44f858720a4390704b75366aeb65c1a`
+- CSV: `ff64ead0033fe078fae0a786b3eb54d96ee4d1eda92577000ab6729d168eca35`
+- JSONL: `2032f93b2b763f5f38b68e2817d68aa71baf25ed559f8cdf65e2bc48fa9b873e`
 
 ## What is ready
 
@@ -66,9 +66,9 @@ Postal city, mailing city, and company-entered city are not legal municipal boun
 
 Before production use, the resolver needs normalized work-address inputs and an authoritative boundary result containing at least state, jurisdiction type, stable jurisdiction ID, legal name, and source/version. City/state may remain a discovery key, but it must not be the authoritative `CLEAR` key.
 
-### 2. Seventy-four rows are not approved positives
+### 2. Sixty-seven rows are not approved positives
 
-The 72 association-supported and 2 current-secondary-supported rows remain `UNDETERMINED`. They must be excluded from the product-approved positive view and routed to evidence review. Falmouth and Hurstbourne Acres are deliberately present for completeness but cannot trigger an approved positive until their enacted payroll ordinance or official employer form is retained.
+The 66 association-supported and 1 current-secondary-supported rows remain `UNDETERMINED`. They are excluded from the generated direct-primary view and routed to the evidence queue. Falmouth remains present for completeness but cannot trigger an approved positive until its enacted payroll ordinance or official employer form is retained.
 
 ### 3. Eleven states cannot support unmatched `CLEAR`
 
@@ -88,11 +88,11 @@ Before loading governed Rule Engine data, produce an immutable approved release 
 
 ### 6. Known current conflicts require nonmatching behavior
 
-The review queue contains unresolved Alabama fields and Kentucky rate conflicts, including Bardwell, Paintsville, Perryville, Raceland, Shively, Springfield, and Winchester. These rows must remain `UNDETERMINED`; the product must never pick whichever source is newer-looking without a controlling local instrument.
+The review queue contains unresolved Alabama fields and one Kentucky rate conflict, Bardwell. Paintsville, Perryville, Raceland, Shively, Springfield, and Winchester were resolved from controlling current municipal instruments and promoted. Bardwell remains `UNDETERMINED`; the product must never pick whichever source is newer-looking without a controlling local instrument.
 
 ## Required product data views
 
-Use separate governed views rather than one unqualified list:
+The snapshot now generates the first three separate views below. They remain research release candidates until product-data approval and authoritative boundary resolution are supplied:
 
 1. **Approved worksite positives** - only current/effective `CONFIRMED_PRIMARY` rows approved for the release.
 2. **Discovery and evidence queue** - association, secondary, ambiguous, conflicting, and incomplete rows; never treated as a confirmed positive or negative.
@@ -132,10 +132,10 @@ The output should include registry version, matched jurisdiction ID, record ID i
 
 ## Immediate next actions
 
-1. Obtain the Falmouth and Hurstbourne Acres enacted payroll ordinances/forms and resolve the seven named Kentucky rate conflicts.
-2. Define and implement authoritative legal-jurisdiction resolution for company work addresses.
-3. Create the governed approved/direct view and the separate evidence queue.
-4. Add dataset approval/version/effective/refresh metadata.
+1. Obtain Falmouth's enacted payroll ordinance/form and Bardwell's signed 2025 amendment or current employer form.
+2. Select and implement an authoritative legal-jurisdiction resolver using `worksite-jurisdiction-resolver-contract.md`.
+3. Obtain product/compliance approval for the generated direct-primary, evidence-queue, and coverage-policy views.
+4. Add approver, approval time, immutable source-content hashes, validity periods, supersession, and refresh metadata to the release.
 5. Revalidate Salem on or after October 1, 2026 and Indiana before municipal authority begins in FY2028.
 
 Until those blockers are closed, the correct product status is: **research-complete enough for a conservative governed screening design; not approved for autonomous production matching, `CLEAR` from city/state alone, or tax calculation.**

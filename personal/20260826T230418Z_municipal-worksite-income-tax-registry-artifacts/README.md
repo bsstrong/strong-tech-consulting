@@ -2,9 +2,9 @@
 
 This directory is the active replacement snapshot for the August 26, 2026 nine-state closure run. It began from the fully validated post-West Virginia snapshot in `../20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/` and is updated, validated, committed, and pushed after each state iteration.
 
-The nine-state run is complete. Subsequent Alabama and Kentucky verification passes on August 27 promoted 107 association-supported rows to direct primary, corrected current rates, added Falmouth and Hurstbourne Acres as secondary-supported current candidates, and retained Salem as future-dated effective October 1, 2026. The [final requirement-by-requirement audit](../20260827T140517Z_nine-state-municipal-wage-tax-completion-audit.md) remains the audit for the earlier nine-state run.
+The nine-state run is complete. Subsequent Alabama and Kentucky verification passes on August 27 promoted 113 association-supported rows and Hurstbourne Acres to direct primary, corrected current rates, retained Falmouth as a secondary-supported current candidate, and retained Salem as future-dated effective October 1, 2026. The [final requirement-by-requirement audit](../20260827T140517Z_nine-state-municipal-wage-tax-completion-audit.md) remains the audit for the earlier nine-state run.
 
-The registry now contains **2,817 municipality rows across nine states**: 2,743 direct-primary, 72 association-supported, and 2 current-secondary-supported. Idaho, Mississippi, Montana, Utah, Wyoming, Colorado, and Texas add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero; California adds no rows and moves to `PARTIAL`. Nationwide coverage is 17 `COMPLETE`, 23 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 0 `UNDETERMINED`.
+The registry now contains **2,817 municipality rows across nine states**: 2,750 direct-primary, 66 association-supported, and 1 current-secondary-supported. Idaho, Mississippi, Montana, Utah, Wyoming, Colorado, and Texas add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero; California adds no rows and moves to `PARTIAL`. Nationwide coverage is 17 `COMPLETE`, 23 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 0 `UNDETERMINED`.
 
 ## Contents
 
@@ -15,6 +15,11 @@ The registry now contains **2,817 municipality rows across nine states**: 2,743 
 - `worksite-municipal-income-tax-registry-validation.json` - validation of the final worksite registry.
 - `worksite-municipal-income-tax-review-queue.md` - candidates and evidence tiers requiring manual review.
 - `product-readiness-audit-2026-08-27.md` - final decision on what the registry can safely power, production blockers, required data views, and the deterministic three-result contract.
+- `direct-primary-screening-candidates.csv` / `.jsonl` - the direct-primary-only release candidate; not approved for production until approval metadata and boundary resolution are supplied.
+- `worksite-tax-evidence-queue.csv` / `.jsonl` - every non-primary current candidate, which must return `UNDETERMINED`.
+- `worksite-tax-coverage-policy.csv` / `.jsonl` - the 51-row state/DC unmatched-jurisdiction policy.
+- `worksite-tax-screening-data-release.json` - counts, hashes, prohibited uses, and the three-result contract for the generated views.
+- `worksite-jurisdiction-resolver-contract.md` - the implementation-neutral authoritative work-address-to-legal-jurisdiction contract.
 - `coverage-matrix.jsonl` - disposition and evidence coverage for all 50 states plus the District of Columbia.
 - `normalized-municipal-tax-inventory.jsonl` - normalized screening inventory assembled before applying the final product definition.
 - `review-only-and-nonmunicipal-inventory.jsonl` - excluded, nonmunicipal, or review-only records preserved for traceability.

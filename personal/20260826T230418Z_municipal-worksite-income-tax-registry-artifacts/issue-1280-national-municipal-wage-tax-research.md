@@ -249,7 +249,7 @@ The 20 Alabama League association-supported candidates were each researched agai
 
 ## Kentucky candidate-verification addendum — August 27, 2026
 
-All 159 KLC association-supported rows were assessed. Ninety-eight were promoted to direct primary, 61 remain association-supported, and Falmouth and Hurstbourne Acres were added as current secondary-supported rows pending enacted local payroll instruments. Salem's enacted 1% tax is excluded because its ordinance is effective October 1, 2026. Final current Kentucky counts are 172 rows: 109 direct primary, 61 association-supported, and 2 secondary-supported. See [`agent-extracts/kentucky-local-verification-2026-08-27.md`](agent-extracts/kentucky-local-verification-2026-08-27.md).
+All 159 KLC association-supported rows were assessed. One hundred four were promoted to direct primary and 55 remain association-supported. Hurstbourne Acres, absent from the FY2023 KLC table, was promoted from current-secondary to direct primary after its ordinance and 2026 municipal withholding forms were retained; Falmouth remains current-secondary-supported pending a primary payroll instrument. Salem's enacted 1% tax is excluded because its ordinance is effective October 1, 2026. Final current Kentucky counts are 172 rows: 116 direct primary, 55 association-supported, and 1 secondary-supported. See [`agent-extracts/kentucky-local-verification-2026-08-27.md`](agent-extracts/kentucky-local-verification-2026-08-27.md).
 
 Do not implement the research as one unversioned approved city-name list. Use a versioned jurisdiction/evidence registry plus a deterministic resolver.
 

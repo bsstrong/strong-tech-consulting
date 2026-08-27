@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-27T15:47:23Z",
+  "generated_at": "2026-08-27T16:13:45Z",
   "definition": "Current municipality-imposed tax calculated from employee wages for work performed in the jurisdiction, including nonresident work, where employer withholding may be required.",
   "source_inventory": "C:\\dev\\strong-tech-consulting\\personal\\20260826T230418Z_municipal-worksite-income-tax-registry-artifacts\\normalized-municipal-tax-inventory.jsonl",
   "source_inputs": {
@@ -7,7 +7,7 @@
     "alabama_league_extract_sha256": "483d0b7328a6eeb27f9f732aff51b7bc4f4e9c55643fbb3cd9769baf3c9627d4",
     "alabama_primary_verification_sha256": "58968e2f6e34fb3a52eba8996a205d20cc025c4891a175dae8e21b8720bf39fa",
     "kentucky_klc_extract_sha256": "79b11e49def060112694c4e3ca777d1f5aa90fa2cb2b1ff99d0e5d4c568606ba",
-    "kentucky_primary_verification_sha256": "e2dad8b8af75b3caab53610281357bbafe9e7495102c5f6971d45f45a591197d",
+    "kentucky_primary_verification_sha256": "6f220ef0a90da414920730f5be860951540195cb0901dbfe3962960ca98bc2be",
     "kentucky_sos_snapshot_sha256": "69f1a5a2c4bec7228f3ed52acc678e6d2ae5f47cf5fe5acc4930d77e92deea84",
     "kentucky_klc_source_pdf_sha256": "bfb6c2ce76ff1ef2c68a5a80603b7c8b624542ea932a7ae740a74e63d1b6b4c3"
   },
@@ -57,6 +57,7 @@
       "ky-verified-occupational-tax-hodgenville",
       "ky-verified-occupational-tax-hopkinsville",
       "ky-verified-occupational-tax-horse-cave",
+      "ky-verified-occupational-tax-hurstbourne-acres",
       "ky-verified-occupational-tax-independence",
       "ky-verified-occupational-tax-jeffersontown",
       "ky-verified-occupational-tax-jeffersonville",
@@ -82,11 +83,14 @@
       "ky-verified-occupational-tax-owensboro",
       "ky-verified-occupational-tax-owenton",
       "ky-verified-occupational-tax-paris",
+      "ky-verified-occupational-tax-paintsville",
       "ky-verified-occupational-tax-park-hills",
       "ky-verified-occupational-tax-pineville",
+      "ky-verified-occupational-tax-perryville",
       "ky-verified-occupational-tax-pioneer-village",
       "ky-verified-occupational-tax-prestonsburg",
       "ky-verified-occupational-tax-princeton",
+      "ky-verified-occupational-tax-raceland",
       "ky-verified-occupational-tax-richmond",
       "ky-verified-occupational-tax-russell",
       "ky-verified-occupational-tax-russell-springs",
@@ -95,10 +99,12 @@
       "ky-verified-occupational-tax-scottsville",
       "ky-verified-occupational-tax-shelbyville",
       "ky-verified-occupational-tax-shepherdsville",
+      "ky-verified-occupational-tax-shively",
       "ky-verified-occupational-tax-simpsonville",
       "ky-verified-occupational-tax-smiths-grove",
       "ky-verified-occupational-tax-somerset",
       "ky-verified-occupational-tax-southgate",
+      "ky-verified-occupational-tax-springfield",
       "ky-verified-occupational-tax-stanton",
       "ky-verified-occupational-tax-taylor-mill",
       "ky-verified-occupational-tax-taylorsville",
@@ -110,6 +116,7 @@
       "ky-verified-occupational-tax-west-liberty",
       "ky-verified-occupational-tax-west-point",
       "ky-verified-occupational-tax-wilder",
+      "ky-verified-occupational-tax-winchester",
       "ky-sos-klc-rate-match-adairville",
       "ky-sos-klc-rate-match-beattyville",
       "ky-sos-klc-rate-match-brownsville",
@@ -135,11 +142,11 @@
     "alabama_league_rows_superseded_by_direct_primary": 14,
     "alabama_league_association_only_rows_added": 11,
     "kentucky_klc_percentage_payroll_rows": 169,
-    "kentucky_new_direct_primary_rows": 83,
+    "kentucky_new_direct_primary_rows": 90,
     "kentucky_sos_klc_exact_rate_match_promotions": 15,
-    "kentucky_supported_current_secondary_rows_added": 2,
-    "kentucky_klc_rows_superseded_by_direct_primary": 108,
-    "kentucky_klc_association_only_rows_added": 61,
+    "kentucky_supported_current_secondary_rows_added": 1,
+    "kentucky_klc_rows_superseded_by_direct_primary": 114,
+    "kentucky_klc_association_only_rows_added": 55,
     "pennsylvania_source_psd_rows": 1978,
     "pennsylvania_unique_legal_municipalities": 1925
   },
@@ -172,10 +179,10 @@
     "al-league-occupational-tax-sulligent"
   ],
   "counts_by_evidence_status": {
-    "CONFIRMED_PRIMARY": 2743,
-    "SUPPORTED_AUTHORITATIVE_ASSOCIATION": 72,
-    "SUPPORTED_CURRENT_SECONDARY": 2
+    "CONFIRMED_PRIMARY": 2750,
+    "SUPPORTED_AUTHORITATIVE_ASSOCIATION": 66,
+    "SUPPORTED_CURRENT_SECONDARY": 1
   },
-  "jsonl_sha256": "10a992e63e076e9d498e0c7ac25f7fc6f44f858720a4390704b75366aeb65c1a",
-  "csv_sha256": "ed497cd4b6265e2f2275e42a3fabc0187cd07ad16bd605b25ed5bc5dcea48efe"
+  "jsonl_sha256": "2032f93b2b763f5f38b68e2817d68aa71baf25ed559f8cdf65e2bc48fa9b873e",
+  "csv_sha256": "ff64ead0033fe078fae0a786b3eb54d96ee4d1eda92577000ab6729d168eca35"
 }
