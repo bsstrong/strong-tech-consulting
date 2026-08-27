@@ -277,7 +277,7 @@ Azure reported `track_commit_timestamp=on` with a pending restart. Only `psql-he
 
 ### 07:58 — Exact-merge BETA application deployment succeeded
 
-[Run 33049834525](https://github.com/helixosio/helixos/actions/runs/33049834525) completed successfully from exact merge `f79cc608eba5d3a087139606905f57cbd817559d`. Its build, local migration application, seed, integration smoke suite, Bicep validation, Azure login, BETA runtime deployment, and cleanup steps all passed. The hosted integration log explicitly reported `Smoke test passed.`
+[Run 33049834525](https://github.com/helixosio/helixos/actions/runs/33049834525) completed successfully from exact merge `f79cc608eba5d3a087139606905f57cbd817559d`. Its build, local migration application, seed, integration smoke suite, Bicep validation, Azure login, BETA runtime deployment, and cleanup steps all passed. The hosted integration log explicitly reported `Smoke test passed.` The successful run also emitted two non-blocking runner-maintenance annotations: GitHub forced Node.js 20 actions to Node.js 24, and Buildx reported that one or more temporary builders could not be removed. Neither annotation failed a step or changed the BETA deployment result.
 
 ## Root-cause analysis
 
@@ -408,6 +408,8 @@ The recovery is terminally successful. Exact-merge TEST and BETA application dep
 9. **Track temporary diagnostic artifacts.** Any temporary PR, branch, run, or artifact must have an explicit terminal disposition: merge, close, delete, or retain with a reason.
 
 10. **Record exact elapsed time and runner usage after terminal recovery.** The final report should include the completed end time and available GitHub Actions duration evidence without estimating dollar cost.
+
+11. **Refresh hosted action runtimes and cleanup handling.** Update action versions before GitHub's Node.js compatibility forcing becomes an error, and make Buildx post-job cleanup warnings observable without confusing them with runtime deployment failures.
 
 ## Current status
 
