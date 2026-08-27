@@ -5,6 +5,8 @@ $sourcePath = Join-Path $root 'normalized-municipal-tax-inventory.jsonl'
 $alabamaLeaguePath = Join-Path $root 'agent-extracts\alabama-league-occupational-tax-survey.csv'
 $alabamaPrimaryVerificationPath = Join-Path $root 'agent-extracts\alabama-primary-verification.csv'
 $kentuckyKlcPath = Join-Path $root 'agent-extracts\kentucky-klc-fy2023-city-rates.csv'
+$kentuckyPrimaryVerificationPath = Join-Path $root 'agent-extracts\kentucky-primary-verification.csv'
+$kentuckySosSnapshotPath = Join-Path $root 'agent-extracts\kentucky-sos-occupational-tax-districts-2026-08-27.csv'
 $jsonlPath = Join-Path $root 'worksite-municipal-income-tax-registry.jsonl'
 $csvPath = Join-Path $root 'worksite-municipal-income-tax-registry.csv'
 $summaryPath = Join-Path $root 'worksite-municipal-income-tax-registry-validation.json'
@@ -167,6 +169,163 @@ $alabamaPrimaryAdditions = @(
 )
 $sourceRecords += $alabamaPrimaryAdditions
 
+# Promote Kentucky KLC candidates only where current municipal, delegated-
+# collector, or Secretary of State repository material establishes a payroll
+# rate. KRS 67.780 and 67.788 provide the uniform employer-withholding and
+# outside-district work rules for these compensation taxes.
+if (-not (Test-Path -LiteralPath $kentuckyPrimaryVerificationPath)) {
+    throw "Kentucky primary-verification extract not found: $kentuckyPrimaryVerificationPath"
+}
+$kentuckyPrimaryRows = @(Import-Csv -LiteralPath $kentuckyPrimaryVerificationPath)
+if ($kentuckyPrimaryRows.Count -ne 83) {
+    throw "Expected 83 directly verified Kentucky rows; found $($kentuckyPrimaryRows.Count)."
+}
+$kentuckyPrimaryAdditions = @(
+    foreach ($row in $kentuckyPrimaryRows) {
+        $slug = ($row.municipality.ToLowerInvariant() -replace '[^a-z0-9]+', '-').Trim('-')
+        [pscustomobject]@{
+            record_id = "ky-verified-occupational-tax-$slug"
+            state_code = 'KY'
+            jurisdiction_name = $row.municipality
+            jurisdiction_type = 'incorporated city'
+            official_jurisdiction_id = $null
+            category = 'MUNICIPAL_EARNED_INCOME_WORKSITE'
+            tax_name = 'Occupational License Tax / Payroll Tax'
+            legal_incidence = 'employee wages and other compensation'
+            geographic_scope = 'work or services performed within the city by resident and nonresident employees; outside-district work is subject to KRS 67.788 allocation/refund rules'
+            employer_withholding = $true
+            rate = $row.rate
+            effective_at = $row.effective_at
+            administrator = "City of $($row.municipality) or its delegated occupational-tax administrator"
+            evidence_status = 'CONFIRMED_PRIMARY'
+            coverage_status = 'PARTIAL'
+            product_disposition = 'BUFFER_REVIEW_REQUIRED after authoritative jurisdiction-boundary resolution; otherwise UNDETERMINED'
+            primary_source_urls = @(
+                @($row.source_urls -split '\|' | Where-Object { $_ }) +
+                'https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=23793' +
+                'https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=23796'
+            )
+            source_date = 'Current sources retrieved 2026-08-27'
+            limitations = @($row.limitations, 'Kentucky still lacks a single complete error-free current municipal adopter/rate register.')
+            related_components = $null
+        }
+    }
+)
+$sourceRecords += $kentuckyPrimaryAdditions
+
+# These additional cities have an exact match between the KLC percentage
+# payroll rate and the current Secretary of State district display, with a
+# state-hosted ordinance/form record. The explicit whitelist excludes rows
+# whose SOS display is a net-profit schedule, blank, future-dated, or conflicts
+# with the KLC payroll rate.
+if (-not (Test-Path -LiteralPath $kentuckySosSnapshotPath)) {
+    throw "Kentucky SOS snapshot not found: $kentuckySosSnapshotPath"
+}
+$kentuckySosRows = @(Import-Csv -LiteralPath $kentuckySosSnapshotPath)
+$kentuckySosRateMatchNames = @(
+    'Adairville', 'Beattyville', 'Brownsville', 'Calvert City', 'Camargo',
+    'Catlettsburg', 'Clarkson', 'Clinton', 'Coal Run Village', 'Corbin',
+    'Cynthiana', 'Gamaliel', 'Georgetown', 'Glasgow', 'Millersburg'
+)
+$kentuckyKlcAllRows = @(Import-Csv -LiteralPath $kentuckyKlcPath)
+$kentuckySosRateMatchAdditions = @(
+    foreach ($name in $kentuckySosRateMatchNames) {
+        $klc = @($kentuckyKlcAllRows | Where-Object city_name -eq $name)
+        $sos = @($kentuckySosRows | Where-Object selector_name -eq $name)
+        if ($klc.Count -ne 1 -or $sos.Count -ne 1) {
+            throw "Expected one KLC row and one SOS row for $name; found KLC=$($klc.Count), SOS=$($sos.Count)."
+        }
+        if (-not $sos[0].tax_rate_text -or (-not $sos[0].ordinance_urls -and -not $sos[0].tax_form_urls)) {
+            throw "Incomplete SOS current-rate evidence for $name."
+        }
+        $slug = ($name.ToLowerInvariant() -replace '[^a-z0-9]+', '-').Trim('-')
+        [pscustomobject]@{
+            record_id = "ky-sos-klc-rate-match-$slug"
+            state_code = 'KY'
+            jurisdiction_name = $name
+            jurisdiction_type = 'incorporated city'
+            official_jurisdiction_id = [ordered]@{ kentucky_sos_tax_district_id = $sos[0].district_id }
+            category = 'MUNICIPAL_EARNED_INCOME_WORKSITE'
+            tax_name = 'Occupational License Tax / Payroll Tax'
+            legal_incidence = 'employee wages and other compensation'
+            geographic_scope = 'work or services performed within the city by resident and nonresident employees; outside-district work is subject to KRS 67.788 allocation/refund rules'
+            employer_withholding = $true
+            rate = $klc[0].fy2023_payroll_rate
+            effective_at = 'Current Kentucky SOS district repository and exact KLC payroll-rate match retrieved 2026-08-27'
+            administrator = "City of $name or its delegated occupational-tax administrator"
+            evidence_status = 'CONFIRMED_PRIMARY'
+            coverage_status = 'PARTIAL'
+            product_disposition = 'BUFFER_REVIEW_REQUIRED after authoritative jurisdiction-boundary resolution; otherwise UNDETERMINED'
+            primary_source_urls = @(
+                'https://web.sos.ky.gov/occupationaltax/'
+                @($sos[0].ordinance_urls -split ' \| ' | Where-Object { $_ })
+                @($sos[0].tax_form_urls -split ' \| ' | Where-Object { $_ })
+                'https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=23793'
+                'https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=23796'
+            )
+            source_date = 'Current SOS repository retrieved 2026-08-27; KLC FY2023 payroll rate matched exactly'
+            limitations = @('The Secretary of State warns its repository may contain omissions or inaccuracies; this row is promoted only because the displayed rate exactly matches the KLC payroll rate and the state repository retains a local ordinance or form.')
+            related_components = [ordered]@{ source_tier = 'current state repository plus exact authoritative-association payroll-rate match' }
+        }
+    }
+)
+$sourceRecords += $kentuckySosRateMatchAdditions
+
+$kentuckySupportedCurrentAdditions = @(
+    [pscustomobject]@{
+        record_id = 'ky-supported-current-falmouth'
+        state_code = 'KY'
+        jurisdiction_name = 'Falmouth'
+        jurisdiction_type = 'incorporated city'
+        official_jurisdiction_id = $null
+        category = 'MUNICIPAL_EARNED_INCOME_WORKSITE'
+        tax_name = 'Occupational License Tax / Payroll Tax'
+        legal_incidence = 'reported employee compensation tax; enacted municipal payroll ordinance has not been retained'
+        geographic_scope = 'reported work or services within Falmouth; exact enacted local text remains required'
+        employer_withholding = $true
+        rate = '1.5% reported'
+        effective_at = 'Reported effective 2026-07-01'
+        administrator = 'City of Falmouth'
+        evidence_status = 'SUPPORTED_CURRENT_SECONDARY'
+        coverage_status = 'PARTIAL'
+        product_disposition = 'UNDETERMINED until the enacted payroll ordinance or official employer-withholding form is retained'
+        primary_source_urls = @(
+            'https://cityoffalmouth.com/occupational-license/',
+            'https://news.bloombergtax.com/financial-accounting/falmouth-kentucky-creates-payroll-tax-starting-july-1'
+        )
+        source_date = 'Current city page and dated reporting retrieved 2026-08-27'
+        limitations = @('The current city page proves a new occupational ordinance but describes its business-license schedule, not the reported 1.5% employee payroll tax. The enacted payroll ordinance or official withholding form is still required.')
+        related_components = [ordered]@{ source_tier = 'current local existence plus secondary payroll terms' }
+    },
+    [pscustomobject]@{
+        record_id = 'ky-supported-current-hurstbourne-acres'
+        state_code = 'KY'
+        jurisdiction_name = 'Hurstbourne Acres'
+        jurisdiction_type = 'incorporated city'
+        official_jurisdiction_id = $null
+        category = 'MUNICIPAL_EARNED_INCOME_WORKSITE'
+        tax_name = 'Occupational License Tax / Payroll Tax'
+        legal_incidence = 'reported employee compensation tax; enacted municipal payroll ordinance has not been retained'
+        geographic_scope = 'reported work or services within Hurstbourne Acres; exact enacted local text remains required'
+        employer_withholding = $true
+        rate = '1% reported'
+        effective_at = 'Reported effective 2024-07-01'
+        administrator = 'City of Hurstbourne Acres'
+        evidence_status = 'SUPPORTED_CURRENT_SECONDARY'
+        coverage_status = 'PARTIAL'
+        product_disposition = 'UNDETERMINED until the enacted payroll ordinance or official employer-withholding form is retained'
+        primary_source_urls = @(
+            'https://www.hurstbourneacresky.gov/treasurer',
+            'https://www.wlky.com/article/business-licensing-occupational-tax-hurstbourne-acres-louisville/61457372',
+            'https://help.insperity.com/hcm/wp-content/uploads/sites/2/2024/09/Vertex-August-2024.pdf'
+        )
+        source_date = 'Current city site and dated reporting retrieved 2026-08-27'
+        limitations = @('The current city document widget does not expose the enacted payroll ordinance. The ordinance or official employer-withholding form is required before direct-primary promotion.')
+        related_components = [ordered]@{ source_tier = 'current local site plus secondary payroll terms' }
+    }
+)
+$sourceRecords += $kentuckySupportedCurrentAdditions
+
 # Strengthen the directly verified partial-state rows with the current official
 # sources used in the narrowed-scope revalidation.
 $overrides = @{
@@ -224,6 +383,16 @@ foreach ($record in $sourceRecords) {
             'https://www.eugene-or.gov/DocumentCenter/View/64582/Business-location-overview'
         )
         $record.source_date = '2026 employee instructions; retrieved 2026-08-25'
+    }
+    if ($record.record_id -eq 'ky-covington-occupational-license-fee') {
+        $record.rate = '2.45%'
+        $record.effective_at = '2026 current Kenton County and Cities rate schedule'
+        $record.primary_source_urls = @(
+            'https://www.kentoncountyky.gov/232/Rates',
+            'https://www.kentoncountyky.gov/DocumentCenter/View/4262',
+            'https://www.covingtonky.gov/government/departments/finance'
+        )
+        $record.source_date = '2026 July-December official collector schedule; retrieved 2026-08-27'
     }
     if ($record.record_id -eq 'ny-yonkers-income-taxes') {
         $record.tax_name = 'Yonkers Nonresident Earnings Tax'
@@ -531,6 +700,8 @@ $summary = [ordered]@{
         alabama_league_extract_sha256 = (Get-FileHash -LiteralPath $alabamaLeaguePath -Algorithm SHA256).Hash.ToLowerInvariant()
         alabama_primary_verification_sha256 = (Get-FileHash -LiteralPath $alabamaPrimaryVerificationPath -Algorithm SHA256).Hash.ToLowerInvariant()
         kentucky_klc_extract_sha256 = (Get-FileHash -LiteralPath $kentuckyKlcPath -Algorithm SHA256).Hash.ToLowerInvariant()
+        kentucky_primary_verification_sha256 = (Get-FileHash -LiteralPath $kentuckyPrimaryVerificationPath -Algorithm SHA256).Hash.ToLowerInvariant()
+        kentucky_sos_snapshot_sha256 = (Get-FileHash -LiteralPath $kentuckySosSnapshotPath -Algorithm SHA256).Hash.ToLowerInvariant()
         kentucky_klc_source_pdf_sha256 = (Get-FileHash -LiteralPath (Join-Path $root 'agent-extracts\sources\kentucky-city-occupational-license-rates-fy2023.pdf') -Algorithm SHA256).Hash.ToLowerInvariant()
     }
     reconciliation = [ordered]@{
@@ -538,6 +709,8 @@ $summary = [ordered]@{
         excluded_records = @('al-bessemer-occupational-tax', 'oh-municipal-income-76582')
         added_direct_primary_records = @(
             $alabamaPrimaryAdditions.record_id
+            $kentuckyPrimaryAdditions.record_id
+            $kentuckySosRateMatchAdditions.record_id
             'ky-lebanon-occupational-license-tax',
             'ky-henderson-occupational-license-tax',
             'ky-west-buechel-occupational-license-tax',
@@ -548,6 +721,9 @@ $summary = [ordered]@{
         alabama_league_rows_superseded_by_direct_primary = $alabamaLeagueRows.Count - $alabamaLeagueAdditions.Count
         alabama_league_association_only_rows_added = $alabamaLeagueAdditions.Count
         kentucky_klc_percentage_payroll_rows = $kentuckyKlcRows.Count
+        kentucky_new_direct_primary_rows = $kentuckyPrimaryAdditions.Count
+        kentucky_sos_klc_exact_rate_match_promotions = $kentuckySosRateMatchAdditions.Count
+        kentucky_supported_current_secondary_rows_added = $kentuckySupportedCurrentAdditions.Count
         kentucky_klc_rows_superseded_by_direct_primary = $kentuckyKlcRows.Count - $kentuckyKlcAdditions.Count
         kentucky_klc_association_only_rows_added = $kentuckyKlcAdditions.Count
         pennsylvania_source_psd_rows = $paSourceRecords.Count

@@ -1,0 +1,11 @@
+{
+  "source_url": "https://web.sos.ky.gov/occupationaltax/",
+  "retrieved_at": "2026-08-27T15:37:19Z",
+  "source_page_sha256": "966f711140d88c3d986cce44a8fd3840275338d8be868bc06027025f6ac49965",
+  "district_count": 227,
+  "city_labeled_district_count": 224,
+  "payroll_rate_text_count": 176,
+  "ordinance_document_count": 214,
+  "tax_form_document_count": 222,
+  "output_csv_sha256": "69f1a5a2c4bec7228f3ed52acc678e6d2ae5f47cf5fe5acc4930d77e92deea84"
+}

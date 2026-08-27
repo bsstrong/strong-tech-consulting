@@ -5,22 +5,22 @@ Current as of August 27, 2026 after the nine-state closure run. These items are 
 ## Association-supported rows already present in the best-available registry
 
 - **Alabama:** 11 rows remain supported by the Alabama League of Municipalities survey without complete current local worksite/incidence evidence. Attalla, Hackleburg, Mosses, Shorter, Southside, and Sulligent have additional current collector or municipal-form evidence for rate and withholding, but not a closed municipal worksite/nonresident rule. Bear Creek, Brilliant, Goodwater, Lynn, and Red Bay remain association-only. Nine former queue rows were promoted to direct primary on August 27, 2026; see `agent-extracts/alabama-local-verification-2026-08-27.md`.
-- **Kentucky:** 159 rows are supported by the Kentucky League of Cities FY2023 city payroll-rate survey and statewide Kentucky withholding/work-allocation law but not by current municipal ordinances. The KLC table warns that rates may change and may use the most readily available value where a city did not report FY2023 data.
+- **Kentucky:** 61 rows remain supported by the Kentucky League of Cities FY2023 city payroll-rate survey and statewide Kentucky withholding/work-allocation law without a complete current local rate/incidence chain. Ninety-eight former KLC-only rows were promoted on August 27. Bardwell, Paintsville, Perryville, Raceland, Shively, Springfield, and Winchester have specific rate conflicts requiring controlling local instruments. See `agent-extracts/kentucky-local-verification-2026-08-27.md`.
 
 Every association-supported row is marked `SUPPORTED_AUTHORITATIVE_ASSOCIATION` and has product disposition `UNDETERMINED` until current local verification and boundary resolution are complete.
 
-## Named current or near-current candidates outside the registry
+## Current secondary-supported rows already present in the registry
 
-| Jurisdiction | Evidence found | Why it is not a current registry row | Required closure |
+| Jurisdiction | Evidence found | Why it is not direct-primary | Required closure |
 |---|---|---|---|
-| Hurstbourne Acres, Kentucky | Multiple current payroll-provider publications report a 1% city occupational tax effective July 1, 2024; an official city meeting record documents the city's consideration of occupational-tax revenue. | No current municipal ordinance, official withholding form, or authoritative state/association adopter record was located that directly proves employee incidence, nonresident worksite scope, withholding, and current rate. | Obtain the enacted city ordinance and a current municipal withholding form or official tax-administration page. |
-| Falmouth, Kentucky | The official city page says a new occupational-tax ordinance was adopted May 7, 2026 and labels the service “Occupational and Payroll Tax.” | The accessible official page describes a business gross-receipts license schedule but does not directly state a current employee wage percentage, commuter/worksite incidence, or employer withholding. | Obtain the enacted 2026 ordinance and current payroll form/instructions. |
+| Hurstbourne Acres, Kentucky | Current payroll publications report a 1% city occupational tax effective July 1, 2024; the current city treasurer page exposes a document widget but not the enacted payroll ordinance. | The enacted ordinance or official employer-withholding form was not retained. The row is `SUPPORTED_CURRENT_SECONDARY` and remains `UNDETERMINED`. | Obtain the enacted city ordinance and a current municipal withholding form or official tax-administration page. |
+| Falmouth, Kentucky | The official city page says a new occupational ordinance was adopted May 7, 2026; dated reporting identifies a 1.5% employee payroll tax effective July 1, 2026. | The accessible official page describes a business gross-receipts license schedule, not the employee payroll terms. The row is `SUPPORTED_CURRENT_SECONDARY` and remains `UNDETERMINED`. | Obtain the enacted 2026 payroll ordinance and current payroll form/instructions. |
 
 ## Future-dated changes excluded from the current registry
 
 | Jurisdiction | Change | Earliest refresh |
 |---|---|---|
-| Salem, Kentucky | Official Ordinance 2026-05 imposes 1% on wages/compensation for work in Salem by resident and nonresident employees and requires employer withholding. The ordinance is effective **October 1, 2026**, so it is not current on this report's August 25 date. | October 1, 2026; verify no amendment, repeal, or delayed administration before adding. |
+| Salem, Kentucky | Official Ordinance 2026-05 imposes 1% on wages/compensation for work in Salem by resident and nonresident employees and requires employer withholding. Section 14 makes the ordinance effective **October 1, 2026**, so it is not current on this report's August 27 date. | October 1, 2026; verify no amendment, repeal, or delayed administration before adding. |
 | Indiana | Current no-authority treatment is time-limited; municipal local-income-tax authority begins in FY2028. | Before January 1, 2028, using the then-current adopter/rate sources. |
 
 ## Closed during the August 25 audit

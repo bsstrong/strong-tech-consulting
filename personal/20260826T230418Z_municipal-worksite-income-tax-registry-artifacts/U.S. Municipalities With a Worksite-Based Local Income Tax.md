@@ -14,30 +14,32 @@ A municipality is not assumed to be tax-free because it is missing. An unmatched
 
 - `CONFIRMED_PRIMARY` means current municipal or state primary material establishes a qualifying employee-wage tax, a nonresident/worksite rule, and employer-withholding relevance. These are confirmed-positive screening rows, subject to authoritative boundary resolution.
 - `SUPPORTED_AUTHORITATIVE_ASSOCIATION` means a statewide municipal association identifies the municipality and a percentage occupational/payroll rate, but the current local ordinance and rate have not been directly verified. These rows make the discovery list more complete, but their product disposition is `UNDETERMINED` until local verification.
+- `SUPPORTED_CURRENT_SECONDARY` means current evidence identifies a likely new adopter and rate, but the enacted municipal payroll ordinance or official withholding form has not been retained. These rows remain `UNDETERMINED` and are not product-approved.
 
 ## Result
 
-The best-available registry contains **2,815 municipality rows in nine states**. Of those:
+The best-available registry contains **2,817 municipality rows in nine states**. Of those:
 
-- **2,645** are directly confirmed from current primary sources.
-- **170** are association-supported discovery rows: 11 in Alabama and 159 in Kentucky.
+- **2,743** are directly confirmed from current primary sources.
+- **72** are association-supported discovery rows: 11 in Alabama and 61 in Kentucky.
+- **2** are current secondary-supported Kentucky additions pending enacted local payroll instruments.
 - **2,619** directly confirmed rows come from states with a closed statewide source or statutory universe.
-- **26** directly confirmed rows are in partial-coverage states: Alabama 14, Kentucky 11, and Oregon 1.
+- **124** directly confirmed rows are in partial-coverage states: Alabama 14, Kentucky 109, and Oregon 1.
 
-The 2,815 number is therefore a best-available screening inventory, not a claim that all 2,815 have individually verified current ordinances and rates.
+The 2,817 number is therefore a best-available screening inventory, not a claim that all 2,817 have individually verified current ordinances and rates.
 
 | State | Best-available rows | Direct primary | Association-supported | Statewide coverage |
 |---|---:|---:|---:|---|
 | Alabama | 25 | 14 | 11 | `PARTIAL` |
 | Delaware | 1 | 1 | 0 | `COMPLETE` |
-| Kentucky | 170 | 11 | 159 | `PARTIAL` |
+| Kentucky | 172 | 109 | 61 association + 2 secondary | `PARTIAL` |
 | Michigan | 24 | 24 | 0 | `COMPLETE` |
 | Missouri | 2 | 2 | 0 | `COMPLETE` |
 | New York | 1 | 1 | 0 | `COMPLETE` |
 | Ohio | 666 | 666 | 0 | `COMPLETE` |
 | Oregon | 1 | 1 | 0 | `PARTIAL` |
 | Pennsylvania | 1,925 | 1,925 | 0 | `COMPLETE` |
-| **Total** | **2,815** | **2,645** | **170** |  |
+| **Total** | **2,817** | **2,743** | **72 association + 2 secondary** |  |
 
 The complete row-level list is provided as [CSV](worksite-municipal-income-tax-registry.csv) and [JSONL](worksite-municipal-income-tax-registry.jsonl). Each row carries its evidence status, rate, scope, withholding field, source URLs, source date, limitation, and product disposition. [Validation results](worksite-municipal-income-tax-registry-validation.json) contain the reconciliation, uniqueness checks, evidence-tier counts, and hashes.
 
@@ -86,29 +88,27 @@ The verification corrected two stale League rates: Opelika is **1%** effective A
 
 [Delaware law](https://delcode.delaware.gov/title22/c009/index.html) limits municipal earned-income-tax authority to municipalities above the statutory population threshold. Wilmington is the only current municipality in that universe and reaches compensation for services performed in the city by nonresidents as well as residents.
 
-### Kentucky — 170 best-available rows; coverage partial
+### Kentucky — 172 best-available current rows; coverage partial
 
-Direct current primary confirmation exists for:
+Direct current primary confirmation now exists for **109** municipalities. The August 27 pass promoted 98 former KLC-only rows; the complete promoted set is:
 
-- Bowling Green
-- Covington
-- Henderson
-- Lebanon
-- Lexington-Fayette Urban County Government
-- Louisville/Jefferson County Metro Government
-- Lyndon
-- Nicholasville
-- Paducah
-- Walton
-- West Buechel
+- Adairville, Alexandria, Ashland, Auburn, Augusta, Bardstown, Beattyville, Bellevue, Berea, Bromley, Brownsville, Calvert City, Camargo, Campbellsville, Catlettsburg, Clarkson, Clinton, Coal Run Village, Cold Spring, Corbin, Crescent Springs, Crestview Hills, Cynthiana, Danville, Dayton, Edgewood, Elizabethtown, Elsmere, Erlanger, Florence, Fort Mitchell, Fort Thomas, Fort Wright, Frankfort, Gamaliel, Georgetown, Glasgow, Grayson, Hartford, Hazard, Hillview, Hodgenville, Hopkinsville, Horse Cave, Independence, Jeffersontown, Jeffersonville, LaGrange, Lakeside Park, Lebanon Junction, Leitchfield, Lewisburg, Ludlow, Madisonville, Mayfield, Maysville, McKee, Middlesboro, Midway, Millersburg, Morehead, Morgantown, Mount Olivet, Mount Vernon, Murray, Newport, Oak Grove, Owensboro, Owenton, Paris, Park Hills, Pineville, Pioneer Village, Prestonsburg, Princeton, Richmond, Russell, Russell Springs, Ryland Heights, Saint Matthews, Scottsville, Shelbyville, Shepherdsville, Simpsonville, Smiths Grove, Somerset, Southgate, Stanton, Taylor Mill, Taylorsville, Vanceburg, Versailles, Villa Hills, Vine Grove, Warsaw, West Liberty, West Point, and Wilder.
+
+The previously confirmed 11 are Bowling Green, Covington, Henderson, Lebanon, Lexington-Fayette Urban County Government, Louisville/Jefferson County Metro Government, Lyndon, Nicholasville, Paducah, Walton, and West Buechel.
 
 The [Kentucky League of Cities](https://www.klc.org/News/12942/the-occupational-business-license-fee) stated on July 11, 2025 that 170 Kentucky cities levy a tax on gross earnings and linked its statewide city-rate survey. The linked FY2023 table contains **169 percentage payroll rows** and one flat Caneyville charge. Caneyville is excluded because a flat weekly fee does not meet this report's definition.
 
-The registry retains the 169 percentage rows, superseding ten with direct municipal evidence, and adds Walton from current 2024/2025 city law. That produces 170 best-available Kentucky rows: 11 direct-primary and 159 association-supported. The numeric match to KLC's “170 cities” statement is not proof that the FY2023 composition is unchanged. KLC warns that rates may change and that some entries use the most readily available value.
+The registry retains the 169 percentage rows, now superseding 108 with direct primary evidence, and adds Walton from current 2024/2025 city law. It also adds two current candidates missing from the FY2023 table: Falmouth at a reported 1.5% effective July 1, 2026, and Hurstbourne Acres at a reported 1% effective July 1, 2024. Both are `SUPPORTED_CURRENT_SECONDARY`, not direct primary, until their enacted payroll ordinances or official withholding forms are retained. That produces 172 best-available current Kentucky rows: 109 direct-primary, 61 association-supported, and 2 current-secondary-supported.
+
+The 61 remaining KLC rows have not been removed. Some have current official existence evidence but unresolved payroll-rate fields; others have conflicts between the FY2023 survey and current official displays. Bardwell, Paintsville, Perryville, Raceland, Shively, Springfield, and Winchester have specific possible rate changes that require a controlling local instrument before correction. Absence from the Secretary of State repository is not repeal evidence because demonstrably active municipalities are omitted and the repository itself warns of omissions or inaccuracies.
+
+Current rate corrections made in this pass include Ashland 2.375%, Augusta 1.3%, Campbellsville 1.5%, Covington 2.45%, Dayton 2%, Elsmere 1.75% effective July 1, 2026, Hodgenville 1%, and Jeffersonville 2%.
 
 Kentucky's statewide legal framework supports the functional classification: [KRS 67.780](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=23793) requires employers to withhold a compensation tax imposed by a tax district, and [KRS 67.788](https://apps.legislature.ky.gov/law/statutes/statute.aspx?id=23796) provides refunds for compensation attributable to work outside the district. Those statutes do not prove that every surveyed municipality currently imposes the reported rate.
 
-The complete 170-name Kentucky list is in the registry. The extracted association table is available as [CSV](agent-extracts/kentucky-klc-fy2023-city-rates.csv), and the source survey is preserved as [PDF](agent-extracts/sources/kentucky-city-occupational-license-rates-fy2023.pdf).
+Salem is excluded from the current registry. The enacted Ordinance 2026-05 imposes a 1% employee compensation tax with employer withholding, but section 14 makes it effective **October 1, 2026**. It belongs in the future-dated queue until that date is reached and current effect is revalidated.
+
+The complete 172-name current Kentucky list is in the registry. The [August 27 verification report](agent-extracts/kentucky-local-verification-2026-08-27.md) gives the full reconciliation. The extracted KLC table is available as [CSV](agent-extracts/kentucky-klc-fy2023-city-rates.csv), the source survey is preserved as [PDF](agent-extracts/sources/kentucky-city-occupational-license-rates-fy2023.pdf), and the current Secretary of State repository snapshot and validation are preserved in `agent-extracts/`.
 
 ### Michigan — 24; coverage complete
 

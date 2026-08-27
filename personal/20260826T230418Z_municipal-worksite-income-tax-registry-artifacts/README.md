@@ -2,9 +2,9 @@
 
 This directory is the active replacement snapshot for the August 26, 2026 nine-state closure run. It began from the fully validated post-West Virginia snapshot in `../20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/` and is updated, validated, committed, and pushed after each state iteration.
 
-The nine-state run is complete. A subsequent Alabama candidate-verification pass on August 27 promoted nine League-supported rows to direct primary, corrected Tuskegee to 3%, and reduced Alabama's association-only queue from 20 to 11. The [final requirement-by-requirement audit](../20260827T140517Z_nine-state-municipal-wage-tax-completion-audit.md) remains the audit for the earlier nine-state run.
+The nine-state run is complete. Subsequent Alabama and Kentucky verification passes on August 27 promoted 107 association-supported rows to direct primary, corrected current rates, added Falmouth and Hurstbourne Acres as secondary-supported current candidates, and retained Salem as future-dated effective October 1, 2026. The [final requirement-by-requirement audit](../20260827T140517Z_nine-state-municipal-wage-tax-completion-audit.md) remains the audit for the earlier nine-state run.
 
-The registry remains **2,815 municipality rows across nine states**: 2,645 direct-primary and 170 association-supported. Idaho, Mississippi, Montana, Utah, Wyoming, Colorado, and Texas add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero; California adds no rows and moves to `PARTIAL`. Nationwide coverage is 17 `COMPLETE`, 23 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 0 `UNDETERMINED`.
+The registry now contains **2,817 municipality rows across nine states**: 2,743 direct-primary, 72 association-supported, and 2 current-secondary-supported. Idaho, Mississippi, Montana, Utah, Wyoming, Colorado, and Texas add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero; California adds no rows and moves to `PARTIAL`. Nationwide coverage is 17 `COMPLETE`, 23 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 0 `UNDETERMINED`.
 
 ## Contents
 
@@ -20,6 +20,7 @@ The registry remains **2,815 municipality rows across nine states**: 2,645 direc
 - `inventory-validation-summary.json` - validation summary for the normalized inventory.
 - `agent-extracts/` - the complete state extracts, Phase 2 audit reports, official-source snapshots, reconciliation datasets, source PDFs/workbooks, and extraction validation used by the reports.
 - `agent-extracts/alabama-local-verification-2026-08-27.md` and `agent-extracts/alabama-primary-verification.csv` - the 20-row Alabama verification disposition and the nine direct-primary promotions.
+- `agent-extracts/kentucky-local-verification-2026-08-27.md`, `kentucky-primary-verification.csv`, and the Kentucky SOS snapshot/validation - the 159-row Kentucky verification, 98 promotions, two current secondary additions, and future-dated Salem evidence.
 - `source-audit-kentucky/` - the preserved Kentucky workbook audit input and inspection script.
 - `build-normalized-inventory.ps1`, `build-worksite-municipal-registry.ps1`, and `extract-kentucky-klc-rates.py` - the build/extraction scripts used to produce the normalized and final registries.
 - `snapshot-file-manifest.csv` - byte counts and SHA-256 hashes for every other file in this replacement snapshot.

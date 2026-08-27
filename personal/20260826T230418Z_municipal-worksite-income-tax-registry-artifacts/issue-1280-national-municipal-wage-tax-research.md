@@ -142,7 +142,7 @@ Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After
 | [Indiana](https://www.in.gov/dor/files/tax-chapter.pdf) | `NO_AUTHORITY_CONFIRMED` through FY2027 | Current local income tax is county-based; municipal authority begins in FY2028 and requires refresh before then. |
 | [Iowa](https://www.legis.iowa.gov/docs/code/364.2.pdf) | `UNDETERMINED` | No municipal adopter or explicit prohibition was established; school-district surtax is separate. |
 | [Kansas](https://ksrevisor.gov/statutes/chapters/ch12/012_001_0040.html) | `UNDETERMINED` | Income-tax prohibition is explicit, but official annotations leave compensation-based occupational-tax scope unresolved. |
-| [Kentucky](https://apps.legislature.ky.gov/CommitteeDocuments/26/35644/Sep%2023%202025%20Centralized%20Occupational%20License%20Tax%20Info.pdf) | `PARTIAL` | Local occupational license taxes on wages are confirmed; no complete current municipal adopter registry was found. |
+| [Kentucky](https://apps.legislature.ky.gov/CommitteeDocuments/26/35644/Sep%2023%202025%20Centralized%20Occupational%20License%20Tax%20Info.pdf) | `PARTIAL` | 109 municipalities are directly confirmed, 61 remain association-supported, and two current additions remain secondary-supported; no complete error-free current municipal adopter/rate registry was found. |
 | [Louisiana](https://www.legis.la.gov/legis/Law.aspx?d=763297) | `UNDETERMINED` | Nonresident local income taxation is barred, but resident-only/special-act authority and adopters were not closed. |
 | [Maine](https://www.mainelegislature.org/legis/statutes/30-a/title30-A.pdf) | `UNDETERMINED` | No explicit current local preemption or complete local-tax inventory was established. |
 | [Maryland](https://services.marylandcomptroller.gov/taxes/en/maryland-income-tax-rates-and-brackets?id=kb_article_view&sysparm_article=KB0010014) | `COMPLETE` | State-administered closed county-equivalent universe; Baltimore City is the only municipal-equivalent record. |
@@ -246,6 +246,10 @@ The remaining material gaps are:
 ## Alabama candidate-verification addendum — August 27, 2026
 
 The 20 Alabama League association-supported candidates were each researched against current local material. Nine were promoted to direct primary: Bessemer, Fairfield, Guin, Haleyville, Hamilton, Leeds, Midfield, Rainbow City, and Tuskegee. Eleven remain association-supported because the accessible evidence does not close at least the municipal worksite/nonresident incidence rule. Tuskegee's current city sources establish 3%, correcting the League survey's 2% entry. Final Alabama counts are 25 rows: 14 direct primary and 11 association-supported. See [`agent-extracts/alabama-local-verification-2026-08-27.md`](agent-extracts/alabama-local-verification-2026-08-27.md).
+
+## Kentucky candidate-verification addendum — August 27, 2026
+
+All 159 KLC association-supported rows were assessed. Ninety-eight were promoted to direct primary, 61 remain association-supported, and Falmouth and Hurstbourne Acres were added as current secondary-supported rows pending enacted local payroll instruments. Salem's enacted 1% tax is excluded because its ordinance is effective October 1, 2026. Final current Kentucky counts are 172 rows: 109 direct primary, 61 association-supported, and 2 secondary-supported. See [`agent-extracts/kentucky-local-verification-2026-08-27.md`](agent-extracts/kentucky-local-verification-2026-08-27.md).
 
 Do not implement the research as one unversioned approved city-name list. Use a versioned jurisdiction/evidence registry plus a deterministic resolver.
 
