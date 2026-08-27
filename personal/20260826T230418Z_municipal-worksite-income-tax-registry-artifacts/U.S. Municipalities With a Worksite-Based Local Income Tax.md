@@ -187,7 +187,7 @@ The full Pennsylvania list is in the registry. It excludes 558 resident-only PSD
 | New York City | City personal-income-tax liability is residence-based; merely working in NYC does not impose it on a nonresident. |
 | Baltimore City | Maryland local income tax is residence-based. Baltimore's independent-city status does not change the incidence. |
 | Portland Arts Tax | Flat resident tax, not a percentage tax on wages earned by working in Portland. |
-| Colorado occupational privilege taxes | Current examples are flat monthly employee charges rather than wage percentages. |
+| Colorado occupational privilege taxes | Current examples are flat monthly employee charges rather than wage percentages; Colorado law prohibits the percentage or graduated local income-tax class. |
 | Newark and Jersey City payroll taxes | Employer-incidence taxes. Jersey City expressly prohibits withholding the tax from employees. |
 | St. Louis payroll-expense tax | Employer-only; the separate employee earnings tax remains included. |
 | Ohio JEDD/JEDZ and school income taxes | Special-district or school taxes, not municipal taxes. |
@@ -229,18 +229,24 @@ South Dakota retains broad home-rule and municipal non-ad-valorem language, so i
 
 The closure audit downloaded all 63 official consolidated title files—Constitution title `0N` and codified-law titles 1 through 62—and searched the complete 176,375,083-byte corpus. No qualifying authorization or adopter was found. The sole `payroll tax` occurrence concerns a PEO sales-tax deduction, and the two `local income tax` occurrences are generic partnership recordkeeping provisions. No South Dakota row is added. The [full South Dakota report](../20260826T230418Z_south-dakota-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_south-dakota-municipal-wage-tax-closure-artifacts/README.md) preserve the DOR sources, complete-code archive, phrase dispositions, hashes, and refresh triggers.
 
+### Colorado — zero current rows; no qualifying authority
+
+Current [Colorado Constitution article X](https://olls.info/crs/crs2026-title-00.pdf), section 20(8)(a), expressly prohibits local district income taxes, and section 20(2)(b) defines district to include local government. The Office of Legislative Legal Services' current [drafting manual](https://content.leg.colorado.gov/sites/default/files/colorado-legislative-drafting-manual-accessible.pdf) confirms that the prohibition covers any local-government income tax.
+
+The rule also predates TABOR. *[City & County of Denver v. Sweet](https://law.justia.com/cases/colorado/supreme-court/1958/18802.html)* held that article X, section 17 gives the General Assembly exclusive, nondelegable income-tax power and denies even home-rule cities authority to impose an income tax. *[Duffy](https://law.justia.com/cases/colorado/supreme-court/1969/23940.html)* reaffirmed *Sweet* and invalidated Denver's percentage earnings tax. *[Johnson](https://law.justia.com/cases/colorado/supreme-court/1974/c-491.html)* distinguishes a permissible flat occupational fee because it is not measured by income; *[Rountree](https://law.justia.com/cases/colorado/supreme-court/1979/27990.html)* left that Colorado-law distinction intact. Current Glendale, Greenwood Village, Sheridan, and Denver employee occupational taxes are fixed monthly amounts and remain excluded. No Colorado row is added. The [full Colorado report](../20260826T230418Z_colorado-municipal-wage-tax-closure.md) and [evidence set](../20260826T230418Z_colorado-municipal-wage-tax-closure-artifacts/README.md) preserve the current constitution, official legislative interpretation, cases, municipal examples, source hashes, and refresh triggers.
+
 ## Nationwide coverage
 
 All 50 states and the District of Columbia now have an explicit coverage classification:
 
 - `COMPLETE` — **17**: Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, South Dakota, Vermont, West Virginia, Wisconsin.
-- `NO_AUTHORITY_CONFIRMED` — **21**: Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through FY2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under this worksite definition, Utah, Virginia, Washington, Wyoming.
+- `NO_AUTHORITY_CONFIRMED` — **22**: Arizona, Arkansas, Colorado, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through FY2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under this worksite definition, Utah, Virginia, Washington, Wyoming.
 - `PARTIAL` — **10**: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, Tennessee.
-- `UNDETERMINED` — **3**: California, Colorado, Texas.
+- `UNDETERMINED` — **2**: California, Texas.
 
 `COMPLETE` means a current authoritative source or legal topology closes the municipal universe for this narrow question. `NO_AUTHORITY_CONFIRMED` is a closed zero under the definition. `PARTIAL` means current evidence supports the positive or zero findings shown but leaves an adopter, special-act, charter, legacy, or update gap. `UNDETERMINED` means the legal source set could not safely establish either an adopter or a categorical zero.
 
-The structured [coverage matrix](coverage-matrix.jsonl) contains all 51 state/DC records and source URLs. Detailed audit evidence is preserved for the [South](agent-extracts/phase2-south-audit.md), [Northeast/Midwest](agent-extracts/phase2-northeast-midwest-audit.md), [West](agent-extracts/phase2-west-audit.md), the [Idaho closure](agent-extracts/phase3-idaho-closure.md), the [Mississippi closure](agent-extracts/phase3-mississippi-closure.md), the [Montana closure](agent-extracts/phase3-montana-closure.md), the [South Dakota closure](agent-extracts/phase3-south-dakota-closure.md), the [Utah closure](agent-extracts/phase3-utah-closure.md), and the [Wyoming closure](agent-extracts/phase3-wyoming-closure.md).
+The structured [coverage matrix](coverage-matrix.jsonl) contains all 51 state/DC records and source URLs. Detailed audit evidence is preserved for the [South](agent-extracts/phase2-south-audit.md), [Northeast/Midwest](agent-extracts/phase2-northeast-midwest-audit.md), [West](agent-extracts/phase2-west-audit.md), the [Idaho closure](agent-extracts/phase3-idaho-closure.md), the [Mississippi closure](agent-extracts/phase3-mississippi-closure.md), the [Montana closure](agent-extracts/phase3-montana-closure.md), the [South Dakota closure](agent-extracts/phase3-south-dakota-closure.md), the [Utah closure](agent-extracts/phase3-utah-closure.md), the [Wyoming closure](agent-extracts/phase3-wyoming-closure.md), and the [Colorado closure](agent-extracts/phase3-colorado-closure.md).
 
 ## Remaining review and scheduled refreshes
 

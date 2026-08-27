@@ -2,7 +2,13 @@
 
 Research retrieval date: 2026-08-25
 
-Status: Historical research notebook plus August 25 West Virginia and August 26 Idaho, Mississippi, Montana, South Dakota, Utah, and Wyoming closure addenda; not compliance-approved and not Rule Engine data.
+Status: Historical research notebook plus August 25 West Virginia and August 26 Idaho, Mississippi, Montana, South Dakota, Utah, Wyoming, and Colorado closure addenda; not compliance-approved and not Rule Engine data.
+
+## August 26, 2026 Colorado closure addendum
+
+Colorado moved from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED` with zero registry rows. Current Colorado Constitution article X, section 20(8)(a) expressly prohibits local district income taxes, with district defined in section 20(2)(b) to include local government. The current Colorado Legislative Drafting Manual confirms that this is a prohibition on any local-government income tax.
+
+*City & County of Denver v. Sweet* held that article X, section 17 gives the General Assembly exclusive, nondelegable income-tax power and leaves even home-rule cities without authority to impose an income tax. *Duffy* reaffirmed *Sweet* and invalidated Denver's percentage earnings tax. *Johnson* distinguishes a valid flat occupational fee because it bears no relation to and is not measured by income; *Rountree* preserved that state-law rule. Current Glendale, Greenwood Village, Sheridan, and Denver occupational taxes are fixed monthly amounts, so they remain excluded under the registry definition. The registry remains 2,815 municipalities across nine states. Coverage is now 17 `COMPLETE`, 22 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 2 `UNDETERMINED`. See the [Colorado closure report](../20260826T230418Z_colorado-municipal-wage-tax-closure.md), [evidence directory](../20260826T230418Z_colorado-municipal-wage-tax-closure-artifacts/README.md), and updated [coverage matrix](coverage-matrix.jsonl).
 
 ## August 26, 2026 Wyoming closure addendum
 
@@ -104,7 +110,7 @@ Every positive record requires a direct authoritative citation. Administrator me
 
 ## Nationwide coverage matrix
 
-Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the Wyoming closure, the matrix has 51 unique rows: 17 `COMPLETE`, 21 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 3 `UNDETERMINED`.
+Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the Colorado closure, the matrix has 51 unique rows: 17 `COMPLETE`, 22 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 2 `UNDETERMINED`.
 
 | State | Coverage | Phase 1 finding |
 |---|---|---|
@@ -113,7 +119,7 @@ Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After
 | [Arizona](https://www.azleg.gov/ars/43/00201.htm) | `NO_AUTHORITY_CONFIRMED` | Current statute preempts local income taxation while the urban revenue-sharing fund is maintained. |
 | [Arkansas](https://arkleg.state.ar.us/Bills/Detail?ddBienniumSession=2023%2F2023R&id=HB1026) | `NO_AUTHORITY_CONFIRMED` | Act 96 of 2023 prohibits local-government income taxes and repealed prior local authority. |
 | [California](https://www.leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?article=2.&chapter=1.&division=1.&lawCode=GOV&part=1.&title=5.) | `UNDETERMINED` | Current charter/general-law authority and adopter universe were not closed. |
-| [Colorado](https://www.denvergov.org/files/assets/public/v/1/finance/documents/treasury/tax-guides/tax-update-2025/treasurytaxrule004_rulesrelatingtothefrequencyof.taxreturns.pdf) | `UNDETERMINED` | Denver's current employee occupational privilege tax is flat, not compensation-calculated; statewide coverage remains open. |
+| [Colorado](https://olls.info/crs/crs2026-title-00.pdf) | `NO_AUTHORITY_CONFIRMED` | The constitution and controlling cases prohibit local income taxes; flat employee occupational taxes are not compensation-calculated and remain excluded. |
 | [Connecticut](https://www.cga.ct.gov/current/pub/chap_204.htm) | `UNDETERMINED` | A dated official interpretation says no granted municipal income-tax authority; current closure was not found. |
 | [Delaware](https://delcode.delaware.gov/title22/c009/index.html) | `COMPLETE` | Statutory population threshold plus current official population data close the current universe to Wilmington. |
 | [Florida](https://www.flsenate.gov/Laws/Constitution/Article7) | `NO_AUTHORITY_CONFIRMED` | The state constitution bars natural-person income taxation by the state or under its authority beyond unavailable federal credits. |
@@ -208,15 +214,15 @@ The approximately 700 estimate is not supportable as a national count. Ohio alon
 
 ## Gap report
 
-This is an exhaustive nationwide source-topology and gap assessment, but not an individually ordinance-verified national adopter list. Seventeen jurisdictions cannot support a nationwide `CLEAR` decision from current evidence:
+This is an exhaustive nationwide source-topology and gap assessment, but not an individually ordinance-verified national adopter list. Twelve states cannot support a statewide `CLEAR` decision from current evidence:
 
 - `PARTIAL`: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
-- `UNDETERMINED`: California, Colorado, and Texas.
+- `UNDETERMINED`: California and Texas.
 
 The remaining material gaps are:
 
 1. **Adopter closure:** Alabama and Kentucky have directly confirmed positives but no complete official current municipal adopter/rate registry. Oregon has confirmed Eugene and Portland taxes but no closed statewide registry. New Jersey's directly confirmed Newark/Jersey City taxes are employer-only; the employee-incidence universe is open.
-2. **Legal exception closure:** the 3 `UNDETERMINED` states require a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
+2. **Legal exception closure:** the 2 `UNDETERMINED` states require a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
 3. **Boundary resolution:** a postal or mailing city is not a legal municipal boundary. Ohio Finder explicitly resolves addresses; Pennsylvania uses PSD codes; Eugene warns that a Eugene mailing address may be outside city limits. City/state alone cannot safely map these records.
 4. **Residence-only taxes:** Baltimore City, New York City, Portland, 558 Pennsylvania PSDs, and DC depend on individual residence. Company situs cannot establish applicability, so the current Issue #1280 input contract must return `UNDETERMINED` for these classes.
 5. **Rate currency:** Michigan's official registry closes the current 24-city adopter set, but the latest located statewide rate table is tax year 2025 for 23 cities; Detroit has a direct 2026 withholding guide. Several partial-state municipal sources likewise confirm current existence without a fully current rate/exemption codification.

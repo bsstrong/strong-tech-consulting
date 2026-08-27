@@ -57,17 +57,17 @@ The 11 directly supported Kentucky jurisdictions are Bowling Green, Covington, H
 
 Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, South Dakota, Vermont, West Virginia, and Wisconsin.
 
-### No qualifying authority confirmed (21)
+### No qualifying authority confirmed (22)
 
-Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Utah, Virginia, Washington, and Wyoming.
+Arizona, Arkansas, Colorado, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Utah, Virginia, Washington, and Wyoming.
 
 ### Partial (10)
 
 Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
 
-### Undetermined (3)
+### Undetermined (2)
 
-California, Colorado, and Texas.
+California and Texas.
 
 ## Important exclusions and boundary decisions
 
@@ -146,6 +146,14 @@ Current Wyoming Statutes section 39-12-101 expressly preempts income taxes, earn
 
 Evidence: [closure report](./20260826T230418Z_wyoming-municipal-wage-tax-closure.md) and [source manifest](./20260826T230418Z_wyoming-municipal-wage-tax-closure-artifacts/README.md).
 
+## Colorado closure — August 26, 2026
+
+Colorado is now a **closed zero**, moving from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; no municipality row was added.
+
+Current Colorado Constitution article X, section 20 expressly prohibits local-government income taxes. *City & County of Denver v. Sweet* and *Duffy* establish that the General Assembly's income-tax power is exclusive and that even a home-rule city cannot impose a percentage earnings tax. *Johnson* distinguishes valid flat occupational fees because they are not measured by income, and *Rountree* leaves that Colorado-law distinction intact. Current employee occupational taxes in Glendale, Greenwood Village, Sheridan, and Denver are fixed monthly amounts and remain excluded.
+
+Evidence: [closure report](./20260826T230418Z_colorado-municipal-wage-tax-closure.md) and [source manifest](./20260826T230418Z_colorado-municipal-wage-tax-closure-artifacts/README.md).
+
 ## Open and future candidates
 
 - **Hurstbourne Acres, Kentucky:** secondary payroll sources report a 1% tax effective July 1, 2024, but no current municipal ordinance or form was located. Keep unresolved.
@@ -159,7 +167,6 @@ Ordinary web searching has reached diminishing returns. The remaining work shoul
 
 | Priority | States | Closure work |
 | --- | --- | --- |
-| Medium | Colorado | Obtain the official home-rule municipality universe and search every charter and code for percentage-based wage, earnings, payroll, and occupational taxes; distinguish them from flat occupational privilege taxes. |
 | Hardest | California, Texas | Review the complete charter/home-rule universe, attorney-general opinions, cases, special laws, and municipal codes. A written state-level confirmation would materially strengthen closure because broad home-rule authority makes keyword-only statutory review insufficient. |
 
 Acceptable closure evidence should be one of the following:

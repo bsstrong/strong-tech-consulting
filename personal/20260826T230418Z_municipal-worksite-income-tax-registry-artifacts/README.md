@@ -2,7 +2,7 @@
 
 This directory is the active replacement snapshot for the August 26, 2026 nine-state closure run. It began from the fully validated post-West Virginia snapshot in `../20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/` and is updated, validated, committed, and pushed after each state iteration.
 
-The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, Montana, Utah, and Wyoming add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero. Nationwide coverage is now 17 `COMPLETE`, 21 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 3 `UNDETERMINED`.
+The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, Montana, Utah, Wyoming, and Colorado add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero. Nationwide coverage is now 17 `COMPLETE`, 22 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 2 `UNDETERMINED`.
 
 ## Contents
 
@@ -73,3 +73,10 @@ Utah is `NO_AUTHORITY_CONFIRMED`: municipal tax power requires a legislative gra
 - [Express preemption and complete-code audit manifest](../20260826T230418Z_wyoming-municipal-wage-tax-closure-artifacts/README.md)
 
 Wyoming is `NO_AUTHORITY_CONFIRMED`: section 39-12-101 expressly preempts every local income tax, earnings tax, and other tax based on wages or income, and the complete 43-file current-code audit found no qualifying exception or adopter.
+
+## Colorado evidence
+
+- [Closure report](../20260826T230418Z_colorado-municipal-wage-tax-closure.md)
+- [Constitutional, case-law, and flat-tax classification manifest](../20260826T230418Z_colorado-municipal-wage-tax-closure-artifacts/README.md)
+
+Colorado is `NO_AUTHORITY_CONFIRMED`: the current constitution and controlling cases prohibit municipal income taxes, while current flat employee occupational taxes remain excluded because they are not calculated as a percentage or graduated amount of employee compensation.
