@@ -1,6 +1,6 @@
 # Municipal Worksite Income-Tax Registry Product-Readiness Audit
 
-**Audit date:** August 27, 2026  
+**Audit date:** August 27, 2026
 **Audited published checkpoint:** `590a83534dd60d8a88560f2d0e2a91adeda1c922`
 
 ## Decision
