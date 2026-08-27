@@ -57,17 +57,17 @@ The 11 directly supported Kentucky jurisdictions are Bowling Green, Covington, H
 
 Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, South Dakota, Vermont, West Virginia, and Wisconsin.
 
-### No qualifying authority confirmed (22)
+### No qualifying authority confirmed (23)
 
-Arizona, Arkansas, Colorado, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Utah, Virginia, Washington, and Wyoming.
+Arizona, Arkansas, Colorado, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Texas, Utah, Virginia, Washington, and Wyoming.
 
 ### Partial (11)
 
 Alabama, California, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
 
-### Undetermined (1)
+### Undetermined (0)
 
-Texas.
+None.
 
 ## Important exclusions and boundary decisions
 
@@ -164,6 +164,14 @@ The evidence supports a current zero but does not close every charter and ordina
 
 Evidence: [closure report](./20260826T230418Z_california-municipal-wage-tax-closure.md) and [source manifest](./20260826T230418Z_california-municipal-wage-tax-closure-artifacts/README.md).
 
+## Texas closure — August 27, 2026
+
+Texas is now a **closed zero**, moving from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; no municipality row was added.
+
+Texas Constitution article VIII, section 1(f) caps a municipal occupation tax at one-half of the state tax on the same profession or business. *Brown v. City of Galveston* and Attorney General Opinion JM-1195 apply that formula as a prohibition when the state levies no occupation tax on the pursuit. *Conlen Grain* classifies a revenue tax by its subject—the privilege of carrying on the occupation—so an employee tax triggered by working in the city remains an occupation tax even when measured by wages. Texas levies no state occupation tax on employment or wage earning, making the municipal ceiling zero. Article XI, section 5 and Tax Code chapter 302 do not let a home-rule charter or ordinance exceed that ceiling.
+
+Evidence: [closure report](./20260827T134945Z_texas-municipal-wage-tax-closure.md) and [source manifest](./20260827T134945Z_texas-municipal-wage-tax-closure-artifacts/README.md).
+
 ## Open and future candidates
 
 - **Hurstbourne Acres, Kentucky:** secondary payroll sources report a 1% tax effective July 1, 2024, but no current municipal ordinance or form was located. Keep unresolved.
@@ -171,13 +179,9 @@ Evidence: [closure report](./20260826T230418Z_california-municipal-wage-tax-clos
 - **Salem, Kentucky:** Ordinance 2026-05 appears to qualify but is effective October 1, 2026, so it was future-dated as of the report date.
 - **Indiana:** local income-tax authority changes beginning in fiscal year 2028; refresh the registry before that date.
 
-## How to close the undetermined states
+## Remaining closure work
 
-Ordinary web searching has reached diminishing returns. The remaining work should be a formal closure audit.
-
-| Priority | States | Closure work |
-| --- | --- | --- |
-| Hardest | Texas | Review the complete constitutional, home-rule, special-law, and municipal-code universe. A written state-level confirmation would materially strengthen closure if no official source already owns the adopter universe. |
+No state remains `UNDETERMINED`. The eleven `PARTIAL` states still require the adopter, special-act, charter, legacy, rate, or update closure documented in the coverage matrix and review queue.
 
 Acceptable closure evidence should be one of the following:
 

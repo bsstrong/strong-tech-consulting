@@ -2,7 +2,7 @@
 
 This directory is the active replacement snapshot for the August 26, 2026 nine-state closure run. It began from the fully validated post-West Virginia snapshot in `../20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/` and is updated, validated, committed, and pushed after each state iteration.
 
-The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, Montana, Utah, Wyoming, and Colorado add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero; California adds no rows and moves to `PARTIAL`. Nationwide coverage is now 17 `COMPLETE`, 22 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 1 `UNDETERMINED`.
+The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, Montana, Utah, Wyoming, Colorado, and Texas add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero; California adds no rows and moves to `PARTIAL`. Nationwide coverage is now 17 `COMPLETE`, 23 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 0 `UNDETERMINED`.
 
 ## Contents
 
@@ -87,3 +87,10 @@ Colorado is `NO_AUTHORITY_CONFIRMED`: the current constitution and controlling c
 - [Current-law, historical-adopter, and statewide-screening evidence](../20260826T230418Z_california-municipal-wage-tax-closure-artifacts/README.md)
 
 California is `PARTIAL`: current law and *Weekes* preserve an authority path for an employee occupational-license tax measured by worksite compensation, but Oakland's historical tax is repealed and the statewide Controller audit plus current municipal-code searches found no active adopter. No official source closes every current charter and ordinance, so unmatched California municipalities remain unresolved.
+
+## Texas evidence
+
+- [Closure report](../20260827T134945Z_texas-municipal-wage-tax-closure.md)
+- [Constitutional, case-law, and current-practice evidence](../20260827T134945Z_texas-municipal-wage-tax-closure-artifacts/README.md)
+
+Texas is `NO_AUTHORITY_CONFIRMED`: article VIII, section 1(f), *Brown*, JM-1195, and *Conlen Grain* make the state occupation-tax rate a constitutional ceiling for a municipal tax on the privilege of working. Texas levies no state occupation tax on employment or wage earning, so the in-scope municipal ceiling is zero; home-rule charters remain subordinate to that rule.

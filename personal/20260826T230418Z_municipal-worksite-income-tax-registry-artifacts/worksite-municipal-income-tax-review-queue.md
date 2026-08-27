@@ -1,6 +1,6 @@
 # Worksite municipal income-tax review queue
 
-Current as of August 25, 2026 after the West Virginia closure audit. These items are not direct-primary confirmed current registry rows unless stated otherwise.
+Current as of August 27, 2026 after the nine-state closure run. These items are not direct-primary confirmed current registry rows unless stated otherwise.
 
 ## Association-supported rows already present in the best-available registry
 
@@ -37,9 +37,10 @@ Every association-supported row is marked `SUPPORTED_AUTHORITATIVE_ASSOCIATION` 
 - **Wyoming:** moved from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED` with zero registry rows. Section 39-12-101 expressly preempts every local income tax, earnings tax, and other tax based on wages or income; the complete 43-file current-code audit found no qualifying exception or adopter. Refresh on the statutory-preemption, constitutional, or express-exception triggers recorded in the coverage matrix.
 - **Colorado:** moved from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED` with zero registry rows. Article X, section 20 expressly prohibits local-government income taxes, while *Sweet* and *Duffy* establish that the General Assembly's income-tax power is exclusive and that a municipal percentage earnings tax is invalid. *Johnson* and *Rountree* preserve the distinction for flat occupational fees, which remain excluded. Refresh on the constitutional, controlling-case, or surviving-authority triggers recorded in the coverage matrix.
 - **California:** moved from `UNDETERMINED` to `PARTIAL` with zero registry rows. Current law and *Weekes* preserve an employee occupational-license-tax authority path; Oakland's historical tax is repealed; and statewide Controller reporting plus current municipal-code searches found no active adopter. Because no official register closes every charter and ordinance, unmatched California municipalities remain unresolved. Refresh on the statutory, case-law, ballot-measure, municipal-adoption, and ordinance-audit triggers recorded in the coverage matrix.
+- **Texas:** moved from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED` with zero registry rows. Article VIII, section 1(f), *Brown*, JM-1195, and *Conlen Grain* establish that a municipal tax on an employee's privilege of working is an occupation tax capped at one-half of the state tax on the same pursuit. Texas has no state occupation tax on employment or wage earning, so the municipal ceiling is zero; home-rule charters cannot override it. Refresh on the constitutional, statutory, state-tax, or controlling-case triggers recorded in the coverage matrix.
 
 ## Statewide residual gaps without a named positive candidate
 
-The following state remains `UNDETERMINED` because authoritative law leaves a residual authority path or the special-law/home-rule universe could not be closed: Texas.
+No state remains `UNDETERMINED` after the Texas authority closure. `PARTIAL` states still require the specific source closure documented below.
 
 The following states are `PARTIAL` even though no qualifying positive was found: California, Iowa, Maine, Massachusetts, New Hampshire, Rhode Island, South Carolina, and Tennessee. Their exact legal-source gaps are documented in the nationwide report and audit evidence files.

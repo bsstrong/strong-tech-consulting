@@ -2,7 +2,13 @@
 
 Research retrieval date: 2026-08-25
 
-Status: Historical research notebook plus August 25 West Virginia and August 26 Idaho, Mississippi, Montana, South Dakota, Utah, Wyoming, and Colorado closure addenda; not compliance-approved and not Rule Engine data.
+Status: Historical research notebook plus August 25-27 closure addenda; not compliance-approved and not Rule Engine data.
+
+## August 27, 2026 Texas closure addendum
+
+Texas moved from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED` with zero registry rows. Texas Constitution article VIII, section 1(f) caps every municipal occupation tax at one-half of the state occupation tax on the same profession or business. *Brown v. City of Galveston* and Attorney General Opinion JM-1195 apply that formula as a prohibition when the state levies no occupation tax on the pursuit. *Conlen Grain* classifies a revenue exaction by its subject—the privilege of carrying on the occupation—rather than merely by its calculation formula.
+
+An employee percentage tax triggered by performing services in a city is therefore an occupation tax even when measured by wages. Texas imposes no state occupation tax on employment or wage earning, making the municipal ceiling zero. Article XI, section 5 and Tax Code chapter 302 do not let a home-rule charter or general-law ordinance exceed that constitutional ceiling. The registry remains 2,815 municipalities across nine states. Coverage is now 17 `COMPLETE`, 23 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 0 `UNDETERMINED`. See the [Texas closure report](../20260827T134945Z_texas-municipal-wage-tax-closure.md), [evidence directory](../20260827T134945Z_texas-municipal-wage-tax-closure-artifacts/README.md), and updated [coverage matrix](coverage-matrix.jsonl).
 
 ## August 26, 2026 California closure addendum
 
@@ -116,7 +122,7 @@ Every positive record requires a direct authoritative citation. Administrator me
 
 ## Nationwide coverage matrix
 
-Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the California iteration, the matrix has 51 unique rows: 17 `COMPLETE`, 22 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 1 `UNDETERMINED`.
+Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the Texas iteration, the matrix has 51 unique rows: 17 `COMPLETE`, 23 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 0 `UNDETERMINED`.
 
 | State | Coverage | Phase 1 finding |
 |---|---|---|
@@ -162,7 +168,7 @@ Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After
 | [South Carolina](https://dor.sc.gov/withholding) | `UNDETERMINED` | No explicit municipal preemption or complete local inventory was established. |
 | [South Dakota](https://dor.sd.gov/media/54mb5a2w/2026-07_municipal-tax-guide.pdf) | `COMPLETE` | Current closed zero: chapter 10-52's notice/administration topology, DOR's July 2026 municipal-tax inventory, and the complete 63-title code audit disclose no employee wage-tax category, adopter, or qualifying authorization. |
 | [Tennessee](https://www.tn.gov/revenue/taxes/local-taxes.html) | `UNDETERMINED` | No explicit municipal compensation-tax preemption or complete current inventory was established. |
-| [Texas](https://comptroller.texas.gov/transparency/local/cities.php) | `UNDETERMINED` | Official city-tax material is not an exhaustive all-tax registry and does not explicitly close compensation-tax authority. |
+| [Texas](https://tcss.legis.texas.gov/resources/CN/htm/CN.8.htm) | `NO_AUTHORITY_CONFIRMED` | Article VIII's municipal occupation-tax ceiling, controlling zero-cap authority, and the absence of a state occupation tax on employment close the employee worksite wage-tax path, including for home-rule cities. |
 | [Utah](https://le.utah.gov/xcode/Title10/Chapter1/10-1-S203.html) | `NO_AUTHORITY_CONFIRMED` | Municipal tax power requires a legislative grant; section 10-1-203 excludes employees from municipal business-tax authority; and the complete 96-title current-code audit found no qualifying delegation or adopter. |
 | [Vermont](https://tax.vermont.gov/sites/tax/files/documents/MRT%20Regs%20final%20effective%206%201%2022.pdf) | `UNDETERMINED` | Local-option sources do not close charter/special-act compensation-tax authority. |
 | [Virginia](https://law.lis.virginia.gov/vacodefull/title58.1/subtitleIII/) | `NO_AUTHORITY_CONFIRMED` | Current code bars local income, payroll, and occupation taxes. |
@@ -220,15 +226,15 @@ The approximately 700 estimate is not supportable as a national count. Ohio alon
 
 ## Gap report
 
-This is an exhaustive nationwide source-topology and gap assessment, but not an individually ordinance-verified national adopter list. Twelve states cannot support a statewide `CLEAR` decision from current evidence:
+This is an exhaustive nationwide source-topology and gap assessment, but not an individually ordinance-verified national adopter list. Eleven states cannot support a statewide `CLEAR` decision from current evidence:
 
 - `PARTIAL`: Alabama, California, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
-- `UNDETERMINED`: Texas.
+- `UNDETERMINED`: none.
 
 The remaining material gaps are:
 
 1. **Adopter closure:** Alabama and Kentucky have directly confirmed positives but no complete official current municipal adopter/rate registry. Oregon has confirmed Eugene and Portland taxes but no closed statewide registry. New Jersey's directly confirmed Newark/Jersey City taxes are employer-only; the employee-incidence universe is open.
-2. **Legal exception closure:** the remaining `UNDETERMINED` state requires a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
+2. **Legal exception closure:** no state remains `UNDETERMINED`, but `PARTIAL` states still require the specific adopter, special-act, charter, legacy, or update closure recorded in the matrix. Absence from a state page covering only common local taxes is not negative evidence.
 3. **Boundary resolution:** a postal or mailing city is not a legal municipal boundary. Ohio Finder explicitly resolves addresses; Pennsylvania uses PSD codes; Eugene warns that a Eugene mailing address may be outside city limits. City/state alone cannot safely map these records.
 4. **Residence-only taxes:** Baltimore City, New York City, Portland, 558 Pennsylvania PSDs, and DC depend on individual residence. Company situs cannot establish applicability, so the current Issue #1280 input contract must return `UNDETERMINED` for these classes.
 5. **Rate currency:** Michigan's official registry closes the current 24-city adopter set, but the latest located statewide rate table is tax year 2025 for 23 cities; Detroit has a direct 2026 withholding guide. Several partial-state municipal sources likewise confirm current existence without a fully current rate/exemption codification.
