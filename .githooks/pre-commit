@@ -1,0 +1,5 @@
+#!/bin/sh
+
+repo_root="$(git rev-parse --show-toplevel)"
+exec pwsh -NoLogo -NoProfile -NonInteractive -ExecutionPolicy Bypass \
+  -File "$repo_root/scripts/Protect-ResearchArtifacts.ps1" -CheckStaged
