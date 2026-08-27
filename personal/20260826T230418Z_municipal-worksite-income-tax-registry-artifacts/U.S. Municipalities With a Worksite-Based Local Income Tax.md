@@ -241,8 +241,8 @@ All 50 states and the District of Columbia now have an explicit coverage classif
 
 - `COMPLETE` — **17**: Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, South Dakota, Vermont, West Virginia, Wisconsin.
 - `NO_AUTHORITY_CONFIRMED` — **22**: Arizona, Arkansas, Colorado, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through FY2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under this worksite definition, Utah, Virginia, Washington, Wyoming.
-- `PARTIAL` — **10**: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, Tennessee.
-- `UNDETERMINED` — **2**: California, Texas.
+- `PARTIAL` — **11**: Alabama, California, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, Tennessee.
+- `UNDETERMINED` — **1**: Texas.
 
 `COMPLETE` means a current authoritative source or legal topology closes the municipal universe for this narrow question. `NO_AUTHORITY_CONFIRMED` is a closed zero under the definition. `PARTIAL` means current evidence supports the positive or zero findings shown but leaves an adopter, special-act, charter, legacy, or update gap. `UNDETERMINED` means the legal source set could not safely establish either an adopter or a categorical zero.
 

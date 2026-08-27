@@ -61,13 +61,13 @@ Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan,
 
 Arizona, Arkansas, Colorado, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Utah, Virginia, Washington, and Wyoming.
 
-### Partial (10)
+### Partial (11)
 
-Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
+Alabama, California, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
 
-### Undetermined (2)
+### Undetermined (1)
 
-California and Texas.
+Texas.
 
 ## Important exclusions and boundary decisions
 
@@ -154,6 +154,16 @@ Current Colorado Constitution article X, section 20 expressly prohibits local-go
 
 Evidence: [closure report](./20260826T230418Z_colorado-municipal-wage-tax-closure.md) and [source manifest](./20260826T230418Z_colorado-municipal-wage-tax-closure-artifacts/README.md).
 
+## California closure — August 26, 2026
+
+California moves from `UNDETERMINED` to `PARTIAL`, with zero proven current registry rows.
+
+Current sections 17041.5, 50026, 37100.5, and 37101, together with *Weekes v. City of Oakland*, preserve a real authority path for an employee occupational-license tax measured by worksite compensation. Oakland's historical one-percent employee license fee was within the registry definition, but its operative provisions are recorded as repealed by Ordinance 9700. The State Controller's FY2003-FY2024 city-revenues dataset covers 482 FY2024 city entities and contains no wage-tax, earnings-tax, income-tax, employee-license, or occupational-tax label. Its only employer-payroll-tax field has nonzero values solely for San Francisco; San Francisco's official current page says that tax was fully repealed generally starting in 2021, and its remaining payroll-calculated tax is employer-side.
+
+The evidence supports a current zero but does not close every charter and ordinance, so an unmatched California municipality remains unresolved rather than `CLEAR`.
+
+Evidence: [closure report](./20260826T230418Z_california-municipal-wage-tax-closure.md) and [source manifest](./20260826T230418Z_california-municipal-wage-tax-closure-artifacts/README.md).
+
 ## Open and future candidates
 
 - **Hurstbourne Acres, Kentucky:** secondary payroll sources report a 1% tax effective July 1, 2024, but no current municipal ordinance or form was located. Keep unresolved.
@@ -167,7 +177,7 @@ Ordinary web searching has reached diminishing returns. The remaining work shoul
 
 | Priority | States | Closure work |
 | --- | --- | --- |
-| Hardest | California, Texas | Review the complete charter/home-rule universe, attorney-general opinions, cases, special laws, and municipal codes. A written state-level confirmation would materially strengthen closure because broad home-rule authority makes keyword-only statutory review insufficient. |
+| Hardest | Texas | Review the complete constitutional, home-rule, special-law, and municipal-code universe. A written state-level confirmation would materially strengthen closure if no official source already owns the adopter universe. |
 
 Acceptable closure evidence should be one of the following:
 
@@ -182,18 +192,18 @@ Online statute, charter, ordinance, case, and agency-record research can continu
 
 ## Research artifacts
 
-The post-audit replacement snapshot below contains every previously preserved registry artifact plus the updated West Virginia disposition. The original pre-audit snapshot remains intact for provenance.
+The active nine-state replacement snapshot below contains every previously preserved registry artifact plus the completed state iterations through California. Earlier snapshots remain intact for provenance.
 
-- [Current snapshot manifest](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/README.md)
-- [Full research report](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/U.S.%20Municipalities%20With%20a%20Worksite-Based%20Local%20Income%20Tax.md)
-- [Municipality registry CSV](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.csv)
-- [Municipality registry JSONL](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.jsonl)
-- [Registry validation output](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry-validation.json)
-- [State coverage matrix](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/coverage-matrix.jsonl)
-- [Manual review queue](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-review-queue.md)
-- [Normalized screening inventory](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/normalized-municipal-tax-inventory.jsonl)
-- [Excluded and review-only inventory](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/review-only-and-nonmunicipal-inventory.jsonl)
-- [Detailed state research notes](./20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/issue-1280-national-municipal-wage-tax-research.md)
+- [Current snapshot manifest](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/README.md)
+- [Full research report](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/U.S.%20Municipalities%20With%20a%20Worksite-Based%20Local%20Income%20Tax.md)
+- [Municipality registry CSV](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.csv)
+- [Municipality registry JSONL](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry.jsonl)
+- [Registry validation output](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-registry-validation.json)
+- [State coverage matrix](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/coverage-matrix.jsonl)
+- [Manual review queue](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/worksite-municipal-income-tax-review-queue.md)
+- [Normalized screening inventory](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/normalized-municipal-tax-inventory.jsonl)
+- [Excluded and review-only inventory](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/review-only-and-nonmunicipal-inventory.jsonl)
+- [Detailed state research notes](./20260826T230418Z_municipal-worksite-income-tax-registry-artifacts/issue-1280-national-municipal-wage-tax-research.md)
 - [Archived pre-audit snapshot](./20260826T043535Z_municipal-worksite-income-tax-registry-artifacts/README.md)
 
 These files now live in the personal-notes repository and preserve the detailed municipality rows, evidence URLs, state-by-state reasoning, and validation results behind this summary.

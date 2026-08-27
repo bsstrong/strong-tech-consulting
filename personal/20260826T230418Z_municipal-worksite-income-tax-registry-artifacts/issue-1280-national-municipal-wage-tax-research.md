@@ -4,6 +4,12 @@ Research retrieval date: 2026-08-25
 
 Status: Historical research notebook plus August 25 West Virginia and August 26 Idaho, Mississippi, Montana, South Dakota, Utah, Wyoming, and Colorado closure addenda; not compliance-approved and not Rule Engine data.
 
+## August 26, 2026 California closure addendum
+
+California moved from `UNDETERMINED` to `PARTIAL` with zero registry rows. Revenue and Taxation Code section 17041.5 generally prohibits local income taxes, but Government Code section 50026 regulates an otherwise-authorized employee earnings tax and section 37100.5 extends charter-city taxing power to every city subject to voter approval. *Weekes v. City of Oakland* upheld Oakland's one-percent employee license fee measured by compensation for services performed in the city, confirming an in-scope authority path.
+
+Oakland's current prior-code table records the employee-license-fee provisions as repealed by Ordinance 9700. The complete State Controller City Revenues download covers 482 FY2024 entities and has no wage-tax, earnings-tax, income-tax, employee-license, or occupational-tax label. Its only employer-payroll-tax field has 6,670 rows and nonzero values only for San Francisco. San Francisco's official current page says Proposition F fully repealed the Payroll Expense Tax generally starting in 2021; its current Administrative Office Tax is employer-side. Broad current municipal-code searches found no active California employee-wage adopter, but no official register closes every charter and ordinance. The registry remains 2,815 municipalities across nine states. Coverage is now 17 `COMPLETE`, 22 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 1 `UNDETERMINED`. See the [California closure report](../20260826T230418Z_california-municipal-wage-tax-closure.md), [evidence directory](../20260826T230418Z_california-municipal-wage-tax-closure-artifacts/README.md), and updated [coverage matrix](coverage-matrix.jsonl).
+
 ## August 26, 2026 Colorado closure addendum
 
 Colorado moved from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED` with zero registry rows. Current Colorado Constitution article X, section 20(8)(a) expressly prohibits local district income taxes, with district defined in section 20(2)(b) to include local government. The current Colorado Legislative Drafting Manual confirms that this is a prohibition on any local-government income tax.
@@ -110,7 +116,7 @@ Every positive record requires a direct authoritative citation. Administrator me
 
 ## Nationwide coverage matrix
 
-Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the Colorado closure, the matrix has 51 unique rows: 17 `COMPLETE`, 22 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 2 `UNDETERMINED`.
+Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the California iteration, the matrix has 51 unique rows: 17 `COMPLETE`, 22 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 1 `UNDETERMINED`.
 
 | State | Coverage | Phase 1 finding |
 |---|---|---|
@@ -118,7 +124,7 @@ Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After
 | [Alaska](https://www.commerce.alaska.gov/dcra/admin/Taxable/ViewFile/2de31798-e2aa-42c9-8a50-43e1c7c6ddb8) | `COMPLETE` | The current all-municipality/all-tax-type report has no in-scope tax; this is current-practice closure, not permanent preemption. |
 | [Arizona](https://www.azleg.gov/ars/43/00201.htm) | `NO_AUTHORITY_CONFIRMED` | Current statute preempts local income taxation while the urban revenue-sharing fund is maintained. |
 | [Arkansas](https://arkleg.state.ar.us/Bills/Detail?ddBienniumSession=2023%2F2023R&id=HB1026) | `NO_AUTHORITY_CONFIRMED` | Act 96 of 2023 prohibits local-government income taxes and repealed prior local authority. |
-| [California](https://www.leginfo.legislature.ca.gov/faces/codes_displayText.xhtml?article=2.&chapter=1.&division=1.&lawCode=GOV&part=1.&title=5.) | `UNDETERMINED` | Current charter/general-law authority and adopter universe were not closed. |
+| [California](https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=50026) | `PARTIAL` | *Weekes* confirms employee-license-tax authority; Oakland's tax is repealed and current statewide screening found no active adopter, but every charter and ordinance was not individually closed. |
 | [Colorado](https://olls.info/crs/crs2026-title-00.pdf) | `NO_AUTHORITY_CONFIRMED` | The constitution and controlling cases prohibit local income taxes; flat employee occupational taxes are not compensation-calculated and remain excluded. |
 | [Connecticut](https://www.cga.ct.gov/current/pub/chap_204.htm) | `UNDETERMINED` | A dated official interpretation says no granted municipal income-tax authority; current closure was not found. |
 | [Delaware](https://delcode.delaware.gov/title22/c009/index.html) | `COMPLETE` | Statutory population threshold plus current official population data close the current universe to Wilmington. |
@@ -216,13 +222,13 @@ The approximately 700 estimate is not supportable as a national count. Ohio alon
 
 This is an exhaustive nationwide source-topology and gap assessment, but not an individually ordinance-verified national adopter list. Twelve states cannot support a statewide `CLEAR` decision from current evidence:
 
-- `PARTIAL`: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
-- `UNDETERMINED`: California and Texas.
+- `PARTIAL`: Alabama, California, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
+- `UNDETERMINED`: Texas.
 
 The remaining material gaps are:
 
 1. **Adopter closure:** Alabama and Kentucky have directly confirmed positives but no complete official current municipal adopter/rate registry. Oregon has confirmed Eugene and Portland taxes but no closed statewide registry. New Jersey's directly confirmed Newark/Jersey City taxes are employer-only; the employee-incidence universe is open.
-2. **Legal exception closure:** the 2 `UNDETERMINED` states require a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
+2. **Legal exception closure:** the remaining `UNDETERMINED` state requires a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
 3. **Boundary resolution:** a postal or mailing city is not a legal municipal boundary. Ohio Finder explicitly resolves addresses; Pennsylvania uses PSD codes; Eugene warns that a Eugene mailing address may be outside city limits. City/state alone cannot safely map these records.
 4. **Residence-only taxes:** Baltimore City, New York City, Portland, 558 Pennsylvania PSDs, and DC depend on individual residence. Company situs cannot establish applicability, so the current Issue #1280 input contract must return `UNDETERMINED` for these classes.
 5. **Rate currency:** Michigan's official registry closes the current 24-city adopter set, but the latest located statewide rate table is tax year 2025 for 23 cities; Detroit has a direct 2026 withholding guide. Several partial-state municipal sources likewise confirm current existence without a fully current rate/exemption codification.
