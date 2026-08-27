@@ -3,6 +3,7 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
 $sourcePath = Join-Path $root 'normalized-municipal-tax-inventory.jsonl'
 $alabamaLeaguePath = Join-Path $root 'agent-extracts\alabama-league-occupational-tax-survey.csv'
+$alabamaPrimaryVerificationPath = Join-Path $root 'agent-extracts\alabama-primary-verification.csv'
 $kentuckyKlcPath = Join-Path $root 'agent-extracts\kentucky-klc-fy2023-city-rates.csv'
 $jsonlPath = Join-Path $root 'worksite-municipal-income-tax-registry.jsonl'
 $csvPath = Join-Path $root 'worksite-municipal-income-tax-registry.csv'
@@ -126,6 +127,45 @@ $additions = @(
     }
 )
 $sourceRecords += $additions
+
+# Promote Alabama League candidates only when current municipal primary
+# material establishes employee compensation, worksite incidence, rate, and
+# employer withholding. Rows with only collector/rate evidence remain in the
+# association-supported discovery tier below.
+if (-not (Test-Path -LiteralPath $alabamaPrimaryVerificationPath)) {
+    throw "Alabama primary-verification extract not found: $alabamaPrimaryVerificationPath"
+}
+$alabamaPrimaryRows = @(Import-Csv -LiteralPath $alabamaPrimaryVerificationPath)
+if ($alabamaPrimaryRows.Count -ne 9) {
+    throw "Expected 9 directly verified Alabama additions; found $($alabamaPrimaryRows.Count)."
+}
+$alabamaPrimaryAdditions = @(
+    foreach ($row in $alabamaPrimaryRows) {
+        [pscustomobject]@{
+            record_id = $row.record_id
+            state_code = 'AL'
+            jurisdiction_name = $row.municipality
+            jurisdiction_type = 'incorporated city or town'
+            official_jurisdiction_id = $null
+            category = 'MUNICIPAL_EARNED_INCOME_WORKSITE'
+            tax_name = $row.tax_name
+            legal_incidence = $row.legal_incidence
+            geographic_scope = $row.geographic_scope
+            employer_withholding = $true
+            rate = $row.rate
+            effective_at = $row.effective_at
+            administrator = $row.administrator
+            evidence_status = 'CONFIRMED_PRIMARY'
+            coverage_status = 'PARTIAL'
+            product_disposition = 'BUFFER_REVIEW_REQUIRED after authoritative jurisdiction-boundary resolution; otherwise UNDETERMINED'
+            primary_source_urls = @($row.primary_source_urls -split '\|' | Where-Object { $_ })
+            source_date = $row.source_date
+            limitations = @($row.limitations)
+            related_components = $null
+        }
+    }
+)
+$sourceRecords += $alabamaPrimaryAdditions
 
 # Strengthen the directly verified partial-state rows with the current official
 # sources used in the narrowed-scope revalidation.
@@ -489,6 +529,7 @@ $summary = [ordered]@{
     source_inputs = [ordered]@{
         normalized_inventory_sha256 = (Get-FileHash -LiteralPath $sourcePath -Algorithm SHA256).Hash.ToLowerInvariant()
         alabama_league_extract_sha256 = (Get-FileHash -LiteralPath $alabamaLeaguePath -Algorithm SHA256).Hash.ToLowerInvariant()
+        alabama_primary_verification_sha256 = (Get-FileHash -LiteralPath $alabamaPrimaryVerificationPath -Algorithm SHA256).Hash.ToLowerInvariant()
         kentucky_klc_extract_sha256 = (Get-FileHash -LiteralPath $kentuckyKlcPath -Algorithm SHA256).Hash.ToLowerInvariant()
         kentucky_klc_source_pdf_sha256 = (Get-FileHash -LiteralPath (Join-Path $root 'agent-extracts\sources\kentucky-city-occupational-license-rates-fy2023.pdf') -Algorithm SHA256).Hash.ToLowerInvariant()
     }
@@ -496,12 +537,14 @@ $summary = [ordered]@{
         original_worksite_rows = 2687
         excluded_records = @('al-bessemer-occupational-tax', 'oh-municipal-income-76582')
         added_direct_primary_records = @(
+            $alabamaPrimaryAdditions.record_id
             'ky-lebanon-occupational-license-tax',
             'ky-henderson-occupational-license-tax',
             'ky-west-buechel-occupational-license-tax',
             'ky-walton-occupational-license-tax'
         )
         alabama_league_occupational_tax_rows = $alabamaLeagueRows.Count
+        alabama_new_direct_primary_rows = $alabamaPrimaryAdditions.Count
         alabama_league_rows_superseded_by_direct_primary = $alabamaLeagueRows.Count - $alabamaLeagueAdditions.Count
         alabama_league_association_only_rows_added = $alabamaLeagueAdditions.Count
         kentucky_klc_percentage_payroll_rows = $kentuckyKlcRows.Count

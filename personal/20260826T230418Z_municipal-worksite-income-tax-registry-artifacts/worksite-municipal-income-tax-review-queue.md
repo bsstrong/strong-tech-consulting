@@ -4,7 +4,7 @@ Current as of August 27, 2026 after the nine-state closure run. These items are 
 
 ## Association-supported rows already present in the best-available registry
 
-- **Alabama:** 20 rows are supported by the Alabama League of Municipalities occupational-tax survey but not yet by complete current municipal incidence, worksite, withholding, and rate evidence. The League expressly disclaims the survey's accuracy and directs users to verify locally. Bessemer has additional current city forms and audited occupational-tax revenue, but the accessible current material does not establish the nonresident/worksite rule.
+- **Alabama:** 11 rows remain supported by the Alabama League of Municipalities survey without complete current local worksite/incidence evidence. Attalla, Hackleburg, Mosses, Shorter, Southside, and Sulligent have additional current collector or municipal-form evidence for rate and withholding, but not a closed municipal worksite/nonresident rule. Bear Creek, Brilliant, Goodwater, Lynn, and Red Bay remain association-only. Nine former queue rows were promoted to direct primary on August 27, 2026; see `agent-extracts/alabama-local-verification-2026-08-27.md`.
 - **Kentucky:** 159 rows are supported by the Kentucky League of Cities FY2023 city payroll-rate survey and statewide Kentucky withholding/work-allocation law but not by current municipal ordinances. The KLC table warns that rates may change and may use the most readily available value where a city did not report FY2023 data.
 
 Every association-supported row is marked `SUPPORTED_AUTHORITATIVE_ASSOCIATION` and has product disposition `UNDETERMINED` until current local verification and boundary resolution are complete.

@@ -1,6 +1,6 @@
 # U.S. Municipalities With a Worksite-Based Local Income Tax
 
-**Current as of August 25, 2026.**
+**Current as of August 27, 2026.**
 
 **Status:** Best-available nationwide research registry. It distinguishes directly confirmed current rows from municipalities found only in authoritative municipal-association surveys. It is not compliance approval and must not be treated as an unqualified “all other cities are clear” list.
 
@@ -19,16 +19,16 @@ A municipality is not assumed to be tax-free because it is missing. An unmatched
 
 The best-available registry contains **2,815 municipality rows in nine states**. Of those:
 
-- **2,636** are directly confirmed from current primary sources.
-- **179** are association-supported discovery rows: 20 in Alabama and 159 in Kentucky.
+- **2,645** are directly confirmed from current primary sources.
+- **170** are association-supported discovery rows: 11 in Alabama and 159 in Kentucky.
 - **2,619** directly confirmed rows come from states with a closed statewide source or statutory universe.
-- **17** directly confirmed rows are in partial-coverage states: Alabama 5, Kentucky 11, and Oregon 1.
+- **26** directly confirmed rows are in partial-coverage states: Alabama 14, Kentucky 11, and Oregon 1.
 
 The 2,815 number is therefore a best-available screening inventory, not a claim that all 2,815 have individually verified current ordinances and rates.
 
 | State | Best-available rows | Direct primary | Association-supported | Statewide coverage |
 |---|---:|---:|---:|---|
-| Alabama | 25 | 5 | 20 | `PARTIAL` |
+| Alabama | 25 | 14 | 11 | `PARTIAL` |
 | Delaware | 1 | 1 | 0 | `COMPLETE` |
 | Kentucky | 170 | 11 | 159 | `PARTIAL` |
 | Michigan | 24 | 24 | 0 | `COMPLETE` |
@@ -37,7 +37,7 @@ The 2,815 number is therefore a best-available screening inventory, not a claim 
 | Ohio | 666 | 666 | 0 | `COMPLETE` |
 | Oregon | 1 | 1 | 0 | `PARTIAL` |
 | Pennsylvania | 1,925 | 1,925 | 0 | `COMPLETE` |
-| **Total** | **2,815** | **2,636** | **179** |  |
+| **Total** | **2,815** | **2,645** | **170** |  |
 
 The complete row-level list is provided as [CSV](worksite-municipal-income-tax-registry.csv) and [JSONL](worksite-municipal-income-tax-registry.jsonl). Each row carries its evidence status, rate, scope, withholding field, source URLs, source date, limitation, and product disposition. [Validation results](worksite-municipal-income-tax-registry-validation.json) contain the reconciliation, uniqueness checks, evidence-tier counts, and hashes.
 
@@ -52,31 +52,33 @@ Direct current primary confirmation exists for:
 - Gadsden
 - Glencoe
 - Opelika
-
-The [Alabama League of Municipalities occupational-tax survey](https://almonline.org/VirtualPageTemplate.aspx?PageID=3f384f8c-dd06-4beb-8cd2-1353aaad9414) supplies 20 additional percentage-tax candidates:
-
-- Attalla
-- Bear Creek
 - Bessemer
-- Brilliant
 - Fairfield
-- Goodwater
 - Guin
-- Hackleburg
 - Haleyville
 - Hamilton
 - Leeds
-- Lynn
 - Midfield
-- Mosses
 - Rainbow City
+- Tuskegee
+
+The [Alabama League of Municipalities occupational-tax survey](https://almonline.org/VirtualPageTemplate.aspx?PageID=3f384f8c-dd06-4beb-8cd2-1353aaad9414) still supplies 11 percentage-tax candidates that could not be fully closed from current municipal primary material:
+
+- Attalla
+- Bear Creek
+- Brilliant
+- Goodwater
+- Hackleburg
+- Lynn
+- Mosses
 - Red Bay
 - Shorter
 - Southside
 - Sulligent
-- Tuskegee
 
-The League states that the rates were supplied by survey, disclaims their accuracy, and requires verification with the locality. The 20 rows are therefore marked `SUPPORTED_AUTHORITATIVE_ASSOCIATION`; employer withholding is left unconfirmed. Opelika is kept at its directly confirmed current **1%** rate rather than the League page's stale 1.5% value.
+The League states that the rates were supplied by survey, disclaims their accuracy, and requires verification with the locality. Attalla, Hackleburg, Mosses, Shorter, Southside, and Sulligent have additional current collector or municipal-form evidence for rate and withholding, but the accessible primary material does not close the worksite/nonresident incidence rule. Bear Creek, Brilliant, Goodwater, Lynn, and Red Bay remain association-only. All 11 retain `SUPPORTED_AUTHORITATIVE_ASSOCIATION` and `UNDETERMINED` product disposition.
+
+The verification corrected two stale League rates: Opelika is **1%** effective April 1, 2025, and Tuskegee is **3%**, not 2%. Alabama remains `PARTIAL` because no authoritative current statewide source closes the adopter universe. The complete August 27 municipality-by-municipality disposition is preserved in [the Alabama verification report](agent-extracts/alabama-local-verification-2026-08-27.md).
 
 ### Delaware — 1; coverage complete
 

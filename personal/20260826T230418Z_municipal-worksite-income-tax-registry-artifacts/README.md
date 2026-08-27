@@ -2,9 +2,9 @@
 
 This directory is the active replacement snapshot for the August 26, 2026 nine-state closure run. It began from the fully validated post-West Virginia snapshot in `../20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/` and is updated, validated, committed, and pushed after each state iteration.
 
-The run is complete. The [final requirement-by-requirement audit](../20260827T140517Z_nine-state-municipal-wage-tax-completion-audit.md) verifies all nine state deliverables, time caps, manifests, national counts, security checks, and publication state.
+The nine-state run is complete. A subsequent Alabama candidate-verification pass on August 27 promoted nine League-supported rows to direct primary, corrected Tuskegee to 3%, and reduced Alabama's association-only queue from 20 to 11. The [final requirement-by-requirement audit](../20260827T140517Z_nine-state-municipal-wage-tax-completion-audit.md) remains the audit for the earlier nine-state run.
 
-The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, Montana, Utah, Wyoming, Colorado, and Texas add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero; California adds no rows and moves to `PARTIAL`. Nationwide coverage is now 17 `COMPLETE`, 23 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 0 `UNDETERMINED`.
+The registry remains **2,815 municipality rows across nine states**: 2,645 direct-primary and 170 association-supported. Idaho, Mississippi, Montana, Utah, Wyoming, Colorado, and Texas add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero; California adds no rows and moves to `PARTIAL`. Nationwide coverage is 17 `COMPLETE`, 23 `NO_AUTHORITY_CONFIRMED`, 11 `PARTIAL`, and 0 `UNDETERMINED`.
 
 ## Contents
 
@@ -19,6 +19,7 @@ The registry remains **2,815 municipality rows across nine states**. Idaho, Miss
 - `review-only-and-nonmunicipal-inventory.jsonl` - excluded, nonmunicipal, or review-only records preserved for traceability.
 - `inventory-validation-summary.json` - validation summary for the normalized inventory.
 - `agent-extracts/` - the complete state extracts, Phase 2 audit reports, official-source snapshots, reconciliation datasets, source PDFs/workbooks, and extraction validation used by the reports.
+- `agent-extracts/alabama-local-verification-2026-08-27.md` and `agent-extracts/alabama-primary-verification.csv` - the 20-row Alabama verification disposition and the nine direct-primary promotions.
 - `source-audit-kentucky/` - the preserved Kentucky workbook audit input and inspection script.
 - `build-normalized-inventory.ps1`, `build-worksite-municipal-registry.ps1`, and `extract-kentucky-klc-rates.py` - the build/extraction scripts used to produce the normalized and final registries.
 - `snapshot-file-manifest.csv` - byte counts and SHA-256 hashes for every other file in this replacement snapshot.

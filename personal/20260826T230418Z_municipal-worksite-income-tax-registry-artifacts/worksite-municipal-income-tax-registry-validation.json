@@ -1,10 +1,11 @@
 {
-  "generated_at": "2026-08-26T02:06:43Z",
+  "generated_at": "2026-08-27T15:31:19Z",
   "definition": "Current municipality-imposed tax calculated from employee wages for work performed in the jurisdiction, including nonresident work, where employer withholding may be required.",
-  "source_inventory": "C:\\Users\\bsstr\\.codex\\visualizations\\2026\\08\\25\\01a03b43-8288-7012-b881-a39ce7f381d5\\normalized-municipal-tax-inventory.jsonl",
+  "source_inventory": "C:\\dev\\strong-tech-consulting\\personal\\20260826T230418Z_municipal-worksite-income-tax-registry-artifacts\\normalized-municipal-tax-inventory.jsonl",
   "source_inputs": {
     "normalized_inventory_sha256": "b92ddb83166216615f95785d732b2d4a4e54a1f3d8a446a48e76de82f979d05e",
     "alabama_league_extract_sha256": "483d0b7328a6eeb27f9f732aff51b7bc4f4e9c55643fbb3cd9769baf3c9627d4",
+    "alabama_primary_verification_sha256": "58968e2f6e34fb3a52eba8996a205d20cc025c4891a175dae8e21b8720bf39fa",
     "kentucky_klc_extract_sha256": "79b11e49def060112694c4e3ca777d1f5aa90fa2cb2b1ff99d0e5d4c568606ba",
     "kentucky_klc_source_pdf_sha256": "bfb6c2ce76ff1ef2c68a5a80603b7c8b624542ea932a7ae740a74e63d1b6b4c3"
   },
@@ -15,14 +16,24 @@
       "oh-municipal-income-76582"
     ],
     "added_direct_primary_records": [
+      "al-bessemer-occupational-tax",
+      "al-fairfield-occupational-tax",
+      "al-guin-occupational-tax",
+      "al-haleyville-occupational-tax",
+      "al-hamilton-occupational-tax",
+      "al-leeds-occupational-tax",
+      "al-midfield-occupational-tax",
+      "al-rainbow-city-occupational-tax",
+      "al-tuskegee-occupational-tax",
       "ky-lebanon-occupational-license-tax",
       "ky-henderson-occupational-license-tax",
       "ky-west-buechel-occupational-license-tax",
       "ky-walton-occupational-license-tax"
     ],
     "alabama_league_occupational_tax_rows": 25,
-    "alabama_league_rows_superseded_by_direct_primary": 5,
-    "alabama_league_association_only_rows_added": 20,
+    "alabama_new_direct_primary_rows": 9,
+    "alabama_league_rows_superseded_by_direct_primary": 14,
+    "alabama_league_association_only_rows_added": 11,
     "kentucky_klc_percentage_payroll_rows": 169,
     "kentucky_klc_rows_superseded_by_direct_primary": 10,
     "kentucky_klc_association_only_rows_added": 159,
@@ -47,29 +58,20 @@
   "records_without_confirmed_employer_withholding": [
     "al-league-occupational-tax-attalla",
     "al-league-occupational-tax-bear-creek",
-    "al-league-occupational-tax-bessemer",
     "al-league-occupational-tax-brilliant",
-    "al-league-occupational-tax-fairfield",
     "al-league-occupational-tax-goodwater",
-    "al-league-occupational-tax-guin",
     "al-league-occupational-tax-hackleburg",
-    "al-league-occupational-tax-haleyville",
-    "al-league-occupational-tax-hamilton",
-    "al-league-occupational-tax-leeds",
     "al-league-occupational-tax-lynn",
-    "al-league-occupational-tax-midfield",
     "al-league-occupational-tax-mosses",
-    "al-league-occupational-tax-rainbow-city",
     "al-league-occupational-tax-red-bay",
     "al-league-occupational-tax-shorter",
     "al-league-occupational-tax-southside",
-    "al-league-occupational-tax-sulligent",
-    "al-league-occupational-tax-tuskegee"
+    "al-league-occupational-tax-sulligent"
   ],
   "counts_by_evidence_status": {
-    "CONFIRMED_PRIMARY": 2636,
-    "SUPPORTED_AUTHORITATIVE_ASSOCIATION": 179
+    "CONFIRMED_PRIMARY": 2645,
+    "SUPPORTED_AUTHORITATIVE_ASSOCIATION": 170
   },
-  "jsonl_sha256": "3ab1312ad3f43c60aad3f67b88a20429d3cacaac22a69aea76f6e9d078ef858f",
-  "csv_sha256": "6d2b67bfe86b664902b596d136f85c01e6956854ea8b57e91d68e0634c35e259"
+  "jsonl_sha256": "f58a92540ce56ae09971ac4b8913e393e699d814432b304408fffe4f4316a9d6",
+  "csv_sha256": "33fe7fd02c0f88dd5ac3cb8d4a470b3459618f9438859e4d21f21b97e8b6ef4c"
 }

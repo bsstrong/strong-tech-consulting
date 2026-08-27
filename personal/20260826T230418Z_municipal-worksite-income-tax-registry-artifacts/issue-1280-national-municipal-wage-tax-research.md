@@ -126,7 +126,7 @@ Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After
 
 | State | Coverage | Phase 1 finding |
 |---|---|---|
-| [Alabama](https://www.revenue.alabama.gov/wp-content/uploads/2021/01/2020-General-Summary.pdf) | `PARTIAL` | Birmingham is a confirmed employee-earnings occupational-tax positive; no complete current statewide adopter registry was found. |
+| [Alabama](https://www.revenue.alabama.gov/wp-content/uploads/2021/01/2020-General-Summary.pdf) | `PARTIAL` | Fourteen municipalities are directly confirmed and 11 additional League-survey candidates remain unresolved; no complete current statewide adopter registry was found. |
 | [Alaska](https://www.commerce.alaska.gov/dcra/admin/Taxable/ViewFile/2de31798-e2aa-42c9-8a50-43e1c7c6ddb8) | `COMPLETE` | The current all-municipality/all-tax-type report has no in-scope tax; this is current-practice closure, not permanent preemption. |
 | [Arizona](https://www.azleg.gov/ars/43/00201.htm) | `NO_AUTHORITY_CONFIRMED` | Current statute preempts local income taxation while the urban revenue-sharing fund is maintained. |
 | [Arkansas](https://arkleg.state.ar.us/Bills/Detail?ddBienniumSession=2023%2F2023R&id=HB1026) | `NO_AUTHORITY_CONFIRMED` | Act 96 of 2023 prohibits local-government income taxes and repealed prior local authority. |
@@ -242,6 +242,10 @@ The remaining material gaps are:
 7. **Time-sensitive authority:** Indiana is `NO_AUTHORITY_CONFIRMED` only through FY2027; municipal LIT authority begins in FY2028, requiring a scheduled source refresh before that date.
 
 ## Product-data recommendation
+
+## Alabama candidate-verification addendum — August 27, 2026
+
+The 20 Alabama League association-supported candidates were each researched against current local material. Nine were promoted to direct primary: Bessemer, Fairfield, Guin, Haleyville, Hamilton, Leeds, Midfield, Rainbow City, and Tuskegee. Eleven remain association-supported because the accessible evidence does not close at least the municipal worksite/nonresident incidence rule. Tuskegee's current city sources establish 3%, correcting the League survey's 2% entry. Final Alabama counts are 25 rows: 14 direct primary and 11 association-supported. See [`agent-extracts/alabama-local-verification-2026-08-27.md`](agent-extracts/alabama-local-verification-2026-08-27.md).
 
 Do not implement the research as one unversioned approved city-name list. Use a versioned jurisdiction/evidence registry plus a deterministic resolver.
 
