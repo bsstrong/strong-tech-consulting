@@ -43,6 +43,8 @@ The 2,817 number is therefore a best-available screening inventory, not a claim 
 
 The complete row-level list is provided as [CSV](worksite-municipal-income-tax-registry.csv) and [JSONL](worksite-municipal-income-tax-registry.jsonl). Each row carries its evidence status, rate, scope, withholding field, source URLs, source date, limitation, and product disposition. [Validation results](worksite-municipal-income-tax-registry-validation.json) contain the reconciliation, uniqueness checks, evidence-tier counts, and hashes.
 
+The [product-readiness audit](product-readiness-audit-2026-08-27.md) concludes that this package can support a governed three-result screening workflow, but is not an autonomous approved-city list or payroll-calculation table. Authoritative worksite-boundary resolution, an approved direct-primary data view, and release/approval metadata remain prerequisites.
+
 ## Included jurisdictions by state
 
 ### Alabama — 25 best-available rows; coverage partial

@@ -14,6 +14,7 @@ The registry now contains **2,817 municipality rows across nine states**: 2,743 
 - `worksite-municipal-income-tax-registry.jsonl` - the same municipality registry with richer structured evidence.
 - `worksite-municipal-income-tax-registry-validation.json` - validation of the final worksite registry.
 - `worksite-municipal-income-tax-review-queue.md` - candidates and evidence tiers requiring manual review.
+- `product-readiness-audit-2026-08-27.md` - final decision on what the registry can safely power, production blockers, required data views, and the deterministic three-result contract.
 - `coverage-matrix.jsonl` - disposition and evidence coverage for all 50 states plus the District of Columbia.
 - `normalized-municipal-tax-inventory.jsonl` - normalized screening inventory assembled before applying the final product definition.
 - `review-only-and-nonmunicipal-inventory.jsonl` - excluded, nonmunicipal, or review-only records preserved for traceability.
