@@ -1,0 +1,469 @@
+{
+  "research_date": "2026-08-26",
+  "official_current_titles_including_constitution": 43,
+  "total_pdf_bytes": 35769599,
+  "total_pages": 12429,
+  "total_extracted_characters": 25245201,
+  "phrase_results": {
+    "wage tax": {
+      "count": 0,
+      "hits": []
+    },
+    "earnings tax": {
+      "count": 0,
+      "hits": []
+    },
+    "payroll tax": {
+      "count": 0,
+      "hits": []
+    },
+    "compensation tax": {
+      "count": 0,
+      "hits": []
+    },
+    "municipal income tax": {
+      "count": 0,
+      "hits": []
+    },
+    "city income tax": {
+      "count": 0,
+      "hits": []
+    },
+    "local income tax": {
+      "count": 2,
+      "hits": [
+        {
+          "file": "Title-17.pdf",
+          "context": "nd any application for and certificate of continuance, together with executed copies of any powers of attorney pursuant to which any certificate or application has been executed; (iii) Copies of the limited partnership's federal, state and local income tax returns and reports, if any, for the three (3) most recent years; (iv) Copies of any then effective written partnership agreements and of any financial statements of the limited partnership for the three (3) most recent years; and (v) Unle"
+        },
+        {
+          "file": "Title-17.pdf",
+          "context": "ime upon reasonable demand: (A) True and full information regarding the state of the business and financial condition of the limited partnership; (B) Promptly after becoming available, a copy of the limited partnership's federal, state and local income tax returns for each year; and (C) Other information regarding the affairs of the limited partnership as is just and reasonable. ARTICLE 5 - GENERAL PARTNERS 17-14-501. Admission of additional general partners. After the filing of a limited pa"
+        }
+      ]
+    },
+    "occupational tax": {
+      "count": 0,
+      "hits": []
+    },
+    "occupation tax": {
+      "count": 0,
+      "hits": []
+    },
+    "employee tax": {
+      "count": 0,
+      "hits": []
+    },
+    "political subdivision income tax": {
+      "count": 0,
+      "hits": []
+    }
+  },
+  "municipal_compensation_tax_proximity_hits": [
+    {
+      "file": "Title-09.pdf",
+      "context": "t practicable, be consistent with other provisions of this act. 9-3-304. Governmental employee's contributions; amount; collection by payroll deduction; adjustments; payments from political subdivisions. (a) Every employee of the state and political subdivision thereof, whose services are covered by an agreement entered into under W.S. 9-3-303, shall be required to pay, for the period of coverage, into the account established by W.S. 9-3-305, contributions, with respect to wages equal to the amount of tax which would be imposed by section 1400 of the Federal Insurance Contributions Act if the services constituted employment within the meaning of that act. The liabilities shall aris"
+    },
+    {
+      "file": "Title-09.pdf",
+      "context": "his article; (viii) Repealed by Laws 2019, ch. 186, § 2. 9-3-502. Establishment of program by state; administration by Wyoming retirement board; establishment of separate deferred compensation by political subdivisions; investment permitted; limitation on amount deferred; taxability. (a) The board shall establish and administer the program for employees in addition to any retirement, pension, benefit or other deferred compensation programs established by the governmental entity. Subject to requirements of this article, any county, city, town or other political subdivision may establish and administer a deferred compensation program separate from the program established under this article. A county, city, town or other political subdivision which wi"
+    },
+    {
+      "file": "Title-09.pdf",
+      "context": "mpensation deferred pursuant to this article shall be included as compensation for the purpose of computing retirement or pension benefits earned by the employee, but the deferred compensation is exempt from state taxation to the same extent as it is exempt from federal income taxes. 9-3-503. Investment of deferred compensation; limitation on approved investment plans; enrolling and servicing fees; holding of funds; limited liability of state and political subdivision. (a) The board may approve investment of deferred compensation in insurance and annuity contracts or other investment plans upon competitive bidding. No investment plan shall be a"
+    },
+    {
+      "file": "Title-15.pdf",
+      "context": "unities for the citizens of Wyoming by creating or encouraging the expansion of manufacturing, industrial plants, processing facilities and all kinds of business, which contribute payrolls and tax base to the state of Wyoming, and by attracting to and encouraging the location or the expansion within this state of such plants, facilities and businesses, all of which are hereby declared to be and constitute public purposes, the counties and municipalities of the state of Wyoming are vested with the powers and privileges hereafter set forth in this article. 15-1-702. Powers of municipalities and counties; limitations. (a) In ad"
+    }
+  ],
+  "files": [
+    {
+      "pdf": "Title-01.pdf",
+      "pdf_bytes": 718511,
+      "pdf_sha256": "44b895e013260515acaedb4ba103fb746bf53e73c973d533ea66a98067433a9f",
+      "pages": 366,
+      "text": "Title-01.txt",
+      "text_bytes": 741722,
+      "text_sha256": "1a4e9fdfacb12927dac691c82234ed83691073ea36eeabf6f3b0e47f57ddbf7b"
+    },
+    {
+      "pdf": "Title-02.pdf",
+      "pdf_bytes": 426817,
+      "pdf_sha256": "6dc86521a77788589b9c2bdc0f951ff5585d144113e578ad04f4d633033dcee0",
+      "pages": 200,
+      "text": "Title-02.txt",
+      "text_bytes": 412325,
+      "text_sha256": "ddb4b027f93c278702d17be588d5c9920b4aa11b84c68f0686623c362ecf019d"
+    },
+    {
+      "pdf": "Title-03.pdf",
+      "pdf_bytes": 256888,
+      "pdf_sha256": "ab699b070780b1788c0d39a0ea0ab8d3ce78660e3f5391ae580cc4e711565e57",
+      "pages": 104,
+      "text": "Title-03.txt",
+      "text_bytes": 193217,
+      "text_sha256": "25b2adb6adcab16bf1af38232ddab8eb7ff1f2c8098f20798c13fe5413dc3032"
+    },
+    {
+      "pdf": "Title-04.pdf",
+      "pdf_bytes": 227638,
+      "pdf_sha256": "79a8211754506b913435690df99899884f3d44df3a2823004bbfe3f51f677f89",
+      "pages": 87,
+      "text": "Title-04.txt",
+      "text_bytes": 168504,
+      "text_sha256": "205745eebeb37b244dafc5e601a1196a89644fb608ac0ba0b68d665b0bc0be53"
+    },
+    {
+      "pdf": "Title-05.pdf",
+      "pdf_bytes": 255311,
+      "pdf_sha256": "0233b45e6ef7b1fe11a6287647d758f3037a8c137cb1d779a20132a52306a87c",
+      "pages": 102,
+      "text": "Title-05.txt",
+      "text_bytes": 201379,
+      "text_sha256": "9215fd4517b7238946462b45a4c805cb29d10c026e943ceeec87ac327ac18ea3"
+    },
+    {
+      "pdf": "Title-06.pdf",
+      "pdf_bytes": 441876,
+      "pdf_sha256": "302324beb959ac13d3492d2e28d743b8a77b4c166347dd7f8927419d469b658a",
+      "pages": 210,
+      "text": "Title-06.txt",
+      "text_bytes": 407901,
+      "text_sha256": "ac873710e2e7b43fc8d0803a5c3a78948b5bb4cb913dd802d68fb1176a1cc50f"
+    },
+    {
+      "pdf": "Title-07.pdf",
+      "pdf_bytes": 694689,
+      "pdf_sha256": "64f12ab93a918810f149f81ed20793157f1c62e6b1501e02f0939cfdfbe09ce5",
+      "pages": 357,
+      "text": "Title-07.txt",
+      "text_bytes": 731985,
+      "text_sha256": "0e7c576d25fa6a1ee00802a7c45304bc0cfdb9314eb1b3d3de2f2f8062e8d166"
+    },
+    {
+      "pdf": "Title-08.pdf",
+      "pdf_bytes": 125713,
+      "pdf_sha256": "68cf48d5ff452280abd29906e0218a95eab5c48774affca1b89606db2e6acdad",
+      "pages": 27,
+      "text": "Title-08.txt",
+      "text_bytes": 52479,
+      "text_sha256": "6b35011ab9e11930a8a567de9372e3a03e6e4ff2abb3602c4660e2ba73ee6919"
+    },
+    {
+      "pdf": "Title-09.pdf",
+      "pdf_bytes": 1669319,
+      "pdf_sha256": "3c38d489574f877f2841270781cdef29309f801eb6ee234c6085a64fcbba321a",
+      "pages": 892,
+      "text": "Title-09.txt",
+      "text_bytes": 1843389,
+      "text_sha256": "3248ac6b182f0f3015993def5f88322a6213d0325260d07d1618ca92fb2cdc00"
+    },
+    {
+      "pdf": "Title-10.pdf",
+      "pdf_bytes": 118351,
+      "pdf_sha256": "9addc3034b9024a52fff929283be51bedeeb77939ed72261722d2080fb1054ab",
+      "pages": 23,
+      "text": "Title-10.txt",
+      "text_bytes": 45797,
+      "text_sha256": "c927a9d0006f7afa7c6ac15489260e52dd78286bc88e8bee22fcd0ba6c387d90"
+    },
+    {
+      "pdf": "Title-11.pdf",
+      "pdf_bytes": 756013,
+      "pdf_sha256": "68f78b4ee97c0320e63f69b4e3e5d45518fd409be70bffda4b6f8e1dcd2fbcf4",
+      "pages": 385,
+      "text": "Title-11.txt",
+      "text_bytes": 800450,
+      "text_sha256": "5695122b269e90d67474f45920b249a201f3e89c46087c9941f3e869d9a3ce3e"
+    },
+    {
+      "pdf": "Title-12.pdf",
+      "pdf_bytes": 227045,
+      "pdf_sha256": "0e0b5dd9d671df95c9f6d777cc69e3842b930c61a82205261eebde9c063a3aa7",
+      "pages": 86,
+      "text": "Title-12.txt",
+      "text_bytes": 176771,
+      "text_sha256": "e165107cf800324c184a61c3ebb2fafcfe6c199960ebb0eb81db390149bed8d1"
+    },
+    {
+      "pdf": "Title-13.pdf",
+      "pdf_bytes": 451675,
+      "pdf_sha256": "0090499d238461522ecac90acc2d8af9907ebc933f7fc45bf8df428922ef2149",
+      "pages": 217,
+      "text": "Title-13.txt",
+      "text_bytes": 456947,
+      "text_sha256": "9efc2d824da46b40f41cf5fe263453b668cf739b17642128970c0cd1c0a1a380"
+    },
+    {
+      "pdf": "Title-14.pdf",
+      "pdf_bytes": 639111,
+      "pdf_sha256": "e9447d5b6c94c21b040251cf0b024bec652b6860bd5491ab0d643481d1f45d89",
+      "pages": 323,
+      "text": "Title-14.txt",
+      "text_bytes": 648313,
+      "text_sha256": "bfeb0b13cbca7ca8d938986cd536247c58e8d9930deac0f4961f22ebbc8a6117"
+    },
+    {
+      "pdf": "Title-15.pdf",
+      "pdf_bytes": 582521,
+      "pdf_sha256": "77874b3955cac987be7c2ae7d5caaf1cfddf4e367548ce6095874b09ca75d483",
+      "pages": 286,
+      "text": "Title-15.txt",
+      "text_bytes": 615422,
+      "text_sha256": "780ef7b6f4a9613ce0b21affeeed2d80fa0bd00a9264f3bb9b071295aee06b20"
+    },
+    {
+      "pdf": "Title-16.pdf",
+      "pdf_bytes": 682992,
+      "pdf_sha256": "a8e337b72c2e9d5d2a12388753e52f63a3852af2a5ab4b572921c526333eaa01",
+      "pages": 195,
+      "text": "Title-16.txt",
+      "text_bytes": 413179,
+      "text_sha256": "2ce37239adeadb3a21aac6b7314d8f5ae21840a57502b54e0e7d184881373b79"
+    },
+    {
+      "pdf": "Title-17.pdf",
+      "pdf_bytes": 2488815,
+      "pdf_sha256": "f0fd7eb843b83bb60095bad496330f8dfd46ff7051dff8d1bec822650a3671f6",
+      "pages": 801,
+      "text": "Title-17.txt",
+      "text_bytes": 1604166,
+      "text_sha256": "0f85391aa89dc7c74dd975dcb5708c5d96ca639379966c5a9fb2dfae9b4f2b6e"
+    },
+    {
+      "pdf": "Title-18.pdf",
+      "pdf_bytes": 781089,
+      "pdf_sha256": "bef4a965da2404493d9e8651aca6bb4590741e736e8ffd546992d11ee65c519c",
+      "pages": 238,
+      "text": "Title-18.txt",
+      "text_bytes": 531532,
+      "text_sha256": "a189b4fdd32303b310f5abf1dec1ef12b120402ad38b553fa4d6b09baef66092"
+    },
+    {
+      "pdf": "Title-19.pdf",
+      "pdf_bytes": 496801,
+      "pdf_sha256": "dd75cdc29a6922568c39ffea6cd813350bd47d342c6314beac1e094634b4e324",
+      "pages": 141,
+      "text": "Title-19.txt",
+      "text_bytes": 297820,
+      "text_sha256": "0c61f64fec896ba3e6351988cba09f4e746b5fcaff4d92947718f3d6d65c9b2a"
+    },
+    {
+      "pdf": "Title-20.pdf",
+      "pdf_bytes": 569805,
+      "pdf_sha256": "3038820c1835b138b8120db4a570471bd6272bf38e30dd4fd48d24014d8bd5a6",
+      "pages": 160,
+      "text": "Title-20.txt",
+      "text_bytes": 316799,
+      "text_sha256": "51c606bb1960d6426d96d48757e2eea1d6ffbf628e57c7511af93854a69eed5b"
+    },
+    {
+      "pdf": "Title-21.pdf",
+      "pdf_bytes": 1851662,
+      "pdf_sha256": "5f9b70489b5c39f9af21e632d80e24d537cdbdffdb562a7b299db9debb7e0ced",
+      "pages": 602,
+      "text": "Title-21.txt",
+      "text_bytes": 1301584,
+      "text_sha256": "db7b2a2b135e1dfb8f3b68ba3ef80da24f062d70f3fdce55add4281c7f34caa7"
+    },
+    {
+      "pdf": "Title-22.pdf",
+      "pdf_bytes": 806795,
+      "pdf_sha256": "a7d73bc40f51c3f285d0de2477a441730c08662fc842c3fde720d4baa7eb48a9",
+      "pages": 240,
+      "text": "Title-22.txt",
+      "text_bytes": 481534,
+      "text_sha256": "73a0a9eee550ce4e17778a7be3258507bebafb511da5fc55b1515c059f04da3b"
+    },
+    {
+      "pdf": "Title-23.pdf",
+      "pdf_bytes": 489346,
+      "pdf_sha256": "0f2fe1b0a3a60063154d7b0d82dd25f7b59537450b7e48de4c354f255ff28942",
+      "pages": 138,
+      "text": "Title-23.txt",
+      "text_bytes": 295147,
+      "text_sha256": "57237cb7e72f269effef86b54ce607eb38d6a10205cfc10658f74660397f02ab"
+    },
+    {
+      "pdf": "Title-24.pdf",
+      "pdf_bytes": 304113,
+      "pdf_sha256": "d53cb9b7fd5b1ef04c03a9cc8d3c0461f3a07d403df24f0e4d2d5c6f8ee2b2fc",
+      "pages": 76,
+      "text": "Title-24.txt",
+      "text_bytes": 170194,
+      "text_sha256": "e1c714ed1e37884d890082842a17027adbeae87022c528e6a25499b0d6da23a9"
+    },
+    {
+      "pdf": "Title-25.pdf",
+      "pdf_bytes": 324810,
+      "pdf_sha256": "96e035d416404dcc3f7f50702832034b0522d7c0e6db7678b1df691b78854dbe",
+      "pages": 82,
+      "text": "Title-25.txt",
+      "text_bytes": 166286,
+      "text_sha256": "311c5636bd3a84525f173c795623ed5ca48cde7bbb3a5dc833619d6680a4f672"
+    },
+    {
+      "pdf": "Title-26.pdf",
+      "pdf_bytes": 2999237,
+      "pdf_sha256": "c3d0ee12034b57028414d563b46dde51e41ad0ccf48889f1efc0472648dc2eda",
+      "pages": 989,
+      "text": "Title-26.txt",
+      "text_bytes": 2060118,
+      "text_sha256": "3ee16bc57ec8c4baf13addb7eab9b276f3e1945a2dc7ae7b62515bf8cfcca26e"
+    },
+    {
+      "pdf": "Title-27.pdf",
+      "pdf_bytes": 879358,
+      "pdf_sha256": "c131a406d44bf2e556500c4ca8de7ccc3c6334cdc4d02c5e31ceabc25293b47a",
+      "pages": 270,
+      "text": "Title-27.txt",
+      "text_bytes": 574312,
+      "text_sha256": "10dffe6247e62c4b1130f0a295309055970423377b95129d0f648a86cc1c076c"
+    },
+    {
+      "pdf": "Title-28.pdf",
+      "pdf_bytes": 250210,
+      "pdf_sha256": "93c0510f4ea8b181c345170f6848cfd2c4212365e79a2752b5fb34692692b2a5",
+      "pages": 57,
+      "text": "Title-28.txt",
+      "text_bytes": 112971,
+      "text_sha256": "e396343629987a6c282d770ed9174f070d3a5705e10aed82dd746814830ba36c"
+    },
+    {
+      "pdf": "Title-29.pdf",
+      "pdf_bytes": 262949,
+      "pdf_sha256": "e0ffc1c364563141f04c7cf685f8984abe2cd6e5b885f8bf67d03d7f8dbed383",
+      "pages": 60,
+      "text": "Title-29.txt",
+      "text_bytes": 112022,
+      "text_sha256": "159d5d97a9b8eda3c71b100dceaf58469955e7639d1b5632c1f82045b43d0894"
+    },
+    {
+      "pdf": "Title-30.pdf",
+      "pdf_bytes": 503379,
+      "pdf_sha256": "3a105e55d45a5ab5942de0ef7dbbfcbec747bf41e2dc71ce29ab425014d98616",
+      "pages": 144,
+      "text": "Title-30.txt",
+      "text_bytes": 304871,
+      "text_sha256": "29c1b0dea623bbfb9d8e6a5410e325e711f38dc701b74e1861eaf4c1914c9b5a"
+    },
+    {
+      "pdf": "Title-31.pdf",
+      "pdf_bytes": 1763607,
+      "pdf_sha256": "3b4ca3594a5b411bb8d9ebb3202e6ed7211541110e416ff5aca3cab79cb30097",
+      "pages": 542,
+      "text": "Title-31.txt",
+      "text_bytes": 1134062,
+      "text_sha256": "2e64a49cec7f1382a8c95affd768a86e3602522588b2e59c850359313440bfdf"
+    },
+    {
+      "pdf": "Title-32.pdf",
+      "pdf_bytes": 174173,
+      "pdf_sha256": "7b7844f9a16eac9163f7f8d9b89c53b3d8b2a61ba219be94cbfd744654460ad4",
+      "pages": 33,
+      "text": "Title-32.txt",
+      "text_bytes": 59647,
+      "text_sha256": "f380839cb8ca3e187d4f751dfb3e971e8673f16060a1645e3ff85cfa71d06f30"
+    },
+    {
+      "pdf": "Title-33.pdf",
+      "pdf_bytes": 2524344,
+      "pdf_sha256": "7afd55b8bb0b2c0013bebbb03d6974c203ed1c70f2657dbe40a97cb607fa56ca",
+      "pages": 816,
+      "text": "Title-33.txt",
+      "text_bytes": 1645288,
+      "text_sha256": "d082c97b24c9b61fcdf6f5c23a768680ce6c682954f5f6e13ddaa03ba7e4632d"
+    },
+    {
+      "pdf": "Title-34.pdf",
+      "pdf_bytes": 778161,
+      "pdf_sha256": "dffab8c62b28f3387dcfdea2e38322cb0fa78d9c7c4ec1499bbf2dcf39a5300b",
+      "pages": 229,
+      "text": "Title-34.txt",
+      "text_bytes": 456276,
+      "text_sha256": "50f66be3195bc299b0fa027487488abed618e05a38ed4842c0f77ded5789f12d"
+    },
+    {
+      "pdf": "Title-35.pdf",
+      "pdf_bytes": 2927763,
+      "pdf_sha256": "1195dea407a948ceb914de6daee6e7d9200427a5949d7aeb2d59f17f4d863e5e",
+      "pages": 954,
+      "text": "Title-35.txt",
+      "text_bytes": 1974869,
+      "text_sha256": "1f5234d59234bd4c676f204d0facaddb94c12c582e28b99352b47ccb6f4ed865"
+    },
+    {
+      "pdf": "Title-36.pdf",
+      "pdf_bytes": 517515,
+      "pdf_sha256": "2395855d4dbfe2b97ff43a0dc597cbc58d5e98db1c9022377fddadf24aa679b1",
+      "pages": 150,
+      "text": "Title-36.txt",
+      "text_bytes": 334645,
+      "text_sha256": "6f292e0e0e98f6592492b32c589115957dc754b82e89f6711581c62dd7faf9db"
+    },
+    {
+      "pdf": "Title-37.pdf",
+      "pdf_bytes": 481547,
+      "pdf_sha256": "3feca4906495491ea1a4179c10e21e5e371d03b63673613bd41df608a82a0cb3",
+      "pages": 230,
+      "text": "Title-37.txt",
+      "text_bytes": 509030,
+      "text_sha256": "472930f6e3e9a585bc6744eeed64f4b34065f367eb5705aa5da678708d1c7f34"
+    },
+    {
+      "pdf": "Title-38.pdf",
+      "pdf_bytes": 95128,
+      "pdf_sha256": "b363ffde167146a299d12118c1d6b6f79688500bd14f9715cf826e11a20e160f",
+      "pages": 8,
+      "text": "Title-38.txt",
+      "text_bytes": 18205,
+      "text_sha256": "ea9ebb92c26ee872239b40a0b5fa118f3b9814ae00c4be4bcd3bee2b49c21c88"
+    },
+    {
+      "pdf": "Title-39.pdf",
+      "pdf_bytes": 1594368,
+      "pdf_sha256": "ad38d0bd38b5574e3ff2bed3408c1d5fcf5d4d878b209826930ad36ecd9f26ae",
+      "pages": 514,
+      "text": "Title-39.txt",
+      "text_bytes": 1113011,
+      "text_sha256": "49acc1e351d1dcc8c2001af637ea45767a1ee03d821ed31f068e8cfc569ad2f9"
+    },
+    {
+      "pdf": "Title-40.pdf",
+      "pdf_bytes": 1314134,
+      "pdf_sha256": "2a7e997e4a18abb2eb8cc0f0a50f2ec030c338d9edbba3e82958399f05c1e301",
+      "pages": 401,
+      "text": "Title-40.txt",
+      "text_bytes": 815192,
+      "text_sha256": "c97a640d385628ff5abdd9cb3fd899580935763076380260edabf319deec04f2"
+    },
+    {
+      "pdf": "Title-41.pdf",
+      "pdf_bytes": 1462109,
+      "pdf_sha256": "7d23e54d8a94227974f95660d8ba954130941b6355df27c211abe2ed5fea8215",
+      "pages": 481,
+      "text": "Title-41.txt",
+      "text_bytes": 1104216,
+      "text_sha256": "ceb7bae586a318f36a4078ee89df989325910f7646d9f5e229cbaa17db3dfc9b"
+    },
+    {
+      "pdf": "Title-42.pdf",
+      "pdf_bytes": 540292,
+      "pdf_sha256": "16714fed41850ff82fcf9e9e789791894310fe3ade88371b7c7802946982e0b9",
+      "pages": 132,
+      "text": "Title-42.txt",
+      "text_bytes": 270387,
+      "text_sha256": "21d6c0b26e7af679f84c8d2407866ac2f44555d01265126d57431a2a522f9293"
+    },
+    {
+      "pdf": "Title-97.pdf",
+      "pdf_bytes": 313619,
+      "pdf_sha256": "63de540304eb0e4c216bf74958835184e8b1e36c6bb9da70c77edd6c3dd1eda2",
+      "pages": 81,
+      "text": "Title-97.txt",
+      "text_bytes": 171810,
+      "text_sha256": "c312cc5bff4984d81144c579382ac82c41c376bb0200972a426b40875f081f6a"
+    }
+  ]
+}

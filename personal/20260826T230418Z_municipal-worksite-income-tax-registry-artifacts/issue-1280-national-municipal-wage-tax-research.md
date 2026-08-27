@@ -2,7 +2,13 @@
 
 Research retrieval date: 2026-08-25
 
-Status: Historical research notebook plus August 25 West Virginia and August 26 Idaho, Mississippi, Montana, South Dakota, and Utah closure addenda; not compliance-approved and not Rule Engine data.
+Status: Historical research notebook plus August 25 West Virginia and August 26 Idaho, Mississippi, Montana, South Dakota, Utah, and Wyoming closure addenda; not compliance-approved and not Rule Engine data.
+
+## August 26, 2026 Wyoming closure addendum
+
+Wyoming moved from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED` with zero registry rows. Current Wyoming Statutes section 39-12-101 expressly preempts income taxes, earnings taxes, and every other tax based on wages or other income. It denies every county, city, town, and other political subdivision the right to impose, levy, or collect those taxes. Wyoming Constitution article 13, section 3 and article 15, section 13 independently require municipal and other taxes to rest on law.
+
+The complete-code cross-check downloaded statutory Titles 1 through 42 and Constitution Title 97—43 official PDFs, 12,429 pages, 35,769,599 PDF bytes, and 25,245,201 extracted characters. It found no qualifying exception, delegation, or adopter. The two `local income tax` hits and four proximity hits are unrelated partnership recordkeeping, FICA, deferred-compensation, economic-development, and pension provisions. The registry remains 2,815 municipalities across nine states. Coverage is now 17 `COMPLETE`, 21 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 3 `UNDETERMINED`. See the [Wyoming closure report](../20260826T230418Z_wyoming-municipal-wage-tax-closure.md), [evidence directory](../20260826T230418Z_wyoming-municipal-wage-tax-closure-artifacts/README.md), and updated [coverage matrix](coverage-matrix.jsonl).
 
 ## August 26, 2026 Utah closure addendum
 
@@ -98,7 +104,7 @@ Every positive record requires a direct authoritative citation. Administrator me
 
 ## Nationwide coverage matrix
 
-Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the Utah closure, the matrix has 51 unique rows: 17 `COMPLETE`, 20 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 4 `UNDETERMINED`.
+Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After the Wyoming closure, the matrix has 51 unique rows: 17 `COMPLETE`, 21 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 3 `UNDETERMINED`.
 
 | State | Coverage | Phase 1 finding |
 |---|---|---|
@@ -151,7 +157,7 @@ Machine-readable detail: [`coverage-matrix.jsonl`](coverage-matrix.jsonl). After
 | [Washington](https://app.leg.wa.gov/RCW/default.aspx?cite=1.90&full=true) | `NO_AUTHORITY_CONFIRMED` | Current law bars local individual personal-income taxes; Seattle payroll-expense tax is employer-only. |
 | [West Virginia](https://code.wvlegislature.gov/8-13C-3/) | `COMPLETE` | Current closed zero: conditional authority exists, but the 2026 statewide tax guide reports no adopter and all 53 official GASB 2025 plan reports remain above the 3% qualification ceiling. |
 | [Wisconsin](https://www.revenue.wi.gov/Pages/FAQS/pcs-with.aspx) | `UNDETERMINED` | No explicit municipal preemption or complete local inventory was established. |
-| [Wyoming](https://revenue.wyo.gov/excise-tax-division) | `UNDETERMINED` | Official local-tax material found was not an exhaustive all-tax registry. |
+| [Wyoming](https://wyoleg.gov/statutes/compress/title39.pdf) | `NO_AUTHORITY_CONFIRMED` | Section 39-12-101 expressly preempts local income, earnings, wage-based, and other income-based taxes; the complete 43-file current-code audit found no exception or adopter. |
 | [District of Columbia](https://otr.cfo.dc.gov/page/dc-individual-and-fiduciary-income-tax-rates) | `COMPLETE` | The District is one closed district-equivalent resident income-tax system, but it cannot be inferred from company situs. |
 
 ## Normalized positive-jurisdiction inventory
@@ -205,12 +211,12 @@ The approximately 700 estimate is not supportable as a national count. Ohio alon
 This is an exhaustive nationwide source-topology and gap assessment, but not an individually ordinance-verified national adopter list. Seventeen jurisdictions cannot support a nationwide `CLEAR` decision from current evidence:
 
 - `PARTIAL`: Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
-- `UNDETERMINED`: California, Colorado, Texas, and Wyoming.
+- `UNDETERMINED`: California, Colorado, and Texas.
 
 The remaining material gaps are:
 
 1. **Adopter closure:** Alabama and Kentucky have directly confirmed positives but no complete official current municipal adopter/rate registry. Oregon has confirmed Eugene and Portland taxes but no closed statewide registry. New Jersey's directly confirmed Newark/Jersey City taxes are employer-only; the employee-incidence universe is open.
-2. **Legal exception closure:** the 4 `UNDETERMINED` states require a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
+2. **Legal exception closure:** the 3 `UNDETERMINED` states require a current explicit preemption determination, a complete special-act/charter authorization inventory, or a complete all-municipality tax source. Absence from a state page covering only common local taxes is not negative evidence.
 3. **Boundary resolution:** a postal or mailing city is not a legal municipal boundary. Ohio Finder explicitly resolves addresses; Pennsylvania uses PSD codes; Eugene warns that a Eugene mailing address may be outside city limits. City/state alone cannot safely map these records.
 4. **Residence-only taxes:** Baltimore City, New York City, Portland, 558 Pennsylvania PSDs, and DC depend on individual residence. Company situs cannot establish applicability, so the current Issue #1280 input contract must return `UNDETERMINED` for these classes.
 5. **Rate currency:** Michigan's official registry closes the current 24-city adopter set, but the latest located statewide rate table is tax year 2025 for 23 cities; Detroit has a direct 2026 withholding guide. Several partial-state municipal sources likewise confirm current existence without a fully current rate/exemption codification.

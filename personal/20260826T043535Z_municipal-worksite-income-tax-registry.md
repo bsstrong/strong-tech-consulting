@@ -57,17 +57,17 @@ The 11 directly supported Kentucky jurisdictions are Bowling Green, Covington, H
 
 Alaska, Connecticut, Delaware, District of Columbia, Kansas, Maryland, Michigan, Missouri, Nebraska, New Jersey, New York, Ohio, Pennsylvania, South Dakota, Vermont, West Virginia, and Wisconsin.
 
-### No qualifying authority confirmed (20)
+### No qualifying authority confirmed (21)
 
-Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Utah, Virginia, and Washington.
+Arizona, Arkansas, Florida, Georgia, Hawaii, Idaho, Illinois, Indiana through fiscal year 2027, Louisiana, Minnesota, Mississippi, Montana, Nevada, New Mexico, North Carolina, North Dakota, Oklahoma under the worksite definition, Utah, Virginia, Washington, and Wyoming.
 
 ### Partial (10)
 
 Alabama, Iowa, Kentucky, Maine, Massachusetts, New Hampshire, Oregon, Rhode Island, South Carolina, and Tennessee.
 
-### Undetermined (4)
+### Undetermined (3)
 
-California, Colorado, Texas, and Wyoming.
+California, Colorado, and Texas.
 
 ## Important exclusions and boundary decisions
 
@@ -138,6 +138,14 @@ Utah Constitution article XI, section 5 limits charter-city tax authority to gen
 
 Evidence: [closure report](./20260826T230418Z_utah-municipal-wage-tax-closure.md) and [source manifest](./20260826T230418Z_utah-municipal-wage-tax-closure-artifacts/README.md).
 
+## Wyoming closure — August 26, 2026
+
+Wyoming is now a **closed zero**, moving from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; no municipality row was added.
+
+Current Wyoming Statutes section 39-12-101 expressly preempts income taxes, earnings taxes, and every other tax based on wages or other income. It denies every county, city, town, and other political subdivision the right to impose, levy, or collect those taxes. The complete cross-check of statutory Titles 1 through 42 and Constitution Title 97—43 official files and 12,429 pages—found no qualifying exception, delegation, or adopter.
+
+Evidence: [closure report](./20260826T230418Z_wyoming-municipal-wage-tax-closure.md) and [source manifest](./20260826T230418Z_wyoming-municipal-wage-tax-closure-artifacts/README.md).
+
 ## Open and future candidates
 
 - **Hurstbourne Acres, Kentucky:** secondary payroll sources report a 1% tax effective July 1, 2024, but no current municipal ordinance or form was located. Keep unresolved.
@@ -151,7 +159,6 @@ Ordinary web searching has reached diminishing returns. The remaining work shoul
 
 | Priority | States | Closure work |
 | --- | --- | --- |
-| High | Wyoming | Exhaust current statutes, session laws, special/local acts, and delegations. Seek written confirmation from the legislative research office or responsible tax agency when no complete official list exists. |
 | Medium | Colorado | Obtain the official home-rule municipality universe and search every charter and code for percentage-based wage, earnings, payroll, and occupational taxes; distinguish them from flat occupational privilege taxes. |
 | Hardest | California, Texas | Review the complete charter/home-rule universe, attorney-general opinions, cases, special laws, and municipal codes. A written state-level confirmation would materially strengthen closure because broad home-rule authority makes keyword-only statutory review insufficient. |
 

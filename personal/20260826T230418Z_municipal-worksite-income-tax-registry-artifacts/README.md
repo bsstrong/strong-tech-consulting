@@ -2,7 +2,7 @@
 
 This directory is the active replacement snapshot for the August 26, 2026 nine-state closure run. It began from the fully validated post-West Virginia snapshot in `../20260826T044944Z_municipal-worksite-income-tax-registry-artifacts/` and is updated, validated, committed, and pushed after each state iteration.
 
-The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, Montana, and Utah add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero. Nationwide coverage is now 17 `COMPLETE`, 20 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 4 `UNDETERMINED`.
+The registry remains **2,815 municipality rows across nine states**. Idaho, Mississippi, Montana, Utah, and Wyoming add no rows and move from `UNDETERMINED` to `NO_AUTHORITY_CONFIRMED`; South Dakota adds no rows and moves to a `COMPLETE` current zero. Nationwide coverage is now 17 `COMPLETE`, 21 `NO_AUTHORITY_CONFIRMED`, 10 `PARTIAL`, and 3 `UNDETERMINED`.
 
 ## Contents
 
@@ -66,3 +66,10 @@ South Dakota is a `COMPLETE` current zero: chapter 10-52 provides central advanc
 - [Constitutional, case-law, withholding, and complete-code audit manifest](../20260826T230418Z_utah-municipal-wage-tax-closure-artifacts/README.md)
 
 Utah is `NO_AUTHORITY_CONFIRMED`: municipal tax power requires a legislative grant; section 10-1-203 excludes employees from its municipal business-tax definition; and the complete 96-title current-code audit found no qualifying employee wage-tax delegation or adopter.
+
+## Wyoming evidence
+
+- [Closure report](../20260826T230418Z_wyoming-municipal-wage-tax-closure.md)
+- [Express preemption and complete-code audit manifest](../20260826T230418Z_wyoming-municipal-wage-tax-closure-artifacts/README.md)
+
+Wyoming is `NO_AUTHORITY_CONFIRMED`: section 39-12-101 expressly preempts every local income tax, earnings tax, and other tax based on wages or income, and the complete 43-file current-code audit found no qualifying exception or adopter.
