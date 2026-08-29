@@ -2,18 +2,18 @@
 
 ## Identity
 
-- Status: Completed; Zorka changes merged and HelixOS delivery approved, with HelixOS merge intentionally deferred
+- Status: Completed; Zorka and HelixOS changes are merged, the municipal ruleset is active in Test, and end-to-end Test validation passed
 - Repository: `helixosio/helixos` and `zorkacom/zorka`
-- Completed: 2026-08-28T04:22:17Z
+- Completed: 2026-08-29T06:24:44Z
 - Task/thread ID: unavailable
 - Branch: `codex/issue-1280-municipal-tax-workflow`, `codex/issue-1280-global-stored-execution`, and `codex/municipal-tax-ruleset`
-- Final head SHA: HelixOS `98cfbeb05cf7cdf6f5ca9d85792cb1866f7f794c`; Zorka #166 `b0385a5a2525ccbd9a346bdbd039a6d0f2de81c2`; Zorka #168 `4464f56f8e3a1b84e2bacc0f9c543c11f8f6ff9f`
+- Final head SHA: HelixOS `2449a775e5b3c50b137a5a389028d7957ebc32c9`; Zorka #166 `b0385a5a2525ccbd9a346bdbd039a6d0f2de81c2`; Zorka #168 `4464f56f8e3a1b84e2bacc0f9c543c11f8f6ff9f`
 - Issue: `helixosio/helixos#1280`
 - PR: [HelixOS #1382](https://github.com/helixosio/helixos/pull/1382), [Zorka #166](https://github.com/zorkacom/zorka/pull/166), and [Zorka #168](https://github.com/zorkacom/zorka/pull/168)
 
 ## Objective and outcome
 
-Complete the cross-repository municipal income-tax screening workflow. Product approved the exact checked-in dataset for Beta validation. The implementation, exact-tree architecture reviews, required CI, combined local acceptance, pull-request descriptions, and review resolution are complete. Zorka #166 and #168 merged. HelixOS #1382 is approved and green, but its merge is intentionally deferred so the automatic Test deployment does not expose the new municipal section before the planned demonstration. No Zorka image release, environment deployment, or ruleset activation occurred.
+Complete the cross-repository municipal income-tax screening workflow and make it demonstrable in Test. Product approved the exact checked-in dataset for Beta validation. The implementation, exact-tree architecture reviews, required CI, combined local acceptance, pull-request descriptions, and review resolution are complete. Zorka #166 and #168 and HelixOS #1382 merged. The approved ruleset is now published and active in the Test platform workspace, and the complete Helix workflow passed against it through screening, signed-application evidence, Option 1 activation, persistence, and audit.
 
 ## Delivered changes and decisions
 
@@ -34,6 +34,24 @@ Complete the cross-repository municipal income-tax screening workflow. Product a
 - Mandatory architecture self-review and exact-tree checkpoints found no unresolved actionable correctness, security, authorization, architecture, test-placement, or performance issue. GitHub reports HelixOS #1382 approved, mergeable, and green on all required checks.
 - GitHub's Markdown renderer confirmed structured output for all three descriptions: HelixOS #1382 has 10 section headings and 3 tables; Zorka #166 has 7 section headings and 2 tables; Zorka #168 has 10 section headings and 1 table. No inline-collapsed heading remains.
 
+## Local end-to-end demonstration
+
+- Started the merged Zorka API, runtime, and Studio together with the HelixOS API, web application, and workflow runner from the exact unmerged feature head. Each application used a dedicated local database.
+- Published and activated the approved municipal ruleset locally. Direct stored execution by slug returned the expected St. Louis match and approved inventory label `BETA-APPROVED-2026-08-27-01`.
+- Live HelixOS saves exercised clear, matched, incomplete-input, current-application, and active-Option-1 scenarios. The Rule Engine calls succeeded and the expected screening, action, evidence, and option states persisted.
+- Application readiness, both web applications, and both API health checks returned successfully. The HelixOS client workflow and Rule Engine Studio lookup data were inspected in the in-app browser with no console errors.
+- The local setup did not merge or deploy HelixOS, publish a Zorka image, or alter a remote environment.
+
+## Test environment activation and end-to-end validation
+
+- Published and activated the platform-global `municipal-income-tax-jurisdiction-screening` ruleset in Test from the approved governed artifact. The generated-document SHA-256 is `5566878009b440532c2c2cf4ff8ae8797414d9a5f6d4459dfe5ed54b0f90c660`, and the active inventory/version label is `BETA-APPROVED-2026-08-27-01` on `zorka-runtime-2026.06`.
+- Saved and executed three representative Studio payloads: St. Louis returned the matched-review result, Attalla returned `UNDETERMINED`, and Anchorage returned `CLEAR`. All three executions succeeded with zero runtime errors, the final validation reported no publish blockers, and the ruleset is globally callable.
+- Completed the missing Test prerequisites on the existing Birmingham client, then saved the client to trigger Helix screening. Helix persisted `Jurisdiction matched`, canonical jurisdiction `Birmingham, AL`, the approved inventory label, and a current evaluation timestamp.
+- Uploaded a synthetic Test-only PDF through Client Files as `Municipal Income Tax Application` with an effective date of August 29, 2026. Client Overview immediately recognized the signed application as current.
+- Activated Option 1 with the required Test reason. The final Overview reports `Jurisdiction matched`, signed application `Received`, Option 1 `Active`, and `Application and setting aligned`.
+- Verified three immutable client audit entries: screening changed from unable to determine to jurisdiction matched, the municipal application file was uploaded, and the municipal accommodation was activated with its reason and application effective date.
+- Observed Test work window: 2026-08-29 05:53-06:24 UTC (31 minutes), from the first recorded representative ruleset execution through final Helix audit verification.
+
 ## Risk and follow-up
 
-City/state remains a conservative screening proxy rather than authoritative municipal-boundary resolution; incomplete and ambiguous evidence remains fail-safe `UNDETERMINED`. Dataset approval and source merge do not activate or deploy the ruleset. After the demonstration, publish and deploy the approved Zorka application image to Test, import and publish the municipal ruleset, verify slug execution, and then merge HelixOS #1382. Merging HelixOS first would remain fail-soft, but would immediately expose an unresolved municipal status in Test and could add up to the five-second integration deadline on client saves.
+City/state remains a conservative screening proxy rather than authoritative municipal-boundary resolution; incomplete and ambiguous evidence remains fail-safe `UNDETERMINED`. The Birmingham Test client's Azure Maps address check remains `Needs review` because the address lookup was partial or ambiguous, but the independently governed city/state municipal screening succeeded and the workflow is demo-ready. The dataset remains a Beta-approved inventory with known evidence gaps. No production activation, migration, or validation was performed or is implied. Helix external stored execution does not persist a Studio trace by default; the authoritative Test evidence is the persisted client snapshot and immutable client audit, supplemented by the successful representative Studio traces.
