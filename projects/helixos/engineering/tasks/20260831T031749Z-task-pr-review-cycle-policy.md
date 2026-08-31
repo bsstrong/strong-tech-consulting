@@ -4,7 +4,7 @@
 
 - Status: Complete
 - Repository: Global agent instructions
-- Completed: 2026-08-31T03:17:49Z
+- Completed: 2026-08-31T03:25:45Z
 - Task/thread ID: Unavailable in current session
 - Branch: N/A
 - Final head SHA: `N/A`
@@ -22,14 +22,17 @@ Replace the HelixOS and Zorka owner-authored pull-request lifecycle with the own
 - Review feedback is checked after three minutes and every 30 seconds thereafter until terminal feedback returns.
 - CI runs concurrently and never delays an initial request, rerun, monitoring, analysis, or bounded fixes. Final approval requires clean required CI and review approval on the same head.
 - Requested changes enter finding disposition and circuit-breaker assessment, followed by fixes, validation, comment responses, thread resolution, rerun, and repeated monitoring until approval.
+- The circuit breaker is explicitly a complete scope and root-cause audit, not an owner-approval gate. Standing review-resolution authority includes necessary in-scope authorization, security, tenant-isolation, and cross-bounded-context fixes.
 - Approval stops the cycle pending owner merge; agents remain unauthorized to merge.
+- The `run-pr-review-loop` skill and its UI metadata were rewritten to match the Ready-first Slack cycle and remove the obsolete Draft, `jfollas`, one-minute-monitoring, rerun-limit, and risky-change approval behavior.
 
 ## Validation, review, and CI
 
 - Searched the complete canonical global instruction file for superseded Draft, optional Slack, GitHub reviewer, and older formal-review references; no conflicting HelixOS/Zorka lifecycle text remains.
 - Verified the canonical instruction file and the Codex and Claude global entrypoints remain hard links with identical SHA-256 content.
+- Verified the revised skill frontmatter, name, description, TODO state, UI metadata, and removal of stale lifecycle terms. The bundled validator could not run because PyYAML is absent from both available Python runtimes; equivalent checks passed manually.
 - Repository CI and PR review are not applicable to this external instruction update.
 
 ## Risk and follow-up
 
-No known residual policy conflict remains in the canonical global instructions. Owner follow-up is to provide the next pull request or implementation objective to run under the revised cycle.
+No known residual policy conflict remains in the canonical global instructions or PR-loop skill. Owner follow-up is to provide the next pull request or implementation objective to run under the revised cycle.
