@@ -2,18 +2,18 @@
 
 ## Identity
 
-- Status: Completed; Zorka and HelixOS changes are merged, the municipal ruleset is active in Test, and end-to-end Test validation passed
+- Status: Completed; changes are merged, post-merge cleanup is complete, the governed artifact is active in Beta, and issue #1280 is closed as completed
 - Repository: `helixosio/helixos` and `zorkacom/zorka`
-- Completed: 2026-08-29T06:24:44Z
+- Completed: 2026-09-01T19:22:29Z
 - Task/thread ID: unavailable
-- Branch: `codex/issue-1280-municipal-tax-workflow`, `codex/issue-1280-global-stored-execution`, and `codex/municipal-tax-ruleset`
-- Final head SHA: HelixOS `2449a775e5b3c50b137a5a389028d7957ebc32c9`; Zorka #166 `b0385a5a2525ccbd9a346bdbd039a6d0f2de81c2`; Zorka #168 `4464f56f8e3a1b84e2bacc0f9c543c11f8f6ff9f`
+- Branch: merged feature branches; the HelixOS dedicated worktree and local branch were removed, and the remote branch was already absent
+- Final head SHA: omitted from this cross-repository record; canonical pull-request links below retain exact provenance
 - Issue: `helixosio/helixos#1280`
 - PR: [HelixOS #1382](https://github.com/helixosio/helixos/pull/1382), [Zorka #166](https://github.com/zorkacom/zorka/pull/166), and [Zorka #168](https://github.com/zorkacom/zorka/pull/168)
 
 ## Objective and outcome
 
-Complete the cross-repository municipal income-tax screening workflow and make it demonstrable in Test. Product approved the exact checked-in dataset for Beta validation. The implementation, exact-tree architecture reviews, required CI, combined local acceptance, pull-request descriptions, and review resolution are complete. Zorka #166 and #168 and HelixOS #1382 merged. The approved ruleset is now published and active in the Test platform workspace, and the complete Helix workflow passed against it through screening, signed-application evidence, Option 1 activation, persistence, and audit.
+Complete the cross-repository municipal income-tax screening workflow through governed Beta activation. Product approved the checked-in dataset for Beta validation. Zorka #166 and #168 and HelixOS #1382 merged after review and required CI. Test end-to-end validation passed, the owner confirmed the governed artifact was deployed and activated in Beta, and HelixOS issue #1280 was documented and closed as completed.
 
 ## Delivered changes and decisions
 
@@ -23,7 +23,7 @@ Complete the cross-repository municipal income-tax screening workflow and make i
 - Review corrections close rejected upload streams, prioritize unresolved municipal guidance, warn when active Option 1 no longer aligns with a clear screening result, avoid loading version history for unselected rulesets, apply lifecycle policy consistently, reject whitespace-only input, and pin governed artifacts to stable LF bytes.
 - Each pull-request description now contains an exact-current-head file-change breakdown and open-ended Beta-validation language without a promised duration.
 - Zorka #166 and #168 descriptions were re-authored as structured Markdown and updated through a JSON request body that preserves line breaks; the remote bodies were verified byte-for-byte after each write.
-- Zorka #166 and #168 merged after their exact-head review and CI gates passed. HelixOS #1382 received approval on its current head and remains unmerged by owner decision rather than an implementation or review blocker.
+- Zorka #166 and #168 and HelixOS #1382 merged after their exact-head review and CI gates passed.
 
 ## Validation, review, and CI
 
@@ -52,6 +52,12 @@ Complete the cross-repository municipal income-tax screening workflow and make i
 - Verified three immutable client audit entries: screening changed from unable to determine to jurisdiction matched, the municipal application file was uploaded, and the municipal accommodation was activated with its reason and application effective date.
 - Observed Test work window: 2026-08-29 05:53-06:24 UTC (31 minutes), from the first recorded representative ruleset execution through final Helix audit verification.
 
+## Beta activation and terminal closure
+
+- The owner confirmed on September 1, 2026 that the governed municipal ruleset artifact was deployed and activated in Beta.
+- The completion evidence was posted to HelixOS issue #1280, which was closed with reason `completed`; its stale `In Progress` label was removed and its project item is `Done`.
+- Post-merge cleanup verified that the dedicated HelixOS worktree was clean, its tip matched the merged PR head, and no commits existed outside the merged pull request. The dedicated worktree and local branch were removed; the repository-owned remote branch was already absent. Unrelated worktrees and branches were preserved.
+
 ## Risk and follow-up
 
-City/state remains a conservative screening proxy rather than authoritative municipal-boundary resolution; incomplete and ambiguous evidence remains fail-safe `UNDETERMINED`. The Birmingham Test client's Azure Maps address check remains `Needs review` because the address lookup was partial or ambiguous, but the independently governed city/state municipal screening succeeded and the workflow is demo-ready. The dataset remains a Beta-approved inventory with known evidence gaps. No production activation, migration, or validation was performed or is implied. Helix external stored execution does not persist a Studio trace by default; the authoritative Test evidence is the persisted client snapshot and immutable client audit, supplemented by the successful representative Studio traces.
+City/state remains a conservative screening proxy rather than authoritative municipal-boundary resolution; incomplete and ambiguous evidence remains fail-safe `UNDETERMINED`. The dataset remains a Beta-approved inventory with known evidence gaps. No production activation, migration, or validation was performed or is implied. Helix external stored execution does not persist a Studio trace by default; Test evidence remains the persisted client snapshot and immutable client audit, supplemented by successful representative Studio traces.
