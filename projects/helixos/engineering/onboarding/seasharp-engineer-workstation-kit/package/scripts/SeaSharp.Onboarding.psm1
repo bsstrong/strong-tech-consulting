@@ -73,13 +73,30 @@ function Get-SeaSharpProfilePackages {
     $config = Get-SeaSharpConfig
     $byId = @{}
     foreach ($name in (Get-SeaSharpProfileNames -Profile $Profile)) {
+        $profileConfig = $config.profiles.PSObject.Properties[$name].Value
+        $classification = [string]$profileConfig.classification
+        if ($classification -notin @('required', 'optional')) {
+            throw "Profile '$name' must have a required or optional classification."
+        }
         foreach ($package in @($config.profiles.$name.wingetPackages)) {
-            $byId[[string]$package.id] = $package
+            $byId[[string]$package.id] = [pscustomobject]@{
+                id = [string]$package.id
+                command = [string]$package.command
+                required = [bool]$package.required
+                sourceProfile = $name
+                profileClassification = $classification
+            }
         }
     }
     if ($IncludeRecommended) {
         foreach ($package in @($config.recommendedWingetPackages)) {
-            $byId[[string]$package.id] = $package
+            $byId[[string]$package.id] = [pscustomobject]@{
+                id = [string]$package.id
+                command = [string]$package.command
+                required = $false
+                sourceProfile = 'Recommended'
+                profileClassification = 'optional'
+            }
         }
     }
     @($byId.Values | Sort-Object id)
@@ -201,6 +218,31 @@ function Test-SeaSharpBicepInstalled {
     Test-Path -LiteralPath (Join-Path $azureConfigRoot 'bin\bicep.exe') -PathType Leaf
 }
 
+function Get-SeaSharpHelixZorkaImage {
+    param([Parameter(Mandatory = $true)][string]$RepositoryPath)
+
+    $composePath = Join-Path $RepositoryPath 'docker-compose.yml'
+    if (-not (Test-Path -LiteralPath $composePath -PathType Leaf)) {
+        throw "Helix Docker Compose configuration was not found at $composePath."
+    }
+
+    $oldLocation = Get-Location
+    try {
+        Set-Location -LiteralPath $RepositoryPath
+        $rawConfig = (& docker compose --profile zorka config --format json 2>$null) -join "`n"
+        if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($rawConfig)) {
+            throw 'Docker Compose could not resolve the Helix zorka service configuration.'
+        }
+        $composeConfig = $rawConfig | ConvertFrom-Json
+        $image = [string]$composeConfig.services.zorka.image
+        if ([string]::IsNullOrWhiteSpace($image)) {
+            throw 'Docker Compose did not resolve an image for the Helix zorka service.'
+        }
+        $image.Trim()
+    }
+    finally { Set-Location -LiteralPath $oldLocation }
+}
+
 function Update-SeaSharpProcessPath {
     $machine = [Environment]::GetEnvironmentVariable('Path', 'Machine')
     $user = [Environment]::GetEnvironmentVariable('Path', 'User')
@@ -244,4 +286,4 @@ function Test-SeaSharpHttpEndpoint {
     }
 }
 
-Export-ModuleMember -Function Write-SeaSharpStatus, Get-SeaSharpConfig, Resolve-SeaSharpWorkspaceRoot, Get-SeaSharpProfileNames, Get-SeaSharpProfilePackages, Get-SeaSharpNodeVersions, Test-SeaSharpCommand, Test-SeaSharpNodeVersion, Invoke-SeaSharpCommand, Get-SeaSharpContentFingerprint, Test-SeaSharpComposeServiceRunning, Test-SeaSharpGitRemoteMatches, Test-SeaSharpBicepInstalled, Update-SeaSharpProcessPath, Get-SeaSharpProductPath, Test-SeaSharpTcpPort, Test-SeaSharpHttpEndpoint
+Export-ModuleMember -Function Write-SeaSharpStatus, Get-SeaSharpConfig, Resolve-SeaSharpWorkspaceRoot, Get-SeaSharpProfileNames, Get-SeaSharpProfilePackages, Get-SeaSharpNodeVersions, Test-SeaSharpCommand, Test-SeaSharpNodeVersion, Invoke-SeaSharpCommand, Get-SeaSharpContentFingerprint, Test-SeaSharpComposeServiceRunning, Test-SeaSharpGitRemoteMatches, Test-SeaSharpBicepInstalled, Get-SeaSharpHelixZorkaImage, Update-SeaSharpProcessPath, Get-SeaSharpProductPath, Test-SeaSharpTcpPort, Test-SeaSharpHttpEndpoint

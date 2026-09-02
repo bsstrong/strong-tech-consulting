@@ -40,7 +40,7 @@ The build fails before creating an archive when:
 The leakage scan is a guardrail, not a substitute for review. Before sharing a ZIP, review the manifest and package contents, then compare the published checksum with a fresh local hash:
 
 ```powershell
-Get-FileHash .\dist\SeaSharp-Engineer-Workstation-Kit-1.0.0.zip -Algorithm SHA256
+Get-FileHash .\dist\SeaSharp-Engineer-Workstation-Kit-1.1.0.zip -Algorithm SHA256
 ```
 
 ## Updating the kit

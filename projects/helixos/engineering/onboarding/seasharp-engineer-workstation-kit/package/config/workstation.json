@@ -5,6 +5,7 @@
   "profiles": {
     "AppDev": {
       "description": "Core Helix application development workstation.",
+      "classification": "required",
       "wingetPackages": [
         { "id": "Git.Git", "command": "git", "required": true },
         { "id": "Microsoft.PowerShell", "command": "pwsh", "required": false },
@@ -15,6 +16,7 @@
     },
     "SourceZorka": {
       "description": "Additional tools for changing Zorka source.",
+      "classification": "optional",
       "includes": ["AppDev"],
       "wingetPackages": [
         { "id": "Microsoft.DotNet.SDK.10", "command": "dotnet", "required": true }
@@ -23,11 +25,13 @@
     },
     "WebE2E": {
       "description": "Browser binaries used by repository Playwright tests.",
+      "classification": "optional",
       "includes": ["AppDev"],
       "wingetPackages": []
     },
     "CloudOps": {
       "description": "Optional infrastructure and deployment command-line tools.",
+      "classification": "optional",
       "includes": ["AppDev"],
       "wingetPackages": [
         { "id": "Microsoft.AzureCLI", "command": "az", "required": true },

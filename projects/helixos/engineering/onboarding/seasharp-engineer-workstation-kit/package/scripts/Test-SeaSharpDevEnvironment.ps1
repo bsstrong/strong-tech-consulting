@@ -52,6 +52,11 @@ else {
 
 foreach ($package in (Get-SeaSharpProfilePackages -Profile $Profile)) {
     $command = [string]$package.command
+    $toolArea = if ($package.profileClassification -eq 'required' -and $package.required) {
+        'Required tool'
+    }
+    elseif ($package.required) { 'Selected role tool' }
+    else { 'Optional tool' }
     if (Test-SeaSharpCommand $command) {
         $versionArguments = switch ($command) {
             'git' { @('--version') }
@@ -67,11 +72,11 @@ foreach ($package in (Get-SeaSharpProfilePackages -Profile $Profile)) {
             default { @('--version') }
         }
         $version = Get-VersionText $command $versionArguments
-        Add-Result 'Tool' $command 'PASS' $(if ($version) { $version } else { 'Installed' })
+        Add-Result $toolArea $command 'PASS' $(if ($version) { $version } else { 'Installed' })
     }
     else {
         $status = if ([bool]$package.required) { 'FAIL' } else { 'WARN' }
-        Add-Result 'Tool' $command $status "Install package $($package.id)."
+        Add-Result $toolArea $command $status "Install package $($package.id)."
     }
 }
 

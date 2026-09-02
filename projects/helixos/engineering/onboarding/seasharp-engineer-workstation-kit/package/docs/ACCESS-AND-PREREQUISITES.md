@@ -11,14 +11,19 @@
 - Docker Desktop entitlement under the company's licensing policy.
 - Permission to install approved development software.
 
-Core local tools:
+Required baseline tools:
 
 - Git for Windows, including Git Bash.
-- PowerShell 7 (recommended); the bootstrap scripts also support Windows PowerShell 5.1.
 - Node version manager (`fnm` in this kit).
 - Node.js versions required by the checked-out repositories. HelixOS currently requires Node `24.19.0`/Node 24; the initializer reads the checkout's `.node-version`, which remains authoritative.
 - Docker Desktop with Docker Compose v2.
-- A developer-selected editor or IDE.
+
+Optional recommended tools:
+
+- PowerShell 7; the bootstrap scripts also support Windows PowerShell 5.1.
+- Visual Studio Code. Engineers may use another approved editor or IDE.
+
+See [Required and optional tools](TOOL-CLASSIFICATION.md) for the complete classification.
 
 ## Role-specific additions
 

@@ -64,6 +64,18 @@ if (Test-Path -LiteralPath (Join-Path $repoPath '.env') -PathType Leaf) {
 }
 Write-SeaSharpStatus PASS 'Helix repository origin and root environment-file state are valid.'
 
+$zorkaImage = Get-SeaSharpHelixZorkaImage -RepositoryPath $repoPath
+Write-SeaSharpStatus PASS "Repository-selected Rule Engine image: $zorkaImage"
+& docker image inspect $zorkaImage *> $null
+if ($LASTEXITCODE -eq 0) {
+    Write-SeaSharpStatus SKIP 'Repository-selected Rule Engine image is already installed.'
+}
+elseif ($PSCmdlet.ShouldProcess($zorkaImage, 'Pull repository-selected Rule Engine image')) {
+    Write-SeaSharpStatus INSTALL "Pulling repository-selected Rule Engine image $zorkaImage."
+    Invoke-SeaSharpCommand -FilePath 'docker' -ArgumentList @('pull', $zorkaImage)
+    Write-SeaSharpStatus PASS 'Repository-selected Rule Engine image installed.'
+}
+
 $installedNodes = @(& fnm list 2>$null | ForEach-Object { [string]$_ })
 if (-not (Test-SeaSharpNodeVersion -InstalledVersionLines $installedNodes -RequestedVersion $nodeVersion)) {
     throw "Node.js $nodeVersion is not installed by fnm. Run Install-SeaSharpDev.ps1."

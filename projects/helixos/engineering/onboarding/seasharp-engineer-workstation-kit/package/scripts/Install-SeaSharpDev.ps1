@@ -13,11 +13,42 @@ Import-Module (Join-Path $PSScriptRoot 'SeaSharp.Onboarding.psm1') -Force
 
 $resolvedRoot = Resolve-SeaSharpWorkspaceRoot $WorkspaceRoot
 $resolvedProfiles = Get-SeaSharpProfileNames -Profile $Profile
-$packages = Get-SeaSharpProfilePackages -Profile $Profile -IncludeRecommended:$IncludeRecommended
+$config = Get-SeaSharpConfig
+$profilePackages = @(Get-SeaSharpProfilePackages -Profile $Profile)
+$packages = @($profilePackages | Where-Object { $_.required -or $IncludeRecommended })
+if ($IncludeRecommended) {
+    $packages = @(Get-SeaSharpProfilePackages -Profile $Profile -IncludeRecommended)
+}
 $missing = New-Object 'System.Collections.Generic.List[string]'
 
 Write-SeaSharpStatus INFO "Profiles: $($resolvedProfiles -join ', ')"
 Write-SeaSharpStatus INFO "Workspace root: $resolvedRoot"
+$requiredTools = @($profilePackages | Where-Object { $_.profileClassification -eq 'required' -and $_.required } | ForEach-Object { $_.id })
+$roleTools = @($profilePackages | Where-Object { $_.profileClassification -eq 'optional' -and $_.required } | ForEach-Object { $_.id })
+$optionalTools = @($profilePackages | Where-Object { -not $_.required } | ForEach-Object { $_.id })
+if ($requiredTools.Count -gt 0) { Write-SeaSharpStatus INFO "Required baseline tools: $($requiredTools -join ', ')" }
+if ($roleTools.Count -gt 0) { Write-SeaSharpStatus INFO "Selected optional-profile tools: $($roleTools -join ', ')" }
+$requiredRuntimes = New-Object 'System.Collections.Generic.List[string]'
+$roleRuntimes = New-Object 'System.Collections.Generic.List[string]'
+foreach ($profileName in $resolvedProfiles) {
+    $profileConfig = $config.profiles.PSObject.Properties[$profileName].Value
+    foreach ($version in @($profileConfig.nodeVersions)) {
+        $label = "Node.js $version"
+        if ($profileConfig.classification -eq 'required') {
+            if (-not $requiredRuntimes.Contains($label)) { $requiredRuntimes.Add($label) }
+        }
+        elseif (-not $roleRuntimes.Contains($label)) { $roleRuntimes.Add($label) }
+    }
+}
+if ($requiredRuntimes.Count -gt 0) { Write-SeaSharpStatus INFO "Required baseline runtimes: $($requiredRuntimes -join ', ')" }
+if ($roleRuntimes.Count -gt 0) { Write-SeaSharpStatus INFO "Selected optional-profile runtimes: $($roleRuntimes -join ', ')" }
+if ($optionalTools.Count -gt 0 -and -not $IncludeRecommended) {
+    Write-SeaSharpStatus SKIP "Optional tools not selected: $($optionalTools -join ', '). Use -IncludeRecommended to install them."
+}
+if ($IncludeRecommended) {
+    $recommended = @($packages | Where-Object { -not $_.required } | ForEach-Object { $_.id })
+    if ($recommended.Count -gt 0) { Write-SeaSharpStatus INFO "Selected optional tools: $($recommended -join ', ')" }
+}
 
 if (-not (Test-SeaSharpCommand 'winget')) {
     Write-SeaSharpStatus FAIL 'Windows Package Manager (winget) is unavailable.'

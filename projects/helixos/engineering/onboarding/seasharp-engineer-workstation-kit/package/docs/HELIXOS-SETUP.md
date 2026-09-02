@@ -17,7 +17,7 @@ A host PostgreSQL installation is not required; Docker provides the local databa
 .\scripts\Initialize-HelixWorkspace.ps1 -WorkspaceRoot C:\dev -SkipStart
 ```
 
-The helper locates or clones the approved repository, selects the repository-required Node version, installs dependencies, and uses the repository bootstrap commands. It fingerprints successful dependency and setup inputs so unchanged reruns skip completed work. It does not overwrite checkout files or reset a database automatically.
+The helper locates or clones the approved repository, selects the repository-required Node version, resolves the effective Rule Engine image from the checkout's `docker-compose.yml`, installs that exact image when absent, installs dependencies, and uses the repository bootstrap commands. It never embeds a Rule Engine tag in this package. It fingerprints successful dependency and setup inputs so unchanged reruns skip completed work. It does not overwrite checkout files or reset a database automatically.
 
 Run without `-SkipStart` when you want the initializer to keep the stack attached to the current terminal. Otherwise, start `fnm exec --using 24.19.0 npm run dev:windows` from the Helix checkout after initialization.
 

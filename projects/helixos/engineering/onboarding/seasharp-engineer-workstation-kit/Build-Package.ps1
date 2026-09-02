@@ -214,6 +214,7 @@ $requiredFiles = @(
     'scripts/Initialize-ZorkaWorkspace.ps1',
     'scripts/Test-SeaSharpLocalStack.ps1',
     'docs/ACCESS-AND-PREREQUISITES.md',
+    'docs/TOOL-CLASSIFICATION.md',
     'docs/INSTALLATION-WALKTHROUGH.md',
     'docs/AUTHENTICATION.md',
     'docs/HELIXOS-SETUP.md',

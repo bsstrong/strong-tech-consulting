@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "packageName": "Sea Sharp Engineer Workstation Kit",
+  "packageVersion": "1.1.0",
+  "archive": "SeaSharp-Engineer-Workstation-Kit-1.1.0.zip",
+  "archiveSha256": "1cc0127c0c8bb9a14631e7f76a36cf08ef3d701d5865882f243457f27fd4711a",
+  "fileCount": 23,
+  "files": [
+    {
+      "path": "config/workstation.json",
+      "bytes": 3107,
+      "sha256": "aff78017a5acbda68953a458efdba16db06dd2c56a5b1e5027bd0d897e8f5b8a"
+    },
+    {
+      "path": "docs/ACCESS-AND-PREREQUISITES.md",
+      "bytes": 2402,
+      "sha256": "c9dabd318a09728e38b2a8382c6e567c42a24ee30d112126c1945128f0f52ec0"
+    },
+    {
+      "path": "docs/AUTHENTICATION.md",
+      "bytes": 3399,
+      "sha256": "dafc76a23bd288ab1c2fa375b2d6cfe0cdc9234ee5497ad4e2b5418f5c08eb5d"
+    },
+    {
+      "path": "docs/BROWSER-AND-E2E.md",
+      "bytes": 1811,
+      "sha256": "f93e484b6ce0fc45563b619108466900265886ec8a9e6bd6a0bc6b018c552464"
+    },
+    {
+      "path": "docs/CLOUDOPS-AZURE.md",
+      "bytes": 1929,
+      "sha256": "ea96a95ea7ad1f17d245f7c5640e245621ca15ec76812bdc906b4e58d7c47ac9"
+    },
+    {
+      "path": "docs/FIRST-DAY-ACCEPTANCE.md",
+      "bytes": 2803,
+      "sha256": "57defc272391cad6534182104cbbacdafc7162be8d47a48f830d061d12c0ca2e"
+    },
+    {
+      "path": "docs/HELIXOS-SETUP.md",
+      "bytes": 3079,
+      "sha256": "401b950a4282000027cb5af8e08501af64002e200be14f197c32ceecc529987e"
+    },
+    {
+      "path": "docs/INSTALLATION-WALKTHROUGH.md",
+      "bytes": 4182,
+      "sha256": "978da61558399b9513fcb3c1e150849ad15b7f1eeb73beaaeadbe86af6734802"
+    },
+    {
+      "path": "docs/SECURITY-BOUNDARIES.md",
+      "bytes": 2224,
+      "sha256": "c43b6ce56bcf1426313ebc0b34f02f73371d910dc3ececfd7215eaa9d581aadb"
+    },
+    {
+      "path": "docs/TAX-SERVICE.md",
+      "bytes": 1221,
+      "sha256": "97dd0a9ff2c57799d1b25692b133e078e4a4ce1e99ac0a4d289d79b80252782f"
+    },
+    {
+      "path": "docs/TOOL-CLASSIFICATION.md",
+      "bytes": 2047,
+      "sha256": "f31125b188410cf7b58b78096eebf2cd853df880126c837d047554427aca7f7a"
+    },
+    {
+      "path": "docs/TROUBLESHOOTING.md",
+      "bytes": 5009,
+      "sha256": "77492999221b8fd06aa6875607c1316b8338f3c7aa2ef4e67dc1ec68a3c87e87"
+    },
+    {
+      "path": "docs/ZORKA-SOURCE-SETUP.md",
+      "bytes": 3298,
+      "sha256": "2aa9c017cd8df404a951fe948faaf75c1be0c6ab2fecc0ad627fd92881e6bda4"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 535,
+      "sha256": "6e68b29484ce3459e3969c45e4b8f4f49d3fc401b2032d269642da8f9957de2e"
+    },
+    {
+      "path": "package-metadata.json",
+      "bytes": 169,
+      "sha256": "dff76cf4ae7da9cd1e5db905172c556098cfdbc648b7080fce87fc8d8367c8d8"
+    },
+    {
+      "path": "scripts/Initialize-HelixWorkspace.ps1",
+      "bytes": 7829,
+      "sha256": "cb09ea39c3a7b369b72d8b4e9c2cd93df78fcd91388def9432b200f17e3ea676"
+    },
+    {
+      "path": "scripts/Initialize-ZorkaWorkspace.ps1",
+      "bytes": 8584,
+      "sha256": "5a67397db5a3c07571dc8dadca5f4107c3f3818408868af13cd8e0040f1e49a5"
+    },
+    {
+      "path": "scripts/Install-SeaSharpDev.ps1",
+      "bytes": 12193,
+      "sha256": "969df29ed4a3afd94fe218f359122a88011511b6083cb5ecfb8265e439e00de1"
+    },
+    {
+      "path": "scripts/SeaSharp.Onboarding.psm1",
+      "bytes": 10807,
+      "sha256": "04d280806c46d1ad926ba866afc0728b2eba1f03e135851e70da14bfd07ca435"
+    },
+    {
+      "path": "scripts/Set-SeaSharpPackageAuthentication.ps1",
+      "bytes": 9037,
+      "sha256": "20605f29aef1e7f6b931b2524730d04b31f0a1bfd4296ff3f99dcfc43897a3cc"
+    },
+    {
+      "path": "scripts/Test-SeaSharpDevEnvironment.ps1",
+      "bytes": 10213,
+      "sha256": "771f5d87e280855eafeb7c93c5978025271228cef60335ffbf1eaa75581ef16e"
+    },
+    {
+      "path": "scripts/Test-SeaSharpLocalStack.ps1",
+      "bytes": 2648,
+      "sha256": "2dbfe0e630d2d0d15a0c56893970ff3926bce4b03603547300c4ad7a0e36fcc5"
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 3998,
+      "sha256": "5fd2fdc591da666fe3f23e9bf140d8b659914a94ad487babc84242cd00f5a257"
+    }
+  ]
+}

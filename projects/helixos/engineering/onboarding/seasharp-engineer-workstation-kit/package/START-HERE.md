@@ -52,9 +52,12 @@ After the stack is ready, run this from a second package terminal:
 
 Install browser-test tooling only when the role needs it. Cloud/Azure tooling and the Tax Service are separate optional paths.
 
+See [Required and optional tools](docs/TOOL-CLASSIFICATION.md) for the baseline/role split. Add `-IncludeRecommended` only when the engineer wants the optional PowerShell 7 and Visual Studio Code installations.
+
 ## Documentation map
 
 - [Installation walkthrough](docs/INSTALLATION-WALKTHROUGH.md)
+- [Required and optional tools](docs/TOOL-CLASSIFICATION.md)
 - [Authentication](docs/AUTHENTICATION.md)
 - [HelixOS setup](docs/HELIXOS-SETUP.md)
 - [Zorka source setup](docs/ZORKA-SOURCE-SETUP.md)

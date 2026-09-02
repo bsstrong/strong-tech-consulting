@@ -37,13 +37,19 @@ For engineers changing Zorka source:
 .\scripts\Install-SeaSharpDev.ps1 -Profile SourceZorka -WorkspaceRoot C:\dev
 ```
 
+To include the recommended but non-required PowerShell 7 and Visual Studio Code packages:
+
+```powershell
+.\scripts\Install-SeaSharpDev.ps1 -Profile AppDev -WorkspaceRoot C:\dev -IncludeRecommended
+```
+
 For browser-test dependencies or CloudOps tooling, use the corresponding supported profile shown by:
 
 ```powershell
 Get-Help .\scripts\Install-SeaSharpDev.ps1 -Full
 ```
 
-The script reports each check and action in the terminal. Items that are already installed at a compatible version are reported as satisfied/skipped instead of being reinstalled. Configuration steps likewise skip settings that are already correct. Warnings and failures remain visible in the final result summary; save a redacted transcript when support needs the evidence.
+The script reports required baseline tools, selected optional-profile tools, and optional tools separately. Items that are already installed at a compatible version are reported as satisfied/skipped instead of being reinstalled. Configuration steps likewise skip settings that are already correct. Warnings and failures remain visible in the final result summary; save a redacted transcript when support needs the evidence.
 
 Restart PowerShell after installation if the command reports that PATH or virtualization changes require it. Start Docker Desktop and wait for the engine to report ready.
 
