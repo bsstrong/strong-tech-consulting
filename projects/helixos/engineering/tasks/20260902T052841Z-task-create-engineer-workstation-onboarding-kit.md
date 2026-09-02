@@ -3,17 +3,17 @@
 ## Identity
 
 - Status: Complete
-- Repository: `bsstrong/strong-tech-consulting`
-- Completed: 2026-09-02T05:58:20Z
+- Repositories: `bsstrong/strong-tech-consulting`, `helixosio/helixos`
+- Completed: 2026-09-02T20:12:59Z
 - Task/thread ID: Unavailable
-- Branch: `main`
-- Final head SHA: `7bb1835058fcc469a14be0224eb94a7fc1745bdc`
+- Branches: `main`; `codex/zorka-image-source-onboarding` (deleted after merge)
+- Final heads: package `7bb1835058fcc469a14be0224eb94a7fc1745bdc`; HelixOS `22b3f15cbbf51de464f611a6b0f720b6f47e9060`
 - Issue: N/A
-- PR: N/A
+- PR: [helixosio/helixos#1519](https://github.com/helixosio/helixos/pull/1519) (merged)
 
 ## Objective and outcome
 
-Created and delivered a distributable Windows workstation onboarding kit for a new engineer working on SeaSharp products. The package excludes private owner-development tooling and lets the engineer choose a workspace root instead of imposing the owner's local directory layout.
+Created and delivered a distributable Windows workstation onboarding kit for a new engineer working on SeaSharp products. The package excludes private owner-development tooling and lets the engineer choose a workspace root instead of imposing the owner's local directory layout. HelixOS PR #1519 subsequently merged the Compose-owned Rule Engine image authority required for broad distribution of the package.
 
 ## Delivered changes and decisions
 
@@ -25,6 +25,8 @@ Created and delivered a distributable Windows workstation onboarding kit for a n
 - Released version 1.1.0 with an explicit required-baseline versus optional-assignment tool catalog.
 - Updated installation and diagnostic output to identify required, selected role-specific, and optional tools separately.
 - Updated Helix initialization to resolve the effective Rule Engine image from the checkout's Docker Compose configuration, log it, and skip pulling it when already installed.
+- Merged HelixOS PR #1519 at head `22b3f15cbbf51de464f611a6b0f720b6f47e9060` (merge commit `c01576d40b0843aa31dfc8a21e172387198503bf`), making Compose the single checked-in local Rule Engine image authority.
+- Removed the clean dedicated PR worktree and local branch; the remote branch had already been deleted.
 
 ## Validation, review, and CI
 
@@ -34,7 +36,9 @@ Created and delivered a distributable Windows workstation onboarding kit for a n
 - PowerShell 5.1 and PowerShell 7 both resolved the effective Zorka image from the Helix Compose configuration; an explicit version override was also verified without embedding a tag in the package.
 - Safe read-only checks covered install detection, SSH remote normalization, dependency fingerprints, Bicep detection, `-WhatIf` authentication behavior, environment diagnostics, and JSON local-stack diagnostics.
 - Complete-diff architecture review found cohesive responsibilities and no new hotspot, duplicated policy, hidden state, or misplaced I/O boundary. No CI workflow applies to this documentation and tooling package.
+- PR #1519 validation included `npm run build:packages`, the full API CI suite (3,671 passed), focused launcher tests (3 passed), launcher syntax validation, live Compose image resolution, and `git diff --check`.
+- Exact-head production review approved PR #1519 with no findings or open threads; required `backend-and-infra`, `web-unit`, and `web-e2e` checks all passed before merge.
 
 ## Risk and follow-up
 
-Installer behavior still requires final acceptance on a clean engineer workstation with real organization access and credentials. Vendor package identifiers, installers, and repository runtime pins may change; rebuild and version the package when those inputs change. Hold broad distribution until Helix PR #1519 merges so the launcher and package share the same Compose-owned image authority.
+Installer behavior still requires final acceptance on a clean engineer workstation with real organization access and credentials. Vendor package identifiers, installers, and repository runtime pins may change; rebuild and version the package when those inputs change. Broad distribution is no longer gated by PR #1519.
