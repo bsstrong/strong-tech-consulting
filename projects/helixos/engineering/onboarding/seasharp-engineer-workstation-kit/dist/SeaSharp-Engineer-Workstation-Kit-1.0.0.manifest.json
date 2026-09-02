@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "packageName": "Sea Sharp Engineer Workstation Kit",
+  "packageVersion": "1.0.0",
+  "archive": "SeaSharp-Engineer-Workstation-Kit-1.0.0.zip",
+  "archiveSha256": "9e5e0218fba847590f9dea0a2381d7a7bb898bc2f605032585f52f937de71b66",
+  "fileCount": 22,
+  "files": [
+    {
+      "path": "config/workstation.json",
+      "bytes": 2963,
+      "sha256": "87a4550e079545702b5529bb51785cf4091c07439f15a261de43654915384cb8"
+    },
+    {
+      "path": "docs/ACCESS-AND-PREREQUISITES.md",
+      "bytes": 2253,
+      "sha256": "eabfc98c99e80a4ba4cea393ab8e3be7f019ec738e81b9b03b18cfb0e1014912"
+    },
+    {
+      "path": "docs/AUTHENTICATION.md",
+      "bytes": 3399,
+      "sha256": "dafc76a23bd288ab1c2fa375b2d6cfe0cdc9234ee5497ad4e2b5418f5c08eb5d"
+    },
+    {
+      "path": "docs/BROWSER-AND-E2E.md",
+      "bytes": 1811,
+      "sha256": "f93e484b6ce0fc45563b619108466900265886ec8a9e6bd6a0bc6b018c552464"
+    },
+    {
+      "path": "docs/CLOUDOPS-AZURE.md",
+      "bytes": 1929,
+      "sha256": "ea96a95ea7ad1f17d245f7c5640e245621ca15ec76812bdc906b4e58d7c47ac9"
+    },
+    {
+      "path": "docs/FIRST-DAY-ACCEPTANCE.md",
+      "bytes": 2803,
+      "sha256": "57defc272391cad6534182104cbbacdafc7162be8d47a48f830d061d12c0ca2e"
+    },
+    {
+      "path": "docs/HELIXOS-SETUP.md",
+      "bytes": 2906,
+      "sha256": "0f4a869d325a6183720cd926642e2685bd1f628fb95aec74839320a941795fb0"
+    },
+    {
+      "path": "docs/INSTALLATION-WALKTHROUGH.md",
+      "bytes": 3930,
+      "sha256": "c6daf9b5906a041a82d6d8ec87f3f16e566d3fab17f5f82b511921174d2b931a"
+    },
+    {
+      "path": "docs/SECURITY-BOUNDARIES.md",
+      "bytes": 2224,
+      "sha256": "c43b6ce56bcf1426313ebc0b34f02f73371d910dc3ececfd7215eaa9d581aadb"
+    },
+    {
+      "path": "docs/TAX-SERVICE.md",
+      "bytes": 1221,
+      "sha256": "97dd0a9ff2c57799d1b25692b133e078e4a4ce1e99ac0a4d289d79b80252782f"
+    },
+    {
+      "path": "docs/TROUBLESHOOTING.md",
+      "bytes": 5009,
+      "sha256": "77492999221b8fd06aa6875607c1316b8338f3c7aa2ef4e67dc1ec68a3c87e87"
+    },
+    {
+      "path": "docs/ZORKA-SOURCE-SETUP.md",
+      "bytes": 3298,
+      "sha256": "2aa9c017cd8df404a951fe948faaf75c1be0c6ab2fecc0ad627fd92881e6bda4"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 535,
+      "sha256": "6e68b29484ce3459e3969c45e4b8f4f49d3fc401b2032d269642da8f9957de2e"
+    },
+    {
+      "path": "package-metadata.json",
+      "bytes": 169,
+      "sha256": "95321ff6cf15d380a32b83034f0fbc6a831d5c524f036dc280ae8553a531a96c"
+    },
+    {
+      "path": "scripts/Initialize-HelixWorkspace.ps1",
+      "bytes": 7162,
+      "sha256": "b96bb0260d1cadc8ef96be0538ad1d4d7bccd895315d33fa93fc7abe799f314a"
+    },
+    {
+      "path": "scripts/Initialize-ZorkaWorkspace.ps1",
+      "bytes": 8584,
+      "sha256": "5a67397db5a3c07571dc8dadca5f4107c3f3818408868af13cd8e0040f1e49a5"
+    },
+    {
+      "path": "scripts/Install-SeaSharpDev.ps1",
+      "bytes": 10074,
+      "sha256": "0164d9b73bbc89131f0f15422d89642a3f734ee45f190ebfe494d1895d1af176"
+    },
+    {
+      "path": "scripts/SeaSharp.Onboarding.psm1",
+      "bytes": 8920,
+      "sha256": "7ba2974febe273f0d2af907d99333fdcee59aa83cd329e352eaf0de879d9d07d"
+    },
+    {
+      "path": "scripts/Set-SeaSharpPackageAuthentication.ps1",
+      "bytes": 9037,
+      "sha256": "20605f29aef1e7f6b931b2524730d04b31f0a1bfd4296ff3f99dcfc43897a3cc"
+    },
+    {
+      "path": "scripts/Test-SeaSharpDevEnvironment.ps1",
+      "bytes": 10000,
+      "sha256": "6194a397f24cb14bcd7767cbcff3938ff912b0b25a6a6090af3690fad6531a30"
+    },
+    {
+      "path": "scripts/Test-SeaSharpLocalStack.ps1",
+      "bytes": 2648,
+      "sha256": "2dbfe0e630d2d0d15a0c56893970ff3926bce4b03603547300c4ad7a0e36fcc5"
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 3725,
+      "sha256": "e0c0323d76439568798e91bcf7df59a0645d4a6529b4e53b645688ebc27bb678"
+    }
+  ]
+}

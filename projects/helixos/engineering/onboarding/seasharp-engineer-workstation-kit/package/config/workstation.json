@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "defaultWorkspaceRoot": "C:\\dev",
+  "corepackVersion": "0.34.5",
+  "profiles": {
+    "AppDev": {
+      "description": "Core Helix application development workstation.",
+      "wingetPackages": [
+        { "id": "Git.Git", "command": "git", "required": true },
+        { "id": "Microsoft.PowerShell", "command": "pwsh", "required": false },
+        { "id": "Schniz.fnm", "command": "fnm", "required": true },
+        { "id": "Docker.DockerDesktop", "command": "docker", "required": true }
+      ],
+      "nodeVersions": ["24.19.0"]
+    },
+    "SourceZorka": {
+      "description": "Additional tools for changing Zorka source.",
+      "includes": ["AppDev"],
+      "wingetPackages": [
+        { "id": "Microsoft.DotNet.SDK.10", "command": "dotnet", "required": true }
+      ],
+      "nodeVersions": ["22"]
+    },
+    "WebE2E": {
+      "description": "Browser binaries used by repository Playwright tests.",
+      "includes": ["AppDev"],
+      "wingetPackages": []
+    },
+    "CloudOps": {
+      "description": "Optional infrastructure and deployment command-line tools.",
+      "includes": ["AppDev"],
+      "wingetPackages": [
+        { "id": "Microsoft.AzureCLI", "command": "az", "required": true },
+        { "id": "GitHub.cli", "command": "gh", "required": true },
+        { "id": "Python.Python.3.13", "command": "python", "required": true },
+        { "id": "jqlang.jq", "command": "jq", "required": true },
+        { "id": "ShiningLight.OpenSSL.Light", "command": "openssl", "required": true }
+      ]
+    }
+  },
+  "recommendedWingetPackages": [
+    { "id": "Microsoft.VisualStudioCode", "command": "code", "required": false }
+  ],
+  "products": {
+    "Helix": {
+      "directory": "HelixOS",
+      "repository": "https://github.com/helixosio/helixos.git",
+      "nodeVersion": "24.19.0",
+      "startCommand": "npm run dev:windows"
+    },
+    "Zorka": {
+      "directory": "Zorka",
+      "repository": "https://github.com/zorkacom/zorka.git",
+      "startCommand": "pnpm dev"
+    }
+  },
+  "healthChecks": {
+    "Helix": [
+      { "name": "Helix web", "kind": "http", "target": "http://127.0.0.1:5173" },
+      { "name": "Client Portal", "kind": "http", "target": "http://127.0.0.1:5174" },
+      { "name": "Helix API", "kind": "http", "target": "http://127.0.0.1:4000" },
+      { "name": "Helix PostgreSQL", "kind": "tcp", "host": "127.0.0.1", "port": 5433 },
+      { "name": "Rule Engine API", "kind": "http", "target": "http://127.0.0.1:3001/api/health/ready", "alternateTarget": "http://127.0.0.1:3000/api/health/ready" }
+    ],
+    "Zorka": [
+      { "name": "Zorka Studio", "kind": "http", "target": "http://127.0.0.1:4173" },
+      { "name": "Zorka API", "kind": "http", "target": "http://127.0.0.1:3000/api/health/ready" },
+      { "name": "Zorka runtime", "kind": "http", "target": "http://127.0.0.1:5082/health/live" },
+      { "name": "Zorka PostgreSQL", "kind": "tcp", "host": "127.0.0.1", "port": 54329 }
+    ]
+  }
+}
