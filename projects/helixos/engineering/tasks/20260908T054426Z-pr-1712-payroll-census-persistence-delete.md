@@ -31,7 +31,9 @@ Prevent invalid payroll persistence and deletion actions, including zero-writabl
 - Local isolated database coverage was partially unavailable because another worktree occupied its dedicated port; hosted environment checks were not run by policy.
 - Exact-head GitHub review approved `ba71040156011a6f4e7c9f238e5629ffef306391` with no unresolved findings.
 - Exact-head required CI passed, including static checks, API and workflow unit tests, package suites, all web shards/checks, backend integration, and web end-to-end.
+- TEST UAT revisited original run `09427b99-a196-480f-9ab0-f33fc9c008d3`: all 54 rows remained quarantined, the persistence action was absent with the actionable no-writable-rows message, and delete was disabled because the run belongs to payroll-cycle history.
+- TEST UAT created fresh run `a0222e2c-724b-4482-bd96-050ddb748948` from the same displayed payroll source. It completed with 54 matched rows, persisted successfully for pay date 2026-09-11, disabled deletion while persistence was pending, and remained non-deletable after persistence. The browser recorded no console errors during the scenario.
 
 ## Risk and follow-up
 
-No known outstanding blocker. Normal production risk remains around asynchronous persistence timing; the implementation bounds polling to first-persistence attempts and exact-head CI covered the integration and end-to-end seams. No owner follow-up is required.
+No known outstanding blocker. Normal production risk remains around asynchronous persistence timing; the implementation bounds polling to first-persistence attempts and exact-head CI plus TEST UAT covered the integration and end-to-end seams. The fresh TEST payroll batch was retained as UAT evidence; no owner follow-up is required.
