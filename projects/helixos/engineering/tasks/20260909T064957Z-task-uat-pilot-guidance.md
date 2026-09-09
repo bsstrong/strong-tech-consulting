@@ -6,6 +6,7 @@
 - Repository: Governed private source release
 - Completed: 2026-09-09T06:49:57Z
 - Diagnostic guidance follow-up completed: 2026-09-09T13:46:49Z
+- Fixture and outcome guidance follow-up completed: 2026-09-09T15:19:37Z
 
 ## Objective and outcome
 
@@ -19,13 +20,14 @@ Improve the reusable UAT skill from observed pilot decision errors. Delivered up
 - Document the credential catalog shape and distinguish sanitized browser-consumer exceptions from credential lookup failures.
 - Require a hypothesis/check/result investigation in autonomous and guided runs, including discovery-only. Use prior defect investigations to plan tests, and report demonstrated failures even when the implementation root cause is unknown.
 - Before propagating an upstream failure, attempt an authorized valid synthetic positive case where available while retaining original failure evidence. Record the actual dependency and resume condition for remaining blockers.
-- Delivered source through its authorized workflow. Current distribution SHA-256: `8152DF0EAC6CCAB480FF926F6CBC74BECF29C6B84F44D02374EC62789A24F661`.
+- Preflight fixtures against the selected import and downstream contracts, verify business outcomes separately from stage completion, qualify causal claims from uncontrolled comparisons, and retain a verified positive baseline for derived cases.
+- Delivered source through its authorized workflow. Current distribution SHA-256: `163490938095A04164AD894D13A2732118F456ADC2FD049EC03651AD625C2A99`.
 
 ## Validation, review, and CI
 
 - Dedicated helper tests: 23 passed, none skipped, including redaction, cleanup, and callback-error classification.
 - Structural validation, full-diff self-review, privacy and relative-link scans, archive allowlist, and source/install/archive integrity comparisons passed.
-- The diagnostic follow-up was grounded in execution-history and checkpoint review. Its instruction-only changes passed structural and package checks; unchanged helper test evidence was retained.
+- The diagnostic and fixture follow-ups were grounded in execution-history, checkpoint, and local contract review. Their instruction-only changes passed structural and package checks; unchanged helper test evidence was retained. All eight packaged files matched both installed copies.
 - No unresolved self-review blockers. No PR or hosted CI required for this delivery.
 
 ## Risk and follow-up
