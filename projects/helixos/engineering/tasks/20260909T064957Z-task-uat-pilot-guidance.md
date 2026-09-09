@@ -5,6 +5,7 @@
 - Status: Completed
 - Repository: Governed private source release
 - Completed: 2026-09-09T06:49:57Z
+- Diagnostic guidance follow-up completed: 2026-09-09T13:46:49Z
 
 ## Objective and outcome
 
@@ -16,12 +17,15 @@ Improve the reusable UAT skill from observed pilot decision errors. Delivered up
 - Complete scenario verification and authorized shared updates before a guided pause; distinguish waiting for owner notes from a blocked test.
 - Verify asynchronous persistence and appropriate UI, API, atomicity, and download evidence before assigning a verdict. Inspect supported alternatives and setup before declaring a blocker or defect.
 - Document the credential catalog shape and distinguish sanitized browser-consumer exceptions from credential lookup failures.
-- Delivered source through its authorized workflow. Distribution SHA-256: `56ABF3818048295D43CEE6DD9B60CF3EA3AD297F6F607BC71002A569C31CFD2E`.
+- Require a hypothesis/check/result investigation in autonomous and guided runs, including discovery-only. Use prior defect investigations to plan tests, and report demonstrated failures even when the implementation root cause is unknown.
+- Before propagating an upstream failure, attempt an authorized valid synthetic positive case where available while retaining original failure evidence. Record the actual dependency and resume condition for remaining blockers.
+- Delivered source through its authorized workflow. Current distribution SHA-256: `8152DF0EAC6CCAB480FF926F6CBC74BECF29C6B84F44D02374EC62789A24F661`.
 
 ## Validation, review, and CI
 
 - Dedicated helper tests: 23 passed, none skipped, including redaction, cleanup, and callback-error classification.
 - Structural validation, full-diff self-review, privacy and relative-link scans, archive allowlist, and source/install/archive integrity comparisons passed.
+- The diagnostic follow-up was grounded in execution-history and checkpoint review. Its instruction-only changes passed structural and package checks; unchanged helper test evidence was retained.
 - No unresolved self-review blockers. No PR or hosted CI required for this delivery.
 
 ## Risk and follow-up
